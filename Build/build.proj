@@ -1,0 +1,18 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Cleanup -->
+  <Target Name="Cleanup" >
+    <Message Text="Removing Bin Folder" Importance="high" />
+    <Delete ContinueOnError="true" Files="..\Bin\*.*" />
+  </Target>
+
+  <!-- Build project -->
+  <Target Name="BuildProjects">
+    <MSBuild Projects="..\SurveySolution.sln" Targets="Clean;Rebuild" ContinueOnError="false" StopOnFirstFailure="true"/>
+  </Target>
+
+  <!-- FullBuild40 (Builds tools, projects, tests, and samples. -->
+  <Target Name="FullBuild10" DependsOnTargets="Cleanup" >
+    <CallTarget Targets="BuildProjects" />
+  </Target>
+
+</Project>

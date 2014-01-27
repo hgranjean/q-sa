@@ -1,0 +1,9 @@
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Rules.Domain.dll
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Rules.Domain.pdb
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\obj\Debug\Rules.Domain.csprojResolveAssemblyReference.cache
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\obj\Debug\Rules.Domain.dll
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\obj\Debug\Rules.Domain.pdb
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Repository.dll
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Common.dll
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Repository.pdb
+D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Common.pdb

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleApplicationDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  Revision="1"
+  PublicRevision="1"
+  Guid="8c702cc5-2a35-4e06-934f-4093edf52764"
+  Id="-1"
+  Name="NewRuleApplication"
+  RepositoryAssemblyFileVersion="4.0.0.47"
+  LastValidateContentCode="-800483498"
+  IsolatedTestDomain="false"
+  SchemaGuid="069c13a6-ee73-40f9-903e-57dd4f76a07f"
+  SchemaRevision="1"
+  SchemaPublicRevision="1"
+  LastValidateDateTimeUtc="2014-01-20T17:53:11.7276036Z">
+  <UpgraderMessageList xmlns="http://www.inrule.com/XmlSchema/Schema" />
+  <RuntimeEngine xmlns="http://www.inrule.com/XmlSchema/Schema">InRule</RuntimeEngine>
+  <FeatureVersion xmlns="http://www.inrule.com/XmlSchema/Schema">75</FeatureVersion>
+  <CompatibilityVersion xmlns="http://www.inrule.com/XmlSchema/Schema">1</CompatibilityVersion>
+  <AuthoringSettings xmlns="http://www.inrule.com/XmlSchema/Schema">
+    <SelectedAuthoringItemGuid>2089f5bb-5a85-432c-b123-ab671ec47691</SelectedAuthoringItemGuid>
+    <UseAdvancedXmlOptions>false</UseAdvancedXmlOptions>
+    <AllowAccessToParentsInLanguageRules>true</AllowAccessToParentsInLanguageRules>
+    <TreeRuleNameVisibility>HideReserved</TreeRuleNameVisibility>
+    <CreatedDateTime>2014-01-17T16:47:20.5577892-06:00</CreatedDateTime>
+    <ModifiedDateTime>2014-01-20T11:53:11.7736034-06:00</ModifiedDateTime>
+  </AuthoringSettings>
+  <IndentUnboundCollectionXml xmlns="http://www.inrule.com/XmlSchema/Schema">true</IndentUnboundCollectionXml>
+  <AllowRuleInactivation xmlns="http://www.inrule.com/XmlSchema/Schema">true</AllowRuleInactivation>
+  <UseRuleVersions xmlns="http://www.inrule.com/XmlSchema/Schema">false</UseRuleVersions>
+  <UseVersionCreationDates xmlns="http://www.inrule.com/XmlSchema/Schema">true</UseVersionCreationDates>
+  <HasContextVersionSettings xmlns="http://www.inrule.com/XmlSchema/Schema">false</HasContextVersionSettings>
+  <RunawayCycleCount xmlns="http://www.inrule.com/XmlSchema/Schema">100000</RunawayCycleCount>
+  <Timeout xmlns="http://www.inrule.com/XmlSchema/Schema">30000</Timeout>
+  <Entities xmlns="http://www.inrule.com/XmlSchema/Schema">
+    <EntityDef
+      Revision="1"
+      PublicRevision="1"
+      Guid="6354810f-2806-47c1-bd9d-4dc9f0f87da3"
+      Name="Survey">
+      <Fields>
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="e3b4f038-5296-47ff-aa37-7155af28306e"
+          Name="Questions"
+          DataType="Entity"
+          IsCollection="true"
+          DataTypeEntityName="Question" />
+      </Fields>
+      <HasContextVersionSettings>false</HasContextVersionSettings>
+    </EntityDef>
+    <EntityDef
+      Revision="1"
+      PublicRevision="1"
+      Guid="d1a75b40-3da4-4e01-a7ce-402c57708192"
+      Name="Question">
+      <Fields>
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="d4597809-f005-49f0-b732-633d3a639404"
+          Name="Choices"
+          DataType="Entity"
+          IsCollection="true"
+          DataTypeEntityName="Choice" />
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="8ede9c3e-cf55-438e-939d-5f13eff84bb5"
+          Name="Text"
+          DataType="String" />
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="5ef9be17-0080-4dda-9b42-fdf0d41d9931"
+          Name="ChoiceValues"
+          DataType="Entity"
+          IsCollection="true"
+          DataTypeEntityName="ChoiceValue" />
+      </Fields>
+      <HasContextVersionSettings>false</HasContextVersionSettings>
+    </EntityDef>
+    <EntityDef
+      Revision="1"
+      PublicRevision="1"
+      Guid="f0d2b692-1464-43f3-a9aa-479e2b422b5c"
+      Name="Choice">
+      <Fields>
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="78345b81-f467-49dd-b85d-d2205b6e86e8"
+          Name="IsCorrectAnswer"
+          DataType="Boolean"
+          DisplayName="Is Correct Answer" />
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="b73e2925-c0c6-4c97-b8de-07e13db50b6a"
+          Name="Text"
+          DataType="String" />
+      </Fields>
+      <HasContextVersionSettings>false</HasContextVersionSettings>
+    </EntityDef>
+    <EntityDef
+      Revision="1"
+      PublicRevision="1"
+      Guid="2089f5bb-5a85-432c-b123-ab671ec47691"
+      Name="Assessment">
+      <RuleElements>
+        <RuleElementDef
+          xsi:type="RuleSetDef"
+          Revision="1"
+          PublicRevision="1"
+          Guid="da2f14ab-93de-4de7-8e60-d11fa716af49"
+          Name="RuleSet1">
+          <FireMode>Auto</FireMode>
+          <RunMode>Sequential</RunMode>
+          <Rules>
+            <RuleElementDef
+              xsi:type="LanguageRuleDef"
+              Revision="1"
+              PublicRevision="1"
+              Guid="9adeaa70-3126-46f8-8d7d-8d165efa01d7"
+              Name="LanguageRule1">
+              <Attributes>
+                <anyType
+                  xsi:type="CollectionItem">
+                  <Key>
+                    <Name>ReservedAttributeTokenKey</Name>
+                    <Guid>60fae55a-9a45-41a5-828a-bc71a3b65013</Guid>
+                  </Key>
+                  <Collection>
+                    <anyType
+                      xsi:type="XmlSerializableStringDictionaryItem"
+                      Key="0"
+                      Value="SetValueNewRuleApplication.Survey" />
+                    <anyType
+                      xsi:type="XmlSerializableStringDictionaryItem"
+                      Key="0.0"
+                      Value="SetValueBooleanAssignableBoolean" />
+                    <anyType
+                      xsi:type="XmlSerializableStringDictionaryItem"
+                      Key="0.1"
+                      Value="NewRuleApplication.Assessment.ExamSurvey.Implicit" />
+                    <anyType
+                      xsi:type="XmlSerializableStringDictionaryItem"
+                      Key="0.2"
+                      Value="SetValueBooleanAssignableBoolean" />
+                    <anyType
+                      xsi:type="XmlSerializableStringDictionaryItem"
+                      Key="0.3"
+                      Value="" />
+                  </Collection>
+                </anyType>
+              </Attributes>
+              <RuleElement
+                xsi:type="SetValueActionDef"
+                Revision="1"
+                PublicRevision="1"
+                Guid="622d37ad-b155-4a16-bcea-7f6824df086c"
+                Name="LanguageRule1">
+                <Element>
+                  <FormulaText>ExamSurvey</FormulaText>
+                </Element>
+                <Value>
+                  <FormulaText>AdministeredSurvey</FormulaText>
+                </Value>
+              </RuleElement>
+              <HasContextVersionSettings>false</HasContextVersionSettings>
+            </RuleElementDef>
+          </Rules>
+          <HasContextVersionSettings>false</HasContextVersionSettings>
+        </RuleElementDef>
+      </RuleElements>
+      <Fields>
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="c5c83668-9d99-4bb8-bf27-f81fa558e56f"
+          Name="AdministeredSurvey"
+          DataType="Entity"
+          DataTypeEntityName="Survey"
+          DisplayName="Administered Survey" />
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="c5324ece-8e62-4dbd-a2dc-c9a8e066a975"
+          Name="ExamSurvey"
+          DataType="Entity"
+          DataTypeEntityName="Survey"
+          DisplayName="Exam Survey" />
+      </Fields>
+      <HasContextVersionSettings>false</HasContextVersionSettings>
+    </EntityDef>
+    <EntityDef
+      Revision="1"
+      PublicRevision="1"
+      Guid="218e5f2c-5fd0-400b-bfed-6dd4575ded39"
+      Name="ChoiceValue"
+      DisplayName="Choice Value">
+      <Fields>
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="c3ab13ad-eabf-433c-88a2-fb73cfb03c13"
+          Name="Choice"
+          DataType="Entity"
+          DataTypeEntityName="Choice" />
+        <FieldDef
+          Revision="1"
+          PublicRevision="1"
+          Guid="90a46c80-a820-496d-9837-d8e54a2772d1"
+          Name="Score"
+          DataType="String" />
+      </Fields>
+      <HasContextVersionSettings>false</HasContextVersionSettings>
+    </EntityDef>
+  </Entities>
+</RuleApplicationDef>

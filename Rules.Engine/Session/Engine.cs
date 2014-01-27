@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Rules.Engine.Functions;
+using Rules.Engine.Infos;
+using Rules.Engine.Session;
+
+namespace Rules.Engine
+{
+    public class Engine
+    {
+        public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof (WorkingMemory), "memory");
+        public readonly static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "stateContainer");
+
+        internal Expression GetExpressionForValue(CompileContext context, IInfo info)
+        {
+            // TODO: Parse expression
+
+            String eval = ((EvalInfo) info).Eval;
+            
+            if (Char.IsLetter(eval[0]))
+            {
+                if (context != null)
+                {
+                    var contextEval = (EvalInfo) context.Context;
+
+                    //left part of lambda, p
+                    var keyExpression = StateContainerParam;
+                    
+                    //p.Values.Item[info.Name]
+                    //Expression keyExpression = Expression.Property(parameter, contextEval.Eval);
+
+                    Type targetType = context.EntityInfo.EntitySpec.BoundType;
+
+                    Expression propertyExpression = Expression.Property(Expression.Convert(keyExpression, typeof(StateContainer)), "Item", Expression.Constant(eval));
+
+                    return propertyExpression;
+                }
+                else
+                {
+                    //left part of lambda, p
+                    var parameter = WorkingMemoryParam;
+
+                    //right part
+                    //p.Values
+                    Expression left = Expression.Property(parameter, "Values");
+
+                    var method = typeof (IDictionary<Object, Object>).GetMethod("ContainsKey");
+
+                    //p.Values.ContainsKey(info.Name);
+                    // Expression containsExpression = Expression.Call(left, method, Expression.Constant(eval));
+
+                    //p.Values.Item[info.Name]
+                    Expression keyExpression = Expression.Property(left, "Item",
+                                                                   new Expression[] {Expression.Constant(eval)});
+
+                    return keyExpression;
+                }
+            }
+            else
+            {
+                return Expression.Constant(eval);
+            }
+            
+
+            /*
+            //"somevalue"
+            var right = Expression.Constant(value);
+            //{p => IIF(p.Attributes.ContainsKey("Brand"), (p.Attributes.Item[info.Name] == "somevalue"), False)}
+            Expression operation = Expression.Condition(
+                           containsExpression,
+                           Expression.MakeBinary(expressionType[op], keyExpression, right), 
+                           Expression.Constant(false));
+            var lambda = Expression.Lambda<Func<Object, bool>>(operation, parameter);*/
+        }
+    }
+}

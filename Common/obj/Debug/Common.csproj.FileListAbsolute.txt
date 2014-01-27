@@ -1,0 +1,5 @@
+D:\WORK\ATUM\Code\SurveySolution\Bin\Common.dll
+D:\WORK\ATUM\Code\SurveySolution\Bin\Common.pdb
+D:\WORK\ATUM\Code\SurveySolution\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\WORK\ATUM\Code\SurveySolution\Common\obj\Debug\Common.dll
+D:\WORK\ATUM\Code\SurveySolution\Common\obj\Debug\Common.pdb
