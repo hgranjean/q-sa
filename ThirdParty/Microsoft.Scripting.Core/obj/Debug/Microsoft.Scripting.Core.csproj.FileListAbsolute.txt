@@ -1,0 +1,15 @@
+D:\WORK\ATUM\Code\SurveySolution\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.csprojResolveAssemblyReference.cache
+D:\WORK\ATUM\Code\Bin\Debug\Microsoft.Scripting.Core.xml
+D:\WORK\ATUM\Code\Bin\Debug\Microsoft.Scripting.Core.dll
+D:\WORK\ATUM\Code\Bin\Debug\Microsoft.Scripting.Core.pdb
+D:\WORK\ATUM\Code\SurveySolution\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.dll
+D:\WORK\ATUM\Code\SurveySolution\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.pdb
+D:\WORK\ATUM\Code\SurveySolution\Bin\Microsoft.Scripting.Core.xml
+D:\WORK\ATUM\Code\SurveySolution\Bin\Microsoft.Scripting.Core.dll
+D:\WORK\ATUM\Code\SurveySolution\Bin\Microsoft.Scripting.Core.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Bin\Microsoft.Scripting.Core.xml
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Bin\Microsoft.Scripting.Core.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Bin\Microsoft.Scripting.Core.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.pdb

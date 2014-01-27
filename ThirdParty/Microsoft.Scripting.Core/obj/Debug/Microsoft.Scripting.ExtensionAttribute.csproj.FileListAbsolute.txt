@@ -1,0 +1,12 @@
+D:\WORK\ATUM\Code\Bin\Debug\Microsoft.Scripting.ExtensionAttribute.dll
+D:\WORK\ATUM\Code\Bin\Debug\Microsoft.Scripting.ExtensionAttribute.pdb
+D:\WORK\ATUM\Code\SurveySolution\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.ExtensionAttribute.csprojResolveAssemblyReference.cache
+D:\WORK\ATUM\Code\SurveySolution\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.ExtensionAttribute.dll
+D:\WORK\ATUM\Code\SurveySolution\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.ExtensionAttribute.pdb
+D:\WORK\ATUM\Code\SurveySolution\Bin\Microsoft.Scripting.ExtensionAttribute.dll
+D:\WORK\ATUM\Code\SurveySolution\Bin\Microsoft.Scripting.ExtensionAttribute.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Bin\Microsoft.Scripting.ExtensionAttribute.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Bin\Microsoft.Scripting.ExtensionAttribute.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.ExtensionAttribute.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.ExtensionAttribute.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.ExtensionAttribute.pdb
