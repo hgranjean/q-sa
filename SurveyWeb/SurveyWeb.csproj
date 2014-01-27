@@ -321,14 +321,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atum.Domain.Common\Atum.Domain.Common.csproj">
-      <Project>{402a24d0-272f-48ee-b533-27d4f7b3d2f5}</Project>
-      <Name>Atum.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Atum.Specification\Atum.Specification.csproj">
-      <Project>{3a8d5623-d54d-4395-940c-b949a7010338}</Project>
-      <Name>Atum.Specification</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
       <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>
       <Name>Rules.Domain</Name>
