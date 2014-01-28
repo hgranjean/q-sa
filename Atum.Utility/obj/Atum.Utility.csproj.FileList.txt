@@ -1,0 +1,5 @@
+bin\Debug\Atum.Utility.dll
+bin\Debug\Atum.Utility.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Atum.Utility.dll
+obj\Debug\Atum.Utility.pdb

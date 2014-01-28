@@ -1,0 +1,14 @@
+C:\Atum Technology Group\Software\Development\Mainline\ClassLibraries\Atum.Utility\bin\Debug\Atum.Utility.dll
+C:\Atum Technology Group\Software\Development\Mainline\ClassLibraries\Atum.Utility\bin\Debug\Atum.Utility.pdb
+C:\Atum Technology Group\Software\Development\Mainline\ClassLibraries\Atum.Utility\obj\Debug\ResolveAssemblyReference.cache
+C:\Atum Technology Group\Software\Development\Mainline\ClassLibraries\Atum.Utility\obj\Debug\Atum.Utility.dll
+C:\Atum Technology Group\Software\Development\Mainline\ClassLibraries\Atum.Utility\obj\Debug\Atum.Utility.pdb
+C:\Atum Technology Group\Projects\Atum\DevV2.0\ClassLibraries\Atum.Utility\bin\Debug\Atum.Utility.dll
+C:\Atum Technology Group\Projects\Atum\DevV2.0\ClassLibraries\Atum.Utility\bin\Debug\Atum.Utility.pdb
+C:\Atum Technology Group\Projects\Atum\DevV2.0\ClassLibraries\Atum.Utility\obj\Debug\ResolveAssemblyReference.cache
+C:\Atum Technology Group\Projects\Atum\DevV2.0\ClassLibraries\Atum.Utility\obj\Debug\Atum.Utility.dll
+C:\Atum Technology Group\Projects\Atum\DevV2.0\ClassLibraries\Atum.Utility\obj\Debug\Atum.Utility.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Utility\bin\Debug\Atum.Utility.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Utility\bin\Debug\Atum.Utility.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Utility\obj\Debug\Atum.Utility.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Utility\obj\Debug\Atum.Utility.pdb
