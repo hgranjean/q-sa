@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 
+using System;
 namespace Atum.Domain.Surveillance
 {
+    [Serializable]
     public class ResponseChoice
     {
 

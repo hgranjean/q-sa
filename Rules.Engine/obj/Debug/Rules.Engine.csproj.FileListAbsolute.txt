@@ -11,3 +11,16 @@ D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Runtime.dll
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Repository.dll
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Runtime.pdb
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Repository.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Rules.Engine.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Rules.Engine.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Common.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Rules.Domain.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Runtime.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Repository.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Common.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Rules.Domain.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Runtime.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\bin\Debug\Repository.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.csprojResolveAssemblyReference.cache
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.pdb

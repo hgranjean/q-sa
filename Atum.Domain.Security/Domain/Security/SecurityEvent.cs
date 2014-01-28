@@ -7,7 +7,8 @@ namespace Atum.Domain.Security
 	/// <summary>
 	/// Summary description for SecurityEvent.
 	/// </summary>
-	public class SecurityEvent
+    [Serializable]
+    public class SecurityEvent
 	{
 		public SecurityEvent()
 		{

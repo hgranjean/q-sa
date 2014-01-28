@@ -6,7 +6,7 @@ namespace Atum.Domain.Billing
 	/// <summary>
 	/// Summary description for Insurance.
 	/// </summary>
-	public class Insurance : DomainObject
+	[Serializable]public class Insurance : DomainObject
 	{
 		public Insurance()
 		{

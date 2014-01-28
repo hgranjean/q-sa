@@ -5,7 +5,7 @@ namespace Atum.Domain.Common
     using System.Collections.Generic;
 
 
-    public class TableOfContents
+    [Serializable]public class TableOfContents
     {
         Dictionary<string, TOCElement> elementsByTitle;// = new Dictionary<string, TOCElement>();    
 

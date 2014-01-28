@@ -7,7 +7,8 @@ namespace Atum.Domain.Security
 	/// <summary>
 	/// Summary description for Group.
 	/// </summary>
-	public class Group
+    [Serializable]
+    public class Group
 	{
         /*private object _Name;//String
         private object _ID;//String

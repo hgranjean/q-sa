@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Atum.Domain.Common
 {
-    public class TOCElementNotFoundException : Exception
+    [Serializable]public class TOCElementNotFoundException : Exception
     {
     }
 }

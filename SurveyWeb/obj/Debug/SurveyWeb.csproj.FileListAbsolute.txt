@@ -163,3 +163,6 @@ C:\Users\aschmidt\Documents\GitHub\atumdomain\SurveyWeb\bin\ru\System.Spatial.re
 C:\Users\aschmidt\Documents\GitHub\atumdomain\SurveyWeb\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\aschmidt\Documents\GitHub\atumdomain\SurveyWeb\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\aschmidt\Documents\GitHub\atumdomain\SurveyWeb\obj\Debug\SurveyWeb.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\SurveyWeb\obj\Debug\SurveyWeb.csprojResolveAssemblyReference.cache
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\SurveyWeb\obj\Debug\SurveyWeb.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\SurveyWeb\obj\Debug\SurveyWeb.pdb

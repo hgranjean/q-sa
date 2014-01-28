@@ -6,7 +6,8 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Alert.
 	/// </summary>
-	public class Alert : DomainObject
+    [Serializable]
+    public class Alert : DomainObject
 	{
 		public Alert()
 		{

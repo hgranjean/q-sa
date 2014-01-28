@@ -7,7 +7,8 @@ namespace Atum.Domain.Security
 	/// <summary>
 	/// Summary description for Property.
 	/// </summary>
-	public class Property
+    [Serializable]
+    public class Property
 	{
 		public Property()
 		{

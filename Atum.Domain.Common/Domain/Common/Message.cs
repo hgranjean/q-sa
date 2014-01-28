@@ -6,7 +6,7 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Message.
 	/// </summary>
-	public class Message : DomainObject
+	[Serializable]public class Message : DomainObject
 	{
 		public Message()
 		{

@@ -7,7 +7,8 @@ namespace Atum.Domain.Security
 	/// <summary>
 	/// Summary description for Password.
 	/// </summary>
-	public class Password
+    [Serializable]
+    public class Password
 	{
 		public Password()
 		{

@@ -6,7 +6,7 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Drug.
 	/// </summary>
-	public class Drug : DomainObject
+	[Serializable]public class Drug : DomainObject
 	{
 		public Drug()
 		{

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Atum.Domain.Surveillance.Specifications
+using System; namespace Atum.Domain.Surveillance.Specifications
 {
-    public class SurveySpecification : Atum.Domain.Specification.ISpecification
+    [Serializable]public class SurveySpecification : Atum.Domain.Specification.ISpecification
     {
         public bool IsStatisfiedBy(Basis.DomainObject domainObject)
         {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Atum.Domain.Surveillance
 {
+    [Serializable]
     public class Question : Domain.Basis.DomainObject
     {
 
@@ -54,13 +54,13 @@ namespace Atum.Domain.Surveillance
             }
 
             return retVal;
-        
+
         }
 
         private void FindersAdd(ResponseChoice choice)
         {
             //ElementByTitle
-            if (choicesByText== null)
+            if (choicesByText == null)
             {
                 choicesByText = new Dictionary<string, ResponseChoice>();
             }

@@ -6,7 +6,7 @@ using Atum.Domain.Basis;
 
 namespace Atum.Domain.Common
 {
-    public class USState : Domain.Basis.DomainObject
+    [Serializable]public class USState : Domain.Basis.DomainObject
     {
         private long _id;
         private string _name;

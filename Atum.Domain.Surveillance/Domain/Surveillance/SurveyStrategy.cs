@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Atum.Domain.Surveillance
 {
+    [Serializable]
     public class SurveyStrategy
     {
         private DesignFeatures designFeatures;
@@ -35,7 +36,7 @@ namespace Atum.Domain.Surveillance
 
             int length = orderedQuestions.Count;
 
-            for (int i = length-1; i >=0 ; i--)
+            for (int i = length - 1; i >= 0; i--)
             {
                 questionsStack.Push(orderedQuestions.Values[i]);
             }
@@ -58,9 +59,9 @@ namespace Atum.Domain.Surveillance
             Stack<Question> questions = this.questionsStack;
 
             Question question = questions.Pop();
-            while (!isValid(question,surveyManager))
+            while (!isValid(question, surveyManager))
             {
-                question = questions.Pop();                
+                question = questions.Pop();
             }
 
             return question;

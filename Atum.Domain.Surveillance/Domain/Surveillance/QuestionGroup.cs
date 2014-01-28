@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Atum.Domain.Surveillance
 {
+    [Serializable]
     public class QuestionGroup
     {
         private string groupTittle;
@@ -18,20 +16,20 @@ namespace Atum.Domain.Surveillance
 
         public Question AddQuestion(string questionText)
         {
-            return AddQuestion(questionText,QuestionType.OpenVariant);
+            return AddQuestion(questionText, QuestionType.OpenVariant);
         }
 
         public Question AddQuestion(string questionText, QuestionType qType)
         {
             Question retVal = new Question(questionText, qType);
             retVal = setTypeDefaults(retVal);
-            if (Questions==null)
+            if (Questions == null)
             {
                 Questions = new Questions();
             }
             Questions.Add(retVal);
             retVal.Number = Questions.Count;
-            
+
             return retVal;
         }
 
