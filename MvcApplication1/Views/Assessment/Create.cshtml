@@ -1,0 +1,23 @@
+﻿@model MvcApplication1.Models.AssessmentViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Save", "Assessment")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Create assessment Form</legend>
+        <ol>
+            <li>
+                // @Html.LabelFor(m => m.Assessment.Fields["Name"].Value)
+                @Html.EditorFor(m => m.Assessment.Fields["Name"])
+            </li>
+        </ol>
+        <input type="submit" value="Change password" />
+    </fieldset>
+}

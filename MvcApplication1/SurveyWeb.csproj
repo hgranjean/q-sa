@@ -39,7 +39,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\RulesEngine\Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Repository, Version=0.0.0.0, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\RulesEngine\Repository.dll</HintPath>
+    </Reference>
+    <Reference Include="Runtime, Version=4.0.0.47, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\RulesEngine\Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -182,12 +194,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AssessmentModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -301,12 +315,46 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Assessment\Index.cshtml" />
+    <Content Include="Views\Assessment\Create.cshtml" />
+    <Content Include="Views\Assessment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="RuleApp\Domain\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\atumdomain\Atum.Data.Surveillance\Atum.Data.Surveillance.csproj">
+      <Project>{2fe3be00-7279-46cc-b1db-3579976a3b78}</Project>
+      <Name>Atum.Data.Surveillance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\atumdomain\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
+      <Project>{94bcb49a-cb7d-4f37-8340-9a9b8cd05614}</Project>
+      <Name>Atum.Domain.Basis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\atumdomain\Atum.Domain.Common\Atum.Domain.Common.csproj">
+      <Project>{402a24d0-272f-48ee-b533-27d4f7b3d2f5}</Project>
+      <Name>Atum.Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\atumdomain\Atum.Domain.Security\Atum.Domain.Security.csproj">
+      <Project>{4db9b8ea-ad8b-48ed-8329-fb511b4bd218}</Project>
+      <Name>Atum.Domain.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\atumdomain\Atum.Domain.Surveillance\Atum.Domain.Surveillance.csproj">
+      <Project>{dd43f4b6-5e09-41aa-b7c7-2b53722b1f77}</Project>
+      <Name>Atum.Domain.Surveillance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
+      <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>
+      <Name>Rules.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rules.Engine\Rules.Engine.csproj">
+      <Project>{de7f9025-a9da-47c7-b2ed-75108472500a}</Project>
+      <Name>Rules.Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
