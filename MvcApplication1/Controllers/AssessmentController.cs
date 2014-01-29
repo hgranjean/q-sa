@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using MvcApplication1.Filters;
 using MvcApplication1.Models;
+using MvcApplication1.Services;
 
 namespace MvcApplication1.Controllers
 {
@@ -22,13 +23,23 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new AssessmentViewModel();
+
+            // TODO: Reset to the first question
+            
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult Save(AssessmentViewModel viewModel)
         {
-            return View("Details");
+            viewModel.Enumerator.MoveNextManager(viewModel.CurrentAssessment.ConductedSurvey);
+
+            SessionBag.Current.Enumerator = viewModel.Enumerator;
+
+            ModelState.Clear(); // refresh state
+
+            return View("Create", viewModel);
         }
 
         public ActionResult Details(int assessmentId)

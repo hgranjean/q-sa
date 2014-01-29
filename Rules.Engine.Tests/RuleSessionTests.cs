@@ -76,17 +76,21 @@ namespace Rules.Engine.Tests
         public void TestExecuteRuleSet()
         {
             var ra = new RuleApplicationSpec();
+            var e1 = new EntitySpec("Entity1", typeof(Entity1));
+            ra.Entities.Add(e1);
 
             var action1 = new SetValueAction();
-            action1.Target = "a";
+            action1.Target = "Field1";
             action1.Value = "1234";
 
             var rs1 = new RuleSpecification();
             rs1.Actions.Add(action1);
-            ra.RuleSets.Add(rs1);
+            e1.RuleSets.Add(rs1);
 
             using (var rs = new RuleSession(ra))
             {
+                var e1Instance = rs.CreateEntity(e1.Name, new Entity1());
+
                 var result = rs.ExecuteRules();
                 Assert.IsNotNull(result);
             }

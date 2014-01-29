@@ -8,3 +8,13 @@ D:\WORK\ATUM\Code\SurveySolution\Rules.Engine.Tests\bin\Debug\Rules.Domain.pdb
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine.Tests\bin\Debug\Rules.Engine.pdb
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine.Tests\obj\Debug\Rules.Engine.Tests.dll
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine.Tests\obj\Debug\Rules.Engine.Tests.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\bin\Debug\Rules.Engine.Tests.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\bin\Debug\Rules.Engine.Tests.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\bin\Debug\nunit.framework.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\bin\Debug\Rules.Domain.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\bin\Debug\Rules.Engine.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\bin\Debug\Rules.Domain.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\bin\Debug\Rules.Engine.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\obj\Debug\Rules.Engine.Tests.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\obj\Debug\Rules.Engine.Tests.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine.Tests\obj\Debug\Rules.Engine.Tests.pdb
