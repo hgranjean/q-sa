@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SurveyWeb;
-using SurveyWeb.Controllers;
+using MvcApplication1;
+using MvcApplication1.Controllers;
 
-namespace SurveyWeb.Tests.Controllers
+namespace MvcApplication1.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
@@ -50,20 +50,5 @@ namespace SurveyWeb.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-
-        [TestMethod]
-        public void Test1()
-        {
-            var t1 = new MyClass<String>();
-            
-            t1.Field = "123";
-            
-            Assert.AreEqual("123", t1.Field);
-        }
-    }
-
-    public class MyClass<T> where T : class
-    {
-        public T Field { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace SurveyWeb
+namespace MvcApplication1
 {
     public class BundleConfig
     {

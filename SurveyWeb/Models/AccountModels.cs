@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
 
-namespace SurveyWeb.Models
+namespace MvcApplication1.Models
 {
     public class UsersContext : DbContext
     {

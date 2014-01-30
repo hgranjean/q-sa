@@ -8,10 +8,10 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using SurveyWeb.Filters;
-using SurveyWeb.Models;
+using MvcApplication1.Filters;
+using MvcApplication1.Models;
 
-namespace SurveyWeb.Controllers
+namespace MvcApplication1.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]

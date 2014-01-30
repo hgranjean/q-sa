@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
-using SurveyWeb.Models;
+using MvcApplication1.Models;
 
-namespace SurveyWeb
+namespace MvcApplication1
 {
     public static class AuthConfig
     {

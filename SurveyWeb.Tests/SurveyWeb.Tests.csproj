@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{709DC8DB-ECA4-4EBE-87FB-35C3F2CA6C00}</ProjectGuid>
+    <ProjectGuid>{E46BABE3-D807-479C-954A-CBA8B2F7A94C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SurveyWeb.Tests</RootNamespace>
-    <AssemblyName>SurveyWeb.Tests</AssemblyName>
+    <RootNamespace>MvcApplication1.Tests</RootNamespace>
+    <AssemblyName>MvcApplication1.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -123,8 +123,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SurveyWeb\SurveyWeb.csproj">
-      <Project>{20526D17-FC5A-409E-841C-5F9A91F34F53}</Project>
+    <ProjectReference Include="..\MvcApplication1\SurveyWeb.csproj">
+      <Project>{5FA45FDA-4439-4631-B43F-944309F6901F}</Project>
       <Name>SurveyWeb</Name>
     </ProjectReference>
   </ItemGroup>
