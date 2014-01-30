@@ -7,7 +7,8 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Address.
 	/// </summary>
-	public class Address : DomainObject
+    [Serializable]
+    public class Address : DomainObject
 	{
         private string _street1;
         private string _street2;

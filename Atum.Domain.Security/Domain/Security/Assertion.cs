@@ -7,6 +7,7 @@ namespace Atum.Domain.Security
 	/// <summary>
 	/// Summary description for Assertion.
 	/// </summary>
+    [Serializable]
     public class Assertion : DomainObject
 	{
         //private long _ID;

@@ -9,6 +9,7 @@ namespace Atum.Domain.Surveillance
     /// Survey - Survey is the set of techniques () used to support the required assertion and score an element
     /// 
     /// </summary>
+    [Serializable]
     public class Survey
     {
         private SurveyStrategy surveyStrategy;
@@ -19,7 +20,7 @@ namespace Atum.Domain.Surveillance
             QuestionStrategies = surveyStrategy.QuestionStrategies;
             //Questions questions = surveyStrategy.QuestionStrategies.
             //loadQuestionStack(questions);
-       
+
         }
 
         public Survey()
@@ -76,7 +77,7 @@ namespace Atum.Domain.Surveillance
         public QuestionGroup AddQuestionGroup(string groupTittle)
         {
             QuestionGroup retVal = new QuestionGroup(groupTittle);
-            if (this.QuestionGroups==null)
+            if (this.QuestionGroups == null)
             {
                 this.QuestionGroups = new QuestionGroups();
             }

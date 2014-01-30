@@ -6,6 +6,7 @@ using Atum.Domain.Basis;
 
 namespace Atum.Domain.Business
 {
+    [Serializable]
     public class ZipGeoData : DomainObject
     {
         string _stateAbbrev;

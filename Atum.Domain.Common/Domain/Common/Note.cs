@@ -6,7 +6,7 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Note.
 	/// </summary>
-	public class Note : DomainObject
+	[Serializable]public class Note : DomainObject
 	{
 		public Note()
 		{

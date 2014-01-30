@@ -6,7 +6,7 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Person.
 	/// </summary>
-	public class Person : DomainObject
+	[Serializable]public class Person : DomainObject
 	{
 		protected string _lastName;
 		protected string _firstName;

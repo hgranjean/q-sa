@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Atum.Domain.Surveillance
 {
+    [Serializable]
     public class SurveyManager
     {
         private Survey survey;
-//        private QuestionStrategies questionStrategies;
+        //        private QuestionStrategies questionStrategies;
 
         public SurveyManager(Survey survey)
         {
@@ -32,9 +33,9 @@ namespace Atum.Domain.Surveillance
             //Does the current state require a new QuestionStrategy Set
             //i.e. we have achieved maximum confidence for the element under Surveillance
 
-           //Depends on current state of
-           NextQuestion = this.survey.GetNextQuestion(this);
-           
+            //Depends on current state of
+            NextQuestion = this.survey.GetNextQuestion(this);
+
             CurrentQuestion = NextQuestion;
         }
 

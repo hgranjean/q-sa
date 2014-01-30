@@ -1,7 +1,9 @@
 ﻿using Atum.Domain.Specification;
+using System;
 
 namespace Atum.Domain.Surveillance.Specifications
 {
+    [Serializable]
     public class QuestionSpecification : ISpecification
     {
         public bool IsStatisfiedBy(Basis.DomainObject domainObject)
@@ -14,7 +16,7 @@ namespace Atum.Domain.Surveillance.Specifications
                 retVal = (question.Text.Length > 0);
                 retVal &= validForType(question);
 
-                
+
             }
             catch (System.Exception)
             {

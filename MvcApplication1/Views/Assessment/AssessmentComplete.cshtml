@@ -1,0 +1,15 @@
+﻿@model MvcApplication1.Models.AssessmentViewModel
+
+
+@{
+    ViewBag.Title = "AssessmentComplete";
+}
+
+<h2>AssessmentComplete</h2>
+
+@{
+
+    var grid = new WebGrid(Model.CurrentAssessment.Responses.Responses, new[] { "Question.Rank", "Question.Text" });
+}
+
+@grid.GetHtml();

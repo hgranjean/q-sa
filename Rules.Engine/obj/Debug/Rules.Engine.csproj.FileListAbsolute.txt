@@ -11,16 +11,3 @@ D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Runtime.dll
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Repository.dll
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Runtime.pdb
 D:\WORK\ATUM\Code\SurveySolution\Rules.Engine\bin\Debug\Repository.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Rules.Engine.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Rules.Engine.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Common.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Rules.Domain.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Runtime.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Repository.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Common.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Rules.Domain.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Runtime.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Repository.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.csprojResolveAssemblyReference.cache
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.pdb

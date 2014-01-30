@@ -6,7 +6,7 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for FinancialClass.
 	/// </summary>
-	public class FinancialClass : DomainObject
+	[Serializable]public class FinancialClass : DomainObject
 	{
 		public FinancialClass()
 		{

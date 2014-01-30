@@ -5,7 +5,8 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for ContactInfo.
 	/// </summary>
-	public class ContactInfo
+	[Serializable]
+    public class ContactInfo
 	{
 		public ContactInfo()
 		{

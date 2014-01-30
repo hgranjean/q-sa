@@ -6,6 +6,7 @@ using System.Net.Http;
 
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using Atum.Domain.Surveillance;
 using MvcApplication1.Filters;
 using MvcApplication1.Models;
 using MvcApplication1.Services;
@@ -33,11 +34,20 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult Save(AssessmentViewModel viewModel)
         {
-            viewModel.Enumerator.MoveNextManager(viewModel.CurrentAssessment.ConductedSurvey);
+            var question = viewModel.Enumerator.Current;
+
+            viewModel.CurrentAssessment.Responses.Responses.Add(new Response(question, new ResponseChoice("1")));
+
+            bool hasNext = viewModel.Enumerator.MoveNextManager(viewModel.CurrentAssessment.ConductedSurvey);
 
             SessionBag.Current.Enumerator = viewModel.Enumerator;
 
             ModelState.Clear(); // refresh state
+
+            if (!hasNext)
+            {
+                return View("AssessmentComplete", viewModel);
+            }
 
             return View("Create", viewModel);
         }
@@ -45,6 +55,11 @@ namespace MvcApplication1.Controllers
         public ActionResult Details(int assessmentId)
         {
             return View();
+        }
+
+        public ActionResult AssessmentComplete(AssessmentViewModel viewModel)
+        {
+            return View(viewModel);
         }
     }
 }

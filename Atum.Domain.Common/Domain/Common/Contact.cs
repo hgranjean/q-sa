@@ -5,7 +5,8 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Contact.
 	/// </summary>
-	public class Contact : Domain.Basis.DomainObject
+	[Serializable]
+    public class Contact : Domain.Basis.DomainObject
 	{
 		public Contact()
 		{

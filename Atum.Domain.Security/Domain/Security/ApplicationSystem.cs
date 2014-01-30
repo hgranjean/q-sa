@@ -7,7 +7,8 @@ namespace Atum.Domain.Security
 	/// <summary>
 	/// Summary description for ApplicationSystem.
 	/// </summary>
-	public class ApplicationSystem
+    [Serializable]
+    public class ApplicationSystem
 	{
 		public ApplicationSystem()
 		{

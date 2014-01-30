@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Atum.Domain.Security
 {
+    [Serializable]
     public class Permission
     {
         //private object _permissionId;//Long

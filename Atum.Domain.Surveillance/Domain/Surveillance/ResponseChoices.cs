@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Atum.Domain.Surveillance
 {
+    [Serializable]
     public class ResponseChoices : List<ResponseChoice>
     {
     }

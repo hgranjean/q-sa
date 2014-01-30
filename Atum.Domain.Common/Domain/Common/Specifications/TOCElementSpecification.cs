@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Atum.Domain.Common
 {
-    public class TOCElementSpecification : ISpecification
+    [Serializable]public class TOCElementSpecification : ISpecification
     {
         public bool IsStatisfiedBy(Basis.DomainObject domainObject)
         {

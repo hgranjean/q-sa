@@ -16,6 +16,8 @@ namespace MvcApplication1.Models
         //Entity member variable should *not* be static - its lifetime is for the request only
         public Assessment CurrentAssessment { get; private set; }
         public Survey.QuestionEnumerator Enumerator { get; private set; }
+
+        
         // public RuleSessionState SessionState { get; private set; }
 
         
@@ -39,10 +41,12 @@ namespace MvcApplication1.Models
                         QuestionType.Ranking) { Rank = 2 });
             
             var strategy = new SurveyStrategy(questions);
+            var survey = new Survey(strategy);
 
             var assessment = new Assessment
                 {
-                    ConductedSurvey = new Survey(strategy)
+                    ConductedSurvey = survey,
+                    Responses = new SurveyResponse {Responses = new Responses(), Survey = survey}
                 };
 
             
@@ -52,8 +56,6 @@ namespace MvcApplication1.Models
             Enumerator.SetSurveyManager(manager);
 
             assessment.ConductedSurvey.FirstQuestion = manager.CurrentQuestion;
-            Enumerator.MoveNextManager(assessment.ConductedSurvey);
-            // manager.NextQuestion = manager.CurrentQuestion;
             
             SessionBag.Current.CurrentAssessment = assessment;
             SessionBag.Current.Enumerator = Enumerator;

@@ -3,17 +3,18 @@ using Atum.Domain.Basis;
 
 namespace Atum.Domain.Common
 {
-	/// <summary>
-	/// Summary description for Credential.
-	/// </summary>
-	public class Credential : DomainObject
-	{
-		public Credential()
-		{
-			//
-			// TODO: Add constructor logic here
-			//
-		}
+    /// <summary>
+    /// Summary description for Credential.
+    /// </summary>
+    [Serializable]
+    public class Credential : DomainObject
+    {
+        public Credential()
+        {
+            //
+            // TODO: Add constructor logic here
+            //
+        }
 
         protected override void setId(long id)
         {

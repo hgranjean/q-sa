@@ -1,8 +1,10 @@
 
 using Atum.Domain.Basis;
+using System;
 
 namespace Atum.Domain.Common
 {
+    [Serializable]
     public class DocumentType : DomainObject
     {
 

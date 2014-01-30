@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Atum.Domain.Surveillance
 {
+    [Serializable]
     public class QuestionStrategies : List<QuestionStrategy>
     {
 
@@ -20,8 +20,8 @@ namespace Atum.Domain.Surveillance
         private void setFirstQuestion(QuestionStrategy questionStrategy)
         {
             Questions qs = questionStrategy.Questions;
-            
-            
+
+
             this.FirstQuestion = questionStrategy.Questions[0];
         }
 

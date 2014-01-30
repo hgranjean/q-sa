@@ -7,12 +7,12 @@ D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Repository.dll
 D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Common.dll
 D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Repository.pdb
 D:\WORK\ATUM\Code\SurveySolution\Rules.Domain\bin\Debug\Common.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Rules.Domain.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Rules.Domain.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Repository.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Common.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Repository.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Common.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.csprojResolveAssemblyReference.cache
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\bin\Debug\Rules.Domain.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\bin\Debug\Rules.Domain.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\bin\Debug\Repository.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\bin\Debug\Common.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\bin\Debug\Repository.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\bin\Debug\Common.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.csprojResolveAssemblyReference.cache
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.pdb

@@ -7,7 +7,8 @@ namespace Atum.Domain.Security
 	/// <summary>
 	/// Summary description for Policy.
 	/// </summary>
-	public class Policy
+    [Serializable]
+    public class Policy
 	{
         /*Private m_ID As Long
 Private m_PolicyName As String

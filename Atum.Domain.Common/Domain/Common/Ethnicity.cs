@@ -6,7 +6,7 @@ namespace Atum.Domain.Common
 	/// <summary>
 	/// Summary description for Ethnicity.
 	/// </summary>
-	public class Ethnicity : DomainObject
+	[Serializable]public class Ethnicity : DomainObject
 	{
 		public Ethnicity()
 		{

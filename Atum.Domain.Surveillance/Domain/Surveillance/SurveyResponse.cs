@@ -1,7 +1,9 @@
+using System;
 namespace Atum.Domain.Surveillance
 {
     using System.Collections;
 
+    [Serializable]
     public class SurveyResponse
     {
         // Associations
