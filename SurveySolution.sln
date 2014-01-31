@@ -31,9 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.Security", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.Surveillance", "..\atumdomain\Atum.Domain.Surveillance\Atum.Domain.Surveillance.csproj", "{DD43F4B6-5E09-41AA-B7C7-2B53722B1F77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyWeb", "MvcApplication1\SurveyWeb.csproj", "{5FA45FDA-4439-4631-B43F-944309F6901F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyWeb", "SurveyWeb\SurveyWeb.csproj", "{5FA45FDA-4439-4631-B43F-944309F6901F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyWeb.Tests", "MvcApplication1.Tests\SurveyWeb.Tests.csproj", "{E46BABE3-D807-479C-954A-CBA8B2F7A94C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyWeb.Tests", "SurveyWeb.Tests\SurveyWeb.Tests.csproj", "{E46BABE3-D807-479C-954A-CBA8B2F7A94C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -123,7 +123,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcApplication1\SurveyWeb.csproj">
+    <ProjectReference Include="..\SurveyWeb\SurveyWeb.csproj">
       <Project>{5FA45FDA-4439-4631-B43F-944309F6901F}</Project>
       <Name>SurveyWeb</Name>
     </ProjectReference>
