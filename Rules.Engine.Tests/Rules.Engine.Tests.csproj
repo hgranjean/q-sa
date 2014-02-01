@@ -46,16 +46,6 @@
     <Compile Include="RuleSessionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
-      <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>
-      <Name>Rules.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rules.Engine\Rules.Engine.csproj">
-      <Project>{DE7F9025-A9DA-47C7-B2ED-75108472500A}</Project>
-      <Name>Rules.Engine</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

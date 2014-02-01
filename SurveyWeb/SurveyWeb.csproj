@@ -376,14 +376,6 @@
       <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
       <Name>Atum.Utility</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
-      <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>
-      <Name>Rules.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rules.Engine\Rules.Engine.csproj">
-      <Project>{de7f9025-a9da-47c7-b2ed-75108472500a}</Project>
-      <Name>Rules.Engine</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
