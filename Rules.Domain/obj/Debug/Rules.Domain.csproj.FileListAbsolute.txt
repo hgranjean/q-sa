@@ -22,6 +22,5 @@ C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Repositor
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Common.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Repository.pdb
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\bin\Debug\Common.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.csprojResolveAssemblyReference.cache
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Domain\obj\Debug\Rules.Domain.pdb
