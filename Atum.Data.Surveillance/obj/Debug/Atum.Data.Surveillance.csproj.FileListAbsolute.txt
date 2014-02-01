@@ -3,3 +3,8 @@ C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\bin\Debug\A
 C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.csprojResolveAssemblyReference.cache
 C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.dll
 C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Data.Surveillance\bin\Debug\Atum.Data.Surveillance.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Data.Surveillance\bin\Debug\Atum.Data.Surveillance.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.pdb

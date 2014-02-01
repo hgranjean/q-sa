@@ -5,6 +5,5 @@ C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Basis\obj\Debug\Atum.D
 C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Basis\obj\Debug\Atum.Domain.Basis.pdb
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Basis\bin\Debug\Atum.Domain.Basis.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Basis\bin\Debug\Atum.Domain.Basis.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Basis\obj\Debug\Atum.Domain.Basis.csprojResolveAssemblyReference.cache
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Basis\obj\Debug\Atum.Domain.Basis.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Basis\obj\Debug\Atum.Domain.Basis.pdb

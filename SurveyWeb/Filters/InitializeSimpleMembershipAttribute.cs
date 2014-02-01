@@ -4,9 +4,9 @@ using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
-using MvcApplication1.Models;
+using SurveyWeb.Models;
 
-namespace MvcApplication1.Filters
+namespace SurveyWeb.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute

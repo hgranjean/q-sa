@@ -4,12 +4,12 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using Atum.Domain.Surveillance;
-using MvcApplication1.Services;
+using SurveyWeb.Services;
 using Repository;
 using Runtime;
 using Entity = Runtime.Entity;
 
-namespace MvcApplication1.Models
+namespace SurveyWeb.Models
 {
     public class AssessmentViewModel : ViewModelBase
     {

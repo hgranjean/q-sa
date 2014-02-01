@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Atum.Domain.Surveillance;
 
-namespace MvcApplication1
+namespace SurveyWeb
 {
     internal class SurveyServices
     {

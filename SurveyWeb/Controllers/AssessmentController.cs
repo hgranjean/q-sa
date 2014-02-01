@@ -7,14 +7,14 @@ using System.Net.Http;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Atum.Domain.Surveillance;
-using MvcApplication1.Filters;
-using MvcApplication1.Models;
-using MvcApplication1.Services;
+using SurveyWeb.Filters;
+using SurveyWeb.Models;
+using SurveyWeb.Services;
 
-namespace MvcApplication1.Controllers
+namespace SurveyWeb.Controllers
 {
-    [Authorize]
-    [InitializeSimpleMembership]
+    // [Authorize]
+    // [InitializeSimpleMembership]
     public class AssessmentController : Controller
     {
         public ActionResult Index()

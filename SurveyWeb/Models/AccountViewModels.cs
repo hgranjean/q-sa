@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SurveyWebApp.Models
+namespace SurveyWeb.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

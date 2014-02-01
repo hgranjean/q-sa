@@ -4,7 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Web;
 
-namespace MvcApplication1.Services
+namespace SurveyWeb.Services
 {
     // C#
     public sealed class SessionBag : DynamicObject
