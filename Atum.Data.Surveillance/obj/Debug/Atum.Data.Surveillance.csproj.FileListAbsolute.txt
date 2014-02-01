@@ -1,9 +1,5 @@
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.csprojResolveAssemblyReference.cache
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Data.Surveillance.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Data.Surveillance.pdb
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Domain.Basis.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Domain.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Domain.Basis.pdb
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Domain.pdb
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Data.Surveillance.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\bin\Debug\Atum.Data.Surveillance.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Data.Surveillance\obj\Debug\Atum.Data.Surveillance.pdb

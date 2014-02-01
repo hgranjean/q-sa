@@ -19,7 +19,7 @@ namespace Atum.Domain.Common
         public string Content { get; set; }
         public string ShortContent { get; set; }
 
-        protected override void setId(long id)
+        protected override void SetId(long id)
         {
             throw new System.NotImplementedException();
         }

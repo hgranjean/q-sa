@@ -15,9 +15,9 @@ namespace Atum.Domain.Billing
 			//
 		}
 
-        protected override void setId(long id)
+        protected override void SetId(long id)
         {
-            throw new Exception("The method or operation is not implemented.");
+            throw new NotImplementedException();
         }
     }
 }

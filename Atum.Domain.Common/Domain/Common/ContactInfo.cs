@@ -10,9 +10,6 @@ namespace Atum.Domain.Common
 	{
 		public ContactInfo()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
 		}
 	}
 }

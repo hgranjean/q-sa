@@ -11,3 +11,20 @@ C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Domain.T
 C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Domain.Test\bin\Debug\Atum.Domain.pdb
 C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.csprojResolveAssemblyReference.cache
 C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Test.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Test.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Basis.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Surveillance.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\mscorlib.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Basis.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Surveillance.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\normidna.nlp
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\normnfc.nlp
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\normnfd.nlp
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\normnfkc.nlp
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\normnfkd.nlp
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.pdb

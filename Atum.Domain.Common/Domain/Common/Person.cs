@@ -29,9 +29,9 @@ namespace Atum.Domain.Common
         public DateTime DateOfBirth { get { return _dob; } set { _dob = value; } }
 
 
-        protected override void setId(long id)
+        protected override void SetId(long id)
         {
-            throw new Exception("The method or operation is not implemented.");
+            throw new NotImplementedException();
         }
     }
 }

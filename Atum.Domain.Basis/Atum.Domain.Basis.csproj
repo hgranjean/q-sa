@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atum.Domain.Basis</RootNamespace>
     <AssemblyName>Atum.Domain.Basis</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -50,12 +50,6 @@
     <Compile Include="Domain\Specification\CriterionBase.cs" />
     <Compile Include="Domain\Specification\ISpecification.cs" />
     <Compile Include="Domain\Specification\SpecificationNotSatisfiedException.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Atum.Utility\Atum.Utility.csproj">
-      <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
-      <Name>Atum.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

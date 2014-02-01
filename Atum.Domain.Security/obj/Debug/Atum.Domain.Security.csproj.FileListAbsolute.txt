@@ -1,9 +1,9 @@
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\obj\Debug\Atum.Domain.Security.csprojResolveAssemblyReference.cache
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Security.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Security.pdb
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Basis.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Basis.pdb
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.pdb
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\obj\Debug\Atum.Domain.Security.dll
-C:\Atum Technology Group\Projects\AtumRules\Dev1.01\ClassLibrairies\atumdomain\Atum.Domain.Security\obj\Debug\Atum.Domain.Security.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\obj\Debug\Atum.Domain.Security.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Security.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Security.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Basis.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.Basis.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\bin\Debug\Atum.Domain.pdb
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\obj\Debug\Atum.Domain.Security.dll
+C:\Users\aschmidt\Documents\GitHub\atumdomain\Atum.Domain.Security\obj\Debug\Atum.Domain.Security.pdb

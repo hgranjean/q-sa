@@ -1,5 +1,5 @@
 using System;
-
+using System.Text;
 using Atum.Domain.Basis;
 
 namespace Atum.Domain.Common
@@ -16,7 +16,6 @@ namespace Atum.Domain.Common
         private string _state;
         private string _zip;
 
-        
         public Address()
 		{
 		}
@@ -30,21 +29,23 @@ namespace Atum.Domain.Common
 
         public override string ToString()
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            var sb = new StringBuilder();
 
-            sb.Append(Street1 + "\n");
-            if(Street2!=null)
-            sb.Append(Street2 + "\n");
-            sb.Append(City + "\n");
-            sb.Append(State + "\n");
-            sb.Append(Zip + "\n");
+            sb.AppendLine(Street1);
+            if (Street2 != null)
+            {
+                sb.AppendLine(Street2);
+            }
+            sb.AppendLine(City);
+            sb.AppendLine(State);
+            sb.AppendLine(Zip);
             
             return sb.ToString();
         }
 
-        protected override void setId(long id)
+        protected override void SetId(long id)
         {
-            throw new Exception("The method or operation is not implemented.");
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,9 +6,9 @@ using Atum.Domain.Basis;
 
 namespace Atum.Domain.Common
 {
-    [Serializable]public class USState : Domain.Basis.DomainObject
+    [Serializable]
+    public class USState : Domain.Basis.DomainObject
     {
-        private long _id;
         private string _name;
         private string _abbrev;
         private USState _northernNeighbor;
@@ -30,6 +30,7 @@ namespace Atum.Domain.Common
         public USState SWNeighbor { get { return _sWesternNeighbor; } set { _sWesternNeighbor = value; } }
         public USState WNeighbor { get { return _westernNeighbor; } set { _westernNeighbor = value; } }
         public USState NWNeighbor { get { return _nWesternNeighbor; } set { _nWesternNeighbor = value; } }
+
         public USState[] Neighbors
         {
             get 
@@ -46,18 +47,14 @@ namespace Atum.Domain.Common
             }
         }
 
-        public void SetId(long id)
+        protected override void SetId(long id)
         {
             base._id = id;
         }
-
-        protected override void setId(long id)
-        {
-            throw new Exception("The method or operation is not implemented.");
-        }
+        
         public override string ToString()
         {
-            return this._name;
+            return _name;
         }
     }
 }

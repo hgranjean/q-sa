@@ -9,9 +9,9 @@ namespace Atum.Domain.Specification
 	/// </summary>
 	public class Constraint
 	{
-        string _attributeName;
-        object _attributeValue;
-        Ops _operator;
+        private string _attributeName;
+        private object _attributeValue;
+        private Ops _operator;
         
         private Constraint(string attributeName, string attributeValue, Ops op)
 		{

@@ -20,10 +20,10 @@ namespace Atum.Domain.Specification
         private static Criteria _critAll = new Criteria();
         
        
-        private string _Quantifier;
+        //private string _Quantifier;
         private string _selectClause;
         private int _MaxNumberOfRows;
-        private bool _flgTop;
+        //private bool _flgTop;
         private bool _flgSelectDistinct;
 
 //		private Hashtable _colCriteria;
@@ -44,7 +44,7 @@ namespace Atum.Domain.Specification
             } 
         }
 
-		public string xml
+		new public string xml
 		{    
 			get    
 			{ 
@@ -64,7 +64,7 @@ namespace Atum.Domain.Specification
 //			_colCriteria = new Hashtable();
 			_colCriteria = new Queue();
 			_flgSelectDistinct = false;
-			_flgTop= false;
+            //_flgTop= false;
 		}
 
 
@@ -136,7 +136,7 @@ namespace Atum.Domain.Specification
 			{
 				_MaxNumberOfRows = value;	
 				SetSelectClause();
-				_flgTop= true;
+                //_flgTop= true;
 			}
 		}
 

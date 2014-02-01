@@ -64,12 +64,6 @@
     <Folder Include="Reflection\" />
     <Folder Include="Vocabulary\Templates\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\atumdomain\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
-      <Project>{94BCB49A-CB7D-4F37-8340-9A9B8CD05614}</Project>
-      <Name>Atum.Domain.Basis</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

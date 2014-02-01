@@ -17,13 +17,12 @@ namespace Atum.Domain.Surveillance
 
         public string Text { get; set; }
         public int Number { get; set; }
-        public int Rank { get; private set; }
+        public int Rank { get; set; }
         public Common.TOCElement BasisReference { get; set; }
         public QuestionType QuestionType { get; set; }
         public ResponseChoices ResponseChoices { get; set; }
 
-
-        protected override void setId(long id)
+        protected override void SetId(long id)
         {
             throw new NotImplementedException();
         }

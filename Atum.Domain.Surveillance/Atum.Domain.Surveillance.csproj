@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atum</RootNamespace>
     <AssemblyName>Atum.Domain.Surveillance</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Surveillance\Assessment.cs" />
     <Compile Include="Domain\Surveillance\QuestionGroups.cs" />
     <Compile Include="Domain\Surveillance\ResponseChoices.cs" />
     <Compile Include="Domain\Surveillance\Specifications\QuestionSpecification.cs" />

@@ -27,7 +27,7 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -164,10 +164,6 @@
     <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
       <Project>{94bcb49a-cb7d-4f37-8340-9a9b8cd05614}</Project>
       <Name>Atum.Domain.Basis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Atum.Utility\Atum.Utility.csproj">
-      <Project>{88482AD9-EDB0-45C3-8306-D88B8FF3528D}</Project>
-      <Name>Atum.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

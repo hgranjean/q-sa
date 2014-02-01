@@ -7,19 +7,15 @@ namespace Atum.Domain.Common
     [Serializable]
     public class DocumentType : DomainObject
     {
-
-        //CTor
-        public DocumentType(int value)
-        {
-            Value = value;
-
-        }
-
         //Props
         public int Value { get; private set; }
 
+        public DocumentType(int value)
+        {
+            Value = value;
+        }
 
-        protected override void setId(long id)
+        protected override void SetId(long id)
         {
             throw new System.NotImplementedException();
         }

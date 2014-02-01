@@ -16,9 +16,9 @@ namespace Atum.Domain.Common
             //
         }
 
-        protected override void SetId(long id)
+        protected override void setId(long id)
         {
-            throw new NotImplementedException();
+            throw new Exception("The method or operation is not implemented.");
         }
     }
 }

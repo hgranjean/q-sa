@@ -39,8 +39,6 @@ namespace Atum.Domain.Surveillance
             CurrentQuestion = NextQuestion;
         }
 
-
-
         /// <summary>
         /// AcceptResponse
         /// </summary>

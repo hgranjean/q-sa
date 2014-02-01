@@ -7,7 +7,7 @@ namespace Atum.Domain.Surveillance
     {
         private ResponseChoice answer;
 
-        public Response(Surveillance.Question question, ResponseChoice answer)
+        public Response(Question question, ResponseChoice answer)
         {
             // TODO: Complete member initialization
             this.Question = question;

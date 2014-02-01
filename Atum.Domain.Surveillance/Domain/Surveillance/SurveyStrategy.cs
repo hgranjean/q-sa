@@ -21,13 +21,13 @@ namespace Atum.Domain.Surveillance
         {
             // TODO: Complete member initialization
             this.questions = questions;
-            loadQuestionStack(questions);
+            LoadQuestionStack(questions);
         }
 
-        private void loadQuestionStack(Questions questions)
+        private void LoadQuestionStack(Questions questions)
         {
-            SortedList<int, Question> orderedQuestions = new SortedList<int, Question>();
-            Stack<Question> questionsStack = new Stack<Question>();
+            var orderedQuestions = new SortedList<int, Question>();
+            questionsStack = new Stack<Question>();
 
             foreach (Question item in questions)
             {
@@ -42,7 +42,7 @@ namespace Atum.Domain.Surveillance
             }
         }
 
-        public SurveyStrategy(Surveillance.QuestionStrategies qs)
+        public SurveyStrategy(QuestionStrategies qs)
         {
             // TODO: Complete member initialization
             this.QuestionStrategies = qs;
@@ -58,13 +58,18 @@ namespace Atum.Domain.Surveillance
             //Pop Question stack?
             Stack<Question> questions = this.questionsStack;
 
-            Question question = questions.Pop();
-            while (!isValid(question, surveyManager))
+            if (questions != null && questions.Count > 0)
             {
-                question = questions.Pop();
+                Question question = questions.Pop();
+                while (!isValid(question, surveyManager))
+                {
+                    question = questions.Pop();
+                }
+                return question;
+
             }
 
-            return question;
+            return null; // Nothing to return, null
         }
 
         private bool isValid(Question question, SurveyManager surveyManager)
