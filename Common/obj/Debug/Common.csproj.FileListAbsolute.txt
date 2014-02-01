@@ -8,3 +8,8 @@ C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Bin\Common.pdb
 C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Common\obj\Debug\Common.dll
 C:\Atum Technology Group\Projects\AtumRules\Dev1.01\atumrulesdev\Common\obj\Debug\Common.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Bin\Common.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Bin\Common.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Common\obj\Debug\Common.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Common\obj\Debug\Common.pdb

@@ -10,20 +10,9 @@ namespace Rules.Engine.Functions
 {
     internal class FunctionBuilder
     {
-        public FunctionBuilderBase GetFunctionBuilder(Rule rule, CompileContext compileContext)
+        public virtual FunctionBuilderBase GetFunctionBuilder(Rule rule, CompileContext compileContext)
         {
-            var action = rule as SetValueAction;
-            if (action != null)
-            {
-                var info = new SetValueActionInfo();
-                info.Context = compileContext;
-                info.TargetInfo = new EvalInfo(action.Target);
-                info.ValueInfo = new EvalInfo(action.Value);
-
-                return new SetValueActionFunction { Info = info};
-            }
-
-            return null;
+            throw new NotImplementedException("Should implement.");
         }
     }
 }

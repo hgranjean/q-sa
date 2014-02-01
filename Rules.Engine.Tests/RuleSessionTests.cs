@@ -80,11 +80,15 @@ namespace Rules.Engine.Tests
             ra.Entities.Add(e1);
 
             var action1 = new SetValueAction();
-            action1.Target = "Field1";
+            action1.Target = "Field2";
             action1.Value = "1234";
 
+            var conditionalRuleSet = new SimpleRuleSet();
+            conditionalRuleSet.Condition = "Field1 = 1234";
+            conditionalRuleSet.Rules.Add(action1);
+
             var rs1 = new RuleSpecification();
-            rs1.Actions.Add(action1);
+            rs1.Actions.Add(conditionalRuleSet);
             e1.RuleSets.Add(rs1);
 
             using (var rs = new RuleSession(ra))

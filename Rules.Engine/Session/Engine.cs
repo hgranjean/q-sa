@@ -10,11 +10,18 @@ using Rules.Engine.Session;
 
 namespace Rules.Engine
 {
-    public class Engine
+    internal class Engine
     {
         public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof (WorkingMemory), "memory");
         public readonly static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "stateContainer");
 
+        internal RuleApplicationInfo RuleApplicationInfo { get; private set; }
+
+        public Engine(RuleApplicationInfo ruleApplicationInfo)
+        {
+            this.RuleApplicationInfo = ruleApplicationInfo;
+        }
+        
         internal Expression GetExpressionForValue(CompileContext context, IInfo info)
         {
             // TODO: Parse expression
@@ -25,7 +32,7 @@ namespace Rules.Engine
             {
                 if (context != null)
                 {
-                    var contextEval = (EvalInfo) context.Context;
+                    var contextEval = context.Context;
 
                     //left part of lambda, p
                     var keyExpression = StateContainerParam;

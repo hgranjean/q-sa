@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Rules.Domain;
 using Rules.Engine.Base;
 using Rules.Engine.Functions;
+using Rules.Engine.Functions.Builders;
 using Rules.Engine.Runtime;
 using Rules.Engine.Session;
 
@@ -79,12 +80,8 @@ namespace Rules.Engine
             var ruleBlocks = new List<Expression>();
 
             foreach (var rule in ruleSpec.Actions)
-            {
-                var functionBuilder = builder.GetFunctionBuilder(rule, compileContext);
-
-                var compiledBlock = new CompiledBlock();
-
-                functionBuilder.BuildInfo(engine, compiledBlock, ((SetValueActionFunction)functionBuilder).Info);
+            {   
+                var compiledBlock = GetCompiledBlock(builder, engine, compileContext, rule);
 
                 ruleBlocks.Add(compiledBlock.Code);
             }
@@ -106,6 +103,31 @@ namespace Rules.Engine
             {
                 this._ruleSetInfos.Add(new RuleSetInfo {RuleSpec = ruleSpec, Lambda = lambda});
             }
+        }
+
+        internal CompiledBlock GetCompiledBlock(FunctionBuilder builder, Engine engine, CompileContext compileContext,
+                                                      Rule rule)
+        {
+            var functionBuilder = builder.GetFunctionBuilder(rule, compileContext);
+
+            if ((functionBuilder as SetValueActionFunction) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionBuilder.BuildInfo(engine, compiledBlock, ((SetValueActionFunction) functionBuilder).Info);
+
+                return compiledBlock;    
+            }
+            else if ((functionBuilder as SimpleRuleSetFunction) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionBuilder.BuildInfo(engine, compiledBlock, ((SimpleRuleSetFunction)functionBuilder).Info);
+
+                return compiledBlock;    
+            }
+
+            throw new InvalidOperationException("Unknown code construct.");
         }
     }
 }

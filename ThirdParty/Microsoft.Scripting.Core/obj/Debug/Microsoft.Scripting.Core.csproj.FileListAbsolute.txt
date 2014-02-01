@@ -13,3 +13,9 @@ C:\Users\aschmidt\Documents\GitHub\atumdomain\Bin\Microsoft.Scripting.Core.pdb
 C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.csprojResolveAssemblyReference.cache
 C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.dll
 C:\Users\aschmidt\Documents\GitHub\atumdomain\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Bin\Microsoft.Scripting.Core.xml
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Bin\Microsoft.Scripting.Core.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Bin\Microsoft.Scripting.Core.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.csprojResolveAssemblyReference.cache
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\ThirdParty\Microsoft.Scripting.Core\obj\Debug\Microsoft.Scripting.Core.pdb

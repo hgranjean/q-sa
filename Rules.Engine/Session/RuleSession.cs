@@ -72,7 +72,7 @@ namespace Rules.Engine
         {
             var builder = new FunctionBuilder();
 
-            _engine = new Engine();
+            _engine = new Engine(_ruleApplicationInfo);
             
             _ruleApplicationInfo.Compile(_engine, builder);
 

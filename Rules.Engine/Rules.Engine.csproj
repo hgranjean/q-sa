@@ -42,11 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\Builders\SimpleRuleSetFunctionBuilder.cs" />
+    <Compile Include="Functions\SetValueActionFunctionBuilder.cs" />
+    <Compile Include="Functions\SimpleRuleSetFunction.cs" />
     <Compile Include="Infos\EntityInfo.cs" />
+    <Compile Include="Infos\FunctionInfo.cs" />
     <Compile Include="Infos\InfoBase.cs" />
     <Compile Include="Infos\RuleSetInfo.cs" />
     <Compile Include="Functions\CompileContext.cs" />
     <Compile Include="Infos\RuleApplicationInfo.cs" />
+    <Compile Include="Infos\SimpleRuleSetInfo.cs" />
     <Compile Include="RuntimeIdentifier.cs" />
     <Compile Include="RuntimeObject.cs" />
     <Compile Include="Session\Entity.cs" />
