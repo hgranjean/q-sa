@@ -6,7 +6,7 @@ namespace Atum.Domain.Surveillance
     [Serializable]
     public class Administrator : Person
     {
-        public Survey MyProperty { get; set; }
+        public Survey MySurvey { get; set; }
     }
 
 }

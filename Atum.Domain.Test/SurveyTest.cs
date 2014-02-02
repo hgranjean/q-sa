@@ -1,16 +1,18 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Atum.Utility.XML;
 using Atum.Domain.Surveillance;
 using Atum.Domain.Common;
 using Atum.Domain.Surveillance.Specifications;
 using Atum.Domain.Basis;
+using NUnit.Framework;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Atum.Domain.Test
 {
-    [TestClass]
+    [TestFixture]
     public class SurveyTest
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
             // Step 1- Initialize Survey
@@ -32,9 +34,8 @@ namespace Atum.Domain.Test
             var qGroup = survey.AddQuestionGroup();
 
             //Create New QuestionGroup
-            var groupTittle = "My Group Title";
-            var qGroupNew = survey.AddQuestionGroup(groupTittle);
-
+            var groupTitle = "My Group Title";
+            var qGroupNew = survey.AddQuestionGroup(groupTitle); // TODO: herve, QG is added but not used anywhere ??
 
             //Create/Add Survey Questions in new QuestionGroup
             string questionText = "My Question Text";
@@ -61,7 +62,6 @@ namespace Atum.Domain.Test
             string choiceText = "";
             var choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
-
 
             //Validating a Survey - What is a valid survey: SurveySpecification
             //True or False
@@ -100,7 +100,9 @@ namespace Atum.Domain.Test
             //Yes or No - if Yes explain or if No explain
             questionText = "My YesNoConditionalOpen Question Text";
             qType = QuestionType.YesNoConditional;
-            question = qGroup.AddQuestion(questionText, qType);
+            question = qGroup.AddQuestion(questionText, qType); // TODO: Should standard choices be added inside AddQuestion or like .AddStandardChoices()?
+            question.AddChoice("Yes");
+            question.AddChoice("No");
             choiceText = "YesNoConditionalChoice";
             var conditionOnChoice = question.GetResponseByText("Yes");
             choice = question.AddConditionalChoice(choiceText, conditionOnChoice);
@@ -134,6 +136,8 @@ namespace Atum.Domain.Test
             choiceText = "RankingChoice1";
             choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
+
+            XmlSerializationUtility.SaveObjectToFile("survey.xml", survey);
 
             //Step 4 - Responding to a Survey
 

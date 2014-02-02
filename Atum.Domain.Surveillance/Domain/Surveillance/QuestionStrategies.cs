@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Atum.Domain.Surveillance
 {
     [Serializable]
     public class QuestionStrategies : List<QuestionStrategy>
     {
+        public Question FirstQuestion { get; private set; }
 
         public new void Add(QuestionStrategy questionStrategy)
         {
@@ -13,18 +15,15 @@ namespace Atum.Domain.Surveillance
 
             if (base.Count == 1)
             {
-                setFirstQuestion(questionStrategy);
+                SetFirstQuestion(questionStrategy);
             }
         }
 
-        private void setFirstQuestion(QuestionStrategy questionStrategy)
+        private void SetFirstQuestion(QuestionStrategy questionStrategy)
         {
             Questions qs = questionStrategy.Questions;
 
-
-            this.FirstQuestion = questionStrategy.Questions[0];
+            this.FirstQuestion = questionStrategy.Questions.First();
         }
-
-        public Question FirstQuestion { get; set; }
     }
 }

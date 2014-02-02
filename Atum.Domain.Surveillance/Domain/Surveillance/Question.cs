@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using Atum.Domain.Basis;
+using Atum.Domain.Common;
 
 namespace Atum.Domain.Surveillance
 {
     [Serializable]
-    public class Question : Domain.Basis.DomainObject
+    public class Question : DomainObject
     {
-
-        public Question(string questionText, Surveillance.QuestionType qType)
+        public Question(string questionText, QuestionType qType)
         {
             // TODO: Complete member initialization
             this.Text = questionText;
             this.QuestionType = qType;
         }
 
-
         public string Text { get; set; }
         public int Number { get; set; }
         public int Rank { get; set; }
-        public Common.TOCElement BasisReference { get; set; }
+        public TOCElement BasisReference { get; set; }
         public QuestionType QuestionType { get; set; }
         public ResponseChoices ResponseChoices { get; set; }
 
@@ -29,27 +29,17 @@ namespace Atum.Domain.Surveillance
 
         public ResponseChoice AddChoice(string choiceText)
         {
-            ResponseChoice retVal = null;
-            try
+            var retVal = new ResponseChoice(choiceText);
+
+            if (ResponseChoices == null)
             {
-                retVal = new ResponseChoice(choiceText);
-
-                if (ResponseChoices == null)
-                {
-                    ResponseChoices = new ResponseChoices();
-                }
-
-                if (this.AddChoiceAllowed())
-                {
-                    ResponseChoices.Add(retVal);
-                    this.FindersAdd(retVal);
-
-                }
+                ResponseChoices = new ResponseChoices();
             }
-            catch (Exception)
-            {
 
-                throw;
+            if (AddChoiceAllowed())
+            {
+                ResponseChoices.Add(retVal);
+                FindersAdd(retVal);
             }
 
             return retVal;
@@ -101,8 +91,6 @@ namespace Atum.Domain.Surveillance
                     break;
                 case QuestionType.Ranking:
                     break;
-                default:
-                    break;
             }
             return retVal;
         }
@@ -111,16 +99,11 @@ namespace Atum.Domain.Surveillance
         public ResponseChoice GetResponseByText(string choiceText)
         {
             ResponseChoice retVal = null;
-            try
+            if (!choicesByText.TryGetValue(choiceText, out retVal))
             {
-                retVal = choicesByText[choiceText];
+                throw new TOCElementNotFoundException();
             }
-            catch (Exception)
-            {
-
-                //throw;
-                throw new Atum.Domain.Common.TOCElementNotFoundException();
-            }
+            
             return retVal;
         }
 

@@ -5,12 +5,12 @@ namespace Atum.Domain.Surveillance
     [Serializable]
     public class QuestionGroup
     {
-        private string groupTittle;
+        private string _groupTitle;
 
-        public QuestionGroup(string groupTittle)
+        public QuestionGroup(string groupTitle)
         {
             // TODO: Complete member initialization
-            this.groupTittle = groupTittle;
+            this._groupTitle = groupTitle;
         }
         public Questions Questions { get; set; }
 
@@ -21,30 +21,36 @@ namespace Atum.Domain.Surveillance
 
         public Question AddQuestion(string questionText, QuestionType qType)
         {
-            Question retVal = new Question(questionText, qType);
+            var retVal = new Question(questionText, qType);
             retVal = setTypeDefaults(retVal);
-            if (Questions == null)
-            {
-                Questions = new Questions();
-            }
+            EnsureQuestions();
+            
             Questions.Add(retVal);
             retVal.Number = Questions.Count;
 
             return retVal;
         }
 
+        private void EnsureQuestions()
+        {
+            if (Questions == null)
+            {
+                Questions = new Questions();
+            }
+        }
+
         private Question setTypeDefaults(Question question)
         {
-            QuestionType qType = question.QuestionType;
-            switch (qType)
+            var questionType = question.QuestionType;
+            switch (questionType)
             {
                 case QuestionType.YesNo:
-                    ResponseChoice choice = question.AddChoice("Yes");
-                    choice = question.AddChoice("No");
+                    question.AddChoice("Yes");
+                    question.AddChoice("No");
                     break;
                 case QuestionType.TrueFalse:
-                    choice = question.AddChoice("True");
-                    choice = question.AddChoice("False");
+                    question.AddChoice("True");
+                    question.AddChoice("False");
                     break;
                 case QuestionType.SelectOne:
                     break;
@@ -57,8 +63,6 @@ namespace Atum.Domain.Surveillance
                 case QuestionType.OpenVariant:
                     break;
                 case QuestionType.Ranking:
-                    break;
-                default:
                     break;
             }
             return question;
