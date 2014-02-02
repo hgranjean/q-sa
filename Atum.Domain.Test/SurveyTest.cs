@@ -15,37 +15,35 @@ namespace Atum.Domain.Test
         {
             //Default Survey Type if empty contructor
             //Reconsider empty constructor
-            Surveillance.Survey survey = new Surveillance.Survey();
+            var survey = new Survey();
 
             ////Set Survey Type - Overwrite Survey Type
             survey.SurveyType = SurveyType.Audit;
 
 
             //Survey Basis Document (assert that we can see the TOCElements
-            SurveyBasis surveyBasis = new SurveyBasis();
+            var surveyBasis = new SurveyBasis();
             surveyBasis.TableOfContents = loadTableOContents();
 
             //Create/Add Survey Questions in default QuestionGroup
-            QuestionGroup qGroup = survey.AddQuestionGroup();
+            var qGroup = survey.AddQuestionGroup();
 
             //Create New QuestionGroup
-            string groupTittle = "My Group Title";
-            QuestionGroup qGroupNew = survey.AddQuestionGroup(groupTittle);
+            var groupTittle = "My Group Title";
+            var qGroupNew = survey.AddQuestionGroup(groupTittle);
 
 
             //Create/Add Survey Questions in new QuestionGroup
             string questionText = "My Question Text";
-            QuestionType qType = QuestionType.OpenText;
-            Question question = qGroup.AddQuestion(questionText, qType);
+            var qType = QuestionType.OpenText;
+            var question = qGroup.AddQuestion(questionText, qType);
 
-            QuestionSpecification questionSpecification = new QuestionSpecification();
+            var questionSpecification = new QuestionSpecification();
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
             //TOC Element will be displated as hyperlink
             question.BasisReference = surveyBasis.TableOfContents.GetElementByTitle("Element Title");
-
-
-
+            
             //Excercising the question types
             //Add a question of each type and assert specification.
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
@@ -57,7 +55,7 @@ namespace Atum.Domain.Test
             questionText = "My YesNo Question Text";
             question = qGroup.AddQuestion(questionText, qType);
             string choiceText = "";
-            ResponseChoice choice = question.AddChoice(choiceText);
+            var choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
 
@@ -73,6 +71,7 @@ namespace Atum.Domain.Test
             //Multiple Choice Choose One
             questionText = "My SelectOne Question Text";
             qType = QuestionType.SelectOne;
+            
             question = qGroup.AddQuestion(questionText, qType);
             //First Choice
             choiceText = "SelectOneChoice1";
@@ -99,7 +98,7 @@ namespace Atum.Domain.Test
             qType = QuestionType.YesNoConditional;
             question = qGroup.AddQuestion(questionText, qType);
             choiceText = "YesNoConditionalChoice";
-            ResponseChoice conditionOnChoice = question.GetResponseByText("Yes");
+            var conditionOnChoice = question.GetResponseByText("Yes");
             choice = question.AddConditionalChoice(choiceText, conditionOnChoice);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
@@ -138,10 +137,9 @@ namespace Atum.Domain.Test
 
         private TableOfContents loadTableOContents()
         {
-            TableOfContents retVal = new TableOfContents();
+            var retVal = new TableOfContents();
             string elementTitle = "Element Title";
-            TOCElement element = retVal.AddElement(elementTitle);
-
+            var element = retVal.AddElement(elementTitle);
 
             return retVal;
         }
