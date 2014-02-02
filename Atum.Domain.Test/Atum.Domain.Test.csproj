@@ -54,6 +54,32 @@
     <Compile Include="SurveyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atum.Data.Surveillance\Atum.Data.Surveillance.csproj">
+      <Project>{2fe3be00-7279-46cc-b1db-3579976a3b78}</Project>
+      <Name>Atum.Data.Surveillance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
+      <Project>{94bcb49a-cb7d-4f37-8340-9a9b8cd05614}</Project>
+      <Name>Atum.Domain.Basis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Common\Atum.Domain.Common.csproj">
+      <Project>{402a24d0-272f-48ee-b533-27d4f7b3d2f5}</Project>
+      <Name>Atum.Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Security\Atum.Domain.Security.csproj">
+      <Project>{4db9b8ea-ad8b-48ed-8329-fb511b4bd218}</Project>
+      <Name>Atum.Domain.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.Surveillance.csproj">
+      <Project>{dd43f4b6-5e09-41aa-b7c7-2b53722b1f77}</Project>
+      <Name>Atum.Domain.Surveillance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Utility\Atum.Utility.csproj">
+      <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
+      <Name>Atum.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

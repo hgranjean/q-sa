@@ -2,10 +2,17 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.Surveillance", "Atum.Domain.Surveillance\Atum.Domain.Surveillance.csproj", "{DD43F4B6-5E09-41AA-B7C7-2B53722B1F77}"
+	ProjectSection(ProjectDependencies) = postProject
+		{94BCB49A-CB7D-4F37-8340-9A9B8CD05614} = {94BCB49A-CB7D-4F37-8340-9A9B8CD05614}
+		{402A24D0-272F-48EE-B533-27D4F7B3D2F5} = {402A24D0-272F-48EE-B533-27D4F7B3D2F5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Data.Surveillance", "Atum.Data.Surveillance\Atum.Data.Surveillance.csproj", "{2FE3BE00-7279-46CC-B1DB-3579976A3B78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.Common", "Atum.Domain.Common\Atum.Domain.Common.csproj", "{402A24D0-272F-48EE-B533-27D4F7B3D2F5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{94BCB49A-CB7D-4F37-8340-9A9B8CD05614} = {94BCB49A-CB7D-4F37-8340-9A9B8CD05614}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.Basis", "Atum.Domain.Basis\Atum.Domain.Basis.csproj", "{94BCB49A-CB7D-4F37-8340-9A9B8CD05614}"
 EndProject
