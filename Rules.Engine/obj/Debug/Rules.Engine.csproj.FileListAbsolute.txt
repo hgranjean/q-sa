@@ -24,3 +24,4 @@ C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\Repositor
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.csprojResolveAssemblyReference.cache
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\obj\Debug\Rules.Engine.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Rules.Engine\bin\Debug\System.Linq.Dynamic.dll

@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.CSharp.RuntimeBinder;
 using NUnit.Framework;
 using Rules.Domain;
+using Rules.Engine.Session;
 
 namespace Rules.Engine.Tests
 {
@@ -72,9 +76,41 @@ namespace Rules.Engine.Tests
             }
         }
 
+        class MyClass : DynamicObject
+        {
+            private object value;
+            public MyClass(object value)
+            {
+                this.value = value;
+            }
+            public override bool TryGetMember(GetMemberBinder binder, out object result)
+            {
+                result = this.value;
+                return true;
+                // return base.TryGetMember(binder, out result);
+            }
+
+            public override bool TrySetMember(SetMemberBinder binder, object value)
+            {
+                this.value = value;
+                return true;
+                // return base.TrySetMember(binder, value);
+            }
+        }
+
+        [Test]
+        public void TestDynamic()
+        {
+            ;
+        }
+
         [Test]
         public void TestExecuteRuleSet()
         {
+            // var t = "Hello";
+            // var s = new MyClass(t);
+            // var s2 = s.Field1;
+
             var ra = new RuleApplicationSpec();
             var e1 = new EntitySpec("Entity1", typeof(Entity1));
             ra.Entities.Add(e1);
@@ -84,7 +120,7 @@ namespace Rules.Engine.Tests
             action1.Value = "1234";
 
             var conditionalRuleSet = new SimpleRuleSet();
-            conditionalRuleSet.Condition = "Field1 = 1234";
+            conditionalRuleSet.Condition = "Context.Field1 == \"1234\"";
             conditionalRuleSet.Rules.Add(action1);
 
             var rs1 = new RuleSpecification();

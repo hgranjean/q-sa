@@ -28,7 +28,7 @@ namespace Rules.Engine
             _ruleApplicationSpec = ruleApplicationSpec;
         }
 
-        internal void Compile(Engine engine, FunctionBuilder builder)
+        internal void Compile(Engine engine, FunctionInfo builder)
         {
             // EntityInfo
 
@@ -68,7 +68,7 @@ namespace Rules.Engine
             return execResult;
         }
 
-        private void CompileRuleSet(RuleSpecification ruleSpec, FunctionBuilder builder, Engine engine, CompileContext compileContext)
+        private void CompileRuleSet(RuleSpecification ruleSpec, FunctionInfo builder, Engine engine, CompileContext compileContext)
         {
             // Creating a parameter expression.
             ParameterExpression memoryParam = Engine.WorkingMemoryParam;
@@ -105,24 +105,26 @@ namespace Rules.Engine
             }
         }
 
-        internal CompiledBlock GetCompiledBlock(FunctionBuilder builder, Engine engine, CompileContext compileContext,
+        internal CompiledBlock GetCompiledBlock(FunctionInfo builder, Engine engine, CompileContext compileContext,
                                                       Rule rule)
-        {
+        {   
             var functionBuilder = builder.GetFunctionBuilder(rule, compileContext);
 
-            if ((functionBuilder as SetValueActionFunction) != null)
-            {
+            var functionInfo = functionBuilder.GetFunctionBuilder(rule, compileContext);
+
+            if ((functionBuilder as SetValueActionFunctionBuilder) != null)
+            {   
                 var compiledBlock = new CompiledBlock();
 
-                functionBuilder.BuildInfo(engine, compiledBlock, ((SetValueActionFunction) functionBuilder).Info);
+                functionInfo.BuildInfo(engine, compiledBlock, ((SetValueActionFunction)functionInfo).Info);
 
                 return compiledBlock;    
             }
-            else if ((functionBuilder as SimpleRuleSetFunction) != null)
+            else if ((functionBuilder as SimpleRuleSetFunctionBuilder) != null)
             {
                 var compiledBlock = new CompiledBlock();
 
-                functionBuilder.BuildInfo(engine, compiledBlock, ((SimpleRuleSetFunction)functionBuilder).Info);
+                functionInfo.BuildInfo(engine, compiledBlock, ((SimpleRuleSetFunction)functionInfo).Info);
 
                 return compiledBlock;    
             }

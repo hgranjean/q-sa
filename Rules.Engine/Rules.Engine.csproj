@@ -35,6 +35,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\ThirdParty\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,8 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functions\Builders\SimpleRuleSetFunctionBuilder.cs" />
-    <Compile Include="Functions\SetValueActionFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\SimpleRuleSetFunctionInfoBuilder.cs" />
+    <Compile Include="Functions\Builders\SetValueActionFunctionBuilder.cs" />
     <Compile Include="Functions\SimpleRuleSetFunction.cs" />
     <Compile Include="Infos\EntityInfo.cs" />
     <Compile Include="Infos\FunctionInfo.cs" />
@@ -59,8 +62,8 @@
     <Compile Include="Session\CompiledBlock.cs" />
     <Compile Include="Session\Engine.cs" />
     <Compile Include="Infos\EvalInfo.cs" />
-    <Compile Include="Functions\FunctionBuilderBase.cs" />
-    <Compile Include="Functions\FunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\FunctionBuilder.cs" />
+    <Compile Include="Functions\FunctionInfo.cs" />
     <Compile Include="Infos\IInfo.cs" />
     <Compile Include="Infos\SetValueActionInfo.cs" />
     <Compile Include="Session\RuleSession.cs" />

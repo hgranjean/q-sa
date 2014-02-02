@@ -70,7 +70,7 @@ namespace Rules.Engine
 
         private void Compile()
         {
-            var builder = new FunctionBuilder();
+            var builder = new FunctionInfo();
 
             _engine = new Engine(_ruleApplicationInfo);
             

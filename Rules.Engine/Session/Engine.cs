@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.CSharp.RuntimeBinder;
 using Rules.Engine.Functions;
 using Rules.Engine.Infos;
 using Rules.Engine.Session;
@@ -24,7 +26,7 @@ namespace Rules.Engine
         
         internal Expression GetExpressionForValue(CompileContext context, IInfo info)
         {
-            // TODO: Parse expression
+            // TODO: Distinguish between lhs and rhs
 
             String eval = ((EvalInfo) info).Eval;
             
@@ -32,8 +34,6 @@ namespace Rules.Engine
             {
                 if (context != null)
                 {
-                    var contextEval = context.Context;
-
                     //left part of lambda, p
                     var keyExpression = StateContainerParam;
                     
@@ -42,9 +42,42 @@ namespace Rules.Engine
 
                     Type targetType = context.EntityInfo.EntitySpec.BoundType;
 
-                    Expression propertyExpression = Expression.Property(Expression.Convert(keyExpression, typeof(StateContainer)), "Item", Expression.Constant(eval));
+                    if (eval.Contains("=="))
+                    {
+                        var binder = Binder.GetMember(CSharpBinderFlags.None, "GetMember", typeof(StateContainer),
+                            new [] {CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)});
 
-                    return propertyExpression;
+                        /*Func<dynamic, dynamic, dynamic> f =
+                                            Expression.Lambda<Func<object, object, object>>(
+                                            Expression.Dynamic(binder, typeof(object), x, y),
+                                new[] { x, y }
+                            ).Compile();*/
+
+                        var props = new [] {new DynamicProperty("Context", typeof(StateContainer))};
+
+                        //System.Linq.Dynamic.DynamicExpression.CreateClass(props)
+                        var param = Expression.Variable(typeof(StateContainer), "Context");
+
+                        var paramValue = Expression.Dynamic(
+                            new StateContainerBinder(), typeof(object), Expression.Parameter(typeof(StateContainer), "Context"));
+
+                        Func<dynamic, dynamic> f =
+                            Expression.Lambda<Func<dynamic, dynamic>>(
+                                Expression.Dynamic(binder, typeof(StateContainer), param),
+                                new[] { param }
+                        ).Compile();
+
+                        var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[]{param}, typeof(bool), eval, new[]{f});
+
+                        return e.Body;
+                    }
+                    else
+                    {
+                        Expression propertyExpression = Expression.Property(Expression.Convert(keyExpression, typeof(StateContainer)), "Item", Expression.Constant(eval));
+
+                        return propertyExpression;
+                    }
+                    
                 }
                 else
                 {

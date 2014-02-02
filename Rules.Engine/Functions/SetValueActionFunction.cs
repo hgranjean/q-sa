@@ -9,7 +9,7 @@ using Rules.Engine.Infos;
 
 namespace Rules.Engine
 {
-    internal class SetValueActionFunction : FunctionBuilderBase
+    internal class SetValueActionFunction : FunctionBuilder
     {
         public SetValueActionInfo Info { get; set; }
 

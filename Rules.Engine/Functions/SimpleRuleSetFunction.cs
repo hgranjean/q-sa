@@ -9,7 +9,7 @@ using Rules.Engine.Infos;
 
 namespace Rules.Engine.Functions
 {
-    internal class SimpleRuleSetFunction : FunctionBuilderBase
+    internal class SimpleRuleSetFunction : FunctionBuilder
     {
         public SimpleRuleSetInfo Info { get; set; }
 
@@ -17,13 +17,16 @@ namespace Rules.Engine.Functions
         {   
             var actionInfo = (SimpleRuleSetInfo)info;
 
+            // TODO: Make it 
             var condition = engine.GetExpressionForValue(actionInfo.Context, actionInfo.ConditionInfo);
 
             var expressions = new List<Expression>();
 
+            expressions.Add(Expression.Variable(typeof(bool), "result"));
+
             foreach (var childInfo in actionInfo.TargetInfo)
             {  
-                var compiledBlock = engine.RuleApplicationInfo.GetCompiledBlock(new FunctionBuilder(), engine, actionInfo.Context, ((FunctionInfo)childInfo).Rule);
+                var compiledBlock = engine.RuleApplicationInfo.GetCompiledBlock(new FunctionInfo(), engine, actionInfo.Context, ((Infos.FunctionInfo)childInfo).Rule);
 
                 expressions.Add(compiledBlock.Code);
             }

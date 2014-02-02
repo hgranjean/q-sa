@@ -10,7 +10,7 @@ namespace Rules.Engine.Functions
 {
     internal class SetValueActionFunctionBuilder : FunctionBuilder
     {
-        public override FunctionBuilderBase GetFunctionBuilder(Rule rule, CompileContext compileContext)
+        public override FunctionBuilder GetFunctionBuilder(Rule rule, CompileContext compileContext)
         {
             var action = rule as SetValueAction;
             if (action != null)
