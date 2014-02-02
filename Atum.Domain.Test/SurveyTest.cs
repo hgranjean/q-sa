@@ -13,6 +13,8 @@ namespace Atum.Domain.Test
         [TestMethod]
         public void TestMethod1()
         {
+            // Step 1- Initialize Survey
+
             //Default Survey Type if empty contructor
             //Reconsider empty constructor
             var survey = new Survey();
@@ -20,6 +22,7 @@ namespace Atum.Domain.Test
             ////Set Survey Type - Overwrite Survey Type
             survey.SurveyType = SurveyType.Audit;
 
+            // Step 2 - Initialize TOC
 
             //Survey Basis Document (assert that we can see the TOCElements
             var surveyBasis = new SurveyBasis();
@@ -48,6 +51,7 @@ namespace Atum.Domain.Test
             //Add a question of each type and assert specification.
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
+            // Step 3 - Add questions
 
             //Validating a Survey - What is a valid survey: SurveySpecification
             //Yes No
@@ -131,7 +135,7 @@ namespace Atum.Domain.Test
             choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
-            //Responding to a Survey
+            //Step 4 - Responding to a Survey
 
         }
 
@@ -140,7 +144,6 @@ namespace Atum.Domain.Test
             var retVal = new TableOfContents();
             string elementTitle = "Element Title";
             var element = retVal.AddElement(elementTitle);
-
             return retVal;
         }
     }
