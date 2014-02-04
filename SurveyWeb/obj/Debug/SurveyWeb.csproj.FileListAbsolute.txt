@@ -167,8 +167,6 @@ C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Common.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Repository.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Rules.Domain.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Rules.Engine.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Runtime.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\System.Net.Http.Formatting.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\System.Web.Helpers.dll
@@ -181,8 +179,6 @@ C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\System.Web.WebPage
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\WebMatrix.Data.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\WebMatrix.WebData.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Rules.Domain.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Rules.Engine.pdb
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Common.pdb
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Repository.pdb
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Runtime.pdb
@@ -272,3 +268,5 @@ C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Org.Mentalis.Secur
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Mono.Math.xml
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\obj\Debug\MvcApplication1.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\obj\Debug\MvcApplication1.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Atum.Utility.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb\bin\Atum.Utility.pdb

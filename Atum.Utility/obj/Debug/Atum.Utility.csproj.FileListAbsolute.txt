@@ -14,12 +14,6 @@ C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Utility\
 C:\Atum Technology Group\Projects\AtumRules\Dev1.0\ClassLibrairies\Atum.Utility\obj\Debug\Atum.Utility.pdb
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\Atum.Utility.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\Atum.Utility.pdb
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\mscorlib.dll
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\normidna.nlp
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\normnfc.nlp
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\normnfd.nlp
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\normnfkc.nlp
-C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\bin\Debug\normnfkd.nlp
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\obj\Debug\Atum.Utility.csprojResolveAssemblyReference.cache
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\obj\Debug\Atum.Utility.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Utility\obj\Debug\Atum.Utility.pdb

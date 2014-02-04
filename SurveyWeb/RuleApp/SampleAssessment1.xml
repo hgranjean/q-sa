@@ -1,16 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Assessment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <AdministeredSurvey>
-    <Questions>
-      <Question>
-        <Choices>
-          <Choice />
-          <Choice>
-            <Text>Conformance</Text>
-          </Choice>
-        </Choices>
-        <Text>EC.01.01.01 The hospital plans activities to minimize risks in the environment of care.</Text>
-      </Question>
-    </Questions>
-  </AdministeredSurvey>
-</Assessment>
+<Assessment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />

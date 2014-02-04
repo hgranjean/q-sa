@@ -97,6 +97,8 @@ namespace Atum.Domain.Test
             choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
+            XmlSerializationUtility.SaveObjectToFile("survey.xml", survey);
+
             //Yes or No - if Yes explain or if No explain
             questionText = "My YesNoConditionalOpen Question Text";
             qType = QuestionType.YesNoConditional;
@@ -139,7 +141,7 @@ namespace Atum.Domain.Test
 
             //Step 4 - Responding to a Survey
 
-            // XmlSerializationUtility.SaveObjectToFile("survey.xml", survey);
+            
 
         }
 
