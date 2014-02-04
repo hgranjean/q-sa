@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
 
 using System;
+using Atum.Domain.Basis;
+
 namespace Atum.Domain.Surveillance
 {
     [Serializable]
-    public class ResponseChoice
+    public class ResponseChoice : DomainObject
     {
+        protected ResponseChoice()
+        {
+        }
 
         public ResponseChoice(string choiceText)
         {
@@ -13,5 +18,10 @@ namespace Atum.Domain.Surveillance
             this.Text = choiceText;
         }
         public string Text { get; set; }
+
+        protected override void SetId(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

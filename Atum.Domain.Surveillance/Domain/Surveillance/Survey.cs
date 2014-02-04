@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Atum.Domain.Basis;
 
 
 namespace Atum.Domain.Surveillance
@@ -11,7 +12,7 @@ namespace Atum.Domain.Surveillance
     /// 
     /// </summary>
     [Serializable]
-    public class Survey : IEnumerable<Question>
+    public class Survey : DomainObject// : IEnumerable<Question>
     {
         private readonly SurveyStrategy surveyStrategy;
 
@@ -26,6 +27,11 @@ namespace Atum.Domain.Surveillance
 
         public Survey()
         {
+        }
+
+        protected override void SetId(long id)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -91,10 +97,10 @@ namespace Atum.Domain.Surveillance
             return new QuestionEnumerator(null);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new QuestionEnumerator(null);
-        }
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return new QuestionEnumerator(null);
+        //}
 
         public class QuestionEnumerator : IEnumerator<Question>
         {

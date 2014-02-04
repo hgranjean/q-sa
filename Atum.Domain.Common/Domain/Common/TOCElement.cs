@@ -5,14 +5,15 @@ namespace Atum.Domain.Common
     [Serializable]
     public class TOCElement : DomainObject
     {
+        protected TOCElement()
+        {
+        }
 
         public TOCElement(string elementTitle)
         {
             // TODO: Complete member initialization
             Title = elementTitle;
         }
-
-
 
         public string Title { get; set; }
         public int Level { get; set; }

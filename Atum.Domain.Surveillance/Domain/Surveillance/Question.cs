@@ -15,6 +15,11 @@ namespace Atum.Domain.Surveillance
             this.QuestionType = qType;
         }
 
+        public Question()
+        {
+            
+        }
+
         public string Text { get; set; }
         public int Number { get; set; }
         public int Rank { get; set; }

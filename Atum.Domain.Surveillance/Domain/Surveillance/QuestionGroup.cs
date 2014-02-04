@@ -5,12 +5,17 @@ namespace Atum.Domain.Surveillance
     [Serializable]
     public class QuestionGroup
     {
-        private string _groupTitle;
+        private String GroupTitle { get; set; }
+        public int Number { get; set; }
+
+        protected QuestionGroup()
+        {
+        }
 
         public QuestionGroup(string groupTitle)
         {
             // TODO: Complete member initialization
-            this._groupTitle = groupTitle;
+            this.GroupTitle = groupTitle;
         }
         public Questions Questions { get; set; }
 
@@ -67,7 +72,5 @@ namespace Atum.Domain.Surveillance
             }
             return question;
         }
-
-        public int Number { get; set; }
     }
 }
