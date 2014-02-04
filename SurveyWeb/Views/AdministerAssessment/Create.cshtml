@@ -1,0 +1,28 @@
+﻿@model SurveyWeb.Models.AdministeredAssessmentViewModel
+
+@{
+    ViewBag.Title = "AdministerAssessment";
+}
+
+<h2>Administer assessment</h2>
+
+Survey
+
+@using (Html.BeginForm("Save", "AdministerAssessment")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Admin assessment Form</legend>
+        <ol>
+            <li>
+                @Html.EditorFor(m => m.AdministeredAssessment.ConductedSurvey)
+            </li>
+        </ol>
+        
+    </fieldset>
+    
+    <input type="submit" value="Save assessment" />
+}
+
+

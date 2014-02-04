@@ -203,6 +203,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministerAssessmentController.cs" />
     <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
@@ -282,6 +283,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="RuleApp\Survey.xml" />
+    <Content Include="RuleApp\Survey1.xml" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -344,6 +346,7 @@
     <Content Include="Views\Surveillance\SurveyDelivery.cshtml" />
     <Content Include="Views\Surveillance\SurveyDesign.cshtml" />
     <Content Include="Views\Surveillance\SurveyProcessing.cshtml" />
+    <Content Include="Views\AdministerAssessment\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

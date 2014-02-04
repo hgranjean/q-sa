@@ -129,4 +129,9 @@ namespace SurveyWeb.Models
         }*/
 
     }
+
+    public class AdministeredAssessmentViewModel
+    {
+        public Assessment AdministeredAssessment { get; set; }    
+    }
 }

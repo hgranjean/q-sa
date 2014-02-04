@@ -98,7 +98,7 @@ namespace Atum.Domain.Test
             choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
-            // var tempFile = Path.GetTempFileName();
+            //var tempFile = Path.GetTempFileName();
 
             // XmlSerializationUtility.SaveObjectToFile(tempFile, survey);
 
