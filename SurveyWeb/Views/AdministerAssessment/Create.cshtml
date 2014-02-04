@@ -1,4 +1,6 @@
-﻿@model SurveyWeb.Models.AdministeredAssessmentViewModel
+﻿@using Atum.Domain.Surveillance
+@using SurveyWeb.Models
+@model SurveyWeb.Models.AdministeredAssessmentViewModel
 
 @{
     ViewBag.Title = "AdministerAssessment";
@@ -14,15 +16,19 @@ Survey
 
     <fieldset>
         <legend>Admin assessment Form</legend>
-        <ol>
-            <li>
-                @Html.EditorFor(m => m.AdministeredAssessment.ConductedSurvey)
-            </li>
-        </ol>
-        
+        <div class="editor-label">
+            @Html.LabelFor(m => m.AdministeredAssessment.AdministeredSurvey.SurveyType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.AdministeredAssessment.AdministeredSurvey.SurveyType, 
+                                  new SelectList(EnumUtils.GetEnumerableItems(typeof(SurveyType)), 
+                                                 "Value", "Text"))
+        </div>
     </fieldset>
     
+    <br/>
     <input type="submit" value="Save assessment" />
+    
 }
 
 

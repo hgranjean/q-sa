@@ -214,8 +214,10 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssessmentModels.cs" />
+    <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\SurveillanceModels.cs" />
+    <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SessionBag.cs" />
     <Compile Include="Services\SurveyServices.cs" />
@@ -347,6 +349,7 @@
     <Content Include="Views\Surveillance\SurveyDesign.cshtml" />
     <Content Include="Views\Surveillance\SurveyProcessing.cshtml" />
     <Content Include="Views\AdministerAssessment\Create.cshtml" />
+    <Content Include="Views\AdministerAssessment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

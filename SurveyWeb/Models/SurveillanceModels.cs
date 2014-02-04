@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SurveyWeb.Models
 {
-    public class SurveillanceModels
+    public class SurveillanceViewModel
     {
     }
 }

@@ -11,6 +11,11 @@ namespace MvcApplication1.Controllers
 {
     public class AdministerAssessmentController : Controller
     {
+        public ActionResult Index()
+        {
+            return View(SurveyViewModel.GetSurveys().Select(survey => new SurveyViewModel(survey)).ToList());
+        }
+        
         public ActionResult Create()
         {
             return View();

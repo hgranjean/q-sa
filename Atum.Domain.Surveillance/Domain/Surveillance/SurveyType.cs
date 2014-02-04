@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,16 @@ namespace Atum.Domain.Surveillance
     [Serializable]
     public enum SurveyType
     {
+        [Description("Evaluation")]
         Evaluation,
+
+        [Description("Assessment")]
         Assessment,
-        Audit, Surveillance
+
+        [Description("Auditing")]
+        Audit, 
+        
+        [Description("Surveillance")]
+        Surveillance
     }
 }
