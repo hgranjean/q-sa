@@ -17,7 +17,7 @@ namespace Rules.Engine
         {
             var actionInfo = (SetValueActionInfo) info;
             
-            block.Code = Expression.Assign(engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo),
+            block.Code = Expression.Assign(engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, true),
                                            engine.GetExpressionForValue(actionInfo.Context, actionInfo.ValueInfo));
         }
     }

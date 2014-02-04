@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.CSharp.RuntimeBinder;
@@ -15,7 +15,7 @@ namespace Rules.Engine
     internal class Engine
     {
         public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof (WorkingMemory), "memory");
-        public readonly static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "stateContainer");
+        public readonly static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "Context");
 
         internal RuleApplicationInfo RuleApplicationInfo { get; private set; }
 
@@ -24,7 +24,7 @@ namespace Rules.Engine
             this.RuleApplicationInfo = ruleApplicationInfo;
         }
         
-        internal Expression GetExpressionForValue(CompileContext context, IInfo info)
+        internal Expression GetExpressionForValue(CompileContext context, IInfo info, bool isSetter = false)
         {
             // TODO: Distinguish between lhs and rhs
 
@@ -39,45 +39,17 @@ namespace Rules.Engine
                     
                     //p.Values.Item[info.Name]
                     //Expression keyExpression = Expression.Property(parameter, contextEval.Eval);
-
-                    Type targetType = context.EntityInfo.EntitySpec.BoundType;
-
-                    if (eval.Contains("=="))
-                    {
-                        var binder = Binder.GetMember(CSharpBinderFlags.None, "GetMember", typeof(StateContainer),
-                            new [] {CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)});
-
-                        /*Func<dynamic, dynamic, dynamic> f =
-                                            Expression.Lambda<Func<object, object, object>>(
-                                            Expression.Dynamic(binder, typeof(object), x, y),
-                                new[] { x, y }
-                            ).Compile();*/
-
-                        var props = new [] {new DynamicProperty("Context", typeof(StateContainer))};
-
-                        //System.Linq.Dynamic.DynamicExpression.CreateClass(props)
-                        var param = Expression.Variable(typeof(StateContainer), "Context");
-
-                        var paramValue = Expression.Dynamic(
-                            new StateContainerBinder(), typeof(object), Expression.Parameter(typeof(StateContainer), "Context"));
-
-                        Func<dynamic, dynamic> f =
-                            Expression.Lambda<Func<dynamic, dynamic>>(
-                                Expression.Dynamic(binder, typeof(StateContainer), param),
-                                new[] { param }
-                        ).Compile();
-
-                        var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[]{param}, typeof(bool), eval, new[]{f});
-
-                        return e.Body;
-                    }
-                    else
-                    {
-                        Expression propertyExpression = Expression.Property(Expression.Convert(keyExpression, typeof(StateContainer)), "Item", Expression.Constant(eval));
-
-                        return propertyExpression;
-                    }
                     
+                    var param = Expression.Variable(context.EntityInfo.EntitySpec.BoundType, "Context");
+
+                    var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { param }, typeof(object), eval, new[] { param });
+
+                    if (isSetter)
+                    {
+                        return ((UnaryExpression) e.Body).Operand;
+                    }
+
+                    return e.Body;
                 }
                 else
                 {

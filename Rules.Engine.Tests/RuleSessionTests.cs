@@ -39,14 +39,14 @@ namespace Rules.Engine.Tests
         public class Entity1
         {
             public String Field1 { get; set; }
-            public int Field2 { get; set; }
+            public String Field2 { get; set; }
 
             public void SetField1(String value1)
             {
                 this.Field1 = value1;
             }
 
-            public void SetField2(int value2)
+            public void SetField2(String value2)
             {
                 this.Field2 = value2;
             }
@@ -107,6 +107,7 @@ namespace Rules.Engine.Tests
         [Test]
         public void TestExecuteRuleSet()
         {
+            dynamic t = "1";
             // var t = "Hello";
             // var s = new MyClass(t);
             // var s2 = s.Field1;
@@ -116,7 +117,7 @@ namespace Rules.Engine.Tests
             ra.Entities.Add(e1);
 
             var action1 = new SetValueAction();
-            action1.Target = "Field2";
+            action1.Target = "Context.Field2";
             action1.Value = "1234";
 
             var conditionalRuleSet = new SimpleRuleSet();

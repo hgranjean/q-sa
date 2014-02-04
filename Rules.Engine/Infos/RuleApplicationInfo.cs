@@ -75,7 +75,7 @@ namespace Rules.Engine
             ParameterExpression stateContainerParam = Engine.StateContainerParam;
 
             // Creating an expression to hold a local variable. 
-            ParameterExpression resultParam = Expression.Parameter(typeof(Object), "result");
+            // ParameterExpression resultParam = Expression.Parameter(typeof(Object), "result");
 
             var ruleBlocks = new List<Expression>();
 
@@ -89,9 +89,9 @@ namespace Rules.Engine
             // Creating a method body.
             BlockExpression block = Expression.Block(
                 // Adding a local variable. 
-                new[] { resultParam }, ruleBlocks);
+                ruleBlocks);
 
-            LambdaExpression lambda = Expression.Lambda<Func<StateContainer, WorkingMemory, Object>>(block, stateContainerParam, memoryParam);
+            LambdaExpression lambda = Expression.Lambda<Action<StateContainer, WorkingMemory>>(block, stateContainerParam, memoryParam);
 
             // EntityInfo
             if (compileContext != null)

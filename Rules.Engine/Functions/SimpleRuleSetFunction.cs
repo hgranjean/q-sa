@@ -21,9 +21,7 @@ namespace Rules.Engine.Functions
             var condition = engine.GetExpressionForValue(actionInfo.Context, actionInfo.ConditionInfo);
 
             var expressions = new List<Expression>();
-
-            expressions.Add(Expression.Variable(typeof(bool), "result"));
-
+            
             foreach (var childInfo in actionInfo.TargetInfo)
             {  
                 var compiledBlock = engine.RuleApplicationInfo.GetCompiledBlock(new FunctionInfo(), engine, actionInfo.Context, ((Infos.FunctionInfo)childInfo).Rule);
@@ -33,7 +31,7 @@ namespace Rules.Engine.Functions
 
             var ifTrue = Expression.Block(expressions);
 
-            block.Code = Expression.IfThen(condition, ifTrue);
+            block.Code = Expression.IfThen(Expression.Convert(condition, typeof(bool)), ifTrue);
         }
     }
 }
