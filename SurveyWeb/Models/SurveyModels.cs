@@ -5,7 +5,7 @@ namespace SurveyWeb.Models
 {
     public class SurveyViewModel
     {
-        public Survey Survey { get; set; }
+        public Survey Survey { get; private set; }
 
         public SurveyViewModel(Survey survey)
         {
@@ -14,9 +14,12 @@ namespace SurveyWeb.Models
 
         public static IEnumerable<Survey> GetSurveys()
         {
-            yield return new Survey();
-            yield return new Survey();
-            yield return new Survey();
+            return SurveyServices.GetSurveys();
+        }
+
+        public void Save()
+        {
+            SurveyServices.Save(this.Survey);
         }
     }
 }

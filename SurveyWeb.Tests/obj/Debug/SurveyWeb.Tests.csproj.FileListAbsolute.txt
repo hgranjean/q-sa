@@ -247,3 +247,5 @@ C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb.Tests\bin\Debug\zh-Han
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb.Tests\bin\Debug\zh-Hant\System.Spatial.resources.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb.Tests\obj\Debug\MvcApplication1.Tests.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb.Tests\obj\Debug\MvcApplication1.Tests.pdb
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb.Tests\bin\Debug\Atum.Utility.dll
+C:\Users\aschmidt\Documents\GitHub\atumrulesdev\SurveyWeb.Tests\bin\Debug\Atum.Utility.pdb

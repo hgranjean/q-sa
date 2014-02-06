@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using Atum.Domain.Surveillance;
 using SurveyWeb.Models;
 
 namespace MvcApplication1.Controllers
@@ -13,11 +11,17 @@ namespace MvcApplication1.Controllers
     {
         public ActionResult Index()
         {
-            return View(SurveyViewModel.GetSurveys().Select(survey => new SurveyViewModel(survey)).ToList());
+            var surveys = SurveyViewModel.GetSurveys();
+
+            return View(surveys.Select(survey => new SurveyViewModel(survey)).ToList());
         }
-        
-        public ActionResult Create()
+
+        public ActionResult Create(Survey survey)
         {
+            var viewModel = new SurveyViewModel(survey);
+
+            viewModel.Save();
+
             return View();
         }
 

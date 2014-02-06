@@ -1,23 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using Atum.Domain.Surveillance;
+using Atum.Utility.XML;
 
 namespace SurveyWeb
 {
     internal class SurveyServices
     {
+        private static List<Survey> surveys; 
         private static SurveyManager _surverManager;
 
         static SurveyServices()
-        {   
+        {
+            
         }
-
+        
         public static SurveyManager GetSurveyManager(Survey survey)
         {
             _surverManager = new SurveyManager(survey);
             return _surverManager;
+        }
+
+        public static IEnumerable<Survey> GetSurveys()
+        {
+            if (surveys == null)
+            {
+                surveys = new List<Survey>();
+                foreach (var surveyFileName in EnumerateSurveys())
+                {
+                    surveys.Add(LoadSurvey(surveyFileName));
+                }
+                // surveys.AddRange(new [] { new Survey(), new Survey(), new Survey() });
+            }
+
+            return surveys;
+        }
+
+        public static Survey LoadSurvey(string name)
+        {
+            return (Survey)XmlSerializationUtility.GetObjectFromFile(name, typeof(Survey));
+        }
+
+        public static void Save(Survey survey)
+        {
+            if (surveys == null)
+            {
+                surveys = new List<Survey>();
+            }
+            surveys.Add(survey);
+        }
+
+        private static string[] EnumerateSurveys()
+        {
+            var appPath = GetAppPath();
+
+            // return appPath + ConfigurationSettings.AppSettings.Get("RuleApp");
+
+            return Directory.GetFiles(appPath, "*.xml");
+        }
+
+        private static string GetAppPath()
+        {
+            string appPath = HttpContext.Current.Server.MapPath("~/bin");
+            int binPos = appPath.LastIndexOf(@"\bin");
+
+            appPath = appPath.Substring(0, binPos) + @"\RuleApp\";
+            return appPath;
         }
     }
 }
