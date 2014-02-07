@@ -281,10 +281,6 @@
     <Content Include="Global.asax" />
     <None Include="RuleApp\SurveyApp.ruleapp" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <None Include="RuleApp\SampleAssessment1.xml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="RuleApp\Survey.xml" />
     <Content Include="RuleApp\Survey1.xml" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -350,6 +346,8 @@
     <Content Include="Views\Surveillance\SurveyProcessing.cshtml" />
     <Content Include="Views\AdministerAssessment\Create.cshtml" />
     <Content Include="Views\AdministerAssessment\Index.cshtml" />
+    <Content Include="Views\AdministerAssessment\QuestionGroupCreate.cshtml" />
+    <Content Include="Views\AdministerAssessment\QuestionGroupIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

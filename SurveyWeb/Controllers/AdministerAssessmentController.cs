@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Atum.Domain.Surveillance;
+using SurveyWeb;
 using SurveyWeb.Models;
 
 namespace MvcApplication1.Controllers
@@ -22,13 +23,36 @@ namespace MvcApplication1.Controllers
 
             viewModel.Save();
 
-            return View();
+            return View(viewModel);
+        }
+
+        public ActionResult QuestionGroupCreate(long surveyId)
+        {
+            var survey = SurveyServices.GetSurveys().First(item => item.ID == surveyId);
+
+            return View(new SurveyViewModel(survey));
         }
 
         [HttpPost]
-        public ActionResult Save(AdministeredAssessmentViewModel viewModel)
+        public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
         {
-            return View();
+            // var survey = SurveyServices.GetSurveys().First(item => item.ID == surveyId);
+
+            if (viewModel.Survey.QuestionGroups == null)
+            {
+                viewModel.Survey.QuestionGroups = new QuestionGroups();
+            }
+            int newGroupIndex = viewModel.Survey.QuestionGroups.Count() + 1;
+            
+            viewModel.Survey.AddQuestionGroup("New Group " + newGroupIndex);
+
+            return View("Create", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(SurveyViewModel viewModel)
+        {
+            return View(viewModel);
         }
     }
 }

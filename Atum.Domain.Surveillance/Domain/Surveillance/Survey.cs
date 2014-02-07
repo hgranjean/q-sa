@@ -31,7 +31,12 @@ namespace Atum.Domain.Surveillance
 
         protected override void SetId(long id)
         {
-            throw new NotImplementedException();
+            _id = id;
+        }
+
+        public void AssignNextId(long id)
+        {
+            SetId(id + 1);
         }
 
         /// <summary>

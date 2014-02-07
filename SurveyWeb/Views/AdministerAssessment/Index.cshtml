@@ -9,23 +9,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table style=""width: 80%;">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Survey)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Survey.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Survey.SurveyType)
+        </th>
+        <th>
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Survey)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.Survey.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Survey.SurveyType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Survey.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Survey.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Survey.ID })
         </td>
     </tr>
 }

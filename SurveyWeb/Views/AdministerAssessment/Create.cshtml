@@ -1,6 +1,6 @@
 ﻿@using Atum.Domain.Surveillance
 @using SurveyWeb.Models
-@model SurveyWeb.Models.AdministeredAssessmentViewModel
+@model SurveyWeb.Models.SurveyViewModel
 
 @{
     ViewBag.Title = "AdministerAssessment";
@@ -10,20 +10,36 @@
 
 Survey
 
-@using (Html.BeginForm("Save", "AdministerAssessment")) {
+@using (Html.BeginForm("Save", "AdministerAssessment"))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
     <fieldset>
         <legend>Admin assessment Form</legend>
+
         <div class="editor-label">
-            @Html.LabelFor(m => m.AdministeredAssessment.AdministeredSurvey.SurveyType)
+            @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(m => m.AdministeredAssessment.AdministeredSurvey.SurveyType, 
-                                  new SelectList(EnumUtils.GetEnumerableItems(typeof(SurveyType)), 
+            @Html.EditorFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Survey.SurveyType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Survey.SurveyType,
+                                  new SelectList(EnumUtils.GetEnumerableItems(typeof (SurveyType)),
                                                  "Value", "Text"))
         </div>
+        
+        <div>Question groups
+            @if (Model != null)
+            {
+                @Html.Partial("QuestionGroupIndex", Model)
+            }
+        </div>
+
     </fieldset>
     
     <br/>

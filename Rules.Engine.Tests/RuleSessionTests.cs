@@ -107,7 +107,7 @@ namespace Rules.Engine.Tests
         [Test]
         public void TestExecuteRuleSet()
         {
-            dynamic t = "1";
+            // dynamic t = "1";
             // var t = "Hello";
             // var s = new MyClass(t);
             // var s2 = s.Field1;

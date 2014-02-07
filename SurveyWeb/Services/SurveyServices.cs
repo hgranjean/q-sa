@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Xml;
 using Atum.Domain.Surveillance;
 using Atum.Utility.XML;
 
@@ -52,6 +53,18 @@ namespace SurveyWeb
                 surveys = new List<Survey>();
             }
             surveys.Add(survey);
+
+            var appPath = GetAppPath();
+
+            if (survey.ID == -1)
+            {
+                survey.AssignNextId(EnumerateSurveys().Count());
+            }
+
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID)))
+            {
+                XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
+            }
         }
 
         private static string[] EnumerateSurveys()

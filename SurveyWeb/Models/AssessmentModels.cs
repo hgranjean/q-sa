@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using Atum.Domain.Surveillance;
 using SurveyWeb.Services;
 using Repository;
@@ -127,6 +128,19 @@ namespace SurveyWeb.Models
 
             return session;
         }*/
+
+        public static string Serialize<T>(T xyz)
+        {
+            var serializer = new JavaScriptSerializer();
+            return serializer.Serialize(xyz);
+        }
+
+        // This will convert the passed JSON string back to XYZ object
+        public static T Deserialize<T>(string data)
+        {
+            var serializer = new JavaScriptSerializer();
+            return serializer.Deserialize<T>(data);
+        }
 
     }
 
