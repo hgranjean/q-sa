@@ -43,11 +43,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdParty\RulesEngine\Common.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
@@ -105,6 +106,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -254,6 +257,21 @@
     <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
+    <Compile Include="Database\AtumSurveillance.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtumSurveillance.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\AtumSurveillance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtumSurveillance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\AtumSurveillance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtumSurveillance.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -327,8 +345,26 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Database\AtumSurveillance.edmx.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Database\AtumSurveillance.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AtumSurveillance.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Database\AtumSurveillance.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AtumSurveillance.edmx</DependentUpon>
+      <LastGenOutput>AtumSurveillance.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\AtumSurveillance.edmx.diagram">
+      <DependentUpon>AtumSurveillance.edmx</DependentUpon>
+    </Content>
+    <Content Include="Database\AtumSurveillance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AtumSurveillance.edmx</DependentUpon>
+      <LastGenOutput>AtumSurveillance.cs</LastGenOutput>
+    </Content>
     <None Include="RuleApp\SurveyApp.ruleapp" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="RuleApp\Survey1.xml" />
@@ -432,6 +468,9 @@
       <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
       <Name>Atum.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
