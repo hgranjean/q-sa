@@ -5,19 +5,18 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-//using Microsoft.AspNet.Identity;
-//using Microsoft.AspNet.Identity.EntityFramework;
-//using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 using SurveyWeb.Models;
 
 namespace SurveyWeb.Controllers
 {
-    /*
     [Authorize]
     public class AccountController : Controller
     {
         public AccountController()
-            // : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+           : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
 
@@ -405,5 +404,5 @@ namespace SurveyWeb.Controllers
             }
         }
         #endregion
-    }*/
+    }
 }
