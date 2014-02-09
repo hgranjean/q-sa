@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Atum.Domain.Surveillance;
+﻿using Atum.Domain.Surveillance;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SurveyWeb.Models
 {
@@ -33,6 +34,18 @@ namespace SurveyWeb.Models
         public void Save()
         {
             SurveyServices.Save(this.Survey);
+        }
+
+        public void AddQuestionGroup()
+        {
+            if (Survey.QuestionGroups == null)
+            {
+                Survey.QuestionGroups = new QuestionGroups();
+            }
+            
+            int newGroupIndex = Survey.QuestionGroups.Count() + 1;
+
+            Survey.AddQuestionGroup("New Group " + newGroupIndex);
         }
     }
 }

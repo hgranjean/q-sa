@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web.Mvc;
 using Atum.Domain.Surveillance;
@@ -19,39 +20,53 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Create(Survey survey)
         {
+            
+            if (Session["Survey"] != null)
+            {
+                if (TempData["IsRedirect"] != null)
+                {
+                    return View(Session["Survey"]);
+                }
+
+            }
+            
             var viewModel = new SurveyViewModel(survey);
 
-            viewModel.Save();
-
+            Session["Survey"] = viewModel;
+            
             return View(viewModel);
         }
 
-        public ActionResult QuestionGroupCreate(long surveyId)
+        public ActionResult CreateQuestionGroup(long surveyId)
         {
-            var survey = SurveyServices.GetSurveys().First(item => item.ID == surveyId);
+            Contract.Requires(Session["Survey"] != null, "Survey is empty. Your session is expired and should be refreshed.");
 
-            return View(new SurveyViewModel(survey));
+            var survey = (SurveyViewModel) Session["Survey"];
+
+            return View();
         }
 
         [HttpPost]
-        public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
+        public ActionResult CreateQuestionGroupComplete()
         {
-            // var survey = SurveyServices.GetSurveys().First(item => item.ID == surveyId);
+            var viewModel = (SurveyViewModel) Session["Survey"];
 
-            if (viewModel.Survey.QuestionGroups == null)
-            {
-                viewModel.Survey.QuestionGroups = new QuestionGroups();
-            }
-            int newGroupIndex = viewModel.Survey.QuestionGroups.Count() + 1;
+            viewModel.AddQuestionGroup();
+
+            Session["Survey"] = viewModel;
+
+            TempData["IsRedirect"] = true;
+
+            return RedirectToAction("Create");
+        }
+
+        [HttpPost]
+        public ActionResult Save(SurveyViewModel survey)
+        {
+            var viewModel = (SurveyViewModel) Session["Survey"];
             
-            viewModel.Survey.AddQuestionGroup("New Group " + newGroupIndex);
+            SurveyServices.Save(viewModel.Survey);
 
-            return View("Create", viewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Save(SurveyViewModel viewModel)
-        {
             return View(viewModel);
         }
     }

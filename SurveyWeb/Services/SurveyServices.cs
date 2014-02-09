@@ -52,16 +52,19 @@ namespace SurveyWeb
             {
                 surveys = new List<Survey>();
             }
-            surveys.Add(survey);
+            if (!surveys.Contains(survey))
+            {
+                surveys.Add(survey);
+            }
 
             var appPath = GetAppPath();
 
-            if (survey.ID == -1)
+            if (survey.ID == 0)
             {
                 survey.AssignNextId(EnumerateSurveys().Count());
             }
 
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID)))
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID + ".xml"), new XmlWriterSettings {Indent = true}))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }

@@ -346,8 +346,9 @@
     <Content Include="Views\Surveillance\SurveyProcessing.cshtml" />
     <Content Include="Views\AdministerAssessment\Create.cshtml" />
     <Content Include="Views\AdministerAssessment\Index.cshtml" />
-    <Content Include="Views\AdministerAssessment\QuestionGroupCreate.cshtml" />
+    <Content Include="Views\AdministerAssessment\CreateQuestionGroup.cshtml" />
     <Content Include="Views\AdministerAssessment\QuestionGroupIndex.cshtml" />
+    <Content Include="Views\AdministerAssessment\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
