@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Atum.Database.Surveillance.Models;
 
 namespace SurveyWeb.Models
 {
@@ -59,5 +61,26 @@ namespace SurveyWeb.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class UserHospitalViewModel
+    {
+        public string UserId { get; set; }
+        public List<Hospital> Hospitals { get; set; }
+        public List<Hospital> AvailableHospitals { get; set; }
+    }
+
+    public class HospitalViewModel
+    {
+        private Hospital _hospital;
+
+        [Required]
+        [Display(Name = "Hospital name")]
+        public string Name { get; set; }
+
+        public HospitalViewModel(Hospital hospital)
+        {
+            _hospital = hospital;
+        }
     }
 }

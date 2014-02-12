@@ -1,0 +1,20 @@
+﻿@model Atum.Database.Surveillance.Models.Hospital
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+    <fieldset>
+        <legend>Hospital Form</legend>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        
+        <div class="editor-label">
+            @Html.DisplayTextFor(model => model.Name)
+        </div>
+        
+    </fieldset>

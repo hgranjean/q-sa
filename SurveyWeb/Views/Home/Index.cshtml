@@ -23,9 +23,17 @@
 }*@
 <h3>We suggest the following:</h3>
 
-@Html.ActionLink("List surveys", "Index", "AdministerAssessment")<br/>
-@Html.ActionLink("Administer assessment", "Create", "AdministerAssessment")<br/>
-@Html.ActionLink("Conduct assessment", "Create", "Assessment")
+<div>
+    <h4>Survey</h4>
+    @Html.ActionLink("List surveys", "Index", "AdministerAssessment")<br/>
+    @Html.ActionLink("Administer assessment", "Create", "AdministerAssessment")<br/>
+    @Html.ActionLink("Conduct assessment", "Create", "Assessment")
+</div>
+
+<div>
+    <h4>Hospital</h4>
+    @Html.ActionLink("List hospitals", "Index", "Hospital")
+</div>
 
 <!--
     <ol class="round">
