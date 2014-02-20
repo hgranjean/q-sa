@@ -76,9 +76,37 @@ namespace MvcApplication1.Controllers
         {
             var model = _dbContext.Hospitals.First(item => item.Id == id);
 
-            _dbContext.Hospitals.Remove(model);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Hospital model)
+        {
+            var toDelete = _dbContext.Hospitals.First(item => item.Id == model.Id);
+
+            if (toDelete != null)
+            {
+                _dbContext.Hospitals.Remove(toDelete);
+
+                _dbContext.SaveChanges();
+            }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult UserHospitalIndex()
+        {
+            var availableHospitals = _dbContext.Hospitals.ToList();
+            var model = new List<UserHospitalViewModel>();
+            
+            model.Add(new UserHospitalViewModel
+                {
+                    AvailableHospitals = availableHospitals,
+                    Hospitals = new List<Hospital>(),
+                    UserId = Guid.NewGuid().ToString()
+                });
+            
+            return View("UserHospitalIndex", model);
         }
     }
 }
