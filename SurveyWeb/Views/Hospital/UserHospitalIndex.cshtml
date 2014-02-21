@@ -1,5 +1,33 @@
-﻿@{
-    ViewBag.Title = "UserHospitalIndex";
+﻿@using Atum.Database.Surveillance.Models
+@model IEnumerable<SurveyWeb.Models.UserHospitalViewModel>
+
+@{
+    ViewBag.Title = "User Hospital Index";
 }
 
-<h2>UserHospitalIndex</h2>
+<h2>User Hospital Index</h2>
+
+<!-- Users -->
+
+<table>
+    <tr>
+        <th>
+           User
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (AspNetUser item in ViewBag.Users)
+    {
+        <tr>
+            <td>
+                @Html.Label(item.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditUserHospital", new { userId=item.Id })
+            </td>
+
+        </tr>
+    }
+</table>
+

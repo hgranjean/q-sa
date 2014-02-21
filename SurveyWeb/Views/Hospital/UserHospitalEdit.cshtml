@@ -1,0 +1,44 @@
+﻿@using Atum.Domain.Surveillance
+@using SurveyWeb.Models
+@model SurveyWeb.Models.UserHospitalViewModel
+
+@{
+    ViewBag.Title = "User Hospitals Edit";
+}
+
+<h2>User Hospitals Edit - @ViewBag.UserName</h2>
+
+@using (Html.BeginForm("EditUserHospital", "Hospital", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>User Hospitals</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Hospitals)
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model => model.Hospitals, new MultiSelectList(Model.Hospitals, "Id", "Name"))
+        </div>
+        
+        <br/>
+        
+        <caption>To change selected items, choose necessary from the list below and click Save</caption>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AvailableHospitals)
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model => model.SelectedHospitals, new MultiSelectList(Model.AvailableHospitals, "Id", "Name"))
+        </div>
+        
+        @Html.HiddenFor(model => model.UserId)
+        
+    </fieldset>
+    
+    <br/>
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Return to list", "UserHospitalIndex");
+}
