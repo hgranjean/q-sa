@@ -15,7 +15,7 @@ namespace SurveyWeb.Controllers
 {
     // [Authorize]
     // [InitializeSimpleMembership]
-    public class AssessmentController : Controller
+    public class SurveyController : Controller
     {
         public ActionResult Index()
         {   

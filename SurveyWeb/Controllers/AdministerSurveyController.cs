@@ -9,7 +9,7 @@ using SurveyWeb.Models;
 
 namespace MvcApplication1.Controllers
 {
-    public class AdministerAssessmentController : Controller
+    public class AdministerSurveyController : Controller
     {
         public ActionResult Index()
         {

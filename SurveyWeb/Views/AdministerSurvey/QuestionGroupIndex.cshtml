@@ -1,0 +1,30 @@
+﻿@model SurveyWeb.Models.SurveyViewModel
+
+<p>
+    @Html.ActionLink("Create New", "CreateQuestionGroup", new {surveyId = Model.Survey.ID})
+</p>
+
+
+ 
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var key in Model.Survey.QuestionGroups.Keys) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Survey.QuestionGroups[key].Number)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { surveyId = Model.Survey.ID, groupId=key }) |
+            @Html.ActionLink("Details", "Details", new { surveyId = Model.Survey.ID, groupId=key }) |
+            @Html.ActionLink("Delete", "Delete", new { surveyId = Model.Survey.ID, groupId=key })
+        </td>
+    </tr>
+}
+
+</table>

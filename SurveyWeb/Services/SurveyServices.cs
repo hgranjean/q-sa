@@ -14,11 +14,6 @@ namespace SurveyWeb
     {
         private static List<Survey> surveys; 
         private static SurveyManager _surverManager;
-
-        static SurveyServices()
-        {
-            
-        }
         
         public static SurveyManager GetSurveyManager(Survey survey)
         {
