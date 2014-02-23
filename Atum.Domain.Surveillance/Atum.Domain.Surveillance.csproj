@@ -58,6 +58,7 @@
     <Compile Include="Domain\Surveillance\SurveyBasis.cs" />
     <Compile Include="Domain\Surveillance\SurveyManager.cs" />
     <Compile Include="Domain\Surveillance\SurveyResponse.cs" />
+    <Compile Include="Domain\Surveillance\Surveys.cs" />
     <Compile Include="Domain\Surveillance\SurveyStrategies.cs" />
     <Compile Include="Domain\Surveillance\SurveyStrategy.cs" />
     <Compile Include="Domain\Surveillance\SurveyType.cs" />

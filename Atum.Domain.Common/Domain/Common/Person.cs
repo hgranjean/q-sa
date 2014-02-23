@@ -29,6 +29,13 @@ namespace Atum.Domain.Common
         public DateTime DateOfBirth { get { return _dob; } set { _dob = value; } }
 
 
+        public string Name
+        {
+            get { return String.Format("{0} {1} {2}", _firstName, _middleName, _lastName); }
+        }
+
+
+        public Department Department { get; set; }
         protected override void SetId(long id)
         {
             throw new NotImplementedException();

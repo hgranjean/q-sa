@@ -10,10 +10,15 @@ using Atum.Utility.XML;
 
 namespace SurveyWeb
 {
-    internal class SurveyServices
+    internal class SurveillanceServices
     {
         private static List<Survey> surveys; 
         private static SurveyManager _surverManager;
+        
+        static SurveillanceServices()
+        {
+            
+        }
         
         public static SurveyManager GetSurveyManager(Survey survey)
         {
@@ -36,6 +41,26 @@ namespace SurveyWeb
             return surveys;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static Surveys GetSurveys(string criteria)
+        {
+            return new Surveys();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Survey GetSurvey(int id)
+        {
+            return new Survey();
+        }
+
+
         public static Survey LoadSurvey(string name)
         {
             return (Survey)XmlSerializationUtility.GetObjectFromFile(name, typeof(Survey));
@@ -54,15 +79,15 @@ namespace SurveyWeb
 
             var appPath = GetAppPath();
 
-            if (survey.ID == 0)
-            {
-                survey.AssignNextId(EnumerateSurveys().Count());
-            }
+            //if (survey.ID == -1)
+            //{
+            //    survey.AssignNextId(EnumerateSurveys().Count());
+            //}
 
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID + ".xml"), new XmlWriterSettings {Indent = true}))
-            {
-                XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
-            }
+            //using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID)))
+            //{
+            //    XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
+            //}
         }
 
         private static string[] EnumerateSurveys()

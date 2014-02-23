@@ -29,10 +29,19 @@ namespace Atum.Domain.Surveillance
         {
         }
 
+        public Survey(string title)
+        {
+            this.Title = title;
+        }
+
         protected override void SetId(long id)
         {
             _id = id;
         }
+
+
+        public string Title { get; set; }
+
 
         public void AssignNextId(long id)
         {
