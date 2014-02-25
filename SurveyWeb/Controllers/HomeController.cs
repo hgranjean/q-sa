@@ -15,14 +15,21 @@ namespace SurveyWeb.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "The application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "The contact page.";
+
+            return View();
+        }
+
+        public ActionResult Settings()
+        {
+            ViewBag.Message = "The settings page.";
 
             return View();
         }

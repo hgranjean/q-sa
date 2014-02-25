@@ -258,7 +258,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
-<Compile Include="Controllers\TableOfContents.cs" />
+    <Compile Include="Controllers\TableOfContents.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -354,7 +354,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Database\AtumSurveillance.edmx.sql" />
-<Content Include="Content\TracerView.css" />
+    <Content Include="Content\TracerView.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Database\AtumSurveillance.edmx">
@@ -376,6 +376,10 @@
     </Content>
     <None Include="RuleApp\SurveyApp.ruleapp" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\Home-icon.png" />
+    <Content Include="Images\Messaging-icon.png" />
+    <Content Include="Images\Settings-Icon.png" />
+    <Content Include="Images\Users-icon.png" />
     <Content Include="RuleApp\Survey1.xml" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -450,9 +454,9 @@
     <Content Include="Views\Surveillance\ViewReference.cshtml" />
     <Content Include="Views\Surveillance\Dashboard.cshtml" />
     <Content Include="Views\Surveillance\SurveyQuestion.cshtml" />
+    <Content Include="Views\Home\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="RuleApp\Domain\" />
   </ItemGroup>
   <ItemGroup>

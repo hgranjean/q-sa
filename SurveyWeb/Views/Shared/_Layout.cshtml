@@ -14,8 +14,25 @@
         
         @RenderSection("scripts", required: false)
         @RenderSection("featured", required: false)
+        
+        
+        <div class="navbar-left">
+            <div id="cssmenu">
+                <ul>
+                    <li><img src="/Images/Home-icon.png" style="width:24px;height:24px; float:left;" />@Html.ActionLink("Dashboard", "Index", "Home", null, new { @class = "leftnavbar-brand" })</li>
+                    <li><img src="/Images/Users-icon.png" style="width:24px;height:24px; float:left;" />@Html.ActionLink("About", "About", "Home", null, new { @class = "leftnavbar-brand" })</li>
+                    <li><img src="/Images/Messaging-icon.png" style="width:24px;height:24px; float:left;" />@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "leftnavbar-brand" })</li>
+                    <li><img src="/Images/Settings-icon.png" style="width:24px;height:24px; float:left;" />@Html.ActionLink("Settings", "Settings", "Home", null, new { @class = "leftnavbar-brand" })</li>
+                </ul>
+            </div>
+            <button type="button" class="leftnavbar-toggle" data-toggle="collapse" data-target=".navbar-left">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top" style="float:none;">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -23,18 +40,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("AtumQualitySolutions", "Index", "Home", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Atum Quality Solutions", "Index", "Home", null, new { @class = "navbar-brand" })
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </div>
+
         <div class="container body-content">
             @RenderBody()
             <hr />
@@ -42,7 +57,6 @@
                 <p>&copy; @DateTime.Now.Year - The Mikhalik Group</p>
             </footer>
         </div>
-
     
     </body>
 </html>

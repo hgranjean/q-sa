@@ -5,7 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
+    padding-left: 100px;
     padding-right: 15px;
 }
 
@@ -40,3 +40,65 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.navbar-left {
+    float: left;
+    /*margin: 10px;*/
+}
+
+#cssmenu {
+    width: 200px;
+    max-width: 200px;
+    border-color: #D76100;
+    border-size: 1px;
+    border-width: 1px;
+    padding: 0px;
+}
+
+#cssmenu ul {
+    width: 150px;
+    background-color: #222222;
+    padding: 0px 5px 8px 5px;
+    list-style: none;
+}
+#cssmenu li a {
+    margin: 15px;
+    height: 24px;
+    text-decoration: none;
+    font-weight: normal;
+    color: #999999;
+    display: block;
+    /*background: url(menu4.gif);*/
+    padding: 18px 5px 18px 5px;
+}
+#cssmenu li a:hover {
+    color: #fff;
+    /*background: url(menu4.gif) 0 -32px;
+    padding: 8px 0 0 8px;*/
+}
+#cssmenu li a:active {
+    color: #fff;
+    background: url(menu4.gif) 0 -64px;
+    /*padding: 8px 5px 8px 5px;*/
+}
+
+@media (min-width: 700px) {
+  .leftnavbar-toggle {
+    display: none;
+  }
+
+  .leftnavbar-brand a {
+      display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  #cssmenu ul {
+      margin: 0px;
+  }
+}
+
+
+
+
+
