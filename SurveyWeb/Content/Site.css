@@ -49,7 +49,7 @@ input[type="checkbox"].input-validation-error {
 #cssmenu {
     width: 200px;
     max-width: 200px;
-    border-color: #D76100;
+    /*border-color: #D76100;*/
     border-size: 1px;
     border-width: 1px;
     padding: 0px;
@@ -58,21 +58,23 @@ input[type="checkbox"].input-validation-error {
 #cssmenu ul {
     width: 150px;
     background-color: #222222;
-    padding: 8px 5px 8px 5px;
+    padding: 0px 0px 0px 0px;
     list-style: none;
 }
 #cssmenu li a {
-    margin: 15px;
+    padding: 30px;
     height: 24px;
     text-decoration: none;
     font-weight: normal;
     color: #999999;
     display: block;
+    border: 1px solid #333333;
     /*background: url(menu4.gif);*/
-    padding: 8px 5px 8px 5px;
+    /*padding: 8px 5px 8px 5px;*/
 }
 #cssmenu li a:hover {
     color: #fff;
+    background-color: #333333;
     /*background: url(menu4.gif) 0 -32px;
     padding: 8px 0 0 8px;*/
 }
