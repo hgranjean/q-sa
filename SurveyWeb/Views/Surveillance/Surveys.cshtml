@@ -1,0 +1,14 @@
+﻿@model SurveyWeb.Models.SurveysViewModel
+
+
+@{
+    ViewBag.Title = "Surveys";
+}
+
+<h2>Surveys</h2>
+<div>
+    @foreach (var item in Model.Surveys)
+    {
+        <div>@Html.ActionLink(item.Title, "SurveyDesign", new {id = item.ID})</div>
+    }
+</div>

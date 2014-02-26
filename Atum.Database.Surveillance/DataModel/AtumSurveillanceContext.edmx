@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="Atum.Database.Surveillance.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetRole_AspNetUsers" FromRole="AspNetRole_AspNetUsers_Source" ToRole="AspNetRole_AspNetUsers_Target" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetRole_AspNetUsers" FromRole="AspNetRole_AspNetUsers_Target" ToRole="AspNetRole_AspNetUsers_Source" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.AspNetUserClaim_AspNetUser" FromRole="AspNetUserClaim_AspNetUser_Target" ToRole="AspNetUserClaim_AspNetUser_Source" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.AspNetUserLogin_AspNetUser" FromRole="AspNetUserLogin_AspNetUser_Target" ToRole="AspNetUserLogin_AspNetUser_Source" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.AspNetUserClaim_AspNetUser" FromRole="AspNetUserClaim_AspNetUser_Source" ToRole="AspNetUserClaim_AspNetUser_Target" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.AspNetUserLogin_AspNetUser" FromRole="AspNetUserLogin_AspNetUser_Source" ToRole="AspNetUserLogin_AspNetUser_Target" />
+        </EntityType>
+        <Association Name="AspNetUserClaim_AspNetUser">
+          <End Role="AspNetUserClaim_AspNetUser_Source" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <End Role="AspNetUserClaim_AspNetUser_Target" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="AspNetUserClaim_AspNetUser_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim_AspNetUser_Source">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserLogin_AspNetUser">
+          <End Role="AspNetUserLogin_AspNetUser_Source" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <End Role="AspNetUserLogin_AspNetUser_Target" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="AspNetUserLogin_AspNetUser_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin_AspNetUser_Source">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetRole_AspNetUsers">
+          <End Role="AspNetRole_AspNetUsers_Source" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetRole_AspNetUsers_Target" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AtumSurveillanceContext">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <AssociationSet Name="AspNetUserClaim_AspNetUser" Association="Self.AspNetUserClaim_AspNetUser">
+            <End Role="AspNetUserClaim_AspNetUser_Source" EntitySet="AspNetUserClaims" />
+            <End Role="AspNetUserClaim_AspNetUser_Target" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserLogin_AspNetUser" Association="Self.AspNetUserLogin_AspNetUser">
+            <End Role="AspNetUserLogin_AspNetUser_Source" EntitySet="AspNetUserLogins" />
+            <End Role="AspNetUserLogin_AspNetUser_Target" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetRole_AspNetUsers" Association="Self.AspNetRole_AspNetUsers">
+            <End Role="AspNetRole_AspNetUsers_Source" EntitySet="AspNetRoles" />
+            <End Role="AspNetRole_AspNetUsers_Target" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="AtumSurveillanceContext">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Atum.Database.Surveillance.Models.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Atum.Database.Surveillance.Models.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Atum.Database.Surveillance.Models.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaim">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Atum.Database.Surveillance.Models.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogin">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetRole_AspNetUsers" TypeName="Atum.Database.Surveillance.Models.AspNetRole_AspNetUsers" StoreEntitySet="AspNetRoleAspNetUser">
+            <EndProperty Name="AspNetRole_AspNetUsers_Source">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole_AspNetUsers_Target">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+    <StorageModels>
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoleAspNetUser">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <Association Name="AspNetUserClaim_AspNetUser">
+          <End Role="AspNetUser" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaim" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserLogin_AspNetUser">
+          <End Role="AspNetUser" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogin" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetRole_AspNetUsers_Source">
+          <End Role="AspNetRole" Type="Self.AspNetRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetRoleAspNetUser" Type="Self.AspNetRoleAspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetRoleAspNetUser">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetRole_AspNetUsers_Target">
+          <End Role="AspNetUser" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetRoleAspNetUser" Type="Self.AspNetRoleAspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetRoleAspNetUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CodeFirstDatabase">
+          <EntitySet Name="AspNetRole" EntityType="Self.AspNetRole" Schema="dbo" Table="AspNetRoles" />
+          <EntitySet Name="AspNetUser" EntityType="Self.AspNetUser" Schema="dbo" Table="AspNetUsers" />
+          <EntitySet Name="AspNetUserClaim" EntityType="Self.AspNetUserClaim" Schema="dbo" Table="AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogin" EntityType="Self.AspNetUserLogin" Schema="dbo" Table="AspNetUserLogins" />
+          <EntitySet Name="AspNetRoleAspNetUser" EntityType="Self.AspNetRoleAspNetUser" Schema="dbo" Table="AspNetUserRoles" />
+          <AssociationSet Name="AspNetUserClaim_AspNetUser" Association="Self.AspNetUserClaim_AspNetUser">
+            <End Role="AspNetUser" EntitySet="AspNetUser" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaim" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserLogin_AspNetUser" Association="Self.AspNetUserLogin_AspNetUser">
+            <End Role="AspNetUser" EntitySet="AspNetUser" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogin" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetRole_AspNetUsers_Source" Association="Self.AspNetRole_AspNetUsers_Source">
+            <End Role="AspNetRole" EntitySet="AspNetRole" />
+            <End Role="AspNetRoleAspNetUser" EntitySet="AspNetRoleAspNetUser" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetRole_AspNetUsers_Target" Association="Self.AspNetRole_AspNetUsers_Target">
+            <End Role="AspNetUser" EntitySet="AspNetUser" />
+            <End Role="AspNetRoleAspNetUser" EntitySet="AspNetRoleAspNetUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="c7e352f60ad045f38603eaba1c85e94e" Name="Diagram1">
+        <EntityTypeShape EntityType="Atum.Database.Surveillance.Models.AspNetRole" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atum.Database.Surveillance.Models.AspNetUser" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atum.Database.Surveillance.Models.AspNetUserClaim" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atum.Database.Surveillance.Models.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="Atum.Database.Surveillance.Models.AspNetUserClaim_AspNetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Atum.Database.Surveillance.Models.AspNetUserLogin_AspNetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Atum.Database.Surveillance.Models.AspNetRole_AspNetUsers" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>
