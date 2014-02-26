@@ -139,12 +139,11 @@ namespace MvcApplication1.Controllers
 
         private void setQuestionChoices(Question question)
         {
-            question.AddChoice("N/A");
-            question.AddChoice("Non Compliant");
-            question.AddChoice("Not Scored");
             question.AddChoice("Compliant");
+            question.AddChoice("Non Compliant");
+            question.AddChoice("N/A");
+            // question.AddChoice("Not Scored"); // AS - Not Valid choice 
             question.AddChoice("Follow-Up Completed");
-
         }
 
 

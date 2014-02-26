@@ -5,34 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - The Mikhalik Group</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/component.css", "~/Content/Demo.css", "~/Content/Normalize.css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-
+    @Scripts.Render("~/Scripts/classie.js")
+	@Scripts.Render("~/Scripts/gnmenu.js")
 </head>
     <body>
         
         @RenderSection("scripts", required: false)
-        @RenderSection("featured", required: false)
+        @RenderSection("featured", required: false) 
         
-        
-        <div class="navbar-left">
-            <div id="cssmenu">
-                <ul>
-                    <li><img src="/Images/Home-icon.png" style="width:24px;height:24px; float:left; margin: 20px 7px 5px" />@Html.ActionLink("Dashboard", "Index", "Home", null, new { @class = "leftnavbar-brand" })</li>
-                    <li><img src="/Images/Users-icon.png" style="width:24px;height:24px; float:left; margin: 20px 7px 5px" />@Html.ActionLink("About", "About", "Home", null, new { @class = "leftnavbar-brand" })</li>
-                    <li><img src="/Images/Messaging-icon.png" style="width:24px;height:24px; float:left; margin: 20px 7px 5px;" />@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "leftnavbar-brand" })</li>
-                    <li><img src="/Images/Settings-icon.png" style="width:24px;height:24px; float:left; margin: 20px 7px 5px;" />@Html.ActionLink("Settings", "Settings", "Home", null, new { @class = "leftnavbar-brand" })</li>
-                </ul>
-            </div>
-            <button type="button" class="leftnavbar-toggle" data-toggle="collapse" data-target=".navbar-left">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <div class="container navbar-left">
+            <ul id="gn-menu" class="gn-menu-main">
+                <li class="gn-trigger">
+                    <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                    <nav class="gn-menu-wrapper">
+                        <div class="gn-scroller">
+                            <ul class="gn-menu">
+                                <li class="gn-search-item">
+                                    <input placeholder="Search" type="search" class="gn-search" />
+                                    <a class="gn-icon gn-icon-search"><span>Search</span></a>
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Dashboard", "Index", "Home", null, new { @class = "gn-icon gn-icon-earth" })
+                                </li>
+                                <li>@Html.ActionLink("Create templates", "SurveyDesign", "Surveillance", null, new { @class = "gn-icon gn-icon-article" })</li>
+                                <li>@Html.ActionLink("Conduct a survey", "SurveyDelivery", "Surveillance", null, new { @class = "gn-icon gn-icon-archive" })</li>
+						        
+                                <li>
+                                    <a class="gn-icon gn-icon-download">Reports</a>
+                                    <!--<ul class="gn-submenu">
+                                            <li><a class="gn-icon gn-icon-illustrator">Surveys</a></li>
+                                            <li><a class="gn-icon gn-icon-photoshop">Others</a></li>
+                                        </ul>-->
+                                </li>
+                                <li>@Html.ActionLink("Settings", "Settings", "Home", null, new { @class = "gn-icon gn-icon-cog" })</li>
+                                <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "gn-icon gn-icon-help" })</li>
+                            </ul>
+                        </div><!-- /gn-scroller -->
+                    </nav>
+                </li>
+                <li>&nbsp;</li>
+			</ul>
         </div>
+        
+        <script>
+            new gnMenu(document.getElementById('gn-menu'));
+		</script>
 
-        <div class="navbar navbar-inverse navbar-fixed-top" style="float:none;">
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

@@ -100,7 +100,43 @@ input[type="checkbox"].input-validation-error {
   }
 }
 
+.sur-choice {
+    background-color: red;
+}
 
+.editor-label {
+    float: left;
+    width: 200px;
+}
 
+.editor-field {
+    margin-left: 200px;
+}
 
+.editor-field input {
+    width: 100%;    
+}
 
+a.gn-camera-icon
+{
+    background: url("../Images/Camera-Icon.png") no-repeat top left;
+    background-size: contain; /* CSS3 rulez! */
+    display: block;
+    width: 18px;
+    height: 18px;
+    text-indent: -9999px; /* hides the link text */
+    float: left;
+    margin-left: 3px;
+}
+
+a.gn-upload-icon
+{
+    background: url("../Images/Upload-Icon.png") no-repeat top left;
+    background-size: contain; /* CSS3 rulez! */
+    display: block;
+    width: 16px;
+    height: 16px;
+    text-indent: -9999px; /* hides the link text */
+    float: left;
+    margin-left: 3px;
+}

@@ -298,6 +298,14 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\codropicons\codropsicons.svg" />
+    <Content Include="Content\component.css" />
+    <Content Include="Content\demo.css" />
+    <Content Include="Content\ecoicons\ecoicons.dev.svg" />
+    <Content Include="Content\ecoicons\ecoicons.svg" />
+    <Content Include="Content\ecoicons\license.txt" />
+    <Content Include="Content\ecoicons\Read Me.txt" />
+    <Content Include="Content\normalize.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -373,13 +381,23 @@
       <DependentUpon>AtumSurveillance.edmx</DependentUpon>
       <LastGenOutput>AtumSurveillance.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\codropicons\codropsicons.eot" />
+    <Content Include="Content\codropicons\codropsicons.ttf" />
+    <Content Include="Content\codropicons\codropsicons.woff" />
+    <Content Include="Content\ecoicons\ecoicons.eot" />
+    <Content Include="Content\ecoicons\ecoicons.ttf" />
+    <Content Include="Content\ecoicons\ecoicons.woff" />
     <None Include="RuleApp\SurveyApp.ruleapp" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\Camera-icon.png" />
     <Content Include="Images\Home-icon.png" />
     <Content Include="Images\Messaging-icon.png" />
     <Content Include="Images\Settings-Icon.png" />
+    <Content Include="Images\Upload-icon.png" />
     <Content Include="Images\Users-icon.png" />
     <Content Include="RuleApp\Survey1.xml" />
+    <Content Include="Scripts\classie.js" />
+    <Content Include="Scripts\gnmenu.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -394,6 +412,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Shared\component.css" />
+    <Content Include="Views\Shared\demo.css" />
+    <Content Include="Views\Shared\normalize.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

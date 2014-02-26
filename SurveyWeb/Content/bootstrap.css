@@ -1,4 +1,4 @@
-navbar-fixed-topbody-content/* NUGET: BEGIN LICENSE TEXT
+/* NUGET: BEGIN LICENSE TEXT
  *
  * Microsoft grants you the right to use these script files for the sole
  * purpose of either: (i) interacting through your browser with the Microsoft
@@ -4170,7 +4170,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-fixed-bottom {
   position: fixed;
   right: 0;
-  left: 0;
+  left: 50px;
   border-width: 0 0 1px;
 }
 
