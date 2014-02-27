@@ -1,11 +1,10 @@
-﻿using Atum.Domain.Common;
+﻿using System.ComponentModel;
+using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Surveillance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace SurveyWeb.Models
 {
@@ -23,23 +22,29 @@ namespace SurveyWeb.Models
     {
         //public SurveillanceViewModel SurveillanceModel { get; set; }
         public Facility Facility { get; set; }
-        private Atum.Domain.Surveillance.Survey Survey { get; set; }
+        private Survey Survey { get; set; }
 
-        public TracerViewModel(Atum.Domain.Surveillance.Survey survey)
+        public TracerViewModel()
+        {
+            // Default ctor for saving
+        }
+
+        public TracerViewModel(Survey survey)
         {
             this.Survey = survey;
             this.QuestionGroups = new QuestionGroupsViewModel(survey.QuestionGroups);
+            this.SurveyDate = DateTime.Today.ToShortDateString();
         }
 
         [Required]
         [Display(Name = "Hospital")]
         public int FacilityId { get; set; }
-        public List<Facility> Facilities { get; set; }
+        public IEnumerable<Facility> Facilities { get; set; }
 
         [Required]
         [Display(Name = "Building")]
         public int BuildingId { get; set; }
-        public List<Building> Buildings { get; set; }
+        public IEnumerable<Building> Buildings { get; set; }
 
         //FloorNumber
         [Required]
@@ -49,12 +54,12 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name = "Area/Unit")]
         public int AreaId { get; set; }
-        public List<Area> Areas { get; set; }
+        public IEnumerable<Area> Areas { get; set; }
 
         [Required]
         [Display(Name = "Tracer Type")]
         public int TracerTypeId { get; set; }
-        public List<TracerType> TracerTypes{ get; set; }
+        public IEnumerable<TracerType> TracerTypes { get; set; }
 
         [Required]
         [Display(Name = "Staff Surveyed")]
@@ -63,13 +68,13 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name="Surveyor")]
         public int SurveyorId { get; set; }
-        public List<Person> Surveyors { get; set; }
+        public IEnumerable<Person> Surveyors { get; set; }
 
         [Required]
         [Display(Name = "Date")]
         public string SurveyDate { get; set; }
 
-        [Required]
+        //         [Required] AS - Notes are required?
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
@@ -77,7 +82,7 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
-        public List<Department> Departments { get; set; }
+        public IEnumerable<Department> Departments { get; set; }
 
         [Required]
         [Display(Name = "Survey Type")]

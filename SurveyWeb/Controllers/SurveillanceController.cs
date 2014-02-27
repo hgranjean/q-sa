@@ -52,11 +52,9 @@ namespace MvcApplication1.Controllers
         public ActionResult SurveyDelivery(int? surveyId)
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
-            TracerViewModel model = LoadTracerViewModel();
-
+            var model = LoadTracerViewModel();
             
             return View(model);
-
         }
 
         private TracerViewModel LoadTracerViewModel()
@@ -67,8 +65,8 @@ namespace MvcApplication1.Controllers
             retVal.Buildings = LoadBuildings();
             retVal.Facilities = LoadFacilities();
             retVal.Areas = LoadAreas();
-            retVal.Surveyors = loadSurveyors();
-            retVal.Departments = loadDepartments();
+            retVal.Surveyors = LoadSurveyors();
+            retVal.Departments = LoadDepartments();
             retVal.FloorNumber = 3;
 
             return retVal;
@@ -86,7 +84,7 @@ namespace MvcApplication1.Controllers
 
             //Survey Basis Document (assert that we can see the TOCElements
             var surveyBasis = new SurveyBasis();
-            surveyBasis.TableOfContents = loadTableOContents();
+            surveyBasis.TableOfContents = LoadTableOContents();
 
             Question question = null;
             var qGroup0211 = survey.AddQuestionGroup("0211_Doors ");
@@ -180,65 +178,41 @@ namespace MvcApplication1.Controllers
             };
         }
 
-        private TableOfContents loadTableOContents()
+        private TableOfContents LoadTableOContents()
         {
-            var retVal = new TableOfContents();
-            string elementTitle = "Element Title";
-            var element = retVal.AddElement(elementTitle);
-            return retVal;
+            var toc = new TableOfContents();
+            toc.AddElement("Element Title");
+            return toc;
         }
 
-        private List<Department> loadDepartments()
+        private IEnumerable<Department> LoadDepartments()
         {
-            List<Atum.Domain.Common.Department> retVal = new List<Atum.Domain.Common.Department>();
-            Department dept = new Atum.Domain.Common.Department("Department1",1);
-
-            return retVal;
+            yield return new Department("Department1", 1);
+            yield return new Department("Department2", 2);
         }
 
-        private List<Person> loadSurveyors()
+        private IEnumerable<Person> LoadSurveyors()
         {
-            List<Atum.Domain.Common.Person> retVal = new List<Atum.Domain.Common.Person>();
-            Person person = new Atum.Domain.Common.Person();
-            person.FirstName = "Joe";
-            person.MiddleName = "D";
-            person.LastName = "Surveyor";
-            retVal.Add(person);
-
-            person = new Atum.Domain.Common.Person();
-            person.FirstName = "Henry";
-            person.MiddleName = "M";
-            person.LastName = "TracerDude";
-            retVal.Add(person); 
-            
-            return retVal;
+            yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
+            yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
         }
 
-        private List<Atum.Domain.Common.Area> LoadAreas()
+        private IEnumerable<Area> LoadAreas()
         {
-            List<Atum.Domain.Common.Area> retVal = new List<Atum.Domain.Common.Area>();
-
-            retVal.Add(new Atum.Domain.Common.Area("Area1", 1));
-            retVal.Add(new Atum.Domain.Common.Area("Area2", 2));
-            return retVal;
+            yield return new Area("Area1", 1);
+            yield return new Area("Area2", 2);
         }
 
-        private List<Atum.Domain.Healthcare.Facility> LoadFacilities()
+        private IEnumerable<Atum.Domain.Healthcare.Facility> LoadFacilities()
         {
-            List<Atum.Domain.Healthcare.Facility> retVal = new List<Atum.Domain.Healthcare.Facility>();
-
-            retVal.Add(new Atum.Domain.Healthcare.Facility("Facility1", 1));
-            retVal.Add(new Atum.Domain.Healthcare.Facility("Facility2", 2));
-            return retVal;
+            yield return new Atum.Domain.Healthcare.Facility("Facility1", 1);
+            yield return new Atum.Domain.Healthcare.Facility("Facility2", 2);
         }
 
-        private List<Atum.Domain.Common.Building> LoadBuildings()
+        private IEnumerable<Building> LoadBuildings()
         {
-            List<Atum.Domain.Common.Building> retVal = new List<Atum.Domain.Common.Building>();
-
-            retVal.Add(new Atum.Domain.Common.Building("Building1", 1));
-            retVal.Add(new Atum.Domain.Common.Building("Building2", 2));
-            return retVal;
+            yield return new Atum.Domain.Common.Building("Building1", 1);
+            yield return new Atum.Domain.Common.Building("Building2", 2);
         }
 
 
@@ -287,6 +261,12 @@ namespace MvcApplication1.Controllers
         public ActionResult Dashboard()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult SaveSurvey(TracerViewModel viewModel)
+        {
+            return View("SurveyAnalysis", viewModel);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace SurveyWeb.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Settings()
         {
             ViewBag.Message = "The settings page.";

@@ -3,15 +3,38 @@
 @model SurveyWeb.Models.UserHospitalViewModel
 
 @{
-    ViewBag.Title = "User Hospitals Edit";
+    ViewBag.Title = "User Edit";
 }
 
-<h2>User Hospitals Edit - @ViewBag.UserName</h2>
+<h2>User Edit - @ViewBag.UserName</h2>
 
 @using (Html.BeginForm("EditUserHospital", "Hospital", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>User Roles</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Roles)
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model => model.Roles, new MultiSelectList(Model.Roles, "Id", "Name"))
+        </div>
+        
+        <br/>
+        
+        <caption>To change selected items, choose necessary from the list below and click Save</caption>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AvailableRoles)
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model => model.SelectedRoles, new MultiSelectList(Model.AvailableRoles, "Id", "Name"))
+        </div>
+    </fieldset>
+
 
     <fieldset>
         <legend>User Hospitals</legend>

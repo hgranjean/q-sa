@@ -67,9 +67,14 @@ namespace SurveyWeb.Models
     {
         public string UserId { get; set; }
         public string UserName { get; set; }
+
         public IEnumerable<Hospital> Hospitals { get; set; }
         public IEnumerable<Hospital> AvailableHospitals { get; set; }
-        public IEnumerable<string> SelectedHospitals { get; set; } 
+        public IEnumerable<string> SelectedHospitals { get; set; }
+
+        public IEnumerable<AspNetRole> Roles { get; set; }
+        public IEnumerable<AspNetRole> AvailableRoles { get; set; }
+        public IEnumerable<string> SelectedRoles { get; set; } 
     }
 
     public class HospitalViewModel

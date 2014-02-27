@@ -2,32 +2,28 @@
 @model IEnumerable<SurveyWeb.Models.UserHospitalViewModel>
 
 @{
-    ViewBag.Title = "User Hospital Index";
+    ViewBag.Title = "Manage Users";
 }
 
-<h2>User Hospital Index</h2>
+<h2>Manager Users</h2>
 
 <!-- Users -->
 
-<table>
-    <tr>
-        <th>
-           User
-        </th>
-        <th></th>
-    </tr>
+<fieldset>
+    <legend>Users</legend>
+    <div style="display: table">
+        <div style="display: table-row">
+            <div style="display: table-cell; width: 100px">Username</div>
+            <div style="display: table-cell; width: 100px"></div>
+        </div>
 
-    @foreach (AspNetUser item in ViewBag.Users)
-    {
-        <tr>
-            <td>
-                @Html.Label(item.UserName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditUserHospital", new { userId=item.Id })
-            </td>
-
-        </tr>
-    }
-</table>
+        @foreach (AspNetUser item in ViewBag.Users)
+        {
+            <div style="display: table-row">
+                <div style="display: table-cell">@Html.Label(item.UserName)</div>
+                <div style="display: table-cell">@Html.ActionLink("Edit", "EditUserHospital", new { userId=item.Id })</div>
+            </div>
+        }
+    </div>
+</fieldset>
 

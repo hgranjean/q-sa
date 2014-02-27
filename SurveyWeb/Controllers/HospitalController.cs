@@ -103,10 +103,12 @@ namespace MvcApplication1.Controllers
             return View("UserHospitalIndex", model);
         }
 
+        // TODO: Rename to UserEditViewModel
         private IEnumerable<UserHospitalViewModel> GetUserHospitals()
         {
             // TODO: Consier moving into ViewBag
             var availableHospitals = _dbContext.Hospitals.ToList();
+            var availableRoles = _dbContext.AspNetRoles.ToList();
 
             var userHospitalMap = new Dictionary<string, List<Hospital>>();
             foreach (var userHospital in _dbContext.UserHospitals)
@@ -125,11 +127,14 @@ namespace MvcApplication1.Controllers
                     {
                         AvailableHospitals = availableHospitals,
                         Hospitals = userHospitalMap[userId],
-                        UserId = userId
+                        UserId = userId,
+
+                        AvailableRoles = availableRoles,
+                        Roles = _dbContext.AspNetUsers.First(user => user.Id == userId).AspNetRoles
                     };
             }
         }
-
+        
         public ActionResult CreateUserHospital(string userId, string hospitalId)
         {
             var model = new UserHospital {UserId = userId, HospitalId = hospitalId};
@@ -145,6 +150,7 @@ namespace MvcApplication1.Controllers
         {
             // TODO: Consier moving into ViewBag
             var availableHospitals = _dbContext.Hospitals.ToList();
+            var availableRoles = _dbContext.AspNetRoles.ToList();
 
             var model = GetUserHospitals().Where(item => item.UserId == userId);
 
@@ -156,9 +162,12 @@ namespace MvcApplication1.Controllers
                 return View("UserHospitalEdit",
                                    new UserHospitalViewModel
                                        {
+                                           UserId = userId,
+
                                            AvailableHospitals = availableHospitals,
                                            Hospitals = new List<Hospital>(),
-                                           UserId = userId
+                                           AvailableRoles = availableRoles,
+                                           Roles = _dbContext.AspNetUsers.First(user => user.Id == userId).AspNetRoles
                                        });
             }
             
@@ -171,27 +180,60 @@ namespace MvcApplication1.Controllers
         {
             var model = GetUserHospitals().Where(item => item.UserId == viewModel.UserId);
 
-            var userHospitalViewModel = model.First();
+            var userHospitalViewModel = model.FirstOrDefault();
 
             if (viewModel.SelectedHospitals != null)
             {
                 // Remove unselected items
-                foreach (var item in userHospitalViewModel.Hospitals)
+                if (userHospitalViewModel != null)
                 {
-                    if (viewModel.SelectedHospitals.Count(hospitalId => hospitalId == item.Id) == 0)
+                    foreach (var item in userHospitalViewModel.Hospitals)
                     {
-                        var toDelete = _dbContext.UserHospitals.First(userHospital => userHospital.HospitalId == item.Id && userHospital.UserId == viewModel.UserId);
+                        if (viewModel.SelectedHospitals.Count(hospitalId => hospitalId == item.Id) == 0)
+                        {
+                            var toDelete = _dbContext.UserHospitals.First(userHospital => userHospital.HospitalId == item.Id && userHospital.UserId == viewModel.UserId);
 
-                        _dbContext.UserHospitals.Remove(toDelete);
+                            _dbContext.UserHospitals.Remove(toDelete);
+                        }
                     }
                 }
 
                 // Add newly selected items
                 foreach (var hospitalId in viewModel.SelectedHospitals)
                 {
-                    if (userHospitalViewModel.Hospitals.Count(hospital => hospital.Id == hospitalId) == 0)
+                    if (userHospitalViewModel == null || userHospitalViewModel.Hospitals.Count(hospital => hospital.Id == hospitalId) == 0)
                     {
                         _dbContext.UserHospitals.Add(new UserHospital { HospitalId = hospitalId, UserId = viewModel.UserId });
+                    }
+                }
+
+                _dbContext.SaveChanges();
+            }
+
+            if (viewModel.SelectedRoles != null)
+            {
+                // Remove unselected items
+                if (userHospitalViewModel != null)
+                {
+                    foreach (var item in userHospitalViewModel.Roles)
+                    {
+                        if (viewModel.SelectedRoles.Count(roleId => roleId == item.Id) == 0)
+                        {
+                            var toDelete = _dbContext.AspNetUsers.First(user => user.Id == viewModel.UserId).AspNetRoles.First(userRole => userRole.Id == item.Id);
+
+                            _dbContext.AspNetUsers.First(user => user.Id == viewModel.UserId).AspNetRoles.Remove(toDelete);
+                        }
+                    }
+                }
+
+                // Add newly selected items
+                foreach (var roleId in viewModel.SelectedRoles)
+                {
+                    if (userHospitalViewModel == null || userHospitalViewModel.Roles.Count(role => role.Id == roleId) == 0)
+                    {
+                        var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == viewModel.UserId);
+
+                        aspNetUser.AspNetRoles.Add(_dbContext.AspNetRoles.First(aspNetRole => aspNetRole.Id == roleId));
                     }
                 }
 

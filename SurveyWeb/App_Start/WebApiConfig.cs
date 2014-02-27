@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
+
 
 namespace SurveyWeb
 {
+    /*
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -20,5 +21,5 @@ namespace SurveyWeb
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.
             //config.EnableQuerySupport();
         }
-    }
+    }*/
 }
