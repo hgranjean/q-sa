@@ -112,8 +112,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Domain\Business\ZipGeoData.cs" />
+    <Compile Include="Domain\Common\Area.cs" />
+    <Compile Include="Domain\Common\Building.cs" />
+    <Compile Include="Domain\Common\Department.cs" />
     <Compile Include="Domain\Common\Document.cs" />
     <Compile Include="Domain\Common\DocumentType.cs" />
+    <Compile Include="Domain\Common\Environment.cs" />
+    <Compile Include="Domain\Common\Floor.cs" />
+    <Compile Include="Domain\Common\Frequency.cs" />
     <Compile Include="Domain\Common\TableOfContents.cs" />
     <Compile Include="Domain\Common\TOCElement.cs" />
     <Compile Include="Domain\Common\Exceptions\TOCElementNotFoundException.cs" />

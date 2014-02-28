@@ -116,5 +116,7 @@ namespace Atum.Domain.Surveillance
         {
             throw new NotImplementedException();
         }
+
+        public string Label { get; set; }
     }
 }

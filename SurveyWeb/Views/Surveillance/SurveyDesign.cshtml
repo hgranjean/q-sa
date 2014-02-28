@@ -1,7 +1,34 @@
-﻿
+﻿@model SurveyWeb.Models.SurveyViewModel
 @{
-    ViewBag.Title = "SurveyDesign";
+    ViewBag.Title = "Surveillance Template Design";
 }
 
-<h2>SurveyDesign</h2>
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Survey template.</h2>
+</hgroup>
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>@Model.Survey.Title </legend>
+        @foreach (var group in Model.Survey.QuestionGroups)
+        {
+            <div><span>Group-</span>  @group.Key.ToString()</div>
+            foreach (var question in group.Value.Questions)
+            {
+                <div><span>@question.Number</span>-<span>@question.Text</span></div>
+            <div>@Html.ActionLink("edit", "Questions","SurveyDesign", new {id=question.ID}, null)</div>
+            }
+        }
+
+        <input type="submit" value="Save" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -36,7 +36,7 @@ namespace SurveyWeb.Controllers
         {
             var question = viewModel.Enumerator.Current;
 
-            viewModel.CurrentAssessment.Responses.Responses.Add(new Response(question, new ResponseChoice("1")));
+            //viewModel.CurrentAssessment.Responses.Responses.Add(new Response(question, new ResponseChoice("1")));
 
             bool hasNext = viewModel.Enumerator.MoveNextManager(viewModel.CurrentAssessment.ConductedSurvey);
 

@@ -1,0 +1,49 @@
+﻿@model SurveyWeb.Models.QuestionViewModel
+
+@{
+    ViewBag.Title = "SurveyQuestion";
+}
+
+<h2>SurveyQuestion</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Surveillance </legend>
+        <div class="row">
+            <div style="display:table-row">
+                <div style="display:table-cell">
+                    <div class="editor-label">@Html.LabelFor(m => m.Number)</div>
+                    <div style="display:table-cell">@Html.TextBoxFor(m => m.Number)</div>
+                </div>
+                <div style="display:table-cell">
+                    <div class="editor-label">@Html.LabelFor(m => m.Label)</div>
+                    <div style="display:table-cell">@Html.TextBoxFor(m => m.Label))</div>
+                </div>
+            </div>
+            <div style="display:table-row">
+                <div style="display:table-cell">
+                    <div class="editor-label">@Html.LabelFor(m => m.QuestionTypeId)</div>
+                    <div class="editor-field">
+                        @Html.DropDownList("QuestionTypeId", new SelectList(Model.QuestionTypes, "Id", "Name"), "Please select...", null)
+                    </div>
+                </div>
+                <div style="display:table-cell">
+                    <div class="editor-label">@Html.LabelFor(m => m.Text)</div>
+                    <div style="display:table-cell">@Html.TextBoxFor(m => mText))</div>
+                </div>
+                </div>
+            <div style="display:table-row">
+                <div style="display:table-cell">&nbsp;&nbsp;</div>
+                <div>@Html.ActionLink("Add Choice...","AddResponseChoice","SurveyDesign")</div>
+                <div style="display:table-cell">
+                </div>
+            </div>
+            </div>
+</fieldset>
+    
+                        <div class="editor-field">
+                        @Html.DropDownList("FacilityId", new SelectList(Model.Facilities, "Id", "Name"), "Please select...", null)
+                    </div>

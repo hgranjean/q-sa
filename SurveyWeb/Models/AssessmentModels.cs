@@ -47,7 +47,7 @@ namespace SurveyWeb.Models
             var assessment = new Assessment
                 {
                     ConductedSurvey = survey,
-                    Responses = new SurveyResponse {Responses = new Responses(), Survey = survey}
+                    //Responses = new SurveyResponse {Responses = new Responses(), Survey = survey}
                 };
 
             

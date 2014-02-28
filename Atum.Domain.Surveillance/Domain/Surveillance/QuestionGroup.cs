@@ -5,7 +5,7 @@ namespace Atum.Domain.Surveillance
     [Serializable]
     public class QuestionGroup
     {
-        private String GroupTitle { get; set; }
+        public String Title { get; set; }
         public int Number { get; set; }
 
         protected QuestionGroup()
@@ -15,7 +15,7 @@ namespace Atum.Domain.Surveillance
         public QuestionGroup(string groupTitle)
         {
             // TODO: Complete member initialization
-            this.GroupTitle = groupTitle;
+            this.Title = groupTitle;
         }
         public Questions Questions { get; set; }
 
@@ -36,6 +36,14 @@ namespace Atum.Domain.Surveillance
             return retVal;
         }
 
+        public Question AddQuestion(string questionNumber, string questionText, QuestionType questionType)
+        {
+            var retVal = AddQuestion(questionText, questionType);
+            retVal.Label = questionNumber;
+            return retVal;
+        }
+
+        
         private void EnsureQuestions()
         {
             if (Questions == null)
@@ -72,5 +80,7 @@ namespace Atum.Domain.Surveillance
             }
             return question;
         }
+
+
     }
 }

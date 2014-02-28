@@ -15,7 +15,7 @@ namespace SurveyWeb.Models
 
         public SurveyViewModel(Survey survey)
         {
-            this.Name = this.Name ?? "Survey" + survey.ID;
+            this.Name = this.Name ;//?? "Survey" + survey.ID;
             this.Survey = survey;
             
 
@@ -25,14 +25,21 @@ namespace SurveyWeb.Models
             }
         }
 
+
+        
         public static IEnumerable<Survey> GetSurveys()
         {
-            return SurveyServices.GetSurveys();
+            return SurveillanceServices.GetSurveys();
         }
 
         public void Save()
         {
-            SurveyServices.Save(this.Survey);
+            SurveillanceServices.Save(this.Survey);
         }
+    }
+
+    public class SurveyViewModels : List<Survey>
+    {
+
     }
 }

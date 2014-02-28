@@ -6,7 +6,7 @@ using Atum.Domain.Surveillance;
 using SurveyWeb;
 using SurveyWeb.Models;
 
-namespace MvcApplication1.Controllers
+namespace SurveyWeb.Controllers
 {
     public class AdministerAssessmentController : Controller
     {
@@ -28,7 +28,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult QuestionGroupCreate(long surveyId)
         {
-            var survey = SurveyServices.GetSurveys().First(item => item.ID == surveyId);
+            Survey survey = null;// SurveyServices.GetSurveys().First(item => item.ID == surveyId);
 
             return View(new SurveyViewModel(survey));
         }

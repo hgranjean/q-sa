@@ -28,3 +28,21 @@ C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\bin\Debug\normn
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.csprojResolveAssemblyReference.cache
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.dll
 C:\Users\aschmidt\Documents\GitHub\atumrulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Test.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Test.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Data.Surveillance.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Basis.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Security.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Surveillance.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Utility.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\nunit.framework.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Data.Surveillance.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Basis.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Security.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Domain.Surveillance.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\bin\Debug\Atum.Utility.pdb
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.csprojResolveAssemblyReference.cache
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.dll
+C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\Atum.Domain.Test\obj\Debug\Atum.Domain.Test.pdb
