@@ -12,7 +12,7 @@ namespace Atum.Domain.Surveillance
     /// 
     /// </summary>
     [Serializable]
-    public class Survey : DomainObject// : IEnumerable<Question>
+    public class Survey : DomainObject
     {
         private readonly SurveyStrategy surveyStrategy;
 
@@ -36,7 +36,7 @@ namespace Atum.Domain.Surveillance
 
         protected override void SetId(long id)
         {
-            _id = id;
+            ID = id;
         }
 
 
@@ -110,12 +110,7 @@ namespace Atum.Domain.Surveillance
         {   
             return new QuestionEnumerator(null);
         }
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return new QuestionEnumerator(null);
-        //}
-
+        
         public class QuestionEnumerator : IEnumerator<Question>
         {
             private SurveyManager _manager;

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Survey xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ID>1</ID>
+  <Title>Survey Template 1</Title>
   <SurveyType>Audit</SurveyType>
   <QuestionGroups>
     <item>
