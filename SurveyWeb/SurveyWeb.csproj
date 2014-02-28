@@ -409,6 +409,7 @@
     <Content Include="Views\Surveillance\CreateQuestionGroup.cshtml" />
     <Content Include="Views\Surveillance\QuestionGroupIndex.cshtml" />
     <Content Include="Views\Surveillance\Save.cshtml" />
+    <Content Include="Views\Surveillance\EditQuestionGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

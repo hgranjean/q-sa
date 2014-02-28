@@ -23,9 +23,9 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { surveyId = Model.Survey.ID, groupId=key }) |
-            @Html.ActionLink("Details", "Details", new { surveyId = Model.Survey.ID, groupId=key }) |
-            @Html.ActionLink("Delete", "Delete", new { surveyId = Model.Survey.ID, groupId=key })
+            @Html.ActionLink("Edit", "EditQuestionGroup", new { surveyId = Model.Survey.ID, groupId=key }) |
+            <!-- @Html.ActionLink("Details", "Details", new { surveyId = Model.Survey.ID, groupId=key }) | -->
+            @Html.ActionLink("Delete", "DeleteQuestionGroup", new { surveyId = Model.Survey.ID, groupId=key })
         </td>
     </tr>
 }

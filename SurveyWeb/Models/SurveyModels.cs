@@ -54,4 +54,24 @@ namespace SurveyWeb.Models
     {
 
     }
+
+    public class QuestionGroupViewModel : ViewModelBase
+    {
+        public string SurveyId { get; set; }
+        public int Number { get; set; }
+        public QuestionGroup QuestionGroup { get; set; }
+        public Questions Questions { get; set; }
+
+        public QuestionGroupViewModel()
+        {
+            
+        }
+
+        public QuestionGroupViewModel(QuestionGroup questionGroup)
+        {
+            this.QuestionGroup = questionGroup;
+            this.Questions = questionGroup.Questions;
+            this.Number = questionGroup.Number;
+        }
+    }
 }

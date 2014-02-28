@@ -10,13 +10,22 @@
     <h2>Survey template.</h2>
 </hgroup>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("SaveDesign", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>@Model.Survey.Title </legend>
+        <legend>Edit Survey </legend>
+
+        @Html.HiddenFor(m => m.Survey.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Survey.Title)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.Survey.Title)
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Survey.SurveyType)
