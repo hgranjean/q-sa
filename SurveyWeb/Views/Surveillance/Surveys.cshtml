@@ -6,9 +6,13 @@
 }
 
 <h2>Surveys</h2>
+
+@Html.ActionLink("Create new survey", "SurveyDesign", "Surveillance")
+
 <div>
     @foreach (var item in Model.Surveys)
     {
-        <div>@Html.ActionLink(item.Title, "SurveyDesign", new {id = item.ID})</div>
+        <div>@Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDesign", new {id = item.ID})</div>
     }
 </div>
+

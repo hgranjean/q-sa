@@ -131,12 +131,12 @@
                                 @foreach (var choice in question.Choices)
                                 {
                                     var key = choice.ID;
-                                    int j = qIndex++;
+                                    var j = qIndex++;
                                     
-                                    <div style="display:table-cell">@Html.CheckBoxFor(m => m.Responses[j], key, new { id = key, @class = "sur-choice" })</div>
+                                    <div style="display:table-cell">@Html.RadioButtonFor(m => m.Responses[int.Parse(key.ToString())], key, new { id = "Response" + key, name = "Response" + i, @class = "sur-choice" })</div>
                                 }
 
-                                @if (question.Question.BasisReference != null)
+                            @if (question.Question.BasisReference != null)
                                 {
                                     <div id="questionBasis" style="display: table-cell">@Html.ActionLink(question.Question.BasisReference.Title, "ViewReference")</div>
                                 }
@@ -152,6 +152,7 @@
                                 </div>
                         </div>
                     </div>
+                
                 }
             }
             </div>

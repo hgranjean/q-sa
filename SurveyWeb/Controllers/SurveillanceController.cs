@@ -25,10 +25,18 @@ namespace MvcApplication1.Controllers
         /// <returns></returns>
         public ActionResult Surveys()
         {
-            SurveysViewModel model = new SurveysViewModel();
-            model.Surveys = new Atum.Domain.Surveillance.Surveys();
-            model.Surveys.Add(this.LoadSurvey("Survey Template 1"));
-            model.Surveys.Add(this.LoadSurvey("Survey Template 2"));
+            var surveys = SurveyViewModel.GetSurveys();
+
+            // Initialize model with some dummy templates
+            var model = new SurveysViewModel { Surveys = new Surveys
+                        {
+                            LoadSurvey("Survey Template 1"),
+                            LoadSurvey("Survey Template 2"),
+                        }
+                };
+
+            model.Surveys.AddRange(surveys);
+            
             return View(model);
         }
 
@@ -36,10 +44,23 @@ namespace MvcApplication1.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        public ActionResult SurveyDesign()
+        public ActionResult SurveyDesign(string surveyTemplateId)
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
-            SurveyViewModel model = new SurveyViewModel(LoadSurvey("Survey Title 1"));
+
+            Survey survey = null;
+            if (surveyTemplateId != null)
+            {
+                var surveys = SurveyViewModel.GetSurveys();
+
+                survey = surveys.FirstOrDefault(item => item.ID.ToString() == surveyTemplateId);
+            }
+            else
+            {
+                survey = LoadSurvey("Survey Title 1");
+            }
+            
+            SurveyViewModel model = new SurveyViewModel(survey);
 
             return View(model);            
         }
@@ -135,13 +156,15 @@ namespace MvcApplication1.Controllers
             return survey;
         }
 
+        private int _questionChoiceNextId = 0;
+
         private void setQuestionChoices(Question question)
         {
-            question.AddChoice("Compliant");
-            question.AddChoice("Non Compliant");
-            question.AddChoice("N/A");
+            question.AddChoice("Compliant").SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice("Non Compliant").SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice("N/A").SetIdInternal(_questionChoiceNextId++);
             // question.AddChoice("Not Scored"); // AS - Not Valid choice 
-            question.AddChoice("Follow-Up Completed");
+            question.AddChoice("Follow-Up Completed").SetIdInternal(_questionChoiceNextId++);
         }
 
 
@@ -267,6 +290,44 @@ namespace MvcApplication1.Controllers
         public ActionResult SaveSurvey(TracerViewModel viewModel)
         {
             return View("SurveyAnalysis", viewModel);
+        }
+        
+        public ActionResult Create(Survey survey)
+        {
+            var viewModel = new SurveyViewModel(survey);
+
+            viewModel.Save();
+
+            return View(viewModel);
+        }
+
+        public ActionResult QuestionGroupCreate(long surveyId)
+        {
+            Survey survey = null;// SurveyServices.GetSurveys().First(item => item.ID == surveyId);
+
+            return View(new SurveyViewModel(survey));
+        }
+
+        [HttpPost]
+        public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
+        {
+            // var survey = SurveyServices.GetSurveys().First(item => item.ID == surveyId);
+
+            if (viewModel.Survey.QuestionGroups == null)
+            {
+                viewModel.Survey.QuestionGroups = new QuestionGroups();
+            }
+            int newGroupIndex = viewModel.Survey.QuestionGroups.Count() + 1;
+
+            viewModel.Survey.AddQuestionGroup("New Group " + newGroupIndex);
+
+            return View("SurveyDesign", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(SurveyViewModel viewModel)
+        {
+            return View(viewModel);
         }
     }
 }

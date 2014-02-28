@@ -7,7 +7,7 @@
 }
 
 @font-face {
-		font-weight: normal;
+		font-weight: bold;
 		font-style: normal;
 		font-family: 'ecoicons';
 		src: url("/content/ecoicons/ecoicons.eot");
@@ -41,7 +41,8 @@
 .gn-menu-main a {
 		display: block;
 		height: 100%;
-		color: #5f6f81;
+		/*color: #5f6f81;*/
+        color: #ffffff;
 		text-decoration: none;
 		cursor: pointer;
 }
@@ -147,7 +148,8 @@ input.gn-search {
 		outline: none;
 		border: none;
 		background: transparent;
-		color: #5f6f81;
+		/*color: #5f6f81;*/
+        color: #ffffff;
 		font-weight: 300;
 		font-family: 'Lato', Arial, sans-serif;
 		cursor: pointer;
@@ -168,7 +170,8 @@ input.gn-search {
 }
 
 .gn-search:-ms-input-placeholder {
-		color: #5f6f81
+		/*color: #5f6f81*/
+        color: white
 }
 
 /* hide placeholder when active in Chrome */

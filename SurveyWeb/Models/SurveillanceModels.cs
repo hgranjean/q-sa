@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Surveillance;
@@ -74,7 +75,7 @@ namespace SurveyWeb.Models
         [Display(Name = "Date")]
         public string SurveyDate { get; set; }
 
-        //         [Required] AS - Notes are required?
+        // [Required] AS - Are notes required?
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
@@ -88,17 +89,21 @@ namespace SurveyWeb.Models
         [Display(Name = "Survey Type")]
         public int SurveyTypeId { get; set; }
         public List<SurveyType> SurveyTypes { get; set; }
-
         
-
         public QuestionGroupsViewModel QuestionGroups { get; set; }
         public List<QuestionViewModel> Questions { get; set; }
-        public List<string> Responses { get; set; }
-        
+        public int SelectedResponse { get; set; }
 
+        [Range(1,999, ErrorMessage = "Please choice a response.")]
+        public List<ResponseViewModel> Responses { get; set; }
     }
 
-    
+    public class ResponseViewModel
+    {
+        public int ResponseId { get; set; }
+        public int NextQuestionId { get; set; }
+        public string ResponseDisplayText { get; set; }
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -109,19 +114,13 @@ namespace SurveyWeb.Models
         {
             this.Title = item.Value.Title;
 //          this.Title = item.Value.Number.ToString() + item.Value.Title;
-            this.AddRange(loadQuestionModels(item.Value.Questions));
+            this.AddRange(LoadQuestionModels(item.Value.Questions));
     
         }
 
-        private IEnumerable<QuestionViewModel> loadQuestionModels(Questions questions)
+        private IEnumerable<QuestionViewModel> LoadQuestionModels(Questions questions)
         {
-            List<QuestionViewModel> retVal = new List<QuestionViewModel>();
-            foreach (var item in questions)
-            {
-                retVal.Add(new QuestionViewModel(item));
-            }
-            return retVal;
-
+            return questions.Select(item => new QuestionViewModel(item)).ToList();
         }
 
 
@@ -138,14 +137,14 @@ namespace SurveyWeb.Models
         {
             // TODO: Complete member initialization
             this.questionGroups = questionGroups;
-            setGroupValues(questionGroups);
+            SetGroupValues(questionGroups);
         }
 
-        private void setGroupValues(QuestionGroups questionGroups)
+        private void SetGroupValues(QuestionGroups questionGroups)
         {
             foreach (var item in questionGroups)
             {
-                Group group = new Group(item);
+                var group = new Group(item);
                 this.Add(group);
             };
         }
@@ -154,9 +153,9 @@ namespace SurveyWeb.Models
 
     public class QuestionViewModel
     {
-        public Atum.Domain.Surveillance.Question Question { get; set; }
+        public Question Question { get; set; }
 
-        public QuestionViewModel(Atum.Domain.Surveillance.Question question)
+        public QuestionViewModel(Question question)
         {
             Question = question;
             Choices = question.ResponseChoices;
@@ -166,8 +165,6 @@ namespace SurveyWeb.Models
         public int Number { get; set; }
 
         public List<ResponseChoice> Choices { get; set; }
-
-        
     }
 
     public class TracerType { }

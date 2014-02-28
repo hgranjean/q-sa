@@ -408,6 +408,9 @@
     <Content Include="Views\Hospital\Index.cshtml" />
     <Content Include="Views\Hospital\UserHospitalEdit.cshtml" />
     <Content Include="Views\Hospital\UserHospitalIndex.cshtml" />
+    <Content Include="Views\Surveillance\CreateQuestionGroup.cshtml" />
+    <Content Include="Views\Surveillance\QuestionGroupIndex.cshtml" />
+    <Content Include="Views\Surveillance\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

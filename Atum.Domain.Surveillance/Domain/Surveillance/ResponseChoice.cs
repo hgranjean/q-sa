@@ -23,5 +23,10 @@ namespace Atum.Domain.Surveillance
         {
             throw new NotImplementedException();
         }
+
+        public void SetIdInternal(long id)
+        {
+            _id = id;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿@model SurveyWeb.Models.SurveyViewModel
+﻿@using Atum.Domain.Surveillance
+@using SurveyWeb.Models
+@model SurveyWeb.Models.SurveyViewModel
 @{
     ViewBag.Title = "Surveillance Template Design";
 }
@@ -15,16 +17,26 @@
 
     <fieldset>
         <legend>@Model.Survey.Title </legend>
-        @foreach (var group in Model.Survey.QuestionGroups)
-        {
-            <div><span>Group-</span>  @group.Key.ToString()</div>
-            foreach (var question in group.Value.Questions)
-            {
-                <div><span>@question.Number</span>-<span>@question.Text</span></div>
-            }
-        }
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Survey.SurveyType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Survey.SurveyType,
+                                  new SelectList(EnumUtils.GetEnumerableItems(typeof (SurveyType)),
+                                                 "Value", "Text"))
+        </div>
+        
+        <h3>Question groups</h3>
+        <div>
+            @if (Model != null)
+            {
+                @Html.Partial("QuestionGroupIndex", Model)
+            }
+        </div>
+        <div>&nbsp;</div>
         <input type="submit" value="Save" />
+        @Html.ActionLink("Cancel", "Surveys", "Surveillance")
     </fieldset>
 }
 
