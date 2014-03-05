@@ -209,6 +209,7 @@
     <Compile Include="Models\AssessmentModels.cs" />
     <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\QuestionGroupsViewModelBinder.cs" />
     <Compile Include="Models\SurveillanceModels.cs" />
     <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -407,7 +408,7 @@
     <Content Include="Views\Hospital\UserHospitalEdit.cshtml" />
     <Content Include="Views\Hospital\UserHospitalIndex.cshtml" />
     <Content Include="Views\Surveillance\CreateQuestionGroup.cshtml" />
-    <Content Include="Views\Surveillance\QuestionGroupIndex.cshtml" />
+    <Content Include="Views\Surveillance\EditorTemplates\QuestionGroupViewModel.cshtml" />
     <Content Include="Views\Surveillance\Save.cshtml" />
     <Content Include="Views\Surveillance\EditQuestionGroup.cshtml" />
   </ItemGroup>

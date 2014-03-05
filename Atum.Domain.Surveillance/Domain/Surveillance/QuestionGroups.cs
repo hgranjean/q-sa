@@ -6,7 +6,10 @@ namespace Atum.Domain.Surveillance
 {
     [Serializable]
     public class QuestionGroups : SortedList<int, QuestionGroup>, IXmlSerializable
-    {
+    {   
+        public QuestionGroups()
+        {}
+        
         #region IXmlSerializable Members
         public System.Xml.Schema.XmlSchema GetSchema()
         {

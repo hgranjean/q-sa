@@ -33,7 +33,7 @@ namespace SurveyWeb.Models
         public TracerViewModel(Survey survey)
         {
             this.Survey = survey;
-            this.QuestionGroups = new QuestionGroupsViewModel(survey.QuestionGroups);
+            this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
             this.SurveyDate = DateTime.Today.ToShortDateString();
         }
 
@@ -129,25 +129,34 @@ namespace SurveyWeb.Models
 		
 	}
     
-    public class QuestionGroupsViewModel : List<Group>
+    public class QuestionGroupsViewModel : List<QuestionGroupViewModel>
     {
-        private QuestionGroups questionGroups;
+        public QuestionGroups QuestionGroups { get; set; }
 
-        public QuestionGroupsViewModel(QuestionGroups questionGroups)
+        public QuestionGroupsViewModel()
         {
-            // TODO: Complete member initialization
-            this.questionGroups = questionGroups;
+        }
+
+        public QuestionGroupsViewModel(string surveyId, QuestionGroups questionGroups)
+        {
+            this.SurveyId = surveyId;
+            this.QuestionGroups = questionGroups;
             SetGroupValues(questionGroups);
         }
 
         private void SetGroupValues(QuestionGroups questionGroups)
         {
+            var i = 0;
             foreach (var item in questionGroups)
             {
-                var group = new Group(item);
+                var group = new QuestionGroupViewModel { Number = item.Key, QuestionGroup = item.Value, SurveyId = this.SurveyId};
                 this.Add(group);
+
+                i++;
             };
         }
+
+        public string SurveyId { get; set; }
         
     }
 

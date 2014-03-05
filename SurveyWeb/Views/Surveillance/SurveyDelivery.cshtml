@@ -115,7 +115,7 @@
                     <div id="groupTitle" style="display:table-cell;font-weight:bold;width:20%">@*group.Title*@</div>
                 </div>
                 
-                var questions = group;
+                var questions = group.QuestionGroup.Questions;
                 for (int qIndex = 0, i = 0; i < questions.ToArray().Length; i++)
                 {
                     var question = questions[i];
@@ -123,12 +123,12 @@
                     <div id="choiceGroup" style="display: table-row-group">
                         <div style="display:table-row;width:100%">
                             <!--<div id="questionLabel" style="font-weight:bold"></div>-->
-                            <div id="questionText" style="display:table-cell;">@question.Question.Text</div>
+                            <div id="questionText" style="display:table-cell;">@question.Text</div>
                         </div>
                             
                         <div style="display:table-row;width:100%">
                             <div style="display:table-cell"></div>
-                                @foreach (var choice in question.Choices)
+                                @foreach (var choice in question.ResponseChoices)
                                 {
                                     var key = choice.ID;
                                     var j = qIndex++;
@@ -136,9 +136,9 @@
                                     <div style="display:table-cell">@Html.RadioButtonFor(m => m.Responses[int.Parse(key.ToString())], key, new { id = "Response" + key, name = "Response" + i, @class = "sur-choice" })</div>
                                 }
 
-                            @if (question.Question.BasisReference != null)
+                            @if (question.BasisReference != null)
                                 {
-                                    <div id="questionBasis" style="display: table-cell">@Html.ActionLink(question.Question.BasisReference.Title, "ViewReference")</div>
+                                    <div id="questionBasis" style="display: table-cell">@Html.ActionLink(question.BasisReference.Title, "ViewReference")</div>
                                 }
                                 else
                                 {

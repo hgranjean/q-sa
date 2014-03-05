@@ -12,7 +12,7 @@ namespace Atum.Domain.Surveillance
     /// 
     /// </summary>
     [Serializable]
-    public class Survey : DomainObject
+    public class Survey : DomainObject, IEquatable<Survey>
     {
         private readonly SurveyStrategy surveyStrategy;
 
@@ -27,9 +27,10 @@ namespace Atum.Domain.Surveillance
 
         public Survey()
         {
+            SetId(-1);
         }
 
-        public Survey(string title)
+        public Survey(string title) : this()
         {
             this.Title = title;
         }
@@ -161,6 +162,16 @@ namespace Atum.Domain.Surveillance
             {
                 get { return Current; }
             }
+        }
+
+        public bool Equals(Survey other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            return other.ID == this.ID;
         }
     }
 }

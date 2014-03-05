@@ -6,7 +6,8 @@ namespace SurveyWeb.Models
     public class SurveyViewModel : ViewModelBase
     {
         public string Name { get; set; }
-        public Survey Survey { get; private set; }
+        public Survey Survey { get; set; }
+        public QuestionGroupsViewModel QuestionGroupsViewModel { get; set; }
 
         public SurveyViewModel()
         {
@@ -23,9 +24,9 @@ namespace SurveyWeb.Models
             {
                 this.Survey.AddQuestionGroup("One");
             }
+
+            this.QuestionGroupsViewModel = new QuestionGroupsViewModel(this.Survey.ID.ToString(), this.Survey.QuestionGroups);
         }
-
-
         
         public static IEnumerable<Survey> GetSurveys()
         {
@@ -34,6 +35,17 @@ namespace SurveyWeb.Models
 
         public void Save()
         {
+            // Restore items from viewmodel
+
+            var questionGroups = new QuestionGroups();
+
+            foreach (var qgvm in QuestionGroupsViewModel)
+            {
+                questionGroups.Add(qgvm.Number, qgvm.QuestionGroup);    
+            }
+            
+            this.Survey.QuestionGroups = questionGroups;
+
             SurveillanceServices.Save(this.Survey);
         }
 
@@ -50,27 +62,20 @@ namespace SurveyWeb.Models
         }
     }
 
-    public class SurveyViewModels : List<Survey>
-    {
-
-    }
-
     public class QuestionGroupViewModel : ViewModelBase
     {
         public string SurveyId { get; set; }
         public int Number { get; set; }
         public QuestionGroup QuestionGroup { get; set; }
-        public Questions Questions { get; set; }
 
         public QuestionGroupViewModel()
         {
-            
+            this.QuestionGroup = new QuestionGroup();
         }
 
         public QuestionGroupViewModel(QuestionGroup questionGroup)
         {
             this.QuestionGroup = questionGroup;
-            this.Questions = questionGroup.Questions;
             this.Number = questionGroup.Number;
         }
     }

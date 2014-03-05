@@ -1,0 +1,49 @@
+﻿@model SurveyWeb.Models.QuestionGroupViewModel
+
+@Html.Hidden("ModelType", Model.GetType())
+ 
+<div>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model)
+            @Html.HiddenFor(model => model.SurveyId)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model.QuestionGroup != null)
+    {
+        @Html.HiddenFor(model => model.Number)
+        <tr>
+            <td colspan="2">
+                <div><span>Group-</span>@Html.DisplayFor(modelItem => Model.Number)
+                    @Html.ActionLink("Edit", "EditQuestionGroup", new {surveyId = Model.SurveyId, groupId = Model.Number}) |
+                    @Html.ActionLink("Delete", "DeleteQuestionGroup", new {surveyId = Model.SurveyId, groupId = Model.Number})
+                </div>
+            </td>
+        </tr>
+
+        if (Model.QuestionGroup.Questions != null)
+        {
+            for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
+            {
+                @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Number)
+                @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Text)
+
+                <tr>
+                    <td>
+               
+                        <div>
+                            <span>@Html.DisplayFor(m => Model.QuestionGroup.Questions[i].Number)</span>-
+                            <span>@Html.DisplayFor(m => Model.QuestionGroup.Questions[i].Text)</span>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    }   
+
+
+</table>
+</div>

@@ -6,7 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Atum.Domain.Surveillance;
 using SurveyWeb;
+using SurveyWeb.Models;
 
 namespace SurveyWeb
 {
@@ -24,6 +26,9 @@ namespace SurveyWeb
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            // Custom binders
+            // ModelBinders.Binders.Add(typeof(QuestionGroupsViewModel), new QuestionGroupsViewModelBinder());
         }
     }
 }

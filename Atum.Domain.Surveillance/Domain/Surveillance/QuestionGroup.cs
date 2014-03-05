@@ -8,7 +8,7 @@ namespace Atum.Domain.Surveillance
         public String Title { get; set; }
         public int Number { get; set; }
 
-        protected QuestionGroup()
+        public QuestionGroup()
         {
         }
 

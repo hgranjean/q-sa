@@ -65,7 +65,7 @@ namespace MvcApplication1.Controllers
 
             return View(model);            
         }
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -312,23 +312,29 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
         {
-            if (viewModel.Survey.QuestionGroups == null)
-            {
-                viewModel.Survey.QuestionGroups = new QuestionGroups();
-            }
-            int newGroupIndex = viewModel.Survey.QuestionGroups.Count() + 1;
+            var survey = SurveillanceServices.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
 
-            viewModel.Survey.AddQuestionGroup("New Group " + newGroupIndex);
+            if (survey.QuestionGroups == null)
+            {
+                survey.QuestionGroups = new QuestionGroups();
+            }
+            int newGroupIndex = survey.QuestionGroups.Count() + 1;
+
+            survey.AddQuestionGroup("New Group " + newGroupIndex);
+
+            viewModel = new SurveyViewModel(survey);
+
+            viewModel.Save();
 
             return View("SurveyDesign", viewModel);
         }
 
         [HttpPost]
-        public ActionResult SaveDesign(SurveyViewModel viewModel)
+        public ActionResult Save(SurveyViewModel viewModel)
         {
             viewModel.Save();
 
-            return Surveys();
+            return View();
         }
 
         public ActionResult EditQuestionGroup(string surveyId, string groupId)
@@ -337,7 +343,11 @@ namespace MvcApplication1.Controllers
 
             ViewBag.QuestionGroupId = groupId;
 
-            return View(new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)]){Number = int.Parse(groupId)});
+            return View(new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
+                {
+                    SurveyId = surveyId,
+                    Number = int.Parse(groupId)
+                });
         }
 
         [HttpPost]
@@ -345,9 +355,29 @@ namespace MvcApplication1.Controllers
         {
             var survey = SurveillanceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
-            survey.QuestionGroups[viewModel.Number].Questions = viewModel.Questions;
+            if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
+            {
+                survey.QuestionGroups[viewModel.Number].Questions = viewModel.QuestionGroup.Questions;
+            }
 
-            return View("SurveyDesign", new SurveyViewModel(survey));
+            var surveyViewModel = new SurveyViewModel(survey);
+
+            surveyViewModel.Save();
+
+            return View("SurveyDesign", surveyViewModel);
+        }
+
+        public ActionResult AddQuestion(string surveyId, string questionGroupId)
+        {
+            var survey = SurveillanceServices.GetSurvey(Convert.ToInt32(surveyId));
+
+            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
+
+            questionGroup.AddQuestion(string.Empty, QuestionType.SelectOne);
+
+            new SurveyViewModel(survey).Save();
+
+            return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup){SurveyId = surveyId});
         }
     }
 }

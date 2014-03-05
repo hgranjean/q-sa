@@ -57,7 +57,7 @@ namespace SurveyWeb
         /// <returns></returns>
         public static Survey GetSurvey(int id)
         {
-            return new Survey();
+            return GetSurveys().FirstOrDefault(survey => survey.ID == id);
         }
 
 
@@ -76,18 +76,22 @@ namespace SurveyWeb
             {
                 surveys.Add(survey);
             }
+            else
+            {
+                surveys[surveys.IndexOf(survey)] = survey;
+            }
 
             var appPath = GetAppPath();
 
-            //if (survey.ID == -1)
-            //{
-            //    survey.AssignNextId(EnumerateSurveys().Count());
-            //}
+            if (survey.ID == -1)
+            {
+                survey.AssignNextId(EnumerateSurveys().Count());
+            }
 
-            //using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID)))
-            //{
-            //    XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
-            //}
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID + ".xml")))
+            {
+                XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
+            }
         }
 
         private static string[] EnumerateSurveys()
