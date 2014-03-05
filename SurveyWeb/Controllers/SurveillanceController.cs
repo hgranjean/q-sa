@@ -29,14 +29,14 @@ namespace MvcApplication1.Controllers
             var surveys = SurveyViewModel.GetSurveys();
 
             // Initialize model with some dummy templates
-            var model = new SurveysViewModel { Surveys = new Surveys
+            /*var model = new SurveysViewModel { Surveys = new Surveys
                         {
                             LoadSurvey("Survey Template 1"),
                             LoadSurvey("Survey Template 2"),
                         }
-                };
+                };*/
 
-            model.Surveys.AddRange(surveys);
+            var model = new SurveyViewModel(surveys);
             
             return View(model);
         }

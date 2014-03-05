@@ -16,7 +16,7 @@ namespace SurveyWeb.Models
 
         public SurveyViewModel(Survey survey)
         {
-            this.Name = this.Name ;//?? "Survey" + survey.ID;
+            this.Name = survey.Title;//?? "Survey" + survey.ID;
             this.Survey = survey;
             
 
