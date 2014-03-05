@@ -36,7 +36,8 @@ namespace MvcApplication1.Controllers
                         }
                 };*/
 
-            var model = new SurveyViewModel(surveys);
+            var model = new SurveysViewModel { Surveys = new Surveys() };
+            model.Surveys.AddRange(surveys);
             
             return View(model);
         }
