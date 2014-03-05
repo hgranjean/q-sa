@@ -75,15 +75,27 @@ namespace MvcApplication1.Controllers
         public ActionResult SurveyDelivery(int? surveyId)
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
-            var model = LoadTracerViewModel();
+            var model = LoadTracerViewModel(surveyId);
             
             return View(model);
         }
 
-        private TracerViewModel LoadTracerViewModel()
+        private TracerViewModel LoadTracerViewModel(int? surveyId)
         {
-
             Survey survey = LoadSurvey("Survey Template 1");
+            if (surveyId.HasValue)
+            {
+                survey = SurveillanceServices.GetSurvey(surveyId.Value);
+
+                foreach (var questionGroup in survey.QuestionGroups)
+                {
+                    foreach (var question in questionGroup.Value.Questions)
+                    {
+                        setQuestionChoices(question);
+                    }
+                }
+            }
+            
             TracerViewModel retVal = new TracerViewModel(survey);
             retVal.Buildings = LoadBuildings();
             retVal.Facilities = LoadFacilities();
