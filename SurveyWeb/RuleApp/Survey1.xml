@@ -1,1 +1,65 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><ID>1</ID><Title>Survey Template 1</Title><SurveyType>Audit</SurveyType><QuestionGroups><item><key><int>1</int></key><value><QuestionGroup><Number>0</Number><Questions><Question><ID>0</ID><Text>My Question Text</Text><Number>1</Number><Rank>0</Rank><QuestionType>YesNo</QuestionType></Question><Question><ID>0</ID><Text>My YesNo Question Text</Text><Number>2</Number><Rank>0</Rank><QuestionType>YesNo</QuestionType></Question><Question><ID>0</ID><Text>My TrueFalse Question Text</Text><Number>3</Number><Rank>0</Rank><QuestionType>YesNo</QuestionType></Question><Question><ID>0</ID><Text>My SelectOne Question Text</Text><Number>4</Number><Rank>0</Rank><QuestionType>YesNo</QuestionType></Question><Question><ID>0</ID><Text>My SelectMultiple Question Text</Text><Number>5</Number><Rank>0</Rank><QuestionType>YesNo</QuestionType></Question></Questions></QuestionGroup></value></item><item><key><int>2</int></key><value><QuestionGroup><Number>0</Number></QuestionGroup></value></item></QuestionGroups></Survey>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>1</ID>
+  <Title>Survey Template 1</Title>
+  <SurveyType>Audit</SurveyType>
+  <QuestionGroups>
+    <item>
+      <key>
+        <int>1</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Number>0</Number>
+          <Questions>
+            <Question>
+              <ID>0</ID>
+              <Text>My Question Text</Text>
+              <Number>1</Number>
+              <Rank>0</Rank>
+              <QuestionType>YesNo</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My YesNo Question Text</Text>
+              <Number>2</Number>
+              <Rank>0</Rank>
+              <QuestionType>YesNo</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My TrueFalse Question Text</Text>
+              <Number>3</Number>
+              <Rank>0</Rank>
+              <QuestionType>YesNo</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My SelectOne Question Text</Text>
+              <Number>4</Number>
+              <Rank>0</Rank>
+              <QuestionType>YesNo</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My SelectMultiple Question Text</Text>
+              <Number>5</Number>
+              <Rank>0</Rank>
+              <QuestionType>YesNo</QuestionType>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>2</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Number>0</Number>
+        </QuestionGroup>
+      </value>
+    </item>
+  </QuestionGroups>
+</Survey>

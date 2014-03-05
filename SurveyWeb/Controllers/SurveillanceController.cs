@@ -91,6 +91,7 @@ namespace MvcApplication1.Controllers
                 {
                     foreach (var question in questionGroup.Value.Questions)
                     {
+                        question.ResponseChoices.Clear();
                         setQuestionChoices(question);
                     }
                 }
