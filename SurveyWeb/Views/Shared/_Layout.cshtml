@@ -35,7 +35,7 @@
                                 <li>@Html.ActionLink("Conduct a survey", "SurveyDelivery", "Surveillance", null, new { @class = "gn-icon gn-icon-archive" })</li>
 						        
                                 <li>
-                                    <a class="gn-icon gn-icon-download">Reports</a>
+                                    @Html.ActionLink("Reports", "Index", "Report", null, new { @class = "gn-icon gn-icon-download" })
                                     <!--<ul class="gn-submenu">9
                                             <li><a class="gn-icon gn-icon-illustrator">Surveys</a></li>
                                             <li><a class="gn-icon gn-icon-photoshop">Others</a></li>
@@ -77,7 +77,7 @@
             @RenderBody()
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - The Mikhalik Group</p>
+                <p>&copy; @DateTime.Now.Year - Atum Solutions, LLC</p>
             </footer>
         </div>
     

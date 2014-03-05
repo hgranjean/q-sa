@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
     <Compile Include="Controllers\TableOfContents.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
@@ -411,6 +412,7 @@
     <Content Include="Views\Surveillance\EditorTemplates\QuestionGroupViewModel.cshtml" />
     <Content Include="Views\Surveillance\Save.cshtml" />
     <Content Include="Views\Surveillance\EditQuestionGroup.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />
