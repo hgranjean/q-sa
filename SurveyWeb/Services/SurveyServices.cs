@@ -111,5 +111,23 @@ namespace SurveyWeb
             appPath = appPath.Substring(0, binPos) + @"\RuleApp\";
             return appPath;
         }
+
+        internal static void DeleteSurvey(string id)
+        {   
+            var toDelete = surveys.FirstOrDefault(survey => survey.ID == Int32.Parse(id));
+            if (surveys.Contains(toDelete))
+            {
+                surveys.Remove(toDelete);
+            }
+
+            var appPath = GetAppPath();
+
+            var fullPath = Path.Combine(appPath, "survey" + toDelete.ID + ".xml");
+            
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);    
+            }
+        }
     }
 }

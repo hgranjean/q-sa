@@ -42,6 +42,23 @@ namespace MvcApplication1.Controllers
             return View(model);
         }
 
+        public ActionResult SurveySchedules()
+        {
+            var surveys = SurveyViewModel.GetSurveys();
+
+            var model = new SurveysViewModel { Surveys = new Surveys() };
+            model.Surveys.AddRange(surveys);
+
+            return Surveys();
+        }
+
+        public ActionResult DeleteSurvey(string id)
+        {
+            SurveillanceServices.DeleteSurvey(id);
+
+            return RedirectToAction("Surveys");
+        }
+
         /// <summary>
         /// 
         /// </summary>

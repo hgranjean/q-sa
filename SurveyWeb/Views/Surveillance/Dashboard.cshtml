@@ -10,7 +10,7 @@
     <div>
         <div><h3>Assessment Administrator Dashboard</h3></div>
         <div>@Html.ActionLink("Templates", "Surveys")</div>
-        <div>@Html.ActionLink("Schedules", "SurveySchedule+s")</div>
+        <div>@Html.ActionLink("Schedules", "SurveySchedules")</div>
         <div>@Html.ActionLink("Completed Assessments", "Surveys")</div>
         <div>@Html.ActionLink("Pass Due Assessments", "Surveys")</div>
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
@@ -22,7 +22,7 @@ else if (User.IsInRole("Surveyor"))
 
     <div>
         <div><h3>Surveyor Dashboard</h3></div>
-        <div>@Html.ActionLink("Scheduled", "SurveySchedule+s")</div>
+        <div>@Html.ActionLink("Scheduled", "SurveySchedules")</div>
         <div>@Html.ActionLink("Completed Assessments", "Surveys")</div>
         <div>@Html.ActionLink("Pass Due Assessments", "Surveys")</div>
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
