@@ -118,7 +118,6 @@
     <Compile Include="Domain\Common\Document.cs" />
     <Compile Include="Domain\Common\DocumentType.cs" />
     <Compile Include="Domain\Common\Environment.cs" />
-    <Compile Include="Domain\Common\Floor.cs" />
     <Compile Include="Domain\Common\Frequency.cs" />
     <Compile Include="Domain\Common\Floor.cs" />
     <Compile Include="Domain\Common\TableOfContents.cs" />
