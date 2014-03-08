@@ -12,7 +12,7 @@ namespace Atum.Domain.Surveillance
     /// 
     /// </summary>
     [Serializable]
-    public class Survey : DomainObject// : IEnumerable<Question>
+    public class Survey : DomainObject, IEquatable<Survey>
     {
         private readonly SurveyStrategy surveyStrategy;
 
@@ -27,16 +27,17 @@ namespace Atum.Domain.Surveillance
 
         public Survey()
         {
+            SetId(-1);
         }
 
-        public Survey(string title)
+        public Survey(string title) : this()
         {
             this.Title = title;
         }
 
         protected override void SetId(long id)
         {
-            _id = id;
+            ID = id;
         }
 
 
@@ -110,12 +111,7 @@ namespace Atum.Domain.Surveillance
         {   
             return new QuestionEnumerator(null);
         }
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return new QuestionEnumerator(null);
-        //}
-
+        
         public class QuestionEnumerator : IEnumerator<Question>
         {
             private SurveyManager _manager;
@@ -166,6 +162,16 @@ namespace Atum.Domain.Surveillance
             {
                 get { return Current; }
             }
+        }
+
+        public bool Equals(Survey other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            return other.ID == this.ID;
         }
     }
 }

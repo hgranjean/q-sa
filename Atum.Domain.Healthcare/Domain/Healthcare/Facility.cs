@@ -28,7 +28,7 @@ namespace Atum.Domain.Healthcare
 
         protected override void SetId(long id)
         {
-            base._id = id;
+            ID = id;
         }
 
     	//Attributes go here.

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - The Mikhalik Group</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/component.css", "~/Content/Demo.css", "~/Content/Normalize.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/classie.js")
+	@Scripts.Render("~/Scripts/gnmenu.js")
+</head>
+    <body>
+        
+        @RenderSection("scripts", required: false)
+        @RenderSection("featured", required: false) 
+        
+        <div class="container navbar-left">
+            <ul id="gn-menu" class="gn-menu-main">
+                <li class="gn-trigger">
+                    <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                    <nav class="gn-menu-wrapper">
+                        <div class="gn-scroller">
+                            <ul class="gn-menu">
+                                <li class="gn-search-item">
+                                    <input placeholder="Search" type="search" class="gn-search" />
+                                    <a class="gn-icon gn-icon-search"><span>Search</span></a>
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Dashboard", "Dashboard", "Surveillance", null, new { @class = "gn-icon gn-icon-earth" })
+                                </li>
+                                <li>@Html.ActionLink("Create templates", "Surveys", "Surveillance", null, new { @class = "gn-icon gn-icon-article" })</li>
+                                <li>@Html.ActionLink("Conduct a survey", "SurveySchedules", "Surveillance", null, new { @class = "gn-icon gn-icon-archive" })</li>
+						        
+                                <li>
+                                    @Html.ActionLink("Reports", "Index", "Report", null, new { @class = "gn-icon gn-icon-download" })
+                                    <!--<ul class="gn-submenu">9
+                                            <li><a class="gn-icon gn-icon-illustrator">Surveys</a></li>
+                                            <li><a class="gn-icon gn-icon-photoshop">Others</a></li>
+                                        </ul>-->
+                                </li>
+                                <li>@Html.ActionLink("Settings", "Settings", "Home", null, new { @class = "gn-icon gn-icon-cog" })</li>
+                                <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "gn-icon gn-icon-help" })</li>
+                            </ul>
+                        </div><!-- /gn-scroller -->
+                    </nav>
+                </li>
+                <li>&nbsp;</li>
+			</ul>
+        </div>
+        
+        <script>
+            new gnMenu(document.getElementById('gn-menu'));
+		</script>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Atum Quality Solutions", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Atum Solutions, LLC</p>
+            </footer>
+        </div>
+    
+    </body>
+</html>

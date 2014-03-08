@@ -8,6 +8,8 @@ namespace Atum.Domain.Surveillance
     {
         //public Question PreviousQuestion { get; set; }
 
-
+        public Questions()
+        {   
+        }
     }
 }

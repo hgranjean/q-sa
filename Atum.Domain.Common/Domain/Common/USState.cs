@@ -49,7 +49,7 @@ namespace Atum.Domain.Common
 
         protected override void SetId(long id)
         {
-            base._id = id;
+            ID = id;
         }
         
         public override string ToString()

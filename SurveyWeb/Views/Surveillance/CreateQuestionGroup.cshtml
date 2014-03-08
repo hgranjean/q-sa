@@ -4,13 +4,15 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-@using (Html.BeginForm("CreateQuestionGroupComplete", "Surveillance", FormMethod.Post))
+@using (Html.BeginForm("CreateQuestionGroup", "Surveillance", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>QueryCategory</legend>
+
+        @Html.HiddenFor(m => m.Survey.ID)
 
         <p>
             <input type="submit" value="Create" />

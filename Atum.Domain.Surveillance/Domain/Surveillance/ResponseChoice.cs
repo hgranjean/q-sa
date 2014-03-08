@@ -26,7 +26,7 @@ namespace Atum.Domain.Surveillance
 
         public void SetIdInternal(long id)
         {
-            _id = id;
+            ID = id;
         }
     }
 }

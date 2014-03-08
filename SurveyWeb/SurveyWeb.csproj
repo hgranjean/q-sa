@@ -179,14 +179,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdministerAssessmentController.cs" />
     <Compile Include="Controllers\AssessmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
-    <Compile Include="Controllers\SurveillanceManagementController.cs" />
-    <Compile Include="Controllers\SurveyDesignController.cs" />
-    <Compile Include="Controllers\TableOfContents.cs" />
     <Compile Include="Controllers\TableOfContents.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
       <AutoGen>True</AutoGen>
@@ -212,6 +209,7 @@
     <Compile Include="Models\AssessmentModels.cs" />
     <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\QuestionGroupsViewModelBinder.cs" />
     <Compile Include="Models\SurveillanceModels.cs" />
     <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,9 +219,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="App_Data\aspnet-SurveyWebApp-20140128065722.mdf" />
     <Content Include="App_Data\aspnet-SurveyWebApp-20140128065722_log.ldf">
       <DependentUpon>aspnet-SurveyWebApp-20140128065722.mdf</DependentUpon>
@@ -400,15 +395,9 @@
     <Content Include="Views\Surveillance\SurveyDelivery.cshtml" />
     <Content Include="Views\Surveillance\SurveyDesign.cshtml" />
     <Content Include="Views\Surveillance\SurveyProcessing.cshtml" />
-    <Content Include="Views\AdministerAssessment\Create.cshtml" />
-    <Content Include="Views\AdministerAssessment\Index.cshtml" />
-    <Content Include="Views\AdministerAssessment\QuestionGroupCreate.cshtml" />
-    <Content Include="Views\AdministerAssessment\QuestionGroupIndex.cshtml" />
     <Content Include="Views\Surveillance\Surveys.cshtml" />
     <Content Include="Views\Surveillance\ViewReference.cshtml" />
     <Content Include="Views\Surveillance\Dashboard.cshtml" />
-    <Content Include="Views\Surveillance\SurveyQuestion.cshtml" />
-    <Content Include="Views\SurveillanceManagement\Schedules.cshtml" />
     <Content Include="Views\Home\Settings.cshtml" />
     <Content Include="Views\Hospital\Create.cshtml" />
     <Content Include="Views\Hospital\Delete.cshtml" />
@@ -418,8 +407,11 @@
     <Content Include="Views\Hospital\UserHospitalEdit.cshtml" />
     <Content Include="Views\Hospital\UserHospitalIndex.cshtml" />
     <Content Include="Views\Surveillance\CreateQuestionGroup.cshtml" />
-    <Content Include="Views\Surveillance\QuestionGroupIndex.cshtml" />
+    <Content Include="Views\Surveillance\EditorTemplates\QuestionGroupViewModel.cshtml" />
     <Content Include="Views\Surveillance\Save.cshtml" />
+    <Content Include="Views\Surveillance\EditQuestionGroup.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Surveillance\SurveySchedules.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

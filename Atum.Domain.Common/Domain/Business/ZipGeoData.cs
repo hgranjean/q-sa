@@ -23,7 +23,7 @@ namespace Atum.Domain.Business
 
         protected override void SetId(long Id)
         {
-            this._id = Id;
+            ID = Id;
         }
     }
 }

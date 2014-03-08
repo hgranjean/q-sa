@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Survey xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>1</ID>
+  <Title>Survey Template 1</Title>
   <SurveyType>Audit</SurveyType>
   <QuestionGroups>
     <item>
@@ -8,73 +10,42 @@
       </key>
       <value>
         <QuestionGroup>
-          <Number>1</Number>
+          <Number>0</Number>
           <Questions>
             <Question>
+              <ID>0</ID>
               <Text>My Question Text</Text>
               <Number>1</Number>
               <Rank>0</Rank>
-              <BasisReference>
-                <Title>Element Title</Title>
-                <Level>0</Level>
-              </BasisReference>
-              <QuestionType>OpenText</QuestionType>
+              <QuestionType>YesNo</QuestionType>
             </Question>
             <Question>
+              <ID>0</ID>
               <Text>My YesNo Question Text</Text>
               <Number>2</Number>
               <Rank>0</Rank>
               <QuestionType>YesNo</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <Text>Yes</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <Text>No</Text>
-                </ResponseChoice>
-              </ResponseChoices>
             </Question>
             <Question>
+              <ID>0</ID>
               <Text>My TrueFalse Question Text</Text>
               <Number>3</Number>
               <Rank>0</Rank>
-              <QuestionType>TrueFalse</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <Text>True</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <Text>False</Text>
-                </ResponseChoice>
-              </ResponseChoices>
+              <QuestionType>YesNo</QuestionType>
             </Question>
             <Question>
+              <ID>0</ID>
               <Text>My SelectOne Question Text</Text>
               <Number>4</Number>
               <Rank>0</Rank>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <Text>SelectOneChoice1</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <Text>SelectOneChoice2</Text>
-                </ResponseChoice>
-              </ResponseChoices>
+              <QuestionType>YesNo</QuestionType>
             </Question>
             <Question>
+              <ID>0</ID>
               <Text>My SelectMultiple Question Text</Text>
               <Number>5</Number>
               <Rank>0</Rank>
-              <QuestionType>SelectMultiple</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <Text>SelectMultipleChoice1</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <Text>SelectMultipleChoice2</Text>
-                </ResponseChoice>
-              </ResponseChoices>
+              <QuestionType>YesNo</QuestionType>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -86,7 +57,7 @@
       </key>
       <value>
         <QuestionGroup>
-          <Number>2</Number>
+          <Number>0</Number>
         </QuestionGroup>
       </value>
     </item>

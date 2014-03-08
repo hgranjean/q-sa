@@ -22,6 +22,10 @@ namespace Atum.Domain.Test
             //Reconsider empty constructor
             var survey = new Survey();
 
+            survey.AssignNextId(0);
+            
+            survey.Title = "Survey Template 1";
+
             ////Set Survey Type - Overwrite Survey Type
             survey.SurveyType = SurveyType.Audit;
 
@@ -98,7 +102,7 @@ namespace Atum.Domain.Test
             choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
-            //var tempFile = Path.GetTempFileName();
+            var tempFile = Path.GetTempFileName();
 
             // XmlSerializationUtility.SaveObjectToFile(tempFile, survey);
 
@@ -143,9 +147,6 @@ namespace Atum.Domain.Test
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
             //Step 4 - Responding to a Survey
-
-            
-
         }
 
         private TableOfContents loadTableOContents()
