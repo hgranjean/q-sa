@@ -1,0 +1,1073 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Survey xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SurveyType>Audit</SurveyType>
+  <Title>Environment of Care Assessment</Title>
+  <QuestionGroups>
+    <QuestionGroup>
+      <Title>Environment </Title>
+      <Question id='1' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>1</Number>
+        <Text>Ceiling tiles are in place, clean, and in good repair. Please provide room number of area not in compliance.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>  EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='2' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>2</Number>
+        <Text>Grab bars in toilet and shower areas are intact and stable.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='3' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>3</Number>
+        <Text>Light fixtures are operating properly. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='4' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>4</Number>
+        <Text>Wall light fixtures are securely fastened. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='5' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>5</Number>
+        <Text>Light fixture lens is not cracked or missing.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='6' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>6</Number>
+        <Text>Exit lights are lighted.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> LS.02.01.20 EP27</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='7' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>7</Number>
+        <Text>Electrical/signal closets are clean. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='8' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>8</Number>
+        <Text>Medical Equipment inspection stickers are in place and properly dated. Caulking is in good condition.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='9' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>9</Number>
+        <Text>Staff are familiar with Emergency Policy for Utilities Failure (electric, water, heating/steam A/C, natural gas, elevators, medical air, oxygen, nitrous oxide, nitrogen, vacuum).</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.03.01.01 EP2</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title> EM.02.01.01 EP6</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='10' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>10</Number>
+        <Text>Door sweeps installed and working properly</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='11' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>11</Number>
+        <Text>Medical Air is within proper range of 40-65 PSIG</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.05.09 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='12' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>12</Number>
+        <Text>Oxygen is within proper range of 40-65 PSIG.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.05.09 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='13' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>13</Number>
+        <Text>Nitrous Oxide is within proper range of 40-65 PSIG.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.05.09 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='14' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>14</Number>
+        <Text>Nitrogen is within proper range of 140-180 PSIG.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.05.09 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='15' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>15</Number>
+        <Text>Vacuum is within proper range of 12 inches Hg (min) </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.05.09 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='16' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>16</Number>
+        <Text>Who can turn off Oxygen? (Charge Nurse or RN)</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='17' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>17</Number>
+        <Text>Lockout/Tagout </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='18' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>18</Number>
+        <Text>There are no power strips on patient care equipment (except in the ORs).</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.01.01</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='19' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>19</Number>
+        <Text>Electrical outlets in safe working condition.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.01.01 EP3</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='20' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>20</Number>
+        <Text>Are electrical safety checks current? </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='21' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>21</Number>
+        <Text>Door sweeps installed and working properly</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='22' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>22</Number>
+        <Text>Floors are clean and in good repair. (carpet, tile, rubber, etc.) </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='23' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>23</Number>
+        <Text>Window sills, ledges, etc. are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='24' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>24</Number>
+        <Text>Durable medical equipment and furniture is clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.05.09 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='25' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>25</Number>
+        <Text>Sinks and water fountains and towel dispensers are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.06.01 EP20</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='26' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>26</Number>
+        <Text>Doors, kick plates, frames, jams, etc. are clean in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='27' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>27</Number>
+        <Text>Restroom facilities are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.01.01.01 EP1</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='28' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>28</Number>
+        <Text>Cubical and privacy curtains are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='29' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>29</Number>
+        <Text>Fans are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='30' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>30</Number>
+        <Text>Patient bedside panels are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='31' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>31</Number>
+        <Text>Housekeeping Equipment is clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.01.01 EP3</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title> EC.02.02.01</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='32' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>32</Number>
+        <Text>Lights are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='33' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>33</Number>
+        <Text>Pest control needs. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP20</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='34' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>34</Number>
+        <Text>Laundry / linens are secured. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP20</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='35' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>35</Number>
+        <Text>Hazardous chemicals are secured. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.01.01.01 EP5</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title> IC.01.04.01 EP4</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='36' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>36</Number>
+        <Text>Are vents clean and free from dust?  </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='37' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>37</Number>
+        <Text>Paper products and soap are well stocked. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title> IC.02.01.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='38' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>38</Number>
+        <Text>Storage areas are clean, neat and shelves are not overloaded. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='39' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>39</Number>
+        <Text>Floors are clean, free of dust and dirt, with a consistent high level of shine. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.06.01 EP 1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='40' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>40</Number>
+        <Text>Signage</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='41' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>41</Number>
+        <Text>Ergonomic needs of workstations. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='42' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>42</Number>
+        <Text>Walls are clean and in good repair. (vinyl, painted, other) </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='43' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>43</Number>
+        <Text>Furniture and Furnishings are safe and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.06.01 EP26</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='44' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>44</Number>
+        <Text>N95 Masks are available in all isolation (ante-room ) rooms (2 of ea. size available). </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='45' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>45</Number>
+        <Text>Window treatments are clean and in good repair. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='46' group='1'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>46</Number>
+        <Text>Wall hangings are secure and no evidence of pest infiltration.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+    </QuestionGroup>
+    <QuestionGroup>
+      <Title>Hazardous Materials and Waste Management </Title>
+      <Question id='1' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>1</Number>
+        <Text>Cleanliness of medical supply rooms. No corrugated boxes, neat/orderly, window shade down.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.06.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='2' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>2</Number>
+        <Text>Outdated medical/surgical supplies. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='3' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>3</Number>
+        <Text>Appropriate storage of medical supplies. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='4' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>4</Number>
+        <Text>Rotating supplies for outdates in medical supply.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='5' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>5</Number>
+        <Text>Equipment barcodes and are accurate. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='6' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>6</Number>
+        <Text>Medical gasses are accessible and are not blocked by equipment. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.05.09 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='7' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>7</Number>
+        <Text>Are there less than 12 oxygen tanks (e cylinders) stored in one smoke compartment (includes empties and any on carts in room)?</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP1</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title>EC.02.05.09 EP1 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='8' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>8</Number>
+        <Text>Are full oxygen tanks stored away from empty oxygen cylinders? </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='9' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>9</Number>
+        <Text>Are oxygen tanks stored safely, in racks/wheeled carriers that prevent tanks from falling over? </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='10' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>10</Number>
+        <Text>Hazardous/Infectious waste is properly bagged and labeled. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title> EC.02.02.01 EP4</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title> EC.03.01.01 EP3</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='11' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>11</Number>
+        <Text>Cylinders do not exhibit rust, corrosion, cracks or other structural deformities. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='12' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>12</Number>
+        <Text>Are oxygen cylinders stored separately from other gases, lubricants, and/or other combustibles?</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='13' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>13</Number>
+        <Text>Is patient equipment including IV poles, scales, and walkers in good repair? </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.04.01 EP3</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='14' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>14</Number>
+        <Text>Is medical equipment including IV poles, scales, and walkers and other patient equipment clean and stored correctly?</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.04.01 EP3</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title> IC.02.02.01 EP4</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='15' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>15</Number>
+        <Text>Ventilation, Temperature and Humidity are within proper ranges for Supply Storage.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.06.01 EP13</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='16' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>16</Number>
+        <Text>The hospital has processes for continually monitoring, internally reporting, and investigating medical or laboratory equipment management problems, failures, or use errors.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.04.01.01 EP1</Title>
+          </BasisReference>
+          <BasisReference>
+            <Title>EC.04.01.01 EP10</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='17' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>17</Number>
+        <Text>Hand Hygiene products (soap, foam, gel, etc) are not expired. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='18' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>18</Number>
+        <Text>Food and drinks are found only in designated areas and not around chemicals or blood or body fluids.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='19' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>19</Number>
+        <Text>Chemicals are labeled correctly with chemical/product name and hazard information (including EVS chemicals).</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='20' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>20</Number>
+        <Text>Areas that perform High Level Disinfection (HLD) can articulate what precautions are needed.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='21' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>21</Number>
+        <Text>For HLD areas – Neutralex or other approved product is available for spills.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='22' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>22</Number>
+        <Text>HLD – If Cidex OPA is used in a pan, then it is neutralized with HydeOut before disposal.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='23' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>23</Number>
+        <Text>HLD and Labs: Approved eyewashes are installed. Performance is checked weekly and documented.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='24' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>24</Number>
+        <Text>Staff that work with hazardous drugs can locate the Hazardous Drug Policy.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='25' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>25</Number>
+        <Text>Staff can locate the Safety Data Sheets (formerly MSDS sheets).</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='26' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>26</Number>
+        <Text>Staff can locate the Bloodborne Pathogens Exposure Control Plan.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='27' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>27</Number>
+        <Text>Staff can articulate how to manage a known or suspected TB patient, including respiratory protection.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='28' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>28</Number>
+        <Text>Staff can articulate the steps needed to ensure that Airborne Infection Isolation rooms have negative pressure.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='29' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>29</Number>
+        <Text>Regulated medical wastes are disposed of properly.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='30' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>30</Number>
+        <Text>Needle boxes are secured and not overfilled.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='31' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>31</Number>
+        <Text>Safety devices to prevent needle sticks are being used when available.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='32' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>32</Number>
+        <Text>Staff can demonstrate how to correctly activate the safety device (one-handed).</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='33' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>33</Number>
+        <Text>Needleless devices are used to perform blood transfers.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='34' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>34</Number>
+        <Text>Are any non-safety needles (other than medication dispensing, spinalor biopsy) being used? (Yes is NM).</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='35' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>35</Number>
+        <Text>Staff know or can find the number to call for blood or body fluid exposures.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='36' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>36</Number>
+        <Text>Staff can articulate how to clean up a minor blood spill.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='37' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>37</Number>
+        <Text>All transport containers (other than clear, zip-lock bags) and refrigerators containing blood, body fluids or pathological specimens are labeled with a biohazard sticker.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='38' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>38</Number>
+        <Text>Oxygen cylinders are secured and no more than 12 cylinders in a room in storage.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='39' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>39</Number>
+        <Text>Areas where oxygen cylinders are stored are correctly labeled, “full/in- use”, and/or “empty/return”.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='40' group='2'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>40</Number>
+        <Text>No bottles or other containers are being reused.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.02.01 </Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+    </QuestionGroup>
+    <QuestionGroup>
+      <Title>Fire Prevention </Title>
+      <Question id='1' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>1</Number>
+        <Text>Fire extinguisher cabinets are easily opened and free from obstruction? </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='2' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>2</Number>
+        <Text>Rated fire doors latch properly. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='3' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>3</Number>
+        <Text>Door closers operate properly. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='4' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>4</Number>
+        <Text>Corridors and exits are not blocked. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>LS.02.01.20 EP13</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='5' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>5</Number>
+        <Text>Staff are familiar with Safety and Fire Plan. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='6' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>6</Number>
+        <Text>Fire extinguishers are in place and current. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='7' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>7</Number>
+        <Text>Storage height does not exceed 7 feet. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='8' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>8</Number>
+        <Text>There is an 18 inch clearance below fire sprinkler height. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='9' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>9</Number>
+        <Text>Employees aware of location of fire exits, pull stations and extinguishers. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP 1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='10' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>10</Number>
+        <Text>No items covering doors, i.e. decorations, paper, etc. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='11' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>11</Number>
+        <Text>No items stored under the sink in kitchen area.  </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='12' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>12</Number>
+        <Text>Unoccupied rooms are locked.</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='13' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>13</Number>
+        <Text>How do you respond to violent or disruptive behavior?</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='14' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>14</Number>
+        <Text>How do you respond to violent or disruptive behavior with weapons? </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title></Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='15' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>15</Number>
+        <Text>Are all individuals in area wearing their authorized identification according to hospital policy?</Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.01.01 EP7</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='16' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>16</Number>
+        <Text>Emergency numbers are visibly posted. </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.01.01 EP10</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+      <Question id='17' group='3'>
+        <QuestionType>selectOne</QuestionType>
+        <Number>17</Number>
+        <Text>Are gas cylinders properly secured? </Text>
+        <BasisReferences>
+          <BasisReference>
+            <Title>EC.02.03.01 EP1</Title>
+          </BasisReference>
+        </BasisReferences>
+      </Question>
+    </QuestionGroup>
+  </QuestionGroups>
+</Survey>

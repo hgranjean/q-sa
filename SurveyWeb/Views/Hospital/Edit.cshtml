@@ -1,0 +1,30 @@
+﻿
+@model Atum.Database.Surveillance.Models.Hospital
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Edit", "Hospital"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Hospital Form</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+        </div>
+        
+    </fieldset>
+    
+    <br/>
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Return to list", "Index")
+}

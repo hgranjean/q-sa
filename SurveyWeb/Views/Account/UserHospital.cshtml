@@ -1,0 +1,48 @@
+﻿@using Atum.Database.Surveillance.Models
+@using SurveyWeb.Models
+@model SurveyWeb.Models.UserHospitalViewModel
+
+@{
+    ViewBag.Title = "UserHospital";
+}
+
+<h2>UserHospital</h2>
+
+@using (Html.BeginForm("SaveUserHospital", "Hospital"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>User hospital Form</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Hospitals)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Hospitals,
+                                  new SelectList(EnumUtils.GetEnumerableItems(typeof (Hospital)),
+                                                 "Id", "Name"))
+        </div>
+        
+        <div class="editor-label">
+            Select to add: 
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model => model.AvailableHospitals,
+                                  new SelectList(EnumUtils.GetEnumerableItems(typeof (Hospital)),
+                                                 "Id", "Name"))
+        </div>
+        
+    </fieldset>
+    
+    <br/>
+    <input type="submit" value="Save" />
+    
+}
