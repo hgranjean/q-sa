@@ -7,7 +7,7 @@ using Atum.Domain.Surveillance;
 using SurveyWeb;
 using SurveyWeb.Models;
 
-namespace MvcApplication1.Controllers
+namespace SurveyWeb
 {
     public class AdministerSurveyController : Controller
     {
@@ -64,8 +64,8 @@ namespace MvcApplication1.Controllers
         public ActionResult Save(SurveyViewModel survey)
         {
             var viewModel = (SurveyViewModel) Session["Survey"];
-            
-            SurveyServices.Save(viewModel.Survey);
+
+            SurveillanceServices.Save(viewModel.Survey);
 
             return View(viewModel);
         }

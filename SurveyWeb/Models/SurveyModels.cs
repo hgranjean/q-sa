@@ -79,4 +79,12 @@ namespace SurveyWeb.Models
             this.Number = questionGroup.Number;
         }
     }
+
+    public class ScheduleViewModel : ViewModelBase
+    {
+        public ScheduleViewModel(object value)
+        {
+            
+        }
+    }
 }
