@@ -2,11 +2,11 @@
 
 @model SurveyWeb.Models.TracerViewModel
 @{
-    ViewBag.Title = "Life Safety ";
+    ViewBag.Title = "Environment Of Care";
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title</h1>
+    @*<h1>@ViewBag.Title</h1>*@
 </hgroup>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
@@ -98,21 +98,17 @@
         
         <div>&nbsp;</div>
 
-        <div style="display: table; table-layout: fixed;">
-            <div style="display:table-row">
-                <div id="groupTitle" style="display:table-cell;font-weight:bold;width:40%">Questions</div>
-                <div style="display:table-cell;width:10%">Compliant</div>
-                <div style="display:table-cell;width:10%">Non-Compliant</div>
-                <div style="display:table-cell;width:5%">N/A</div>
-                <div style="display:table-cell;width:10%">Follow-up</div>
-                <div style="display:table-cell;width:10%">Standards</div>
-                <div style="display:table-cell;width:20%">Notes/Photo/Document</div>
-            </div>
-
+        <div style="display: table; table-layout: fixed;" class="gn-table">
             @foreach (var group in Model.QuestionGroups)
             {   
-                <div style="display:table-row">
-                    <div id="groupTitle" style="display:table-cell;font-weight:bold;width:20%">@*group.Title*@</div>
+                <div style="display:table-row" class="table-row-withborder">
+                    <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 35%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color:green; background-color: #CFDBC5;">Compliant</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: red; background-color: #CFDBC5;">Non-Compliant&nbsp;</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; background-color: #CFDBC5;">&nbsp;&nbsp;N/A</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: blue;  background-color: #CFDBC5;">Follow-up</div>
+                    <div style="display:table-cell;font-weight:bold;width:15%; text-align: center;background-color: #CFDBC5;">Standard</div>
+                    <div style="display:table-cell;font-weight:bold;width:10%; background-color: #CFDBC5;">Notes/Photo/Document</div>
                 </div>
                 
                 var questions = group.QuestionGroup.Questions;
@@ -120,44 +116,47 @@
                 {
                     var question = questions[i];
 
-                    <div id="choiceGroup" style="display: table-row-group">
-                        <div style="display:table-row;width:100%">
-                            <!--<div id="questionLabel" style="font-weight:bold"></div>-->
+                    <div id="choiceGroup" style="display: table-row-group;" >
+                        <div style="display:table-row;width:100%">                            
                             <div id="questionText" style="display:table-cell;">@question.Text</div>
                         </div>
-                            
-                        <div style="display:table-row;width:100%">
-                            <div style="display:table-cell"></div>
+                          <div style="display:table-row;width:100%">
+                            <div style="display: table-cell" class="gn-table-row-withborders"></div>
                                 @foreach (var choice in question.ResponseChoices)
                                 {
                                     var key = choice.ID;
                                     var j = qIndex++;
                                     
-                                    <div style="display:table-cell">@Html.RadioButtonFor(m => m.Responses[int.Parse(key.ToString())], key, new { id = "Response" + key, name = "Response" + i, @class = "sur-choice" })</div>
+                                <div style="display: table-cell; text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span> @Html.RadioButtonFor(m => m.Responses[question.Number], key, new {id = "Response" + key, name = "Question" + question.Number, @class = "sur-choice"})</div>
                                 }
 
-                            @if (question.BasisReference != null)
+                            @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
                                 {
-                                    <div id="questionBasis" style="display: table-cell">@Html.ActionLink(question.BasisReference.Title, "ViewReference")</div>
+                                <div id="questionBasis" style="display: table-cell" class="gn-table-row-withborders">@Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})</div>
                                 }
                                 else
                                 {
-                                    <div style="display:table-cell">&nbsp;</div>
+                            <div style="display: table-cell" class="gn-table-row-withborders">&nbsp;</div>
                                 }
 
-                                <div style="display:table-cell">
-                                    @Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"})
-                                    &nbsp;@Html.ActionLink("Camera", "Camera", "Surveillance", null, new {@class = "gn-camera-icon"})
-                                    &nbsp;@Html.ActionLink("Load", "Load", "Surveillance", null, new {@class = "gn-upload-icon"})
+                            <div style="display: table-cell; white-space: nowrap;" class="gn-table-row-withborders">
+                                @Html.ActionLink("Notes", "EditNotes", "Surveillance", null, new {@class = "gn-notes-icon", style = "display:inline"})
+                                @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
+                                <span style="white-space: nowrap">
+                                    <span id="file" class="gn-camera-icon" style="display: inline"></span>
+                                    @Html.ActionLink("Load", "Load", "Surveillance", null, new {@class = "gn-upload-icon", style = "display:inline"})
+                                    <input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline" onchange=" document.getElementById('file').innerHTML = this.value; " />
+                                </span>
                                 </div>
                         </div>
                     </div>
-                
                 }
+
             }
             </div>
+        <div>&nbsp;</div>
             <input type="submit" value="Done" />
-            <input type="submit" value="Reset" />
+            @Html.ActionLink("Reset", "SurveyDelivery", "Surveillance", new {id = 0})
 </fieldset>
 }
 

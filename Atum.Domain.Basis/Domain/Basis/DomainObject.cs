@@ -7,12 +7,11 @@ namespace Atum.Domain.Basis
 	/// </summary>
 	public abstract class DomainObject
 	{
-		protected long _id;
-
-        //public DomainObject()
-        //{
-        //}
-		public long ID { get{return _id;} }
+		public long ID
+		{
+		    get;
+		    set;
+        }
         protected abstract void SetId(long id);
 	}
 }

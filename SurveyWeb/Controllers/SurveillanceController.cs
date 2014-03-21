@@ -1,12 +1,18 @@
-﻿using Atum.Domain.Common;
+﻿using System.Collections;
+using System.Configuration;
+using System.Web.Mvc;
+using Atum.Database.Surveillance.Models;
+using Atum.Domain.Common;
+using Atum.Domain.Healthcare;
 using Atum.Domain.Surveillance;
+using Atum.Utility.XML;
 using SurveyWeb;
+using SurveyWeb.Db;
 using SurveyWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace MvcApplication1.Controllers
 {
@@ -106,10 +112,18 @@ namespace MvcApplication1.Controllers
 
                 foreach (var questionGroup in survey.QuestionGroups)
                 {
-                    foreach (var question in questionGroup.Value.Questions)
+                    if (questionGroup.Value.Questions != null)
                     {
-                        question.ResponseChoices.Clear();
-                        setQuestionChoices(question);
+                        foreach (var question in questionGroup.Value.Questions)
+                        {
+                            if (question.ResponseChoices == null)
+                            {
+                                question.ResponseChoices = new ResponseChoices();
+                            }
+
+                            question.ResponseChoices.Clear();
+                            setQuestionChoices(question);
+                        }
                     }
                 }
             }
@@ -260,6 +274,10 @@ namespace MvcApplication1.Controllers
 
         private IEnumerable<Atum.Domain.Healthcare.Facility> LoadFacilities()
         {
+            // var _dbContext = new AtumSurveillanceContext();
+
+            // return _dbContext.Hospitals.Select(hospital => new Facility(hospital.Name, Int32.Parse(hospital.Id)));
+
             yield return new Atum.Domain.Healthcare.Facility("Facility1", 1);
             yield return new Atum.Domain.Healthcare.Facility("Facility2", 2);
         }
@@ -271,31 +289,45 @@ namespace MvcApplication1.Controllers
         }
 
 
-        public ActionResult ViewReference(string Id) 
+        public ActionResult ViewReference(string standardId) 
         {
             TOCElement model = new TOCElement("");
-            model = getViewModel(Id);
+            model = GetViewModel(standardId);
 
 
             return View(model);            
         }
 
-        private TOCElement getViewModel(string Id)
+        public TOCElement GetViewModel(string Id)
         {
 
-            Id = "LS.02.01.20 EP27";
             var model = new TOCElement(Id);
 
             if (Id=="LS.02.01.20 EP27")
             {
-                model.Content = loadContent(Id);
+                model.Content = LoadContent(Id);
             }
-                        
-            
+
+            if (Id == "LS.04.03.02")
+            {   
+                string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
+
+                appPath = appPath + @"\\..\RuleApp\";
+
+                model = (TOCElement)XmlSerializationUtility.GetObjectFromFile(appPath + @"Standards\"+Id+".xml", typeof(TOCElement));
+            }
+
             return model;
         }
 
-        private string[] loadContent(string Id)
+        public IEnumerable GetTOCs()
+        {
+            yield return new KeyValuePair<string, TOCElement>("", TOCElement.None);
+            yield return new KeyValuePair<string, TOCElement>("LS.02.01.20 EP27", GetViewModel("LS.02.01.20 EP27"));
+            yield return new KeyValuePair<string, TOCElement>("LS.04.03.02", GetViewModel("LS.04.03.02"));
+        }
+
+        private string[] LoadContent(string Id)
         {
             List<string> retVal = new List<string>();
             retVal.Add("LS.02.01.20");
@@ -309,7 +341,15 @@ namespace MvcApplication1.Controllers
             retVal.Add("27. Illumination in the means of egress, including exit discharges, is arranged so that failure of any single light fixture or bulb will not leave the area in darkness. (For full text and any exceptions, refer to NFPA 101-2000: 7.8.1.4)");
 
             return retVal.ToArray();
+        }
 
+        private string[] LoadContent040302()
+        {
+            return null;
+            /*
+            List<string> retVal = new List<string>();
+            
+            */
         }
 
 
@@ -387,8 +427,8 @@ namespace MvcApplication1.Controllers
             var survey = SurveillanceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
-            {
-                survey.QuestionGroups[viewModel.Number].Questions = viewModel.QuestionGroup.Questions;
+            {   
+                survey.QuestionGroups[viewModel.Number] = viewModel.QuestionGroup;
             }
 
             var surveyViewModel = new SurveyViewModel(survey);
@@ -409,6 +449,11 @@ namespace MvcApplication1.Controllers
             new SurveyViewModel(survey).Save();
 
             return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup){SurveyId = surveyId});
+        }
+
+        public ActionResult EditNotes(string questionId)
+        {
+            return View();
         }
     }
 }

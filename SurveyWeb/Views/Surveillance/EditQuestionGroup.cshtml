@@ -1,4 +1,6 @@
 ﻿@using Atum.Domain.Surveillance
+@using MvcApplication1.Controllers
+@using SurveyWeb.Models
 @model SurveyWeb.Models.QuestionGroupViewModel
 
 @{
@@ -17,28 +19,37 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>QueryCategory</legend>
+        <legend>Questions</legend>
 
         @Html.HiddenFor(m => m.Number)
         @Html.HiddenFor(m => m.SurveyId)
         
+        <div style="display: table">
+                <div style="display: table-row">
+                <div id="groupLabel" style="display: table-cell; font-weight: bold; width: 50%">@Html.LabelFor(m => m.QuestionGroup.Title)</div>
+                <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 50%">@Html.TextBoxFor(m => m.QuestionGroup.Title)</div>
+                </div>
+        </div>
+       
         @Html.ActionLink("Add question", "AddQuestion", new {surveyId = Model.SurveyId, questionGroupId = Model.Number})
 
-        <!-- foreach (var group in Model.Survey.QuestionGroups.Where(qg => qg.Key == int.Parse(ViewBag.QuestionGroupId))) -->
-            <div style="display: table">
-                <div style="display: table-row">
-                    <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 20%"></div>
-                </div>
+        <div style="display: table;width:100%">
                 @for (int i=0;Model.QuestionGroup.Questions!=null&&i<Model.QuestionGroup.Questions.Count;i++)
                 {
                     @Html.HiddenFor(m => m.QuestionGroup.Questions[i].Number)
 
-                    <div id="choiceGroup" style="display: table-row">
-                        <div class="editor-label">
+                <div id="choiceGroup" style="display: table-row;">
+                    <div class="editor-label;" style="display: table-cell;width: 20%">
                             @Html.Label(Model.QuestionGroup.Questions[i].Number.ToString())
                         </div>
-                        <div id="questionText" class="editor-field">
+                    <div id="questionText" class="editor-field" style="display: table-cell;width: 80%">
                             @Html.TextBoxFor(m => m.QuestionGroup.Questions[i].Text)
+
+                        @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].QuestionType,
+                            Model.QuestionGroup.Questions[i].QuestionType.ToSelectList(Model.QuestionGroup.Questions[i].QuestionType.ToString()))
+
+                        @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].TOCReference, 
+                            new SelectList(new SurveillanceController().GetTOCs(), "Value.Title", "Key", Model.QuestionGroup.Questions[i].TOCReference))
                         </div>
                     </div>
                 }
@@ -50,5 +61,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to survey", "SurveyDesign", new{surveyId = Model.SurveyId})
+    @Html.ActionLink("Back to survey", "SurveyDesign", new{id=Model.SurveyId})
 </div>

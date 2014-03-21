@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using Atum.Domain.Basis;
 using Atum.Domain.Common;
 
@@ -24,6 +25,20 @@ namespace Atum.Domain.Surveillance
         public int Number { get; set; }
         public int Rank { get; set; }
         public TOCElement BasisReference { get; set; }
+
+        [XmlIgnore]
+        public string TOCReference {
+            get
+            {
+                if (BasisReference == null)
+                    return null;
+                return BasisReference.Title;
+            } set
+            {
+                if (BasisReference == null)
+                    BasisReference = new TOCElement(value);
+            }
+        }
         public QuestionType QuestionType { get; set; }
         public ResponseChoices ResponseChoices { get; set; }
 

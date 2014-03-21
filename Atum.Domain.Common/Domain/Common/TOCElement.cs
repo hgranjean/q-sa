@@ -5,6 +5,8 @@ namespace Atum.Domain.Common
     [Serializable]
     public class TOCElement : DomainObject
     {
+        public static readonly TOCElement None = new TOCElement();
+
         protected TOCElement()
         {
         }

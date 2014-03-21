@@ -321,9 +321,11 @@
     <Content Include="Images\Camera-icon.png" />
     <Content Include="Images\Home-icon.png" />
     <Content Include="Images\Messaging-icon.png" />
+    <Content Include="Images\Notes-Icon.png" />
     <Content Include="Images\Settings-Icon.png" />
     <Content Include="Images\Upload-icon.png" />
     <Content Include="Images\Users-icon.png" />
+    <None Include="RuleApp\Standards\LS.04.03.02.xml" />
     <Content Include="RuleApp\Survey1.xml" />
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\gnmenu.js" />

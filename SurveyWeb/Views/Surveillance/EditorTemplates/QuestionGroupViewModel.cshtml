@@ -15,9 +15,11 @@
     @if (Model.QuestionGroup != null)
     {
         @Html.HiddenFor(model => model.Number)
+        @Html.HiddenFor(model => model.QuestionGroup.Title)
+
         <tr>
             <td colspan="2">
-                <div><span>Group-</span>@Html.DisplayFor(modelItem => Model.Number)
+                <div><span>Group-</span>@Html.DisplayFor(modelItem => Model.QuestionGroup.Title)
                     @Html.ActionLink("Edit", "EditQuestionGroup", new {surveyId = Model.SurveyId, groupId = Model.Number}) |
                     @Html.ActionLink("Delete", "DeleteQuestionGroup", new {surveyId = Model.SurveyId, groupId = Model.Number})
                 </div>
@@ -28,8 +30,11 @@
         {
             for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
             {
+                <!-- TODO: Implement a helper to gen hidden for each question field -->
                 @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Number)
+                @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].QuestionType)
                 @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Text)
+                @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].TOCReference)
 
                 <tr>
                     <td>

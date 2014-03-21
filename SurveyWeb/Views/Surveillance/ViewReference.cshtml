@@ -4,9 +4,8 @@
     ViewBag.Title = "ViewReference";
 }
 
-<h2>Model.Parent.Title</h2>
-<div>
-    <div>@Model.Title</div>
+<h2>@Model.Title</h2>
+<div>    
     <div>@foreach (var item in Model.Content)
          {
              <div>@item</div>
