@@ -1371,7 +1371,7 @@ namespace System.Linq.Dynamic
                                 // var param = Expression.Variable((Type)actualType, "Context");
                                 
                                 // return Expression.Property(Expression.Convert(Expression.Convert(instance, typeof(object)), (Type)actualType), (PropertyInfo) externals[id]);
-                                return Expression.Property(instance, instance.Type.GetProperty("Item"), Expression.Constant(id));
+                                return Expression.Convert(Expression.Property(instance, instance.Type.GetProperty("Item"), Expression.Constant(id)), ((PropertyInfo)externals[id]).PropertyType);
                             }
                             
                             return Expression.Property(Expression.Variable(typeof(DynamicObject), "Context"), (PropertyInfo)externals[id]);

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Base\AuthoringSettings.cs" />
     <Compile Include="Base\EntitySpec.cs" />
+    <Compile Include="AddCollectionMemberAction.cs" />
     <Compile Include="ExecutionResult.cs" />
     <Compile Include="InMemoryRuleApplicationReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

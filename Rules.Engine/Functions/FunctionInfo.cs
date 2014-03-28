@@ -21,6 +21,10 @@ namespace Rules.Engine.Functions
             {
                 return new SimpleRuleSetFunctionBuilder();
             }
+            else if (rule is AddCollectionMemberAction)
+            {
+                return new AddCollectionMemberActionFunctionBuilder();
+            }
 
             throw new Exception("unknown func builder");
         }

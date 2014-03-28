@@ -43,9 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dynamic.cs" />
+    <Compile Include="Functions\AddCollectionMemberFunction.cs" />
+    <Compile Include="Functions\Builders\AddCollectionMemberActionFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SimpleRuleSetFunctionInfoBuilder.cs" />
     <Compile Include="Functions\Builders\SetValueActionFunctionBuilder.cs" />
     <Compile Include="Functions\SimpleRuleSetFunction.cs" />
+    <Compile Include="Infos\AddCollectionMemberActionInfo.cs" />
     <Compile Include="Infos\EntityInfo.cs" />
     <Compile Include="Infos\FunctionInfo.cs" />
     <Compile Include="Infos\InfoBase.cs" />

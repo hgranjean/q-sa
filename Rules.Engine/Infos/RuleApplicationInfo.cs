@@ -134,6 +134,14 @@ namespace Rules.Engine
 
                 return compiledBlock;    
             }
+            else if ((functionBuilder as AddCollectionMemberActionFunctionBuilder) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionInfo.BuildInfo(engine, compiledBlock, ((AddCollectionMemberFunction)functionInfo).Info);
+
+                return compiledBlock;
+            }
 
             throw new InvalidOperationException("Unknown code construct.");
         }

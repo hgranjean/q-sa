@@ -52,6 +52,26 @@ namespace Rules.Engine.Tests
             }
         }
 
+        public class Entity2
+        {
+            public Entity1 EntityField { get; set; }
+
+            public Entity2()
+            {
+                this.EntityField = new Entity1();
+            }
+        }
+
+        public class Entity3
+        {
+            public List<Entity1> EntityField { get; set; }
+
+            public Entity3()
+            {
+                this.EntityField = new List<Entity1>();
+            }
+        }
+
         [Test]
         public void TestSetFieldOfEntity()
         {
@@ -60,7 +80,7 @@ namespace Rules.Engine.Tests
             ra.Entities.Add(e1);
 
             var action1 = new SetValueAction();
-            action1.Target = "Field1";
+            action1.Target = "Context.Field1";
             action1.Value = "1234";
 
             var rs1 = new RuleSpecification();
@@ -69,14 +89,16 @@ namespace Rules.Engine.Tests
 
             using (var rs = new RuleSession(ra))
             {
-                var e1Instance = rs.CreateEntity(e1.Name, new Entity1());
+                var e1val = new Entity1();
+                var e1Instance = rs.CreateEntity(e1.Name, e1val);
 
                 var result = rs.ExecuteRules();
                 Assert.IsNotNull(result);
+                Assert.AreEqual("1234", e1val.Field1);
             }
         }
 
-        class MyClass : DynamicObject
+        internal class MyClass : DynamicObject
         {
             private object value;
             public MyClass(object value)
@@ -136,6 +158,67 @@ namespace Rules.Engine.Tests
                 var result = rs.ExecuteRules();
                 Assert.IsNotNull(result);
                 Assert.AreEqual("1234", e1value.Field1);
+            }
+        }
+
+        [Test]
+        public void TestExecuteRuleSetWithComplexPath()
+        {   
+            var ra = new RuleApplicationSpec();
+            var e2 = new EntitySpec("Entity2", typeof(Entity2));
+            ra.Entities.Add(e2);
+
+            var action1 = new SetValueAction();
+            action1.Target = "Context.EntityField.Field2";
+            action1.Value = "1234";
+
+            var conditionalRuleSet = new SimpleRuleSet();
+            conditionalRuleSet.Condition = "Context.EntityField.Field1 == \"1234\"";
+            conditionalRuleSet.Rules.Add(action1);
+
+            var rs1 = new RuleSpecification();
+            rs1.Actions.Add(conditionalRuleSet);
+            e2.RuleSets.Add(rs1);
+
+            using (var rs = new RuleSession(ra))
+            {
+                var e2val = new Entity2();
+                e2val.EntityField.Field1 = "1234";
+                var e2Instance = rs.CreateEntity(e2.Name, e2val);
+
+                var result = rs.ExecuteRules();
+                Assert.IsNotNull(result);
+                Assert.AreEqual("1234", e2val.EntityField.Field1);
+            }
+        }
+
+        [Test]
+        public void TestExecuteRuleSetAddCollectionMember()
+        {
+            var ra = new RuleApplicationSpec();
+            var e3 = new EntitySpec("Entity2", typeof(Entity3));
+            ra.Entities.Add(e3);
+            
+            var action1 = new AddCollectionMemberAction();
+            action1.Target = "Context.EntityField";
+
+            var conditionalRuleSet = new SimpleRuleSet();
+            conditionalRuleSet.Condition = "Context.EntityField.Count == 0";
+            conditionalRuleSet.Rules.Add(action1);
+
+            var rs1 = new RuleSpecification();
+            rs1.Actions.Add(conditionalRuleSet);
+            e3.RuleSets.Add(rs1);
+
+            using (var rs = new RuleSession(ra))
+            {
+                var e3val = new Entity3();
+                
+                var e3Instance = rs.CreateEntity(e3.Name, e3val);
+
+                var result = rs.ExecuteRules();
+                Assert.IsNotNull(result);
+                Assert.AreEqual(1, e3val.EntityField.Count);
             }
         }
 

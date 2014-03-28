@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Rules.Engine.Infos;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Rules.Domain;
-using Rules.Engine.Infos;
 
 namespace Rules.Engine
 {
