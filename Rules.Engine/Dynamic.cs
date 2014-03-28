@@ -1350,20 +1350,32 @@ namespace System.Linq.Dynamic
                 //        id, GetTypeName(type));
                 if (member == null)
                 {
-                    if (type == typeof(DynamicObject))
+                    if (type.BaseType == typeof(DynamicObject))
                     {
                         //System.Linq.Dynamic.DynamicExpression.CreateClass(props)
-                        var param = Expression.Variable(typeof(DynamicObject), "Context");
+                        
 
-                        Func<DynamicObject, dynamic> f =
+                        /*Func<DynamicObject, dynamic> f =
                             Expression.Lambda<Func<DynamicObject, object>>(
                                 Expression.Dynamic(new StateContainerBinder(), typeof(object), param),
                                 new[] { param }
                         ).Compile();
 
-                        var e = DynamicExpression.ParseLambda(new[] { param }, typeof(bool), id, new[] { f });
-
-                        return e.Body;
+                        var e = DynamicExpression.ParseLambda(new[] { param }, typeof(bool), id, new[] { f });*/
+                        
+                        if (externals.ContainsKey(id))
+                        {
+                            var actualType = externals["Context"];
+                            if (actualType != null)
+                            {
+                                // var param = Expression.Variable((Type)actualType, "Context");
+                                
+                                // return Expression.Property(Expression.Convert(Expression.Convert(instance, typeof(object)), (Type)actualType), (PropertyInfo) externals[id]);
+                                return Expression.Property(instance, instance.Type.GetProperty("Item"), Expression.Constant(id));
+                            }
+                            
+                            return Expression.Property(Expression.Variable(typeof(DynamicObject), "Context"), (PropertyInfo)externals[id]);
+                        }
                     }
 
                     if (token.id == TokenId.Lambda && it.Type == type)

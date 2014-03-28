@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Rules.Domain;
@@ -17,8 +18,8 @@ namespace Rules.Engine.Base
         internal void Execute(StateContainer stateContainer, WorkingMemory workingMemory)
         {
             foreach (var ruleSet in this.RuleSetInfos)
-            {
-                Object call = ruleSet.Lambda.Compile().DynamicInvoke(stateContainer, workingMemory);
+            {   
+                ruleSet.Lambda.Compile().DynamicInvoke(stateContainer, workingMemory);
             }
         }
     }

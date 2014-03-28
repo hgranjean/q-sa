@@ -130,10 +130,12 @@ namespace Rules.Engine.Tests
 
             using (var rs = new RuleSession(ra))
             {
-                var e1Instance = rs.CreateEntity(e1.Name, new Entity1());
-
+                var e1value = new Entity1 { Field1 = "1234"};
+                var e1Instance = rs.CreateEntity(e1.Name, e1value);
+                
                 var result = rs.ExecuteRules();
                 Assert.IsNotNull(result);
+                Assert.AreEqual("1234", e1value.Field1);
             }
         }
 

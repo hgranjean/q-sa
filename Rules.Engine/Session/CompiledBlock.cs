@@ -10,5 +10,6 @@ namespace Rules.Engine
     public class CompiledBlock
     {
         public Expression Code { get; set; }
+        public List<ParameterExpression> Parameters { get; set; }
     }
 }

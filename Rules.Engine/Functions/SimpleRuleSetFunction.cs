@@ -17,7 +17,6 @@ namespace Rules.Engine.Functions
         {   
             var actionInfo = (SimpleRuleSetInfo)info;
 
-            // TODO: Make it 
             var condition = engine.GetExpressionForValue(actionInfo.Context, actionInfo.ConditionInfo);
 
             var expressions = new List<Expression>();
@@ -25,10 +24,15 @@ namespace Rules.Engine.Functions
             foreach (var childInfo in actionInfo.TargetInfo)
             {  
                 var compiledBlock = engine.RuleApplicationInfo.GetCompiledBlock(new FunctionInfo(), engine, actionInfo.Context, ((Infos.FunctionInfo)childInfo).Rule);
-
+                
                 expressions.Add(compiledBlock.Code);
             }
 
+            if (expressions.Count == 0)
+            {
+                expressions.Add(Expression.Empty());
+            }
+            
             var ifTrue = Expression.Block(expressions);
 
             block.Code = Expression.IfThen(Expression.Convert(condition, typeof(bool)), ifTrue);

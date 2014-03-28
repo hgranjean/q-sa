@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.CSharp.RuntimeBinder;
@@ -15,7 +16,7 @@ namespace Rules.Engine
     internal class Engine
     {
         public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof (WorkingMemory), "memory");
-        public readonly static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "Context");
+        public static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "Context");
 
         internal RuleApplicationInfo RuleApplicationInfo { get; private set; }
 
@@ -39,13 +40,21 @@ namespace Rules.Engine
                     
                     //p.Values.Item[info.Name]
                     //Expression keyExpression = Expression.Property(parameter, contextEval.Eval);
-                    
-                    var param = Expression.Variable(context.EntityInfo.EntitySpec.BoundType, "Context");
 
-                    var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { param }, typeof(object), eval, new[] { param });
+                    var param = Engine.StateContainerParam;
+                    
+                    var externals = context.EntityInfo.EntitySpec.BoundType.GetProperties().Select(p => p).ToDictionary<PropertyInfo, string, object>(item => item.Name, item => item);
+
+                    externals.Add("Context", context.EntityInfo.EntitySpec.BoundType);
+                    
+                    var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { param }, typeof(object), eval, externals);
 
                     if (isSetter)
                     {
+                        if (e.Body is IndexExpression)
+                        {
+                            return e.Body;
+                        }
                         return ((UnaryExpression) e.Body).Operand;
                     }
 

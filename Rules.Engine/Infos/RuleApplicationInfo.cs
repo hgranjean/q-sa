@@ -71,6 +71,9 @@ namespace Rules.Engine
         private void CompileRuleSet(RuleSpecification ruleSpec, FunctionInfo builder, Engine engine, CompileContext compileContext)
         {
             // Creating a parameter expression.
+
+            // Engine.StateContainerParam = Expression.Parameter(compileContext.EntityInfo.EntitySpec.BoundType, "Context");
+
             ParameterExpression memoryParam = Engine.WorkingMemoryParam;
             ParameterExpression stateContainerParam = Engine.StateContainerParam;
 
@@ -86,13 +89,16 @@ namespace Rules.Engine
                 ruleBlocks.Add(compiledBlock.Code);
             }
 
+            // var variables = ruleBlocks.Where(rb => rb.Type == typeof(BlockExpression)).Select(b => ((BlockExpression)b).Variables);
+
             // Creating a method body.
             BlockExpression block = Expression.Block(
+                // new []{Engine.StateContainerParam, Engine.WorkingMemoryParam},
                 // Adding a local variable. 
                 ruleBlocks);
 
             LambdaExpression lambda = Expression.Lambda<Action<StateContainer, WorkingMemory>>(block, stateContainerParam, memoryParam);
-
+            
             // EntityInfo
             if (compileContext != null)
             {
