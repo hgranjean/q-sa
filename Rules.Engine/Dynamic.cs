@@ -1321,6 +1321,13 @@ namespace System.Linq.Dynamic
                         Type elementType = enumerableType.GetGenericArguments()[0];
                         return ParseAggregate(instance, elementType, id, errorPos);
                     }
+                    
+                    enumerableType = FindGenericType(typeof(List<>), type);
+                    if (enumerableType != null)
+                    {
+                        Type elementType = enumerableType.GetGenericArguments()[0];
+                        return ParseAggregate(instance, elementType, id, errorPos);
+                    }
                 }
                 Expression[] args = ParseArgumentList();
                 MethodBase mb;
@@ -1431,15 +1438,16 @@ namespace System.Linq.Dynamic
 
             switch (signature.Name)
             {
+                case "First":
                 case "Min":
                 case "Max":
                     typeArgs = new Type[] { elementType, args[0].Type };
                     break;
                 case "OrderBy":
-                    typeArgs = new Type[] { elementType, args[0].Type.GetGenericArguments().Last() };
+                    typeArgs = new Type[] { elementType, args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type };
                     break;
                 case "OrderByDescending":
-                    typeArgs = new Type[] { elementType, args[0].Type.GetGenericArguments().Last() };
+                    typeArgs = new Type[] { elementType, args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type };
                     break;
                 default:
                     typeArgs = new Type[] { elementType };
@@ -1461,6 +1469,13 @@ namespace System.Linq.Dynamic
                        || signature.GetParameters().Last().ParameterType == typeof(IEnumerable)
                        || args[0] is LambdaExpression)
                     {
+                        /*
+                        var func = typeof(Func<,>);
+                        var argType = (args[0] as LambdaExpression).Body.Type;
+                        var genericType = func.MakeGenericType(typeof(IQueryable<>).MakeGenericType((internals["t"] as ParameterExpression).Type), argType);
+
+                        args = new Expression[] { instance, Expression.Call(genericType.GetMethods()[0], methodName, genericType.GenericTypeArguments, args[0]) };*/
+    
                         args = new Expression[] { instance, args[0] };
                     }
                     else
@@ -1803,6 +1818,17 @@ namespace System.Linq.Dynamic
                             return Expression.Constant(value, type);
                     }
                 }
+            }
+            else if (expr is MemberExpression)
+            {
+                /*
+                var func = typeof(Func<,>);
+                var argType = (expr as MemberExpression).Type;
+                var genericType = func.MakeGenericType(typeof(IQueryable<>).MakeGenericType((internals["t"] as ParameterExpression).Type), argType);
+                return Expression.Lambda(genericType, Expression.Call(null, expr));*/
+
+                // return Expression.Lambda(expr);
+                return expr;
             }
             if (IsCompatibleWith(expr.Type, type))
             {
@@ -2386,7 +2412,7 @@ namespace System.Linq.Dynamic
             return d;
         }
     }
-
+    
     static class Res
     {
         public const string DuplicateIdentifier = "The identifier '{0}' was defined more than once";

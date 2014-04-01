@@ -55,7 +55,14 @@ namespace Rules.Engine
                         {
                             return e.Body;
                         }
-                        return ((UnaryExpression) e.Body).Operand;
+
+                        var operand = e.Body;
+                        while (operand is UnaryExpression)
+                        {
+                            operand = ((UnaryExpression) operand).Operand;
+                        }
+
+                        return operand;
                     }
 
                     return e.Body;

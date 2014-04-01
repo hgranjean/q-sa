@@ -1,1 +1,165 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><ID>1</ID><Title>Survey Template 1</Title><SurveyType>Audit</SurveyType><QuestionGroups><item><key><int>1</int></key><value><QuestionGroup><Number>0</Number><Questions><Question><ID>0</ID><Text>My Question Text</Text><Number>1</Number><Rank>0</Rank><TOCReference>LS.02.01.20 EP27</TOCReference><QuestionType>SelectOne</QuestionType><ResponseChoices><ResponseChoice><ID>36</ID><Text>Compliant</Text></ResponseChoice><ResponseChoice><ID>37</ID><Text>Non Compliant</Text></ResponseChoice><ResponseChoice><ID>38</ID><Text>N/A</Text></ResponseChoice><ResponseChoice><ID>39</ID><Text>Follow-Up Completed</Text></ResponseChoice></ResponseChoices></Question><Question><ID>0</ID><Text>My SelectOne Question Text</Text><Number>2</Number><Rank>0</Rank><QuestionType>SelectOne</QuestionType><ResponseChoices><ResponseChoice><ID>40</ID><Text>Compliant</Text></ResponseChoice><ResponseChoice><ID>41</ID><Text>Non Compliant</Text></ResponseChoice><ResponseChoice><ID>42</ID><Text>N/A</Text></ResponseChoice><ResponseChoice><ID>43</ID><Text>Follow-Up Completed</Text></ResponseChoice></ResponseChoices></Question><Question><ID>0</ID><Text>My TrueFalse Question Text</Text><Number>3</Number><Rank>0</Rank><QuestionType>SelectOne</QuestionType><ResponseChoices><ResponseChoice><ID>44</ID><Text>Compliant</Text></ResponseChoice><ResponseChoice><ID>45</ID><Text>Non Compliant</Text></ResponseChoice><ResponseChoice><ID>46</ID><Text>N/A</Text></ResponseChoice><ResponseChoice><ID>47</ID><Text>Follow-Up Completed</Text></ResponseChoice></ResponseChoices></Question><Question><ID>0</ID><Text>My SelectOne Question Text</Text><Number>4</Number><Rank>0</Rank><QuestionType>SelectOne</QuestionType><ResponseChoices><ResponseChoice><ID>48</ID><Text>Compliant</Text></ResponseChoice><ResponseChoice><ID>49</ID><Text>Non Compliant</Text></ResponseChoice><ResponseChoice><ID>50</ID><Text>N/A</Text></ResponseChoice><ResponseChoice><ID>51</ID><Text>Follow-Up Completed</Text></ResponseChoice></ResponseChoices></Question><Question><ID>0</ID><Text>My SelectMultiple Question Text</Text><Number>5</Number><Rank>0</Rank><QuestionType>SelectOne</QuestionType><ResponseChoices><ResponseChoice><ID>52</ID><Text>Compliant</Text></ResponseChoice><ResponseChoice><ID>53</ID><Text>Non Compliant</Text></ResponseChoice><ResponseChoice><ID>54</ID><Text>N/A</Text></ResponseChoice><ResponseChoice><ID>55</ID><Text>Follow-Up Completed</Text></ResponseChoice></ResponseChoices></Question></Questions></QuestionGroup></value></item><item><key><int>2</int></key><value><QuestionGroup><Number>0</Number><Questions><Question><ID>0</ID><Text>utiut</Text><Number>1</Number><Rank>0</Rank><QuestionType>SelectOne</QuestionType></Question></Questions></QuestionGroup></value></item></QuestionGroups></Survey>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>1</ID>
+  <Title>Survey Template 1</Title>
+  <SurveyType>Audit</SurveyType>
+  <QuestionGroups>
+    <item>
+      <key>
+        <int>1</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Number>0</Number>
+          <Questions>
+            <Question>
+              <ID>0</ID>
+              <Text>My Question Text</Text>
+              <Number>1</Number>
+              <Rank>0</Rank>
+              <TOCReference>LS.02.01.20 EP27</TOCReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>36</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>37</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>38</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>39</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My SelectOne Question Text</Text>
+              <Number>2</Number>
+              <Rank>0</Rank>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>40</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>41</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>42</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>43</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My TrueFalse Question Text</Text>
+              <Number>3</Number>
+              <Rank>0</Rank>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>44</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>45</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>46</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>47</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My SelectOne Question Text</Text>
+              <Number>4</Number>
+              <Rank>0</Rank>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>48</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>49</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>50</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>51</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My SelectMultiple Question Text</Text>
+              <Number>5</Number>
+              <Rank>0</Rank>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>52</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>53</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>54</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>55</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>2</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Number>0</Number>
+          <Questions>
+            <Question>
+              <ID>0</ID>
+              <Text>utiut</Text>
+              <Number>1</Number>
+              <Rank>0</Rank>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+  </QuestionGroups>
+</Survey>
