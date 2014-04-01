@@ -31,7 +31,6 @@ namespace Rules.Engine.Tests
         }
 
         [Test]
-        [Ignore]
         public void TestMin()
         {
             // Semantically equivalent to:
@@ -68,7 +67,6 @@ namespace Rules.Engine.Tests
         }
         
         [Test]
-        [Ignore]
         public void TestOrderBy()
         {
             // Semantically equivalent to:
