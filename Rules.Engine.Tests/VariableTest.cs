@@ -59,6 +59,11 @@ namespace Rules.Engine.Tests
                 var result = rs.ExecuteRules();
                 Assert.IsNotNull(result);
                 Assert.AreEqual("1234", e1val.Field1);
+
+                var e2val = new Entity1();
+                var e2Instance = rs.CreateEntity(e1.Name, e2val);
+                result = rs.ExecuteRules();
+                Assert.AreEqual("1234", e2val.Field1);
             }
         }
     }
