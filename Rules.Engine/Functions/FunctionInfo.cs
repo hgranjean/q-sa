@@ -17,13 +17,17 @@ namespace Rules.Engine.Functions
             {
                 return new SetValueActionFunctionBuilder();
             }
-            else if (rule is SimpleRuleSet)
+            if (rule is SimpleRuleSet)
             {
                 return new SimpleRuleSetFunctionBuilder();
             }
-            else if (rule is AddCollectionMemberAction)
+            if (rule is AddCollectionMemberAction)
             {
                 return new AddCollectionMemberActionFunctionBuilder();
+            }
+            if (rule is DeclareVariableAction)
+            {
+                return new DeclareVariableFunctionBuilder();
             }
 
             throw new Exception("unknown func builder");

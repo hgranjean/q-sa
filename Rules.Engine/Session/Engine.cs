@@ -46,7 +46,12 @@ namespace Rules.Engine
                     var externals = context.EntityInfo.EntitySpec.BoundType.GetProperties().Select(p => p).ToDictionary<PropertyInfo, string, object>(item => item.Name, item => item);
 
                     externals.Add("Context", context.EntityInfo.EntitySpec.BoundType);
-                    
+
+                    foreach (var local in context.Locals)
+                    {
+                        externals.Add(local.Key, local.Value);
+                    }
+
                     var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { param }, typeof(object), eval, externals);
 
                     if (isSetter)

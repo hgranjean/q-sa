@@ -86,7 +86,7 @@ namespace Rules.Engine.Tests
 
             var action1 = new SetValueAction();
             action1.Target = "Context.ResultField";
-            action1.Value = "Context.EntityField.OrderBy(t => (t.Field1)).Count()";
+            action1.Value = "Context.EntityField.OrderBy(t => t.Field1).Count()";
             
             var rs1 = new RuleSpecification();
             rs1.Actions.Add(action1);
@@ -103,5 +103,7 @@ namespace Rules.Engine.Tests
                 Assert.AreEqual(3, e2val.ResultField);
             }
         }
+
+        
     }
 }

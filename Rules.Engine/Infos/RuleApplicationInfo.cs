@@ -77,6 +77,8 @@ namespace Rules.Engine
             ParameterExpression memoryParam = Engine.WorkingMemoryParam;
             ParameterExpression stateContainerParam = Engine.StateContainerParam;
 
+            // TODO: Add stack context parameter expression
+
             // Creating an expression to hold a local variable. 
             // ParameterExpression resultParam = Expression.Parameter(typeof(Object), "result");
 
@@ -86,15 +88,20 @@ namespace Rules.Engine
             {   
                 var compiledBlock = GetCompiledBlock(builder, engine, compileContext, rule);
 
+                GetLocals(compileContext, compiledBlock);
+
                 ruleBlocks.Add(compiledBlock.Code);
             }
 
             // var variables = ruleBlocks.Where(rb => rb.Type == typeof(BlockExpression)).Select(b => ((BlockExpression)b).Variables);
 
+            var variables = compileContext.Locals.Select(v => (ParameterExpression)v.Value);
+
             // Creating a method body.
             BlockExpression block = Expression.Block(
                 // new []{Engine.StateContainerParam, Engine.WorkingMemoryParam},
-                // Adding a local variable. 
+                // Adding a local variable.
+                variables,
                 ruleBlocks);
 
             LambdaExpression lambda = Expression.Lambda<Action<StateContainer, WorkingMemory>>(block, stateContainerParam, memoryParam);
@@ -108,6 +115,38 @@ namespace Rules.Engine
             else
             {
                 this._ruleSetInfos.Add(new RuleSetInfo {RuleSpec = ruleSpec, Lambda = lambda});
+            }
+        }
+
+        private static void GetLocals(CompileContext compileContext, CompiledBlock compiledBlock)
+        {
+            /*
+            var variables = compiledBlock.Code.NodeType == ExpressionType.Parameter ? compiledBlock.Code : default(Expression);
+
+            if (variables != null)
+            {
+                compileContext.Locals.Add(((ParameterExpression) variables).Name, variables);
+            }
+
+            variables = compiledBlock.Code.NodeType == ExpressionType.Block ? compiledBlock.Code : default(Expression);
+
+            if (variables != null)
+            {
+                // var variables = ruleBlocks.Where(rb => rb.Type == typeof(BlockExpression)).Select(b => ((BlockExpression)b).Variables);
+                foreach ( var paramExpr in ((BlockExpression) variables).Expressions.Where(b => b.NodeType == ExpressionType.Parameter) )
+                {
+                    compileContext.Locals.Add(((ParameterExpression)paramExpr).Name, paramExpr);    
+                }
+            }*/
+
+            if (compiledBlock.Variables == null)
+            {
+                return;
+            }
+
+            foreach (var variable in compiledBlock.Variables)
+            {
+                compileContext.Locals.Add(variable.Name, variable);
             }
         }
 
@@ -126,7 +165,7 @@ namespace Rules.Engine
 
                 return compiledBlock;    
             }
-            else if ((functionBuilder as SimpleRuleSetFunctionBuilder) != null)
+            if ((functionBuilder as SimpleRuleSetFunctionBuilder) != null)
             {
                 var compiledBlock = new CompiledBlock();
 
@@ -134,11 +173,19 @@ namespace Rules.Engine
 
                 return compiledBlock;    
             }
-            else if ((functionBuilder as AddCollectionMemberActionFunctionBuilder) != null)
+            if ((functionBuilder as AddCollectionMemberActionFunctionBuilder) != null)
             {
                 var compiledBlock = new CompiledBlock();
 
                 functionInfo.BuildInfo(engine, compiledBlock, ((AddCollectionMemberFunction)functionInfo).Info);
+
+                return compiledBlock;
+            }
+            if ((functionBuilder as DeclareVariableFunctionBuilder) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionInfo.BuildInfo(engine, compiledBlock, ((DeclareVariableFunction)functionInfo).Info);
 
                 return compiledBlock;
             }
