@@ -17,7 +17,7 @@ namespace Rules.Domain
 
         public Rule(String xmiid)
         {
-            Xmiid = Xmiid;
+            Xmiid = xmiid;
         }
     }
 

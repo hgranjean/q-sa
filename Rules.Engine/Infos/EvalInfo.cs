@@ -10,11 +10,11 @@ namespace Rules.Engine
 {
     public class EvalInfo : IInfo
     {   
-        public EvalInfo(String eval)
+        public EvalInfo(Object eval)
         {
             this.Eval = eval;
         }
         
-        public String Eval { get; private set; }
+        public Object Eval { get; private set; }
     }
 }

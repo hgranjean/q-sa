@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rules.Domain
 {
-    public class DeclareVariableAction : RuleFunctionBase
+    public class DeclareVariableAction : RuleAction
     {  
         public new String Name { get { return base.Name; } set { base.Name = value; } }
         public String Value { get; set; }

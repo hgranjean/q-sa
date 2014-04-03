@@ -17,6 +17,10 @@ namespace Rules.Engine.Functions
             {
                 return new SetValueActionFunctionBuilder();
             }
+            if (rule is WhileRuleSet) // While should be before SimpleRuleSet
+            {
+                return new WhileRuleSetFunctionBuilder();
+            }
             if (rule is SimpleRuleSet)
             {
                 return new SimpleRuleSetFunctionBuilder();

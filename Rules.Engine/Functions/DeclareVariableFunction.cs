@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Rules.Engine.Infos;
@@ -28,12 +29,30 @@ namespace Rules.Engine.Functions
 
             if (actionInfo.ValueInfo != null)
             {
-                var defaultValExpr = Expression.Assign(varExpr,
-                                                       engine.GetExpressionForValue(actionInfo.Context,
-                                                                                    actionInfo.ValueInfo));
+                var primitiveValueExpr = ConvertToPrimitiveType(engine
+                                            .GetExpressionForValue(actionInfo.Context, actionInfo.ValueInfo), actionInfo.ValueType);
+                
+                var defaultValExpr = Expression.Assign(varExpr, primitiveValueExpr);
 
                 block.Code = defaultValExpr;
             }
+        }
+
+        private Expression ConvertToPrimitiveType(Expression valueExpression, IDataTypeInfo targetType)
+        {
+            if (targetType.SystemType == typeof (string))
+            {
+                return Expression.Call(
+                    Expression.Convert(valueExpression, typeof (object)),
+                    typeof (object).GetMethod("ToString"));
+            }
+            if (targetType.SystemType == typeof (int))
+            {
+                return Expression.Call(
+                    typeof(Convert).GetMethod("ToInt32", new[] { typeof(object) }), valueExpression);
+            }
+
+            return valueExpression;
         }
     }
 }

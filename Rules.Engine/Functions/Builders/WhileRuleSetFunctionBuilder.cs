@@ -8,14 +8,14 @@ using Rules.Engine.Infos;
 
 namespace Rules.Engine.Functions.Builders
 {
-    internal class SimpleRuleSetFunctionBuilder : FunctionBuilder
+    internal class WhileRuleSetFunctionBuilder : FunctionBuilder
     {
         public override FunctionBuilder GetFunctionBuilder(Rule rule, CompileContext compileContext)
         {
             var conditional = rule as SimpleRuleSet;
             if (conditional != null)
             {
-                var info = new SimpleRuleSetInfo();
+                var info = new WhileRuleSetInfo();
                 info.Context = compileContext;
                 info.ConditionInfo = new EvalInfo(conditional.Condition);
                 info.TargetInfo = new List<IInfo>();
@@ -25,7 +25,7 @@ namespace Rules.Engine.Functions.Builders
                     info.TargetInfo.Add(new Infos.FunctionInfo(subRule));
                 }
 
-                return new SimpleRuleSetFunction { Info = info };
+                return new WhileRuleSetFunction { Info = info };
 
             }
 

@@ -173,6 +173,14 @@ namespace Rules.Engine
 
                 return compiledBlock;    
             }
+            if ((functionBuilder as WhileRuleSetFunctionBuilder) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionInfo.BuildInfo(engine, compiledBlock, ((WhileRuleSetFunction)functionInfo).Info);
+
+                return compiledBlock;
+            }
             if ((functionBuilder as AddCollectionMemberActionFunctionBuilder) != null)
             {
                 var compiledBlock = new CompiledBlock();

@@ -61,7 +61,42 @@ namespace Rules.Engine.Tests
         [Test]
         public void TestWhile()
         {
+            var ra = new RuleApplicationSpec();
+            var e2 = new EntitySpec("Entity2", typeof(Entity2));
+            ra.Entities.Add(e2);
+
+            var decl1 = new DeclareVariableAction();
+            decl1.Name = "index";
+            decl1.Value = "0";
+            decl1.ValueType = typeof (int).Name;
             
+            var action1 = new SetValueAction();
+            action1.Target = "Context.ResultField";
+            action1.Value = "Context.ResultField + index * 2";
+            
+            var action2 = new SetValueAction();
+            action2.Target = "index";
+            action2.Value = "index + 1";
+
+            var while1 = new WhileRuleSet();
+            while1.Condition = "index < 10";
+            while1.Rules.AddRange(new []{action1, action2});
+
+            var rs1 = new RuleSpecification();
+            rs1.Actions.Add(decl1);
+            rs1.Actions.Add(while1);
+            e2.RuleSets.Add(rs1);
+
+            using (var rs = new RuleSession(ra))
+            {
+                var e2val = new Entity2();
+                // e2val.EntityField = list.AsQueryable();
+                var e2Instance = rs.CreateEntity(e2.Name, e2val);
+
+                var result = rs.ExecuteRules();
+                Assert.IsNotNull(result);
+                Assert.AreEqual("90", e2val.ResultField);
+            }
         }
     }
 }

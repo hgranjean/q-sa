@@ -4,22 +4,22 @@ using System.Linq.Expressions;
 
 namespace Rules.Engine.Functions
 {
-    internal class SimpleRuleSetFunction : FunctionBuilder
+    internal class WhileRuleSetFunction : FunctionBuilder
     {
-        public SimpleRuleSetInfo Info { get; set; }
+        public WhileRuleSetInfo Info { get; set; }
 
         public override void BuildInfo(Engine engine, CompiledBlock block, IInfo info)
-        {   
-            var actionInfo = (SimpleRuleSetInfo)info;
+        {
+            var actionInfo = (WhileRuleSetInfo)info;
 
             var condition = engine.GetExpressionForValue(actionInfo.Context, actionInfo.ConditionInfo);
 
             var expressions = new List<Expression>();
-            
+
             foreach (var childInfo in actionInfo.TargetInfo)
-            {  
+            {
                 var compiledBlock = engine.RuleApplicationInfo.GetCompiledBlock(new FunctionInfo(), engine, actionInfo.Context, ((Infos.FunctionInfo)childInfo).Rule);
-                
+
                 expressions.Add(compiledBlock.Code);
             }
 
@@ -27,10 +27,13 @@ namespace Rules.Engine.Functions
             {
                 expressions.Add(Expression.Empty());
             }
-            
+
             var ifTrue = Expression.Block(expressions);
 
-            block.Code = Expression.IfThen(Expression.Convert(condition, typeof(bool)), ifTrue);
+            var breakLabel = Expression.Label("LoopBreakLabel");
+
+            block.Code = Expression.Block(Expression.Loop(Expression.IfThenElse(Expression.Convert(condition, typeof(bool)), ifTrue, Expression.Goto(breakLabel))),
+                Expression.Label(breakLabel));
         }
     }
 }

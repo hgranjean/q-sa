@@ -1,4 +1,5 @@
-﻿using Rules.Engine.Infos;
+﻿using System;
+using Rules.Engine.Infos;
 using System.Linq.Expressions;
 
 namespace Rules.Engine
@@ -10,9 +11,25 @@ namespace Rules.Engine
         public override void BuildInfo(Engine engine, CompiledBlock block, IInfo info)
         {
             var actionInfo = (SetValueActionInfo) info;
-            
-            block.Code = Expression.Assign(engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, true),
-                engine.GetExpressionForValue(actionInfo.Context, actionInfo.ValueInfo));
+
+            var lhs = engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, true);
+            Type type = null;
+
+            if (lhs is ParameterExpression)
+            {
+                type = ((ParameterExpression) lhs).Type;
+            } else if (lhs is IndexExpression)
+            {
+                type = typeof (object);
+            }
+            else if (lhs is UnaryExpression)
+            {
+                type = ((UnaryExpression) lhs).Operand.Type;
+            }
+
+            var rhs = Expression.Convert(engine.GetExpressionForValue(actionInfo.Context, actionInfo.ValueInfo), type);
+
+            block.Code = Expression.Assign(lhs, rhs);
         }
     }
 }

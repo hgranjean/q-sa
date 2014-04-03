@@ -15,7 +15,7 @@ namespace Rules.Engine
 {
     internal class Engine
     {
-        public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof (WorkingMemory), "memory");
+        public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof(WorkingMemory), "memory");
         public static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "Context");
 
         internal RuleApplicationInfo RuleApplicationInfo { get; private set; }
@@ -24,25 +24,25 @@ namespace Rules.Engine
         {
             this.RuleApplicationInfo = ruleApplicationInfo;
         }
-        
+
         internal Expression GetExpressionForValue(CompileContext context, IInfo info, bool isSetter = false)
         {
             // TODO: Distinguish between lhs and rhs
 
-            String eval = ((EvalInfo) info).Eval;
-            
-            if (Char.IsLetter(eval[0]))
+            Object eval = ((EvalInfo)info).Eval;
+
+            if (eval is String && Char.IsLetter(((String)eval)[0]))
             {
                 if (context != null)
                 {
                     //left part of lambda, p
                     var keyExpression = StateContainerParam;
-                    
+
                     //p.Values.Item[info.Name]
                     //Expression keyExpression = Expression.Property(parameter, contextEval.Eval);
 
                     var param = Engine.StateContainerParam;
-                    
+
                     var externals = context.EntityInfo.EntitySpec.BoundType.GetProperties().Select(p => p).ToDictionary<PropertyInfo, string, object>(item => item.Name, item => item);
 
                     externals.Add("Context", context.EntityInfo.EntitySpec.BoundType);
@@ -52,25 +52,30 @@ namespace Rules.Engine
                         externals.Add(local.Key, local.Value);
                     }
 
-                    var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { param }, typeof(object), eval, externals);
+                    var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { param }, typeof(object), eval.ToString(), externals);
 
-                    if (isSetter)
+                    // if (isSetter)
+                    //{
+                    if (e.Body is IndexExpression)
                     {
-                        if (e.Body is IndexExpression)
-                        {
-                            return e.Body;
-                        }
-
-                        var operand = e.Body;
-                        while (operand is UnaryExpression)
-                        {
-                            operand = ((UnaryExpression) operand).Operand;
-                        }
-
-                        return operand;
+                        return e.Body;
                     }
 
-                    return e.Body;
+                    var operand = e.Body;
+                    while (operand is UnaryExpression)
+                    {
+                        operand = ((UnaryExpression)operand).Operand;
+                    }
+
+                    if (!isSetter)
+                    {
+                        return Expression.Convert(operand, typeof(object));
+                    }
+
+                    return operand;
+                    //}
+
+                    //return e.Body;
                 }
                 else
                 {
@@ -81,14 +86,14 @@ namespace Rules.Engine
                     //p.Values
                     Expression left = Expression.Property(parameter, "Values");
 
-                    var method = typeof (IDictionary<Object, Object>).GetMethod("ContainsKey");
+                    var method = typeof(IDictionary<Object, Object>).GetMethod("ContainsKey");
 
                     //p.Values.ContainsKey(info.Name);
                     // Expression containsExpression = Expression.Call(left, method, Expression.Constant(eval));
 
                     //p.Values.Item[info.Name]
                     Expression keyExpression = Expression.Property(left, "Item",
-                                                                   new Expression[] {Expression.Constant(eval)});
+                                                                   new Expression[] { Expression.Constant(eval) });
 
                     return keyExpression;
                 }
@@ -97,7 +102,7 @@ namespace Rules.Engine
             {
                 return Expression.Constant(eval);
             }
-            
+
 
             /*
             //"somevalue"
