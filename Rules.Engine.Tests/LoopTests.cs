@@ -95,7 +95,7 @@ namespace Rules.Engine.Tests
 
                 var result = rs.ExecuteRules();
                 Assert.IsNotNull(result);
-                Assert.AreEqual("90", e2val.ResultField);
+                Assert.AreEqual(90, e2val.ResultField);
             }
         }
     }

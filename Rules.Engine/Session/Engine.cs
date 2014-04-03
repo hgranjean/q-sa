@@ -13,10 +13,16 @@ using Rules.Engine.Session;
 
 namespace Rules.Engine
 {
+    internal enum ValueType
+    {
+        Setter,
+        Getter
+    }
+
     internal class Engine
     {
         public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof(WorkingMemory), "memory");
-        public static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "Context");
+        public readonly static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), "Context");
 
         internal RuleApplicationInfo RuleApplicationInfo { get; private set; }
 
@@ -25,37 +31,25 @@ namespace Rules.Engine
             this.RuleApplicationInfo = ruleApplicationInfo;
         }
 
-        internal Expression GetExpressionForValue(CompileContext context, IInfo info, bool isSetter = false)
+        // TODO: Move requiresSpecType out and make a separate method
+        internal Expression GetExpressionForValue(CompileContext context, IInfo info, ValueType? isSetter = ValueType.Getter, bool requiresSpecificType = false)
         {
-            // TODO: Distinguish between lhs and rhs
-
             Object eval = ((EvalInfo)info).Eval;
 
             if (eval is String && Char.IsLetter(((String)eval)[0]))
             {
                 if (context != null)
-                {
-                    //left part of lambda, p
-                    var keyExpression = StateContainerParam;
+                {   
+                    var externals = GetContextProps(context).ToDictionary(item => item.Key, item => item.Value);
 
-                    //p.Values.Item[info.Name]
-                    //Expression keyExpression = Expression.Property(parameter, contextEval.Eval);
+                    AddContext(context, externals);
 
-                    var param = Engine.StateContainerParam;
+                    AddLocals(context, externals);
 
-                    var externals = context.EntityInfo.EntitySpec.BoundType.GetProperties().Select(p => p).ToDictionary<PropertyInfo, string, object>(item => item.Name, item => item);
+                    /* parse within the context of statecontainer */
 
-                    externals.Add("Context", context.EntityInfo.EntitySpec.BoundType);
-
-                    foreach (var local in context.Locals)
-                    {
-                        externals.Add(local.Key, local.Value);
-                    }
-
-                    var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { param }, typeof(object), eval.ToString(), externals);
-
-                    // if (isSetter)
-                    //{
+                    var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { StateContainerParam }, typeof(object), eval.ToString(), externals);
+                    
                     if (e.Body is IndexExpression)
                     {
                         return e.Body;
@@ -65,17 +59,17 @@ namespace Rules.Engine
                     while (operand is UnaryExpression)
                     {
                         operand = ((UnaryExpression)operand).Operand;
+
+                        if (requiresSpecificType && operand.Type != typeof (object))
+                            break;
                     }
 
-                    if (!isSetter)
-                    {
-                        return Expression.Convert(operand, typeof(object));
-                    }
-
-                    return operand;
+                    //if (isSetter == ValueType.Setter)
+                    //{
+                    //    return Expression.Convert(operand, typeof(object));
                     //}
 
-                    //return e.Body;
+                    return operand;
                 }
                 else
                 {
@@ -113,6 +107,26 @@ namespace Rules.Engine
                            Expression.MakeBinary(expressionType[op], keyExpression, right), 
                            Expression.Constant(false));
             var lambda = Expression.Lambda<Func<Object, bool>>(operation, parameter);*/
+        }
+
+        private static void AddLocals(CompileContext context, Dictionary<string, object> externals)
+        {
+            foreach (var local in context.Locals)
+            {
+                externals.Add(local.Key, local.Value);
+            }
+        }
+
+        private static void AddContext(CompileContext context, Dictionary<string, object> externals)
+        {
+            externals.Add("Context", context.EntityInfo.EntitySpec.BoundType);
+        }
+
+        private static IEnumerable<KeyValuePair<string, object>> GetContextProps(CompileContext context)
+        {
+            return context.EntityInfo.EntitySpec.BoundType.GetProperties()
+                       .Select(p => p)
+                       .ToDictionary<PropertyInfo, string, object>(item => item.Name, item => item);
         }
     }
 }

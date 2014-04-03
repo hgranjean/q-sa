@@ -12,12 +12,12 @@ namespace Rules.Engine
         {
             var actionInfo = (SetValueActionInfo) info;
 
-            var lhs = engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, true);
+            var lhs = engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, ValueType.Setter);
             Type type = null;
 
             if (lhs is ParameterExpression)
             {
-                type = ((ParameterExpression) lhs).Type;
+                type = lhs.Type;
             } else if (lhs is IndexExpression)
             {
                 type = typeof (object);
@@ -25,6 +25,10 @@ namespace Rules.Engine
             else if (lhs is UnaryExpression)
             {
                 type = ((UnaryExpression) lhs).Operand.Type;
+            }
+            else
+            {
+                type = lhs.Type;
             }
 
             var rhs = Expression.Convert(engine.GetExpressionForValue(actionInfo.Context, actionInfo.ValueInfo), type);
