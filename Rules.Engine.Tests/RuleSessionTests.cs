@@ -192,35 +192,7 @@ namespace Rules.Engine.Tests
             }
         }
 
-        [Test]
-        public void TestExecuteRuleSetAddCollectionMember()
-        {
-            var ra = new RuleApplicationSpec();
-            var e3 = new EntitySpec("Entity2", typeof(Entity3));
-            ra.Entities.Add(e3);
-            
-            var action1 = new AddCollectionMemberAction();
-            action1.Target = "Context.EntityField";
-
-            var conditionalRuleSet = new SimpleRuleSet();
-            conditionalRuleSet.Condition = "Context.EntityField.Count == 0";
-            conditionalRuleSet.Rules.Add(action1);
-
-            var rs1 = new RuleSpecification();
-            rs1.Actions.Add(conditionalRuleSet);
-            e3.RuleSets.Add(rs1);
-
-            using (var rs = new RuleSession(ra))
-            {
-                var e3val = new Entity3();
-                
-                var e3Instance = rs.CreateEntity(e3.Name, e3val);
-
-                var result = rs.ExecuteRules();
-                Assert.IsNotNull(result);
-                Assert.AreEqual(1, e3val.EntityField.Count);
-            }
-        }
+        
 
         [Test]
         public void TestPureExpr()
