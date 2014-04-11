@@ -20,12 +20,13 @@ namespace MvcApplication1.Tests
             public string TextResult { get; set; }
             public int Result { get; set; }
         }
-
+        
         public class SurveyEvaluatorRequest
         {
             public Questions Questions { get; set; }
             public Responses Responses { get; set; }
             public List<EvaluationResult> EvaluationResults { get; set; }
+            public IQueryable<EvaluationResult> EvaluationResultsQueryable { get { return EvaluationResults.AsQueryable(); } }
             public int ResultField { get; set; }
 
             public SurveyEvaluatorRequest()
@@ -68,7 +69,7 @@ namespace MvcApplication1.Tests
             
             var action5 = new SetValueAction();
             action5.Target = "Context.ResultField";
-            action5.Value = "Context.EvaluationResults.Count"; // Set to value depending on the evaluation...
+            action5.Value = "Context.EvaluationResultsQueryable.Sum(t => t.Result)"; // Set to value depending on the evaluation, currently using analytical func here
 
             var while1 = new WhileRuleSet();
             while1.Condition = "index < Context.Questions.Count";
@@ -111,6 +112,7 @@ namespace MvcApplication1.Tests
             e2val.Responses.Add(new Response(e2val.Questions[0], new ResponseChoice("0")));
             e2val.Responses.Add(new Response(e2val.Questions[1], new ResponseChoice("1")));
             e2val.Responses.Add(new Response(e2val.Questions[2], new ResponseChoice("2")));
+            
             return e2val;
         }
 
