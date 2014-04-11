@@ -17,7 +17,8 @@ namespace MvcApplication1.Tests
 
         public class EvaluationResult
         {
-            public int Result { get; set; }    
+            public string TextResult { get; set; }
+            public int Result { get; set; }
         }
 
         public class SurveyEvaluatorRequest
@@ -44,19 +45,38 @@ namespace MvcApplication1.Tests
             decl1.Name = "index";
             decl1.Value = "0";
             decl1.ValueType = typeof (int).Name;
-            
-            var action1 = new SetValueAction();
-            action1.Target = "Context.ResultField";
-            action1.Value = "Context.ResultField + index * 2";
-            
+
+            var action1 = new AddCollectionMemberAction();
+            action1.Target = "Context.EvaluationResults";
+
             var action2 = new SetValueAction();
-            action2.Target = "index";
-            action2.Value = "index + 1";
+            action2.Target = "Context.EvaluationResults[index].TextResult";
+            action2.Value = "Context.Questions[index].GetResponseByText(Context.Responses[index].Answer.Text).Text";
+            
+            var action2_2 = new SetValueAction();
+            action2_2.Target = "Context.EvaluationResults[index].Result";
+            action2_2.Value = "index";
+
+            var action3 = new SimpleRuleSet();
+            action3.Condition = "true"; // Perform some analysis here
+            action3.Rules.Add(action2);
+            action3.Rules.Add(action2_2);
+            
+            var action4 = new SetValueAction();
+            action4.Target = "index";
+            action4.Value = "index + 1";
+            
+            var action5 = new SetValueAction();
+            action5.Target = "Context.ResultField";
+            action5.Value = "Context.EvaluationResults.Count"; // Set to value depending on the evaluation...
 
             var while1 = new WhileRuleSet();
-            while1.Condition = "index < 10";
-            while1.Rules.AddRange(new []{action1, action2});
-
+            while1.Condition = "index < Context.Questions.Count";
+            while1.Rules.Add(action1);
+            while1.Rules.Add(action3);
+            while1.Rules.Add(action4);
+            while1.Rules.Add(action5);
+            
             var rs1 = new RuleSpecification();
             rs1.Actions.Add(decl1);
             rs1.Actions.Add(while1);
@@ -73,6 +93,27 @@ namespace MvcApplication1.Tests
             InitializeRuleApp();    
         }
 
+        private static SurveyEvaluatorRequest CreateSurveyEvaluatorRequest()
+        {
+            var e2val = new SurveyEvaluatorRequest();
+
+            // Setup questionnaire
+            e2val.Questions = new Questions();
+            e2val.Questions.Add(new Question());
+            e2val.Questions.Add(new Question());
+            e2val.Questions.Add(new Question());
+            e2val.Questions[0].AddChoice("0");
+            e2val.Questions[1].AddChoice("1");
+            e2val.Questions[2].AddChoice("2");
+
+            // Setup responses from user
+            e2val.Responses = new Responses();
+            e2val.Responses.Add(new Response(e2val.Questions[0], new ResponseChoice("0")));
+            e2val.Responses.Add(new Response(e2val.Questions[1], new ResponseChoice("1")));
+            e2val.Responses.Add(new Response(e2val.Questions[2], new ResponseChoice("2")));
+            return e2val;
+        }
+
         [Test]
         public void TestSurveyEvaluator()
         {
@@ -80,13 +121,12 @@ namespace MvcApplication1.Tests
 
             using (var rs = new RuleSession(_ruleApplication))
             {
-                var e2val = new SurveyEvaluatorRequest();
-                // e2val.EntityField = list.AsQueryable();
-                var e2Instance = rs.CreateEntity(e1.Name, e2val);
+                var e1val = CreateSurveyEvaluatorRequest();
+                var e1Instance = rs.CreateEntity(e1.Name, e1val);
 
                 var result = rs.ExecuteRules();
                 Assert.IsNotNull(result);
-                Assert.AreEqual(90, e2val.ResultField);
+                Assert.AreEqual(3, e1val.ResultField);
             }
         }
     }

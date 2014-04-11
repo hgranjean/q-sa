@@ -5,15 +5,15 @@ namespace Atum.Domain.Surveillance
     [Serializable]
     public class Response
     {
-        private ResponseChoice answer;
+        private ResponseChoice _answer;
 
         public Response(Question question, ResponseChoice answer)
         {
             // TODO: Complete member initialization
             this.Question = question;
-            this.answer = answer;
+            this.Answer = answer;
         }
-        public Question Question { get; set; }
-        public ResponseChoice Choice { get; set; }
+        public Question Question { get; private set; }
+        public ResponseChoice Answer { get; private set; }
     }
 }

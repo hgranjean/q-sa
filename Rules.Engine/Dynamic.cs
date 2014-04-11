@@ -1338,8 +1338,9 @@ namespace System.Linq.Dynamic
                             id, GetTypeName(type));
                     case 1:
                         MethodInfo method = (MethodInfo)mb;
-                        if (!IsPredefinedType(method.DeclaringType))
-                            throw ParseError(errorPos, Res.MethodsAreInaccessible, GetTypeName(method.DeclaringType));
+                        // [aschmidt] .Net framework should allow calling methods of custom types
+                        //if (!IsPredefinedType(method.DeclaringType))
+                        //    throw ParseError(errorPos, Res.MethodsAreInaccessible, GetTypeName(method.DeclaringType));
                         if (method.ReturnType == typeof(void))
                             throw ParseError(errorPos, Res.MethodIsVoid,
                                 id, GetTypeName(method.DeclaringType));
