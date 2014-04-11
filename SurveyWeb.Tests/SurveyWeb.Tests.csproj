@@ -37,6 +37,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\Rules.Engine.Tests\bin\Debug\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -117,6 +120,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="SurveyEvaluatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -125,6 +129,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
+      <Project>{94BCB49A-CB7D-4F37-8340-9A9B8CD05614}</Project>
+      <Name>Atum.Domain.Basis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.Surveillance.csproj">
+      <Project>{DD43F4B6-5E09-41AA-B7C7-2B53722B1F77}</Project>
+      <Name>Atum.Domain.Surveillance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
+      <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>
+      <Name>Rules.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rules.Engine\Rules.Engine.csproj">
+      <Project>{de7f9025-a9da-47c7-b2ed-75108472500a}</Project>
+      <Name>Rules.Engine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SurveyWeb\SurveyWeb.csproj">
       <Project>{5fa45fda-4439-4631-b43f-944309f6901f}</Project>
       <Name>SurveyWeb</Name>
