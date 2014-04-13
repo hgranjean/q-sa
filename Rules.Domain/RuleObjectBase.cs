@@ -14,7 +14,7 @@ namespace Rules.Domain
     */
     public class RuleObjectBase
     {
-        protected String Name { get; set; }
+        public String Name { get; set; }
         public RuleObjectBase Parent { get; set; }
     }
 }

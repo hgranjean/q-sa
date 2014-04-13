@@ -18,6 +18,7 @@ namespace Rules.Domain
 	    public List<RuleSpecification> RuleSets { get; set; }
 	    // public List<SchemaEndpoint> schemaEndpoints;
 	    // private String strategyTemplate;
+        public string Name { get { return base.Name; } set { base.Name = value; } }
 
         public RuleApplicationSpec()
         {
