@@ -45,11 +45,22 @@ namespace Rules.WebEditor.Controllers
 
         public ActionResult AddBlade(string type, string id)
         {
-            var context =
-                PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().Where(item => item.Name == id).FirstOrDefault();
+            RuleObjectBase context = null;
+            BladeViewModel bladeViewModel = null;
+            if (type == "Entity")
+            {
+                context = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().FirstOrDefault(item => item.Name == id);
 
-            var bladeViewModel = new BladeViewModel("Entities", BladeCategoryType.Entity,
+                bladeViewModel = new BladeViewModel("Entities", BladeCategoryType.Entity,
                                                (context as RuleApplicationSpec).Entities.ToList<RuleObjectBase>());
+            }
+            else if (type == "RuleSet")
+            {
+                context = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().FirstOrDefault();
+
+                bladeViewModel = new BladeViewModel("RuleSets", BladeCategoryType.RuleSet,
+                                               ((RuleApplicationSpec)context).Entities.FirstOrDefault(item => item.Name == id).RuleSets.ToList<RuleObjectBase>()); 
+            }
 
             var viewModel = GetJourney();
 

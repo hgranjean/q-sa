@@ -32,7 +32,18 @@ namespace Rules.WebEditor.Models
 
         private List<RouteValueDictionary> InitializeActionLinks()
         {
-            return Items.Select(item => new RouteValueDictionary(new { Type = "Entity", Id = item.Name })).ToList();
+            switch (this.CategoryType)
+            {
+                case BladeCategoryType.RuleApplication:
+                    return Items.Select(item => new RouteValueDictionary(new { Type = "Entity", Id = item.Name })).ToList();
+                case BladeCategoryType.Entity:
+                    return Items.Select(item => new RouteValueDictionary(new { Type = "RuleSet", Id = item.Name })).ToList();
+                //case BladeCategoryType.RuleSet:
+                //    return Items.Select(item => new RouteValueDictionary(new { Type = "RuleSet", Id = item.Name })).ToList();
+            }
+
+            return null;
+
         }
     }
 }

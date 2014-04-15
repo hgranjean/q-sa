@@ -754,3 +754,12 @@ tr.pager td {
             margin: 0;
         }
 }
+
+.webeditor_journey {
+    display: block;
+}
+
+.webeditor_blade {
+    border: 1px azure;
+    display: block;
+}

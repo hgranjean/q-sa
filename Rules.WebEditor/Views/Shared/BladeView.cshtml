@@ -1,12 +1,16 @@
 ﻿@using Rules.Domain
 @model Rules.WebEditor.Models.BladeViewModel
 
-<div>
-    <div>@Html.Label(Model.Name)</div>
+<div id="webeditor_blade">
+    <div style="display: table-row">@Html.Label(Model.Name)</div>
     
     @for (int i = 0; i < Model.Items.Count; i++)
     {
-        <div>@Html.ActionLink(Model.Items[i].Name, "AddBlade", Model.ActionLinks[i], null)</div>
+        <div style="display: table-row">
+            <div style="display: table-cell">
+                @Html.ActionLink(Model.Items[i].Name, "AddBlade", Model.ActionLinks[i], null)
+            </div>
+        </div>
     }
 
 </div>

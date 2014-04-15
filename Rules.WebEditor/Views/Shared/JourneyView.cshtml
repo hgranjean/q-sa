@@ -1,12 +1,11 @@
 ﻿@using Rules.Domain
 @model Rules.WebEditor.Models.JourneyViewModel
 
-<div>
-    <div>Journeys</div>
+<div class="webeditor_journey" style="display: table; width: 100%">
+    <div style="display: table-row">Journeys</div>
     
     @for (int i = 0; i < Model.Blades.Count; i++)
     {
-        <div>@Html.Partial("BladeView", Model.Blades[i])</div>
+        <div style="display: table-cell; width: @(100/5 * i)>">@Html.Partial("BladeView", Model.Blades[i])</div>
     }
-
 </div>
