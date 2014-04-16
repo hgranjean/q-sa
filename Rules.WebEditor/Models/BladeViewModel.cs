@@ -27,19 +27,19 @@ namespace Rules.WebEditor.Models
             CategoryType = categoryType;
             Items = items;
 
-            ActionLinks = InitializeActionLinks();
+            ActionLinks = GetActionLinks();
         }
 
-        private List<RouteValueDictionary> InitializeActionLinks()
-        {
-            switch (this.CategoryType)
+        private List<RouteValueDictionary> GetActionLinks()
+        {   
+            switch (CategoryType)
             {
                 case BladeCategoryType.RuleApplication:
-                    return Items.Select(item => new RouteValueDictionary(new { Type = "Entity", Id = item.Name })).ToList();
+                    return Items.Select(item => new RouteValueDictionary(new { type = "entity", ruleappid = item.Name })).ToList();
                 case BladeCategoryType.Entity:
-                    return Items.Select(item => new RouteValueDictionary(new { Type = "RuleSet", Id = item.Name })).ToList();
-                //case BladeCategoryType.RuleSet:
-                //    return Items.Select(item => new RouteValueDictionary(new { Type = "RuleSet", Id = item.Name })).ToList();
+                    return Items.Select(item => new RouteValueDictionary(new { type = "ruleset", ruleappid = "app1", entityid = item.Name })).ToList();
+                case BladeCategoryType.RuleSet:
+                    return Items.Select(item => new RouteValueDictionary(new { type = "rules", ruleappid = "app1", entityid = "entity1", rulesetid = item.Name })).ToList();
             }
 
             return null;

@@ -42,29 +42,43 @@ namespace Rules.WebEditor.Controllers
 
             return View();
         }
-
-        public ActionResult AddBlade(string type, string id)
+        
+        [Route("{type}/{ruleappid?}/{entityid?}/{rulesetid?}")]
+        public ActionResult AddBlade(string type, string ruleappid, string entityid, string rulesetid)
         {
             RuleObjectBase context = null;
             BladeViewModel bladeViewModel = null;
-            if (type == "Entity")
-            {
-                context = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().FirstOrDefault(item => item.Name == id);
-
-                bladeViewModel = new BladeViewModel("Entities", BladeCategoryType.Entity,
-                                               (context as RuleApplicationSpec).Entities.ToList<RuleObjectBase>());
-            }
-            else if (type == "RuleSet")
-            {
-                context = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().FirstOrDefault();
-
-                bladeViewModel = new BladeViewModel("RuleSets", BladeCategoryType.RuleSet,
-                                               ((RuleApplicationSpec)context).Entities.FirstOrDefault(item => item.Name == id).RuleSets.ToList<RuleObjectBase>()); 
-            }
 
             var viewModel = GetJourney();
 
-            viewModel.Blades.Add(bladeViewModel);
+            if (ruleappid != null)
+            {
+                context = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().FirstOrDefault(item => String.Compare(item.Name, ruleappid, StringComparison.OrdinalIgnoreCase) == 0);
+
+                bladeViewModel = new BladeViewModel("Entities", BladeCategoryType.Entity,
+                                               ((RuleApplicationSpec)context).Entities.ToList<RuleObjectBase>());
+
+                viewModel.Blades.Add(bladeViewModel);
+            }
+            if (entityid != null)
+            {
+                context = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().FirstOrDefault(item => String.Compare(item.Name, ruleappid, StringComparison.OrdinalIgnoreCase) == 0);
+
+                bladeViewModel = new BladeViewModel("RuleSets", BladeCategoryType.RuleSet,
+                                               ((RuleApplicationSpec)context).Entities.FirstOrDefault(item => String.Compare(item.Name, entityid, StringComparison.OrdinalIgnoreCase) == 0).RuleSets.ToList<RuleObjectBase>());
+
+                viewModel.Blades.Add(bladeViewModel);
+            }
+            if (rulesetid != null)
+            {
+                context = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>().FirstOrDefault(item => String.Compare(item.Name, ruleappid, StringComparison.OrdinalIgnoreCase) == 0);
+
+                bladeViewModel = new BladeViewModel("Rules", BladeCategoryType.RuleSet,
+                                               ((RuleApplicationSpec)context).Entities.FirstOrDefault(item => String.Compare(item.Name, entityid, StringComparison.OrdinalIgnoreCase) == 0)
+                                               .RuleSets.FirstOrDefault(rs => String.Compare(rs.Name, rulesetid, StringComparison.OrdinalIgnoreCase) == 0).Actions.ToList<RuleObjectBase>());
+
+                viewModel.Blades.Add(bladeViewModel);
+            }
             
             return View("Index",viewModel);
         }
