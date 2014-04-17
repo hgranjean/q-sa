@@ -11,7 +11,8 @@ namespace Rules.WebEditor.Models
     {
         RuleApplication,
         Entity,
-        RuleSet
+        RuleSet,
+        Rules
     }
 
     public class BladeViewModel
@@ -40,6 +41,8 @@ namespace Rules.WebEditor.Models
                     return Items.Select(item => new RouteValueDictionary(new { type = "ruleset", ruleappid = "app1", entityid = item.Name })).ToList();
                 case BladeCategoryType.RuleSet:
                     return Items.Select(item => new RouteValueDictionary(new { type = "rules", ruleappid = "app1", entityid = "entity1", rulesetid = item.Name })).ToList();
+                case BladeCategoryType.Rules:
+                    return Items.Select(item => new RouteValueDictionary(new { type = "rules", ruleappid = "app1", entityid = "entity1", rulesetid = "ruleset1", actionid = item.Name })).ToList();
             }
 
             return null;
