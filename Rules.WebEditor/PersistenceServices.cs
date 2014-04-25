@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using Rules.Domain;
 
 namespace Rules.WebEditor
@@ -12,7 +14,8 @@ namespace Rules.WebEditor
 
         static PersistenceServices()
         {
-            var action1 = new List<Rule>(new[] {new SimpleRuleSet {Name = "action1"}});
+            var rules1 = new Rule[] {new SetValueAction() {Target = "Field1", Value = "1234"}};
+            var action1 = new List<Rule>(new[] {new SimpleRuleSet {Name = "action1", Condition = "true", Rules = rules1.ToList()}});
 
             _ruleApplications.Add(new RuleApplicationSpec
                 {
@@ -22,7 +25,7 @@ namespace Rules.WebEditor
                             {
                                 new EntitySpec("Entity1", typeof (object))
                                     {
-                                        RuleSets = new List<RuleSpecification>(new []{new RuleSpecification{ Name = "RuleSet1", Actions = action1}})
+                                        RuleSets = new List<RuleSpec>(new []{new RuleSpec{ Name = "RuleSet1", Actions = action1}})
                                     }
                             })
                 });
@@ -37,7 +40,7 @@ namespace Rules.WebEditor
                             {
                                 new EntitySpec("Entity2", typeof (object))
                                     {
-                                        RuleSets = new List<RuleSpecification>(new []{new RuleSpecification{ Name = "RuleSet2", Actions = action2}})
+                                        RuleSets = new List<RuleSpec>(new []{new RuleSpec{ Name = "RuleSet2", Actions = action2}})
                                     }
                             })
                 });
@@ -46,6 +49,16 @@ namespace Rules.WebEditor
         public static IEnumerable<RuleApplicationSpec> GetRuleApplications()
         {
             return _ruleApplications;
+        }
+
+        public static void SaveRuleApps()
+        {
+            var destination = HttpContext.Current.Server.MapPath("~/App_Data");
+
+            foreach (var ruleapp in _ruleApplications)
+            {
+                ruleapp.Save(Path.Combine(destination, ruleapp.Name + ".rulespec"));
+            }
         }
     }
 }

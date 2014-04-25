@@ -1,0 +1,17 @@
+﻿@model Rules.WebEditor.Models.SimpleRuleSetViewModel
+
+@Html.Hidden("ModelType", Model.GetType())
+
+<!--<h3>Condition</h3>
+    <div>
+        @Html.TextBoxFor(m => m.Condition.ExpressionValue)
+    </div>-->
+
+@Html.ActionLink("Add set value action", "AddSetValueAction")
+
+<fieldset>
+    <legend>Actions</legend>
+    <div class="editor-label">Actions</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Rules)</div>
+</fieldset>
+   

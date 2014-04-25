@@ -25,7 +25,7 @@ namespace Rules.Engine.Tests
             conditionalRuleSet.Condition = "Context.EntityField.Count == 0";
             conditionalRuleSet.Rules.Add(action1);
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(conditionalRuleSet);
             e3.RuleSets.Add(rs1);
 
@@ -60,7 +60,7 @@ namespace Rules.Engine.Tests
             conditionalRuleSet.Rules.Add(action1);
             conditionalRuleSet.Rules.Add(action2);
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(conditionalRuleSet);
             e3.RuleSets.Add(rs1);
 

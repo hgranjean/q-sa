@@ -760,6 +760,14 @@ tr.pager td {
 }
 
 .webeditor_blade {
-    border: 1px azure;
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid #e2e2e2;
     display: block;
+    background: lightgrey;
+}
+
+.webeditor_blade_header {
+    font-size: 1.1em;
+    font-weight: bolder;
 }

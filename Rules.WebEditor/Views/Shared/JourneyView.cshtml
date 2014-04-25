@@ -2,17 +2,34 @@
 @model Rules.WebEditor.Models.JourneyViewModel
 
 <div class="webeditor_journey" style="display: table; width: 100%">
-    <div style="display: table-row">Journeys</div>
+    <div style="display: table-row">Journey</div>
     
-    @for (int i = 0; i < Model.Blades.Count; i++)
-    {
-        <div style="display: table-cell; width: 150px">@Html.Partial("BladeView", Model.Blades[i])</div>
-    }
+    <div style="display: table-row; margin: 2px;">
+        @for (int i = 0; i < Model.Blades.Count; i++)
+        {   
+            <div class="webeditor_blade" style="display: table-cell; padding: 2px; width: 20%;">
+                @Html.Partial("BladeView", Model.Blades[i])
+            </div>
+        }
+        <div style="display: table-cell; width: 80%"></div>
+    </div>
 </div>
 
 @if (Model.BladeEditor != null)
 {
+    <div>&nbsp;</div>
     <div style="display: table; width: 100%">
+        <div style="display: table-row">Editor</div>
+
         <div style="display: table-cell; width: 100%">@Html.Partial("BladeEditorView", Model.BladeEditor)</div>
     </div>
+
+    <div>&nbsp;</div>
+    @Html.ActionLink("Save", "Save");
+    @Html.ActionLink("Cancel", "Index")
 }
+
+
+
+
+

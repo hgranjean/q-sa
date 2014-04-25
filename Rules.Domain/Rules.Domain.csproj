@@ -60,8 +60,8 @@
     <Compile Include="RuleApplicationReference.cs" />
     <Compile Include="RuleFunctionBase.cs" />
     <Compile Include="RuleObjectBase.cs" />
-    <Compile Include="RuleSpecification.cs" />
-    <Compile Include="RuleSpecificationReference.cs" />
+    <Compile Include="RuleSpec.cs" />
+    <Compile Include="RuleSpecReference.cs" />
     <Compile Include="SetValueAction.cs" />
     <Compile Include="SimpleRuleSet.cs" />
     <Compile Include="Template.cs" />
@@ -75,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{8B96B61D-6DDD-44F0-8418-889ACBAAA097}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

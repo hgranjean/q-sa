@@ -42,7 +42,7 @@ namespace Rules.WebEditor.Models
                 case BladeCategoryType.RuleSet:
                     return Items.Select(item => new RouteValueDictionary(new { type = "rules", ruleappid = "app1", entityid = "entity1", rulesetid = item.Name })).ToList();
                 case BladeCategoryType.Rules:
-                    return Items.Select(item => new RouteValueDictionary(new { type = "rules", ruleappid = "app1", entityid = "entity1", rulesetid = "ruleset1", actionid = item.Name })).ToList();
+                    return Items.Select(item => new RouteValueDictionary(new { type = "actions", ruleappid = "app1", entityid = "entity1", rulesetid = "ruleset1", actionid = item.Name })).ToList();
             }
 
             return null;

@@ -25,7 +25,7 @@ namespace Rules.Engine.Tests
             action1.Target = "a";
             action1.Value = "1234";
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
             ra.RuleSets.Add(rs1);
             
@@ -83,7 +83,7 @@ namespace Rules.Engine.Tests
             action1.Target = "Context.Field1";
             action1.Value = "1234";
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
             e1.RuleSets.Add(rs1);
 
@@ -146,7 +146,7 @@ namespace Rules.Engine.Tests
             conditionalRuleSet.Condition = "Context.Field1 == \"1234\"";
             conditionalRuleSet.Rules.Add(action1);
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(conditionalRuleSet);
             e1.RuleSets.Add(rs1);
 
@@ -176,7 +176,7 @@ namespace Rules.Engine.Tests
             conditionalRuleSet.Condition = "Context.EntityField.Field1 == \"1234\"";
             conditionalRuleSet.Rules.Add(action1);
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(conditionalRuleSet);
             e2.RuleSets.Add(rs1);
 

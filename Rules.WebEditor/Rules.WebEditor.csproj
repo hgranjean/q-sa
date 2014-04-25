@@ -70,6 +70,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -158,9 +159,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Actions\SetValueActionViewModel.cs" />
     <Compile Include="Models\BladeEditorViewModel.cs" />
     <Compile Include="Models\BladeViewModel.cs" />
+    <Compile Include="Models\Expression.cs" />
+    <Compile Include="Models\ExpressionEditorViewModel.cs" />
     <Compile Include="Models\JourneyViewModel.cs" />
+    <Compile Include="Models\SimpleRuleSetViewModel.cs" />
     <Compile Include="PersistenceServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -172,6 +177,8 @@
     <Content Include="CodeMirror\codemirror.css" />
     <Content Include="CodeMirror\codemirror.js" />
     <Content Include="CodeMirror\javascript.js" />
+    <Content Include="Content\jquery-contextmenu.css" />
+    <Content Include="Content\prettify.sunburst.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -240,9 +247,11 @@
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Scripts\jquery-contextmenu.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.positional.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -252,6 +261,7 @@
     <Content Include="Scripts\knockout-3.1.0.debug.js" />
     <Content Include="Scripts\knockout-3.1.0.js" />
     <Content Include="Scripts\modernizr-2.7.2.js" />
+    <Content Include="Scripts\prettify.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -288,6 +298,9 @@
     <Content Include="Views\Shared\BladeView.cshtml" />
     <Content Include="Views\Shared\JourneyView.cshtml" />
     <Content Include="Views\Shared\BladeEditorView.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SetValueActionViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Expression.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SimpleRuleSetViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

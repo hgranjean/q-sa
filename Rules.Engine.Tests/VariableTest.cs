@@ -46,7 +46,7 @@ namespace Rules.Engine.Tests
             action2.Target = "Context.Field1";
             action2.Value = "var1";
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
             rs1.Actions.Add(action2);
             e1.RuleSets.Add(rs1);

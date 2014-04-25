@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Rules.Domain
-{
-
-    public class RuleSpecification : RuleObjectBase
+{   
+    public class RuleSpec : RuleObjectBase
     {
         public String Specification { get; set; }
         public List<Rule> Actions { get; set; }
         public List<Template> VocabularyTemplates { get; set; }
         public String UmlFileName { get; set; }
 
-        public RuleSpecification()
+        public RuleSpec()
         {
             Actions = new List<Rule>();
             VocabularyTemplates = new List<Template>();
@@ -26,7 +26,7 @@ namespace Rules.Domain
 	    * @param specification
 	    */
 
-        public RuleSpecification(String specification) : this()
+        public RuleSpec(String specification) : this()
         {
             this.Specification = specification;
         }

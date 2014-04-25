@@ -50,7 +50,7 @@ namespace Rules.Engine.Tests
             action1.Target = "Context.TextField";
             action1.Value = "Context.EntityField.Min(t => t.Field1)";
             
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
             e2.RuleSets.Add(rs1);
 
@@ -88,7 +88,7 @@ namespace Rules.Engine.Tests
             action1.Target = "Context.ResultField";
             action1.Value = "Context.EntityField.OrderBy(t => t.Field1).Count()";
             
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
             e2.RuleSets.Add(rs1);
 

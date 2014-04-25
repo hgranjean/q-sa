@@ -101,5 +101,26 @@ namespace Rules.WebEditor.Controllers
             }
             return viewModel;
         }
+
+        [Route("AddSetValueAction")]
+        public ActionResult AddSetValueAction()
+        {
+            var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
+            (((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Entities[0].RuleSets[0].Actions[0] as SimpleRuleSet).Rules.Add(new SetValueAction());
+
+            var viewModel = GetJourney();
+            
+            return View("Index", viewModel);
+        }
+        
+        [Route("Save")]
+        public ActionResult Save()
+        {
+            PersistenceServices.SaveRuleApps();
+
+            var viewModel = GetJourney();
+
+            return View("Index", viewModel);
+        }
     }
 }

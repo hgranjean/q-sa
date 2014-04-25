@@ -7,15 +7,18 @@ namespace Rules.WebEditor.Models
 {
     public class BladeEditorViewModel
     {
-        public BladeViewModel Blade { get; set; }
+        public object Blade { get; set; }
+        public object BladeViewModel { get; set; }
         public String Body { get; set; }
 
-        public BladeEditorViewModel(BladeViewModel bladeViewModel)
+        public BladeEditorViewModel(object bladeViewModel)
         {
             this.Blade = bladeViewModel;
+            this.BladeViewModel = GetViewModel(bladeViewModel as BladeViewModel);
 
             //this.Body = this.Blade.Name;
 
+            #region Remove
             this.Body = @"
 function getCompletions(token, context) {
   var found = [], start = token.string; token. 
@@ -53,6 +56,13 @@ function getCompletions(token, context) {
   return found;
 }
 ";
+            #endregion
         }
+
+        private object GetViewModel(BladeViewModel viewModel)
+        {
+            return ViewModelConverter.Convert((viewModel.Items.FirstOrDefault()));
+        }
+
     }
 }

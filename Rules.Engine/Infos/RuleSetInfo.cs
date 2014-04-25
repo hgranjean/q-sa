@@ -10,7 +10,7 @@ namespace Rules.Engine.Base
 {
     internal class RuleSetInfo : InfoBase
     {
-        public RuleSpecification RuleSpec { get; set; }
+        public RuleSpec RuleSpec { get; set; }
         public LambdaExpression Lambda { get; set; }
     }
 }

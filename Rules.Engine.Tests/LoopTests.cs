@@ -42,7 +42,7 @@ namespace Rules.Engine.Tests
             action1.Target = "Context.TextField";
             action1.Value = "Context.EntityField.ToList().ForEach(t => Context.ResultField++)";
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
             e2.RuleSets.Add(rs1);
 
@@ -82,7 +82,7 @@ namespace Rules.Engine.Tests
             while1.Condition = "index < 10";
             while1.Rules.AddRange(new []{action1, action2});
 
-            var rs1 = new RuleSpecification();
+            var rs1 = new RuleSpec();
             rs1.Actions.Add(decl1);
             rs1.Actions.Add(while1);
             e2.RuleSets.Add(rs1);

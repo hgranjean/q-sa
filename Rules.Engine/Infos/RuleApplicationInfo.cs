@@ -68,7 +68,7 @@ namespace Rules.Engine
             return execResult;
         }
 
-        private void CompileRuleSet(RuleSpecification ruleSpec, FunctionInfo builder, Engine engine, CompileContext compileContext)
+        private void CompileRuleSet(RuleSpec ruleSpec, FunctionInfo builder, Engine engine, CompileContext compileContext)
         {
             // Creating a parameter expression.
 

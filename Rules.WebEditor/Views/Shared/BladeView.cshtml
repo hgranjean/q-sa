@@ -1,15 +1,38 @@
 ﻿@using Rules.Domain
 @model Rules.WebEditor.Models.BladeViewModel
 
+<script src="~/Scripts/jquery-contextmenu.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-ui.positional.js" type="text/javascript"></script>
+<link href="~/Content/jquery-contextmenu.css" rel="stylesheet" type="text/css" />
+
 <div id="webeditor_blade">
-    <div style="display: table-row">@Html.Label(Model.Name)</div>
+    <div class="webeditor_blade_header context-menu-one box menu-1" style="display: table-row">@Html.Label(Model.Name)</div>
     
     @for (int i = 0; i < Model.Items.Count; i++)
     {
         <div style="display: table-row">
             <div style="display: table-cell">
-                @Html.ActionLink(Model.Items[i].Name, "AddBlade", Model.ActionLinks[i], null)
+                @Html.ActionLink(Model.Items[i].Name, "AddBladeEditor", Model.ActionLinks[i])
             </div>
         </div>
     }
 </div>
+
+    <script type="text/javascript" class="showcase">
+        $(function () {
+            $.contextMenu({
+                selector: '.context-menu-one',
+                callback: function (key, options) {
+                    var m = "clicked: " + key;
+                    window.console && console.log(m) || alert(m);
+                },
+                items: {
+                    "add": { name: "Add", icon: "edit" },
+                    "rename": { name: "Rename", icon: "cut" },
+                    "sep1": "---------",
+                    "delete": { name: "Delete", icon: "delete" },
+                }
+            });
+        });
+    </script>
+
