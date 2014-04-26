@@ -87,4 +87,17 @@ namespace SurveyWeb.Models
             
         }
     }
+
+    public class SurveyAnalysisViewModel : ViewModelBase
+    {
+        public int Result { get; set; }
+
+        public SurveyAnalysisViewModel()
+        {}
+
+        public SurveyAnalysisViewModel(int result)
+        {
+            this.Result = result;
+        }
+    }
 }

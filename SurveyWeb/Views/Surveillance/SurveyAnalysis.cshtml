@@ -1,7 +1,13 @@
-﻿
+﻿@model SurveyWeb.Models.SurveyAnalysisViewModel
+
 @{
     ViewBag.Title = "SurveyAnalysis";
 }
 
 <h2>SurveyAnalysis</h2>
+
+<fieldset>
+    <div class="editor-label">Questions answered</div>
+    <div class="editor-field">@Html.ValueFor(m => m.Result)</div>
+</fieldset>
 

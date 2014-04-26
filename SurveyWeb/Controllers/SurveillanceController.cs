@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SurveyWeb.RuleApp;
 
 namespace MvcApplication1.Controllers
 {
@@ -370,8 +371,16 @@ namespace MvcApplication1.Controllers
             Array.Resize(ref responses, qIndex);
 
             viewModel.Responses = responses;
+
+            var surveyDelivery = new SurveyDeliveryRuleApp();
+            surveyDelivery.InitializeRuleApp();
             
-            return View("SurveyAnalysis", viewModel);
+            var analysisViewModel = new SurveyAnalysisViewModel();
+            var questions = new Questions();
+            questions.AddRange(viewModel.Questions.ConvertAll(m => m.Question));
+            analysisViewModel.Result = surveyDelivery.EvaluateSurvey(questions, null);
+
+            return View("SurveyAnalysis", analysisViewModel);
         }
         
         public ActionResult Create(Survey survey)
