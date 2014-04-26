@@ -342,25 +342,35 @@ namespace MvcApplication1.Controllers
 
             return retVal.ToArray();
         }
-
-        private string[] LoadContent040302()
-        {
-            return null;
-            /*
-            List<string> retVal = new List<string>();
-            
-            */
-        }
-
-
+        
         public ActionResult Dashboard()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult SaveSurvey(TracerViewModel viewModel)
+        public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
         {
+            var survey = SurveillanceServices.GetSurvey(viewModel.SurveyId);
+
+            int qIndex = 0;
+            var responses = new ResponseViewModel[100];
+            foreach (var questionGroup in survey.QuestionGroups)
+            {
+                foreach (var question in questionGroup.Value.Questions)
+                {
+                    var value = values.GetValue("Responses[" + qIndex + "]");
+                    if (value != null)
+                    {
+                        responses[qIndex] = new ResponseViewModel((int)value.ConvertTo(typeof(int)));
+                    }
+                    qIndex++;
+                }
+            }
+            Array.Resize(ref responses, qIndex);
+
+            viewModel.Responses = responses;
+            
             return View("SurveyAnalysis", viewModel);
         }
         

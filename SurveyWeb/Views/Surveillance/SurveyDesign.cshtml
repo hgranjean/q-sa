@@ -1,4 +1,5 @@
-﻿@using Atum.Domain.Surveillance
+﻿
+@using Atum.Domain.Surveillance
 @using SurveyWeb.Models
 @model SurveyWeb.Models.SurveyViewModel
 @{
@@ -48,8 +49,7 @@
         
             <h3>Question groups</h3>
             <div>
-                @Html.EditorFor(m => m.QuestionGroupsViewModel)               
-            
+                @Html.EditorFor(m => m.QuestionGroupsViewModel)
             </div>
             <div>&nbsp;</div>
 

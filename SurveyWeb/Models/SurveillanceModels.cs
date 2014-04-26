@@ -23,6 +23,7 @@ namespace SurveyWeb.Models
     {
         //public SurveillanceViewModel SurveillanceModel { get; set; }
         public Facility Facility { get; set; }
+        public int SurveyId { get; set; }
         private Survey Survey { get; set; }
 
         public TracerViewModel()
@@ -33,6 +34,7 @@ namespace SurveyWeb.Models
         public TracerViewModel(Survey survey)
         {
             this.Survey = survey;
+            this.SurveyId = Convert.ToInt32(survey.ID);
             this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
             this.SurveyDate = DateTime.Today.ToShortDateString();
         }
@@ -95,7 +97,7 @@ namespace SurveyWeb.Models
         public int SelectedResponse { get; set; }
 
         [Range(1,999, ErrorMessage = "Please choice a response.")]
-        public List<ResponseViewModel> Responses { get; set; }
+        public ResponseViewModel[] Responses { get; set; }
     }
 
     public class ResponseViewModel
@@ -103,6 +105,16 @@ namespace SurveyWeb.Models
         public int ResponseId { get; set; }
         public int NextQuestionId { get; set; }
         public string ResponseDisplayText { get; set; }
+
+        public ResponseViewModel(object value)
+        {
+            this.ResponseId = Convert.ToInt32(value);
+        }
+
+        public static implicit operator ResponseViewModel(string value)
+        {
+            return new ResponseViewModel(value);
+        }
     }
     /// <summary>
     /// 

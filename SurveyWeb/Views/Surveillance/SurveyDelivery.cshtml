@@ -18,10 +18,11 @@
   });
 </script>
 
-@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post))
+@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.SurveyId)
 
     <fieldset>
         <legend>Surveillance</legend>
@@ -99,6 +100,7 @@
         <div>&nbsp;</div>
 
         <div style="display: table; table-layout: fixed;" class="gn-table">
+            
             @foreach (var group in Model.QuestionGroups)
             {   
                 <div style="display:table-row" class="table-row-withborder">
@@ -115,29 +117,35 @@
                 for (int qIndex = 0, i = 0; i < questions.ToArray().Length; i++)
                 {
                     var question = questions[i];
-
+                    
                     <div id="choiceGroup" style="display: table-row-group;" >
                         <div style="display:table-row;width:100%">                            
                             <div id="questionText" style="display:table-cell;">@question.Text</div>
                         </div>
-                          <div style="display:table-row;width:100%">
+                        <div style="display:table-row;width:100%">
                             <div style="display: table-cell" class="gn-table-row-withborders"></div>
-                                @foreach (var choice in question.ResponseChoices)
-                                {
-                                    var key = choice.ID;
-                                    var j = qIndex++;
+                            @foreach (var choice in question.ResponseChoices)
+                            {
+                                var key = choice.ID;
+                                var j = qIndex++;
+
+                                <!-- http://stackoverflow.com/questions/2512809/has-anyone-implement-radiobuttonlistfort-for-asp-net-mvc -->
                                     
-                                <div style="display: table-cell; text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span> @Html.RadioButtonFor(m => m.Responses[question.Number], key, new {id = "Response" + key, name = "Question" + question.Number, @class = "sur-choice"})</div>
-                                }
+                                <div style="display: table-cell; text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    @Html.RadioButtonFor(m => m.Responses[question.Number], key,
+                                        new {id = "Response" + key, name = "Question" + question.Number, @class = "sur-choice"})
+                                </div>
+                            }
 
                             @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
-                                {
-                                <div id="questionBasis" style="display: table-cell" class="gn-table-row-withborders">@Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})</div>
-                                }
-                                else
-                                {
+                            {
+                            <div id="questionBasis" style="display: table-cell" class="gn-table-row-withborders">@Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})</div>
+                            }
+                            else
+                            {
                             <div style="display: table-cell" class="gn-table-row-withborders">&nbsp;</div>
-                                }
+                            }
 
                             <div style="display: table-cell; white-space: nowrap;" class="gn-table-row-withborders">
                                 @Html.ActionLink("Notes", "EditNotes", "Surveillance", null, new {@class = "gn-notes-icon", style = "display:inline"})
@@ -147,13 +155,13 @@
                                     @Html.ActionLink("Load", "Load", "Surveillance", null, new {@class = "gn-upload-icon", style = "display:inline"})
                                     <input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline" onchange=" document.getElementById('file').innerHTML = this.value; " />
                                 </span>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 }
 
             }
-            </div>
+        </div>
         <div>&nbsp;</div>
             <input type="submit" value="Done" />
             @Html.ActionLink("Reset", "SurveyDelivery", "Surveillance", new {id = 0})
