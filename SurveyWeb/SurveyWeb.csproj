@@ -210,8 +210,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssessmentModels.cs" />
     <Compile Include="Models\EnumUtils.cs" />
+    <Compile Include="Models\HtmlExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\QuestionGroupsViewModelBinder.cs" />
+    <Compile Include="Models\RadioButtonListViewModel.cs" />
     <Compile Include="Models\SurveillanceModels.cs" />
     <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
