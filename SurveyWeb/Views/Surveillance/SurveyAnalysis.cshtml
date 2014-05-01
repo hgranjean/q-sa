@@ -9,11 +9,11 @@
 <fieldset>
     <div class="editor-label">Questions answered</div>
     <div class="editor-field">@Html.ValueFor(m => m.Result)</div>
-    <div class="editor-label">Followups</div>
+    <div class="editor-label">Followups (@Html.ValueFor(m => m.Followups.ToList().Count))</div>
 
     @foreach (var followup in Model.Followups)
     {
-        <div class="editor-field">@Html.ValueFor(m => followup.Result)</div>
+        <div class="editor-field">@Html.ValueFor(m => followup.TextResult)</div>
     }
 </fieldset>
 
