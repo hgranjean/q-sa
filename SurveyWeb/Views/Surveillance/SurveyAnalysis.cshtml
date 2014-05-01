@@ -13,7 +13,7 @@
 
     @foreach (var followup in Model.Followups)
     {
-        <div class="editor-field">@Html.Value(followup.Result)</div>
+        <div class="editor-field">@Html.ValueFor(m => followup.Result)</div>
     }
 </fieldset>
 

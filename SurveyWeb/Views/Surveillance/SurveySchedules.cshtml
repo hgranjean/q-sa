@@ -5,10 +5,13 @@
 
 <h2>My Audits</h2>
 
-<div>
-    @foreach (var item in Model.Surveys)
-    {
-        <div>@Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDelivery", new {surveyId = item.ID})</div>
-    }
-</div>
+@if (User.IsInRole("Surveyor") || User.IsInRole("Administrator"))
+{
 
+    <div>
+        @foreach (var item in Model.Surveys)
+        {
+            <div>@Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDelivery", new {surveyId = item.ID})</div>
+        }
+    </div>
+}
