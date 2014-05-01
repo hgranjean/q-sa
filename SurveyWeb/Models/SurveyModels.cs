@@ -99,5 +99,7 @@ namespace SurveyWeb.Models
         {
             this.Result = result;
         }
+
+        public IEnumerable<RuleApp.SurveyDeliveryRuleApp.EvaluationResult> Followups { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace SurveyWeb.RuleApp
         {
             public string TextResult { get; set; }
             public int Result { get; set; }
+            public bool IsFollowup { get; set; }
         }
 
 
@@ -37,7 +38,7 @@ namespace SurveyWeb.RuleApp
             var ra = new RuleApplicationSpec();
             var e1 = new EntitySpec("SurveyEvaluator", typeof(SurveyEvaluator));
             ra.Entities.Add(e1);
-
+            
             var decl1 = new DeclareVariableAction();
             decl1.Name = "index";
             decl1.Value = "0";
@@ -45,19 +46,24 @@ namespace SurveyWeb.RuleApp
 
             var action1 = new AddCollectionMemberAction();
             action1.Target = "Context.EvaluationResults";
-
+            
             var action2 = new SetValueAction();
             action2.Target = "Context.EvaluationResults[index].TextResult";
             action2.Value = "Context.Questions[index].GetResponseByText(Context.Responses[index].Answer.Text).Text";
 
             var action2_2 = new SetValueAction();
             action2_2.Target = "Context.EvaluationResults[index].Result";
-            action2_2.Value = "index";
+            action2_2.Value = "Context.EvaluationResults[index].Result + 1";
+
+            var action2_3 = new SetValueAction();
+            action2_3.Target = "Context.EvaluationResults[index].IsFollowup";
+            action2_3.Value = @"Context.Responses[index].Answer.Text == ""Follow-Up Completed""";
 
             var action3 = new SimpleRuleSet();
-            action3.Condition = "true"; // Perform some analysis here
+            action3.Condition = "Context.Responses.Count > index"; // Perform some analysis here
             action3.Rules.Add(action2);
             action3.Rules.Add(action2_2);
+            action3.Rules.Add(action2_3);
 
             var action4 = new SetValueAction();
             action4.Target = "index";
@@ -91,23 +97,26 @@ namespace SurveyWeb.RuleApp
             e2val.Questions = new Questions();
             // Setup questionnaire
             e2val.Questions = new Questions();
-            e2val.Questions.Add(new Question());
+            e2val.Questions.AddRange(questions);
+
+            // Setup responses from user
+            e2val.Responses = new Responses();
+            e2val.Responses.AddRange(responses);
+
+            /*e2val.Questions.Add(new Question());
             e2val.Questions.Add(new Question());
             e2val.Questions.Add(new Question());
             e2val.Questions[0].AddChoice("0");
             e2val.Questions[1].AddChoice("1");
             e2val.Questions[2].AddChoice("2");
-
-            // Setup responses from user
-            e2val.Responses = new Responses();
             e2val.Responses.Add(new Response(e2val.Questions[0], new ResponseChoice("0")));
             e2val.Responses.Add(new Response(e2val.Questions[1], new ResponseChoice("1")));
-            e2val.Responses.Add(new Response(e2val.Questions[2], new ResponseChoice("2")));
+            e2val.Responses.Add(new Response(e2val.Questions[2], new ResponseChoice("2")));*/
 
             return e2val;
         }
 
-        public int EvaluateSurvey(Questions questions, Responses responses)
+        public List<EvaluationResult> EvaluateSurvey(Questions questions, Responses responses)
         {
             var e1 = _ruleApplication.Entities.First();
 
@@ -118,7 +127,7 @@ namespace SurveyWeb.RuleApp
 
                 var result = rs.ExecuteRules();
 
-                return e1val.ResultField;
+                return e1val.EvaluationResults;
             }
         }
     }

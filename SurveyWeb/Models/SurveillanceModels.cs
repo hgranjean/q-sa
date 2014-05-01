@@ -102,18 +102,14 @@ namespace SurveyWeb.Models
 
     public class ResponseViewModel
     {
+        public Response Response { get; set; }
         public int ResponseId { get; set; }
         public int NextQuestionId { get; set; }
         public string ResponseDisplayText { get; set; }
 
-        public ResponseViewModel(object value)
+        public ResponseViewModel(Response response)
         {
-            this.ResponseId = Convert.ToInt32(value);
-        }
-
-        public static implicit operator ResponseViewModel(string value)
-        {
-            return new ResponseViewModel(value);
+            this.Response = response;
         }
     }
     /// <summary>

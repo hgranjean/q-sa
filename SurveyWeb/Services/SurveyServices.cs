@@ -68,10 +68,30 @@ namespace SurveyWeb
 
         public static void Save(Survey survey)
         {
-            if (surveys == null)
+            EnsureSurveys();
+
+            AddOrUpdateSurvey(survey);
+
+            survey.RenumberQuestions();
+
+            var appPath = GetAppPath();
+
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID + ".xml")))
             {
-                surveys = new List<Survey>();
+                XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
+        }
+
+        private static void SetSurveyId(Survey survey)
+        {
+            if (survey.ID == -1)
+            {
+                survey.AssignNextId(EnumerateSurveys().Count());
+            }
+        }
+
+        private static void AddOrUpdateSurvey(Survey survey)
+        {
             if (!surveys.Contains(survey))
             {
                 surveys.Add(survey);
@@ -81,16 +101,14 @@ namespace SurveyWeb
                 surveys[surveys.IndexOf(survey)] = survey;
             }
 
-            var appPath = GetAppPath();
+            SetSurveyId(survey);
+        }
 
-            if (survey.ID == -1)
+        private static void EnsureSurveys()
+        {
+            if (surveys == null)
             {
-                survey.AssignNextId(EnumerateSurveys().Count());
-            }
-
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID + ".xml")))
-            {
-                XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
+                surveys = new List<Survey>();
             }
         }
 

@@ -353,32 +353,41 @@ namespace MvcApplication1.Controllers
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
         {
             var survey = SurveillanceServices.GetSurvey(viewModel.SurveyId);
+            
+            var questions = new Questions();
+            var responses = new Responses();
 
             int qIndex = 0;
-            var responses = new ResponseViewModel[100];
+            var responsesViewModels = new ResponseViewModel[100];
             foreach (var questionGroup in survey.QuestionGroups)
             {
                 foreach (var question in questionGroup.Value.Questions)
                 {
+                    questions.Add(question);
                     var value = values.GetValue("Responses[" + qIndex + "]");
                     if (value != null)
                     {
-                        responses[qIndex] = new ResponseViewModel((int)value.ConvertTo(typeof(int)));
+                        var responseId = (int) value.ConvertTo(typeof (int));
+
+                        var response = new Response(question, question.ResponseChoices.FirstOrDefault(r => r.ID == responseId));
+                        responses.Add(response);
+                        
+                        responsesViewModels[qIndex] = new ResponseViewModel(response) { ResponseId = responseId};
                     }
                     qIndex++;
                 }
             }
-            Array.Resize(ref responses, qIndex);
+            Array.Resize(ref responsesViewModels, qIndex);
 
-            viewModel.Responses = responses;
+            viewModel.Responses = responsesViewModels;
 
             var surveyDelivery = new SurveyDeliveryRuleApp();
             surveyDelivery.InitializeRuleApp();
             
             var analysisViewModel = new SurveyAnalysisViewModel();
-            var questions = new Questions();
-            questions.AddRange(viewModel.Questions.ConvertAll(m => m.Question));
-            analysisViewModel.Result = surveyDelivery.EvaluateSurvey(questions, null);
+            var evaluationResults = surveyDelivery.EvaluateSurvey(questions, responses);
+            analysisViewModel.Result = evaluationResults.Count;
+            analysisViewModel.Followups = evaluationResults.Where(m => m.IsFollowup);
 
             return View("SurveyAnalysis", analysisViewModel);
         }
