@@ -89,7 +89,7 @@ namespace Atum.Domain.Surveillance
         public QuestionGroup AddQuestionGroup()
         {
 
-            return AddQuestionGroup(string.Empty);
+            return AddQuestionGroup(String.Empty);
         }
 
         public QuestionGroup AddQuestionGroup(string groupTitle)
@@ -172,6 +172,19 @@ namespace Atum.Domain.Surveillance
             }
 
             return other.ID == this.ID;
+        }
+
+        public void RenumberQuestions()
+        {
+            int qIndex = 1;
+            foreach (var qGroup in QuestionGroups)
+            {
+                foreach (var q in qGroup.Value.Questions)
+                {
+                    q.Number = qIndex;
+                    qIndex++;
+                }
+            }
         }
     }
 }
