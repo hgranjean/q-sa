@@ -275,20 +275,20 @@ namespace MvcApplication1.Controllers
             yield return new Area("Area2", 2);
         }
 
-        private IEnumerable<Atum.Domain.Healthcare.Facility> LoadFacilities()
+        private IEnumerable<Facility> LoadFacilities()
         {
             // var _dbContext = new AtumSurveillanceContext();
 
             // return _dbContext.Hospitals.Select(hospital => new Facility(hospital.Name, Int32.Parse(hospital.Id)));
 
-            yield return new Atum.Domain.Healthcare.Facility("Facility1", 1);
-            yield return new Atum.Domain.Healthcare.Facility("Facility2", 2);
+            yield return new Facility("Facility1", 1);
+            yield return new Facility("Facility2", 2);
         }
 
         private IEnumerable<Building> LoadBuildings()
         {
-            yield return new Atum.Domain.Common.Building("Building1", 1);
-            yield return new Atum.Domain.Common.Building("Building2", 2);
+            yield return new Building("Building1", 1);
+            yield return new Building("Building2", 2);
         }
 
 
