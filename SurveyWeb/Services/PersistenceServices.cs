@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml;
+using Atum.Domain.Basis;
 using Atum.Domain.Surveillance;
 using Atum.Utility.XML;
+using SurveyWeb.Models;
 
-namespace SurveyWeb
+namespace SurveyWeb.Services
 {
-    internal class SurveillanceServices
+    internal class PersistenceServices
     {
         private static List<Survey> surveys; 
         private static SurveyManager _surverManager;
-        
-        static SurveillanceServices()
-        {
-            
-        }
         
         public static SurveyManager GetSurveyManager(Survey survey)
         {
@@ -35,7 +31,6 @@ namespace SurveyWeb
                 {
                     surveys.Add(LoadSurvey(surveyFileName));
                 }
-                // surveys.AddRange(new [] { new Survey(), new Survey(), new Survey() });
             }
 
             return surveys;
@@ -76,15 +71,38 @@ namespace SurveyWeb
 
             var appPath = GetAppPath();
 
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "survey" + survey.ID + ".xml")))
+            var fileName = String.Concat("survey", survey.ID, ".xml");
+
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName)))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
         }
 
+        public static void SaveResponse(TracerViewModel survey)
+        {
+            var appPath = GetAppPath();
+
+            var fileName = String.Concat("response", survey.SurveyId, ".xml");
+
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName)))
+            {
+                XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
+            }
+        }
+
+        public static TracerViewModel GetResponse(long surveyId)
+        {
+            var appPath = GetAppPath();
+
+            var fullPath = Path.Combine(appPath, "response" + surveyId + ".xml");
+
+            return (TracerViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(TracerViewModel));
+        }
+
         private static void SetSurveyId(Survey survey)
         {
-            if (survey.ID == -1)
+            if (survey.ID == DomainObject.DefaultIdentifier)
             {
                 survey.AssignNextId(EnumerateSurveys().Count());
             }
@@ -98,7 +116,9 @@ namespace SurveyWeb
             }
             else
             {
-                surveys[surveys.IndexOf(survey)] = survey;
+                var index = surveys.IndexOf(survey);
+
+                surveys[index] = survey;
             }
 
             SetSurveyId(survey);
@@ -115,10 +135,8 @@ namespace SurveyWeb
         private static string[] EnumerateSurveys()
         {
             var appPath = GetAppPath();
-
-            // return appPath + ConfigurationSettings.AppSettings.Get("RuleApp");
-
-            return Directory.GetFiles(appPath, "*.xml");
+            
+            return Directory.GetFiles(appPath, "survey*.xml");
         }
 
         private static string GetAppPath()
@@ -133,6 +151,7 @@ namespace SurveyWeb
         internal static void DeleteSurvey(string id)
         {   
             var toDelete = surveys.FirstOrDefault(survey => survey.ID == Int32.Parse(id));
+
             if (surveys.Contains(toDelete))
             {
                 surveys.Remove(toDelete);

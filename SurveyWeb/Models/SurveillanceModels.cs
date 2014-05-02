@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Linq;
+using System.Xml.Serialization;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Surveillance;
@@ -42,11 +43,15 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name = "Hospital")]
         public int FacilityId { get; set; }
+
+        [XmlIgnore]
         public IEnumerable<Facility> Facilities { get; set; }
 
         [Required]
         [Display(Name = "Building")]
         public int BuildingId { get; set; }
+
+        [XmlIgnore]
         public IEnumerable<Building> Buildings { get; set; }
 
         //FloorNumber
@@ -57,11 +62,15 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name = "Area/Unit")]
         public int AreaId { get; set; }
+
+        [XmlIgnore]
         public IEnumerable<Area> Areas { get; set; }
 
         [Required]
         [Display(Name = "Tracer Type")]
         public int TracerTypeId { get; set; }
+
+        [XmlIgnore]
         public IEnumerable<TracerType> TracerTypes { get; set; }
 
         [Required]
@@ -71,6 +80,8 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name="Surveyor")]
         public int SurveyorId { get; set; }
+
+        [XmlIgnore]
         public IEnumerable<Person> Surveyors { get; set; }
 
         [Required]
@@ -85,14 +96,21 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
+
+        [XmlIgnore]
         public IEnumerable<Department> Departments { get; set; }
 
         [Required]
         [Display(Name = "Survey Type")]
         public int SurveyTypeId { get; set; }
+
+        [XmlIgnore]
         public List<SurveyType> SurveyTypes { get; set; }
-        
+
+        [XmlIgnore]
         public QuestionGroupsViewModel QuestionGroups { get; set; }
+
+        [XmlIgnore]
         public List<QuestionViewModel> Questions { get; set; }
         public int SelectedResponse { get; set; }
 
@@ -106,6 +124,10 @@ namespace SurveyWeb.Models
         public int ResponseId { get; set; }
         public int NextQuestionId { get; set; }
         public string ResponseDisplayText { get; set; }
+
+        public ResponseViewModel()
+        {
+        }
 
         public ResponseViewModel(Response response)
         {

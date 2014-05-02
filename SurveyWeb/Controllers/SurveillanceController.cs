@@ -14,9 +14,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using SurveyWeb.RuleApp;
+using SurveyWeb.Services;
 
 namespace MvcApplication1.Controllers
 {
+    [Authorize]
     public class SurveillanceController : Controller
     {
         //
@@ -61,7 +63,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult DeleteSurvey(string id)
         {
-            SurveillanceServices.DeleteSurvey(id);
+            PersistenceServices.DeleteSurvey(id);
 
             return RedirectToAction("Surveys");
         }
@@ -109,7 +111,7 @@ namespace MvcApplication1.Controllers
             Survey survey = LoadSurvey("Survey Template 1");
             if (surveyId.HasValue)
             {
-                survey = SurveillanceServices.GetSurvey(surveyId.Value);
+                survey = PersistenceServices.GetSurvey(surveyId.Value);
 
                 foreach (var questionGroup in survey.QuestionGroups)
                 {
@@ -352,7 +354,7 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
         {
-            var survey = SurveillanceServices.GetSurvey(viewModel.SurveyId);
+            var survey = PersistenceServices.GetSurvey(viewModel.SurveyId);
             
             var questions = new Questions();
             var responses = new Responses();
@@ -389,6 +391,8 @@ namespace MvcApplication1.Controllers
             analysisViewModel.Result = evaluationResults.Count;
             analysisViewModel.Followups = evaluationResults.Where(m => m.IsFollowup);
 
+            PersistenceServices.SaveResponse(viewModel);
+            
             return View("SurveyAnalysis", analysisViewModel);
         }
         
@@ -403,7 +407,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CreateQuestionGroup(long surveyId)
         {
-            Survey survey = SurveillanceServices.GetSurveys().First(item => item.ID == surveyId);
+            Survey survey = PersistenceServices.GetSurveys().First(item => item.ID == surveyId);
 
             return View(new SurveyViewModel(survey));
         }
@@ -411,7 +415,7 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
         {
-            var survey = SurveillanceServices.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
+            var survey = PersistenceServices.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
 
             if (survey.QuestionGroups == null)
             {
@@ -438,7 +442,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult EditQuestionGroup(string surveyId, string groupId)
         {
-            var survey = SurveillanceServices.GetSurveys().First(item => item.ID.ToString() == surveyId);
+            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == surveyId);
 
             ViewBag.QuestionGroupId = groupId;
 
@@ -452,7 +456,7 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult EditQuestionGroup(QuestionGroupViewModel viewModel)
         {
-            var survey = SurveillanceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
             {   
@@ -468,7 +472,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult AddQuestion(string surveyId, string questionGroupId)
         {
-            var survey = SurveillanceServices.GetSurvey(Convert.ToInt32(surveyId));
+            var survey = PersistenceServices.GetSurvey(Convert.ToInt32(surveyId));
 
             var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
 

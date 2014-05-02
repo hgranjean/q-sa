@@ -10,12 +10,12 @@ namespace Atum.Domain.Common
     [Serializable]
     public class Building : DomainObject
     {
-        private string p1;
-        private int p2;
+        public Building()
+        {
+        }
 
         public Building(string name, int Id)
         {
-            // TODO: Complete member initialization
             this.SetId(Id);
             this.Name = name;
         }

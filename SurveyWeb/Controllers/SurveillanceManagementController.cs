@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace SurveyWeb.Controllers
 {
+    [Authorize]
     public class SurveillanceManagementController : Controller
     {
         //

@@ -8,6 +8,7 @@ using SurveyWeb.Models;
 
 namespace MvcApplication1.Controllers
 {
+    [Authorize]
     public class HospitalController : Controller
     {
         private AtumSurveillanceContext _dbContext = null;

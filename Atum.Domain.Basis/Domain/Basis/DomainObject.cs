@@ -7,7 +7,9 @@ namespace Atum.Domain.Basis
 	/// </summary>
 	public abstract class DomainObject
 	{
-		public long ID
+	    public const int DefaultIdentifier = -1;
+
+	    public long ID
 		{
 		    get;
 		    set;

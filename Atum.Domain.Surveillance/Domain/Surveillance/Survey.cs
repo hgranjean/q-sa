@@ -27,7 +27,7 @@ namespace Atum.Domain.Surveillance
 
         public Survey()
         {
-            SetId(-1);
+            SetId(DomainObject.DefaultIdentifier);
         }
 
         public Survey(string title) : this()
@@ -39,7 +39,6 @@ namespace Atum.Domain.Surveillance
         {
             ID = id;
         }
-
 
         public string Title { get; set; }
 
@@ -76,7 +75,7 @@ namespace Atum.Domain.Surveillance
 
             int length = orderedQuestions.Count;
 
-            for (int i = length - 1; i >= 0; i--)
+            for (var i = length - 1; i >= 0; i--)
             {
                 questionsStack.Push(orderedQuestions.Values[i]);
             }
@@ -94,7 +93,7 @@ namespace Atum.Domain.Surveillance
 
         public QuestionGroup AddQuestionGroup(string groupTitle)
         {
-            QuestionGroup retVal = new QuestionGroup(groupTitle);
+            var retVal = new QuestionGroup(groupTitle);
             if (this.QuestionGroups==null)
             {
                 this.QuestionGroups = new QuestionGroups();
@@ -103,7 +102,6 @@ namespace Atum.Domain.Surveillance
             QuestionGroups.Add(retVal.Number, retVal);
             return retVal;
         }
-
 
         public QuestionGroups QuestionGroups { get; set; }
 

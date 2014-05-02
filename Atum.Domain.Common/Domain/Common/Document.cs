@@ -7,10 +7,9 @@ namespace Atum.Domain.Common
     [Serializable]
     public class Document : DomainObject
 	{
-        //Props
-        public int OwnerId { get; private set; }
-        public long OwnerType { get; private set; }
-        public long StorageId { get; private set; }
+        public int OwnerId { get; set; }
+        public long OwnerType { get; set; }
+        public long StorageId { get; set; }
 
         public Document()
         {

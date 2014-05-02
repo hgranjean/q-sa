@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Atum.Domain.Surveillance;
+using SurveyWeb.Services;
 
 namespace SurveyWeb.Models
 {
@@ -30,7 +31,7 @@ namespace SurveyWeb.Models
         
         public static IEnumerable<Survey> GetSurveys()
         {
-            return SurveillanceServices.GetSurveys();
+            return PersistenceServices.GetSurveys();
         }
 
         public void Save()
@@ -46,7 +47,7 @@ namespace SurveyWeb.Models
             
             this.Survey.QuestionGroups = questionGroups;
 
-            SurveillanceServices.Save(this.Survey);
+            PersistenceServices.Save(this.Survey);
         }
 
         public void AddQuestionGroup()

@@ -6,9 +6,11 @@ using System.Web.Mvc;
 using Atum.Domain.Surveillance;
 using SurveyWeb;
 using SurveyWeb.Models;
+using SurveyWeb.Services;
 
 namespace SurveyWeb
 {
+    [Authorize]
     public class AdministerSurveyController : Controller
     {
         public ActionResult Index()
@@ -65,7 +67,7 @@ namespace SurveyWeb
         {
             var viewModel = (SurveyViewModel) Session["Survey"];
 
-            SurveillanceServices.Save(viewModel.Survey);
+            PersistenceServices.Save(viewModel.Survey);
 
             return View(viewModel);
         }
