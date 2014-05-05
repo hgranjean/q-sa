@@ -29,7 +29,6 @@ namespace SurveyWeb
                 {
                     return View(Session["Survey"]);
                 }
-
             }
             
             var viewModel = new SurveyViewModel(survey);

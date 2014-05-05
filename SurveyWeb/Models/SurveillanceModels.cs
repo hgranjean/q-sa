@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml.Serialization;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
@@ -10,11 +9,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SurveyWeb.Models
 {
-    //public class SurveillanceViewModel
-    //{
-        
-    //}
-
     public class SurveysViewModel
     {
         public Surveys Surveys{ get; set; }
@@ -22,7 +16,6 @@ namespace SurveyWeb.Models
 
     public class TracerViewModel    
     {
-        //public SurveillanceViewModel SurveillanceModel { get; set; }
         public Facility Facility { get; set; }
         public int SurveyId { get; set; }
         private Survey Survey { get; set; }
@@ -139,13 +132,11 @@ namespace SurveyWeb.Models
     /// </summary>
     public class Group : List<QuestionViewModel>
 	{
-
         public Group(KeyValuePair<int, QuestionGroup> item)
         {
             this.Title = item.Value.Title;
 //          this.Title = item.Value.Number.ToString() + item.Value.Title;
             this.AddRange(LoadQuestionModels(item.Value.Questions));
-    
         }
 
         private IEnumerable<QuestionViewModel> LoadQuestionModels(Questions questions)
@@ -175,19 +166,15 @@ namespace SurveyWeb.Models
         }
 
         private void SetGroupValues(QuestionGroups questionGroups)
-        {
-            var i = 0;
+        {   
             foreach (var item in questionGroups)
             {
                 var group = new QuestionGroupViewModel { Number = item.Key, QuestionGroup = item.Value, SurveyId = this.SurveyId};
                 this.Add(group);
-
-                i++;
-            };
+            }
         }
 
         public string SurveyId { get; set; }
-        
     }
 
     public class QuestionViewModel

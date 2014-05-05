@@ -15,6 +15,7 @@ using System.Linq;
 using System.Web;
 using SurveyWeb.RuleApp;
 using SurveyWeb.Services;
+using SurveyWeb.Controllers;
 
 namespace MvcApplication1.Controllers
 {
@@ -106,6 +107,37 @@ namespace MvcApplication1.Controllers
             return View(model);
         }
 
+        public ActionResult CompletedSurveys()
+        {
+            var availableResponses = PersistenceServices.GetResponses();
+
+            // TODO: Filter out response by user
+            // foreach (var response in availableResponses) { PersistenceServices.GetResponse(response); }
+
+            var model = new CompletedSurveyViewModel(availableResponses);
+
+            return View(model);
+        }
+
+        public ActionResult ViewCompletedSurvey(string responseId)
+        {
+            var availableResponses = PersistenceServices.GetResponses();
+
+            foreach (var response in availableResponses)
+            {
+                if (response.EndsWith(responseId))
+                {
+                    var model = PersistenceServices.GetResponse(responseId);
+
+                    LoadTracerReferenceData(model);
+
+                    return View("SurveyDelivery", model);
+                }
+            }
+
+            throw new KeyNotFoundException("Response was not found - " + responseId);
+        }
+
         private TracerViewModel LoadTracerViewModel(int? surveyId)
         {
             Survey survey = LoadSurvey("Survey Template 1");
@@ -131,17 +163,22 @@ namespace MvcApplication1.Controllers
                 }
             }
             
-            TracerViewModel retVal = new TracerViewModel(survey);
+            var retVal = new TracerViewModel(survey);
+            
+            LoadTracerReferenceData(retVal);
+
+            return retVal;
+        }
+
+        private void LoadTracerReferenceData(TracerViewModel retVal)
+        {
             retVal.Buildings = LoadBuildings();
             retVal.Facilities = LoadFacilities();
             retVal.Areas = LoadAreas();
             retVal.Surveyors = LoadSurveyors();
             retVal.Departments = LoadDepartments();
             retVal.FloorNumber = 3;
-
-            return retVal;
         }
-
 
         private Survey LoadSurvey(string title)
         {

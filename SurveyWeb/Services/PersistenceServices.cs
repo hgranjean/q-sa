@@ -36,6 +36,13 @@ namespace SurveyWeb.Services
             return surveys;
         }
 
+        public static IEnumerable<string> GetResponses()
+        {
+            var responses = EnumerateResponses();
+
+            return responses;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -91,11 +98,11 @@ namespace SurveyWeb.Services
             }
         }
 
-        public static TracerViewModel GetResponse(long surveyId)
+        public static TracerViewModel GetResponse(string responseId)
         {
             var appPath = GetAppPath();
 
-            var fullPath = Path.Combine(appPath, "response" + surveyId + ".xml");
+            var fullPath = Path.Combine(appPath, responseId /*"response" + surveyId + ".xml"*/);
 
             return (TracerViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(TracerViewModel));
         }
@@ -137,6 +144,13 @@ namespace SurveyWeb.Services
             var appPath = GetAppPath();
             
             return Directory.GetFiles(appPath, "survey*.xml");
+        }
+        
+        private static string[] EnumerateResponses()
+        {
+            var appPath = GetAppPath();
+            
+            return Directory.GetFiles(appPath, "response*.xml");
         }
 
         private static string GetAppPath()

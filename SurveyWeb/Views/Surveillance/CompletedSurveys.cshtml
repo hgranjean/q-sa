@@ -1,0 +1,16 @@
+﻿@model SurveyWeb.Controllers.CompletedSurveyViewModel
+
+@{
+    ViewBag.Title = "Completed surveys";
+}
+
+<h2>Completed surveys</h2>
+
+<fieldset>
+    
+@foreach (var completedSurvey in Model.CompletedSurveysShortNames)
+{
+    <div class="editor-field">@Html.ValueFor(m => completedSurvey) @Html.ActionLink("View", "ViewCompletedSurvey", new { responseId = completedSurvey })</div>
+}   
+</fieldset>
+

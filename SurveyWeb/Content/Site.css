@@ -1,0 +1,171 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 100px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.navbar-left {
+    float: left;
+    /*margin: 10px;*/
+}
+
+#cssmenu {
+    width: 200px;
+    max-width: 200px;
+    /*border-color: #D76100;*/
+    border-size: 1px;
+    border-width: 1px;
+    padding: 0px;
+}
+
+#cssmenu ul {
+    width: 150px;
+    background-color: #222222;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+}
+#cssmenu li a {
+    padding: 30px;
+    height: 24px;
+    text-decoration: none;
+    font-weight: normal;
+    color: #999999;
+    display: block;
+    border: 1px solid #333333;
+    /*background: url(menu4.gif);*/
+    /*padding: 8px 5px 8px 5px;*/
+}
+#cssmenu li a:hover {
+    color: #fff;
+    background-color: #333333;
+    /*background: url(menu4.gif) 0 -32px;
+    padding: 8px 0 0 8px;*/
+}
+#cssmenu li a:active {
+    color: #fff;
+    /*background: url(menu4.gif) 0 -64px;*/
+    /*padding: 8px 5px 8px 5px;*/
+}
+
+@media (min-width: 700px) {
+  .leftnavbar-toggle {
+    display: none;
+  }
+
+  .leftnavbar-brand a {
+      display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  #cssmenu ul {
+      margin: 0px;
+  }
+}
+
+.sur-choice {
+    background-color: red;
+}
+
+.editor-label {
+    float: left;
+    width: 200px;
+}
+
+.editor-field {
+    margin-left: 200px;
+}
+
+.editor-field input {
+    width: 100%;    
+}
+
+span.gn-camera-icon, a.gn-camera-icon
+{
+    background: url("../Images/Camera-Icon.png") no-repeat top left;
+    background-size: contain; /* CSS3 rulez! */
+    display: inline;
+    width: 18px;
+    height: 18px;
+    text-indent: -9999px; /* hides the link text */
+    float: left;
+    margin-left: 3px;
+    cursor: pointer; cursor: hand;
+}
+
+a.gn-upload-icon
+{
+    background: url("../Images/Upload-Icon.png") no-repeat top left;
+    background-size: contain; /* CSS3 rulez! */
+    display: inline;
+    width: 16px;
+    height: 16px;
+    text-indent: -9999px; /* hides the link text */
+    float: left;
+    margin-left: 3px;
+}
+
+a.gn-notes-icon
+{
+    background: url("../Images/Notes-Icon.png") no-repeat top left;
+    background-size: contain; /* CSS3 rulez! */
+    display: inline;
+    width: 16px;
+    height: 16px;
+    text-indent: -9999px; /* hides the link text */
+    float: left;
+    margin-left: 3px;
+}
+
+div.gn-table {
+    
+}
+
+div.gn-table-header {
+    background-color: #eeeeee;
+}
+
+.gn-table-row-withborders{
+    border-bottom: 1px solid black;
+}
+
+.gn-table-withborders {
+    border: 1px solid #222222;
+}
