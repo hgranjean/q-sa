@@ -14,6 +14,7 @@ namespace SurveyWeb.Models
         public Surveys Surveys{ get; set; }
     }
 
+    // TODO: Split view model from data
     public class TracerViewModel    
     {
         public Facility Facility { get; set; }
@@ -102,11 +103,7 @@ namespace SurveyWeb.Models
 
         [XmlIgnore]
         public QuestionGroupsViewModel QuestionGroups { get; set; }
-
-        [XmlIgnore]
-        public List<QuestionViewModel> Questions { get; set; }
-        public int SelectedResponse { get; set; }
-
+        
         [Range(1,999, ErrorMessage = "Please choice a response.")]
         public ResponseViewModel[] Responses { get; set; }
     }

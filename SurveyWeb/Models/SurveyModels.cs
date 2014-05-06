@@ -47,7 +47,7 @@ namespace SurveyWeb.Models
             
             this.Survey.QuestionGroups = questionGroups;
 
-            PersistenceServices.Save(this.Survey);
+            PersistenceServices.SaveSurvey(this.Survey);
         }
 
         public void AddQuestionGroup()

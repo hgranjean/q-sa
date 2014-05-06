@@ -112,7 +112,7 @@ namespace MvcApplication1.Controllers
             var availableResponses = PersistenceServices.GetResponses();
 
             // TODO: Filter out response by user
-            // foreach (var response in availableResponses) { PersistenceServices.GetResponse(response); }
+            // foreach (var response in availableResponses) { PersistenceServices.LoadTracer(response); }
 
             var model = new CompletedSurveyViewModel(availableResponses);
 
@@ -127,15 +127,28 @@ namespace MvcApplication1.Controllers
             {
                 if (response.EndsWith(responseId))
                 {
-                    var model = PersistenceServices.GetResponse(responseId);
+                    var model = PersistenceServices.LoadTracer(responseId);
 
                     LoadTracerReferenceData(model);
+
+                    model = LoadSurveyData(model);
 
                     return View("SurveyDelivery", model);
                 }
             }
 
             throw new KeyNotFoundException("Response was not found - " + responseId);
+        }
+
+        private TracerViewModel LoadSurveyData(TracerViewModel model)
+        {
+            int surveyId = model.SurveyId;
+
+            var tracerModel = LoadTracerViewModel(surveyId);
+
+            tracerModel.Responses = model.Responses;
+
+            return tracerModel;
         }
 
         private TracerViewModel LoadTracerViewModel(int? surveyId)
@@ -428,7 +441,7 @@ namespace MvcApplication1.Controllers
             analysisViewModel.Result = evaluationResults.Count;
             analysisViewModel.Followups = evaluationResults.Where(m => m.IsFollowup);
 
-            PersistenceServices.SaveResponse(viewModel);
+            PersistenceServices.SaveTracer(viewModel);
             
             return View("SurveyAnalysis", analysisViewModel);
         }

@@ -66,7 +66,7 @@ namespace SurveyWeb
         {
             var viewModel = (SurveyViewModel) Session["Survey"];
 
-            PersistenceServices.Save(viewModel.Survey);
+            PersistenceServices.SaveSurvey(viewModel.Survey);
 
             return View(viewModel);
         }

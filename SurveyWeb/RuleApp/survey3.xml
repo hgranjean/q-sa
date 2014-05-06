@@ -1,1 +1,235 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><ID>3</ID><Title>Environment of Care Assessment</Title><SurveyType>Surveillance</SurveyType><QuestionGroups><item><key><int>1</int></key><value><QuestionGroup><Title>Environment </Title><Number>0</Number><Questions><Question><ID>0</ID><Text>Ceiling tiles are in place, clean, and in good repair. Please provide room number of area not in compliance.</Text><Number>0</Number><Rank>0</Rank><BasisReference><ID>0</ID><Title>LS.02.01.20 EP27</Title><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Grab bars in toilet and shower areas are intact and stable.</Text><Number>1</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Light fixtures are operating properly.</Text><Number>2</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Wall light fixtures are securely fastened. </Text><Number>3</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Light fixture lens is not cracked or missing.</Text><Number>4</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Exit lights are lighted.</Text><Number>5</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Electrical/signal closets are clean. </Text><Number>6</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Medical Equipment inspection stickers are in place and properly dated. Caulking is in good condition.</Text><Number>7</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Staff are familiar with Emergency Policy for Utilities Failure (electric, water, heating/steam A/C, natural gas, elevators, medical air, oxygen, nitrous oxide, nitrogen, vacuum).</Text><Number>8</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Door sweeps installed and working properly</Text><Number>9</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Medical Air is within proper range of 40-65 PSIG</Text><Number>10</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Oxygen is within proper range of 40-65 PSIG.</Text><Number>11</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Nitrous Oxide is within proper range of 40-65 PSIG.</Text><Number>12</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Nitrogen is within proper range of 140-180 PSIG.</Text><Number>13</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question><Question><ID>0</ID><Text>Vacuum is within proper range of 12 inches Hg (min) </Text><Number>14</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question></Questions></QuestionGroup></value></item><item><key><int>2</int></key><value><QuestionGroup><Title>Hazardous Materials and Waste Management </Title><Number>0</Number><Questions><Question><ID>0</ID><Text>Cleanliness of medical supply rooms. No corrugated boxes, neat/orderly, window shade down.</Text><Number>15</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question></Questions></QuestionGroup></value></item><item><key><int>3</int></key><value><QuestionGroup><Title>Fire Prevention </Title><Number>0</Number><Questions><Question><ID>0</ID><Text>Fire extinguisher cabinets are easily opened and free from obstruction?</Text><Number>16</Number><Rank>0</Rank><BasisReference><ID>0</ID><Level>0</Level></BasisReference><QuestionType>SelectOne</QuestionType></Question></Questions></QuestionGroup></value></item></QuestionGroups></Survey>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>3</ID>
+  <Title>Environment of Care Assessment</Title>
+  <SurveyType>Surveillance</SurveyType>
+  <QuestionGroups>
+    <item>
+      <key>
+        <int>1</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>Environment </Title>
+          <Number>0</Number>
+          <Questions>
+            <Question>
+              <ID>0</ID>
+              <Text>Ceiling tiles are in place, clean, and in good repair. Please provide room number of area not in compliance.</Text>
+              <Number>0</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Title>LS.02.01.20 EP27</Title>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Grab bars in toilet and shower areas are intact and stable.</Text>
+              <Number>1</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Light fixtures are operating properly.</Text>
+              <Number>2</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Wall light fixtures are securely fastened. </Text>
+              <Number>3</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Light fixture lens is not cracked or missing.</Text>
+              <Number>4</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Exit lights are lighted.</Text>
+              <Number>5</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Electrical/signal closets are clean. </Text>
+              <Number>6</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Medical Equipment inspection stickers are in place and properly dated. Caulking is in good condition.</Text>
+              <Number>7</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Staff are familiar with Emergency Policy for Utilities Failure (electric, water, heating/steam A/C, natural gas, elevators, medical air, oxygen, nitrous oxide, nitrogen, vacuum).</Text>
+              <Number>8</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Door sweeps installed and working properly</Text>
+              <Number>9</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Medical Air is within proper range of 40-65 PSIG</Text>
+              <Number>10</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Oxygen is within proper range of 40-65 PSIG.</Text>
+              <Number>11</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Nitrous Oxide is within proper range of 40-65 PSIG.</Text>
+              <Number>12</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Nitrogen is within proper range of 140-180 PSIG.</Text>
+              <Number>13</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Vacuum is within proper range of 12 inches Hg (min) </Text>
+              <Number>14</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>2</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>Hazardous Materials and Waste Management </Title>
+          <Number>0</Number>
+          <Questions>
+            <Question>
+              <ID>0</ID>
+              <Text>Cleanliness of medical supply rooms. No corrugated boxes, neat/orderly, window shade down.</Text>
+              <Number>15</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>3</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>Fire Prevention </Title>
+          <Number>0</Number>
+          <Questions>
+            <Question>
+              <ID>0</ID>
+              <Text>Fire extinguisher cabinets are easily opened and free from obstruction?</Text>
+              <Number>16</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+  </QuestionGroups>
+</Survey>

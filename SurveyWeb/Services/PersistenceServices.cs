@@ -68,37 +68,41 @@ namespace SurveyWeb.Services
             return (Survey)XmlSerializationUtility.GetObjectFromFile(name, typeof(Survey));
         }
 
-        public static void Save(Survey survey)
+        public static void SaveSurvey(Survey survey)
         {
-            EnsureSurveys();
-
-            AddOrUpdateSurvey(survey);
-
             survey.RenumberQuestions();
 
             var appPath = GetAppPath();
 
             var fileName = String.Concat("survey", survey.ID, ".xml");
 
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName)))
+            var settings = new XmlWriterSettings {Indent = true};
+            
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName), settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
+
+            EnsureSurveys();
+
+            AddOrUpdateSurvey(survey);
         }
 
-        public static void SaveResponse(TracerViewModel survey)
+        public static void SaveTracer(TracerViewModel survey)
         {
             var appPath = GetAppPath();
 
             var fileName = String.Concat("response", survey.SurveyId, ".xml");
 
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName)))
+            var settings = new XmlWriterSettings { Indent = true };
+            
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName), settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
         }
 
-        public static TracerViewModel GetResponse(string responseId)
+        public static TracerViewModel LoadTracer(string responseId)
         {
             var appPath = GetAppPath();
 
@@ -112,6 +116,14 @@ namespace SurveyWeb.Services
             if (survey.ID == DomainObject.DefaultIdentifier)
             {
                 survey.AssignNextId(EnumerateSurveys().Count());
+            }
+        }
+
+        private static void EnsureSurveys()
+        {
+            if (surveys == null)
+            {
+                surveys = new List<Survey>();
             }
         }
 
@@ -131,14 +143,6 @@ namespace SurveyWeb.Services
             SetSurveyId(survey);
         }
 
-        private static void EnsureSurveys()
-        {
-            if (surveys == null)
-            {
-                surveys = new List<Survey>();
-            }
-        }
-
         private static string[] EnumerateSurveys()
         {
             var appPath = GetAppPath();
@@ -156,9 +160,11 @@ namespace SurveyWeb.Services
         private static string GetAppPath()
         {
             string appPath = HttpContext.Current.Server.MapPath("~/bin");
-            int binPos = appPath.LastIndexOf(@"\bin");
+            
+            int binPos = appPath.LastIndexOf(@"\bin", StringComparison.CurrentCultureIgnoreCase);
 
             appPath = appPath.Substring(0, binPos) + @"\RuleApp\";
+            
             return appPath;
         }
 
