@@ -12,7 +12,7 @@ namespace Rules.Engine
         {
             var actionInfo = (SetValueActionInfo) info;
 
-            var lhs = engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, ValueType.Setter);
+            var lhs = engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo);
             Type type = null;
 
             if (lhs is ParameterExpression)

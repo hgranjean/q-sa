@@ -12,7 +12,7 @@ namespace Rules.Engine.Functions
         {
             var actionInfo = (AddCollectionMemberActionInfo)info;
 
-            var collectionInfo = engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, ValueType.Getter, true);
+            var collectionInfo = engine.GetExpressionForValue(actionInfo.Context, actionInfo.TargetInfo, true);
 
             if (collectionInfo == null)
             {
