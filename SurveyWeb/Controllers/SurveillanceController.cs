@@ -62,9 +62,17 @@ namespace MvcApplication1.Controllers
             return Surveys();
         }
 
-        public ActionResult DeleteSurvey(string id)
+        public ActionResult DeleteSurvey(long id)
         {
-            PersistenceServices.DeleteSurvey(id);
+            var model = SurveyViewModel.GetSurveys().FirstOrDefault(m => m.ID == id);
+
+            return View(model);
+        }
+        
+        [HttpPost]
+        public ActionResult DeleteSurvey(SurveyViewModel model)
+        {
+            PersistenceServices.DeleteSurvey(model.Survey.ID.ToString());
 
             return RedirectToAction("Surveys");
         }

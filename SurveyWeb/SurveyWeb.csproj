@@ -210,6 +210,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssessmentModels.cs" />
+    <Compile Include="Models\ConfirmMessageBoxViewModel.cs" />
     <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\HtmlExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -422,6 +423,8 @@
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Surveillance\SurveySchedules.cshtml" />
     <Content Include="Views\Surveillance\CompletedSurveys.cshtml" />
+    <Content Include="Views\Shared\ConfirmMessageBox.cshtml" />
+    <Content Include="Views\Surveillance\DeleteSurvey.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

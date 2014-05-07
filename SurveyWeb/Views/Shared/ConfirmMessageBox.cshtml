@@ -1,0 +1,29 @@
+﻿@model SurveyWeb.Models.ConfirmMessageBoxViewModel
+
+<div id="openModal" class="modalDialog" data-theme="c">
+    <div>
+        <a href="#close" title="Close" class="close" target="">X</a>
+        <h2>@Html.LabelFor(m => m.Title)</h2>                                
+        <div>
+            @using (Html.BeginForm(Model.ActionName, Model.ControllerName))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>@Html.LabelFor(m => m.Title)</legend>
+
+                    <div style="float: left; width: 50%">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Message)
+                    </div>
+                </fieldset>
+
+                <p>
+                    <input type="submit" value="OK" title="OK"/>
+                    <a href="#close" title="Cancel" class="close" target="">Cancel</a>
+                </p>
+            }
+        </div>
+    </div>
+</div>

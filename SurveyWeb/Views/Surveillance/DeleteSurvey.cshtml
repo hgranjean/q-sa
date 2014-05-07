@@ -1,0 +1,27 @@
+﻿@model Atum.Domain.Surveillance.Survey
+
+@{
+    ViewBag.Title = "DeleteSurvey";
+}
+
+<h2>DeleteSurvey</h2>
+
+@using (Html.BeginForm("DeleteSurvey", "Surveillance"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Survey</legend>
+
+        <div class="editor-label">
+            Do you want to delete "@Html.DisplayTextFor(m => m.Title)" ?
+        </div>
+    </fieldset>
+    
+    <br/>
+    
+    <input type="submit" value="Delete" />
+    
+    @Html.ActionLink("Cancel", "Surveys")
+}
