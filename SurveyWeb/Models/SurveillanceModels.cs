@@ -123,6 +123,11 @@ namespace SurveyWeb.Models
         {
             this.Response = response;
         }
+
+        public override string ToString()
+        {
+            return this.ResponseId.ToString();
+        }
     }
     /// <summary>
     /// 

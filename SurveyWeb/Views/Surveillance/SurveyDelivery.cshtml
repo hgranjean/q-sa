@@ -76,7 +76,7 @@
                 <div style="display:table-cell;width:45%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.DepartmentId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownList("DepartmentId", new SelectList(Model.Departments, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Please select...", null)
                     </div>
                 </div>
             </div>
@@ -140,11 +140,13 @@
 
                             @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
                             {
-                            <div id="questionBasis" style="display: table-cell" class="gn-table-row-withborders">@Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})</div>
+                                <div id="questionBasis" style="display: table-cell" class="gn-table-row-withborders">
+                                    @Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})
+                                </div>
                             }
                             else
                             {
-                            <div style="display: table-cell" class="gn-table-row-withborders">&nbsp;</div>
+                                <div style="display: table-cell" class="gn-table-row-withborders">&nbsp;</div>
                             }
 
                             <div style="display: table-cell; white-space: nowrap;" class="gn-table-row-withborders">
@@ -153,7 +155,8 @@
                                 <span style="white-space: nowrap">
                                     <span id="file" class="gn-camera-icon" style="display: inline"></span>
                                     @Html.ActionLink("Load", "Load", "Surveillance", null, new {@class = "gn-upload-icon", style = "display:inline"})
-                                    <input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline" onchange=" document.getElementById('file').innerHTML = this.value; " />
+                                    <input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline"
+                                        onchange=" document.getElementById('file').innerHTML = this.value; " />
                                 </span>
                             </div>
                         </div>

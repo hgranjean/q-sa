@@ -131,7 +131,7 @@ namespace MvcApplication1.Controllers
 
                     LoadTracerReferenceData(model);
 
-                    model = LoadSurveyData(model);
+                    LoadSurveyData(model);
 
                     return View("SurveyDelivery", model);
                 }
@@ -140,15 +140,13 @@ namespace MvcApplication1.Controllers
             throw new KeyNotFoundException("Response was not found - " + responseId);
         }
 
-        private TracerViewModel LoadSurveyData(TracerViewModel model)
+        private void LoadSurveyData(TracerViewModel model)
         {
             int surveyId = model.SurveyId;
 
             var tracerModel = LoadTracerViewModel(surveyId);
 
-            tracerModel.Responses = model.Responses;
-
-            return tracerModel;
+            model.QuestionGroups = tracerModel.QuestionGroups;
         }
 
         private TracerViewModel LoadTracerViewModel(int? surveyId)
@@ -439,7 +437,19 @@ namespace MvcApplication1.Controllers
             var analysisViewModel = new SurveyAnalysisViewModel();
             var evaluationResults = surveyDelivery.EvaluateSurvey(questions, responses);
             analysisViewModel.Result = evaluationResults.Count;
-            analysisViewModel.Followups = evaluationResults.Where(m => m.IsFollowup);
+            
+            var result = new List<SurveyDeliveryRuleApp.EvaluationResult>();
+            for (int i = 0; i < evaluationResults.Count; i++)
+            {
+                // TODO: Do this in rules
+                if (evaluationResults[i].IsFollowup)
+                {
+                    evaluationResults[i].TextResult = questions[i].Text;
+                    result.Add(evaluationResults[i]);
+                }
+            }
+
+            analysisViewModel.Followups = result;
 
             PersistenceServices.SaveTracer(viewModel);
             
