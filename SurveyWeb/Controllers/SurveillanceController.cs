@@ -538,6 +538,37 @@ namespace MvcApplication1.Controllers
             return View("SurveyDesign", surveyViewModel);
         }
 
+        public ActionResult DeleteQuestionGroup(string surveyId, string groupId)
+        {
+            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == surveyId);
+
+            ViewBag.QuestionGroupId = groupId;
+
+            return View(new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
+                {
+                    SurveyId = surveyId,
+                    Number = int.Parse(groupId)
+                });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteQuestionGroup(QuestionGroupViewModel viewModel)
+        {
+            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+
+            if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
+            {
+                var questionGroupToDelete = survey.QuestionGroups[viewModel.Number];
+                survey.QuestionGroups.Remove(questionGroupToDelete.Number);
+            }
+
+            var surveyViewModel = new SurveyViewModel(survey);
+
+            surveyViewModel.Save();
+
+            return View("SurveyDesign", surveyViewModel);
+        }
+
         public ActionResult AddQuestion(string surveyId, string questionGroupId)
         {
             var survey = PersistenceServices.GetSurvey(Convert.ToInt32(surveyId));

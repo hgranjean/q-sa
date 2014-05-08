@@ -425,6 +425,7 @@
     <Content Include="Views\Surveillance\CompletedSurveys.cshtml" />
     <Content Include="Views\Shared\ConfirmMessageBox.cshtml" />
     <Content Include="Views\Surveillance\DeleteSurvey.cshtml" />
+    <Content Include="Views\Surveillance\DeleteQuestionGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

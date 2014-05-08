@@ -1,0 +1,27 @@
+﻿@model SurveyWeb.Models.QuestionGroupViewModel
+
+@{
+    ViewBag.Title = "DeleteQuestionGroup";
+}
+
+<h2>DeleteQuestionGroup</h2>
+
+@using (Html.BeginForm("DeleteQuestionGroup", "Surveillance"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Survey</legend>
+
+        <div class="editor-label">
+            Do you want to delete "@Html.DisplayTextFor(m => m.QuestionGroup.Title)" ?
+        </div>
+    </fieldset>
+    
+    <br/>
+    
+    <input type="submit" value="Delete" />
+    
+    @Html.ActionLink("Cancel", "SurveyDesign", new { id = Model.SurveyId })
+}
