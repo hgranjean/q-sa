@@ -2,16 +2,12 @@
 
 @Html.Hidden("ModelType", Model.GetType())
 
-<!--<h3>Condition</h3>
-    <div>
-        @Html.TextBoxFor(m => m.Condition.ExpressionValue)
-    </div>-->
-
-@Html.ActionLink("Add set value action", "AddSetValueAction")
-
 <fieldset>
-    <legend>Actions</legend>
-    <div class="editor-label">Actions</div>
-    <div class="editor-field">@Html.EditorFor(m => m.Rules)</div>
+    <h3>If</h3>
+    <div class="editor-indent">@Html.EditorFor(m => m.Condition)</div>
+    
+    <h3>Then</h3>
+    <div class="editor-indent">@Html.EditorFor(m => m.Rules)</div>
+    <div class="editor-indent">@Html.ActionLink("Add set value action", "AddSetValueAction")</div>
 </fieldset>
    

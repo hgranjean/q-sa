@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Rules.WebEditor.Controllers
 {
@@ -102,6 +103,22 @@ namespace Rules.WebEditor.Controllers
             {
                 return View();
             }
+        }
+
+        public JsonResult GetMyData()
+        {
+            var menu = new[] { "Cut", "Copy", "Paste" };
+
+            // new {title = "Cut", cmd = "cut", uiIcon = "ui-icon-scissors"}
+            // Menu s = new SomeClass();
+            // s.Property1 = "value";
+            // s.Property2 = "another value";
+
+            var str = new JavaScriptSerializer().Serialize(menu); // "[\"Cut\", \"Copy\", \"Parse\"]"; 
+            // return Json(s, JsonRequestBehavior.AllowGet); 
+
+
+            return Json(str, JsonRequestBehavior.AllowGet); // need the AllowGet option to return data to a GET request
         }
     }
 }

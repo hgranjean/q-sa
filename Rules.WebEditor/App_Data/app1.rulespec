@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleApplicationSpec xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>app1</Name>
+  <Settings />
+  <Entities>
+    <EntitySpec>
+      <Name>Entity1</Name>
+      <RuleSets>
+        <RuleSpec>
+          <Name>RuleSet1</Name>
+          <Actions>
+            <Rule xsi:type="SimpleRuleSet">
+              <Name>action1</Name>
+              <Condition>true</Condition>
+              <Rules>
+                <Rule xsi:type="SetValueAction">
+                  <Target>Field1</Target>
+                  <Value>1234</Value>
+                </Rule>
+                <Rule xsi:type="SetValueAction" />
+              </Rules>
+            </Rule>
+          </Actions>
+          <VocabularyTemplates />
+        </RuleSpec>
+      </RuleSets>
+    </EntitySpec>
+  </Entities>
+  <RuleSets />
+</RuleApplicationSpec>
