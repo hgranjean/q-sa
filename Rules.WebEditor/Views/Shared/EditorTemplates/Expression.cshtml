@@ -76,9 +76,10 @@
     });
 </script>
 
+
 <script type="text/javascript">
     var CLIPBOARD = "";
-
+    
     $(document).ready(function () {
 
         // Context menu/autocomplete code
@@ -87,15 +88,17 @@
                 delay: 0,
                 minLength: 0,
                 source: function (request, response) {
-                    $.ajax(
-                    {
-                        url: "/RuleApplication/GetMyData",
+                    $.ajax({
+                        url: "/RuleApplicationController/GetMyData/",
                         dataType: "json",
-                        data:
-                        {
-                            term: request.term,
-                        },
+                        /*data: {
+                            featureClass: "P",
+                            style: "full",
+                            maxRows: 12,
+                            name_startsWith: request.term
+                        },*/
                         success: function (data) {
+                            window.alert(data);
                             response(JSON.parse(data));
                         }
                     });
@@ -134,7 +137,6 @@
         $(".c-menu").each(function (index, element) {
             $(this).button({ icons: { primary: 'ui-icon-arrowreturnthick-1-e', text: false } })
                 .click(cMenu);
-            window.alert(element);
             /*.next()
             .button({ icons: { primary: 'ui-icon-triangle-1-s' }, text: false })*/
         });
@@ -252,12 +254,6 @@
     });
 </script>
 
-<div>
-	<span class="hasmenu">AAA</span>
-	<span class="hasmenu">BBB</span>
-	<span class="hasmenu">CCC</span>
-</div>
-
 <div id="contextMenu" style="display: none">
 	<ul id="menu">
 		<li class="ui-state-disabled"><a href="#">Aberdeen</a></li>
@@ -300,7 +296,11 @@
 </div>
 
 <div>
-    @Html.TextBoxFor(m => m.ExpressionValue, new {@class = "c-menu hasmenu"})
+    <span>@Html.TextBoxFor(m => m.ExpressionValue, new {@class = "c-menu hasmenu"})</span>
+
+<div>
+	<span class="hasmenu">and</span>
+</div>
 
     <script>
         var editor = CodeMirror.fromTextArea(document.getElementById("Body"), {

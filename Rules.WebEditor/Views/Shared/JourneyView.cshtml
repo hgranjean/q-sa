@@ -17,16 +17,19 @@
 
 @if (Model.BladeEditor != null)
 {
-    <div>&nbsp;</div>
-    <div style="display: table; width: 100%">
-        <div style="display: table-row">Editor</div>
+    using (Html.BeginForm("BladeEdit", "RuleApplication", FormMethod.Post))
+    {
+        <div>&nbsp;</div>
+        <div style="display: table; width: 100%">
+            <div style="display: table-row">Editor</div>
 
-        <div style="display: table-cell; width: 100%">@Html.Partial("BladeEditorView", Model.BladeEditor)</div>
-    </div>
+            <div style="display: table-cell; width: 100%">@Html.Partial("BladeEditorView", Model.BladeEditor)</div>
+        </div>
 
-    <div>&nbsp;</div>
-    @Html.ActionLink("Save", "Save");
-    @Html.ActionLink("Cancel", "Index")
+        <div>&nbsp;</div>
+        <input type="submit" value="Save"/>
+        @Html.ActionLink("Cancel", "Index")
+    }
 }
 
 

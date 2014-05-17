@@ -177,7 +177,6 @@
     <Content Include="CodeMirror\codemirror.css" />
     <Content Include="CodeMirror\codemirror.js" />
     <Content Include="CodeMirror\javascript.js" />
-    <Content Include="Content\jquery-contextmenu.css" />
     <Content Include="Content\prettify.sunburst.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -243,12 +242,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\code-complete.js" />
-    <Content Include="Scripts\jquery-2.1.0.js" />
-    <Content Include="Scripts\jquery-2.1.0.min.js" />
-    <Content Include="Scripts\jquery-2.1.0.min.map" />
-    <Content Include="Scripts\jquery-contextmenu.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
