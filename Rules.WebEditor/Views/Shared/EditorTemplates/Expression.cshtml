@@ -50,7 +50,8 @@
     }
 
     .ui-widget{
-        font-size: .8em;
+        font-size: 0.9em;
+        width: 250px;
     }
     .ui-menu {
         width: 150px;
@@ -89,7 +90,7 @@
                 minLength: 0,
                 source: function (request, response) {
                     $.ajax({
-                        url: "/RuleApplicationController/GetMyData/",
+                        url: "/RuleApplication/GetMyData/",
                         dataType: "json",
                         /*data: {
                             featureClass: "P",
@@ -98,7 +99,6 @@
                             name_startsWith: request.term
                         },*/
                         success: function (data) {
-                            window.alert(data);
                             response(JSON.parse(data));
                         }
                     });

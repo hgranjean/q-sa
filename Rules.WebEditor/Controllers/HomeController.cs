@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Rules.Domain;
 using Rules.WebEditor.Models;
 
@@ -45,7 +46,7 @@ namespace Rules.WebEditor.Controllers
             return View();
         }
 
-        [Route("{type}/{ruleappid?}/{entityid?}/{rulesetid?}/{actionid?}")]
+        [Route("{type}/{ruleappid?}/{entityid?}/{rulesetid?}/{actionid?}", Order = 3)]
         public ActionResult AddBladeEditor(string type, string ruleappid, string entityid, string rulesetid, string actionid)
         {
             var viewModel = GetJourneyViewModel(ruleappid, entityid, rulesetid);
@@ -58,7 +59,7 @@ namespace Rules.WebEditor.Controllers
             return View("Index", viewModel);
         }
 
-        [Route("{type}/{ruleappid?}/{entityid?}/{rulesetid?}")]
+        [Route("{type}/{ruleappid?}/{entityid?}/{rulesetid?}", Order = 2)]
         public ActionResult AddBlade(string type, string ruleappid, string entityid, string rulesetid)
         {
             var viewModel = GetJourneyViewModel(ruleappid, entityid, rulesetid);
@@ -121,6 +122,21 @@ namespace Rules.WebEditor.Controllers
             var viewModel = GetJourney();
 
             return View("Index", viewModel);
+        }
+
+        [Route("RuleApplication/GetMyData", Order = 1)]
+        public JsonResult GetMyData()
+        {
+            var menu = new[] { "All egress doors are opening inside", "There is at least one efress door opening outside" };
+
+            // new {title = "Cut", cmd = "cut", uiIcon = "ui-icon-scissors"}
+            // Menu s = new SomeClass();
+            // s.Property1 = "value";
+            // s.Property2 = "another value";
+
+            var str = new JavaScriptSerializer().Serialize(menu);
+
+            return Json(str, JsonRequestBehavior.AllowGet); // need the AllowGet option to return data to a GET request
         }
     }
 }
