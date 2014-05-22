@@ -46,13 +46,13 @@ namespace Rules.Engine
 
                     AddLocals(context, externals);
 
-                    AddTemplates(context, (String) eval, externals);
-
-                    if (externals.ContainsKey( (String)eval))
-                    {
-                        return UnwindExpression((LambdaExpression)externals[(String)eval], requiresSpecificType);
-                    }
+                    Expression unwindExpression;
                     
+                    if (TryBuildAsTemplateFunction(context, requiresSpecificType, eval, out unwindExpression))
+                    {
+                        return unwindExpression;
+                    }
+
                     /* parse within the context of statecontainer */
 
                     var lambdaExpression = System.Linq.Dynamic.DynamicExpression.ParseLambda(
@@ -80,6 +80,23 @@ namespace Rules.Engine
             {
                 return Expression.Constant(eval);
             }
+        }
+
+        private static bool TryBuildAsTemplateFunction(CompileContext context, bool requiresSpecificType, object eval, out Expression unwindExpression)
+        {
+            var templates = new Dictionary<string, object>();
+            
+            AddTemplates(context, (String) eval, templates);
+
+            if (templates.ContainsKey((String) eval))
+            {
+                unwindExpression = UnwindExpression((LambdaExpression) templates[(String) eval], requiresSpecificType);
+                return true;
+            }
+
+            unwindExpression = null;
+
+            return false;
         }
 
         private static Expression UnwindExpression(LambdaExpression lambdaExpression, bool requiresSpecificType)
