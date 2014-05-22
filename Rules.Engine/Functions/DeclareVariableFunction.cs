@@ -38,7 +38,7 @@ namespace Rules.Engine.Functions
             }
         }
 
-        private Expression ConvertToPrimitiveType(Expression valueExpression, IDataTypeInfo targetType)
+        internal static Expression ConvertToPrimitiveType(Expression valueExpression, IDataTypeInfo targetType)
         {
             if (targetType.SystemType == typeof (string))
             {

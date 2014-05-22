@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.CSharp.RuntimeBinder;
+using Rules.Domain;
 using Rules.Engine.Functions;
 using Rules.Engine.Infos;
 using Rules.Engine.Session;
@@ -36,19 +37,26 @@ namespace Rules.Engine
             if (eval is String && Char.IsLetter(((String)eval)[0]))
             {
                 if (context != null)
-                {   
+                {
                     var externals = new Dictionary<string, object>();
-                    
+
                     AddContextProps(context, externals);
 
                     AddContext(context, externals);
 
                     AddLocals(context, externals);
 
+                    AddTemplates(context, (String) eval, externals);
+
+                    if (externals.ContainsKey( (String)eval))
+                    {
+                        return UnwindExpression((LambdaExpression)externals[(String)eval], requiresSpecificType);
+                    }
+                    
                     /* parse within the context of statecontainer */
 
                     var lambdaExpression = System.Linq.Dynamic.DynamicExpression.ParseLambda(
-                                new[] { StateContainerParam }, typeof(object), eval.ToString(), externals);
+                                new[] { StateContainerParam, WorkingMemoryParam }, typeof(object), eval.ToString(), externals);
 
                     return UnwindExpression(lambdaExpression, requiresSpecificType);
                 }
@@ -118,6 +126,32 @@ namespace Rules.Engine
             {
                 externals.Add(local.Key, local.Value);
             }
+        }
+
+        private static void AddTemplates(CompileContext context, string functionName, IDictionary<string, object> externals)
+        {
+            var funcNode = FunctionNode.Create(functionName);
+
+            var expressionTemplate = ResolveExpressionTemplate(context, funcNode);
+            if (expressionTemplate != null)
+            {
+                externals.Add(funcNode.FunctionName + "()", expressionTemplate);
+            }
+        }
+
+        private static Expression ResolveExpressionTemplate(CompileContext context, FunctionNode funcNode)
+        {
+            foreach (var templateInfo in context.EntityInfo.Vocabulary.TemplateInfos)
+            {
+                if (String.CompareOrdinal(templateInfo.TemplateSpec.FunctionName + "()", funcNode.Expression) == 0)
+                {
+                    funcNode.FunctionName = templateInfo.TemplateSpec.FunctionName;
+
+                    return templateInfo.Lambda;
+                }
+            }
+
+            return null;
         }
     }
 }

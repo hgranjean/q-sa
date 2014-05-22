@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rules.Domain;
 using Rules.Engine.Base;
+using Rules.Engine.Infos;
 using Rules.Engine.Session;
 
 namespace Rules.Engine.Base
@@ -14,6 +15,7 @@ namespace Rules.Engine.Base
     {
         public EntitySpec EntitySpec { get; set; }
         public List<RuleSetInfo> RuleSetInfos { get; set; }
+        public VocabularyInfo Vocabulary { get; set; }
 
         internal void Execute(StateContainer stateContainer, WorkingMemory workingMemory)
         {

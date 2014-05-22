@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Rules.Domain.Vocabulary;
 
 namespace Rules.Domain
 {   
@@ -11,13 +12,13 @@ namespace Rules.Domain
     {
         public String Specification { get; set; }
         public List<Rule> Actions { get; set; }
-        public List<Template> VocabularyTemplates { get; set; }
+        public List<TemplateSpec> VocabularyTemplates { get; set; }
         public String UmlFileName { get; set; }
 
         public RuleSpec()
         {
             Actions = new List<Rule>();
-            VocabularyTemplates = new List<Template>();
+            VocabularyTemplates = new List<TemplateSpec>();
         }
 
         /**

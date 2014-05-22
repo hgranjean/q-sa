@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rules.Domain
+namespace Rules.Domain.Network
 {
-    public class Template
+    public class TemplateNetwork
     {
     }
 }

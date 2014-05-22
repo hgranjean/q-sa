@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Rules.Domain.Base;
+using Rules.Domain.Vocabulary;
 
 namespace Rules.Domain
 {
@@ -20,19 +21,21 @@ namespace Rules.Domain
 	    public List<RuleSpec> RuleSets { get; set; }
 	    // public List<SchemaEndpoint> schemaEndpoints;
 	    // private String strategyTemplate;
-        public string Name { get { return base.Name; } set { base.Name = value; } }
+        public VocabularySpec Vocabulary { get; set; }
+        public new string Name { get { return base.Name; } set { base.Name = value; } }
 
         public RuleApplicationSpec()
         {
             Settings = new AuthoringSettings();
             RuleSets = new List<RuleSpec>();
             Entities = new List<EntitySpec>();
+            Vocabulary = new VocabularySpec();
         }
 
         public void Save(string fileName)
         {
             var serializer = new XmlSerializer(typeof(RuleApplicationSpec));
-            var xmlWriter = XmlWriter.Create(fileName, new XmlWriterSettings() { Indent = true});
+            var xmlWriter = XmlWriter.Create(fileName, new XmlWriterSettings { Indent = true});
             serializer.Serialize(xmlWriter, this);
         }
 

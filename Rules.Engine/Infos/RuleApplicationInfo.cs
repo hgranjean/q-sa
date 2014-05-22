@@ -5,11 +5,17 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Rules.Domain;
+using Rules.Domain.Templates;
+using Rules.Domain.Vocabulary;
 using Rules.Engine.Base;
 using Rules.Engine.Functions;
 using Rules.Engine.Functions.Builders;
+using Rules.Engine.Functions.Templates;
+using Rules.Engine.Infos;
+using Rules.Engine.Infos.Templates;
 using Rules.Engine.Runtime;
 using Rules.Engine.Session;
+using FunctionInfo = Rules.Engine.Functions.FunctionInfo;
 
 namespace Rules.Engine
 {
@@ -37,8 +43,12 @@ namespace Rules.Engine
                 var entityInfo = new EntityInfo {EntitySpec = entity, RuleSetInfos = new List<RuleSetInfo>()};
 
                 _entityInfos.Add(entityInfo);
-
+                
                 var context = new CompileContext {EntityInfo = entityInfo, Context = new EvalInfo(entity.Name)};
+
+                var vocabSpec = _ruleApplicationSpec.Vocabulary;
+
+                CompileVocabulary(vocabSpec, builder, engine, context);
 
                 foreach (var ruleSpec in entity.RuleSets)
                 {
@@ -118,6 +128,48 @@ namespace Rules.Engine
             }
         }
 
+        private void CompileVocabulary(VocabularySpec vocabularySpec, FunctionInfo builder, Engine engine, CompileContext compileContext)
+        {
+            ParameterExpression memoryParam = Engine.WorkingMemoryParam;
+            ParameterExpression stateContainerParam = Engine.StateContainerParam;
+
+            if (compileContext != null)
+            {
+                compileContext.EntityInfo.Vocabulary = new VocabularyInfo();
+            }
+
+            foreach (var templateSpec in vocabularySpec.Templates)
+            {
+                var expressionTemplateAction = new ExpressionTemplateAction(templateSpec);
+
+                var compiledBlock = GetCompiledBlock(builder, engine, compileContext, expressionTemplateAction);
+
+                GetLocals(compileContext, compiledBlock);
+
+                // TODO: Add variables support to templates
+
+                var variables = compileContext.Locals.Select(v => (ParameterExpression) v.Value);
+
+                /*var ruleBlocks = ;
+
+                // Creating a method body.
+                BlockExpression block = Expression.Block(
+                    // new []{Engine.StateContainerParam, Engine.WorkingMemoryParam},
+                    // Adding a local variable.
+                    variables,
+                    ruleBlocks);*/
+
+                LambdaExpression lambda = Expression.Lambda<Action<StateContainer, WorkingMemory>>(compiledBlock.Code,
+                                                                                                   stateContainerParam,
+                                                                                                   memoryParam);
+                if (compileContext != null)
+                {
+
+                    compileContext.EntityInfo.Vocabulary.TemplateInfos.Add(new TemplateInfo { TemplateSpec = templateSpec, Lambda = lambda });
+                }
+            }
+        }
+
         private static void GetLocals(CompileContext compileContext, CompiledBlock compiledBlock)
         {
             /*
@@ -194,6 +246,22 @@ namespace Rules.Engine
                 var compiledBlock = new CompiledBlock();
 
                 functionInfo.BuildInfo(engine, compiledBlock, ((DeclareVariableFunction)functionInfo).Info);
+
+                return compiledBlock;
+            }
+            if ((functionBuilder as ExpressionTemplateFunctionBuilder) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionInfo.BuildInfo(engine, compiledBlock, ((ExpressionTemplateFunction)functionInfo).Info);
+
+                return compiledBlock;
+            }
+            if ((functionBuilder as FunctionNodeFunctionBuilder) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionInfo.BuildInfo(engine, compiledBlock, ((FunctionNodeFunction)functionInfo).Info);
 
                 return compiledBlock;
             }

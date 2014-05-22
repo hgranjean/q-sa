@@ -57,6 +57,7 @@
     <Compile Include="LoopTests.cs" />
     <Compile Include="RuleSessionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateTests.cs" />
     <Compile Include="VariableTest.cs" />
   </ItemGroup>
   <ItemGroup>
