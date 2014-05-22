@@ -20,15 +20,14 @@
 }
 else if (User.IsInRole("Surveyor"))
 {
-
     <div>
         <div><h3>Surveyor Dashboard</h3></div>
+        <div>@Html.ActionLink("Calendar", "Calendar")</div>
         <div>@Html.ActionLink("Scheduled", "SurveySchedules")</div>
         <div>@Html.ActionLink("Completed Assessments", "Surveys")</div>
         <div>@Html.ActionLink("Pass Due Assessments", "Surveys")</div>
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
     </div>
-
 }
 else
 {

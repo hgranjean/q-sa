@@ -1,0 +1,79 @@
+﻿@using SurveyWeb.Models
+@{
+    ViewBag.Title = "Calendar";
+}
+
+@Styles.Render("~/Content/fullcalendar.css")
+@Styles.RenderFormat(BundlesFormats.PRINT, "~/Content/fullcalendar.print.css")
+@Scripts.Render("~/Scripts/fullcalendar/moment.min.js")
+@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+@Scripts.Render("~/Scripts/fullcalendar/fullcalendar.min.js")
+<script>
+    $(document).ready(function () {
+
+        $('#calendar').fullCalendar({
+            /*theme: true,*/
+            /*header: {
+                left: '',
+                center: '',
+                right: ''
+            },*/
+            /*defaultView: 'agendaDay',*/
+            editable: true,
+            /*events: "/Calendar/GetEvents/"*/
+            events: [
+				{
+				    title: 'All Day Event',
+				    start: '2014-05-20'
+				},
+				{
+				    title: 'Long Event',
+				    start: '2014-05-27',
+				    end: '2014-06-10'
+				},
+				{
+				    id: 999,
+				    title: 'Repeating Event',
+				    start: '2014-06-09T16:00:00'
+				},
+				{
+				    id: 999,
+				    title: 'Repeating Event',
+				    start: '2014-06-16T16:00:00'
+				},
+				{
+				    title: 'Meeting',
+				    start: '2014-06-12T10:30:00',
+				    end: '2014-06-12T12:30:00'
+				},
+				{
+				    title: 'Lunch',
+				    start: '2014-06-12T12:00:00'
+				},
+				{
+				    title: 'Birthday Party',
+				    start: '2014-06-13T07:00:00'
+				},
+				{
+				    title: 'Click for Google',
+				    url: 'http://google.com/',
+				    start: '2014-05-28'
+				}
+        ]
+
+        });
+    });
+</script>
+
+<style>
+    
+    #calendar {
+        width: 900px;
+        margin: 40px auto;
+    }
+
+</style>
+
+<h2>Calendar</h2>
+
+<div id="calendar"></div>
