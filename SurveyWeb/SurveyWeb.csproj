@@ -185,7 +185,6 @@
     <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
-    <Compile Include="Controllers\SurveillanceManagementController.cs" />
     <Compile Include="Controllers\SurveyDesignController.cs" />
     <Compile Include="Controllers\TableOfContentController.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
@@ -341,6 +340,7 @@
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\fullcalendar\gcal.js" />
     <Content Include="Scripts\fullcalendar\lang\all.js" />
     <Content Include="Scripts\fullcalendar\lang\ar-ma.js" />
     <Content Include="Scripts\fullcalendar\lang\ar.js" />
@@ -473,6 +473,7 @@
     <Content Include="Views\Surveillance\DeleteSurvey.cshtml" />
     <Content Include="Views\Surveillance\DeleteQuestionGroup.cshtml" />
     <Content Include="Views\Surveillance\Calendar.cshtml" />
+    <Content Include="Views\Surveillance\EditEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

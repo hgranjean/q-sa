@@ -591,5 +591,91 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
+
+        public JsonResult GetEvents(double? start, double? end)
+        {
+            // var fromDate = ConvertFromUnixTimestamp(start);
+            // var toDate = ConvertFromUnixTimestamp(end);
+
+            // var rep = Resolver.Resolve<IEventRepository>();
+            // var events = rep.ListEventsForUser(userName, fromDate, toDate);
+
+            /*var eventList = new[]{ new
+                {
+                    id = "1",
+                    title = "Click for google",
+                    url = "http://google.com/",
+                    start = DateTime.Today.ToString("s"),
+                    end = DateTime.Today.AddDays(1).ToString("s"),
+                    allDay = false
+                }};*/
+
+            var eventList = new[] {
+                    new
+                        {
+                            id = 999,
+                            title = "All Day Event",
+                            start = "2014-05-20",
+                            end = "2014-05-20"
+                        },
+                    new
+                        {
+                            id = 999,
+                            title = "Long Event",
+                            start = "2014-05-27",
+                            end = "2014-06-10"
+                        },
+                    new
+                        {
+                            id = 999,
+                            title = "Repeating Event",
+                            start = "2014-06-09T16:00:00",
+                            end = "2014-06-09T16:00:00"
+                        },
+                    new
+                        {
+                            id = 999,
+                            title = "Repeating Event",
+                            start = "2014-06-16T16:00:00",
+                            end = "2014-06-16T16:00:00"
+                        },
+                    new
+                        {
+                            id = 999,
+                            title = "Meeting",
+                            start = "2014-06-12T10:30:00",
+                            end = "2014-06-12T12:30:00"
+                        },
+                    new
+                        {
+                            id = 999,
+                            title = "Lunch",
+                            start = "2014-06-12T12:00:00",
+                            end = "2014-06-12T12:00:00",
+                        },
+                    new
+                        {
+                            id = 999,
+                            title = "Birthday Party",
+                            start = "2014-06-13T07:00:00",
+                            end = "2014-06-13T07:00:00"
+                        },
+                    new
+                        {
+                            id = 99,
+                            title = "Click for Google",
+                            start = "2014-05-28",
+                            end = "2014-05-28"
+                        }
+                };
+
+            var rows = eventList.ToArray();
+            return Json(rows, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult EditEvent(int id)
+        {
+            return View();
+        }
     }
 }

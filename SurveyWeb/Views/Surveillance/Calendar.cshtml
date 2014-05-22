@@ -8,20 +8,53 @@
 @Scripts.Render("~/Scripts/fullcalendar/moment.min.js")
 @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
 @Scripts.Render("~/Scripts/fullcalendar/fullcalendar.min.js")
+@Scripts.Render("~/Scripts/fullcalendar/gcal.js")
 <script>
     $(document).ready(function () {
 
         $('#calendar').fullCalendar({
             /*theme: true,*/
-            /*header: {
-                left: '',
-                center: '',
-                right: ''
-            },*/
-            /*defaultView: 'agendaDay',*/
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            defaultView: 'month',
             editable: true,
-            /*events: "/Calendar/GetEvents/"*/
-            events: [
+        
+            // US Holidays
+            // events: 'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic',
+            events: { url: '/Surveillance/GetEvents?start=1&end=2' },
+
+            eventClick: function (event) {
+                // opens events in a popup window
+                // window.open(event.url, 'gcalevent', 'width=700,height=600');
+                window.location.href = "EditEvent/" + event.id;
+                return false;
+            },
+            
+            /*
+            events: function (request, response) {
+                $.ajax({
+                    url: "/Surveillance/GetEvents/",
+                    dataType: "json",
+                    success: function (data) {
+                        response(JSON.parse(data));
+                    }
+                });
+            },*/
+           
+            /*events: function (request, response) {
+                    $.ajax({
+                        url: "/Surveillance/GetEvents/",
+                        dataType: "json",
+                        success: function (data) {
+                            response(JSON.parse(data));
+                        }
+                    });
+            },*/
+
+           /* events: [
 				{
 				    title: 'All Day Event',
 				    start: '2014-05-20'
@@ -59,8 +92,8 @@
 				    url: 'http://google.com/',
 				    start: '2014-05-28'
 				}
-        ]
-
+        ]*/
+            
         });
     });
 </script>
