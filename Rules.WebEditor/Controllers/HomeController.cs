@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Rules.Domain;
+using Rules.Domain.Vocabulary;
 using Rules.WebEditor.Models;
 
 namespace Rules.WebEditor.Controllers
@@ -127,7 +128,17 @@ namespace Rules.WebEditor.Controllers
         [Route("RuleApplication/GetMyData", Order = 1)]
         public JsonResult GetMyData()
         {
-            var menu = new[] { "All egress doors are opening inside", "There is at least one efress door opening outside" };
+            var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
+            var templates = ((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Vocabulary.Templates;
+            
+            var menu = templates.ConvertAll(t => new {label = t.Prototype, value = t.DisplayText});
+
+
+
+                //{
+                    // new {label="All egress doors are opening inside", value="Test1()"},
+                    // new {label="There is at least one efress door opening outside", value="Test2()"}
+                //};
 
             // new {title = "Cut", cmd = "cut", uiIcon = "ui-icon-scissors"}
             // Menu s = new SomeClass();

@@ -245,6 +245,8 @@
     <Content Include="Scripts\code-complete.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="App_Data\app1.rulespec" />
+    <Content Include="App_Data\app2.rulespec" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.positional.js" />
     <Content Include="Scripts\jquery.contextmenu-ui.js" />
@@ -298,9 +300,7 @@
     <Content Include="Views\Shared\EditorTemplates\Expression.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SimpleRuleSetViewModel.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
       <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>

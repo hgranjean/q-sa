@@ -27,4 +27,17 @@
     </EntitySpec>
   </Entities>
   <RuleSets />
+  <Vocabulary>
+    <Templates>
+      <TemplateSpec>
+        <DisplayText>Test1</DisplayText>
+        <FunctionName>Test1</FunctionName>
+        <Prototype>My super rule is valid</Prototype>
+        <Expression>Context.Field1 == "1234"</Expression>
+        <Type>Format</Type>
+        <Category>Aggregate</Category>
+        <DataType>Decimal</DataType>
+      </TemplateSpec>
+    </Templates>
+  </Vocabulary>
 </RuleApplicationSpec>
