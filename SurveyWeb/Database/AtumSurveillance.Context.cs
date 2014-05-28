@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SurveyWeb.Db
+namespace SurveyWeb.Database
 {
     using System;
     using System.Data.Entity;

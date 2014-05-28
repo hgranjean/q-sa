@@ -24,7 +24,7 @@ namespace SurveyWeb.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                System.Data.Entity.Database.SetInitializer<UsersContext>(null);
 
                 try
                 {

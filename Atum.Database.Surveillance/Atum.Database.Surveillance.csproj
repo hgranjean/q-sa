@@ -77,13 +77,19 @@
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\AtumSurveillanceContext.cs" />
+    <Compile Include="Models\Mapping\SurveyMap.cs" />
+    <Compile Include="Models\SurveyEntry.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Mapping\AspNetRoleMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserClaimMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserLoginMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserMap.cs" />
     <Compile Include="Models\Hospital.cs" />
+    <Compile Include="Models\Mapping\EventMap.cs" />
     <Compile Include="Models\Mapping\HospitalMap.cs" />
+    <Compile Include="Models\Mapping\SurveyEventMap.cs" />
     <Compile Include="Models\Mapping\UserHospitalMap.cs" />
+    <Compile Include="Models\SurveyEvent.cs" />
     <Compile Include="Models\UserHospital.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

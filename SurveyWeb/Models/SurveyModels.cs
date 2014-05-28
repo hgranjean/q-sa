@@ -19,7 +19,6 @@ namespace SurveyWeb.Models
         {
             this.Name = survey.Title;//?? "Survey" + survey.ID;
             this.Survey = survey;
-            
 
             if (this.Survey.QuestionGroups == null)
             {

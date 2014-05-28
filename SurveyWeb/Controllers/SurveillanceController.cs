@@ -1,21 +1,17 @@
-﻿using System.Collections;
-using System.Configuration;
-using System.Web.Mvc;
-using Atum.Database.Surveillance.Models;
+﻿using Atum.Database.Surveillance.Models;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Surveillance;
 using Atum.Utility.XML;
-using SurveyWeb;
-using SurveyWeb.Db;
+using SurveyWeb.Controllers;
 using SurveyWeb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using SurveyWeb.RuleApp;
 using SurveyWeb.Services;
-using SurveyWeb.Controllers;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace MvcApplication1.Controllers
 {
