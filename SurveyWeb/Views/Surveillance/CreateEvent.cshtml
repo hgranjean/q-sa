@@ -1,9 +1,22 @@
 ﻿@model SurveyWeb.Models.EventViewModel
 @{
-    ViewBag.Title = "EditEvent";
+    ViewBag.Title = "CreateEvent";
 }
 
-<h2>Edit Event</h2>
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+
+<script>
+  $(function() {
+      $("#startdatepicker").datepicker();
+      $("#enddatepicker").datepicker();
+  });
+</script>
 
 @using (Html.BeginForm("CreateEvent", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
@@ -11,9 +24,7 @@
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Edit Event</legend>
-
-        @Html.HiddenFor(m => m.Id)
+        <legend>Create Event</legend>
 
         <div style="display: table">
             
@@ -30,7 +41,7 @@
                     @Html.LabelFor(model => model.Start)
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Start, new {@id = "datepicker"})
+                    @Html.TextBoxFor(m => m.Start, new {@id = "startdatepicker"})
                 </div>
             </div>
             <div style="display: table-row">
@@ -38,7 +49,7 @@
                     @Html.LabelFor(model => model.End)
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Start, new {@id = "datepicker"})
+                    @Html.TextBoxFor(m => m.Start, new {@id = "enddatepicker"})
                 </div>
             </div>
             <div style="display: table-row">
@@ -61,8 +72,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
-
-
 

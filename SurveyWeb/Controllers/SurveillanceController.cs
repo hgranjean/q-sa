@@ -673,5 +673,16 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateEvent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateEvent(EventViewModel evt)
+        {
+            return View("Calendar");
+        }
     }
 }

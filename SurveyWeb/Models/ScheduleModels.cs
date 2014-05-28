@@ -11,6 +11,10 @@ namespace SurveyWeb.Models
         public DateTime End { get; set; }
         public string Url { get; set; }
 
+        public EventViewModel()
+        {
+        }
+
         public EventViewModel(Event evt)
         {
             Id = evt.Id;
