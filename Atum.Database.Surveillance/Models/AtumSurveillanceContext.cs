@@ -22,6 +22,9 @@ namespace Atum.Database.Surveillance.Models
         public DbSet<AspNetUser> AspNetUsers { get; set; }
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<UserHospital> UserHospitals { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<SurveyEntry> Surveys { get; set; }
+        public DbSet<SurveyEvent> SurveyEvents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,6 +34,9 @@ namespace Atum.Database.Surveillance.Models
             modelBuilder.Configurations.Add(new AspNetUserMap());
             modelBuilder.Configurations.Add(new HospitalMap());
             modelBuilder.Configurations.Add(new UserHospitalMap());
+            modelBuilder.Configurations.Add(new EventMap());
+            modelBuilder.Configurations.Add(new SurveyMap());
+            modelBuilder.Configurations.Add(new SurveyEventMap());
         }
     }
 }

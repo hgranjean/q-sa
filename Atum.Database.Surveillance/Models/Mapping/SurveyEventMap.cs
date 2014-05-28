@@ -17,7 +17,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
                 .HasMaxLength(128);
 
             // Table & Column Mappings
-            this.ToTable("UserHospitals");
+            this.ToTable("SurveyEvents");
             this.Property(t => t.SurveyId).HasColumnName("SurveyId");
             this.Property(t => t.EventId).HasColumnName("EventId");
 

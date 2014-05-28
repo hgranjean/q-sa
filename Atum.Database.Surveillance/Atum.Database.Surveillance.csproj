@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201402200556066_DbMigration1.Designer.cs">
       <DependentUpon>201402200556066_DbMigration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405280042375_DbMigration2.cs" />
+    <Compile Include="Migrations\201405280042375_DbMigration2.Designer.cs">
+      <DependentUpon>201405280042375_DbMigration2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
@@ -132,6 +136,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402200556066_DbMigration1.resx">
       <DependentUpon>201402200556066_DbMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405280042375_DbMigration2.resx">
+      <DependentUpon>201405280042375_DbMigration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
