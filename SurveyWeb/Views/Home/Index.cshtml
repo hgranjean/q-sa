@@ -33,16 +33,6 @@
 @Html.ActionLink("Design", "DesignSurvey", "Surveillance") a new survey<br />
 @Html.ActionLink("Conduct", "ConductSurvey", "Surveillance") an assessment</div>**@
 
-<!--<div>
-    <h4>Survey</h4>
-    @Html.ActionLink("List surveys", "Index", "AdministerSurvey")<br/>
-    @Html.ActionLink("Administer assessment", "Create", "AdministerSurvey")<br/>
-    @Html.ActionLink("Conduct assessment", "Create", "Survey")
-</div>-->
-
-
-
-
 @{
     ViewBag.Title = "Home Page";
 }
@@ -54,7 +44,7 @@
         <br />AQS will provide on-line (off-line) assessments which are customized with standardized questions and scoring criteria with a comment section under each question 
         for internal inspectors to fill out while conducting scheduled rounds and audits.  
     </p>
-    <p>@Html.ActionLink(HttpUtility.HtmlDecode("Learn more &raquo;"), "Dashboard", "Surveillance", null, new { @class = "btn btn-primary btn-large" })</p>
+    <p>@Html.ActionLink(HttpUtility.HtmlDecode("Register &raquo;"), "Register", "Account", null, new { @class = "btn btn-primary btn-large" })</p>
 </div>
 
 <div class="row">
