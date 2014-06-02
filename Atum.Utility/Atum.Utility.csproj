@@ -102,6 +102,7 @@
     <Compile Include="Atum\Utility\Calculator\LongLatPoint.cs" />
     <Compile Include="Atum\Utility\Calculator\SphericalDistanceCalculator.cs" />
     <Compile Include="Atum\Utility\Constants\PhysicalConstants.cs" />
+    <Compile Include="Atum\Utility\Email\EmailHelper.cs" />
     <Compile Include="Atum\Utility\Logic\Constraint.cs" />
     <Compile Include="Atum\Utility\Logic\Criteria.cs" />
     <Compile Include="Atum\Utility\Logic\Criterion.cs" />
