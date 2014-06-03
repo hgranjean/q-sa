@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Atum.Database.Surveillance.Models;
+using Atum.Domain.Business;
+using Atum.Domain.Common;
+using Atum.Domain.Security.Domain;
+using Atum.Utility;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -15,9 +23,12 @@ namespace SurveyWeb.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private AtumSurveillanceContext _dbContext = null;
+        
         public AccountController()
            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
+            _dbContext = new AtumSurveillanceContext();
         }
 
         public AccountController(UserManager<ApplicationUser> userManager)
@@ -83,7 +94,9 @@ namespace SurveyWeb.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    
+                    return RedirectToAction("ManageProfile", new {userName = model.UserName});
                 }
                 else
                 {
@@ -93,6 +106,87 @@ namespace SurveyWeb.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+        
+        //
+        // GET: /Account/ManageProfile
+        public ActionResult ManageProfile(string userName)
+        {
+            var model = new PersonViewModel { UserId = userName };
+
+            if (EmailHelper.IsValidEmail(userName))
+            {
+                var domainName = EmailHelper.GetDomainName(userName);
+
+                var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.DomainName == domainName);
+
+                if (hospital != default(Hospital))
+                {
+                    model.Person.Hospital = hospital;
+                }
+            }
+            
+            return View("Person", model);
+        }
+
+        //
+        // POST: /Account/ManageProfile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ManageProfile(PersonViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Person Id does not exist, create a new one
+                if (string.IsNullOrWhiteSpace(model.Person.Id))
+                {
+                    model.Person.Id = Guid.NewGuid().ToString("D");
+                    _dbContext.Persons.Add(model.Person);
+                }
+                else
+                {
+                    _dbContext.Persons.Attach(model.Person);
+                    _dbContext.Entry(model.Person).State = EntityState.Modified;
+                }
+
+                // Hospital was not entered, create a new one
+                if (string.IsNullOrWhiteSpace(model.Person.Hospital.Id))
+                {
+                    model.Person.Hospital.Id = Guid.NewGuid().ToString("D");
+                    model.Person.Hospital.DomainName = EmailHelper.GetDomainName(model.Email);
+                    _dbContext.Hospitals.Add(model.Person.Hospital);
+                }
+                else
+                {
+                    _dbContext.Hospitals.Attach(model.Person.Hospital);
+                    _dbContext.Entry(model.Person.Hospital).State = EntityState.Modified;
+                }
+                
+                var user = _dbContext.AspNetUsers.FirstOrDefault(t => t.UserName == model.UserId);
+
+                if (user != default(AspNetUser))
+                {
+                    user.Person = model.Person;
+                }
+                else
+                {
+                    AddErrors(new IdentityResult("User not found with id: " + model.UserId));
+                }
+
+                try
+                {
+                    _dbContext.SaveChanges();
+                    
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (DbEntityValidationException e)
+                {
+                    AddErrors(e);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View("Person", model);
         }
 
         //
@@ -126,8 +220,21 @@ namespace SurveyWeb.Controllers
                 : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
+
+            var userName = User.Identity.GetUserName();
+
+            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
+
+            // _dbContext.Entry(user).Reference(m => m.Person).Load();
+            
+            var model = new PersonViewModel(user.Person) { UserId = userName};
+
+            ViewBag.PersonViewModel = model;
+
             return View();
         }
+
+
 
         //
         // POST: /Account/Manage
@@ -178,6 +285,37 @@ namespace SurveyWeb.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+        
+        public ActionResult DeleteUser(string userId)
+        {
+            var model = _dbContext.AspNetUsers.FirstOrDefault(user => user.Id == userId);
+
+            return View("DeleteUser", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteUser(AspNetUser model)
+        {
+            IList<UserLoginInfo> logins = await UserManager.GetLoginsAsync(model.Id);
+            
+            foreach (var login in logins)
+            {
+                IdentityResult result = await UserManager.RemoveLoginAsync(model.Id, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
+                if (!result.Succeeded)
+                {
+                    AddErrors(result);
+                }
+            }
+
+            AspNetUser toDelete = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.Id);
+
+            _dbContext.AspNetUsers.Remove(toDelete);
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("UserHospitalIndex", "Hospital");
         }
 
         //
@@ -346,6 +484,23 @@ namespace SurveyWeb.Controllers
             }
         }
 
+        private void AddErrors(DbEntityValidationException e)
+        {
+            foreach (var eve in e.EntityValidationErrors)
+            {
+                Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                    eve.Entry.Entity.GetType().Name, eve.Entry.State);
+
+                foreach (var ve in eve.ValidationErrors)
+                {
+                    Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                        ve.PropertyName, ve.ErrorMessage);
+
+                    ModelState.AddModelError("", ve.ErrorMessage);
+                }
+            }
+        }
+
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -404,5 +559,8 @@ namespace SurveyWeb.Controllers
             }
         }
         #endregion
+
+        /*
+        */
     }
 }

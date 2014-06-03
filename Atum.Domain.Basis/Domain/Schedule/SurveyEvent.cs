@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Atum.Database.Surveillance.Models
+namespace Atum.Domain.Basis.Domain.Schedule
 {
     public partial class SurveyEvent
     {

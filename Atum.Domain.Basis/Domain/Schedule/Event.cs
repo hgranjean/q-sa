@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Atum.Database.Surveillance.Models
+namespace Atum.Domain.Basis.Domain.Schedule
 {
     public class Event
     {

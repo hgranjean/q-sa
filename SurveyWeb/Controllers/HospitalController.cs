@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Atum.Database.Surveillance.Models;
+using Atum.Domain.Business;
 using SurveyWeb.Models;
 
 namespace MvcApplication1.Controllers

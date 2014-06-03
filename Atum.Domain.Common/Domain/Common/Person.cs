@@ -1,44 +1,41 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Atum.Domain.Basis;
+using Atum.Domain.Business;
 
 namespace Atum.Domain.Common
 {
 	/// <summary>
 	/// Summary description for Person.
 	/// </summary>
-	[Serializable]public class Person : DomainObject
+	[Table("Persons")]
+    public partial class Person
 	{
-		protected string _lastName;
-		protected string _firstName;
-		protected string _middleName;
-		protected string _ssn;
-		protected string _suffix;
-		protected Address _address;
-        protected DateTime _dob;
+        [Key]
+        public string Id { get; set; }
+        public string UserId { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string Suffix { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string JobTitle { get; set; }
+		public Address Address { get; set; }
+        public DateTime DateOfBirth { get; set;}
+        public virtual Hospital Hospital { get; set; }
+        public string HospitalId { get; set; }
 
-		public Person()
-		{
-		}
-
-		public string LastName{get{return _lastName;}set{_lastName = value;}}
-		public string FirstName{get{return _firstName;}set{_firstName = value;}}
-		public string MiddleName{get{return _middleName;}set{_middleName = value;}}
-		public string Suffix{get{return _suffix;}set{_suffix = value;}}
-		public string SSN{get{return _ssn;}set{_ssn = value;}}
-		public Address Address{get{return _address;}set{_address = value;}}
-        public DateTime DateOfBirth { get { return _dob; } set { _dob = value; } }
-
-
-        public string Name
+        public string FullName
         {
-            get { return String.Format("{0} {1} {2}", _firstName, _middleName, _lastName); }
+            get { return String.Format("{0} {1} {2}", this.FirstName, this.MiddleName, this.LastName); }
         }
 
-
         public Department Department { get; set; }
-        protected override void SetId(long id)
+
+        public Person()
         {
-            throw new NotImplementedException();
         }
     }
 }

@@ -6,24 +6,52 @@
 
 <h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div class="row">
-    <div class="col-md-12">
-        @if (ViewBag.HasLocalPassword)
-        {
-            @Html.Partial("_ChangePasswordPartial")
-        }
-        else
-        {
-            @Html.Partial("_SetPasswordPartial")
-        }
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-        <!--<section id="externalLogins">
-            @Html.Action("RemoveAccountList")
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
-        </section>-->
+<script>
+    $(function() {
+        $("#tabs").tabs();
+    });
+</script>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#changePassword">Change Password Form</a></li>
+    <li><a href="#manageProfile">Manage Profile</a></li>
+  </ul>
+  <div id="changePassword">
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div class="row">
+        <div class="col-md-12">
+            @if (ViewBag.HasLocalPassword)
+            {
+                @Html.Partial("_ChangePasswordPartial")
+            }
+            else
+            {
+                @Html.Partial("_SetPasswordPartial")
+            }
+
+            <!--<section id="externalLogins">
+                @Html.Action("RemoveAccountList")
+                @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+            </section>-->
+        </div>
+    </div>
+
+  </div>
+    <div id="manageProfile">
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("_PersonPartial", (PersonViewModel)ViewBag.PersonViewModel)
+            </div>
+        </div>
     </div>
 </div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

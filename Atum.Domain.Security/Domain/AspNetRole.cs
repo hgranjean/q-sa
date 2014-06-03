@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Atum.Database.Surveillance.Models
+namespace Atum.Domain.Security.Domain
 {
     [Table("AspNetRoles")]
     public partial class AspNetRole

@@ -480,6 +480,9 @@
     <Content Include="Views\Surveillance\Calendar.cshtml" />
     <Content Include="Views\Surveillance\EditEvent.cshtml" />
     <Content Include="Views\Surveillance\CreateEvent.cshtml" />
+    <Content Include="Views\Account\_PersonPartial.cshtml" />
+    <Content Include="Views\Account\DeleteUser.cshtml" />
+    <Content Include="Views\Account\Person.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

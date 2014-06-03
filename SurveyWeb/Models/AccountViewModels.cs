@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Atum.Database.Surveillance.Models;
+using Atum.Domain.Business;
+using Atum.Domain.Security.Domain;
 
 namespace SurveyWeb.Models
 {

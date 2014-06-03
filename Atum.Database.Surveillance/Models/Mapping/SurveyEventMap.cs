@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity.ModelConfiguration;
+using Atum.Domain.Basis.Domain.Schedule;
 
 namespace Atum.Database.Surveillance.Models.Mapping
 {

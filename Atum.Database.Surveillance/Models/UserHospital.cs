@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Atum.Domain.Business;
+using Atum.Domain.Security.Domain;
 
 namespace Atum.Database.Surveillance.Models
 {

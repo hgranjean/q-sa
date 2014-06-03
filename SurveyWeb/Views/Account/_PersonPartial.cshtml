@@ -1,0 +1,106 @@
+﻿@model SurveyWeb.Models.PersonViewModel 
+
+@{
+    ViewBag.Title = "Person";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+  $(function() {
+      $("#datepicker").datepicker({
+          dateFormat: "yy-mm-dd"
+      });
+      $("#datepicker").datepicker('setDate', new Date());
+  });
+</script>
+
+@using (Html.BeginForm("ManageProfile", "Account", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    <h4>Personal Information</h4>
+    <hr/>
+    @Html.ValidationSummary()
+
+    @Html.HiddenFor(m => m.Person.Id)
+    @Html.HiddenFor(m => m.Person.Hospital.Id)
+    @Html.HiddenFor(m => m.Person.Hospital.DomainName)
+    @Html.HiddenFor(m => m.UserId)
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MiddleName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Suffix, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Suffix, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @id = "datepicker"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CompanyName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.JobTitle, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.JobTitle, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Industry, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Industry, new { @class = "form-control" })
+        </div>
+    </div>
+
+    @*public Address Address { get { return this.Person.Address; } set { this.Person.Address = value; } }*@
+    @*public DateTime DateOfBirth { get { return this.Person.DateOfBirth; } set { this.Person.DateOfBirth = value; } }*@
+    @*public Hospital Hospital { get { return this.Person.Hospital; } set { this.Person.Hospital = value; } }*@
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default"  />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

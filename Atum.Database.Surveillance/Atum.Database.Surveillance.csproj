@@ -75,25 +75,22 @@
     <Compile Include="Migrations\201405280042375_DbMigration2.Designer.cs">
       <DependentUpon>201405280042375_DbMigration2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406031759320_DbMigration3.cs" />
+    <Compile Include="Migrations\201406031759320_DbMigration3.Designer.cs">
+      <DependentUpon>201406031759320_DbMigration3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AspNetRole.cs" />
-    <Compile Include="Models\AspNetUser.cs" />
-    <Compile Include="Models\AspNetUserClaim.cs" />
-    <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\AtumSurveillanceContext.cs" />
+    <Compile Include="Models\Mapping\PersonMap.cs" />
     <Compile Include="Models\Mapping\SurveyMap.cs" />
-    <Compile Include="Models\SurveyEntry.cs" />
-    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Mapping\AspNetRoleMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserClaimMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserLoginMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserMap.cs" />
-    <Compile Include="Models\Hospital.cs" />
     <Compile Include="Models\Mapping\EventMap.cs" />
     <Compile Include="Models\Mapping\HospitalMap.cs" />
     <Compile Include="Models\Mapping\SurveyEventMap.cs" />
     <Compile Include="Models\Mapping\UserHospitalMap.cs" />
-    <Compile Include="Models\SurveyEvent.cs" />
     <Compile Include="Models\UserHospital.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +112,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>aspnet-SurveyWeb.mdf</DependentUpon>
     </Content>
+    <Content Include="DbScripts\DbMigration2.sql" />
+    <Content Include="DbScripts\DbMigration3.sql" />
+    <Content Include="DbScripts\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -140,6 +140,23 @@
     <EmbeddedResource Include="Migrations\201405280042375_DbMigration2.resx">
       <DependentUpon>201405280042375_DbMigration2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406031759320_DbMigration3.resx">
+      <DependentUpon>201406031759320_DbMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
+      <Project>{94bcb49a-cb7d-4f37-8340-9a9b8cd05614}</Project>
+      <Name>Atum.Domain.Basis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Common\Atum.Domain.Common.csproj">
+      <Project>{402a24d0-272f-48ee-b533-27d4f7b3d2f5}</Project>
+      <Name>Atum.Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Security\Atum.Domain.Security.csproj">
+      <Project>{4DB9B8EA-AD8B-48ED-8329-FB511B4BD218}</Project>
+      <Name>Atum.Domain.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

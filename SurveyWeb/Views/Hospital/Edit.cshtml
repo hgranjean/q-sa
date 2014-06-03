@@ -1,11 +1,11 @@
 ﻿
-@model Atum.Database.Surveillance.Models.Hospital
+@model Atum.Domain.Business.Hospital
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Hospital Info</h2>
 
 @using (Html.BeginForm("Edit", "Hospital"))
 {
@@ -15,11 +15,43 @@
     <fieldset>
         <legend>Hospital Form</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
+        <div style="display:table">
+            <div style="display:table-row">
+                <div style="display:table-cell">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                </div>
+                <div style="display:table-cell">
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Name)
+                    </div>
+                </div>
+            </div>
+            <div style="display:table-row">
+                <div style="display:table-cell">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Industry)
+                    </div>
+                </div>
+                <div style="display:table-cell">
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Industry)
+                    </div>
+                </div>
+            </div>
+            <div style="display:table-row">
+                <div style="display:table-cell">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.DomainName)
+                    </div>
+                </div>
+                <div style="display:table-cell">
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.DomainName)
+                    </div>
+                </div>
+            </div>
         </div>
         
     </fieldset>

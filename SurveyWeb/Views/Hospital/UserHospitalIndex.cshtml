@@ -1,11 +1,12 @@
 ﻿@using Atum.Database.Surveillance.Models
+@using Atum.Domain.Security.Domain
 @model IEnumerable<SurveyWeb.Models.UserHospitalViewModel>
 
 @{
     ViewBag.Title = "Manage Users";
 }
 
-<h2>Manager Users</h2>
+<h2>Manage Users</h2>
 
 <!-- Users -->
 
@@ -22,6 +23,7 @@
             <div style="display: table-row">
                 <div style="display: table-cell">@Html.Label(item.UserName)</div>
                 <div style="display: table-cell">@Html.ActionLink("Edit", "EditUserHospital", new { userId=item.Id })</div>
+                <div style="display: table-cell">@Html.ActionLink("Delete", "DeleteUser", "Account", new { userId=item.Id }, null)</div>
             </div>
         }
     </div>

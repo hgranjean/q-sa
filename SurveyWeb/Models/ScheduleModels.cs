@@ -1,5 +1,6 @@
 ﻿using Atum.Database.Surveillance.Models;
 using System;
+using Atum.Domain.Basis.Domain.Schedule;
 
 namespace SurveyWeb.Models
 {
