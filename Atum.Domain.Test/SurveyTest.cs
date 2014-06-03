@@ -1,12 +1,14 @@
 ﻿using System;
 using System.IO;
 using Atum.Utility.XML;
-using Atum.Domain.Surveillance;
+using Atum.Domain.QualityManagement;
 using Atum.Domain.Common;
-using Atum.Domain.Surveillance.Specifications;
+//using Atum.Domain.QualityManagement.Specifications;
 using Atum.Domain.Basis;
 using NUnit.Framework;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using Atum.Domain.SurveyManagement;
+using Atum.Domain.SurveyManagement.Specifications;
 
 namespace Atum.Domain.Test
 {

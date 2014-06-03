@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Atum.Domain.SurveyManagement")]
+[assembly: AssemblyTitle("Atum.Domain.QualityManagement")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Atum.Domain.SurveyManagement")]
+[assembly: AssemblyProduct("Atum.Domain.QualityManagement")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1ef3c995-38cb-45b8-aacc-47c45a59496c")]
+[assembly: Guid("53da0f0c-49d5-437d-bd81-a6935a9bb328")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD43F4B6-5E09-41AA-B7C7-2B53722B1F77}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atum</RootNamespace>
+    <AssemblyName>Atum.Domain.Surveillance</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\SurveyManagement\SurveillanceSchedule.cs" />
+    <Compile Include="Domain\SurveyManagement\Assessment.cs" />
+    <Compile Include="Domain\SurveyManagement\QuestionGroups.cs" />
+    <Compile Include="Domain\SurveyManagement\ResponseChoices.cs" />
+    <Compile Include="Domain\SurveyManagement\Specifications\QuestionSpecification.cs" />
+    <Compile Include="Domain\SurveyManagement\Specifications\SurveySpecification.cs" />
+    <Compile Include="Domain\SurveyManagement\Question.cs" />
+    <Compile Include="Domain\SurveyManagement\QuestionGroup.cs" />
+    <Compile Include="Domain\SurveyManagement\Questions.cs" />
+    <Compile Include="Domain\SurveyManagement\QuestionType.cs" />
+    <Compile Include="Domain\SurveyManagement\Response.cs" />
+    <Compile Include="Domain\SurveyManagement\Responses.cs" />
+    <Compile Include="Domain\SurveyManagement\ResponseType.cs" />
+    <Compile Include="Domain\SurveyManagement\Score.cs" />
+    <Compile Include="Domain\SurveyManagement\Survey.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyAnalyzer.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyBasis.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyManager.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyResponse.cs" />
+    <Compile Include="Domain\SurveyManagement\Surveys.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyStrategies.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyStrategy.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyType.cs" />
+    <Compile Include="Domain\SurveyManagement\Administrator.cs" />
+    <Compile Include="Domain\SurveyManagement\AnswerChoices.cs" />
+    <Compile Include="Domain\SurveyManagement\ApplicabilityStrategy.cs" />
+    <Compile Include="Domain\SurveyManagement\ResponseChoice.cs" />
+    <Compile Include="Domain\SurveyManagement\DesignFeature.cs" />
+    <Compile Include="Domain\SurveyManagement\DesignFeatures.cs" />
+    <Compile Include="Domain\SurveyManagement\InvalidChoiceException.cs" />
+    <Compile Include="Domain\SurveyManagement\OrderingStrategy.cs" />
+    <Compile Include="Domain\SurveyManagement\QuestionStrategies.cs" />
+    <Compile Include="Domain\SurveyManagement\QuestionStrategy.cs" />
+    <Compile Include="Domain\SurveyManagement\Respondent.cs" />
+    <Compile Include="Domain\SurveyManagement\ValueRecognitionStrategy.cs" />
+    <Compile Include="Lab\SurveillanceDev.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
+      <Project>{94bcb49a-cb7d-4f37-8340-9a9b8cd05614}</Project>
+      <Name>Atum.Domain.Basis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Common\Atum.Domain.Common.csproj">
+      <Project>{402a24d0-272f-48ee-b533-27d4f7b3d2f5}</Project>
+      <Name>Atum.Domain.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
