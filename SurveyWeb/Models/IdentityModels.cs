@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System;
+using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SurveyWeb.Models
 {
@@ -12,6 +14,11 @@ namespace SurveyWeb.Models
         public ApplicationDbContext()
             : base("AtumSurveillanceContext")
         {
+        }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
         }
     }
 }

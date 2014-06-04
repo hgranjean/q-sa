@@ -1,10 +1,11 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Settings";
 }
 
 <h2>Settings</h2>
 
-@if (User.IsInRole("Administrator"))
+@if (ViewBag.ShowAdminContent)
 {
     <div class="row">
         <div class="col-md-4">

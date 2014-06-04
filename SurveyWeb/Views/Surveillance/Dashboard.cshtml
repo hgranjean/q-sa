@@ -1,12 +1,17 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@using SurveyWeb
+@using SurveyWeb.App_Start
+@using SurveyWeb.Models
+@{
 
     ViewBag.Title = "Dashboard";
 }
 
 
 <h2>Dashboard</h2>
-
-@if (User.IsInRole("Administrator"))
+ 
+@if (ViewBag.ShowAdminContent)
 {
     <div>
         <div><h3>Assessment Administrator Dashboard</h3></div>
@@ -18,7 +23,7 @@
         <div>@Html.ActionLink("Reports", "Surveys")</div>
     </div>
 }
-else if (User.IsInRole("Surveyor"))
+else if (ViewBag.ShowSurveyorContent)
 {
     <div>
         <div><h3>Surveyor Dashboard</h3></div>

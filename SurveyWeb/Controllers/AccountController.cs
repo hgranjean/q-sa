@@ -18,7 +18,9 @@ using Atum.Domain.Security.Domain;
 using Atum.Utility;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SurveyWeb.App_Start;
 using SurveyWeb.Models;
 using WebMatrix.WebData;
 
@@ -28,19 +30,30 @@ namespace SurveyWeb.Controllers
     public class AccountController : Controller
     {
         private AtumSurveillanceContext _dbContext = null;
+        private ApplicationUserManager _userManager;
+
+        public AccountController(ApplicationUserManager userManager) : this()
+        {
+            UserManager = userManager;
+        }
+        
         
         public AccountController()
-           : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
             _dbContext = new AtumSurveillanceContext();
         }
 
-        public AccountController(UserManager<ApplicationUser> userManager)
+        public ApplicationUserManager UserManager
         {
-            UserManager = userManager;
+            get
+            {
+                return _userManager ?? System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
-
-        public UserManager<ApplicationUser> UserManager { get; private set; }
         
         //
         // GET: /Account/Login

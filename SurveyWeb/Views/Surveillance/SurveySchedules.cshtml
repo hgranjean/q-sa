@@ -1,11 +1,14 @@
-﻿@model SurveyWeb.Models.SurveysViewModel
+﻿@using Microsoft.AspNet.Identity
+@using SurveyWeb.App_Start
+@using SurveyWeb.Controllers
+@model SurveyWeb.Models.SurveysViewModel
 @{
     ViewBag.Title = "My Audits";
 }
 
 <h2>My Audits</h2>
 
-@if (User.IsInRole("Surveyor") || User.IsInRole("Administrator"))
+@if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Surveyor"))
 {
 
     <div>

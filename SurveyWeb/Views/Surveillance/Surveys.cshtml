@@ -1,4 +1,5 @@
-﻿@model SurveyWeb.Models.SurveysViewModel
+﻿@using Microsoft.AspNet.Identity
+@model SurveyWeb.Models.SurveysViewModel
 
 
 @{
@@ -7,7 +8,8 @@
 
 <h2>Surveys</h2>
 
-@if (User.IsInRole("Surveyor") || User.IsInRole("Administrator"))
+@if (Roles.IsUserInRole(User.Identity.GetUserId(), "Administrator") || Roles.IsUserInRole(User.Identity.GetUserId(), "Surveyor"))
+
 {
     @Html.ActionLink("Create new survey", "SurveyDesign", "Surveillance")
 

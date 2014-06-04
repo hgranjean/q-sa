@@ -1,8 +1,11 @@
-﻿using Atum.Database.Surveillance.Models;
+﻿using System.Data.Entity;
+using Atum.Database.Surveillance.Models;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Surveillance;
 using Atum.Utility.XML;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using SurveyWeb.Controllers;
 using SurveyWeb.Models;
 using SurveyWeb.RuleApp;
@@ -18,6 +21,31 @@ namespace MvcApplication1.Controllers
     [Authorize]
     public class SurveillanceController : Controller
     {
+        private AtumSurveillanceContext _dbContext = null;
+        
+        public SurveillanceController()
+           : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+        {
+            _dbContext = new AtumSurveillanceContext();
+        }
+
+        public SurveillanceController(UserManager<ApplicationUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && UserManager != null)
+            {
+                UserManager.Dispose();
+                UserManager = null;
+            }
+            base.Dispose(disposing);
+        }
+
         //
         // GET: /Surveillance/
 
@@ -400,6 +428,9 @@ namespace MvcApplication1.Controllers
         
         public ActionResult Dashboard()
         {
+            ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowSurveyorContent = UserManager.IsInRole(User.Identity.GetUserId(), "Surveyor");
+            
             return View();
         }
 
