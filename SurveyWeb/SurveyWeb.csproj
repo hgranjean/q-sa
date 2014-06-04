@@ -483,6 +483,7 @@
     <Content Include="Views\Account\_PersonPartial.cshtml" />
     <Content Include="Views\Account\DeleteUser.cshtml" />
     <Content Include="Views\Account\Person.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />
