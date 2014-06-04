@@ -19,7 +19,7 @@ namespace Atum.Database.Surveillance.Models
             : base("Name=AtumSurveillanceContext")
         {
         }
-
+        
         public DbSet<AspNetRole> AspNetRoles { get; set; }
         public DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }

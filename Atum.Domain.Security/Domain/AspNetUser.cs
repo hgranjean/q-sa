@@ -11,7 +11,7 @@ namespace Atum.Domain.Security.Domain
     {
         public AspNetUser()
         {
-            // this.AspNetUserClaims = new List<AspNetUserClaim>();
+            this.AspNetUserClaims = new List<AspNetUserClaim>();
             // this.AspNetUserLogins = new List<AspNetUserLogin>();
             // this.AspNetRoles = new List<AspNetRole>();
             // this.Hospitals = new HashSet<Hospital>();

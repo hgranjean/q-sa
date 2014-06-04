@@ -63,6 +63,16 @@ namespace SurveyWeb.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        [Compare("Email", ErrorMessage = "The emails you've entered do not match.")]
+        public string ConfirmEmail { get; set; }
     }
 
     public class UserHospitalViewModel

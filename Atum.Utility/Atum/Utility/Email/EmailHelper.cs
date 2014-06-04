@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.Security;
 
 namespace Atum.Utility
 {
@@ -37,6 +38,34 @@ namespace Atum.Utility
             var mailAddress = new MailAddress(value);
 
             return mailAddress.Host;
+        }
+
+        public static string GenerateToken(string username, int validityInHours = 24)
+        {
+            var formsTicket = new FormsAuthenticationTicket(
+                1,
+                username,
+                DateTime.Now,
+                DateTime.Now.AddHours(validityInHours),
+                true,
+                string.Join("|", username)
+            );
+
+            // encrypt the ticket
+            string encryptedTicket = FormsAuthentication.Encrypt(formsTicket);
+
+            return encryptedTicket;
+        }
+
+        public static string GetUsernameFromToken(string encryptedTicket)
+        {
+            FormsAuthenticationTicket formsTicket = FormsAuthentication.Decrypt(encryptedTicket);
+
+            // split the user data back apart
+            string[] userData = formsTicket.UserData.Split(new string[] { "|" }, StringSplitOptions.None);
+
+            // verify that the username in the ticket matches the username that was sent with the request
+            return formsTicket.Name;
         }
     }
 }

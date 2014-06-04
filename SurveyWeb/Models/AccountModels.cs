@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Web.Security;
 using Atum.Domain.Business;
 using Atum.Domain.Common;
+using WebMatrix.WebData;
 
 namespace SurveyWeb.Models
 {
@@ -135,5 +136,30 @@ namespace SurveyWeb.Models
         {
             this.Person = person;
         }
+    }
+
+    public class LostPasswordModel
+    {
+        [Required(ErrorMessage = "We need your email to send you a reset link!")]
+        [Display(Name = "Your account email")]
+        [EmailAddress(ErrorMessage = "Not a valid email--what are you trying to do here?")]
+        public string Email { get; set; }
+    }
+
+    public class ResetPasswordModel
+    {
+        [Required]
+        [Display(Name = "New Password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "New password and confirmation does not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string ReturnToken { get; set; }
     }
 }

@@ -4,10 +4,13 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain.Business;
 using Atum.Domain.Common;
@@ -17,6 +20,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using SurveyWeb.Models;
+using WebMatrix.WebData;
 
 namespace SurveyWeb.Controllers
 {
@@ -89,14 +93,14 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName, };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
                     //return RedirectToAction("Index", "Home");
                     
-                    return RedirectToAction("ManageProfile", new {userName = model.UserName});
+                    return RedirectToAction("ManageProfile", new {userName = model.UserName, email = model.Email});
                 }
                 else
                 {
@@ -110,13 +114,13 @@ namespace SurveyWeb.Controllers
         
         //
         // GET: /Account/ManageProfile
-        public ActionResult ManageProfile(string userName)
+        public ActionResult ManageProfile(string userName, string email)
         {
             var model = new PersonViewModel { UserId = userName };
 
-            if (EmailHelper.IsValidEmail(userName))
+            if (EmailHelper.IsValidEmail(email))
             {
-                var domainName = EmailHelper.GetDomainName(userName);
+                var domainName = EmailHelper.GetDomainName(email);
 
                 var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.DomainName == domainName);
 
@@ -124,6 +128,8 @@ namespace SurveyWeb.Controllers
                 {
                     model.Person.Hospital = hospital;
                 }
+
+                model.Email = email;
             }
             
             return View("Person", model);
@@ -560,7 +566,125 @@ namespace SurveyWeb.Controllers
         }
         #endregion
 
-        /*
-        */
+        // GET: Account/LostPassword
+        [AllowAnonymous]
+        public ActionResult LostPassword()
+        {
+            return View();
+        }
+
+        // POST: Account/LostPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult LostPassword(LostPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user;
+                using (var context = _dbContext)
+                {
+                    var foundUserName = (from u in context.AspNetUsers
+                              where u.Person.Email == model.Email
+                              select u.UserName).FirstOrDefault();
+                    if (foundUserName != null)
+                    {
+                        user = UserManager.FindByName(foundUserName.ToString());
+                    }
+                    else
+                    {
+                        user = null;
+                    }
+                }
+                if (user != null)
+                {
+                    // Generate password token that will be used in the email link to authenticate user
+                    // var token = WebSecurity.GeneratePasswordResetToken(user.UserName);
+                    var token = EmailHelper.GenerateToken(user.UserName);
+                    // Generate the html link sent via email
+                    string resetLink = "<a href='"
+                        + Url.Action("ResetPassword", "Account", new { rt = token }, "http") 
+                        + "'>Reset Password Link</a>";
+ 
+                    // Email stuff
+                    string subject = "Reset your password for aqspartners.com";
+                    string body = "You link: " + resetLink;
+                    string from = "donotreply@aqspartners.com";
+ 
+                    var message = new MailMessage(from, model.Email);
+                    message.Subject = subject;
+                    message.Body = body;
+                    message.IsBodyHtml = true;
+                    SmtpClient client = new SmtpClient();
+ 
+                    // Attempt to send the email
+                    try
+                    {
+                        client.Send(message);
+                    }
+                    catch (Exception e)
+                    {
+                        ModelState.AddModelError("", "Issue sending email: " + e.Message);
+                    }
+                }         
+                else // Email not found
+                {
+                    /* Note: You may not want to provide the following information
+                    * since it gives an intruder information as to whether a
+                    * certain email address is registered with this website or not.
+                    * If you're really concerned about privacy, you may want to
+                    * forward to the same "Success" page regardless whether an
+                    * user was found or not. This is only for illustration purposes.
+                    */
+                    AddErrors(new IdentityResult("No user found by that email."));
+                }
+            }
+         
+            /* You may want to send the user to a "Success" page upon the successful
+            * sending of the reset email link. Right now, if we are 100% successful
+            * nothing happens on the page. :P
+            */
+            return View(model);
+        }
+
+        // GET: /Account/ResetPassword
+        [AllowAnonymous]
+        public ActionResult ResetPassword(string rt)
+        {
+            ResetPasswordModel model = new ResetPasswordModel();
+            model.ReturnToken = rt;
+            return View(model);
+        }
+
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //bool resetResponse = WebSecurity.ResetPassword(model.ReturnToken, model.Password);
+
+                var userName = EmailHelper.GetUsernameFromToken(model.ReturnToken);
+                var user = UserManager.FindByName(userName);
+                if (user != null)
+                {
+                    using (var store = new UserStore<ApplicationUser>())
+                    {
+                        store.SetPasswordHashAsync(user,
+                                                              UserManager.PasswordHasher.HashPassword(model.Password)).ContinueWith(t =>
+                                                              UserManager.UpdateAsync(user)).Wait();
+                        _dbContext.SaveChanges();
+                    }
+                    ViewBag.Message = "Successfully Changed";
+                }
+                else
+                {
+                    ViewBag.Message = "Something went horribly wrong!";
+                }
+            }
+            return View(model);
+        }
     }
 }
