@@ -25,6 +25,7 @@
     @Html.ValidationSummary()
 
     @Html.HiddenFor(m => m.Person.Id)
+    @Html.HiddenFor(m => m.Person.HospitalId)
     @Html.HiddenFor(m => m.Person.Hospital.Id)
     @Html.HiddenFor(m => m.Person.Hospital.DomainName)
     @Html.HiddenFor(m => m.UserId)
