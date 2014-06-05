@@ -358,6 +358,9 @@
     <Content Include="Images\Upload-icon.png" />
     <Content Include="Images\Users-icon.png" />
     <None Include="RuleApp\Standards\LS.04.03.02.xml" />
+    <Content Include="RuleApp\Emails\InvitationEmail.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="RuleApp\Survey1.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -506,6 +509,7 @@
     <Content Include="Views\Account\LostPassword.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\LostPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\InvitePeople.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

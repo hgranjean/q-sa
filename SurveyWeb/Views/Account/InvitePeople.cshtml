@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SurveyWeb.Models.InvitePersonModel>
+@{
+    ViewBag.Title = "People";
+}
+
+<h2>Invite People</h2>
+
+@using (Html.BeginForm("InvitePeople", "Account", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Invite People</legend>
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div id="tracerHeader" style="display:table">
+            <div style="display:table-row">
+                <div style="display:table-cell;width:50%">&nbsp;&nbsp;</div>
+                <div style="display:table-cell;width:50%">&nbsp;&nbsp;</div>
+            </div>
+
+            @for (int i = 0; i < Model.ToArray().Length; i++)
+            {
+                @Html.HiddenFor(m => m.ToArray()[i].Domain)
+                <div style="display: table-row" class="table-row-withborder">
+                    <div id="editorField" class="editor-field" style="display:table-cell;width:50%">@Html.TextBoxFor(m => m.ToArray()[i].Email)</div>
+                    <div id="editorLabel" class="editor-label" style="display:table-cell;width:50%">@@@Html.DisplayFor(m => m.ToArray()[i].Domain)</div>
+                </div>
+            }
+        </div>
+        <div>
+            <input type="submit" value="Send" />
+        </div>
+    </fieldset>
+}
+            
+
+
+
+    

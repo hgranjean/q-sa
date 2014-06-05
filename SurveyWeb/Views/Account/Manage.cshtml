@@ -17,10 +17,18 @@
 </script>
 
 <div id="tabs">
-  <ul>
-    <li><a href="#changePassword">Change Password Form</a></li>
-    <li><a href="#manageProfile">Manage Profile</a></li>
-  </ul>
+    <ul>
+        <li><a href="#manageProfile">Manage Profile</a></li>
+        <li><a href="#changePassword">Change Password</a></li>
+    </ul>
+  <div id="manageProfile">
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("_PersonPartial", (PersonViewModel)ViewBag.PersonViewModel)
+        </div>
+    </div>
+  </div>
   <div id="changePassword">
     <p class="text-success">@ViewBag.StatusMessage</p>
     <div class="row">
@@ -40,16 +48,7 @@
             </section>-->
         </div>
     </div>
-
   </div>
-    <div id="manageProfile">
-        <p class="text-success">@ViewBag.StatusMessage</p>
-        <div class="row">
-            <div class="col-md-12">
-                @Html.Partial("_PersonPartial", (PersonViewModel)ViewBag.PersonViewModel)
-            </div>
-        </div>
-    </div>
 </div>
 
 @section Scripts {

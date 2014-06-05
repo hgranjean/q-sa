@@ -70,7 +70,7 @@ namespace SurveyWeb.Models
         public string Email { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(Name = "Confirm Email")]
         [Compare("Email", ErrorMessage = "The emails you've entered do not match.")]
         public string ConfirmEmail { get; set; }
     }

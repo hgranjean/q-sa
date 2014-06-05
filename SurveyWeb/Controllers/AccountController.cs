@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
-using System.Linq;
-using System.Net.Mail;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
+﻿using System.Collections;
+using System.Xml.Linq;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain.Business;
 using Atum.Domain.Common;
 using Atum.Domain.Security.Domain;
 using Atum.Utility;
+using Atum.Utility.XML;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SurveyWeb.App_Start;
 using SurveyWeb.Models;
-using WebMatrix.WebData;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
+using System.Linq;
+using System.Net.Mail;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace SurveyWeb.Controllers
 {
@@ -31,6 +30,7 @@ namespace SurveyWeb.Controllers
     {
         private AtumSurveillanceContext _dbContext = null;
         private ApplicationUserManager _userManager;
+        private const int InviteeMaxCount = 6;
 
         public AccountController(ApplicationUserManager userManager) : this()
         {
@@ -619,7 +619,7 @@ namespace SurveyWeb.Controllers
                         + Url.Action("ResetPassword", "Account", new { rt = token }, "http") 
                         + "'>Reset Password Link</a>";
  
-                    // Email stuff
+                    // Create an email with reset instructions
                     string subject = "Reset your password for aqspartners.com";
                     string body = "You link: " + resetLink;
                     string from = "donotreply@aqspartners.com";
@@ -628,12 +628,11 @@ namespace SurveyWeb.Controllers
                     message.Subject = subject;
                     message.Body = body;
                     message.IsBodyHtml = true;
-                    SmtpClient client = new SmtpClient();
  
                     // Attempt to send the email
                     try
                     {
-                        client.Send(message);
+                        new SmtpClient().Send(message);
                     }
                     catch (Exception e)
                     {
@@ -685,9 +684,9 @@ namespace SurveyWeb.Controllers
                 {
                     using (var store = new UserStore<ApplicationUser>())
                     {
-                        store.SetPasswordHashAsync(user,
-                                                              UserManager.PasswordHasher.HashPassword(model.Password)).ContinueWith(t =>
-                                                              UserManager.UpdateAsync(user)).Wait();
+                        store.SetPasswordHashAsync(user, UserManager.PasswordHasher.HashPassword(model.Password)).ContinueWith(t =>
+                            UserManager.UpdateAsync(user)).Wait();
+                        
                         _dbContext.SaveChanges();
                     }
                     ViewBag.Message = "Successfully Changed";
@@ -698,6 +697,62 @@ namespace SurveyWeb.Controllers
                 }
             }
             return View(model);
+        }
+
+        // GET: /Account/InvitePeople
+        public ActionResult InvitePeople()
+        {
+            var invitees = new List<InvitePersonModel>();
+            var userName = User.Identity.GetUserName();
+            var person = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName).Person;
+            if (person != null)
+            {
+                for (int i = 0; i < InviteeMaxCount; i++)
+                {
+                    invitees.Add(new InvitePersonModel { Domain = EmailHelper.GetDomainName(person.Email) });
+                }
+            }
+            
+            return View(invitees);
+        }
+        
+        // POST: /Account/InvitePeople
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult InvitePeople(IEnumerable<InvitePersonModel> invitees)
+        {
+            // Create an email with reset instructions
+            string subject = "Welcome to AQS Healthcare";
+            string from = "donotreply@aqspartners.com";
+
+            string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
+
+            appPath = appPath + @"\\..\RuleApp\";
+
+            var template = XDocument.Load(appPath + @"Emails\InvitationEmail.xml");
+
+            try
+            {
+                var client = new SmtpClient();
+                foreach (var item in invitees)
+                {
+                    // Attempt to send the email
+                
+                    var message = new MailMessage(from, String.Join("@", item.Email, item.Domain));
+                    message.Subject = subject;
+                    message.Body = template.ToString();
+                    message.IsBodyHtml = true;
+                    client.Send(message);
+                }
+
+                ViewBag.Message = "Invited People Successfully.";
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Issue sending email: " + e.Message);
+            }
+
+            return View(invitees);
         }
     }
 }
