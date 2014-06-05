@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <html>
   <style>
-    .body { font-family: Verdana, Arial }
+    body { font-family: Verdana, Arial }
   </style>
   <body>
     <div>Welcome to AQS Healthcare!</div>

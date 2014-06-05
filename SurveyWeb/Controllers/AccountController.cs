@@ -166,6 +166,7 @@ namespace SurveyWeb.Controllers
                 {
                     _dbContext.Persons.Attach(model.Person);
                     _dbContext.Entry(model.Person).CurrentValues.SetValues(model.Person);
+                    _dbContext.Entry(model.Person).State = EntityState.Modified;
                 }
 
                 // Hospital was not entered, create a new one
@@ -179,6 +180,7 @@ namespace SurveyWeb.Controllers
                 {
                     _dbContext.Hospitals.Attach(model.Person.Hospital);
                     _dbContext.Entry(model.Person.Hospital).CurrentValues.SetValues(model.Person.Hospital);
+                    _dbContext.Entry(model.Person.Hospital).State = EntityState.Modified;
                 }
                 
                 var user = _dbContext.AspNetUsers.FirstOrDefault(t => t.UserName == model.UserId);
