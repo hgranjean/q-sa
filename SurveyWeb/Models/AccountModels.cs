@@ -139,6 +139,7 @@ namespace SurveyWeb.Models
         
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yy-mm-dd}")]
         public DateTime DateOfBirth { get { return this.Person.DateOfBirth; } set { this.Person.DateOfBirth = value; } }
         
         [Required]

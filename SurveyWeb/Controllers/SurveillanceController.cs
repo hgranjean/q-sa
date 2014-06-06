@@ -74,6 +74,9 @@ namespace MvcApplication1.Controllers
 
             var model = new SurveysViewModel { Surveys = new Surveys() };
             model.Surveys.AddRange(surveys);
+
+            ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowSurveyorContent = UserManager.IsInRole(User.Identity.GetUserId(), "Surveyor");
             
             return View(model);
         }
@@ -716,7 +719,7 @@ namespace MvcApplication1.Controllers
         {
             var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
 
-            var model = new EventViewModel(evt);
+            var model = new EventViewModel(evt) { AvailableUsers = _dbContext.AspNetUsers };
             
             return View(model);
         }
@@ -733,7 +736,8 @@ namespace MvcApplication1.Controllers
                         Id = model.Id,
                         Title = model.Title,
                         Start = model.Start,
-                        End = model.End
+                        End = model.End,
+                        UserId = model.UserId
                     };
 
                 _dbContext.Events.Attach(evt);
@@ -757,7 +761,9 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CreateEvent()
         {
-            return View();
+            var model = new EventViewModel {AvailableUsers = _dbContext.AspNetUsers};
+            model.Start = model.End = DateTime.Now;
+            return View(model);
         }
 
         [HttpPost]
@@ -770,7 +776,8 @@ namespace MvcApplication1.Controllers
                         Id = Guid.NewGuid().ToString(),
                         Title = model.Title,
                         Start = model.Start,
-                        End = model.End
+                        End = model.End,
+                        UserId = model.UserId
                     });
 
                 try

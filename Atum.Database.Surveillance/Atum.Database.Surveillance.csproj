@@ -126,6 +126,10 @@
     <Compile Include="Migrations\201406031759320_DbMigration3.Designer.cs">
       <DependentUpon>201406031759320_DbMigration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406060608347_DbMigration4.cs" />
+    <Compile Include="Migrations\201406060608347_DbMigration4.Designer.cs">
+      <DependentUpon>201406060608347_DbMigration4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AtumSurveillanceContext.cs" />
     <Compile Include="Models\Mapping\PersonMap.cs" />
@@ -161,6 +165,8 @@
     </Content>
     <Content Include="DbScripts\DbMigration2.sql" />
     <Content Include="DbScripts\DbMigration3.sql" />
+    <Content Include="DbScripts\DbMigration3_Old.sql" />
+    <Content Include="DbScripts\DbMigration4.sql" />
     <Content Include="DbScripts\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406031759320_DbMigration3.resx">
       <DependentUpon>201406031759320_DbMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406060608347_DbMigration4.resx">
+      <DependentUpon>201406060608347_DbMigration4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

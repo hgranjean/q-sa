@@ -7,8 +7,8 @@
 }
 
 <h2>Surveys</h2>
-
-@if (Roles.IsUserInRole(User.Identity.GetUserId(), "Administrator") || Roles.IsUserInRole(User.Identity.GetUserId(), "Surveyor"))
+ 
+@if (ViewBag.ShowAdminContent || ViewBag.ShowSurveyorContent)
 
 {
     @Html.ActionLink("Create new survey", "SurveyDesign", "Surveillance")

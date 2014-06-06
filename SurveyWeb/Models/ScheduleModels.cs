@@ -1,13 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Atum.Database.Surveillance.Models;
 using System;
 using Atum.Domain.Basis.Domain.Schedule;
+using Atum.Domain.Security.Domain;
 
 namespace SurveyWeb.Models
 {
     public class EventViewModel : ViewModelBase
     {
-        [Required]
         public string Id { get; set; }
 
         [Required]
@@ -22,16 +23,22 @@ namespace SurveyWeb.Models
         
         public string Url { get; set; }
 
+        public IEnumerable<AspNetUser> AvailableUsers { get; set; }
+
+        [Display(Name = "Owner")]
+        public string UserId { get; set; }
+
         public EventViewModel()
         {
         }
 
-        public EventViewModel(Event evt)
+        public EventViewModel(Event model)
         {
-            Id = evt.Id;
-            Title = evt.Title;
-            Start = evt.Start;
-            End = evt.End;
+            Id = model.Id;
+            Title = model.Title;
+            Start = model.Start;
+            End = model.End;
+            UserId = model.UserId;
         }
     }
 }

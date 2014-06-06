@@ -33,6 +33,10 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.HasOptional(t => t.Person)
                 .WithMany()
                 .HasForeignKey(d => d.PersonId);
+
+            this.HasMany(t => t.Events)
+                .WithRequired()
+                .HasForeignKey(d => d.UserId);
         }
     }
 }

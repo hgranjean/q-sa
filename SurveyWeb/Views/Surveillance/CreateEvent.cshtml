@@ -1,6 +1,6 @@
 ﻿@model SurveyWeb.Models.EventViewModel
 @{
-    ViewBag.Title = "CreateEvent";
+    ViewBag.Title = "Create Event";
 }
 
 <hgroup class="title">
@@ -41,7 +41,7 @@
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Create Event</legend>
+        <legend>Event Info</legend>
 
         <div style="display: table">
             
@@ -75,6 +75,15 @@
                 </div>
                 <div class="editor-field">
                     @Html.TextBoxFor(m => m.Url)
+                </div>
+            </div>
+
+            <div style="display: table-row">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.UserId)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("UserId", new SelectList(Model.AvailableUsers, "Id", "Person.FullName"), "Please select...", Model.UserId)
                 </div>
             </div>
         

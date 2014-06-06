@@ -69,7 +69,7 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownList("SurveyorId", new SelectList(Model.Surveyors, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownList("SurveyorId", new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", null)
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
