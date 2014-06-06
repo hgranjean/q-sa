@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using Atum.Domain.Surveillance;
+using Atum.Domain.QualityManagement;
 using SurveyWeb.Services;
+using Atum.Domain.SurveyManagement;
 
 namespace SurveyWeb.Models
 {

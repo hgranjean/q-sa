@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web.Mvc;
-using Atum.Domain.Surveillance;
+using Atum.Domain.QualityManagement;
 using SurveyWeb;
 using SurveyWeb.Models;
 using SurveyWeb.Services;
+using Atum.Domain.SurveyManagement;
 
 namespace SurveyWeb
 {

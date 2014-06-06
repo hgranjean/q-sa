@@ -2,7 +2,8 @@
 using System.Xml.Serialization;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
-using Atum.Domain.Surveillance;
+using Atum.Domain.QualityManagement;
+using Atum.Domain.SurveyManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

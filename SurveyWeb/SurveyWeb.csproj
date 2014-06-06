@@ -209,7 +209,6 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AssessmentModels.cs" />
     <Compile Include="Models\BundlesFormats.cs" />
     <Compile Include="Models\ConfirmMessageBoxViewModel.cs" />
     <Compile Include="Models\EnumUtils.cs" />
@@ -447,10 +446,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Assessment\Index.cshtml" />
-    <Content Include="Views\Assessment\Create.cshtml" />
-    <Content Include="Views\Assessment\Details.cshtml" />
-    <Content Include="Views\Assessment\AssessmentComplete.cshtml" />
     <Content Include="Views\Surveillance\Survey.cshtml" />
     <Content Include="Views\Surveillance\SurveyAnalysis.cshtml" />
     <Content Include="Views\Surveillance\SurveyDelivery.cshtml" />
@@ -508,13 +503,17 @@
       <Project>{1cfe9612-c8e2-4271-9408-e7871cd87477}</Project>
       <Name>Atum.Domain.Healthcare</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.QualityManagement\Atum.Domain.QualityManagement.csproj">
+      <Project>{d54c3d26-26c2-4638-8919-59f511e61827}</Project>
+      <Name>Atum.Domain.QualityManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Atum.Domain.Security\Atum.Domain.Security.csproj">
       <Project>{4db9b8ea-ad8b-48ed-8329-fb511b4bd218}</Project>
       <Name>Atum.Domain.Security</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.Surveillance.csproj">
-      <Project>{dd43f4b6-5e09-41aa-b7c7-2b53722b1f77}</Project>
-      <Name>Atum.Domain.Surveillance</Name>
+    <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.SurveyManagement.csproj">
+      <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
+      <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atum.Utility\Atum.Utility.csproj">
       <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>

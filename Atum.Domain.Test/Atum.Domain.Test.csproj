@@ -87,7 +87,7 @@
       <Name>Atum.Domain.Security</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.SurveyManagement.csproj">
-      <Project>{dd43f4b6-5e09-41aa-b7c7-2b53722b1f77}</Project>
+      <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
       <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atum.Utility\Atum.Utility.csproj">

@@ -1,7 +1,8 @@
 ﻿using Atum.Database.Surveillance.Models;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
-using Atum.Domain.Surveillance;
+using Atum.Domain.QualityManagement;
+using Atum.Domain.SurveyManagement;
 using Atum.Utility.XML;
 using SurveyWeb.Controllers;
 using SurveyWeb.Models;

@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Atum.Domain.Surveillance;
+using Atum.Domain.QualityManagement;
 using SurveyWeb;
 using SurveyWeb.Models;
 

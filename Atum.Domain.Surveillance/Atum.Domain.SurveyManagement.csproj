@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD43F4B6-5E09-41AA-B7C7-2B53722B1F77}</ProjectGuid>
+    <ProjectGuid>{8926936F-EE5C-4307-BCB5-570364D8669D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atum</RootNamespace>

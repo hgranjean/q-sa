@@ -133,9 +133,13 @@
       <Project>{94BCB49A-CB7D-4F37-8340-9A9B8CD05614}</Project>
       <Name>Atum.Domain.Basis</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.Surveillance.csproj">
-      <Project>{DD43F4B6-5E09-41AA-B7C7-2B53722B1F77}</Project>
-      <Name>Atum.Domain.Surveillance</Name>
+    <ProjectReference Include="..\Atum.Domain.QualityManagement\Atum.Domain.QualityManagement.csproj">
+      <Project>{d54c3d26-26c2-4638-8919-59f511e61827}</Project>
+      <Name>Atum.Domain.QualityManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.SurveyManagement.csproj">
+      <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
+      <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
       <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>

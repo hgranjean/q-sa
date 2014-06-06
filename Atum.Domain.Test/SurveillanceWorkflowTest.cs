@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Atum.Domain.QualityManagement;
+using Atum.Domain.QualityManagement;
 using Atum.Domain.SurveyManagement;
 
 namespace Atum.Domain.Test
