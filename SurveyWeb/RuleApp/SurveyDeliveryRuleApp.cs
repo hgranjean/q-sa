@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Atum.Domain.Surveillance;
+using Atum.Domain.QualityManagement;
 using Rules.Domain;
 using Rules.Engine;
+using Atum.Domain.SurveyManagement;
 
 namespace SurveyWeb.RuleApp
 {

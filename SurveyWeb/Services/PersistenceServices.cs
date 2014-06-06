@@ -5,9 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 using Atum.Domain.Basis;
-using Atum.Domain.Surveillance;
 using Atum.Utility.XML;
 using SurveyWeb.Models;
+using Atum.Domain.QualityManagement;
+using Atum.Domain.SurveyManagement;
 
 namespace SurveyWeb.Services
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Atum.Domain.Surveillance;
+using Atum.Domain.SurveyManagement;
 using NUnit.Framework;
 using Rules.Domain;
 using Rules.Engine;
