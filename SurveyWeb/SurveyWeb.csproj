@@ -203,6 +203,7 @@
     <Compile Include="Controllers\CompletedSurveyViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\ModelHelper.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
     <Compile Include="Controllers\SurveyDesignController.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\codropicons\codropsicons.svg" />
+    <Content Include="Content\codropicons\license.txt" />
     <Content Include="Content\component.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\ecoicons\ecoicons.dev.svg" />
@@ -263,6 +265,7 @@
     <Content Include="Content\ecoicons\Read Me.txt" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\menu4.gif" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -345,6 +348,7 @@
     <Content Include="Content\ecoicons\ecoicons.eot" />
     <Content Include="Content\ecoicons\ecoicons.ttf" />
     <Content Include="Content\ecoicons\ecoicons.woff" />
+    <Content Include="Content\codropicons\.DS_Store" />
     <None Include="Properties\PublishProfiles\aqspartners.com - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\aqspartners.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\consetconsulting.pubxml" />
@@ -415,6 +419,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery-ui-timepicker.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -434,6 +439,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+      <Content Include="Web.V4 Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Content\Site.css" />
@@ -464,7 +472,7 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

@@ -5,7 +5,34 @@
 
 <h2>Edit Event</h2>
 
-@using (Html.BeginForm("CreateEvent", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+@Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
+
+<script>
+  $(function() {
+      $("#startdatepicker").datetimepicker({
+          timeFormat: 'HH:mm z',
+          timezoneList: [
+			{ value: -300, label: 'Eastern' },
+			{ value: -360, label: 'Central' },
+			{ value: -420, label: 'Mountain'},
+			{ value: -480, label: 'Pacific' }
+          ]
+      });
+      $("#enddatepicker").datetimepicker({
+          timeFormat: 'HH:mm z',
+          timezoneList: [
+			{ value: -300, label: 'Eastern' },
+			{ value: -360, label: 'Central' },
+			{ value: -420, label: 'Mountain'},
+			{ value: -480, label: 'Pacific' }
+          ]
+      });
+  });
+</script>
+
+@using (Html.BeginForm("EditEvent", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
@@ -30,7 +57,7 @@
                     @Html.LabelFor(model => model.Start)
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Start, new {@id = "datepicker"})
+                    @Html.TextBoxFor(m => m.Start, new {@id = "startdatepicker"})
                 </div>
             </div>
             <div style="display: table-row">
@@ -38,7 +65,7 @@
                     @Html.LabelFor(model => model.End)
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Start, new {@id = "datepicker"})
+                    @Html.TextBoxFor(m => m.End, new {@id = "enddatepicker"})
                 </div>
             </div>
             <div style="display: table-row">
@@ -54,7 +81,7 @@
 
         </div>
         <input type="submit" value="Save" />
-        @Html.ActionLink("Cancel", "Surveys", "Surveillance")
+        @Html.ActionLink("Cancel", "Calendar", "Surveillance")
     </fieldset>
 }
 

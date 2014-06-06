@@ -24,7 +24,7 @@
         <div>@Html.ActionLink("Invite  People", "InvitePeople", "Account")</div>
     </div>
 }
-else if (ViewBag.ShowSurveyorContent)
+@if (ViewBag.ShowSurveyorContent)
 {
     <div>
         <div><h3>Surveyor Dashboard</h3></div>
@@ -35,7 +35,7 @@ else if (ViewBag.ShowSurveyorContent)
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
     </div>
 }
-else
+@if (!ViewBag.ShowAdminContent && ViewBag.ShowSurveyorContent)
 {
     <div>
         <div><h3>User Dashboard</h3></div>

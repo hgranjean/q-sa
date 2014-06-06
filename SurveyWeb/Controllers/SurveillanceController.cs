@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Validation;
 using Atum.Database.Surveillance.Models;
+using Atum.Domain.Basis.Domain.Schedule;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Surveillance;
@@ -696,13 +698,61 @@ namespace MvcApplication1.Controllers
                         }
                 };
 
-            var rows = eventList.ToArray();
+            var rows = _dbContext.Events.ToList().Select(e =>
+                new
+                {
+                    id = e.Id,
+                    title = e.Title,
+                    start = e.Start.ToString("s"),
+                    end = e.End.ToString("s"),
+                    allDay = false
+                });
+
+            // var rows = eventList.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult EditEvent(int id)
+        public ActionResult EditEvent(Guid id)
         {
-            return View();
+            var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
+
+            var model = new EventViewModel(evt);
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEvent(EventViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var evt = new Event
+                    {
+                        Id = model.Id,
+                        Title = model.Title,
+                        Start = model.Start,
+                        End = model.End
+                    };
+
+                _dbContext.Events.Attach(evt);
+                _dbContext.Entry(evt).CurrentValues.SetValues(evt);
+                _dbContext.Entry(evt).State = EntityState.Modified;
+            
+                try
+                {
+                    _dbContext.SaveChanges();
+
+                    return RedirectToAction("Calendar");
+                }
+                catch (DbEntityValidationException e)
+                {
+                    this.AddErrors(e);
+                }
+            }
+
+            return View(model);
         }
 
         public ActionResult CreateEvent()
@@ -711,9 +761,31 @@ namespace MvcApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateEvent(EventViewModel evt)
+        public ActionResult CreateEvent(EventViewModel model)
         {
-            return View("Calendar");
+            if (ModelState.IsValid)
+            {
+                _dbContext.Events.Add(new Event
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Title = model.Title,
+                        Start = model.Start,
+                        End = model.End
+                    });
+
+                try
+                {
+                    _dbContext.SaveChanges();
+
+                    return RedirectToAction("Calendar");
+                }
+                catch (DbEntityValidationException e)
+                {
+                    this.AddErrors(e);
+                }
+            }
+            
+            return View(model);
         }
     }
 }

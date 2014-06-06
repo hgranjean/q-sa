@@ -36,8 +36,8 @@ namespace SurveyWeb.Controllers
         {
             UserManager = userManager;
         }
-        
-        
+
+
         public AccountController()
         {
             _dbContext = new AtumSurveillanceContext();
@@ -117,7 +117,7 @@ namespace SurveyWeb.Controllers
                 }
                 else
                 {
-                    AddErrors(result);
+                    this.AddErrors(result);
                 }
             }
 
@@ -191,18 +191,18 @@ namespace SurveyWeb.Controllers
                 }
                 else
                 {
-                    AddErrors(new IdentityResult("User not found with id: " + model.UserId));
+                    this.AddErrors(new IdentityResult("User not found with id: " + model.UserId));
                 }
 
                 try
                 {
                     _dbContext.SaveChanges();
                     
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Welcome", "Home");
                 }
                 catch (DbEntityValidationException e)
                 {
-                    AddErrors(e);
+                    this.AddErrors(e);
                 }
             }
 
@@ -277,7 +277,7 @@ namespace SurveyWeb.Controllers
                     }
                     else
                     {
-                        AddErrors(result);
+                        this.AddErrors(result);
                     }
                 }
             }
@@ -299,7 +299,7 @@ namespace SurveyWeb.Controllers
                     }
                     else
                     {
-                        AddErrors(result);
+                        this.AddErrors(result);
                     }
                 }
             }
@@ -326,7 +326,7 @@ namespace SurveyWeb.Controllers
                 IdentityResult result = await UserManager.RemoveLoginAsync(model.Id, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
                 if (!result.Succeeded)
                 {
-                    AddErrors(result);
+                    this.AddErrors(result);
                 }
             }
 
@@ -347,7 +347,7 @@ namespace SurveyWeb.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new AccountController.ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
         //
@@ -384,7 +384,7 @@ namespace SurveyWeb.Controllers
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
-            return new ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
+            return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
         }
 
         //
@@ -435,7 +435,7 @@ namespace SurveyWeb.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
-                AddErrors(result);
+                this.AddErrors(result);
             }
 
             ViewBag.ReturnUrl = returnUrl;
@@ -497,31 +497,6 @@ namespace SurveyWeb.Controllers
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-        }
-
-        private void AddErrors(DbEntityValidationException e)
-        {
-            foreach (var eve in e.EntityValidationErrors)
-            {
-                Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                    eve.Entry.Entity.GetType().Name, eve.Entry.State);
-
-                foreach (var ve in eve.ValidationErrors)
-                {
-                    Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                        ve.PropertyName, ve.ErrorMessage);
-
-                    ModelState.AddModelError("", ve.ErrorMessage);
-                }
-            }
-        }
-
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -574,7 +549,7 @@ namespace SurveyWeb.Controllers
                 var properties = new AuthenticationProperties() { RedirectUri = RedirectUri };
                 if (UserId != null)
                 {
-                    properties.Dictionary[XsrfKey] = UserId;
+                    properties.Dictionary[AccountController.XsrfKey] = UserId;
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
@@ -650,7 +625,7 @@ namespace SurveyWeb.Controllers
                     * forward to the same "Success" page regardless whether an
                     * user was found or not. This is only for illustration purposes.
                     */
-                    AddErrors(new IdentityResult("No user found by that email."));
+                    this.AddErrors(new IdentityResult("No user found by that email."));
                 }
             }
          

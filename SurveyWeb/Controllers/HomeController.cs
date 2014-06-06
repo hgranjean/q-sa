@@ -36,6 +36,11 @@ namespace SurveyWeb.Controllers
         
         public ActionResult Index()
         {
+            return RedirectToAction("Dashboard", "Surveillance");
+        }
+
+        public ActionResult Welcome()
+        {
             return View();
         }
 
