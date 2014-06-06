@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Atum.Domain.QualityManagement;
 using SurveyWeb;
+using SurveyWeb.Filters;
 using SurveyWeb.Models;
 
 namespace SurveyWeb
