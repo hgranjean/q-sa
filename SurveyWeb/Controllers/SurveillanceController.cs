@@ -719,7 +719,14 @@ namespace MvcApplication1.Controllers
         {
             var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
 
-            var model = new EventViewModel(evt) { AvailableUsers = _dbContext.AspNetUsers };
+            var model = new EventViewModel(evt)
+            {
+                AvailableUsers = _dbContext.AspNetUsers,
+                Users = _dbContext.AspNetUsers.Where(m => m.Id == evt.UserId)
+                // Users = _dbContext.SurveyEvents.Where(m => m.EventId == id.ToString())
+            };
+
+            // /* and userid == user */
             
             return View(model);
         }
@@ -761,7 +768,11 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CreateEvent()
         {
-            var model = new EventViewModel {AvailableUsers = _dbContext.AspNetUsers};
+            var model = new EventViewModel
+                {
+                    AvailableUsers = _dbContext.AspNetUsers
+                };
+
             model.Start = model.End = DateTime.Now;
             return View(model);
         }

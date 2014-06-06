@@ -89,9 +89,37 @@
             <div>&nbsp;</div>
 
         </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Assigned Users</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SelectedUsers)
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.Users, "Id", "Person.FullName"))
+        </div>
+        
+        <br/>
+        
+        <caption>To change selected items, choose necessary from the list below and click Save</caption>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AvailableUsers)
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.AvailableUsers, "Id", "Person.FullName"))
+        </div>
+        
+        @Html.HiddenFor(model => model.UserId)
+        
+    </fieldset>
+
+    <div>
         <input type="submit" value="Save" />
         @Html.ActionLink("Cancel", "Calendar", "Surveillance")
-    </fieldset>
+    </div>
 }
 
 @section Scripts {

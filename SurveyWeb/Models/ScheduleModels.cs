@@ -23,7 +23,9 @@ namespace SurveyWeb.Models
         
         public string Url { get; set; }
 
+        public IEnumerable<AspNetUser> Users { get; set; }
         public IEnumerable<AspNetUser> AvailableUsers { get; set; }
+        public IEnumerable<string> SelectedUsers { get; set; }
 
         [Display(Name = "Owner")]
         public string UserId { get; set; }
