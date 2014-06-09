@@ -14,6 +14,8 @@ namespace Atum.Domain.SurveyManagement
     [Serializable]
     public class Survey : DomainObject, IEquatable<Survey>
     {
+        public Guid Guid { get; set; }
+
         private readonly SurveyStrategy surveyStrategy;
 
         public Survey(SurveyStrategy surveyStrategy)
@@ -41,7 +43,6 @@ namespace Atum.Domain.SurveyManagement
         }
 
         public string Title { get; set; }
-
 
         public void AssignNextId(long id)
         {

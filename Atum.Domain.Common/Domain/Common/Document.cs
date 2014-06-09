@@ -10,6 +10,7 @@ namespace Atum.Domain.Common
         public int OwnerId { get; set; }
         public long OwnerType { get; set; }
         public long StorageId { get; set; }
+        public string Title { get; set; }
 
         public Document()
         {

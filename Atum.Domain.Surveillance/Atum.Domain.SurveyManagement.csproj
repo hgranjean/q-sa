@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\EventUser.cs" />
+    <Compile Include="Domain\SurveyManagement\Event.cs" />
     <Compile Include="Domain\SurveyManagement\SurveillanceSchedule.cs" />
     <Compile Include="Domain\SurveyManagement\Assessment.cs" />
     <Compile Include="Domain\SurveyManagement\QuestionGroups.cs" />
@@ -57,6 +59,8 @@
     <Compile Include="Domain\SurveyManagement\Survey.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyAnalyzer.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyBasis.cs" />
+    <Compile Include="Domain\SurveyManagement\SurveyEntry.cs" />
+    <None Include="Domain\SurveyManagement\SurveyEvent.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyManager.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyResponse.cs" />
     <Compile Include="Domain\SurveyManagement\Surveys.cs" />
@@ -86,6 +90,10 @@
     <ProjectReference Include="..\Atum.Domain.Common\Atum.Domain.Common.csproj">
       <Project>{402a24d0-272f-48ee-b533-27d4f7b3d2f5}</Project>
       <Name>Atum.Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Security\Atum.Domain.Security.csproj">
+      <Project>{4DB9B8EA-AD8B-48ED-8329-FB511B4BD218}</Project>
+      <Name>Atum.Domain.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

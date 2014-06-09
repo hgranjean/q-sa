@@ -43,9 +43,9 @@ namespace Atum.Domain.Test
 
             //Joe is assigned a task - A Surveillance Task
             QualityManagement.SurveillanceTask surveyTask = new QualityManagement.SurveillanceTask();
-            surveyTask.StartDate = DateTime.Today;
-            surveyTask.EndDate = DateTime.Today;
-            surveyTask.CreatedDate = DateTime.Today;
+            surveyTask.Start = DateTime.Today;
+            surveyTask.End = DateTime.Today;
+            // surveyTask.CreatedDate = DateTime.Today;
             surveyTask.Title = "";
 
 

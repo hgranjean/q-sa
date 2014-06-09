@@ -1,10 +1,11 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Atum.Database.Surveillance.Models.Mapping;
-using Atum.Domain.Basis.Domain.Schedule;
+using Atum.Domain;
 using Atum.Domain.Business;
 using Atum.Domain.Common;
 using Atum.Domain.Security.Domain;
+using Atum.Domain.SurveyManagement;
 
 namespace Atum.Database.Surveillance.Models
 {
@@ -28,7 +29,8 @@ namespace Atum.Database.Surveillance.Models
         public DbSet<UserHospital> UserHospitals { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<SurveyEntry> Surveys { get; set; }
-        public DbSet<SurveyEvent> SurveyEvents { get; set; }
+        // public DbSet<SurveyEvent> SurveyEvents { get; set; }
+        public DbSet<EventUser> EventUsers { get; set; }
         public DbSet<Person> Persons { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -42,7 +44,7 @@ namespace Atum.Database.Surveillance.Models
             modelBuilder.Configurations.Add(new UserHospitalMap());
             modelBuilder.Configurations.Add(new EventMap());
             modelBuilder.Configurations.Add(new SurveyMap());
-            modelBuilder.Configurations.Add(new SurveyEventMap());
+            modelBuilder.Configurations.Add(new EventUserMap());
         }
     }
 }

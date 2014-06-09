@@ -2,8 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using Atum.Database.Surveillance.Models;
 using System;
-using Atum.Domain.Basis.Domain.Schedule;
 using Atum.Domain.Security.Domain;
+using Atum.Domain.SurveyManagement;
 
 namespace SurveyWeb.Models
 {
@@ -23,9 +23,15 @@ namespace SurveyWeb.Models
         
         public string Url { get; set; }
 
+        public SurveyEntry Survey { get; set; }
+        public IEnumerable<SurveyEntry> AvailableSurveys { get; set; }
+
         public IEnumerable<AspNetUser> Users { get; set; }
         public IEnumerable<AspNetUser> AvailableUsers { get; set; }
         public IEnumerable<string> SelectedUsers { get; set; }
+
+        [Display(Name = "Survey")]
+        public string SurveyId { get; set; }
 
         [Display(Name = "Owner")]
         public string UserId { get; set; }
@@ -40,7 +46,7 @@ namespace SurveyWeb.Models
             Title = model.Title;
             Start = model.Start;
             End = model.End;
-            UserId = model.UserId;
+            // UserId = model.UserId;
         }
     }
 }

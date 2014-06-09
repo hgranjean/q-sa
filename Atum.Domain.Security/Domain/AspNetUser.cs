@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Atum.Domain.Basis.Domain.Schedule;
 using Atum.Domain.Business;
 using Atum.Domain.Common;
 
@@ -31,6 +30,5 @@ namespace Atum.Domain.Security.Domain
         public virtual ICollection<Hospital> Hospitals { get; set; }
         public string PersonId { get; set; }
         public virtual Person Person { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
     }
 }

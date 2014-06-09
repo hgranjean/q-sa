@@ -1,10 +1,11 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Validation;
 using Atum.Database.Surveillance.Models;
-using Atum.Domain.Basis.Domain.Schedule;
+using Atum.Domain;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
+using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
 using Atum.Utility.XML;
 using Microsoft.AspNet.Identity;
@@ -643,65 +644,6 @@ namespace MvcApplication1.Controllers
                     allDay = false
                 }};*/
 
-            var eventList = new[] {
-                    new
-                        {
-                            id = 999,
-                            title = "All Day Event",
-                            start = "2014-05-20",
-                            end = "2014-05-20"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Long Event",
-                            start = "2014-05-27",
-                            end = "2014-06-10"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Repeating Event",
-                            start = "2014-06-09T16:00:00",
-                            end = "2014-06-09T16:00:00"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Repeating Event",
-                            start = "2014-06-16T16:00:00",
-                            end = "2014-06-16T16:00:00"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Meeting",
-                            start = "2014-06-12T10:30:00",
-                            end = "2014-06-12T12:30:00"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Lunch",
-                            start = "2014-06-12T12:00:00",
-                            end = "2014-06-12T12:00:00",
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Birthday Party",
-                            start = "2014-06-13T07:00:00",
-                            end = "2014-06-13T07:00:00"
-                        },
-                    new
-                        {
-                            id = 99,
-                            title = "Click for Google",
-                            start = "2014-05-28",
-                            end = "2014-05-28"
-                        }
-                };
-
             var rows = _dbContext.Events.ToList().Select(e =>
                 new
                 {
@@ -720,10 +662,15 @@ namespace MvcApplication1.Controllers
         {
             var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
 
+            var availableSurveys = PersistenceServices.GetSurveys();
             var model = new EventViewModel(evt)
             {
+                Survey = _dbContext.Surveys.FirstOrDefault(m => m.Id == evt.SurveyId),
+                SurveyId = evt.SurveyId,
+                AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
                 AvailableUsers = _dbContext.AspNetUsers,
-                Users = _dbContext.AspNetUsers.Where(m => m.Id == evt.UserId)
+                Users = _dbContext.EventUsers.Join(_dbContext.AspNetUsers, a => a.UserId, b => b.Id, (a, b) => b)
+
                 // Users = _dbContext.SurveyEvents.Where(m => m.EventId == id.ToString())
             };
 
@@ -745,12 +692,41 @@ namespace MvcApplication1.Controllers
                         Title = model.Title,
                         Start = model.Start,
                         End = model.End,
-                        UserId = model.UserId
+                        //UserId = model.UserId, // Owner
+                        SurveyId = model.SurveyId
                     };
 
                 _dbContext.Events.Attach(evt);
                 _dbContext.Entry(evt).CurrentValues.SetValues(evt);
                 _dbContext.Entry(evt).State = EntityState.Modified;
+
+                if (model.SelectedUsers != null)
+                {
+                    // Remove unselected items
+
+                    var availableUsers = _dbContext.AspNetUsers;
+                    foreach (var item in availableUsers)
+                        {
+                            if (model.SelectedUsers.Count(userId => userId == item.Id) == 0)
+                            {
+                                var toDelete = _dbContext.EventUsers.First(eventUser => eventUser.EventId == model.Id && eventUser.UserId == item.Id);
+
+                                _dbContext.EventUsers.Remove(toDelete);
+                            }
+                        }
+                    
+
+                    // Add newly selected items
+                    foreach (var userId in model.SelectedUsers)
+                    {
+                        if (model.Users.Count(user => user.Id == userId) == 0)
+                        {
+                            _dbContext.EventUsers.Add(new EventUser { EventId = model.Id, UserId = userId });
+                        }
+                    }
+
+                    _dbContext.SaveChanges();
+                }
             
                 try
                 {
@@ -769,9 +745,12 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CreateEvent()
         {
+            var availableSurveys = PersistenceServices.GetSurveys();
             var model = new EventViewModel
                 {
-                    AvailableUsers = _dbContext.AspNetUsers
+                    AvailableSurveys = availableSurveys.Select(m => new SurveyEntry{Id = m.Guid.ToString(), Title = m.Title}), // _dbContext.Surveys,
+                    AvailableUsers = _dbContext.AspNetUsers,
+                    Users = new List<AspNetUser>()
                 };
 
             model.Start = model.End = DateTime.Now;
@@ -783,14 +762,22 @@ namespace MvcApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Events.Add(new Event
+                var @event = _dbContext.Events.Add(new Event
                     {
                         Id = Guid.NewGuid().ToString(),
                         Title = model.Title,
                         Start = model.Start,
                         End = model.End,
-                        UserId = model.UserId
+                        // UserId = model.UserId, // Owner
+                        SurveyId = model.SurveyId
                     });
+
+                foreach (var selectedUser in model.SelectedUsers)
+                {
+                    var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == selectedUser);
+                    
+                    _dbContext.EventUsers.Add(new EventUser { Event = @event, User = user});
+                }
 
                 try
                 {

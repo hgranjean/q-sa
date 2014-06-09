@@ -365,6 +365,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="RuleApp\Survey1.xml" />
+    <Content Include="RuleApp\survey2.xml" />
+    <Content Include="RuleApp\survey3.xml" />
+    <Content Include="RuleApp\survey4.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\classie.js" />
@@ -440,7 +443,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-      <Content Include="Web.V4 Release.config">
+    <Content Include="Web.V4 Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Content\Site.css" />

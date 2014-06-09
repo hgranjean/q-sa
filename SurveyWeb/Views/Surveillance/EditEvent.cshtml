@@ -68,12 +68,13 @@
                     @Html.TextBoxFor(m => m.End, new {@id = "enddatepicker"})
                 </div>
             </div>
+
             <div style="display: table-row">
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Url)
+                    @Html.LabelFor(model => model.Survey)
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Url)
+                    @Html.DropDownList("SurveyId", new SelectList(Model.AvailableSurveys, "Id", "Title"), "Please select...", Model.SurveyId)
                 </div>
             </div>
 
