@@ -21,8 +21,6 @@ namespace SurveyWeb.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm z}")]
         public DateTime End { get; set; }
         
-        public string Url { get; set; }
-
         public SurveyEntry Survey { get; set; }
         public IEnumerable<SurveyEntry> AvailableSurveys { get; set; }
 
@@ -32,10 +30,7 @@ namespace SurveyWeb.Models
 
         [Display(Name = "Survey")]
         public string SurveyId { get; set; }
-
-        [Display(Name = "Owner")]
-        public string UserId { get; set; }
-
+        
         public EventViewModel()
         {
         }
@@ -46,7 +41,6 @@ namespace SurveyWeb.Models
             Title = model.Title;
             Start = model.Start;
             End = model.End;
-            // UserId = model.UserId;
         }
     }
 }

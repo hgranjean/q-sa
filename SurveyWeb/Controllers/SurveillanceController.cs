@@ -352,8 +352,9 @@ namespace MvcApplication1.Controllers
 
         private IEnumerable<Person> LoadSurveyors()
         {
-            yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
-            yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
+            // yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
+            // yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
+            return _dbContext.Persons;
         }
 
         private IEnumerable<Area> LoadAreas()
@@ -456,7 +457,7 @@ namespace MvcApplication1.Controllers
                 foreach (var question in questionGroup.Value.Questions)
                 {
                     questions.Add(question);
-                    var value = values.GetValue("Responses[" + qIndex + "]");
+                    var value = values.GetValue("Responses[" + question.Number /* qIndex  */ + "]");
                     if (value != null)
                     {
                         var responseId = (int) value.ConvertTo(typeof (int));
@@ -537,6 +538,25 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult Save(SurveyViewModel viewModel)
         {
+            if (viewModel.Survey.Guid == Guid.Empty)
+            {
+                viewModel.Survey.Guid = Guid.NewGuid();
+
+                _dbContext.Surveys.Add(new SurveyEntry
+                    {
+                        Id = viewModel.Survey.Guid.ToString("d"),
+                        Title = viewModel.Survey.Title
+                    });
+            }
+            else
+            {
+                var surveyEntry = _dbContext.Surveys.FirstOrDefault(m => m.Id == viewModel.Survey.Guid.ToString("d"));
+
+                surveyEntry.Title = viewModel.Survey.Title;
+            }
+
+            _dbContext.SaveChanges();
+
             viewModel.Save();
 
             return View();

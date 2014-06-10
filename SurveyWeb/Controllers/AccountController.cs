@@ -680,14 +680,14 @@ namespace SurveyWeb.Controllers
         // GET: /Account/InvitePeople
         public ActionResult InvitePeople()
         {
-            var invitees = new List<InvitePersonModel>();
+            var invitees = new List<InvitePersonViewModel>();
             var userName = User.Identity.GetUserName();
             var person = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName).Person;
             if (person != null)
             {
                 for (int i = 0; i < InviteeMaxCount; i++)
                 {
-                    invitees.Add(new InvitePersonModel { Domain = EmailHelper.GetDomainName(person.Email) });
+                    invitees.Add(new InvitePersonViewModel { Domain = EmailHelper.GetDomainName(person.Email) });
                 }
             }
             
@@ -697,7 +697,7 @@ namespace SurveyWeb.Controllers
         // POST: /Account/InvitePeople
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InvitePeople(IEnumerable<InvitePersonModel> invitees)
+        public ActionResult InvitePeople(IEnumerable<InvitePersonViewModel> invitees)
         {
             // Create an email with reset instructions
             var subject = "Welcome to AQS Healthcare";

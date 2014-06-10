@@ -184,14 +184,12 @@ namespace SurveyWeb.Models
         public string ReturnToken { get; set; }
     }
 
-    public class InvitePersonModel
+    public class InvitePersonViewModel
     {
-        [Required]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         
-        [Required]
         [Display(Name = "Domain")]
         [DataType(DataType.Text)]
         public string Domain { get; set; }

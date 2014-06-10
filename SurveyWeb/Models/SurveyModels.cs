@@ -103,4 +103,27 @@ namespace SurveyWeb.Models
 
         public IEnumerable<RuleApp.SurveyDeliveryRuleApp.EvaluationResult> Followups { get; set; }
     }
+
+    public class CompletedSurveyViewModel
+    {
+        public IEnumerable<string> CompletedSurveys { get; set; }
+        public IEnumerable<string> CompletedSurveysShortNames { get; set; }
+
+        public CompletedSurveyViewModel()
+        { }
+
+        public CompletedSurveyViewModel(IEnumerable<string> completedSurveys)
+        {
+            this.CompletedSurveys = completedSurveys;
+
+            var completedSurveysShortNames = new List<string>();
+
+            foreach (var surveyName in completedSurveys)
+            {
+                completedSurveysShortNames.Add(System.IO.Path.GetFileName(surveyName));
+            }
+
+            this.CompletedSurveysShortNames = completedSurveysShortNames;
+        }
+    }
 }

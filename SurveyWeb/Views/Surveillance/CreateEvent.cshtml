@@ -77,16 +77,6 @@
                     @Html.DropDownList("SurveyId", new SelectList(Model.AvailableSurveys, "Id", "Title"), "Please select...", Model.SurveyId)
                 </div>
             </div>
-
-            <div style="display: table-row">
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.UserId)
-                </div>
-                <div class="editor-field">
-                    @Html.DropDownList("UserId", new SelectList(Model.AvailableUsers, "Id", "Person.FullName"), "Please select...", Model.UserId)
-                </div>
-            </div>
-        
         </div>
     </fieldset>
 
@@ -110,9 +100,6 @@
         <div class="editor-field">
             @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.AvailableUsers, "Id", "Person.FullName"))
         </div>
-        
-        @Html.HiddenFor(model => model.UserId)
-        
     </fieldset>
 
     <div>

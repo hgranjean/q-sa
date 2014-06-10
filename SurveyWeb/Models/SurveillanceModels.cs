@@ -74,7 +74,7 @@ namespace SurveyWeb.Models
 
         [Required]
         [Display(Name="Surveyor")]
-        public int SurveyorId { get; set; }
+        public Guid SurveyorId { get; set; }
 
         [XmlIgnore]
         public IEnumerable<Person> Surveyors { get; set; }
