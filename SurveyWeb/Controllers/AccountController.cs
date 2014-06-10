@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Configuration;
 using System.Xml.Linq;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain.Business;
@@ -699,8 +700,8 @@ namespace SurveyWeb.Controllers
         public ActionResult InvitePeople(IEnumerable<InvitePersonModel> invitees)
         {
             // Create an email with reset instructions
-            string subject = "Welcome to AQS Healthcare";
-            string from = "donotreply@aqspartners.com";
+            var subject = "Welcome to AQS Healthcare";
+            var from = "donotreply@aqspartners.com";
 
             string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
 
@@ -713,9 +714,16 @@ namespace SurveyWeb.Controllers
                 var client = new SmtpClient();
                 foreach (var item in invitees)
                 {
+                    // Verify that email was filled in, otherwise skip
+                    if (string.IsNullOrWhiteSpace(item.Email))
+                    {
+                        continue;
+                    }
+
                     // Attempt to send the email
-                
-                    var message = new MailMessage(from, String.Join("@", item.Email, item.Domain));
+
+                    string email = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
+                    var message = new MailMessage(from, email);
                     message.Subject = subject;
                     message.Body = template.ToString();
                     message.IsBodyHtml = true;
