@@ -10,9 +10,10 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
+    <p class="text-success">@ViewBag.Message</p>
+
     <fieldset>
         <legend>Invite People</legend>
-        <p class="text-success">@ViewBag.StatusMessage</p>
         <div id="tracerHeader" style="display:table">
             <div style="display:table-row">
                 <div style="display:table-cell;width:50%">&nbsp;&nbsp;</div>
