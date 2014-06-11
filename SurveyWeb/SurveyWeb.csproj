@@ -241,6 +241,8 @@
     <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleApp\SurveyDeliveryRuleApp.cs" />
+    <Compile Include="Services\MailService.cs" />
+    <Compile Include="Services\ServiceManager.cs" />
     <Compile Include="Services\SessionBag.cs" />
     <Compile Include="Services\SurveillanceViewMappers.cs" />
     <Compile Include="Services\PersistenceServices.cs" />
@@ -360,6 +362,7 @@
     <Content Include="Images\Upload-icon.png" />
     <Content Include="Images\Users-icon.png" />
     <None Include="RuleApp\Standards\LS.04.03.02.xml" />
+    <Content Include="RuleApp\Emails\EventAssigned.xml" />
     <Content Include="RuleApp\Emails\InvitationEmail.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

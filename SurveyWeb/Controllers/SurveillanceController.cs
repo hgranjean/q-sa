@@ -65,15 +65,7 @@ namespace MvcApplication1.Controllers
         public ActionResult Surveys()
         {
             var surveys = SurveyViewModel.GetSurveys();
-
-            // Initialize model with some dummy templates
-            /*var model = new SurveysViewModel { Surveys = new Surveys
-                        {
-                            LoadSurvey("Survey Template 1"),
-                            LoadSurvey("Survey Template 2"),
-                        }
-                };*/
-
+            
             var model = new SurveysViewModel { Surveys = new Surveys() };
             model.Surveys.AddRange(surveys);
 
@@ -87,10 +79,18 @@ namespace MvcApplication1.Controllers
         {
             var surveys = SurveyViewModel.GetSurveys();
 
+            var userId = User.Identity.GetUserId();
+            var events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId);
+            
             var model = new SurveysViewModel { Surveys = new Surveys() };
-            model.Surveys.AddRange(surveys);
+            foreach (var @event in events)
+            {
+                var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
+                model.Surveys.Add(survey);    
+            }
+            
 
-            return Surveys();
+            return View(model);
         }
 
         public ActionResult DeleteSurvey(long id)
@@ -103,7 +103,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult DeleteSurvey(SurveyViewModel model)
         {
-            PersistenceServices.DeleteSurvey(model.Survey.ID.ToString());
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            persistenceService.DeleteSurvey(model.Survey.ID.ToString());
 
             return RedirectToAction("Surveys");
         }
@@ -148,7 +149,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CompletedSurveys()
         {
-            var availableResponses = PersistenceServices.GetResponses();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var availableResponses = persistenceService.GetResponses();
 
             // TODO: Filter out response by user
             // foreach (var response in availableResponses) { PersistenceServices.LoadTracer(response); }
@@ -160,13 +162,14 @@ namespace MvcApplication1.Controllers
 
         public ActionResult ViewCompletedSurvey(string responseId)
         {
-            var availableResponses = PersistenceServices.GetResponses();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var availableResponses = persistenceService.GetResponses();
 
             foreach (var response in availableResponses)
             {
                 if (response.EndsWith(responseId))
-                {
-                    var model = PersistenceServices.LoadTracer(responseId);
+                {   
+                    var model = persistenceService.LoadTracer(responseId);
 
                     LoadTracerReferenceData(model);
 
@@ -193,7 +196,8 @@ namespace MvcApplication1.Controllers
             Survey survey = LoadSurvey("Survey Template 1");
             if (surveyId.HasValue)
             {
-                survey = PersistenceServices.GetSurvey(surveyId.Value);
+                var persistenceService = ServiceManager.GetService<PersistenceServices>();
+                survey = persistenceService.GetSurvey(surveyId.Value);
 
                 foreach (var questionGroup in survey.QuestionGroups)
                 {
@@ -445,7 +449,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
         {
-            var survey = PersistenceServices.GetSurvey(viewModel.SurveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurvey(viewModel.SurveyId);
             
             var questions = new Questions();
             var responses = new Responses();
@@ -494,7 +499,7 @@ namespace MvcApplication1.Controllers
 
             analysisViewModel.Followups = result;
 
-            PersistenceServices.SaveTracer(viewModel);
+            persistenceService.SaveTracer(viewModel);
             
             return View("SurveyAnalysis", analysisViewModel);
         }
@@ -510,7 +515,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CreateQuestionGroup(long surveyId)
         {
-            Survey survey = PersistenceServices.GetSurveys().First(item => item.ID == surveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID == surveyId);
 
             return View(new SurveyViewModel(survey));
         }
@@ -518,7 +524,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
         {
-            var survey = PersistenceServices.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
 
             if (survey.QuestionGroups == null)
             {
@@ -550,7 +557,8 @@ namespace MvcApplication1.Controllers
             }
             else
             {
-                var surveyEntry = _dbContext.Surveys.FirstOrDefault(m => m.Id == viewModel.Survey.Guid.ToString("d"));
+                var id = viewModel.Survey.Guid.ToString("d");
+                var surveyEntry = _dbContext.Surveys.FirstOrDefault(m => m.Id == id);
 
                 surveyEntry.Title = viewModel.Survey.Title;
             }
@@ -564,7 +572,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult EditQuestionGroup(string surveyId, string groupId)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == surveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
 
             ViewBag.QuestionGroupId = groupId;
 
@@ -578,7 +587,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult EditQuestionGroup(QuestionGroupViewModel viewModel)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
             {   
@@ -594,7 +604,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult DeleteQuestionGroup(string surveyId, string groupId)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == surveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
 
             ViewBag.QuestionGroupId = groupId;
 
@@ -608,7 +619,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult DeleteQuestionGroup(QuestionGroupViewModel viewModel)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
             {
@@ -625,7 +637,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult AddQuestion(string surveyId, string questionGroupId)
         {
-            var survey = PersistenceServices.GetSurvey(Convert.ToInt32(surveyId));
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurvey(Convert.ToInt32(surveyId));
 
             var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
 
@@ -682,7 +695,9 @@ namespace MvcApplication1.Controllers
         {
             var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
 
-            var availableSurveys = PersistenceServices.GetSurveys();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var availableSurveys = persistenceService.GetSurveys();
+
             var model = new EventViewModel(evt)
             {
                 Survey = _dbContext.Surveys.FirstOrDefault(m => m.Id == evt.SurveyId),
@@ -765,7 +780,9 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CreateEvent()
         {
-            var availableSurveys = PersistenceServices.GetSurveys();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var availableSurveys = persistenceService.GetSurveys();
+
             var model = new EventViewModel
                 {
                     AvailableSurveys = availableSurveys.Select(m => new SurveyEntry{Id = m.Guid.ToString(), Title = m.Title}), // _dbContext.Surveys,
@@ -797,6 +814,8 @@ namespace MvcApplication1.Controllers
                     var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == selectedUser);
                     
                     _dbContext.EventUsers.Add(new EventUser { Event = @event, User = user});
+
+                    SendEmail(user);
                 }
 
                 try
@@ -812,6 +831,13 @@ namespace MvcApplication1.Controllers
             }
             
             return View(model);
+        }
+
+        private void SendEmail(AspNetUser user)
+        {
+            var email = user.Person.Email;
+
+            
         }
     }
 }

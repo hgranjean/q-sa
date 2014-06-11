@@ -31,7 +31,8 @@ namespace SurveyWeb.Models
         
         public static IEnumerable<Survey> GetSurveys()
         {
-            return PersistenceServices.GetSurveys();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            return persistenceService.GetSurveys();
         }
 
         public void Save()
@@ -47,7 +48,8 @@ namespace SurveyWeb.Models
             
             this.Survey.QuestionGroups = questionGroups;
 
-            PersistenceServices.SaveSurvey(this.Survey);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            persistenceService.SaveSurvey(this.Survey);
         }
 
         public void AddQuestionGroup()

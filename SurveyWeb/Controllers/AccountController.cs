@@ -23,6 +23,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using SurveyWeb.Services;
 
 namespace SurveyWeb.Controllers
 {
@@ -598,19 +599,16 @@ namespace SurveyWeb.Controllers
                         + "'>Reset Password Link</a>";
  
                     // Create an email with reset instructions
-                    string subject = "Reset your password for aqspartners.com";
+                    string baseUrl = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+                    string subject = "Reset your password for @" + baseUrl;
                     string body = "You link: " + resetLink;
-                    string from = "donotreply@aqspartners.com";
- 
-                    var message = new MailMessage(from, model.Email);
-                    message.Subject = subject;
-                    message.Body = body;
-                    message.IsBodyHtml = true;
- 
+                    string from = "donotreply@ " + baseUrl;
+
+                    var mailService = ServiceManager.GetService<MailService>();
                     // Attempt to send the email
                     try
                     {
-                        new SmtpClient().Send(message);
+                        mailService.SendEmail(from, model.Email, subject, body);
                     }
                     catch (Exception e)
                     {
@@ -641,7 +639,7 @@ namespace SurveyWeb.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string rt)
         {
-            ResetPasswordModel model = new ResetPasswordModel();
+            var model = new ResetPasswordModel();
             model.ReturnToken = rt;
             return View(model);
         }
@@ -700,18 +698,15 @@ namespace SurveyWeb.Controllers
         public ActionResult InvitePeople(IEnumerable<InvitePersonViewModel> invitees)
         {
             // Create an email with reset instructions
-            var subject = "Welcome to AQS Healthcare";
-            var from = "donotreply@aqspartners.com";
+            string baseUrl = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+            var subject = "Welcome to " + ConfigurationManager.AppSettings["WhiteLabel"];
+            var from = "donotreply@" + baseUrl;
 
-            string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
-
-            appPath = appPath + @"\\..\RuleApp\";
-
-            var template = XDocument.Load(appPath + @"Emails\InvitationEmail.xml");
+            var template = GetEmailTemplate(EmailTemplate.Invitation);
 
             try
             {
-                var client = new SmtpClient();
+                var mailService = ServiceManager.GetService<MailService>();
                 foreach (var item in invitees)
                 {
                     // Verify that email was filled in, otherwise skip
@@ -720,14 +715,9 @@ namespace SurveyWeb.Controllers
                         continue;
                     }
 
-                    // Attempt to send the email
-
+                    // Send the email
                     string email = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
-                    var message = new MailMessage(from, email);
-                    message.Subject = subject;
-                    message.Body = template.ToString();
-                    message.IsBodyHtml = true;
-                    client.Send(message);
+                    mailService.SendEmail(from, email, subject, template.ToString());
                 }
 
                 ViewBag.Message = "Invited People Successfully.";
@@ -738,6 +728,39 @@ namespace SurveyWeb.Controllers
             }
 
             return View(invitees);
+        }
+
+        public enum EmailTemplate
+        {
+            Invitation,
+            ResetPassword,
+            EventAssigned
+        }
+
+
+        private static XDocument GetEmailTemplate(EmailTemplate template)
+        {
+            string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
+
+            appPath = appPath + @"\\..\RuleApp\";
+
+            var emailFileName = string.Empty;
+            if (template == EmailTemplate.Invitation)
+            {
+                emailFileName = "InvitationEmail.xml";
+            }
+            else if (template == EmailTemplate.ResetPassword)
+            {
+                emailFileName = "ResetPassword.xml";
+            }
+            else if (template == EmailTemplate.EventAssigned)
+            {
+                emailFileName = "EventAssigned.xml";
+            }
+
+            var result = XDocument.Load(appPath + @"Emails\" + emailFileName);
+
+            return result;
         }
     }
 }

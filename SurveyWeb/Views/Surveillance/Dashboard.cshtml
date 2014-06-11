@@ -14,7 +14,8 @@
 @if (ViewBag.ShowAdminContent)
 {
     <div>
-        <div><h3>Assessment Administrator Dashboard</h3></div>
+        <div><h3>Manager Dashboard</h3></div>
+        <div>@Html.ActionLink("Calendar", "Calendar")</div>
         <div>@Html.ActionLink("Templates", "Surveys")</div>
         <div>@Html.ActionLink("Schedules", "SurveySchedules")</div>
         <div>@Html.ActionLink("Completed Assessments", "CompletedSurveys")</div>
@@ -24,7 +25,7 @@
         <div>@Html.ActionLink("Invite  People", "InvitePeople", "Account")</div>
     </div>
 }
-@if (ViewBag.ShowSurveyorContent)
+else if (ViewBag.ShowSurveyorContent)
 {
     <div>
         <div><h3>Surveyor Dashboard</h3></div>
@@ -35,7 +36,7 @@
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
     </div>
 }
-@if (!ViewBag.ShowAdminContent && ViewBag.ShowSurveyorContent)
+@if (!ViewBag.ShowAdminContent && !ViewBag.ShowSurveyorContent)
 {
     <div>
         <div><h3>User Dashboard</h3></div>
