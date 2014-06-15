@@ -138,6 +138,7 @@
     <Compile Include="Models\AtumSurveillanceContext.cs" />
     <Compile Include="Models\Mapping\EventUserMap.cs" />
     <Compile Include="Models\Mapping\PersonMap.cs" />
+    <Compile Include="Models\Mapping\ResponseMap.cs" />
     <Compile Include="Models\Mapping\SurveyMap.cs" />
     <Compile Include="Models\Mapping\AspNetRoleMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserClaimMap.cs" />
@@ -145,7 +146,6 @@
     <Compile Include="Models\Mapping\AspNetUserMap.cs" />
     <Compile Include="Models\Mapping\EventMap.cs" />
     <Compile Include="Models\Mapping\HospitalMap.cs" />
-    <None Include="Models\Mapping\SurveyEventMap.cs" />
     <Compile Include="Models\Mapping\UserHospitalMap.cs" />
     <Compile Include="Models\UserHospital.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

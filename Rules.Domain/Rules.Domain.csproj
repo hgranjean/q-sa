@@ -49,23 +49,23 @@
   <ItemGroup>
     <Compile Include="Base\AuthoringSettings.cs" />
     <Compile Include="Base\EntitySpec.cs" />
-    <Compile Include="AddCollectionMemberAction.cs" />
-    <Compile Include="DeclareVariableAction.cs" />
-    <Compile Include="ExecutionResult.cs" />
-    <Compile Include="FunctionNode.cs" />
-    <Compile Include="InMemoryRuleApplicationReference.cs" />
+    <Compile Include="Actions\AddCollectionMemberAction.cs" />
+    <Compile Include="Actions\DeclareVariableAction.cs" />
+    <Compile Include="Base\ExecutionResult.cs" />
+    <Compile Include="Base\FunctionNode.cs" />
+    <Compile Include="Base\InMemoryRuleApplicationReference.cs" />
     <Compile Include="Network\TemplateNetwork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rule.cs" />
-    <Compile Include="RuleAction.cs" />
-    <Compile Include="RuleApplicationSpec.cs" />
-    <Compile Include="RuleApplicationReference.cs" />
-    <Compile Include="RuleFunctionBase.cs" />
-    <Compile Include="RuleObjectBase.cs" />
-    <Compile Include="RuleSpec.cs" />
-    <Compile Include="RuleSpecReference.cs" />
-    <Compile Include="SetValueAction.cs" />
-    <Compile Include="SimpleRuleSet.cs" />
+    <Compile Include="Base\Rule.cs" />
+    <Compile Include="Actions\RuleAction.cs" />
+    <Compile Include="Base\RuleApplicationSpec.cs" />
+    <Compile Include="Base\RuleApplicationReference.cs" />
+    <Compile Include="Base\RuleFunctionBase.cs" />
+    <Compile Include="Base\RuleObjectBase.cs" />
+    <Compile Include="Base\RuleSpec.cs" />
+    <Compile Include="Base\RuleSpecReference.cs" />
+    <Compile Include="Actions\SetValueAction.cs" />
+    <Compile Include="Base\SimpleRuleSet.cs" />
     <Compile Include="Templates\ExpressionTemplateAction.cs" />
     <Compile Include="Vocabulary\Placeholder.cs" />
     <Compile Include="Vocabulary\RuntimePlaceholder.cs" />
@@ -75,10 +75,9 @@
     <Compile Include="Templates\TemplateDataType.cs" />
     <Compile Include="Vocabulary\TemplateSpec.cs" />
     <Compile Include="Vocabulary\VocabularySpec.cs" />
-    <Compile Include="WhileRuleSet.cs" />
+    <Compile Include="Base\WhileRuleSet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Actions\" />
     <Folder Include="Reflection\" />
   </ItemGroup>
   <ItemGroup>
