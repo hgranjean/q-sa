@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Atum.Domain.Security.Domain;
 
 namespace Atum.Domain.SurveyManagement
 {
     public partial class ResponseEntry
     {
         public string Id { get; set; }
+
+        public virtual AspNetUser User { get; set; }
+        public string UserId { get; set; }
     }
 }

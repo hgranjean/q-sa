@@ -93,7 +93,7 @@ namespace SurveyWeb.Services
         {
             var appPath = GetAppPath();
 
-            var fileName = String.Concat("response", survey.SurveyId, ".xml");
+            var fileName = String.Concat("response", survey.ResponseId, ".xml");
 
             var settings = new XmlWriterSettings { Indent = true };
             
@@ -107,7 +107,7 @@ namespace SurveyWeb.Services
         {
             var appPath = GetAppPath();
 
-            var fullPath = Path.Combine(appPath, responseId /*"response" + surveyId + ".xml"*/);
+            var fullPath = Path.Combine(appPath, "response" + responseId + ".xml");
 
             return (TracerViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(TracerViewModel));
         }

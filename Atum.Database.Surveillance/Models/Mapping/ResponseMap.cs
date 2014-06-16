@@ -23,6 +23,11 @@ namespace Atum.Database.Surveillance.Models.Mapping
             // Table & Column Mappings
             this.ToTable("Responses");
             this.Property(t => t.Id).HasColumnName("Id");
+
+            // Relationships
+            this.HasOptional(t => t.User)
+                .WithMany()
+                .HasForeignKey(d => d.UserId);
         }
     }
 }

@@ -104,6 +104,8 @@ namespace SurveyWeb.Models
 
         [XmlIgnore]
         public QuestionGroupsViewModel QuestionGroups { get; set; }
+
+        public string ResponseId { get; set; }
         
         [Range(1,999, ErrorMessage = "Please choice a response.")]
         public ResponseViewModel[] Responses { get; set; }

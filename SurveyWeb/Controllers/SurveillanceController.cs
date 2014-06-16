@@ -152,10 +152,14 @@ namespace MvcApplication1.Controllers
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var availableResponses = persistenceService.GetResponses();
 
+            var userId = User.Identity.GetUserId();
+
+            var responses = _dbContext.Responses.Where(m => m.UserId == userId).Select(m => m.Id);
+
             // TODO: Filter out response by user
             // foreach (var response in availableResponses) { PersistenceServices.LoadTracer(response); }
 
-            var model = new CompletedSurveyViewModel(availableResponses);
+            var model = new CompletedSurveyViewModel(responses);
 
             return View(model);
         }
@@ -167,7 +171,7 @@ namespace MvcApplication1.Controllers
 
             foreach (var response in availableResponses)
             {
-                if (response.EndsWith(responseId))
+                if (response.Contains(responseId))
                 {   
                     var model = persistenceService.LoadTracer(responseId);
 
@@ -211,7 +215,7 @@ namespace MvcApplication1.Controllers
                             }
 
                             question.ResponseChoices.Clear();
-                            setQuestionChoices(question);
+                            SetQuestionChoices(question);
                         }
                     }
                 }
@@ -250,55 +254,55 @@ namespace MvcApplication1.Controllers
             Question question = null;
             var qGroup0211 = survey.AddQuestionGroup("0211_Doors ");
             question = qGroup0211.AddQuestion("0211", "No items covering doors, i.e. decorations, paper, etc. ", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0214 = survey.AddQuestionGroup("0214_Adequate Lighting");
             question = qGroup0214.AddQuestion("0214", "Lighting is adequate. ", QuestionType.SelectOne);
             question.BasisReference = new TOCElement("Std: LS.02.01.20 EP27 ");
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
             var qGroup0215 = survey.AddQuestionGroup("0215_ Personal Items");
             question = qGroup0215.AddQuestion("0215", "No items stored under the sink in kitchen area.  ", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0218 = survey.AddQuestionGroup("0218_Unoccupied Rooms ");
             question = qGroup0218.AddQuestion("0218", "Unoccupied rooms are locked.", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0219 = survey.AddQuestionGroup("0219_ Violent/Disruptive Behavior");
             question = qGroup0219.AddQuestion("0219", "How do you respond to violent or disruptive behavior?", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0220 = survey.AddQuestionGroup("0220_Weapons");
             question = qGroup0220.AddQuestion("0220", "How do you respond to violent or disruptive behavior with weapons? ", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0221 = survey.AddQuestionGroup("0221_Authorized Identification");
             question = qGroup0221.AddQuestion("0221", "Are all individuals in area wearing their authorized identification according to hospital policy?", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0222 = survey.AddQuestionGroup("0222_Emergency Numbers Posted");
             question = qGroup0222.AddQuestion("0222", "Emergency numbers are visibly posted. ", QuestionType.SelectOne);
             question.BasisReference = new TOCElement("Std: EC.02.01.01 EP10 ");
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
             var qGroup0223 = survey.AddQuestionGroup("0223_Gas Cylinders Secured");
             question = qGroup0223.AddQuestion("0223", "Are gas cylinders properly secured? ", QuestionType.SelectOne);
             question.BasisReference = new TOCElement("Std: EC.02.03.01 EP1");
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
             return survey;
         }
 
         private int _questionChoiceNextId = 0;
 
-        private void setQuestionChoices(Question question)
+        private void SetQuestionChoices(Question question)
         {
             question.AddChoice("Compliant").SetIdInternal(_questionChoiceNextId++);
             question.AddChoice("Non Compliant").SetIdInternal(_questionChoiceNextId++);
@@ -307,9 +311,7 @@ namespace MvcApplication1.Controllers
             question.AddChoice("Follow-Up Completed").SetIdInternal(_questionChoiceNextId++);
         }
 
-
-
-        private void setQuestion(QuestionGroup questionGroup, QuestionType questionType)
+        private void SetQuestion(QuestionGroup questionGroup, QuestionType questionType)
         {
             Question question = null;
             switch (questionType)
@@ -498,6 +500,18 @@ namespace MvcApplication1.Controllers
             }
 
             analysisViewModel.Followups = result;
+
+            var userId = User.Identity.GetUserId();
+
+            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == userId);
+            
+            var responseEntry = new ResponseEntry {Id = Guid.NewGuid().ToString("d"), User = user};
+
+            _dbContext.Responses.Add(responseEntry);
+
+            _dbContext.SaveChanges();
+
+            viewModel.ResponseId = responseEntry.Id;
 
             persistenceService.SaveTracer(viewModel);
             
