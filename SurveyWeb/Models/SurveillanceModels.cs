@@ -12,7 +12,23 @@ namespace SurveyWeb.Models
 {
     public class SurveysViewModel
     {
-        public Surveys Surveys{ get; set; }
+        public Surveys Surveys { get; set; }
+        public Dictionary<int, Surveys> SurveysByDate { get; internal set; }
+
+        internal Surveys GetOrAddSurveysByDate(int groupIndex)
+        {
+            var eventSurveys = new Surveys();
+            if (!SurveysByDate.ContainsKey(groupIndex))
+            {
+                SurveysByDate.Add(groupIndex, eventSurveys);
+            }
+            else
+            {
+                eventSurveys = SurveysByDate[groupIndex];
+            }
+
+            return eventSurveys;
+        }
     }
 
     // TODO: Split view model from data
@@ -34,6 +50,9 @@ namespace SurveyWeb.Models
             this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
             this.SurveyDate = DateTime.Today.ToShortDateString();
         }
+        
+        [Display(Name = "Title")]
+        public string SurveyTitle { get; set; }
 
         [Required]
         [Display(Name = "Hospital")]

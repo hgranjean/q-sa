@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Configuration;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain;
@@ -81,14 +82,38 @@ namespace MvcApplication1.Controllers
 
             var userId = User.Identity.GetUserId();
             var events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId);
+
+            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>()};
             
-            var model = new SurveysViewModel { Surveys = new Surveys() };
+            foreach (var @event in events)
+            {   
+                var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
+
+                var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
+                
+                eventSurveys.Add(survey);    
+            }
+
+            return View(model);
+        }
+
+        public ActionResult PastDueSurveys()
+        {
+            var surveys = SurveyViewModel.GetSurveys();
+
+            var userId = User.Identity.GetUserId();
+            var events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start <= DateTime.Now);
+
+            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>() };
+
             foreach (var @event in events)
             {
+                var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
+
                 var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
-                model.Surveys.Add(survey);    
+
+                eventSurveys.Add(survey);
             }
-            
 
             return View(model);
         }
@@ -150,16 +175,21 @@ namespace MvcApplication1.Controllers
         public ActionResult CompletedSurveys()
         {
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var availableResponses = persistenceService.GetResponses();
-
+            var surveys = persistenceService.GetSurveys();
+            
+            // Filtering out responses by user
             var userId = User.Identity.GetUserId();
-
             var responses = _dbContext.Responses.Where(m => m.UserId == userId).Select(m => m.Id);
 
-            // TODO: Filter out response by user
-            // foreach (var response in availableResponses) { PersistenceServices.LoadTracer(response); }
+            var models = new List<TracerViewModel>();
+            foreach (var response in responses)
+            {
+                var tracerModel = persistenceService.LoadTracer(response);
+                tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
+                models.Add(tracerModel);
+            }
 
-            var model = new CompletedSurveyViewModel(responses);
+            var model = new CompletedSurveyViewModel(models);
 
             return View(model);
         }
@@ -178,6 +208,8 @@ namespace MvcApplication1.Controllers
                     LoadTracerReferenceData(model);
 
                     LoadSurveyData(model);
+
+                    ViewBag.IsReadOnly = true;
 
                     return View("SurveyDelivery", model);
                 }
@@ -718,12 +750,11 @@ namespace MvcApplication1.Controllers
                 SurveyId = evt.SurveyId,
                 AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
                 AvailableUsers = _dbContext.AspNetUsers,
-                Users = _dbContext.EventUsers.Join(_dbContext.AspNetUsers, a => a.UserId, b => b.Id, (a, b) => b)
-
-                // Users = _dbContext.SurveyEvents.Where(m => m.EventId == id.ToString())
+                Users = from a in _dbContext.EventUsers
+                        join b in _dbContext.AspNetUsers on a.UserId equals b.Id
+                        where a.EventId == evt.Id
+                        select b
             };
-
-            // /* and userid == user */
             
             return View(model);
         }
@@ -775,6 +806,22 @@ namespace MvcApplication1.Controllers
                     }
 
                     _dbContext.SaveChanges();
+                }
+
+                // Update users on their assignments
+                if (model.SelectedUsers != null)
+                {
+                    
+                    var availableUsers = _dbContext.AspNetUsers;
+                    foreach (var item in model.SelectedUsers)
+                    {
+                        
+                        var user = availableUsers.FirstOrDefault(m => m.Id == item);
+                        if (user != default(AspNetUser))
+                        {
+                            SendAssignedEventEmail(user);
+                        }
+                    }
                 }
             
                 try
@@ -829,7 +876,7 @@ namespace MvcApplication1.Controllers
                     
                     _dbContext.EventUsers.Add(new EventUser { Event = @event, User = user});
 
-                    SendEmail(user);
+                    SendAssignedEventEmail(user);
                 }
 
                 try
@@ -847,10 +894,15 @@ namespace MvcApplication1.Controllers
             return View(model);
         }
 
-        private void SendEmail(AspNetUser user)
+        private void SendAssignedEventEmail(AspNetUser user)
         {
             var email = user.Person.Email;
-
+            var baseUrl = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+            var mailService = ServiceManager.GetService<MailService>();
+            var template = AccountController.GetEmailTemplate(AccountController.EmailTemplate.EventAssigned);
+            
+            mailService.SendEmail("donotreply@" + baseUrl, email,
+                                  "An event was assigned to you at " + baseUrl, template.ToString(), true, baseUrl);
             
         }
     }

@@ -166,8 +166,16 @@
             }
         </div>
         <div>&nbsp;</div>
+        @if (ViewBag.IsReadOnly ?? false)
+        {
+            @Html.ActionLink("Close", "Dashboard", "Surveillance")
+        }
+        else
+        {
+
             <input type="submit" value="Done" />
             @Html.ActionLink("Reset", "SurveyDelivery", "Surveillance", new {id = 0})
+        }
 </fieldset>
 }
 

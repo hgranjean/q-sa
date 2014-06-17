@@ -4,7 +4,7 @@
     body { font-family: Arial }
   </style>
   <body>
-    <div>An event was assigned to you in AQS Healthcare!</div>
-    <div><a href="http://www.aqspartners.com/survey/Surveillance/SurveySchedules">Click here to review the assignment.</a></div>
+    <div>An event was assigned to you in {{WHITE_LABEL}}!</div>
+    <div><a href="http://{{DOMAIN_NAME}}/survey/Surveillance/SurveySchedules">Click here to review the assignment.</a></div>
   </body>
 </html>

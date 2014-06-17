@@ -608,7 +608,7 @@ namespace SurveyWeb.Controllers
                     // Attempt to send the email
                     try
                     {
-                        mailService.SendEmail(from, model.Email, subject, body);
+                        mailService.SendEmail(from, model.Email, subject, body, true, baseUrl);
                     }
                     catch (Exception e)
                     {
@@ -717,7 +717,7 @@ namespace SurveyWeb.Controllers
 
                     // Send the email
                     string email = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
-                    mailService.SendEmail(from, email, subject, template.ToString());
+                    mailService.SendEmail(from, email, subject, template.ToString(), true, baseUrl);
                 }
 
                 ViewBag.Message = "Invited People Successfully.";
@@ -738,11 +738,11 @@ namespace SurveyWeb.Controllers
         }
 
 
-        private static XDocument GetEmailTemplate(EmailTemplate template)
+        public static XDocument GetEmailTemplate(EmailTemplate template)
         {
             string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
 
-            appPath = appPath + @"\\..\RuleApp\";
+            appPath = appPath + @"\..\RuleApp\";
 
             var emailFileName = string.Empty;
             if (template == EmailTemplate.Invitation)

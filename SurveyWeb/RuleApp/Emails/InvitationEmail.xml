@@ -4,8 +4,8 @@
     body { font-family: Arial }
   </style>
   <body>
-    <div>Welcome to AQS Healthcare!</div>
-    <div>You're invited to sign up for an account at AQSPartners.com.</div>
-    <div><a href="http://www.aqspartners.com/survey/account/register">Click here to finish the sign up process.</a></div>
+    <div>Welcome to {{WHITE_LABEL}}!</div>
+    <div>You're invited to sign up for an account at {{DOMAIN_NAME}}.</div>
+    <div><a href="http://{{DOMAIN_NAME}}/survey/account/register">Click here to finish the sign up process.</a></div>
   </body>
 </html>

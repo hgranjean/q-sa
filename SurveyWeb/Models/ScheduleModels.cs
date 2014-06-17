@@ -23,9 +23,14 @@ namespace SurveyWeb.Models
         
         public SurveyEntry Survey { get; set; }
         public IEnumerable<SurveyEntry> AvailableSurveys { get; set; }
-
+        
+        [Display(Name = "Selected Users")]
         public IEnumerable<AspNetUser> Users { get; set; }
+
+        [Display(Name = "Available Users")]
         public IEnumerable<AspNetUser> AvailableUsers { get; set; }
+
+        [Display(Name = "Selected Users")]
         public IEnumerable<string> SelectedUsers { get; set; }
 
         [Display(Name = "Survey")]

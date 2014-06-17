@@ -199,13 +199,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdministerSurveyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Controllers\ModelHelper.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
-    <Compile Include="Controllers\SurveyDesignController.cs" />
     <Compile Include="Controllers\TableOfContentController.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
       <AutoGen>True</AutoGen>
@@ -230,6 +228,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BundlesFormats.cs" />
     <Compile Include="Models\ConfirmMessageBoxViewModel.cs" />
+    <Compile Include="Models\DateTimeUtils.cs" />
     <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\HtmlExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -518,6 +517,7 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\LostPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\InvitePeople.cshtml" />
+    <Content Include="Views\Surveillance\PastDueSurveys.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

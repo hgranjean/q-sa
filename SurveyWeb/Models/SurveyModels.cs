@@ -108,24 +108,14 @@ namespace SurveyWeb.Models
 
     public class CompletedSurveyViewModel
     {
-        public IEnumerable<string> CompletedSurveys { get; set; }
-        public IEnumerable<string> CompletedSurveysShortNames { get; set; }
+        public IEnumerable<TracerViewModel> CompletedSurveys { get; set; }
 
         public CompletedSurveyViewModel()
         { }
 
-        public CompletedSurveyViewModel(IEnumerable<string> completedSurveys)
+        public CompletedSurveyViewModel(IEnumerable<TracerViewModel> completedSurveys)
         {
-            this.CompletedSurveys = completedSurveys;
-
-            var completedSurveysShortNames = new List<string>();
-
-            foreach (var surveyName in completedSurveys)
-            {
-                completedSurveysShortNames.Add(System.IO.Path.GetFileName(surveyName));
-            }
-
-            this.CompletedSurveysShortNames = completedSurveysShortNames;
+            this.CompletedSurveys = completedSurveys;            
         }
     }
 }

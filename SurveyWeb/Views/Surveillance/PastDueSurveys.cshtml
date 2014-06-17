@@ -6,7 +6,7 @@
     ViewBag.Title = "My Audits";
 }
 
-<h2>My Audits</h2>
+<h2>Past Due Surveys</h2>
 
 @if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Surveyor"))
 {
