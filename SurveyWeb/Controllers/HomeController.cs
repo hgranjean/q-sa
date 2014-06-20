@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,6 +49,7 @@ namespace SurveyWeb.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "The application description page.";
+            ViewBag.UserSupportLink = ConfigurationManager.AppSettings["UserSupportUrl"];
 
             return View();
         }
