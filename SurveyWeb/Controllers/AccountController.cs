@@ -94,8 +94,11 @@ namespace SurveyWeb.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string registrationToken)
         {
+            var viewModel = new RegisterViewModel();
+            viewModel.RegistrationToken = registrationToken;
+
             return View();
         }
 
@@ -114,8 +117,14 @@ namespace SurveyWeb.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                     //return RedirectToAction("Index", "Home");
-                    
-                    return RedirectToAction("ManageProfile", new {userName = model.UserName, email = model.Email});
+                    var hospitalId = string.Empty;
+                    if (!String.IsNullOrWhiteSpace(model.RegistrationToken))
+                    {
+                        var userData = EmailHelper.GetUserdataFromToken(model.RegistrationToken);
+                        hospitalId = userData.FirstOrDefault(m => m.Key == "HospitalId").Value;
+                    }
+
+                    return RedirectToAction("ManageProfile", new {userName = model.UserName, email = model.Email, hospitalId = hospitalId});
                 }
                 else
                 {
@@ -129,15 +138,29 @@ namespace SurveyWeb.Controllers
         
         //
         // GET: /Account/ManageProfile
-        public ActionResult ManageProfile(string userName, string email)
+        public ActionResult ManageProfile(string userName, string email, string hospitalId)
         {
-            var model = new PersonViewModel { UserId = userName };
+            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
 
-            if (EmailHelper.IsValidEmail(email))
+            var model = new PersonViewModel { UserId = user.Id };
+
+            /*if (EmailHelper.IsValidEmail(email))
             {
                 var domainName = EmailHelper.GetDomainName(email);
 
                 var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.DomainName == domainName);
+
+                if (hospital != default(Hospital))
+                {
+                    model.Person.Hospital = hospital;
+                }
+
+                model.Email = email;
+            }*/
+
+            if (!string.IsNullOrWhiteSpace(hospitalId))
+            {
+                var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
 
                 if (hospital != default(Hospital))
                 {
@@ -185,7 +208,7 @@ namespace SurveyWeb.Controllers
                     _dbContext.Entry(model.Person.Hospital).State = EntityState.Modified;
                 }
                 
-                var user = _dbContext.AspNetUsers.FirstOrDefault(t => t.UserName == model.UserId);
+                var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.UserId);
 
                 if (user != default(AspNetUser))
                 {
@@ -196,6 +219,33 @@ namespace SurveyWeb.Controllers
                     this.AddErrors(new IdentityResult("User not found with id: " + model.UserId));
                 }
 
+                // Add user to hospital, if its not present there already
+                if (_dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id && m.UserId == user.Id) == 0)
+                {
+                    _dbContext.UserHospitals.Add(new UserHospital { HospitalId = model.Person.Hospital.Id, UserId = user.Id});
+                }
+
+                // if first user in the hospital, make it a manager, otherwise, team member
+                int count = _dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id);
+                if (count <= 1)
+                {   
+                    var managerRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Manager");
+
+                    if (user.AspNetRoles.Count(m => m.Id == managerRole.Id) == 0)
+                    {
+                        user.AspNetRoles.Add(managerRole);
+                    }
+                }
+                else
+                {
+                    var memberRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Team Member");
+
+                    if (user.AspNetRoles.Count(m => m.Id == memberRole.Id) == 0)
+                    {
+                        user.AspNetRoles.Add(memberRole);
+                    }
+                }
+                
                 try
                 {
                     _dbContext.SaveChanges();
@@ -247,10 +297,8 @@ namespace SurveyWeb.Controllers
             var userName = User.Identity.GetUserName();
 
             var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
-
-            // _dbContext.Entry(user).Reference(m => m.Person).Load();
             
-            var model = new PersonViewModel(user.Person) { UserId = userName};
+            var model = new PersonViewModel(user.Person) { UserId = user.Id};
 
             ViewBag.PersonViewModel = model;
 
@@ -332,7 +380,7 @@ namespace SurveyWeb.Controllers
                 }
             }
 
-            AspNetUser toDelete = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.Id);
+            var toDelete = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.Id);
 
             _dbContext.AspNetUsers.Remove(toDelete);
 
@@ -349,7 +397,7 @@ namespace SurveyWeb.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new AccountController.ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
         //
@@ -426,7 +474,7 @@ namespace SurveyWeb.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -698,11 +746,22 @@ namespace SurveyWeb.Controllers
         public ActionResult InvitePeople(IEnumerable<InvitePersonViewModel> invitees)
         {
             // Create an email with reset instructions
-            string baseUrl = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+            string domainName = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+            string baseUrl = Request.Url.Host.Replace("www.", string.Empty) + ":" + Request.Url.Port;
             var subject = "Welcome to " + ConfigurationManager.AppSettings["WhiteLabel"];
-            var from = "donotreply@" + baseUrl;
-
+            var from = "donotreply@" + domainName;
+            
             var template = GetEmailTemplate(EmailTemplate.Invitation);
+            string body = template.ToString();
+
+            string userName = User.Identity.GetUserId();
+            var person = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == userName).Person;
+
+            var appPath = Request.ApplicationPath;
+
+            var token = EmailHelper.GenerateToken(userName, 14*24, new string[] {"HospitalId=" + person.HospitalId});
+            body = body.Replace("{{REGISTRATION_TOKEN}}", token);
+            body = body.Replace("{{APP_PATH}}", appPath);
 
             try
             {
@@ -716,8 +775,8 @@ namespace SurveyWeb.Controllers
                     }
 
                     // Send the email
-                    string email = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
-                    mailService.SendEmail(from, email, subject, template.ToString(), true, baseUrl);
+                    string to = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
+                    mailService.SendEmail(from, to, subject, body, true, baseUrl);
                 }
 
                 ViewBag.Message = "Invited People Successfully.";

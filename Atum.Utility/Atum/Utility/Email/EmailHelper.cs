@@ -40,7 +40,7 @@ namespace Atum.Utility
             return mailAddress.Host;
         }
 
-        public static string GenerateToken(string username, int validityInHours = 24)
+        public static string GenerateToken(string username, int validityInHours = 24, IEnumerable<string> userData = null)
         {
             var formsTicket = new FormsAuthenticationTicket(
                 1,
@@ -48,7 +48,7 @@ namespace Atum.Utility
                 DateTime.Now,
                 DateTime.Now.AddHours(validityInHours),
                 true,
-                string.Join("|", username)
+                string.Join("|", userData)
             );
 
             // encrypt the ticket
@@ -66,6 +66,22 @@ namespace Atum.Utility
 
             // verify that the username in the ticket matches the username that was sent with the request
             return formsTicket.Name;
+        }
+        
+        public static IEnumerable<KeyValuePair<string,string>> GetUserdataFromToken(string encryptedTicket)
+        {
+            FormsAuthenticationTicket formsTicket = FormsAuthentication.Decrypt(encryptedTicket);
+
+            // split the user data back apart
+            string[] userData = formsTicket.UserData.Split(new string[] { "|" }, StringSplitOptions.None);
+
+            foreach (var str in userData)
+            {
+                var key = str.Split('=')[0];
+                var value = str.Split('=')[1];
+                
+                yield return new KeyValuePair<string, string>(key, value);
+            }
         }
     }
 }

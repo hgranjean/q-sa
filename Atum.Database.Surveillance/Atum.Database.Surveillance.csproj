@@ -178,12 +178,14 @@
     </Content>
     <Content Include="DbScripts\DbMigration2.sql" />
     <Content Include="DbScripts\DbMigration3.sql" />
-    <Content Include="DbScripts\DbMigration3_Old.sql" />
     <Content Include="DbScripts\DbMigration4.sql" />
     <Content Include="DbScripts\DbMigration5.sql" />
     <Content Include="DbScripts\DbMigration6.sql" />
     <Content Include="DbScripts\DbMigration7.sql" />
     <Content Include="DbScripts\ReadMe.txt" />
+    <Content Include="DbScripts\DbMigration8.sql">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

@@ -67,6 +67,7 @@ namespace SurveyWeb.Controllers
             ViewBag.Message = "The settings page.";
 
             ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
 
             return View();
         }

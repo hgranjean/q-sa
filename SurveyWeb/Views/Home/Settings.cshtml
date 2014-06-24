@@ -5,9 +5,10 @@
 
 <h2>Settings</h2>
 
-@if (ViewBag.ShowAdminContent)
-{
-    <div class="row">
+
+<div class="row">
+    @if (ViewBag.ShowAdminContent)
+    {
         <div class="col-md-4">
             <h2>Manage Facilities</h2>
             <p>
@@ -15,12 +16,17 @@
             </p>
             <p>@Html.ActionLink("List facilities", "Index", "Hospital", null, new {@class = "btn btn-default"})</p>
         </div>
+    }
+
+    @if (ViewBag.ShowAdminContent || ViewBag.ShowManagerContent)
+    {
         <div class="col-md-4">
-            <h2>Manage users</h2>
-            <p>
-                Manage user records, their assignments to facilities.
-            </p>
-            <p>@Html.ActionLink("List users and facilities", "UserHospitalIndex", "Hospital", null, new {@class = "btn btn-default"})</p>
-        </div>
+        <h2>Manage users</h2>
+        <p>
+            Manage user records, their assignments to facilities.
+        </p>
+        <p>@Html.ActionLink("List users and facilities", "UserHospitalIndex", "Hospital", null, new {@class = "btn btn-default"})</p>
     </div>
-}
+    }
+</div>
+

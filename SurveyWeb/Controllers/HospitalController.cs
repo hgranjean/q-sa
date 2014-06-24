@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain.Business;
+using Microsoft.AspNet.Identity;
 using SurveyWeb.Models;
 
 namespace MvcApplication1.Controllers
@@ -98,22 +99,46 @@ namespace MvcApplication1.Controllers
 
         public ActionResult UserHospitalIndex()
         {
-            ViewBag.Users = _dbContext.AspNetUsers.ToList();
-            
-            var model = GetUserHospitals();
+            var listOnlyThisUserHospitals = ListOnlyThisUserHospitals();
 
+            var model = GetUserHospitals(listOnlyThisUserHospitals);
+
+            ViewBag.Users = from a in _dbContext.AspNetUsers.ToList()
+                            join b in model.ToList() on a.Id equals b.UserId
+                            select a;
+            
             return View("UserHospitalIndex", model);
         }
 
-        // TODO: Rename to UserEditViewModel
-        private IEnumerable<UserHospitalViewModel> GetUserHospitals()
+        private bool ListOnlyThisUserHospitals()
         {
-            // TODO: Consier moving into ViewBag
+            var adminRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Administrator");
+            var userId = User.Identity.GetUserId();
+            var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == userId);
+
+            bool listOnlyThisUserHospitals = !aspNetUser.AspNetRoles.Contains(adminRole);
+            return listOnlyThisUserHospitals;
+        }
+
+        private IEnumerable<UserHospitalViewModel> GetUserHospitals(bool listOnlyThisUserHospitals)
+        {
             var availableHospitals = _dbContext.Hospitals.ToList();
             var availableRoles = _dbContext.AspNetRoles.ToList();
 
+            // If user is not system admin, list only users from the user's hospitals list
+            if (listOnlyThisUserHospitals)
+            {
+                var userId = User.Identity.GetUserId();
+                var userHospitalIds = _dbContext.UserHospitals.Where(m => m.UserId == userId).Select(m => m.HospitalId).ToList();
+                availableHospitals = availableHospitals.Where(m => userHospitalIds.Contains(m.Id)).ToList();
+            }
+
             var userHospitalMap = new Dictionary<string, List<Hospital>>();
-            foreach (var userHospital in _dbContext.UserHospitals)
+            var hospitals = from a in _dbContext.UserHospitals.ToList()
+                            join b in availableHospitals on a.HospitalId equals b.Id
+                            select a;
+
+            foreach (var userHospital in hospitals.ToList())
             {
                 if (!userHospitalMap.ContainsKey(userHospital.UserId))
                 {
@@ -150,13 +175,22 @@ namespace MvcApplication1.Controllers
 
         public ActionResult EditUserHospital(string userId)
         {
-            // TODO: Consier moving into ViewBag
             var availableHospitals = _dbContext.Hospitals.ToList();
             var availableRoles = _dbContext.AspNetRoles.ToList();
 
-            var model = GetUserHospitals().Where(item => item.UserId == userId);
+            var listOnlyThisUserHospitals = ListOnlyThisUserHospitals();
 
-            ViewBag.UserName = _dbContext.AspNetUsers.First(user => user.Id == userId).UserName;
+            var model = GetUserHospitals(listOnlyThisUserHospitals).Where(item => item.UserId == userId);
+
+            var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == userId);
+            ViewBag.UserName = aspNetUser.UserName;
+
+            // If not system admin, remove admin role from available roles
+            var adminRole = availableRoles.FirstOrDefault(m => m.Name == "Administrator");
+            if (!aspNetUser.AspNetRoles.Contains(adminRole))
+            {
+                availableRoles.Remove(adminRole);
+            }
 
             // If user has no user to hospital association records, create a viewmodel with empty lists
             if (!model.Any())
@@ -169,7 +203,7 @@ namespace MvcApplication1.Controllers
                                            AvailableHospitals = availableHospitals,
                                            Hospitals = new List<Hospital>(),
                                            AvailableRoles = availableRoles,
-                                           Roles = _dbContext.AspNetUsers.First(user => user.Id == userId).AspNetRoles
+                                           Roles = aspNetUser.AspNetRoles
                                        });
             }
             
@@ -180,7 +214,9 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult EditUserHospital(UserHospitalViewModel viewModel)
         {
-            var model = GetUserHospitals().Where(item => item.UserId == viewModel.UserId);
+            var listOnlyUserHospitals = ListOnlyThisUserHospitals();
+
+            var model = GetUserHospitals(listOnlyUserHospitals).Where(item => item.UserId == viewModel.UserId);
 
             var userHospitalViewModel = model.FirstOrDefault();
 

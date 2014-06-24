@@ -73,6 +73,9 @@ namespace SurveyWeb.Models
         [Display(Name = "Confirm Email")]
         [Compare("Email", ErrorMessage = "The emails you've entered do not match.")]
         public string ConfirmEmail { get; set; }
+
+        [DataType(DataType.Text)]
+        public string RegistrationToken { get; set; }
     }
 
     public class UserHospitalViewModel

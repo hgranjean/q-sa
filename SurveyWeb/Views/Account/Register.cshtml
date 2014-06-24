@@ -11,6 +11,7 @@
     <h4>Create a new account.</h4>
     <hr />
     @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.RegistrationToken)
     <div class="form-group">
         @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
