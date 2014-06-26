@@ -80,7 +80,6 @@
     <Compile Include="Domain\SurveyManagement\QuestionStrategy.cs" />
     <Compile Include="Domain\SurveyManagement\Respondent.cs" />
     <Compile Include="Domain\SurveyManagement\ValueRecognitionStrategy.cs" />
-    <Compile Include="Lab\SurveillanceDev.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

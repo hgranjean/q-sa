@@ -705,6 +705,11 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
+        
+        public ActionResult Report()
+        {
+            return View();
+        }
 
         public JsonResult GetEvents(double? start, double? end)
         {

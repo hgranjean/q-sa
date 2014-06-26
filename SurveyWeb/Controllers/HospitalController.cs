@@ -126,11 +126,20 @@ namespace MvcApplication1.Controllers
             var availableRoles = _dbContext.AspNetRoles.ToList();
 
             // If user is not system admin, list only users from the user's hospitals list
+            
             if (listOnlyThisUserHospitals)
             {
                 var userId = User.Identity.GetUserId();
                 var userHospitalIds = _dbContext.UserHospitals.Where(m => m.UserId == userId).Select(m => m.HospitalId).ToList();
                 availableHospitals = availableHospitals.Where(m => userHospitalIds.Contains(m.Id)).ToList();
+            }
+
+            var currentUserId = User.Identity.GetUserId();
+            var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == currentUserId);
+            var adminRole = availableRoles.FirstOrDefault(m => m.Name == "Administrator");
+            if (!aspNetUser.AspNetRoles.Contains(adminRole))
+            {
+                availableRoles.Remove(adminRole);
             }
 
             var userHospitalMap = new Dictionary<string, List<Hospital>>();
@@ -253,7 +262,7 @@ namespace MvcApplication1.Controllers
                 // Remove unselected items
                 if (userHospitalViewModel != null)
                 {
-                    foreach (var item in userHospitalViewModel.Roles)
+                    foreach (var item in userHospitalViewModel.Roles.ToList())
                     {
                         if (viewModel.SelectedRoles.Count(roleId => roleId == item.Id) == 0)
                         {
