@@ -574,6 +574,7 @@
     <Content Include="Views\Surveillance\PastDueSurveys.cshtml" />
     <Content Include="Scripts\rgraph\excanvas\HTACCESS-SAMPLE" />
     <Content Include="Scripts\rgraph\scripts\jsmin" />
+    <Content Include="Views\Surveillance\AuditDelivery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

@@ -10,7 +10,9 @@
     
 @foreach (var completedSurvey in Model.CompletedSurveys)
 {
-    <div>@Html.ValueFor(m => completedSurvey.SurveyDate) - @Html.ValueFor(m => completedSurvey.SurveyTitle) @Html.ActionLink("View", "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })</div>
+    <div>@Html.ValueFor(m => completedSurvey.SurveyDate) - @Html.ValueFor(m => completedSurvey.SurveyTitle)
+            @Html.ActionLink("View", "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
+    </div>
 }   
 </fieldset>
 

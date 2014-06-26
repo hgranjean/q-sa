@@ -101,8 +101,7 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name = "Date")]
         public string SurveyDate { get; set; }
-
-        // [Required] AS - Are notes required?
+        
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
