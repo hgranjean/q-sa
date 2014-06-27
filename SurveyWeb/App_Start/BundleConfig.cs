@@ -35,7 +35,8 @@ namespace SurveyWeb
                     "~/Scripts/rgraph/libraries/RGraph.common.dynamic.js",
                     "~/Scripts/rgraph/libraries/RGraph.common.tooltips.js",
                     "~/Scripts/rgraph/libraries/RGraph.drawing.marker1.js",
-                    "~/Scripts/rgraph/libraries/RGraph.bar.js"));
+                    "~/Scripts/rgraph/libraries/RGraph.bar.js",
+                    "~/Scripts/rgraph/libraries/RGraph.gantt.js"));
         }
     }
 }

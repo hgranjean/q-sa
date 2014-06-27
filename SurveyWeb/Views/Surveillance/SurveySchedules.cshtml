@@ -8,7 +8,8 @@
 
 <h2>My Audits</h2>
 
-@if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Surveyor"))
+@if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Manager") ||
+new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Member"))
 {
 
     <div>
@@ -18,7 +19,7 @@
             <div>
                 @foreach (var survey in Model.SurveysByDate[item])
                 {
-                    <div>@Html.ActionLink(survey.Title ?? "Survey" + survey.ID, "SurveyDelivery", new {surveyId = survey.ID})</div>
+                    <div>@Html.ActionLink(survey.Title ?? "Survey" + survey.ID, "SurveyDelivery", new {survey.ID})</div>
                 }
             </div>
         }

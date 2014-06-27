@@ -3,16 +3,16 @@
 }
 
 @Scripts.Render("~/bundles/rgraph")
+<script src="~/Scripts/rgraph/libraries/RGraph.gantt.js"></script>
 <!--[if lt IE 9]>@Scripts.Render("~/Scripts/rgraph/excanvas/excanvas.js")<![endif]-->
-
 
 <h2>Report</h2>
 
 <p>
-        This Bar chart shows a performance of team members.
-    </p>
+    This Bar chart shows a performance of team members.
+</p>
 
-    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+<canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
 
     <script>
         $(document).ready(function () {
@@ -33,3 +33,7 @@
                 .draw();
         })
     </script>
+
+<div>
+    See also: @Html.ActionLink("Completion Report", "CompletionReport")
+</div>

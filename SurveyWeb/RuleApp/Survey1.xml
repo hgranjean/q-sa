@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ID>1</ID>
-  <Guid>65029FF5-E88D-442F-A7E8-A2C665170DBF</Guid>
+  <Guid>65029ff5-e88d-442f-a7e8-a2c665170dbf</Guid>
   <Title>Survey Template 1</Title>
-  <SurveyType>Audit</SurveyType>
+  <SurveyType>Surveillance</SurveyType>
   <QuestionGroups>
     <item>
       <key>

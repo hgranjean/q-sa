@@ -2,12 +2,12 @@
 <Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ID>5</ID>
   <Guid>f03342af-dc76-4a2d-95d5-ef34aac3803d</Guid>
-  <Title>Survey Title 1</Title>
+  <Title>Dynamic audit</Title>
   <SurveyType>Audit</SurveyType>
   <QuestionGroups>
     <item>
       <key>
-        <int>1</int>
+        <int>0</int>
       </key>
       <value>
         <QuestionGroup>
@@ -25,6 +25,100 @@
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
             </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>hikgyu</Text>
+              <Number>2</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Title>LS.02.01.20 EP27</Title>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>fdafds</Text>
+              <Number>3</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>1</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>0211_Doors </Title>
+          <Number>0</Number>
+          <Questions>
+            <Question>
+              <ID>0</ID>
+              <Text>No items covering doors, i.e. decorations, paper, etc. </Text>
+              <Number>4</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>8</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>9</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>10</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>11</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Another question</Text>
+              <Number>5</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>12</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>13</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>14</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>15</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
           </Questions>
         </QuestionGroup>
       </value>
@@ -41,7 +135,7 @@
             <Question>
               <ID>0</ID>
               <Text>Lighting is adequate. </Text>
-              <Number>2</Number>
+              <Number>6</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
@@ -49,6 +143,24 @@
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>16</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>17</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>18</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>19</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -66,13 +178,31 @@
             <Question>
               <ID>0</ID>
               <Text>No items stored under the sink in kitchen area.  </Text>
-              <Number>3</Number>
+              <Number>7</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>20</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>21</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>22</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>23</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -90,13 +220,31 @@
             <Question>
               <ID>0</ID>
               <Text>Unoccupied rooms are locked.</Text>
-              <Number>4</Number>
+              <Number>8</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>24</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>25</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>26</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>27</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -114,13 +262,31 @@
             <Question>
               <ID>0</ID>
               <Text>How do you respond to violent or disruptive behavior?</Text>
-              <Number>5</Number>
+              <Number>9</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>28</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>29</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>30</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>31</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -138,13 +304,31 @@
             <Question>
               <ID>0</ID>
               <Text>How do you respond to violent or disruptive behavior with weapons? </Text>
-              <Number>6</Number>
+              <Number>10</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>32</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>33</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>34</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>35</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -162,13 +346,31 @@
             <Question>
               <ID>0</ID>
               <Text>Are all individuals in area wearing their authorized identification according to hospital policy?</Text>
-              <Number>7</Number>
+              <Number>11</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>36</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>37</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>38</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>39</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -186,7 +388,7 @@
             <Question>
               <ID>0</ID>
               <Text>Emergency numbers are visibly posted. </Text>
-              <Number>8</Number>
+              <Number>12</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
@@ -194,6 +396,24 @@
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>40</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>41</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>42</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>43</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -211,7 +431,7 @@
             <Question>
               <ID>0</ID>
               <Text>Are gas cylinders properly secured? </Text>
-              <Number>9</Number>
+              <Number>13</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
@@ -219,6 +439,24 @@
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>44</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>45</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>46</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>47</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>

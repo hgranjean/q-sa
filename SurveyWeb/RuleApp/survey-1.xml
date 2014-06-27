@@ -3,7 +3,7 @@
   <ID>-1</ID>
   <Guid>33b1063d-dc33-4059-a5d5-919ce8ae3ee0</Guid>
   <Title>Survey Title 1</Title>
-  <SurveyType>Audit</SurveyType>
+  <SurveyType>Surveillance</SurveyType>
   <QuestionGroups>
     <item>
       <key>

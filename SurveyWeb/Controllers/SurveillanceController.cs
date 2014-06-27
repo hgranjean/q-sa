@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Web.Routing;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain;
 using Atum.Domain.Common;
@@ -162,12 +163,17 @@ namespace MvcApplication1.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="surveyId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult SurveyDelivery(int? surveyId)
+        public ActionResult SurveyDelivery(int id)
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
-            var model = LoadTracerViewModel(surveyId);
+            var model = LoadTracerViewModel(id);
+
+            if (model.SurveyTypeId == (int)SurveyType.Audit)
+            {
+                return RedirectToAction("SurveyDesign", new {id = id.ToString()});
+            }
             
             return View(model);
         }
@@ -229,7 +235,7 @@ namespace MvcApplication1.Controllers
 
         private TracerViewModel LoadTracerViewModel(int? surveyId)
         {
-            Survey survey = LoadSurvey("Survey Template 1");
+            Survey survey = null; // = LoadSurvey("Survey Template 1");
             if (surveyId.HasValue)
             {
                 var persistenceService = ServiceManager.GetService<PersistenceServices>();
