@@ -34,15 +34,22 @@ namespace Rules.Domain
 
         public void Save(string fileName)
         {
-            var serializer = new XmlSerializer(typeof(RuleApplicationSpec));
-            var xmlWriter = XmlWriter.Create(fileName, new XmlWriterSettings { Indent = true});
-            serializer.Serialize(xmlWriter, this);
+            using (var xmlWriter = XmlWriter.Create(fileName, new XmlWriterSettings {Indent = true}))
+            {
+                var serializer = new XmlSerializer(typeof(RuleApplicationSpec));
+                serializer.Serialize(xmlWriter, this);
+            }
+
         }
 
         public static RuleApplicationSpec Load(string fileName)
         {
-            var serializer = new XmlSerializer(typeof(RuleApplicationSpec));
-            return (RuleApplicationSpec)serializer.Deserialize(new XmlTextReader(fileName));
+            using (var reader = new XmlTextReader(fileName))
+            {
+                var serializer = new XmlSerializer(typeof(RuleApplicationSpec));
+                return (RuleApplicationSpec)serializer.Deserialize(reader);    
+            }
+            
         }
     }
 }

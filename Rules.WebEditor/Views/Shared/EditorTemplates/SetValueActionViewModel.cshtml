@@ -5,10 +5,10 @@
 <fieldset>
     <legend>Target</legend>    
     
-    <div class="editor-label">Target</div>
-    <div class="editor-field">@Html.TextBoxFor(m => m.Target.ExpressionValue)</div>
+    <div class="editor-label hasmenu" style="float: left;" id="@Model.Name">Set</div>
+    <div class="editor-field" style="float: left;">@Html.TextBoxFor(m => m.Target.ExpressionValue)</div>
 
-    <div class="editor-label">Value</div>
-    <div class="editor-field">@Html.TextBoxFor(m => m.Value.ExpressionValue)</div>
+    <div class="editor-label" style="float: left;">To</div>
+    <div class="editor-field" style="float: left;">@Html.TextBoxFor(m => m.Value.ExpressionValue)</div>
 </fieldset>
 
