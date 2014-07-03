@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Rules.Domain.EndPoints
 {
-    public class SendMailSpec
+    public class SendMailSpec : EndPointSpec
     {
         public string ServerName { get; set; }
     }

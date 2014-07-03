@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mail;
 using Rules.Engine.Infos;
 using System.Linq.Expressions;
 
@@ -34,7 +35,13 @@ namespace Rules.Engine.Functions
 
             var rhs = Expression.Convert(engine.GetExpressionForValue(actionInfo.Context, actionInfo.FromInfo), type);
 
-            block.Code = Expression.Assign(lhs, rhs);
+            // block.Code = Expression.Assign(lhs, rhs);
+
+            var client = Expression.New(typeof (SmtpClient));
+            
+            var message = Expression.New(typeof (MailMessage));
+
+            block.Code = Expression.Call(client, "Send", null, message);
         }
     }
 }

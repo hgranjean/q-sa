@@ -8,5 +8,6 @@ namespace Rules.Domain
         public String To { get; set; }
         public String Subject { get; set; }
         public String Body { get; set; }
+        public String Server { get; set; }
     }
 }

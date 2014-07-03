@@ -105,7 +105,7 @@ namespace Rules.Engine
 
             // var variables = ruleBlocks.Where(rb => rb.Type == typeof(BlockExpression)).Select(b => ((BlockExpression)b).Variables);
 
-            var variables = compileContext.Locals.Select(v => (ParameterExpression)v.Value);
+            var variables = compileContext != null ? compileContext.Locals.Select(v => (ParameterExpression)v.Value) : null;
 
             // Creating a method body.
             BlockExpression block = Expression.Block(
