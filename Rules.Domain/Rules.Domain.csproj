@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\SendMailAction.cs" />
     <Compile Include="Base\AuthoringSettings.cs" />
     <Compile Include="Base\EntitySpec.cs" />
     <Compile Include="Actions\AddCollectionMemberAction.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="Base\ExecutionResult.cs" />
     <Compile Include="Base\FunctionNode.cs" />
     <Compile Include="Base\InMemoryRuleApplicationReference.cs" />
+    <Compile Include="EndPoints\EndPointSpec.cs" />
+    <Compile Include="EndPoints\SendMailSpec.cs" />
     <Compile Include="Network\TemplateNetwork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\Rule.cs" />

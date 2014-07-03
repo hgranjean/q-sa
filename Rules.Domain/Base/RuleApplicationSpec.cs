@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Rules.Domain.Base;
+using Rules.Domain.EndPoints;
+using Rules.Domain.Vocabulary;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using Rules.Domain.Base;
-using Rules.Domain.Vocabulary;
 
 namespace Rules.Domain
 {
@@ -19,6 +17,7 @@ namespace Rules.Domain
 	    // private List<UserFunctionLibrary> functionLibrary;
         public List<EntitySpec> Entities { get; set; } 
 	    public List<RuleSpec> RuleSets { get; set; }
+        public List<EndPointSpec> EndPoints { get; set; }
 	    // public List<SchemaEndpoint> schemaEndpoints;
 	    // private String strategyTemplate;
         public VocabularySpec Vocabulary { get; set; }
@@ -29,6 +28,7 @@ namespace Rules.Domain
             Settings = new AuthoringSettings();
             RuleSets = new List<RuleSpec>();
             Entities = new List<EntitySpec>();
+            EndPoints = new List<EndPointSpec>();
             Vocabulary = new VocabularySpec();
         }
 

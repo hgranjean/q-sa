@@ -265,6 +265,14 @@ namespace Rules.Engine
 
                 return compiledBlock;
             }
+            if ((functionBuilder as SendMailActionFunctionBuilder) != null)
+            {
+                var compiledBlock = new CompiledBlock();
+
+                functionInfo.BuildInfo(engine, compiledBlock, ((SendMailFunction)functionInfo).Info);
+
+                return compiledBlock;
+            }
 
             throw new InvalidOperationException("Unknown code construct.");
         }
