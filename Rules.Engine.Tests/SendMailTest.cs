@@ -76,12 +76,10 @@ namespace Rules.Engine.Tests
 
             using (var rs = new RuleSession(ra))
             {
-                rs.CreateEntity(e1.Name, new Entity1 { From = "sales@alexschmidt.net", To = "me@alexschmidt.net", Subject = "Test", Body = "Test" });
-                // using (var smtp = new SmtpServerSession(_smtpServerMockEndPoint))
-                //{
-                    var result = rs.ExecuteRules();
-                    Assert.IsNotNull(result);
-                //}
+                rs.CreateEntity(e1.Name, new Entity1 { From = "me@alexschmidt.net", To = "me@alexschmidt.net", Subject = "Test", Body = "Test" });
+                
+                var result = rs.ExecuteRules();
+                Assert.IsNotNull(result);
             }
         }
     }
