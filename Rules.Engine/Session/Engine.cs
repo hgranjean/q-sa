@@ -170,5 +170,28 @@ namespace Rules.Engine
 
             return null;
         }
+
+        internal Type GetType(Expression lhs)
+        {
+            Type type = null;
+
+            if (lhs is ParameterExpression)
+            {
+                type = lhs.Type;
+            }
+            else if (lhs is IndexExpression)
+            {
+                type = typeof(object);
+            }
+            else if (lhs is UnaryExpression)
+            {
+                type = ((UnaryExpression)lhs).Operand.Type;
+            }
+            else
+            {
+                type = lhs.Type;
+            }
+            return type;
+        }
     }
 }
