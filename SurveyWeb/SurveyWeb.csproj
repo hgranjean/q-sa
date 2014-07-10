@@ -187,7 +187,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
     <Compile Include="Controllers\SurveyDesignController.cs" />
-    <Compile Include="Controllers\TableOfContentController.cs" />
+    <Compile Include="Controllers\StandardController.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -217,12 +217,14 @@
     <Compile Include="Models\QuestionGroupsViewModelBinder.cs" />
     <Compile Include="Models\RadioButtonListViewModel.cs" />
     <Compile Include="Models\ScheduleModels.cs" />
+    <Compile Include="Models\StandardViewModels.cs" />
     <Compile Include="Models\SurveillanceModels.cs" />
     <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleApp\SurveyDeliveryRuleApp.cs" />
     <Compile Include="Services\SessionBag.cs" />
+    <Compile Include="Services\StandardsManagementServices.cs" />
     <Compile Include="Services\SurveillanceViewMappers.cs" />
     <Compile Include="Services\PersistenceServices.cs" />
     <Compile Include="Startup.cs" />
@@ -475,6 +477,9 @@
     <Content Include="Views\Surveillance\Calendar.cshtml" />
     <Content Include="Views\Surveillance\EditEvent.cshtml" />
     <Content Include="Views\Surveillance\CreateEvent.cshtml" />
+    <Content Include="Views\Standard\Document.cshtml" />
+    <Content Include="Views\Standard\Content.cshtml" />
+    <Content Include="Views\Standard\Chapter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

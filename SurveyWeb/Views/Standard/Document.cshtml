@@ -1,0 +1,41 @@
+﻿@model SurveyWeb.Models.StandardDocumentViewModel
+
+@{
+    ViewBag.Title = "Standard Document";
+}
+
+<h2>@Model.Title</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Table of Content</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @foreach (var item in Model.TableOfContents)
+            {
+            <div class="col-md-offset-0 col-md-10">
+                @Html.ActionLink(item.Title, "Chapter", new { contentId = item.Key }, null)
+                
+            </div>
+
+            }
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

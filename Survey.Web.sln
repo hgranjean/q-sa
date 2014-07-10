@@ -54,6 +54,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.QualityManageme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.SurveyManagement", "Atum.Domain.Surveillance\Atum.Domain.SurveyManagement.csproj", "{8926936F-EE5C-4307-BCB5-570364D8669D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Domain.NLP", "Atum.Domain.NLP\Atum.Domain.NLP.csproj", "{B456C946-4B4A-4C03-9EE6-818CA30ED84D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -409,6 +411,24 @@ Global
 		{8926936F-EE5C-4307-BCB5-570364D8669D}.V4 Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8926936F-EE5C-4307-BCB5-570364D8669D}.V4 Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8926936F-EE5C-4307-BCB5-570364D8669D}.V4 Release|Any CPU.Build.0 = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.FxCop|Any CPU.ActiveCfg = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.FxCop|Any CPU.Build.0 = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight 4 Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight 4 Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight 4 Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight 4 Release|Any CPU.Build.0 = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.Silverlight Release|Any CPU.Build.0 = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.V4 Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.V4 Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.V4 Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B456C946-4B4A-4C03-9EE6-818CA30ED84D}.V4 Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

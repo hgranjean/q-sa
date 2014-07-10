@@ -6,7 +6,7 @@
 
 <h2>Dashboard</h2>
 
-@if (User.IsInRole("Administrator"))
+@if (User.IsInRole("Administrator")||true)
 {
     <div>
         <div><h3>Assessment Administrator Dashboard</h3></div>
@@ -16,6 +16,8 @@
         <div>@Html.ActionLink("Pass Due Assessments", "Surveys")</div>
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
         <div>@Html.ActionLink("Reports", "Surveys")</div>
+        <div>@Html.ActionLink("Manage Standard", "Document", "Standard", new { id = 1 }, null)</div>
+
     </div>
 }
 else if (User.IsInRole("Surveyor"))
