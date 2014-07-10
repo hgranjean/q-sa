@@ -1,17 +1,28 @@
-﻿@model SurveyWeb.Models.SurveysViewModel
+﻿@using Microsoft.AspNet.Identity
+@using SurveyWeb.Controllers
+@using SurveyWeb.Models
+@model SurveysViewModel
 @{
     ViewBag.Title = "My Audits";
 }
 
 <h2>My Audits</h2>
 
-@if (User.IsInRole("Surveyor") || User.IsInRole("Administrator"))
+@if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Manager") ||
+new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Member"))
 {
 
     <div>
-        @foreach (var item in Model.Surveys)
+        @foreach (var item in Model.SurveysByDate.Keys)
         {
-            <div>@Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDelivery", new {surveyId = item.ID})</div>
+            <h3>@Html.Label(DateTimeUtils.GetGroupName(item))</h3>
+            <div>
+                @foreach (var survey in Model.SurveysByDate[item])
+                {
+                    <div>@Html.ActionLink(survey.Title ?? "Survey" + survey.ID, "SurveyDelivery", new {survey.ID})</div>
+                }
+            </div>
         }
+        
     </div>
 }

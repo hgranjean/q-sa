@@ -4,6 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Atum.Domain.SurveyManagement;
 
 namespace Atum.Database.Surveillance.Models.Mapping
 {   
@@ -28,15 +29,18 @@ namespace Atum.Database.Surveillance.Models.Mapping
             
             this.Property(t => t.End);
             
-            this.Property(t => t.Url);
-            
             // Table & Column Mappings
             this.ToTable("Events");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Title).HasColumnName("Title");
             this.Property(t => t.Start).HasColumnName("Start");
             this.Property(t => t.End).HasColumnName("End");
-            this.Property(t => t.Url).HasColumnName("Url");
+            this.Property(t => t.SurveyId).HasColumnName("SurveyId").IsRequired().HasMaxLength(128);
+            // this.Property(t => t.UserId).HasColumnName("UserId").IsRequired().HasMaxLength(128);
+            
+            this.HasRequired(t => t.Survey)
+                .WithMany()
+                .HasForeignKey(d => d.SurveyId);
         }
     }
     

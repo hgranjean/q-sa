@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Rules.Domain;
 using Rules.Domain.Templates;
 using Rules.Engine.Functions.Builders;
-using Rules.Engine.Functions.Templates;
-using Rules.Engine.Infos;
 
 namespace Rules.Engine.Functions
 {
@@ -42,6 +36,10 @@ namespace Rules.Engine.Functions
             if (rule is FunctionNode)
             {
                 return new FunctionNodeFunctionBuilder();
+            }
+            if (rule is SendMailAction)
+            {
+                return new SendMailActionFunctionBuilder();
             }
 
             throw new Exception("unknown func builder");

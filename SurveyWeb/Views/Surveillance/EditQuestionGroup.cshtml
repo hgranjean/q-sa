@@ -1,5 +1,4 @@
-﻿@using Atum.Domain.Surveillance
-@using MvcApplication1.Controllers
+﻿@using MvcApplication1.Controllers
 @using SurveyWeb.Models
 @model SurveyWeb.Models.QuestionGroupViewModel
 
@@ -24,39 +23,44 @@
         @Html.HiddenFor(m => m.Number)
         @Html.HiddenFor(m => m.SurveyId)
         
-        <div style="display: table">
-                <div style="display: table-row">
-                <div id="groupLabel" style="display: table-cell; font-weight: bold; width: 50%">@Html.LabelFor(m => m.QuestionGroup.Title)</div>
-                <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 50%">@Html.TextBoxFor(m => m.QuestionGroup.Title)</div>
-                </div>
+        <div style="display: table; width: 100%">
+            <div style="display: table-row">
+                <div id="groupLabel" style="display: table-cell; font-weight: bold; width: 20%">@Html.LabelFor(m => m.QuestionGroup.Title, new { style = "width: 80%"})</div>
+                <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 80%">@Html.TextBoxFor(m => m.QuestionGroup.Title, new { style = "width: 80%"})</div>
+            </div>
         </div>
        
-        @Html.ActionLink("Add question", "AddQuestion", new {surveyId = Model.SurveyId, questionGroupId = Model.Number})
-
         <div style="display: table;width:100%">
-                @for (int i=0;Model.QuestionGroup.Questions!=null&&i<Model.QuestionGroup.Questions.Count;i++)
-                {
-                    @Html.HiddenFor(m => m.QuestionGroup.Questions[i].Number)
+            @for (int i=0;Model.QuestionGroup.Questions!=null&&i<Model.QuestionGroup.Questions.Count;i++)
+            {
+                @Html.HiddenFor(m => m.QuestionGroup.Questions[i].Number)
 
-                <div id="choiceGroup" style="display: table-row;">
-                    <div class="editor-label;" style="display: table-cell;width: 20%">
-                            @Html.Label(Model.QuestionGroup.Questions[i].Number.ToString())
-                        </div>
-                    <div id="questionText" class="editor-field" style="display: table-cell;width: 80%">
-                            @Html.TextBoxFor(m => m.QuestionGroup.Questions[i].Text)
-
-                        @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].QuestionType,
-                            Model.QuestionGroup.Questions[i].QuestionType.ToSelectList(Model.QuestionGroup.Questions[i].QuestionType.ToString()))
-
-                        @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].TOCReference, 
-                            new SelectList(new SurveillanceController().GetTOCs(), "Value.Title", "Key", Model.QuestionGroup.Questions[i].TOCReference))
-                        </div>
+                <div id="choiceGroup" style="display: table-row">
+                    <div class="editor-label;" style="display: table-cell;width: 3%">
+                        @Html.Label(Model.QuestionGroup.Questions[i].Number.ToString())
                     </div>
-                }
-            </div>
-        <p>
+                    <div id="questionText" class="editor-field" style="display: table-cell;width: 70%">
+                        @Html.TextBoxFor(m => m.QuestionGroup.Questions[i].Text, new { style = "width: 100%"})
+                    </div>
+                    <div id="questionType" class="editor-field" style="display: table-cell;width: 10%">
+                        @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].QuestionType,
+                                              Model.QuestionGroup.Questions[i].QuestionType.ToSelectList(Model.QuestionGroup.Questions[i].QuestionType.ToString()), new { style = "width: auto"}) 
+                    </div>
+                    <div id="questionStandard" class="editor-field" style="display: table-cell;width: 17%">
+                        @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].TOCReference, 
+                                              new SelectList(new SurveillanceController().GetTOCs(), "Value.Title", "Key", Model.QuestionGroup.Questions[i].TOCReference), new { style = "width: auto"})
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div>
+            @Html.ActionLink("Add question", "AddQuestion", new {surveyId = Model.SurveyId, questionGroupId = Model.Number})
+        </div>
+
+        <div>
             <input type="submit" value="Save" />
-        </p>
+        </div>
     </fieldset>
 }
 

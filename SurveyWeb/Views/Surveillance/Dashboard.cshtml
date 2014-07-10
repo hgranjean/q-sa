@@ -1,37 +1,45 @@
-﻿@{
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@using SurveyWeb
+@using SurveyWeb.App_Start
+@using SurveyWeb.Models
+@{
 
     ViewBag.Title = "Dashboard";
 }
 
 
 <h2>Dashboard</h2>
-
-@if (User.IsInRole("Administrator")||true)
+ 
+@if (ViewBag.ShowAdminContent || ViewBag.ShowManagerContent)
 {
     <div>
-        <div><h3>Assessment Administrator Dashboard</h3></div>
+        <div><h3>Manager Dashboard</h3></div>
+        <div>@Html.ActionLink("Calendar", "Calendar")</div>
         <div>@Html.ActionLink("Templates", "Surveys")</div>
         <div>@Html.ActionLink("Schedules", "SurveySchedules")</div>
         <div>@Html.ActionLink("Completed Assessments", "CompletedSurveys")</div>
-        <div>@Html.ActionLink("Pass Due Assessments", "Surveys")</div>
+        <div>@Html.ActionLink("Annual Schedule", "Surveys")</div>
+        <div>@Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</div>
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
-        <div>@Html.ActionLink("Reports", "Surveys")</div>
         <div>@Html.ActionLink("Manage Standard", "Document", "Standard", new { id = 1 }, null)</div>
-
+        <div>@Html.ActionLink("Completion Grid", "CompletedSurveys")</div>
+        <div>@Html.ActionLink("Reports", "Index", "Report")</div>
+        <div>@Html.ActionLink("Invite  People", "InvitePeople", "Account")</div>
     </div>
 }
-else if (User.IsInRole("Surveyor"))
+else if (ViewBag.ShowTeamMemberContent)
 {
     <div>
-        <div><h3>Surveyor Dashboard</h3></div>
+        <div><h3>Team Dashboard</h3></div>
         <div>@Html.ActionLink("Calendar", "Calendar")</div>
         <div>@Html.ActionLink("Scheduled", "SurveySchedules")</div>
         <div>@Html.ActionLink("Completed Assessments", "Surveys")</div>
-        <div>@Html.ActionLink("Pass Due Assessments", "Surveys")</div>
+        <div>@Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</div>
         <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
     </div>
 }
-else
+@if (!ViewBag.ShowAdminContent && !ViewBag.ShowTeamMemberContent && !ViewBag.ShowManagerContent)
 {
     <div>
         <div><h3>User Dashboard</h3></div>

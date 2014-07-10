@@ -3,14 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - @System.Configuration.ConfigurationManager.AppSettings["SiteLabel"]</title>
+    <title>@ViewBag.Title - @System.Configuration.ConfigurationManager.AppSettings["WhiteLabel"]</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/component.css", "~/Content/Demo.css", "~/Content/Normalize.css")
+    @Scripts.Render("~/Scripts/classie.js", "~/Scripts/gnmenu.js")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/classie.js")
-	@Scripts.Render("~/Scripts/gnmenu.js")
 </head>
     <body>
         
@@ -63,7 +62,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("Atum Quality Solutions", "Index", "Home", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink(@System.Configuration.ConfigurationManager.AppSettings["WhiteLabel"], "Index", "Home", null, new { @class = "navbar-brand" })
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">

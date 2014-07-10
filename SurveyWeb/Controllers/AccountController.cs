@@ -1,31 +1,61 @@
-﻿using System;
+﻿using System.Collections;
+using System.Configuration;
+using System.Xml.Linq;
+using Atum.Database.Surveillance.Models;
+using Atum.Domain.Business;
+using Atum.Domain.Common;
+using Atum.Domain.Security.Domain;
+using Atum.Utility;
+using Atum.Utility.XML;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using SurveyWeb.App_Start;
+using SurveyWeb.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
-using System.Security.Claims;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
-using SurveyWeb.Models;
+using SurveyWeb.Services;
 
 namespace SurveyWeb.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController()
-           : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
-        {
-        }
+        private AtumSurveillanceContext _dbContext = null;
+        private ApplicationUserManager _userManager;
+        private const int InviteeMaxCount = 6;
 
-        public AccountController(UserManager<ApplicationUser> userManager)
+        public AccountController(ApplicationUserManager userManager) : this()
         {
             UserManager = userManager;
         }
 
-        public UserManager<ApplicationUser> UserManager { get; private set; }
+
+        public AccountController()
+        {
+            _dbContext = new AtumSurveillanceContext();
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         
         //
         // GET: /Account/Login
@@ -64,8 +94,11 @@ namespace SurveyWeb.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string registrationToken)
         {
+            var viewModel = new RegisterViewModel();
+            viewModel.RegistrationToken = registrationToken;
+
             return View();
         }
 
@@ -78,21 +111,155 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName, };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    var hospitalId = string.Empty;
+                    if (!String.IsNullOrWhiteSpace(model.RegistrationToken))
+                    {
+                        var userData = EmailHelper.GetUserdataFromToken(model.RegistrationToken);
+                        hospitalId = userData.FirstOrDefault(m => m.Key == "HospitalId").Value;
+                    }
+
+                    return RedirectToAction("ManageProfile", new {userName = model.UserName, email = model.Email, hospitalId = hospitalId});
                 }
                 else
                 {
-                    AddErrors(result);
+                    this.AddErrors(result);
                 }
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+        
+        //
+        // GET: /Account/ManageProfile
+        public ActionResult ManageProfile(string userName, string email, string hospitalId)
+        {
+            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
+
+            var model = new PersonViewModel { UserId = user.Id };
+
+            /*if (EmailHelper.IsValidEmail(email))
+            {
+                var domainName = EmailHelper.GetDomainName(email);
+
+                var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.DomainName == domainName);
+
+                if (hospital != default(Hospital))
+                {
+                    model.Person.Hospital = hospital;
+                }
+
+                model.Email = email;
+            }*/
+
+            if (!string.IsNullOrWhiteSpace(hospitalId))
+            {
+                var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
+
+                if (hospital != default(Hospital))
+                {
+                    model.Person.Hospital = hospital;
+                }
+
+                model.Email = email;
+            }
+            
+            return View("Person", model);
+        }
+
+        //
+        // POST: /Account/ManageProfile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ManageProfile(PersonViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Person Id does not exist, create a new one
+                if (string.IsNullOrWhiteSpace(model.Person.Id))
+                {
+                    model.Person.Id = Guid.NewGuid().ToString("D");
+                    _dbContext.Persons.Add(model.Person);
+                }
+                else
+                {
+                    _dbContext.Persons.Attach(model.Person);
+                    _dbContext.Entry(model.Person).CurrentValues.SetValues(model.Person);
+                    _dbContext.Entry(model.Person).State = EntityState.Modified;
+                }
+
+                // Hospital was not entered, create a new one
+                if (string.IsNullOrWhiteSpace(model.Person.Hospital.Id))
+                {
+                    model.Person.Hospital.Id = Guid.NewGuid().ToString("D");
+                    model.Person.Hospital.DomainName = EmailHelper.GetDomainName(model.Email);
+                    _dbContext.Hospitals.Add(model.Person.Hospital);
+                }
+                else
+                {
+                    _dbContext.Hospitals.Attach(model.Person.Hospital);
+                    _dbContext.Entry(model.Person.Hospital).CurrentValues.SetValues(model.Person.Hospital);
+                    _dbContext.Entry(model.Person.Hospital).State = EntityState.Modified;
+                }
+                
+                var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.UserId);
+
+                if (user != default(AspNetUser))
+                {
+                    user.Person = model.Person;
+                }
+                else
+                {
+                    this.AddErrors(new IdentityResult("User not found with id: " + model.UserId));
+                }
+
+                // Add user to hospital, if its not present there already
+                if (_dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id && m.UserId == user.Id) == 0)
+                {
+                    _dbContext.UserHospitals.Add(new UserHospital { HospitalId = model.Person.Hospital.Id, UserId = user.Id});
+                }
+
+                // if first user in the hospital, make it a manager, otherwise, team member
+                int count = _dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id);
+                if (count <= 1)
+                {   
+                    var managerRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Manager");
+
+                    if (user.AspNetRoles.Count(m => m.Id == managerRole.Id) == 0)
+                    {
+                        user.AspNetRoles.Add(managerRole);
+                    }
+                }
+                else
+                {
+                    var memberRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Team Member");
+
+                    if (user.AspNetRoles.Count(m => m.Id == memberRole.Id) == 0)
+                    {
+                        user.AspNetRoles.Add(memberRole);
+                    }
+                }
+                
+                try
+                {
+                    _dbContext.SaveChanges();
+                    
+                    return RedirectToAction("Welcome", "Home");
+                }
+                catch (DbEntityValidationException e)
+                {
+                    this.AddErrors(e);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View("Person", model);
         }
 
         //
@@ -126,8 +293,19 @@ namespace SurveyWeb.Controllers
                 : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
+
+            var userName = User.Identity.GetUserName();
+
+            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
+            
+            var model = new PersonViewModel(user.Person) { UserId = user.Id};
+
+            ViewBag.PersonViewModel = model;
+
             return View();
         }
+
+
 
         //
         // POST: /Account/Manage
@@ -149,7 +327,7 @@ namespace SurveyWeb.Controllers
                     }
                     else
                     {
-                        AddErrors(result);
+                        this.AddErrors(result);
                     }
                 }
             }
@@ -171,13 +349,44 @@ namespace SurveyWeb.Controllers
                     }
                     else
                     {
-                        AddErrors(result);
+                        this.AddErrors(result);
                     }
                 }
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+        
+        public ActionResult DeleteUser(string userId)
+        {
+            var model = _dbContext.AspNetUsers.FirstOrDefault(user => user.Id == userId);
+
+            return View("DeleteUser", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteUser(AspNetUser model)
+        {
+            IList<UserLoginInfo> logins = await UserManager.GetLoginsAsync(model.Id);
+            
+            foreach (var login in logins)
+            {
+                IdentityResult result = await UserManager.RemoveLoginAsync(model.Id, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
+                if (!result.Succeeded)
+                {
+                    this.AddErrors(result);
+                }
+            }
+
+            var toDelete = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.Id);
+
+            _dbContext.AspNetUsers.Remove(toDelete);
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("UserHospitalIndex", "Hospital");
         }
 
         //
@@ -225,7 +434,7 @@ namespace SurveyWeb.Controllers
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
-            return new ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
+            return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
         }
 
         //
@@ -265,7 +474,7 @@ namespace SurveyWeb.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -276,7 +485,7 @@ namespace SurveyWeb.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
-                AddErrors(result);
+                this.AddErrors(result);
             }
 
             ViewBag.ReturnUrl = returnUrl;
@@ -338,14 +547,6 @@ namespace SurveyWeb.Controllers
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-        }
-
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -398,11 +599,227 @@ namespace SurveyWeb.Controllers
                 var properties = new AuthenticationProperties() { RedirectUri = RedirectUri };
                 if (UserId != null)
                 {
-                    properties.Dictionary[XsrfKey] = UserId;
+                    properties.Dictionary[AccountController.XsrfKey] = UserId;
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
         #endregion
+
+        // GET: Account/LostPassword
+        [AllowAnonymous]
+        public ActionResult LostPassword()
+        {
+            return View();
+        }
+
+        // POST: Account/LostPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult LostPassword(LostPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user;
+                using (var context = _dbContext)
+                {
+                    var foundUserName = (from u in context.AspNetUsers
+                              where u.Person.Email == model.Email
+                              select u.UserName).FirstOrDefault();
+                    if (foundUserName != null)
+                    {
+                        user = UserManager.FindByName(foundUserName.ToString());
+                    }
+                    else
+                    {
+                        user = null;
+                    }
+                }
+                if (user != null)
+                {
+                    // Generate password token that will be used in the email link to authenticate user
+                    // var token = WebSecurity.GeneratePasswordResetToken(user.UserName);
+                    var token = EmailHelper.GenerateToken(user.UserName);
+                    // Generate the html link sent via email
+                    string resetLink = "<a href='"
+                        + Url.Action("ResetPassword", "Account", new { rt = token }, "http") 
+                        + "'>Reset Password Link</a>";
+ 
+                    // Create an email with reset instructions
+                    string baseUrl = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+                    string subject = "Reset your password for @" + baseUrl;
+                    string body = "You link: " + resetLink;
+                    string from = "donotreply@ " + baseUrl;
+
+                    var mailService = ServiceManager.GetService<MailService>();
+                    // Attempt to send the email
+                    try
+                    {
+                        mailService.SendEmail(from, model.Email, subject, body, true, baseUrl);
+                    }
+                    catch (Exception e)
+                    {
+                        ModelState.AddModelError("", "Issue sending email: " + e.Message);
+                    }
+                }         
+                else // Email not found
+                {
+                    /* Note: You may not want to provide the following information
+                    * since it gives an intruder information as to whether a
+                    * certain email address is registered with this website or not.
+                    * If you're really concerned about privacy, you may want to
+                    * forward to the same "Success" page regardless whether an
+                    * user was found or not. This is only for illustration purposes.
+                    */
+                    this.AddErrors(new IdentityResult("No user found by that email."));
+                }
+            }
+         
+            /* You may want to send the user to a "Success" page upon the successful
+            * sending of the reset email link. Right now, if we are 100% successful
+            * nothing happens on the page. :P
+            */
+            return View(model);
+        }
+
+        // GET: /Account/ResetPassword
+        [AllowAnonymous]
+        public ActionResult ResetPassword(string rt)
+        {
+            var model = new ResetPasswordModel();
+            model.ReturnToken = rt;
+            return View(model);
+        }
+
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //bool resetResponse = WebSecurity.ResetPassword(model.ReturnToken, model.Password);
+
+                var userName = EmailHelper.GetUsernameFromToken(model.ReturnToken);
+                var user = UserManager.FindByName(userName);
+                if (user != null)
+                {
+                    using (var store = new UserStore<ApplicationUser>())
+                    {
+                        store.SetPasswordHashAsync(user, UserManager.PasswordHasher.HashPassword(model.Password)).ContinueWith(t =>
+                            UserManager.UpdateAsync(user)).Wait();
+                        
+                        _dbContext.SaveChanges();
+                    }
+                    ViewBag.Message = "Successfully Changed";
+                }
+                else
+                {
+                    ViewBag.Message = "Something went horribly wrong!";
+                }
+            }
+            return View(model);
+        }
+
+        // GET: /Account/InvitePeople
+        public ActionResult InvitePeople()
+        {
+            var invitees = new List<InvitePersonViewModel>();
+            var userName = User.Identity.GetUserName();
+            var person = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName).Person;
+            if (person != null)
+            {
+                for (int i = 0; i < InviteeMaxCount; i++)
+                {
+                    invitees.Add(new InvitePersonViewModel { Domain = EmailHelper.GetDomainName(person.Email) });
+                }
+            }
+            
+            return View(invitees);
+        }
+        
+        // POST: /Account/InvitePeople
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult InvitePeople(IEnumerable<InvitePersonViewModel> invitees)
+        {
+            // Create an email with reset instructions
+            string domainName = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+            string baseUrl = Request.Url.Host.Replace("www.", string.Empty) + ":" + Request.Url.Port;
+            var subject = "Welcome to " + ConfigurationManager.AppSettings["WhiteLabel"];
+            var from = "donotreply@" + domainName;
+            
+            var template = GetEmailTemplate(EmailTemplate.Invitation);
+            string body = template.ToString();
+
+            string userName = User.Identity.GetUserId();
+            var person = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == userName).Person;
+
+            var appPath = Request.ApplicationPath;
+
+            var token = EmailHelper.GenerateToken(userName, 14*24, new string[] {"HospitalId=" + person.HospitalId});
+            body = body.Replace("{{REGISTRATION_TOKEN}}", token);
+            body = body.Replace("{{APP_PATH}}", appPath);
+
+            try
+            {
+                var mailService = ServiceManager.GetService<MailService>();
+                foreach (var item in invitees)
+                {
+                    // Verify that email was filled in, otherwise skip
+                    if (string.IsNullOrWhiteSpace(item.Email))
+                    {
+                        continue;
+                    }
+
+                    // Send the email
+                    string to = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
+                    mailService.SendEmail(from, to, subject, body, true, baseUrl);
+                }
+
+                ViewBag.Message = "Invited People Successfully.";
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Issue sending email: " + e.Message);
+            }
+
+            return View(invitees);
+        }
+
+        public enum EmailTemplate
+        {
+            Invitation,
+            ResetPassword,
+            EventAssigned
+        }
+
+
+        public static XDocument GetEmailTemplate(EmailTemplate template)
+        {
+            string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
+
+            appPath = appPath + @"\..\RuleApp\";
+
+            var emailFileName = string.Empty;
+            if (template == EmailTemplate.Invitation)
+            {
+                emailFileName = "InvitationEmail.xml";
+            }
+            else if (template == EmailTemplate.ResetPassword)
+            {
+                emailFileName = "ResetPassword.xml";
+            }
+            else if (template == EmailTemplate.EventAssigned)
+            {
+                emailFileName = "EventAssigned.xml";
+            }
+
+            var result = XDocument.Load(appPath + @"Emails\" + emailFileName);
+
+            return result;
+        }
     }
 }

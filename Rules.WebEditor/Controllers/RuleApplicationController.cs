@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Script.Serialization;
 
 namespace Rules.WebEditor.Controllers
 {
-    [RoutePrefix("RuleApplication")]
+    [RouteArea("RuleApplication")]
+    [RoutePrefix("")]
     public class RuleApplicationController : Controller
     {
         //
@@ -78,6 +80,13 @@ namespace Rules.WebEditor.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        [Route("BladeEdit")]
+        public ActionResult BladeEdit(FormCollection collection)
+        {
+            return Redirect("~/Home/Save");
         }
 
         //

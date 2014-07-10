@@ -12,7 +12,23 @@ namespace SurveyWeb.Models
 {
     public class SurveysViewModel
     {
-        public Surveys Surveys{ get; set; }
+        public Surveys Surveys { get; set; }
+        public Dictionary<int, Surveys> SurveysByDate { get; internal set; }
+
+        internal Surveys GetOrAddSurveysByDate(int groupIndex)
+        {
+            var eventSurveys = new Surveys();
+            if (!SurveysByDate.ContainsKey(groupIndex))
+            {
+                SurveysByDate.Add(groupIndex, eventSurveys);
+            }
+            else
+            {
+                eventSurveys = SurveysByDate[groupIndex];
+            }
+
+            return eventSurveys;
+        }
     }
 
     // TODO: Split view model from data
@@ -33,7 +49,11 @@ namespace SurveyWeb.Models
             this.SurveyId = Convert.ToInt32(survey.ID);
             this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
             this.SurveyDate = DateTime.Today.ToShortDateString();
+            this.SurveyTypeId = (int)survey.SurveyType;
         }
+        
+        [Display(Name = "Title")]
+        public string SurveyTitle { get; set; }
 
         [Required]
         [Display(Name = "Hospital")]
@@ -74,7 +94,7 @@ namespace SurveyWeb.Models
 
         [Required]
         [Display(Name="Surveyor")]
-        public int SurveyorId { get; set; }
+        public Guid SurveyorId { get; set; }
 
         [XmlIgnore]
         public IEnumerable<Person> Surveyors { get; set; }
@@ -82,8 +102,7 @@ namespace SurveyWeb.Models
         [Required]
         [Display(Name = "Date")]
         public string SurveyDate { get; set; }
-
-        // [Required] AS - Are notes required?
+        
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
@@ -104,6 +123,8 @@ namespace SurveyWeb.Models
 
         [XmlIgnore]
         public QuestionGroupsViewModel QuestionGroups { get; set; }
+
+        public string ResponseId { get; set; }
         
         [Range(1,999, ErrorMessage = "Please choice a response.")]
         public ResponseViewModel[] Responses { get; set; }

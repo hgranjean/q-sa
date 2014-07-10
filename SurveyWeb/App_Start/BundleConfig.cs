@@ -8,6 +8,9 @@ namespace SurveyWeb
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // Fix for bundles not rendered correctly in the release version
+            bundles.IgnoreList.Clear();
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -26,6 +29,14 @@ namespace SurveyWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/rgraph").Include(
+                    "~/Scripts/rgraph/libraries/RGraph.common.core.js",
+                    "~/Scripts/rgraph/libraries/RGraph.common.dynamic.js",
+                    "~/Scripts/rgraph/libraries/RGraph.common.tooltips.js",
+                    "~/Scripts/rgraph/libraries/RGraph.drawing.marker1.js",
+                    "~/Scripts/rgraph/libraries/RGraph.bar.js",
+                    "~/Scripts/rgraph/libraries/RGraph.gantt.js"));
         }
     }
 }

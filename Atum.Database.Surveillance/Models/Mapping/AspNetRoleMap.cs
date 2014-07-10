@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using Atum.Domain.Security.Domain;
 
 namespace Atum.Database.Surveillance.Models.Mapping
 {

@@ -54,12 +54,59 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.1.2\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,25 +122,39 @@
     <Compile Include="Migrations\201405280042375_DbMigration2.Designer.cs">
       <DependentUpon>201405280042375_DbMigration2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406031759320_DbMigration3.cs" />
+    <Compile Include="Migrations\201406031759320_DbMigration3.Designer.cs">
+      <DependentUpon>201406031759320_DbMigration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406060608347_DbMigration4.cs" />
+    <Compile Include="Migrations\201406060608347_DbMigration4.Designer.cs">
+      <DependentUpon>201406060608347_DbMigration4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406081730346_DbMigration5.cs" />
+    <Compile Include="Migrations\201406081730346_DbMigration5.Designer.cs">
+      <DependentUpon>201406081730346_DbMigration5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406160333539_DbMigration6.cs" />
+    <Compile Include="Migrations\201406160333539_DbMigration6.Designer.cs">
+      <DependentUpon>201406160333539_DbMigration6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406160413052_DbMigration7.cs" />
+    <Compile Include="Migrations\201406160413052_DbMigration7.Designer.cs">
+      <DependentUpon>201406160413052_DbMigration7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AspNetRole.cs" />
-    <Compile Include="Models\AspNetUser.cs" />
-    <Compile Include="Models\AspNetUserClaim.cs" />
-    <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\AtumSurveillanceContext.cs" />
+    <Compile Include="Models\Mapping\EventUserMap.cs" />
+    <Compile Include="Models\Mapping\PersonMap.cs" />
+    <Compile Include="Models\Mapping\ResponseMap.cs" />
     <Compile Include="Models\Mapping\SurveyMap.cs" />
-    <Compile Include="Models\SurveyEntry.cs" />
-    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Mapping\AspNetRoleMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserClaimMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserLoginMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserMap.cs" />
-    <Compile Include="Models\Hospital.cs" />
     <Compile Include="Models\Mapping\EventMap.cs" />
     <Compile Include="Models\Mapping\HospitalMap.cs" />
-    <Compile Include="Models\Mapping\SurveyEventMap.cs" />
     <Compile Include="Models\Mapping\UserHospitalMap.cs" />
-    <Compile Include="Models\SurveyEvent.cs" />
     <Compile Include="Models\UserHospital.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +175,16 @@
     <Content Include="aspnet-SurveyWeb_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>aspnet-SurveyWeb.mdf</DependentUpon>
+    </Content>
+    <Content Include="DbScripts\DbMigration2.sql" />
+    <Content Include="DbScripts\DbMigration3.sql" />
+    <Content Include="DbScripts\DbMigration4.sql" />
+    <Content Include="DbScripts\DbMigration5.sql" />
+    <Content Include="DbScripts\DbMigration6.sql" />
+    <Content Include="DbScripts\DbMigration7.sql" />
+    <Content Include="DbScripts\ReadMe.txt" />
+    <Content Include="DbScripts\DbMigration8.sql">
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +211,43 @@
     <EmbeddedResource Include="Migrations\201405280042375_DbMigration2.resx">
       <DependentUpon>201405280042375_DbMigration2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406031759320_DbMigration3.resx">
+      <DependentUpon>201406031759320_DbMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406060608347_DbMigration4.resx">
+      <DependentUpon>201406060608347_DbMigration4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406081730346_DbMigration5.resx">
+      <DependentUpon>201406081730346_DbMigration5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406160333539_DbMigration6.resx">
+      <DependentUpon>201406160333539_DbMigration6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406160413052_DbMigration7.resx">
+      <DependentUpon>201406160413052_DbMigration7.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
+      <Project>{94bcb49a-cb7d-4f37-8340-9a9b8cd05614}</Project>
+      <Name>Atum.Domain.Basis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Common\Atum.Domain.Common.csproj">
+      <Project>{402a24d0-272f-48ee-b533-27d4f7b3d2f5}</Project>
+      <Name>Atum.Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.QualityManagement\Atum.Domain.QualityManagement.csproj">
+      <Project>{d54c3d26-26c2-4638-8919-59f511e61827}</Project>
+      <Name>Atum.Domain.QualityManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Security\Atum.Domain.Security.csproj">
+      <Project>{4DB9B8EA-AD8B-48ED-8329-FB511B4BD218}</Project>
+      <Name>Atum.Domain.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.SurveyManagement.csproj">
+      <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
+      <Name>Atum.Domain.SurveyManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

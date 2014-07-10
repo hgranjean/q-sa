@@ -1,4 +1,4 @@
-﻿@model SurveyWeb.Controllers.CompletedSurveyViewModel
+﻿@model SurveyWeb.Models.CompletedSurveyViewModel
 
 @{
     ViewBag.Title = "Completed surveys";
@@ -8,9 +8,11 @@
 
 <fieldset>
     
-@foreach (var completedSurvey in Model.CompletedSurveysShortNames)
+@foreach (var completedSurvey in Model.CompletedSurveys)
 {
-    <div class="editor-field">@Html.ValueFor(m => completedSurvey) @Html.ActionLink("View", "ViewCompletedSurvey", new { responseId = completedSurvey })</div>
+    <div>@Html.ValueFor(m => completedSurvey.SurveyDate) - @Html.ValueFor(m => completedSurvey.SurveyTitle)
+            @Html.ActionLink("View", "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
+    </div>
 }   
 </fieldset>
 

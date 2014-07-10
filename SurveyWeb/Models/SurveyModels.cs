@@ -31,7 +31,8 @@ namespace SurveyWeb.Models
         
         public static IEnumerable<Survey> GetSurveys()
         {
-            return PersistenceServices.GetSurveys();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            return persistenceService.GetSurveys();
         }
 
         public void Save()
@@ -47,7 +48,8 @@ namespace SurveyWeb.Models
             
             this.Survey.QuestionGroups = questionGroups;
 
-            PersistenceServices.SaveSurvey(this.Survey);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            persistenceService.SaveSurvey(this.Survey);
         }
 
         public void AddQuestionGroup()
@@ -102,5 +104,18 @@ namespace SurveyWeb.Models
         }
 
         public IEnumerable<RuleApp.SurveyDeliveryRuleApp.EvaluationResult> Followups { get; set; }
+    }
+
+    public class CompletedSurveyViewModel
+    {
+        public IEnumerable<TracerViewModel> CompletedSurveys { get; set; }
+
+        public CompletedSurveyViewModel()
+        { }
+
+        public CompletedSurveyViewModel(IEnumerable<TracerViewModel> completedSurveys)
+        {
+            this.CompletedSurveys = completedSurveys;            
+        }
     }
 }

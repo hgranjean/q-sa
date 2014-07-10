@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using Atum.Domain.Security.Domain;
 
 namespace Atum.Database.Surveillance.Models.Mapping
 {
@@ -26,6 +27,12 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.Property(t => t.PasswordHash).HasColumnName("PasswordHash");
             this.Property(t => t.SecurityStamp).HasColumnName("SecurityStamp");
             this.Property(t => t.Discriminator).HasColumnName("Discriminator");
+            this.Property(t => t.PersonId).HasColumnName("PersonId");
+
+            // Relationships
+            this.HasOptional(t => t.Person)
+                .WithMany()
+                .HasForeignKey(d => d.PersonId);
         }
     }
 }

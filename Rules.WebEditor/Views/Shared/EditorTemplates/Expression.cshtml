@@ -167,6 +167,7 @@
 				{ title: "Cut", cmd: "cut", uiIcon: "ui-icon-scissors" },
 				{ title: "Copy", cmd: "copy", uiIcon: "ui-icon-copy" },
 				{ title: "Paste", cmd: "paste", uiIcon: "ui-icon-clipboard", disabled: true },
+                { title: "Delete", cmd: "delete", uiIcon: "ui-icon-delete" },
 				{ title: "----" },
 				{
 				    title: "More", children: [
@@ -182,10 +183,13 @@
                 switch (ui.cmd) {
                     case "copy":
                         CLIPBOARD = $target.text();
-                        break
+                        break;
                     case "paste":
                         CLIPBOARD = "";
-                        break
+                        break;
+                    case "delete":
+                        alert(ui.id);
+                        break;
                 }
                 alert("select " + ui.cmd + " on " + $target.text());
                 // Optionally return false, to prevent closing the menu now

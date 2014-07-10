@@ -2,4 +2,38 @@
     ViewBag.Title = "Report";
 }
 
+@Scripts.Render("~/bundles/rgraph")
+<script src="~/Scripts/rgraph/libraries/RGraph.gantt.js"></script>
+<!--[if lt IE 9]>@Scripts.Render("~/Scripts/rgraph/excanvas/excanvas.js")<![endif]-->
+
 <h2>Report</h2>
+
+<p>
+    This Bar chart shows a performance of team members.
+</p>
+
+<canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+
+    <script>
+        $(document).ready(function () {
+            var bar = new RGraph.Bar('cvs', [4, 8, 5, 3, 2])
+                .set('labels', ['Fred', 'John', 'James', 'Louis', 'Pete'])
+                .set('strokestyle', 'rgba(0,0,0,0)')
+                .draw();
+
+            // Get the X/Y coordinates from the bar chart
+            var idx = 2;
+            var x = bar.coords[idx][0] + (bar.coords[idx][2] / 2);
+            var y = bar.coords[idx][1];
+            var r = 15;
+
+            marker = new RGraph.Drawing.Marker1('cvs', x, y, r, 'A')
+                .set('tooltips', ['John was the winner by a country mile.'])
+                .set('highlight.fill', 'rgba(255,0,0,0.2)')
+                .draw();
+        })
+    </script>
+
+<div>
+    See also: @Html.ActionLink("Completion Report", "CompletionReport")
+</div>

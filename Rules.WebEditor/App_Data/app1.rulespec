@@ -14,10 +14,10 @@
               <Condition>true</Condition>
               <Rules>
                 <Rule xsi:type="SetValueAction">
+                  <Name>setValue1</Name>
                   <Target>Field1</Target>
                   <Value>1234</Value>
                 </Rule>
-                <Rule xsi:type="SetValueAction" />
               </Rules>
             </Rule>
           </Actions>
@@ -34,6 +34,7 @@
         <FunctionName>Test1</FunctionName>
         <Prototype>My super rule is valid</Prototype>
         <Expression>Context.Field1 == "1234"</Expression>
+        <Placeholders />
         <Type>Format</Type>
         <Category>Aggregate</Category>
         <DataType>Decimal</DataType>

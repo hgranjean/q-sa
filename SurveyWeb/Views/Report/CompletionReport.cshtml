@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Report";
+}
+
+@Scripts.Render("~/bundles/rgraph")
+<!--[if lt IE 9]>@Scripts.Render("~/Scripts/rgraph/excanvas/excanvas.js")<![endif]-->
+
+@{
+    ViewBag.Title = "Completion Report";
+}
+
+<h2>Completion Report</h2>
+
+<canvas id="cvs" width="500" height="250">[No canvas support]</canvas>
+
+<script>
+    $(document).ready(function () {
+        var gantt = new RGraph.Gantt('cvs', [
+            [[31, 28, 67, 'Richard'], [90, 15, 50, null, 'blue', 'red']],
+            [[0, 28, 50, 'Rachel'], [80, 25, 74]],
+            [12, 28, 45, 'Fred'],
+            [59, 14, 0, 'Barney', 'Gradient(white:red)']
+        ])
+            .set('xmax', 122)
+            .set('gutter.right', 35)
+            .set('labels', ['January', 'February', 'March', 'April'])
+            .set('title', 'Work schedule for Xyz Ltd')
+            .set('defaultcolor', '#faa')
+            .set('background.grid', false)
+            .set('vbars', [
+                [0, 10, 'rgba(192,255,192,0.5)'],
+                [20, 10, 'rgba(192,255,192,0.5)'],
+                [40, 10, 'rgba(192,255,192,0.5)'],
+                [60, 10, 'rgba(192,255,192,0.5)'],
+                [80, 10, 'rgba(192,255,192,0.5)'],
+                [100, 10, 'rgba(192,255,192,0.5)']
+            ])
+            .set('borders', false)
+            .set('title.vpos', 0.6)
+            .set('labels.align', 'bottom')
+            .draw();
+    });
+</script>

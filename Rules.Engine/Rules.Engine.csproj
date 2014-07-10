@@ -39,6 +39,7 @@
       <HintPath>..\ThirdParty\RulesEngine\Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,11 +55,13 @@
     <Compile Include="Functions\Builders\DeclareVariableFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ExpressionTemplateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\FunctionNodeFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\SendMailActionFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SimpleRuleSetFunctionInfoBuilder.cs" />
     <Compile Include="Functions\Builders\SetValueActionFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\WhileRuleSetFunctionBuilder.cs" />
     <Compile Include="Functions\DeclareVariableFunction.cs" />
     <Compile Include="Functions\FunctionNodeFunction.cs" />
+    <Compile Include="Functions\SendMailFunction.cs" />
     <Compile Include="Functions\SimpleRuleSetFunction.cs" />
     <Compile Include="Functions\Templates\ExpressionTemplateFunction.cs" />
     <Compile Include="Functions\WhileRuleSetFunction.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="Infos\RuleSetInfo.cs" />
     <Compile Include="Functions\CompileContext.cs" />
     <Compile Include="Infos\RuleApplicationInfo.cs" />
+    <Compile Include="Infos\SendMailActionInfo.cs" />
     <Compile Include="Infos\SimpleRuleSetInfo.cs" />
     <Compile Include="Infos\Templates\TemplateInfo.cs" />
     <Compile Include="Infos\VocabularyInfo.cs" />

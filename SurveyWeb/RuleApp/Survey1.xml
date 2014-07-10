@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ID>1</ID>
+  <Guid>65029ff5-e88d-442f-a7e8-a2c665170dbf</Guid>
   <Title>Survey Template 1</Title>
-  <SurveyType>Audit</SurveyType>
+  <SurveyType>Surveillance</SurveyType>
   <QuestionGroups>
     <item>
       <key>
@@ -10,22 +11,12 @@
       </key>
       <value>
         <QuestionGroup>
+          <Title>one</Title>
           <Number>0</Number>
           <Questions>
             <Question>
               <ID>0</ID>
               <Text>My Question Text</Text>
-              <Number>0</Number>
-              <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
-              <QuestionType>SelectOne</QuestionType>
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text>My SelectOne Question Text</Text>
               <Number>1</Number>
               <Rank>0</Rank>
               <BasisReference>
@@ -36,7 +27,7 @@
             </Question>
             <Question>
               <ID>0</ID>
-              <Text>My TrueFalse Question Text</Text>
+              <Text>My SelectOne Question Text</Text>
               <Number>2</Number>
               <Rank>0</Rank>
               <BasisReference>
@@ -47,7 +38,7 @@
             </Question>
             <Question>
               <ID>0</ID>
-              <Text>My SelectOne Question Text</Text>
+              <Text>My TrueFalse Question Text</Text>
               <Number>3</Number>
               <Rank>0</Rank>
               <BasisReference>
@@ -58,8 +49,19 @@
             </Question>
             <Question>
               <ID>0</ID>
-              <Text>My SelectMultiple Question Text</Text>
+              <Text>My SelectOne Question Text</Text>
               <Number>4</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>My SelectMultiple Question Text</Text>
+              <Number>5</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
@@ -77,12 +79,13 @@
       </key>
       <value>
         <QuestionGroup>
+          <Title>some</Title>
           <Number>0</Number>
           <Questions>
             <Question>
               <ID>0</ID>
               <Text>utiut</Text>
-              <Number>5</Number>
+              <Number>6</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>

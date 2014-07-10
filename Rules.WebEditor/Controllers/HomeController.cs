@@ -9,7 +9,7 @@ using Rules.Domain.Vocabulary;
 using Rules.WebEditor.Models;
 
 namespace Rules.WebEditor.Controllers
-{
+{  
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -47,7 +47,7 @@ namespace Rules.WebEditor.Controllers
             return View();
         }
 
-        [Route("{type}/{ruleappid?}/{entityid?}/{rulesetid?}/{actionid?}", Order = 3)]
+        [Route("~/Blade/{type}/{ruleappid?}/{entityid?}/{rulesetid?}/{actionid?}", Order = 3)]
         public ActionResult AddBladeEditor(string type, string ruleappid, string entityid, string rulesetid, string actionid)
         {
             var viewModel = GetJourneyViewModel(ruleappid, entityid, rulesetid);
@@ -60,7 +60,7 @@ namespace Rules.WebEditor.Controllers
             return View("Index", viewModel);
         }
 
-        [Route("{type}/{ruleappid?}/{entityid?}/{rulesetid?}", Order = 2)]
+        [Route("~/Blade/{type}/{ruleappid?}/{entityid?}/{rulesetid?}", Order = 2)]
         public ActionResult AddBlade(string type, string ruleappid, string entityid, string rulesetid)
         {
             var viewModel = GetJourneyViewModel(ruleappid, entityid, rulesetid);
@@ -78,28 +78,31 @@ namespace Rules.WebEditor.Controllers
             
             var viewModel = GetJourney();
 
-            if (ruleappid != null)
+            if (ruleApplicationSpec != null)
             {
-                viewModel.Blades.Add(new BladeViewModel("Entities", BladeCategoryType.Entity,
-                                                    ruleApplicationSpec.Entities.ToList<RuleObjectBase>()));
-            }
-            if (entityid != null)
-            {
-                viewModel.Blades.Add(new BladeViewModel("RuleSets", BladeCategoryType.RuleSet,
-                                                    ruleApplicationSpec.Entities.FirstOrDefault(
-                                                        item =>
-                                                        String.Compare(item.Name, entityid, StringComparison.OrdinalIgnoreCase) ==
-                                                        0).RuleSets.ToList<RuleObjectBase>()));
-            }
-            if (rulesetid != null)
-            {
-                viewModel.Blades.Add(new BladeViewModel("Rules", BladeCategoryType.Rules,
-                                                    ruleApplicationSpec.Entities.FirstOrDefault(
-                        item => String.Compare(item.Name, entityid, StringComparison.OrdinalIgnoreCase) == 0)
-                                                   .RuleSets.FirstOrDefault(
-                                                       rs =>
-                                                       String.Compare(rs.Name, rulesetid, StringComparison.OrdinalIgnoreCase) ==
-                                                       0).Actions.ToList<RuleObjectBase>()));
+                if (ruleappid != null)
+                {
+                    viewModel.Blades.Add(new BladeViewModel("Entities", BladeCategoryType.Entity,
+                                                        ruleApplicationSpec.Entities.ToList<RuleObjectBase>()));
+                }
+                if (entityid != null)
+                {
+                    viewModel.Blades.Add(new BladeViewModel("RuleSets", BladeCategoryType.RuleSet,
+                                                        ruleApplicationSpec.Entities.FirstOrDefault(
+                                                            item =>
+                                                            String.Compare(item.Name, entityid, StringComparison.OrdinalIgnoreCase) ==
+                                                            0).RuleSets.ToList<RuleObjectBase>()));
+                }
+                if (rulesetid != null)
+                {
+                    viewModel.Blades.Add(new BladeViewModel("Rules", BladeCategoryType.Rules,
+                                                        ruleApplicationSpec.Entities.FirstOrDefault(
+                            item => String.Compare(item.Name, entityid, StringComparison.OrdinalIgnoreCase) == 0)
+                                                       .RuleSets.FirstOrDefault(
+                                                           rs =>
+                                                           String.Compare(rs.Name, rulesetid, StringComparison.OrdinalIgnoreCase) ==
+                                                           0).Actions.ToList<RuleObjectBase>()));
+                }
             }
             return viewModel;
         }
@@ -115,7 +118,8 @@ namespace Rules.WebEditor.Controllers
             return View("Index", viewModel);
         }
         
-        [Route("Save")]
+        [Route("~/Home/Save")]
+        [HttpGet]
         public ActionResult Save()
         {
             PersistenceServices.SaveRuleApps();

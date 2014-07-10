@@ -18,7 +18,7 @@ namespace Rules.WebEditor
 
         private static void CreateSampleApps()
         {
-            var rules1 = new Rule[] {new SetValueAction() {Target = "Field1", Value = "1234"}};
+            var rules1 = new Rule[] {new SetValueAction() {Name = "setValue1", Target = "Field1", Value = "1234"}};
             var action1 =
                 new List<Rule>(new[] {new SimpleRuleSet {Name = "action1", Condition = "true", Rules = rules1.ToList()}});
 

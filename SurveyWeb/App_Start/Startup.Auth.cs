@@ -2,6 +2,8 @@
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
+using SurveyWeb.App_Start;
+using SurveyWeb.Models;
 
 namespace SurveyWeb
 {
@@ -18,6 +20,10 @@ namespace SurveyWeb
             });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            // OWIN config
+            app.CreatePerOwinContext<ApplicationDbContext>(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(

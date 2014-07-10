@@ -1,0 +1,29 @@
+﻿@model Atum.Domain.Security.Domain.AspNetUser
+@{
+    ViewBag.Title = "Delete User";
+}
+
+<h2>Delete User</h2>
+
+
+@using (Html.BeginForm("DeleteUser", "Account"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="editor-label">
+            Do you want to delete "@Html.DisplayTextFor(m => m.UserName)" ?
+        </div>
+    </fieldset>
+    
+    <br/>
+    
+    <input type="submit" value="Delete" />
+    
+    @Html.ActionLink("Cancel", "UserHospitalIndex", "Hospital")
+}

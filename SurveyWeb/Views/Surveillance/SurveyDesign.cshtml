@@ -1,9 +1,8 @@
-﻿
-@using Atum.Domain.Surveillance
+﻿@using Atum.Domain.SurveyManagement
 @using SurveyWeb.Models
 @model SurveyWeb.Models.SurveyViewModel
 @{
-    ViewBag.Title = "Surveillance Template Design";
+    ViewBag.Title = "Edit Surveillance Template";
 }
 
 <hgroup class="title">
@@ -16,9 +15,10 @@
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Edit Surveillance Template Design </legend>
+        <legend>Edit Surveillance Template</legend>
 
         @Html.HiddenFor(m => m.Survey.ID)
+        @Html.HiddenFor(m => m.Survey.Guid)
 
         <div style="display: table">
             

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<html>
+  <style>
+    body { font-family: Arial }
+  </style>
+  <body>
+    <div>Welcome to {{WHITE_LABEL}}!</div>
+    <div>You're invited to sign up for an account at {{DOMAIN_NAME}}.</div>
+    <div><a href="http://{{DOMAIN_NAME}}{{APP_PATH}}/account/register?registrationToken={{REGISTRATION_TOKEN}}">Click here to finish the sign up process.</a></div>
+  </body>
+</html>

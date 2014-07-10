@@ -100,6 +100,7 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
@@ -111,15 +112,18 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Domain\Business\Hospital.cs" />
     <Compile Include="Domain\Business\ZipGeoData.cs" />
     <Compile Include="Domain\Common\Area.cs" />
     <Compile Include="Domain\Common\Building.cs" />
+    <Compile Include="Domain\Common\Company.cs" />
     <Compile Include="Domain\Common\Department.cs" />
     <Compile Include="Domain\Common\Document.cs" />
     <Compile Include="Domain\Common\DocumentType.cs" />
     <Compile Include="Domain\Common\Environment.cs" />
     <Compile Include="Domain\Common\Frequency.cs" />
     <Compile Include="Domain\Common\Floor.cs" />
+    <Compile Include="Domain\Common\Industry.cs" />
     <Compile Include="Domain\Common\TableOfContents.cs" />
     <Compile Include="Domain\Common\TOCElement.cs" />
     <Compile Include="Domain\Common\Exceptions\TOCElementNotFoundException.cs" />

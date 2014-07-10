@@ -1,8 +1,6 @@
-﻿
-
-@model SurveyWeb.Models.TracerViewModel
+﻿@model SurveyWeb.Models.TracerViewModel
 @{
-    ViewBag.Title = "Environment Of Care";
+    ViewBag.Title = Model.SurveyTitle;
 }
 
 <hgroup class="title">
@@ -69,7 +67,7 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownList("SurveyorId", new SelectList(Model.Surveyors, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownList("SurveyorId", new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", null)
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
@@ -129,12 +127,11 @@
                                 var key = choice.ID;
                                 var j = qIndex++;
 
-                                <!-- http://stackoverflow.com/questions/2512809/has-anyone-implement-radiobuttonlistfort-for-asp-net-mvc -->
-                                    
                                 <div style="display: table-cell; text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
                                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    
                                     @Html.RadioButtonFor(m => m.Responses[question.Number], key,
-                                        new {id = "Response" + key, name = "Question" + question.Number, @class = "sur-choice"} )
+                                                     new {id = "Response" + key, name = "Question" + question.Number, @class = "sur-choice"} )   
                                 </div>
                             }
 
@@ -166,8 +163,16 @@
             }
         </div>
         <div>&nbsp;</div>
+        @if (ViewBag.IsReadOnly ?? false)
+        {
+            @Html.ActionLink("Close", "Dashboard", "Surveillance")
+        }
+        else
+        {
+
             <input type="submit" value="Done" />
             @Html.ActionLink("Reset", "SurveyDelivery", "Surveillance", new {id = 0})
+        }
 </fieldset>
 }
 

@@ -1,0 +1,182 @@
+﻿@model SurveyWeb.Models.TracerViewModel
+@{
+    ViewBag.Title = Model.SurveyTitle;
+}
+
+<hgroup class="title">
+    @*<h1>@ViewBag.Title</h1>*@
+</hgroup>
+<h2>Survey Delivery</h2>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+</script>
+
+@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.SurveyId)
+
+    <fieldset>
+        <legend>Surveillance</legend>
+        <div id="tracerHeader" style="display:table">
+            <div style="display:table-row">
+                <div style="display:table-cell;width:50%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FacilityId)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.DropDownList("FacilityId", new SelectList(Model.Facilities, "Id", "Name"), "Please select...", null)
+                    </div>
+                </div>
+                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
+                <div style="display:table-cell;width:45%">&nbsp;&nbsp;</div>
+            </div>
+            
+            <div style="display:table-row">
+                <div style="display:table-cell;width:50%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FloorNumber)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.EditorFor(m => m.FloorNumber)
+                    </div>
+                </div>
+                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
+                <div style="display:table-cell;width:45%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.AreaId)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.DropDownList("AreaId", new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display:table-row">
+                <div style="display:table-cell;width:50%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.BuildingId)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.DropDownList("FloorNumber", new SelectList(Model.Buildings, "Id", "Name"), "Please select...", null)
+                    </div>
+                </div>
+                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
+                <div style="display:table-cell;width:45%">&nbsp;&nbsp;</div>
+            </div>
+            
+            <div style="display:table-row">
+                <div style="display:table-cell;width:50%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.DropDownList("SurveyorId", new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", null)
+                    </div>
+                </div>
+                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
+                <div style="display:table-cell;width:45%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.DepartmentId)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Please select...", null)
+                    </div>
+                </div>
+            </div>
+            <div style="display:table-row">
+                <div style="display:table-cell;width:50%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyDate)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.TextBoxFor(m => m.SurveyDate, new {@id = "datepicker"})
+                    </div>
+                </div>
+                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
+                <div style="display:table-cell;width:45%">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.DropDownList("FacilityId", new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>&nbsp;</div>
+
+        <div style="display: table; table-layout: fixed;" class="gn-table">
+            
+            @foreach (var group in Model.QuestionGroups)
+            {   
+                <div style="display:table-row" class="table-row-withborder">
+                    <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 35%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color:green; background-color: #CFDBC5;">Compliant</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: red; background-color: #CFDBC5;">Non-Compliant&nbsp;</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; background-color: #CFDBC5;">&nbsp;&nbsp;N/A</div>
+                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: blue;  background-color: #CFDBC5;">Follow-up</div>
+                    <div style="display:table-cell;font-weight:bold;width:15%; text-align: center;background-color: #CFDBC5;">Standard</div>
+                    <div style="display:table-cell;font-weight:bold;width:10%; background-color: #CFDBC5;">Notes/Photo/Document</div>
+                </div>
+                
+                var questions = group.QuestionGroup.Questions;
+                for (int qIndex = 0, i = 0; i < questions.ToArray().Length; i++)
+                {
+                    var question = questions[i];
+                    
+                    <div id="choiceGroup" style="display: table-row-group;" >
+                        <div style="display:table-row;width:100%">                            
+                            <div id="questionText" style="display:table-cell;">@question.Text</div>
+                        </div>
+                        <div style="display:table-row;width:100%">
+                            <div style="display: table-cell" class="gn-table-row-withborders"></div>
+                            @foreach (var choice in question.ResponseChoices)
+                            {
+                                var key = choice.ID;
+                                var j = qIndex++;
+
+                                <div style="display: table-cell; text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    @Html.RadioButtonFor(m => m.Responses[question.Number], key,
+                                        new {id = "Response" + key, name = "Question" + question.Number, @class = "sur-choice"} )
+                                </div>
+                            }
+
+                            @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
+                            {
+                                <div id="questionBasis" style="display: table-cell" class="gn-table-row-withborders">
+                                    @Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})
+                                </div>
+                            }
+                            else
+                            {
+                                <div style="display: table-cell" class="gn-table-row-withborders">&nbsp;</div>
+                            }
+
+                            <div style="display: table-cell; white-space: nowrap;" class="gn-table-row-withborders">
+                                @Html.ActionLink("Notes", "EditNotes", "Surveillance", null, new {@class = "gn-notes-icon", style = "display:inline"})
+                                @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
+                                <span style="white-space: nowrap">
+                                    <span id="file" class="gn-camera-icon" style="display: inline"></span>
+                                    @Html.ActionLink("Load", "Load", "Surveillance", null, new {@class = "gn-upload-icon", style = "display:inline"})
+                                    <input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline"
+                                        onchange=" document.getElementById('file').innerHTML = this.value; " />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+        <div>&nbsp;</div>
+        @if (ViewBag.IsReadOnly ?? false)
+        {
+            @Html.ActionLink("Close", "Dashboard", "Surveillance")
+        }
+        else
+        {
+
+            <input type="submit" value="Done" />
+            @Html.ActionLink("Reset", "SurveyDelivery", "Surveillance", new {id = 0})
+        }
+</fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<html>
+  <style>
+    body { font-family: Arial }
+  </style>
+  <body>
+    <div>An event was assigned to you in {{WHITE_LABEL}}!</div>
+    <div><a href="http://{{DOMAIN_NAME}}/survey/Surveillance/SurveySchedules">Click here to review the assignment.</a></div>
+  </body>
+</html>

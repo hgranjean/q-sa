@@ -10,6 +10,12 @@ namespace Rules.WebEditor.Models.Actions
     {
         private SetValueAction Model { get; set; }
 
+        public string Name
+        {
+            get { return Model.Name; }
+            set { Model.Name = value; }
+        }
+
         public SetValueActionViewModel(SetValueAction model)
         {
             this.Model = model;

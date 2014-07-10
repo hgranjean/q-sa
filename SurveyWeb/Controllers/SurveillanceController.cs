@@ -1,9 +1,17 @@
-﻿using Atum.Database.Surveillance.Models;
+﻿using System.Configuration;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Web.Routing;
+using Atum.Database.Surveillance.Models;
+using Atum.Domain;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
+using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
 using Atum.Utility.XML;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using SurveyWeb.Controllers;
 using SurveyWeb.Models;
 using SurveyWeb.RuleApp;
@@ -19,6 +27,31 @@ namespace MvcApplication1.Controllers
     [Authorize]
     public class SurveillanceController : Controller
     {
+        private AtumSurveillanceContext _dbContext = null;
+        
+        public SurveillanceController()
+           : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+        {
+            _dbContext = new AtumSurveillanceContext();
+        }
+
+        public SurveillanceController(UserManager<ApplicationUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && UserManager != null)
+            {
+                UserManager.Dispose();
+                UserManager = null;
+            }
+            base.Dispose(disposing);
+        }
+
         //
         // GET: /Surveillance/
 
@@ -34,17 +67,12 @@ namespace MvcApplication1.Controllers
         public ActionResult Surveys()
         {
             var surveys = SurveyViewModel.GetSurveys();
-
-            // Initialize model with some dummy templates
-            /*var model = new SurveysViewModel { Surveys = new Surveys
-                        {
-                            LoadSurvey("Survey Template 1"),
-                            LoadSurvey("Survey Template 2"),
-                        }
-                };*/
-
+            
             var model = new SurveysViewModel { Surveys = new Surveys() };
             model.Surveys.AddRange(surveys);
+
+            ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowSurveyorContent = UserManager.IsInRole(User.Identity.GetUserId(), "Surveyor");
             
             return View(model);
         }
@@ -53,10 +81,42 @@ namespace MvcApplication1.Controllers
         {
             var surveys = SurveyViewModel.GetSurveys();
 
-            var model = new SurveysViewModel { Surveys = new Surveys() };
-            model.Surveys.AddRange(surveys);
+            var userId = User.Identity.GetUserId();
+            var events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId);
 
-            return Surveys();
+            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>()};
+            
+            foreach (var @event in events)
+            {   
+                var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
+
+                var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
+                
+                eventSurveys.Add(survey);    
+            }
+
+            return View(model);
+        }
+
+        public ActionResult PastDueSurveys()
+        {
+            var surveys = SurveyViewModel.GetSurveys();
+
+            var userId = User.Identity.GetUserId();
+            var events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start <= DateTime.Now);
+
+            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>() };
+
+            foreach (var @event in events)
+            {
+                var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
+
+                var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
+
+                eventSurveys.Add(survey);
+            }
+
+            return View(model);
         }
 
         public ActionResult DeleteSurvey(long id)
@@ -69,7 +129,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult DeleteSurvey(SurveyViewModel model)
         {
-            PersistenceServices.DeleteSurvey(model.Survey.ID.ToString());
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            persistenceService.DeleteSurvey(model.Survey.ID.ToString());
 
             return RedirectToAction("Surveys");
         }
@@ -102,41 +163,59 @@ namespace MvcApplication1.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="surveyId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult SurveyDelivery(int? surveyId)
+        public ActionResult SurveyDelivery(int id)
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
-            var model = LoadTracerViewModel(surveyId);
+            var model = LoadTracerViewModel(id);
+
+            if (model.SurveyTypeId == (int)SurveyType.Audit)
+            {
+                return RedirectToAction("SurveyDesign", new {id = id.ToString()});
+            }
             
             return View(model);
         }
 
         public ActionResult CompletedSurveys()
         {
-            var availableResponses = PersistenceServices.GetResponses();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var surveys = persistenceService.GetSurveys();
+            
+            // Filtering out responses by user
+            var userId = User.Identity.GetUserId();
+            var responses = _dbContext.Responses.Where(m => m.UserId == userId).Select(m => m.Id);
 
-            // TODO: Filter out response by user
-            // foreach (var response in availableResponses) { PersistenceServices.LoadTracer(response); }
+            var models = new List<TracerViewModel>();
+            foreach (var response in responses)
+            {
+                var tracerModel = persistenceService.LoadTracer(response);
+                tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
+                models.Add(tracerModel);
+            }
 
-            var model = new CompletedSurveyViewModel(availableResponses);
+            var model = new CompletedSurveyViewModel(models);
 
             return View(model);
         }
 
         public ActionResult ViewCompletedSurvey(string responseId)
         {
-            var availableResponses = PersistenceServices.GetResponses();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var availableResponses = persistenceService.GetResponses();
 
             foreach (var response in availableResponses)
             {
-                if (response.EndsWith(responseId))
-                {
-                    var model = PersistenceServices.LoadTracer(responseId);
+                if (response.Contains(responseId))
+                {   
+                    var model = persistenceService.LoadTracer(responseId);
 
                     LoadTracerReferenceData(model);
 
                     LoadSurveyData(model);
+
+                    ViewBag.IsReadOnly = true;
 
                     return View("SurveyDelivery", model);
                 }
@@ -156,10 +235,11 @@ namespace MvcApplication1.Controllers
 
         private TracerViewModel LoadTracerViewModel(int? surveyId)
         {
-            Survey survey = LoadSurvey("Survey Template 1");
+            Survey survey = null; // = LoadSurvey("Survey Template 1");
             if (surveyId.HasValue)
             {
-                survey = PersistenceServices.GetSurvey(surveyId.Value);
+                var persistenceService = ServiceManager.GetService<PersistenceServices>();
+                survey = persistenceService.GetSurvey(surveyId.Value);
 
                 foreach (var questionGroup in survey.QuestionGroups)
                 {
@@ -173,7 +253,7 @@ namespace MvcApplication1.Controllers
                             }
 
                             question.ResponseChoices.Clear();
-                            setQuestionChoices(question);
+                            SetQuestionChoices(question);
                         }
                     }
                 }
@@ -212,55 +292,55 @@ namespace MvcApplication1.Controllers
             Question question = null;
             var qGroup0211 = survey.AddQuestionGroup("0211_Doors ");
             question = qGroup0211.AddQuestion("0211", "No items covering doors, i.e. decorations, paper, etc. ", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0214 = survey.AddQuestionGroup("0214_Adequate Lighting");
             question = qGroup0214.AddQuestion("0214", "Lighting is adequate. ", QuestionType.SelectOne);
             question.BasisReference = new TOCElement("Std: LS.02.01.20 EP27 ");
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
             var qGroup0215 = survey.AddQuestionGroup("0215_ Personal Items");
             question = qGroup0215.AddQuestion("0215", "No items stored under the sink in kitchen area.  ", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0218 = survey.AddQuestionGroup("0218_Unoccupied Rooms ");
             question = qGroup0218.AddQuestion("0218", "Unoccupied rooms are locked.", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0219 = survey.AddQuestionGroup("0219_ Violent/Disruptive Behavior");
             question = qGroup0219.AddQuestion("0219", "How do you respond to violent or disruptive behavior?", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0220 = survey.AddQuestionGroup("0220_Weapons");
             question = qGroup0220.AddQuestion("0220", "How do you respond to violent or disruptive behavior with weapons? ", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0221 = survey.AddQuestionGroup("0221_Authorized Identification");
             question = qGroup0221.AddQuestion("0221", "Are all individuals in area wearing their authorized identification according to hospital policy?", QuestionType.SelectOne);
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
 
             var qGroup0222 = survey.AddQuestionGroup("0222_Emergency Numbers Posted");
             question = qGroup0222.AddQuestion("0222", "Emergency numbers are visibly posted. ", QuestionType.SelectOne);
             question.BasisReference = new TOCElement("Std: EC.02.01.01 EP10 ");
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
             var qGroup0223 = survey.AddQuestionGroup("0223_Gas Cylinders Secured");
             question = qGroup0223.AddQuestion("0223", "Are gas cylinders properly secured? ", QuestionType.SelectOne);
             question.BasisReference = new TOCElement("Std: EC.02.03.01 EP1");
-            setQuestionChoices(question);
+            SetQuestionChoices(question);
 
             return survey;
         }
 
         private int _questionChoiceNextId = 0;
 
-        private void setQuestionChoices(Question question)
+        private void SetQuestionChoices(Question question)
         {
             question.AddChoice("Compliant").SetIdInternal(_questionChoiceNextId++);
             question.AddChoice("Non Compliant").SetIdInternal(_questionChoiceNextId++);
@@ -269,9 +349,7 @@ namespace MvcApplication1.Controllers
             question.AddChoice("Follow-Up Completed").SetIdInternal(_questionChoiceNextId++);
         }
 
-
-
-        private void setQuestion(QuestionGroup questionGroup, QuestionType questionType)
+        private void SetQuestion(QuestionGroup questionGroup, QuestionType questionType)
         {
             Question question = null;
             switch (questionType)
@@ -318,8 +396,9 @@ namespace MvcApplication1.Controllers
 
         private IEnumerable<Person> LoadSurveyors()
         {
-            yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
-            yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
+            // yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
+            // yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
+            return _dbContext.Persons;
         }
 
         private IEnumerable<Area> LoadAreas()
@@ -401,13 +480,18 @@ namespace MvcApplication1.Controllers
         
         public ActionResult Dashboard()
         {
+            ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = UserManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+            
             return View();
         }
 
         [HttpPost]
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
         {
-            var survey = PersistenceServices.GetSurvey(viewModel.SurveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurvey(viewModel.SurveyId);
             
             var questions = new Questions();
             var responses = new Responses();
@@ -419,7 +503,7 @@ namespace MvcApplication1.Controllers
                 foreach (var question in questionGroup.Value.Questions)
                 {
                     questions.Add(question);
-                    var value = values.GetValue("Responses[" + qIndex + "]");
+                    var value = values.GetValue("Responses[" + question.Number /* qIndex  */ + "]");
                     if (value != null)
                     {
                         var responseId = (int) value.ConvertTo(typeof (int));
@@ -456,7 +540,19 @@ namespace MvcApplication1.Controllers
 
             analysisViewModel.Followups = result;
 
-            PersistenceServices.SaveTracer(viewModel);
+            var userId = User.Identity.GetUserId();
+
+            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == userId);
+            
+            var responseEntry = new ResponseEntry {Id = Guid.NewGuid().ToString("d"), User = user};
+
+            _dbContext.Responses.Add(responseEntry);
+
+            _dbContext.SaveChanges();
+
+            viewModel.ResponseId = responseEntry.Id;
+
+            persistenceService.SaveTracer(viewModel);
             
             return View("SurveyAnalysis", analysisViewModel);
         }
@@ -472,7 +568,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult CreateQuestionGroup(long surveyId)
         {
-            Survey survey = PersistenceServices.GetSurveys().First(item => item.ID == surveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID == surveyId);
 
             return View(new SurveyViewModel(survey));
         }
@@ -480,7 +577,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
         {
-            var survey = PersistenceServices.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
 
             if (survey.QuestionGroups == null)
             {
@@ -500,6 +598,26 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult Save(SurveyViewModel viewModel)
         {
+            if (viewModel.Survey.Guid == Guid.Empty)
+            {
+                viewModel.Survey.Guid = Guid.NewGuid();
+
+                _dbContext.Surveys.Add(new SurveyEntry
+                    {
+                        Id = viewModel.Survey.Guid.ToString("d"),
+                        Title = viewModel.Survey.Title
+                    });
+            }
+            else
+            {
+                var id = viewModel.Survey.Guid.ToString("d");
+                var surveyEntry = _dbContext.Surveys.FirstOrDefault(m => m.Id == id);
+
+                surveyEntry.Title = viewModel.Survey.Title;
+            }
+
+            _dbContext.SaveChanges();
+
             viewModel.Save();
 
             return View();
@@ -507,7 +625,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult EditQuestionGroup(string surveyId, string groupId)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == surveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
 
             ViewBag.QuestionGroupId = groupId;
 
@@ -521,7 +640,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult EditQuestionGroup(QuestionGroupViewModel viewModel)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
             {   
@@ -537,7 +657,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult DeleteQuestionGroup(string surveyId, string groupId)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == surveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
 
             ViewBag.QuestionGroupId = groupId;
 
@@ -551,7 +672,8 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult DeleteQuestionGroup(QuestionGroupViewModel viewModel)
         {
-            var survey = PersistenceServices.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
             {
@@ -568,7 +690,8 @@ namespace MvcApplication1.Controllers
 
         public ActionResult AddQuestion(string surveyId, string questionGroupId)
         {
-            var survey = PersistenceServices.GetSurvey(Convert.ToInt32(surveyId));
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurvey(Convert.ToInt32(surveyId));
 
             var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
 
@@ -585,6 +708,11 @@ namespace MvcApplication1.Controllers
         }
 
         public ActionResult Calendar()
+        {
+            return View();
+        }
+        
+        public ActionResult Report()
         {
             return View();
         }
@@ -607,83 +735,187 @@ namespace MvcApplication1.Controllers
                     allDay = false
                 }};*/
 
-            var eventList = new[] {
-                    new
-                        {
-                            id = 999,
-                            title = "All Day Event",
-                            start = "2014-05-20",
-                            end = "2014-05-20"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Long Event",
-                            start = "2014-05-27",
-                            end = "2014-06-10"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Repeating Event",
-                            start = "2014-06-09T16:00:00",
-                            end = "2014-06-09T16:00:00"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Repeating Event",
-                            start = "2014-06-16T16:00:00",
-                            end = "2014-06-16T16:00:00"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Meeting",
-                            start = "2014-06-12T10:30:00",
-                            end = "2014-06-12T12:30:00"
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Lunch",
-                            start = "2014-06-12T12:00:00",
-                            end = "2014-06-12T12:00:00",
-                        },
-                    new
-                        {
-                            id = 999,
-                            title = "Birthday Party",
-                            start = "2014-06-13T07:00:00",
-                            end = "2014-06-13T07:00:00"
-                        },
-                    new
-                        {
-                            id = 99,
-                            title = "Click for Google",
-                            start = "2014-05-28",
-                            end = "2014-05-28"
-                        }
-                };
+            var rows = _dbContext.Events.ToList().Select(e =>
+                new
+                {
+                    id = e.Id,
+                    title = e.Title,
+                    start = e.Start.ToString("s"),
+                    end = e.End.ToString("s"),
+                    allDay = false
+                });
 
-            var rows = eventList.ToArray();
+            // var rows = eventList.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult EditEvent(int id)
+        public ActionResult EditEvent(Guid id)
         {
-            return View();
+            var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
+
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var availableSurveys = persistenceService.GetSurveys();
+
+            var model = new EventViewModel(evt)
+            {
+                Survey = _dbContext.Surveys.FirstOrDefault(m => m.Id == evt.SurveyId),
+                SurveyId = evt.SurveyId,
+                AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
+                AvailableUsers = _dbContext.AspNetUsers,
+                Users = from a in _dbContext.EventUsers
+                        join b in _dbContext.AspNetUsers on a.UserId equals b.Id
+                        where a.EventId == evt.Id
+                        select b
+            };
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEvent(EventViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var evt = new Event
+                    {
+                        Id = model.Id,
+                        Title = model.Title,
+                        Start = model.Start,
+                        End = model.End,
+                        //UserId = model.UserId, // Owner
+                        SurveyId = model.SurveyId
+                    };
+
+                _dbContext.Events.Attach(evt);
+                _dbContext.Entry(evt).CurrentValues.SetValues(evt);
+                _dbContext.Entry(evt).State = EntityState.Modified;
+
+                if (model.SelectedUsers != null)
+                {
+                    // Remove unselected items
+
+                    var availableUsers = _dbContext.AspNetUsers;
+                    foreach (var item in availableUsers)
+                        {
+                            if (model.SelectedUsers.Count(userId => userId == item.Id) == 0)
+                            {
+                                var toDelete = _dbContext.EventUsers.First(eventUser => eventUser.EventId == model.Id && eventUser.UserId == item.Id);
+
+                                _dbContext.EventUsers.Remove(toDelete);
+                            }
+                        }
+                    
+
+                    // Add newly selected items
+                    foreach (var userId in model.SelectedUsers)
+                    {
+                        if (model.Users.Count(user => user.Id == userId) == 0)
+                        {
+                            _dbContext.EventUsers.Add(new EventUser { EventId = model.Id, UserId = userId });
+                        }
+                    }
+
+                    _dbContext.SaveChanges();
+                }
+
+                // Update users on their assignments
+                if (model.SelectedUsers != null)
+                {
+                    
+                    var availableUsers = _dbContext.AspNetUsers;
+                    foreach (var item in model.SelectedUsers)
+                    {
+                        
+                        var user = availableUsers.FirstOrDefault(m => m.Id == item);
+                        if (user != default(AspNetUser))
+                        {
+                            SendAssignedEventEmail(user);
+                        }
+                    }
+                }
+            
+                try
+                {
+                    _dbContext.SaveChanges();
+
+                    return RedirectToAction("Calendar");
+                }
+                catch (DbEntityValidationException e)
+                {
+                    this.AddErrors(e);
+                }
+            }
+
+            return View(model);
         }
 
         public ActionResult CreateEvent()
         {
-            return View();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var availableSurveys = persistenceService.GetSurveys();
+
+            var model = new EventViewModel
+                {
+                    AvailableSurveys = availableSurveys.Select(m => new SurveyEntry{Id = m.Guid.ToString(), Title = m.Title}), // _dbContext.Surveys,
+                    AvailableUsers = _dbContext.AspNetUsers,
+                    Users = new List<AspNetUser>()
+                };
+
+            model.Start = model.End = DateTime.Now;
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult CreateEvent(EventViewModel evt)
+        public ActionResult CreateEvent(EventViewModel model)
         {
-            return View("Calendar");
+            if (ModelState.IsValid)
+            {
+                var @event = _dbContext.Events.Add(new Event
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Title = model.Title,
+                        Start = model.Start,
+                        End = model.End,
+                        // UserId = model.UserId, // Owner
+                        SurveyId = model.SurveyId
+                    });
+
+                foreach (var selectedUser in model.SelectedUsers)
+                {
+                    var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == selectedUser);
+                    
+                    _dbContext.EventUsers.Add(new EventUser { Event = @event, User = user});
+
+                    SendAssignedEventEmail(user);
+                }
+
+                try
+                {
+                    _dbContext.SaveChanges();
+
+                    return RedirectToAction("Calendar");
+                }
+                catch (DbEntityValidationException e)
+                {
+                    this.AddErrors(e);
+                }
+            }
+            
+            return View(model);
+        }
+
+        private void SendAssignedEventEmail(AspNetUser user)
+        {
+            var email = user.Person.Email;
+            var baseUrl = Request.Url.Host == "localhost" ? "localhost.com" : Request.Url.Host;
+            var mailService = ServiceManager.GetService<MailService>();
+            var template = AccountController.GetEmailTemplate(AccountController.EmailTemplate.EventAssigned);
+            
+            mailService.SendEmail("donotreply@" + baseUrl, email,
+                                  "An event was assigned to you at " + baseUrl, template.ToString(), true, baseUrl);
+            
         }
     }
 }

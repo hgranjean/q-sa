@@ -17,13 +17,13 @@ namespace SurveyWeb.Services
         private static List<Survey> surveys; 
         private static SurveyManager _surverManager;
         
-        public static SurveyManager GetSurveyManager(Survey survey)
+        public SurveyManager GetSurveyManager(Survey survey)
         {
             _surverManager = new SurveyManager(survey);
             return _surverManager;
         }
 
-        public static IEnumerable<Survey> GetSurveys()
+        public IEnumerable<Survey> GetSurveys()
         {
             if (surveys == null)
             {
@@ -37,7 +37,7 @@ namespace SurveyWeb.Services
             return surveys;
         }
 
-        public static IEnumerable<string> GetResponses()
+        public IEnumerable<string> GetResponses()
         {
             var responses = EnumerateResponses();
 
@@ -48,7 +48,7 @@ namespace SurveyWeb.Services
         /// 
         /// </summary>
         /// <returns></returns>
-        public static Surveys GetSurveys(string criteria)
+        public Surveys GetSurveys(string criteria)
         {
             return new Surveys();
         }
@@ -58,18 +58,18 @@ namespace SurveyWeb.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static Survey GetSurvey(int id)
+        public Survey GetSurvey(int id)
         {
             return GetSurveys().FirstOrDefault(survey => survey.ID == id);
         }
 
 
-        public static Survey LoadSurvey(string name)
+        public Survey LoadSurvey(string name)
         {
             return (Survey)XmlSerializationUtility.GetObjectFromFile(name, typeof(Survey));
         }
 
-        public static void SaveSurvey(Survey survey)
+        public void SaveSurvey(Survey survey)
         {
             survey.RenumberQuestions();
 
@@ -89,11 +89,11 @@ namespace SurveyWeb.Services
             AddOrUpdateSurvey(survey);
         }
 
-        public static void SaveTracer(TracerViewModel survey)
+        public void SaveTracer(TracerViewModel survey)
         {
             var appPath = GetAppPath();
 
-            var fileName = String.Concat("response", survey.SurveyId, ".xml");
+            var fileName = String.Concat("response", survey.ResponseId, ".xml");
 
             var settings = new XmlWriterSettings { Indent = true };
             
@@ -103,16 +103,16 @@ namespace SurveyWeb.Services
             }
         }
 
-        public static TracerViewModel LoadTracer(string responseId)
+        public TracerViewModel LoadTracer(string responseId)
         {
             var appPath = GetAppPath();
 
-            var fullPath = Path.Combine(appPath, responseId /*"response" + surveyId + ".xml"*/);
+            var fullPath = Path.Combine(appPath, "response" + responseId + ".xml");
 
             return (TracerViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(TracerViewModel));
         }
 
-        private static void SetSurveyId(Survey survey)
+        private void SetSurveyId(Survey survey)
         {
             if (survey.ID == DomainObject.DefaultIdentifier)
             {
@@ -120,7 +120,7 @@ namespace SurveyWeb.Services
             }
         }
 
-        private static void EnsureSurveys()
+        private void EnsureSurveys()
         {
             if (surveys == null)
             {
@@ -128,7 +128,7 @@ namespace SurveyWeb.Services
             }
         }
 
-        private static void AddOrUpdateSurvey(Survey survey)
+        private void AddOrUpdateSurvey(Survey survey)
         {
             if (!surveys.Contains(survey))
             {
@@ -144,21 +144,21 @@ namespace SurveyWeb.Services
             SetSurveyId(survey);
         }
 
-        private static string[] EnumerateSurveys()
+        private string[] EnumerateSurveys()
         {
             var appPath = GetAppPath();
             
             return Directory.GetFiles(appPath, "survey*.xml");
         }
         
-        private static string[] EnumerateResponses()
+        private string[] EnumerateResponses()
         {
             var appPath = GetAppPath();
             
             return Directory.GetFiles(appPath, "response*.xml");
         }
 
-        private static string GetAppPath()
+        private string GetAppPath()
         {
             string appPath = HttpContext.Current.Server.MapPath("~/bin");
             
@@ -169,7 +169,7 @@ namespace SurveyWeb.Services
             return appPath;
         }
 
-        internal static void DeleteSurvey(string id)
+        internal void DeleteSurvey(string id)
         {   
             var toDelete = surveys.FirstOrDefault(survey => survey.ID == Int32.Parse(id));
 

@@ -7,7 +7,7 @@ namespace Atum.Domain.SurveyManagement
 {
     [Serializable]
     public class ResponseChoice : DomainObject
-    {
+    {   
         protected ResponseChoice()
         {
         }

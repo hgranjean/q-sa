@@ -16,6 +16,11 @@ namespace SurveyWeb.Controllers
         {
             return View();
         }
+        
+        public ActionResult CompletionReport()
+        {
+            return View();
+        }
 
         //
         // GET: /Report/Details/5

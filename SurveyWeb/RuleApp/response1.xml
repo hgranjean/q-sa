@@ -6,9 +6,9 @@
   <FloorNumber>3</FloorNumber>
   <AreaId>1</AreaId>
   <TracerTypeId>0</TracerTypeId>
-  <SurveyorId>0</SurveyorId>
-  <SurveyDate>5/6/2014</SurveyDate>
-  <DepartmentId>2</DepartmentId>
+  <SurveyorId>67dd2dd3-556c-4804-82a4-9f4f2ee4dcd2</SurveyorId>
+  <SurveyDate>6/9/2014</SurveyDate>
+  <DepartmentId>1</DepartmentId>
   <SurveyTypeId>0</SurveyTypeId>
   <Responses>
     <ResponseViewModel>
@@ -16,7 +16,7 @@
         <Question>
           <ID>0</ID>
           <Text>My Question Text</Text>
-          <Number>0</Number>
+          <Number>1</Number>
           <Rank>0</Rank>
           <BasisReference>
             <ID>0</ID>
@@ -43,11 +43,11 @@
           </ResponseChoices>
         </Question>
         <Answer>
-          <ID>37</ID>
-          <Text>Non Compliant</Text>
+          <ID>36</ID>
+          <Text>Compliant</Text>
         </Answer>
       </Response>
-      <ResponseId>37</ResponseId>
+      <ResponseId>36</ResponseId>
       <NextQuestionId>0</NextQuestionId>
     </ResponseViewModel>
     <ResponseViewModel>
@@ -55,7 +55,7 @@
         <Question>
           <ID>0</ID>
           <Text>My SelectOne Question Text</Text>
-          <Number>1</Number>
+          <Number>2</Number>
           <Rank>0</Rank>
           <BasisReference>
             <ID>0</ID>
@@ -82,11 +82,11 @@
           </ResponseChoices>
         </Question>
         <Answer>
-          <ID>43</ID>
-          <Text>Follow-Up Completed</Text>
+          <ID>40</ID>
+          <Text>Compliant</Text>
         </Answer>
       </Response>
-      <ResponseId>43</ResponseId>
+      <ResponseId>40</ResponseId>
       <NextQuestionId>0</NextQuestionId>
     </ResponseViewModel>
     <ResponseViewModel>
@@ -94,7 +94,7 @@
         <Question>
           <ID>0</ID>
           <Text>My TrueFalse Question Text</Text>
-          <Number>2</Number>
+          <Number>3</Number>
           <Rank>0</Rank>
           <BasisReference>
             <ID>0</ID>
@@ -121,11 +121,11 @@
           </ResponseChoices>
         </Question>
         <Answer>
-          <ID>47</ID>
-          <Text>Follow-Up Completed</Text>
+          <ID>44</ID>
+          <Text>Compliant</Text>
         </Answer>
       </Response>
-      <ResponseId>47</ResponseId>
+      <ResponseId>44</ResponseId>
       <NextQuestionId>0</NextQuestionId>
     </ResponseViewModel>
     <ResponseViewModel>
@@ -133,7 +133,7 @@
         <Question>
           <ID>0</ID>
           <Text>My SelectOne Question Text</Text>
-          <Number>3</Number>
+          <Number>4</Number>
           <Rank>0</Rank>
           <BasisReference>
             <ID>0</ID>
@@ -160,11 +160,11 @@
           </ResponseChoices>
         </Question>
         <Answer>
-          <ID>50</ID>
-          <Text>N/A</Text>
+          <ID>48</ID>
+          <Text>Compliant</Text>
         </Answer>
       </Response>
-      <ResponseId>50</ResponseId>
+      <ResponseId>48</ResponseId>
       <NextQuestionId>0</NextQuestionId>
     </ResponseViewModel>
     <ResponseViewModel>
@@ -172,7 +172,7 @@
         <Question>
           <ID>0</ID>
           <Text>My SelectMultiple Question Text</Text>
-          <Number>4</Number>
+          <Number>5</Number>
           <Rank>0</Rank>
           <BasisReference>
             <ID>0</ID>
@@ -199,11 +199,11 @@
           </ResponseChoices>
         </Question>
         <Answer>
-          <ID>54</ID>
-          <Text>N/A</Text>
+          <ID>52</ID>
+          <Text>Compliant</Text>
         </Answer>
       </Response>
-      <ResponseId>54</ResponseId>
+      <ResponseId>52</ResponseId>
       <NextQuestionId>0</NextQuestionId>
     </ResponseViewModel>
     <ResponseViewModel>
@@ -211,7 +211,7 @@
         <Question>
           <ID>0</ID>
           <Text>utiut</Text>
-          <Number>5</Number>
+          <Number>6</Number>
           <Rank>0</Rank>
           <BasisReference>
             <ID>0</ID>
@@ -238,11 +238,11 @@
           </ResponseChoices>
         </Question>
         <Answer>
-          <ID>58</ID>
-          <Text>N/A</Text>
+          <ID>56</ID>
+          <Text>Compliant</Text>
         </Answer>
       </Response>
-      <ResponseId>58</ResponseId>
+      <ResponseId>56</ResponseId>
       <NextQuestionId>0</NextQuestionId>
     </ResponseViewModel>
   </Responses>

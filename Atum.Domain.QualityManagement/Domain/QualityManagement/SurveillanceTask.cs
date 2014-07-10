@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Atum.Domain.SurveyManagement;
 
 namespace Atum.Domain.QualityManagement
 {
-    public class SurveillanceTask
+    public class SurveillanceTask : Event
     {
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        public string Title { get; set; }
     }
 }
