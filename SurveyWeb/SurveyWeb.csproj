@@ -204,9 +204,7 @@
     <Compile Include="Controllers\ModelHelper.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
-    <Compile Include="Controllers\SurveyDesignController.cs" />
     <Compile Include="Controllers\StandardController.cs" />
-    <Compile Include="Controllers\TableOfContentController.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
