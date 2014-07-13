@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -204,9 +204,7 @@
     <Compile Include="Controllers\ModelHelper.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SurveillanceController.cs" />
-    <Compile Include="Controllers\SurveyDesignController.cs" />
     <Compile Include="Controllers\StandardController.cs" />
-    <Compile Include="Controllers\TableOfContentController.cs" />
     <Compile Include="Database\AtumSurveillance.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

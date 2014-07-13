@@ -9,5 +9,7 @@ namespace Atum.Domain.QualityManagement.Healthcare.JointCommission
     {
         public string Text { get; set; }
         public List<string> Notes { get; set; }
+
+        public int EPId { get; set; }
     }
 }

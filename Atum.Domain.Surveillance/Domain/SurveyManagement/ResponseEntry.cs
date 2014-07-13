@@ -1,4 +1,5 @@
-﻿using Atum.Domain.Security.Domain;
+﻿using Atum.Domain.Security;
+using Atum.Domain.Security.Domain;
 
 namespace Atum.Domain.SurveyManagement
 {
