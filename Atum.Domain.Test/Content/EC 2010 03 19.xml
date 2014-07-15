@@ -1,0 +1,32 @@
+<Documents>
+ <doc>
+     <ep>
+       EC.02.01.01
+       The hospital manages safety and security risks.
+       EP 1. The hospital identifies safety and security risks associated with the
+       environment of care.
+       Note: Risks are identified from internal sources such as ongoing
+       monitoring of the environment, results of root cause analyses, results of
+       annual proactive risks assessments of high-risk processes, and from
+       credible external sources such as Sentinel Event Alerts. (See also)
+     </ep>
+ <doc>
+ <doc>
+     <ep>
+       EC.04.01.01, EP 14)
+     <ep>
+     <findings>
+        During the survey and evaluation of conditions, the following safety issues were observed:
+        LTC:
+        1. Pictures on the hallway wall were not secured. Patients ambulating may displace picture.
+        2. Patient in the smoke lounge was asleep and had cigarette still in mouth (not lite, but burned out)
+        3. e-cyliners in the gas storage room were not chained tightly and secured from potentially
+        falling over.
+     </findings>
+     <recommended>
+        ? All pictures should be secured to the wall to avoid patient falls and injury.
+        ? Patients in the smoking lounge must be monitored for lite cigarettes.
+        ? Chain and secure all taks in storage room.
+     </recommended>
+   </doc>
+</Documents>
