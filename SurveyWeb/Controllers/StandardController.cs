@@ -111,11 +111,18 @@ namespace SurveyWeb.Controllers
         public ActionResult Chapter(string chapterId)
         {
             Models.StandardDocumentViewModel model = new Models.StandardDocumentViewModel();
-            model.TableOfContents = new List<Models.TOCElementViewModel>();
+            //model.TableOfContents = new List<Models.TOCElementViewModel>();
             model = Services.StandardsManagementServices.GetChapter(chapterId);
             return View(model);
         }
 
+
+        public ActionResult StandardElement(string standardElementId)
+        {
+            Models.TOCElementViewModel model = Services.StandardsManagementServices.GetStandardElement(standardElementId);
+            return View(model);
+
+        }
 
     }
 }

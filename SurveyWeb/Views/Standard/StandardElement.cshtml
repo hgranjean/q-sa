@@ -1,0 +1,36 @@
+﻿@model SurveyWeb.Models.TOCElementViewModel
+
+@{
+    ViewBag.Title = "StandardElement";
+}
+
+<h2>StandardElement</h2>
+<div>
+    <h4>TOCElementViewModel</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+    </dl>
+@foreach (var item in Model.Elements)
+{
+    <div class="col-md-offset-0 col-md-10">
+        @Html.ActionLink(item.Key, "PerformanceElement", new { performanceElementId = item.Key }, null) - @item.Content
+
+    </div>
+}
+</div>

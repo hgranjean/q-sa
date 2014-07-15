@@ -26,5 +26,7 @@ namespace SurveyWeb.Models
 
 
         public string Key { get; set; }
+
+        public List<TOCElementViewModel> Elements { get; set; }
     }
 }
