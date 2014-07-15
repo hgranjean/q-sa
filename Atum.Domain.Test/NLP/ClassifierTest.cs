@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Atum.Domain.NLP.NaiveBayes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,10 @@ namespace Atum.Domain.Test.NLP
         [TestMethod]
         public void TestMethod1()
         {
+            var classifier = new EPClassifier();
+            // classifier.trainFromXML();
+
+            Assert.Fail("Not implemented.");
         }
     }
 }

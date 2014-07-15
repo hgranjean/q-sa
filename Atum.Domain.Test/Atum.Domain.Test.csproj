@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="NLP\ClassifierTest.cs" />
     <Compile Include="QualityAnalysisTest.cs" />
     <Compile Include="QualityControlTest.cs" />
     <Compile Include="QualityObservationTest.cs" />
@@ -78,6 +79,10 @@
       <Project>{1cfe9612-c8e2-4271-9408-e7871cd87477}</Project>
       <Name>Atum.Domain.Healthcare</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Atum.Domain.NLP\Atum.Domain.NLP.csproj">
+      <Project>{b456c946-4b4a-4c03-9ee6-818ca30ed84d}</Project>
+      <Name>Atum.Domain.NLP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Atum.Domain.QualityManagement\Atum.Domain.QualityManagement.csproj">
       <Project>{d54c3d26-26c2-4638-8919-59f511e61827}</Project>
       <Name>Atum.Domain.QualityManagement</Name>
@@ -94,6 +99,9 @@
       <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
       <Name>Atum.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\EC 2010 03 19.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
