@@ -170,10 +170,10 @@ namespace MvcApplication1.Controllers
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
             var model = LoadTracerViewModel(id);
 
-            if (model.SurveyTypeId == (int)SurveyType.Audit)
-            {
-                return RedirectToAction("SurveyDesign", new {id = id.ToString()});
-            }
+            //if (model.SurveyTypeId == (int)SurveyType.Audit)
+            //{
+            //    return RedirectToAction("SurveyDesign", new {id = id.ToString()});
+            //}
             
             return View(model);
         }
@@ -700,6 +700,26 @@ namespace MvcApplication1.Controllers
             new SurveyViewModel(survey).Save();
 
             return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup){SurveyId = surveyId});
+        }
+
+        public ActionResult AddObservation(string surveyId, string questionGroupId, string observationText)
+        {
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var survey = persistenceService.GetSurvey(Convert.ToInt32(surveyId));
+
+            if (questionGroupId.Contains("?"))
+            {
+                observationText = questionGroupId.Substring(questionGroupId.IndexOf("=")+1);
+                questionGroupId = questionGroupId.Substring(0, questionGroupId.IndexOf("?"));            
+            }
+
+            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
+            
+            questionGroup.AddQuestion(observationText, QuestionType.SelectOne);
+
+            new SurveyViewModel(survey).Save();
+
+            return RedirectToAction("SurveyDelivery", new { id = surveyId });            
         }
 
         public ActionResult EditNotes(string questionId)

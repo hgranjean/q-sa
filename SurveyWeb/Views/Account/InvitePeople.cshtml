@@ -15,11 +15,6 @@
     <fieldset>
         <legend>List of emails</legend>
         <div id="tracerHeader" style="display:table">
-            <!--<div style="display:table-row">
-                <div style="display:table-cell;width:50%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:50%">&nbsp;&nbsp;</div><label class=​"col-md-2 control-label" for=​"OldPassword">​Current password​</label>​
-            </div>-->
-
             @for (int i = 0; i < Model.ToArray().Length; i++)
             {
                 @Html.HiddenFor(m => m.ToArray()[i].Domain)

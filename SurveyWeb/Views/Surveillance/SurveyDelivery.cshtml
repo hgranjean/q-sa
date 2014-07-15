@@ -158,8 +158,30 @@
                             </div>
                         </div>
                     </div>
-                }
-
+               } 
+   
+               <script>
+                   $(function() {
+                       $('#addObservation').click(function () {                           
+                           var name = $(@{ var txtName = @"'#txtObservation" + group.Number + @"'"; } @Html.Raw(txtName)).val();
+                           if (name != "") {
+                               this.href = this.href + '?observationText=' + encodeURIComponent(name);
+                               alert(this.href);
+                           }
+                       });
+                   });
+               </script>            
+   
+                
+                <div style="display:table-row;width:100%">
+                    <div style="display: table-cell;" class="gn-table-row-withborders">@Html.TextBox("txtObservation" + group.Number, "", new { @class = "form-control" })</div>
+                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders">&nbsp;@Html.ActionLink("Add", "AddObservation", new { surveyId = Model.SurveyId, questionGroupId = group.Number }, new { id = "addObservation" })</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                </div>
             }
         </div>
         <div>&nbsp;</div>

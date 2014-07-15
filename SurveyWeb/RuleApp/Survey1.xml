@@ -24,6 +24,24 @@
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>0</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>1</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>2</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>3</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
             <Question>
               <ID>0</ID>
@@ -35,6 +53,24 @@
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>4</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>5</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>6</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>7</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
             <Question>
               <ID>0</ID>
@@ -46,6 +82,24 @@
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>8</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>9</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>10</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>11</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
             <Question>
               <ID>0</ID>
@@ -57,6 +111,24 @@
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>12</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>13</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>14</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>15</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
             <Question>
               <ID>0</ID>
@@ -67,6 +139,317 @@
                 <ID>0</ID>
                 <Level>0</Level>
               </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>16</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>17</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>18</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>19</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Something</Text>
+              <Number>6</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>20</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>21</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>22</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>23</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Another</Text>
+              <Number>7</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>24</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>25</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>26</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>27</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>af</Text>
+              <Number>8</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>28</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>29</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>30</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>31</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>432</Text>
+              <Number>9</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>32</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>33</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>34</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>35</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>432</Text>
+              <Number>10</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>36</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>37</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>38</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>39</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>432</Text>
+              <Number>11</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>40</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>41</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>42</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>43</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>432</Text>
+              <Number>12</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>44</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>45</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>46</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>47</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>gfdsg</Text>
+              <Number>13</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>48</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>49</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>50</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>51</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>obs1</Text>
+              <Number>14</Number>
+              <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>52</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>53</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>54</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>55</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>An observation</Text>
+              <Number>15</Number>
+              <Rank>0</Rank>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>56</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>57</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>58</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>59</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
+            </Question>
+            <Question>
+              <ID>0</ID>
+              <Text>Another</Text>
+              <Number>16</Number>
+              <Rank>0</Rank>
               <QuestionType>SelectOne</QuestionType>
             </Question>
           </Questions>
@@ -85,13 +468,31 @@
             <Question>
               <ID>0</ID>
               <Text>utiut</Text>
-              <Number>6</Number>
+              <Number>17</Number>
               <Rank>0</Rank>
               <BasisReference>
                 <ID>0</ID>
                 <Level>0</Level>
               </BasisReference>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices>
+                <ResponseChoice>
+                  <ID>60</ID>
+                  <Text>Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>61</ID>
+                  <Text>Non Compliant</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>62</ID>
+                  <Text>N/A</Text>
+                </ResponseChoice>
+                <ResponseChoice>
+                  <ID>63</ID>
+                  <Text>Follow-Up Completed</Text>
+                </ResponseChoice>
+              </ResponseChoices>
             </Question>
           </Questions>
         </QuestionGroup>

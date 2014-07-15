@@ -15,6 +15,12 @@
         
         @RenderSection("scripts", required: false)
         @RenderSection("featured", required: false) 
+
+        <script>
+        $("#btnSearch").click(function() {
+            alert("Test");
+        });
+        </script>
         
         <div class="container navbar-left">
             <ul id="gn-menu" class="gn-menu-main">
@@ -24,8 +30,8 @@
                         <div class="gn-scroller">
                             <ul class="gn-menu">
                                 <li class="gn-search-item">
-                                    <input placeholder="Search" type="search" class="gn-search" />
-                                    <a class="gn-icon gn-icon-search"><span>Search</span></a>
+                                    <input placeholder="Search" type="search" class="gn-search" id="btnSearch" />
+                                    <a class="gn-icon gn-icon-search" href="Home/Search"><span>Search</span></a>
                                 </li>
                                 <li>
                                     @Html.ActionLink("Dashboard", "Dashboard", "Surveillance", null, new { @class = "gn-icon gn-icon-earth" })

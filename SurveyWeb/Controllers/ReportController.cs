@@ -22,6 +22,11 @@ namespace SurveyWeb.Controllers
             return View();
         }
 
+        public ActionResult PersonPerformance()
+        {
+            return View();
+        }
+
         //
         // GET: /Report/Details/5
 

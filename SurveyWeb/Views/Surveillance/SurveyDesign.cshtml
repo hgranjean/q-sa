@@ -22,34 +22,38 @@
 
         <div style="display: table">
             
-            <div style="display: table-row">
+            <div style="display: table-row" class="form-group">
                 <div class="editor-label">
-                    @Html.LabelFor(m => m.Survey.Title)
+                    @Html.LabelFor(m => m.Survey.Title, new { @class = "control-label" })
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Survey.Title)
+                    @Html.TextBoxFor(m => m.Survey.Title, new { @class = "form-control" })
                 </div>
             </div>
-            <div style="display: table-row">
+            <div style="display: table-row" class="form-group">
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Survey.SurveyType)
+                    @Html.LabelFor(model => model.Survey.SurveyType, new { @class = "control-label" })
                 </div>
                 <div class="editor-field">
                     @Html.DropDownListFor(model => model.Survey.SurveyType,
-                                          new SelectList(EnumUtils.GetEnumerableItems(typeof (SurveyType)),
-                                                         "Value", "Text"))
-                </div>
-            </div>
-            <div style="display: table-row">
-                <div class="editor-label">
-                    @Html.ActionLink("Create New Group", "CreateQuestionGroup", new {surveyId = Model.Survey.ID.ToString()})
+                                          new SelectList(EnumUtils.GetEnumerableItems(typeof(SurveyType)),
+                                                         "Value", "Text"), new { @class = "form-control" })
                 </div>
             </div>
         
-            <h3>Question groups</h3>
+            <h3>Elements</h3>
             <div>
                 @Html.EditorFor(m => m.QuestionGroupsViewModel)
             </div>
+
+            <div>&nbsp;</div>
+
+            <div style="display: table-row">
+                <div class="editor-label">
+                    @Html.ActionLink("Create New Element", "CreateQuestionGroup", new {surveyId = Model.Survey.ID.ToString()})
+                </div>
+            </div>
+
             <div>&nbsp;</div>
 
         </div>

@@ -581,6 +581,8 @@
     <Content Include="Scripts\rgraph\scripts\jsmin" />
     <Content Include="Views\Surveillance\AuditDelivery.cshtml" />
     <Content Include="Views\Report\CompletionReport.cshtml" />
+    <Content Include="Views\Report\PersonPerformance.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

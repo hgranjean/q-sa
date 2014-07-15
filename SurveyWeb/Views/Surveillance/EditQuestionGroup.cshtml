@@ -1,12 +1,12 @@
 ﻿@using MvcApplication1.Controllers
 @using SurveyWeb.Models
-@model SurveyWeb.Models.QuestionGroupViewModel
+@model QuestionGroupViewModel
 
 @{
-    ViewBag.Title = "EditQuestionGroup";
+    ViewBag.Title = "Edit Question Group";
 }
 
-<h2>Edit Question Group</h2>
+<h2>Edit Element</h2>
 
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -25,8 +25,8 @@
         
         <div style="display: table; width: 100%">
             <div style="display: table-row">
-                <div id="groupLabel" style="display: table-cell; font-weight: bold; width: 20%">@Html.LabelFor(m => m.QuestionGroup.Title, new { style = "width: 80%"})</div>
-                <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 80%">@Html.TextBoxFor(m => m.QuestionGroup.Title, new { style = "width: 80%"})</div>
+                <div id="groupLabel" style="display: table-cell; font-weight: bold; width: 20%">@Html.LabelFor(m => m.QuestionGroup.Title, new { style = "width: 80%", @class = "control-label" })</div>
+                <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 80%">@Html.TextBoxFor(m => m.QuestionGroup.Title, new { style = "width: 80%", @class="form-control"})</div>
             </div>
         </div>
        
@@ -34,23 +34,23 @@
             @for (int i=0;Model.QuestionGroup.Questions!=null&&i<Model.QuestionGroup.Questions.Count;i++)
             {
                 @Html.HiddenFor(m => m.QuestionGroup.Questions[i].Number)
-
-                <div id="choiceGroup" style="display: table-row">
+                                
+                <div id="choiceGroup" style="display: table-row"  >
                     <div class="editor-label;" style="display: table-cell;width: 3%">
-                        @Html.Label(Model.QuestionGroup.Questions[i].Number.ToString())
+                        @Html.Label(Model.QuestionGroup.Questions[i].Number.ToString(), new{@class="control-label"})
                     </div>
                     <div id="questionText" class="editor-field" style="display: table-cell;width: 70%">
-                        @Html.TextBoxFor(m => m.QuestionGroup.Questions[i].Text, new { style = "width: 100%"})
+                        @Html.TextBoxFor(m => m.QuestionGroup.Questions[i].Text, new { style = "width: 100%", @class="form-control"} )
                     </div>
                     <div id="questionType" class="editor-field" style="display: table-cell;width: 10%">
                         @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].QuestionType,
-                                              Model.QuestionGroup.Questions[i].QuestionType.ToSelectList(Model.QuestionGroup.Questions[i].QuestionType.ToString()), new { style = "width: auto"}) 
+                                              Model.QuestionGroup.Questions[i].QuestionType.ToSelectList(Model.QuestionGroup.Questions[i].QuestionType.ToString()), new { style = "width: auto", @class="form-control"}) 
                     </div>
                     <div id="questionStandard" class="editor-field" style="display: table-cell;width: 17%">
                         @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].TOCReference, 
-                                              new SelectList(new SurveillanceController().GetTOCs(), "Value.Title", "Key", Model.QuestionGroup.Questions[i].TOCReference), new { style = "width: auto"})
+                                              new SelectList(new SurveillanceController().GetTOCs(), "Value.Title", "Key", Model.QuestionGroup.Questions[i].TOCReference), new { style = "width: auto", @class="form-control"})
                     </div>
-                </div>
+                </div>                
             }
         </div>
 
