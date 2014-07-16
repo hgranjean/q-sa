@@ -40,6 +40,13 @@ namespace Atum.Utility
             return mailAddress.Host;
         }
 
+        public static string GetHostName(string value)
+        {
+            var result = value == "localhost" ? "localhost.com" : value.Replace("www.", string.Empty);
+
+            return result;
+        }
+
         public static string GenerateToken(string username, int validityInHours = 24, IEnumerable<string> userData = null)
         {
             var formsTicket = new FormsAuthenticationTicket(

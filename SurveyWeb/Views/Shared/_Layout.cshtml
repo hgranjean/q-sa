@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using SurveyWeb.Models;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -24,34 +28,40 @@
         
         <div class="container navbar-left">
             <ul id="gn-menu" class="gn-menu-main">
-                <li class="gn-trigger">
-                    <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-                    <nav class="gn-menu-wrapper">
-                        <div class="gn-scroller">
-                            <ul class="gn-menu">
-                                <li class="gn-search-item">
-                                    <input placeholder="Search" type="search" class="gn-search" id="btnSearch" />
-                                    <a class="gn-icon gn-icon-search" href="Home/Search"><span>Search</span></a>
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Dashboard", "Dashboard", "Surveillance", null, new { @class = "gn-icon gn-icon-earth" })
-                                </li>
-                                <li>@Html.ActionLink("Create templates", "Surveys", "Surveillance", null, new { @class = "gn-icon gn-icon-article" })</li>
-                                <li>@Html.ActionLink("Conduct an audit", "SurveySchedules", "Surveillance", null, new { @class = "gn-icon gn-icon-archive" })</li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="gn-trigger">
+                        <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                        <nav class="gn-menu-wrapper">
+                            <div class="gn-scroller">
+                                <ul class="gn-menu">
+                                    <li class="gn-search-item">
+                                        <input placeholder="Search" type="search" class="gn-search" id="btnSearch" />
+                                        <a class="gn-icon gn-icon-search" href="Home/Search"><span>Search</span></a>
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Dashboard", "Dashboard", "Surveillance", null, new { @class = "gn-icon gn-icon-earth" })
+                                    </li>
+                                    @if ( (new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())).IsInRole(User.Identity.GetUserId(), "Manager")) )
+                                    { 
+                                        <li>@Html.ActionLink("Create templates", "Surveys", "Surveillance", null, new { @class = "gn-icon gn-icon-article" })</li>
+                                    }
+                                    <li>@Html.ActionLink("Conduct an audit", "SurveySchedules", "Surveillance", null, new { @class = "gn-icon gn-icon-archive" })</li>
 						        
-                                <li>
-                                    @Html.ActionLink("Reports", "Index", "Report", null, new { @class = "gn-icon gn-icon-download" })
-                                    <!--<ul class="gn-submenu">
-                                            <li><a class="gn-icon gn-icon-illustrator">Surveys</a></li>
-                                            <li><a class="gn-icon gn-icon-photoshop">Others</a></li>
-                                        </ul>-->
-                                </li>
-                                <li>@Html.ActionLink("Settings", "Settings", "Home", null, new { @class = "gn-icon gn-icon-cog" })</li>
-                                <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "gn-icon gn-icon-help" })</li>
-                            </ul>
-                        </div><!-- /gn-scroller -->
-                    </nav>
-                </li>
+                                    <li>
+                                        @Html.ActionLink("Reports", "Index", "Report", null, new { @class = "gn-icon gn-icon-download" })
+                                        <!--<ul class="gn-submenu">
+                                                <li><a class="gn-icon gn-icon-illustrator">Surveys</a></li>
+                                                <li><a class="gn-icon gn-icon-photoshop">Others</a></li>
+                                            </ul>-->
+                                    </li>
+                                    <li>@Html.ActionLink("Settings", "Settings", "Home", null, new { @class = "gn-icon gn-icon-cog" })</li>
+                                    <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "gn-icon gn-icon-help" })</li>
+                                </ul>
+                            </div><!-- /gn-scroller -->
+                        </nav>
+                    </li>
+                }
                 <li>&nbsp;</li>
 			</ul>
         </div>

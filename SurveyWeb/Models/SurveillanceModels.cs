@@ -88,7 +88,7 @@ namespace SurveyWeb.Models
         [XmlIgnore]
         public IEnumerable<TracerType> TracerTypes { get; set; }
 
-        [Required]
+        //  [Required]
         [Display(Name = "Staff Surveyed")]
         public string StaffSurveyed { get; set; }
 
