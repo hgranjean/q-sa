@@ -29,7 +29,7 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FacilityId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownList("FacilityId", new SelectList(Model.Facilities, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Facilities, "Id", "Name"), "Please select...", null)
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
@@ -46,8 +46,8 @@
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
                 <div style="display:table-cell;width:45%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.AreaId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownList("AreaId", new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
+                    <div id="editorField" class="editor-field">                        
+                        @Html.DropDownListFor(m => m.AreaId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.BuildingId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownList("FloorNumber", new SelectList(Model.Buildings, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.FloorNumber, new SelectList(Model.Buildings, "Id", "Name"), "Please select...", null)
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
@@ -67,7 +67,7 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownList("SurveyorId", new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.SurveyorId, new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", null)
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
@@ -89,7 +89,7 @@
                 <div style="display:table-cell;width:45%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownList("FacilityId", new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
                     </div>
                 </div>
             </div>
@@ -130,8 +130,8 @@
                                 <div style="display: table-cell; text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
                                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     
-                                    @Html.RadioButtonFor(m => m.Responses[question.Number], key,
-                                                     new {id = "Response" + key, name = "Question" + question.Number, @class = "sur-choice"} )   
+                                    @Html.RadioButtonFor(m => m.Responses[question.Number-1], key,
+                                                     new {id = "Response" + key, name = "Question" + question.Number, @class = "ck-button"} )   
                                 </div>
                             }
 
@@ -159,23 +159,12 @@
                         </div>
                     </div>
                } 
-   
-               <script>
-                   $(function() {
-                       $('#addObservation').click(function () {                           
-                           var name = $(@{ var txtName = @"'#txtObservation" + group.Number + @"'"; } @Html.Raw(txtName)).val();
-                           if (name != "") {
-                               this.href = this.href + '?observationText=' + encodeURIComponent(name);
-                               alert(this.href);
-                           }
-                       });
-                   });
-               </script>            
-   
                 
                 <div style="display:table-row;width:100%">
                     <div style="display: table-cell;" class="gn-table-row-withborders">@Html.TextBox("txtObservation" + group.Number, "", new { @class = "form-control" })</div>
-                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders">&nbsp;@Html.ActionLink("Add", "AddObservation", new { surveyId = Model.SurveyId, questionGroupId = group.Number }, new { id = "addObservation" })</div>
+                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders">                        
+                        <input type="submit" value="Add" id="addObservation" class="btn btn-default" disablevalidation="true"/>
+                    </div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>

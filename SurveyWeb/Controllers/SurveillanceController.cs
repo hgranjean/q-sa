@@ -497,6 +497,7 @@ namespace MvcApplication1.Controllers
             var responses = new Responses();
 
             int qIndex = 0;
+            bool isObservation = false;
             var responsesViewModels = new ResponseViewModel[100];
             foreach (var questionGroup in survey.QuestionGroups)
             {
@@ -515,7 +516,16 @@ namespace MvcApplication1.Controllers
                     }
                     qIndex++;
                 }
+
+                var observationText = values["txtObservation" + questionGroup.Key];
+                if (!String.IsNullOrWhiteSpace(observationText))
+                {
+                    // Add observation
+                    questionGroup.Value.AddQuestion(observationText, QuestionType.SelectOne);
+                    isObservation = true;
+                }
             }
+
             Array.Resize(ref responsesViewModels, qIndex);
 
             viewModel.Responses = responsesViewModels;
@@ -553,8 +563,21 @@ namespace MvcApplication1.Controllers
             viewModel.ResponseId = responseEntry.Id;
 
             persistenceService.SaveTracer(viewModel);
-            
-            return View("SurveyAnalysis", analysisViewModel);
+
+            if (isObservation)            
+            {
+                var viewModelWithResponses = viewModel;
+                
+                viewModel = LoadTracerViewModel(viewModel.SurveyId);
+                
+                viewModel.Responses = viewModelWithResponses.Responses;
+
+                return View("SurveyDelivery", viewModel);
+            }
+            else
+            {
+                return View("SurveyAnalysis", analysisViewModel);
+            }            
         }
         
         public ActionResult Create(Survey survey)
@@ -701,27 +724,7 @@ namespace MvcApplication1.Controllers
 
             return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup){SurveyId = surveyId});
         }
-
-        public ActionResult AddObservation(string surveyId, string questionGroupId, string observationText)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurvey(Convert.ToInt32(surveyId));
-
-            if (questionGroupId.Contains("?"))
-            {
-                observationText = questionGroupId.Substring(questionGroupId.IndexOf("=")+1);
-                questionGroupId = questionGroupId.Substring(0, questionGroupId.IndexOf("?"));            
-            }
-
-            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
-            
-            questionGroup.AddQuestion(observationText, QuestionType.SelectOne);
-
-            new SurveyViewModel(survey).Save();
-
-            return RedirectToAction("SurveyDelivery", new { id = surveyId });            
-        }
-
+         
         public ActionResult EditNotes(string questionId)
         {
             return View();
