@@ -50,7 +50,7 @@ namespace SurveyWeb.RuleApp
             
             var action2 = new SetValueAction();
             action2.Target = "Context.EvaluationResults[index].TextResult";
-            action2.Value = "Context.Questions[index].GetResponseByText(Context.Responses[index].Answer.Text).Text";
+            action2.Value = "Context.Questions[index].GetResponseByText(Context.Responses[index].Answer.Text).Text";            
 
             var action2_2 = new SetValueAction();
             action2_2.Target = "Context.EvaluationResults[index].Result";
@@ -61,7 +61,7 @@ namespace SurveyWeb.RuleApp
             action2_3.Value = @"Context.Responses[index].Answer.Text == ""Follow-Up Completed""";
 
             var action3 = new SimpleRuleSet();
-            action3.Condition = "Context.Responses.Count > index"; // Perform some analysis here
+            action3.Condition = "index < Context.Responses.Count"; // Perform some analysis here
             action3.Rules.Add(action2);
             action3.Rules.Add(action2_2);
             action3.Rules.Add(action2_3);
@@ -75,7 +75,7 @@ namespace SurveyWeb.RuleApp
             action5.Value = "Context.EvaluationResultsQueryable.Sum(t => t.Result)"; // Set to value depending on the evaluation, currently using analytical func here
 
             var while1 = new WhileRuleSet();
-            while1.Condition = "index < Context.Questions.Count";
+            while1.Condition = "index < Context.Responses.Count";
             while1.Rules.Add(action1);
             while1.Rules.Add(action3);
             while1.Rules.Add(action4);
