@@ -48,7 +48,7 @@ namespace SurveyWeb.Models
             this.Survey = survey;
             this.SurveyId = Convert.ToInt32(survey.ID);
             this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
-            this.SurveyDate = DateTime.Today.ToShortDateString();
+            this.SurveyDate = DateTime.Today;
             this.SurveyTypeId = (int)survey.SurveyType;
         }
         
@@ -88,7 +88,7 @@ namespace SurveyWeb.Models
         [XmlIgnore]
         public IEnumerable<TracerType> TracerTypes { get; set; }
 
-        //  [Required]
+        //[Required]
         [Display(Name = "Staff Surveyed")]
         public string StaffSurveyed { get; set; }
 
@@ -100,8 +100,14 @@ namespace SurveyWeb.Models
         public IEnumerable<Person> Surveyors { get; set; }
 
         [Required]
-        [Display(Name = "Date")]
-        public string SurveyDate { get; set; }
+        [Display(Name = "Date")]        
+        public DateTime SurveyDate { get; set; }
+
+        [Display(Name = "Updated Date")]
+        public DateTime UpdatedDate { get; set; }
+
+        [Display(Name = "Completed Date")]
+        public DateTime CompletedDate { get; set; }
         
         [Display(Name = "Notes")]
         public string Notes { get; set; }

@@ -9,10 +9,28 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+@Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
 
 <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
+  $(function() {      
+      $("#startdatepicker").datetimepicker({
+          timeFormat: 'HH:mm z',
+          timezoneList: [
+			{ value: -300, label: 'Eastern' },
+			{ value: -360, label: 'Central' },
+			{ value: -420, label: 'Mountain' },
+			{ value: -480, label: 'Pacific' }
+          ]
+      });
+      $("#enddatepicker").datetimepicker({
+          timeFormat: 'HH:mm z',
+          timezoneList: [
+			{ value: -300, label: 'Eastern' },
+			{ value: -360, label: 'Central' },
+			{ value: -420, label: 'Mountain' },
+			{ value: -480, label: 'Pacific' }
+          ]
+      });
   });
 </script>
 
@@ -29,7 +47,7 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FacilityId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Facilities, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Facilities, "Id", "Name"), "Please select...", new { @class = "form-control" })
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
@@ -40,14 +58,14 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FloorNumber)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.EditorFor(m => m.FloorNumber)
+                        @Html.TextBoxFor(m => m.FloorNumber, new { @class = "form-control" })
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
                 <div style="display:table-cell;width:45%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.AreaId)</div>
                     <div id="editorField" class="editor-field">                        
-                        @Html.DropDownListFor(m => m.AreaId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.AreaId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -56,7 +74,7 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.BuildingId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FloorNumber, new SelectList(Model.Buildings, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.BuildingId, new SelectList(Model.Buildings, "Id", "Name"), "Please select...", new { @class = "form-control" })
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
@@ -67,14 +85,14 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.SurveyorId, new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.SurveyorId, new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", new { @class = "form-control" })
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
                 <div style="display:table-cell;width:45%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.DepartmentId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Please select...", new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -82,14 +100,14 @@
                 <div style="display:table-cell;width:50%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyDate)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.TextBoxFor(m => m.SurveyDate, new {@id = "datepicker"})
+                        @Html.TextBoxFor(m => m.SurveyDate, new { @id = "startdatepicker", @class = "form-control" })
                     </div>
                 </div>
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
                 <div style="display:table-cell;width:45%">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
                     <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", null)
+                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new {  @class="form-control" })
                     </div>
                 </div>
             </div>
@@ -116,37 +134,43 @@
                 {
                     var question = questions[i];
                     
-                    <div id="choiceGroup" style="display: table-row-group;" >
-                        <div style="display:table-row;width:100%">                            
-                            <div id="questionText" style="display:table-cell;">@question.Text</div>
-                        </div>
-                        <div style="display:table-row;width:100%">
-                            <div style="display: table-cell" class="gn-table-row-withborders"></div>
-                            @foreach (var choice in question.ResponseChoices)
-                            {
-                                var key = choice.ID;
-                                var j = qIndex++;
-
-                                <div style="display: table-cell; text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <div id="choiceGroup" style="display: table-row;" >                        
+                            <div id="questionText" style="display:table-cell; width: 35%" class="gn-table-row-withborders">@question.Text</div>
+                            
+                                @{  var choiceClasses = new string[] {"green", "red", "black", "blue"};                                    
                                     
-                                    @Html.RadioButtonFor(m => m.Responses[question.Number-1], key,
-                                                     new {id = "Response" + key, name = "Question" + question.Number, @class = "ck-button"} )   
-                                </div>
-                            }
+                                    foreach (var choice in question.ResponseChoices)
+                                    {
+                                        var key = choice.ID;
+                                        var j = qIndex++;
+                                        var choiceIndex = question.ResponseChoices.IndexOf(choice);
+
+                                        <div style="display: table-cell; width: 10;text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">                                            
+                                            <div id="ck-button">
+                                                <label class="@choiceClasses[choiceIndex]">
+
+                                                    @Html.RadioButtonFor(m => m.Responses[question.Number - 1], key,
+                                                         new { id = "Response" + key, name = "Question" + question.Number, })
+                                                    <span>@choice.Text</span>
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                }                            
 
                             @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
                             {
-                                <div id="questionBasis" style="display: table-cell" class="gn-table-row-withborders">
+                                <div id="questionBasis" style="display: table-cell; width:15%" class="gn-table-row-withborders">
                                     @Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})
                                 </div>
                             }
                             else
                             {
-                                <div style="display: table-cell" class="gn-table-row-withborders">&nbsp;</div>
+                                <div style="display: table-cell; width: 15%" class="gn-table-row-withborders">&nbsp;</div>
                             }
 
-                            <div style="display: table-cell; white-space: nowrap;" class="gn-table-row-withborders">
+                            <div style="display: table-cell; width: 10%; white-space: nowrap;" class="gn-table-row-withborders">
                                 @Html.ActionLink("Notes", "EditNotes", "Surveillance", null, new {@class = "gn-notes-icon", style = "display:inline"})
                                 @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
                                 <span style="white-space: nowrap">
@@ -155,15 +179,15 @@
                                     <input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline"
                                         onchange=" document.getElementById('file').innerHTML = this.value; " />
                                 </span>
-                            </div>
-                        </div>
+                            </div>                        
                     </div>
                } 
                 
                 <div style="display:table-row;width:100%">
                     <div style="display: table-cell;" class="gn-table-row-withborders">@Html.TextBox("txtObservation" + group.Number, "", new { @class = "form-control" })</div>
                     <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders">                        
-                        <input type="submit" value="Add" id="addObservation" class="btn btn-default" disablevalidation="true"/>
+                        &nbsp;
+                        <input type="submit" value="Add" id="addObservation" class="btn btn-default"/>
                     </div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
@@ -176,7 +200,7 @@
         <div>&nbsp;</div>
         @if (ViewBag.IsReadOnly ?? false)
         {
-            @Html.ActionLink("Close", "Dashboard", "Surveillance")
+            @Html.ActionLink("Close", "Dashboard", "Surveillance", null, new { @class = "btn btn-default" })
         }
         else
         {

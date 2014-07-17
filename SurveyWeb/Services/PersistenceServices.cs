@@ -91,6 +91,8 @@ namespace SurveyWeb.Services
 
         public void SaveTracer(TracerViewModel survey)
         {
+            survey.UpdatedDate = DateTime.Now;
+
             var appPath = GetAppPath();
 
             var fileName = String.Concat("response", survey.ResponseId, ".xml");

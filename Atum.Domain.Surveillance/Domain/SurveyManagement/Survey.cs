@@ -22,9 +22,6 @@ namespace Atum.Domain.SurveyManagement
         {   
             this.surveyStrategy = surveyStrategy;
             QuestionStrategies = surveyStrategy.QuestionStrategies;
-            //Questions questions = surveyStrategy.QuestionStrategies.
-            //loadQuestionStack(questions);
-
         }
 
         public Survey()

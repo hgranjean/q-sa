@@ -5,14 +5,28 @@
 }
 
 <h2>Completed surveys</h2>
-
-<fieldset>
     
-@foreach (var completedSurvey in Model.CompletedSurveys)
-{
-    <div>@Html.ValueFor(m => completedSurvey.SurveyDate) - @Html.ValueFor(m => completedSurvey.SurveyTitle)
-            @Html.ActionLink("View", "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
+    <div style="display: table; table-layout: fixed; width: 700px">
+        <div style="display: table-row">
+            <div style="display: table-cell">Audit Date</div>
+            <div style="display: table-cell">Title</div>
+            <div style="display: table-cell">&nbsp;</div>
+        </div>
+        @foreach (var completedSurvey in Model.CompletedSurveys)
+        {
+            <div style="display: table-row">
+                <div style="display: table-cell">
+                    @Html.ValueFor(m => completedSurvey.SurveyDate)
+                </div>
+                <div style="display: table-cell">
+                    @Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
+                </div>
+                <div style="display: table-cell">
+                    @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }
     </div>
-}   
-</fieldset>
+
+
 
