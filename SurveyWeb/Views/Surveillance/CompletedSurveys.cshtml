@@ -9,7 +9,9 @@
     <div style="display: table; table-layout: fixed; width: 700px">
         <div style="display: table-row">
             <div style="display: table-cell">Audit Date</div>
-            <div style="display: table-cell">Title</div>
+            <div style="display: table-cell">Title</div>            
+            <div style="display: table-cell">Score</div>
+            <div style="display: table-cell">Completed</div>
             <div style="display: table-cell">&nbsp;</div>
         </div>
         @foreach (var completedSurvey in Model.CompletedSurveys)
@@ -17,12 +19,19 @@
             <div style="display: table-row">
                 <div style="display: table-cell">
                     @Html.ValueFor(m => completedSurvey.SurveyDate)
-                </div>
+                </div>                
                 <div style="display: table-cell">
                     @Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
                 </div>
                 <div style="display: table-cell">
-                    @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-default" })
+                    &nbsp;
+                </div>
+                <div style="display: table-cell">
+                    &nbsp;
+                </div>
+                <div style="display: table-cell">
+                    @Html.ActionLink("Export", "Export", null, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Archive", "Archive", null, new { @class = "btn btn-default" })
                 </div>
             </div>
         }
