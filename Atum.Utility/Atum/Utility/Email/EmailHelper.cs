@@ -33,14 +33,24 @@ namespace Atum.Utility
             return isValid;
         }
 
-        public static string GetDomainName(string value)
+        /// <summary>
+        /// Given email address, ie. joe@domain.com, returns the domain name (domain.com)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string GetDomainNameFromEmail(string value)
         {
             var mailAddress = new MailAddress(value);
-
+                        
             return mailAddress.Host;
         }
 
-        public static string GetHostName(string value)
+        /// <summary>
+        /// Given the host address (www.domain.com), returns the domain name (domain.com)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string GetDomainNameFromHost(string value)
         {
             var result = value == "localhost" ? "localhost.com" : value.Replace("www.", string.Empty);
 

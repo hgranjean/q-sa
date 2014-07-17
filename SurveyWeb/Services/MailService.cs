@@ -13,11 +13,11 @@ namespace SurveyWeb.Services
             _smtpClient = new Lazy<SmtpClient>(() => new SmtpClient());   
         }
 
-        public void SendEmail(string from, string email, string subject, string body, bool isHtml = true, string hostName = null)
+        public void SendEmail(string from, string email, string subject, string body, bool isHtml = true, string domainName = null)
         {
             var whiteLabel = ConfigurationManager.AppSettings["WhiteLabel"];
 
-            body = body.Replace("{{DOMAIN_NAME}}", hostName).Replace("{{WHITE_LABEL}}", whiteLabel);
+            body = body.Replace("{{DOMAIN_NAME}}", domainName).Replace("{{WHITE_LABEL}}", whiteLabel);
 
             var message = new MailMessage(from, email);
             message.Subject = subject;
