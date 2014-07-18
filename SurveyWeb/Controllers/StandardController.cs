@@ -29,7 +29,7 @@ namespace SurveyWeb.Controllers
         private Models.StandardDocumentViewModel loadDocument(int? id)
         {
             Models.StandardDocumentViewModel retVal = new Models.StandardDocumentViewModel();
-            retVal.Title = "Proposed Core Reqirements - All chapters Long Term Care Accreditation Program";
+            retVal.Title = "Proposed Core Reqirements - All chapters Hospital Accreditation Program";
             retVal.TableOfContents = loadTableOfContent();
             return retVal;
         }
