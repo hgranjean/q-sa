@@ -76,6 +76,10 @@ input[type="checkbox"].input-validation-error {
     /*margin: 10px;*/
 }
 
+.table-cell {
+    padding-bottom: 5px;    
+}
+
 #cssmenu {
     width: 200px;
     max-width: 200px;

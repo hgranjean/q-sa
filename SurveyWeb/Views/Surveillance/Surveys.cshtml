@@ -5,24 +5,35 @@
     ViewBag.Title = "Surveys";
 }
 
-<h2>Surveys</h2>
+<h2>Survey Templates</h2>
+
+@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
  
 @if (ViewBag.ShowAdminContent || ViewBag.ShowSurveyorContent)
 
 {
-    @Html.ActionLink("Create new survey", "SurveyDesign", "Surveillance")
-
-    <div>
-        @foreach (var item in Model.Surveys)
-        {
-            <div>
-            
-                @Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDesign", new {id = item.ID})
-                &nbsp;
-                @Html.ActionLink("Delete", "DeleteSurvey", new {id = item.ID})
+    <div style="display: table; table-layout: fixed; width: 700px">
+        <div style="display: table-row">
+            <div style="display: table-cell">
+                Name
             </div>
+        </div>
+                @foreach (var item in Model.Surveys)
+        {
+                    <div style="display: table-row">
+                        <div style="display: table-cell">
+                            @Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDesign", new { id = item.ID })
+                        </div>
+                        <div style="display: table-cell; padding-bottom: 5px">
+                            @Html.ActionLink("Delete", "DeleteSurvey", null, new {id = item.ID, @class="btn btn-default"})
+                        </div>
+                    </div>
         }
     </div>
 
+    <div>&nbsp;</div>
+    <div>
+        @Html.ActionLink("Create new template", "SurveyDesign", null, new { @class = "btn btn-default" })
+    </div>
 }
 

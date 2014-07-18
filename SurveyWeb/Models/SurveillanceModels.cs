@@ -48,8 +48,9 @@ namespace SurveyWeb.Models
             this.Survey = survey;
             this.SurveyId = Convert.ToInt32(survey.ID);
             this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
-            this.SurveyDate = DateTime.Today;
+            this.SurveyDate = DateTime.Now;
             this.SurveyTypeId = (int)survey.SurveyType;
+            this.SurveyTitle = survey.Title;
         }
         
         [Display(Name = "Title")]
