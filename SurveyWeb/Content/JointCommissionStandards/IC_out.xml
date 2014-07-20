@@ -1,0 +1,130 @@
+<chapter>
+<chaptertitle>Infection Prevention and Control Chapter</chaptertitle>
+<titles>
+<title epid='IC.01.03.01'>The organization identifies risks for acquiring and spreading infections.</title>
+<title epid='IC.01.04.01'>Based on the identified risks, the organization sets goals to minimize the possibility of spreading infections.</title>
+<title epid='IC.01.05.01'>The organization has an infection prevention and control plan.</title>
+<title epid='IC.01.06.01'>The organization prepares to respond to an increased number of potentially infectious residents.</title>
+<title epid='IC.02.01.01'>The organization implements its infection prevention and control plan.</title>
+<title epid='IC.02.02.01'>The organization reduces the risk of infections associated with medical equipment, devices, and supplies.</title>
+<title epid='IC.02.03.01'>The organization works to prevent the spread of infectious disease among patients, licensed independent practitioners, and staff.</title>
+<title epid='IC.02.04.01'>The organization offers vaccination against influenza to licensed independent practitioners and staff.</title>
+<title epid='IC.02.04.03'>The organization provides the influenza vaccination to at-risk residents.</title>
+<title epid='IC.02.04.05'>The organization provides the pneumococcal vaccination to at-risk residents.</title>
+<title epid='IC.03.01.01'>The organization evaluates the effectiveness of its infection prevention and control plan.</title>
+</titles>
+
+<elements>
+<element epid='IC.01.03.01' id='1'>1.	The organization identifies its risks for acquiring and spreading infections based on the following: Its geographic location, community, and population served.</element>
+<element epid='IC.01.03.01' id='2'>2.	The organization identifies its risks for acquiring and spreading infections based on the following: The care, treatment, and services it provides.</element>
+<element epid='IC.01.03.01' id='3'>3.	The organization identifies its risks for acquiring and spreading infections based on the following: The analysis of surveillance activities.</element>
+<element epid='IC.01.03.01' id='4'>4.	The organization reviews and identifies its risks at least annually and whenever significant changes occur. This review occurs with input from, at a minimum, infection control personnel, medical staff, nursing, and leadership.</element>
+<element epid='IC.01.03.01' id='5'>5.	The organization prioritizes its identified risks for acquiring and spreading infections. These prioritized risks are documented.</element>
+<element epid='IC.01.04.01' id='1'>1.	The organization's written infection prevention and control goals are based on its prioritized risks.</element>
+<element epid='IC.01.04.01' id='2'>2.	The organization's written infection prevention and control goals include the following: Limiting unprotected exposure to pathogens.</element>
+<element epid='IC.01.04.01' id='3'>3.	The organization's written infection prevention and control goals include the following: Limiting the spread of infections associated with resident care procedures.</element>
+<element epid='IC.01.04.01' id='4'>4.	The organization's written infection prevention and control goals include the following: Limiting the spread of infections associated with the use of medical equipment, devices, and supplies.</element>
+<element epid='IC.01.04.01' id='5'>5.	The organization's written infection prevention and control goals include the following: Improving compliance with hand hygiene guidelines. (See also NPSG.07.01.01, EP 1)</element>
+<element epid='IC.01.05.01' id='1'>1.	When developing infection prevention and control activities, the organization uses national guidelines.</element>
+<element epid='IC.01.05.01' id='2'>2.	The organization�s written infection prevention and control plan includes a description of the activities, including surveillance, to minimize and/or reduce the risk of infection.</element>
+<element epid='IC.01.05.01' id='3'>3.	The organization�s written infection prevention and control plan includes a description of the process to evaluate the infection prevention and control plan.</element>
+<element epid='IC.01.05.01' id='4'>4.	The organization has written infection prevention and control policies for the following departments:</element>
+<element epid='IC.01.05.01' id='5'>5.	The organization describes, in writing, the process for investigating outbreaks of infectious disease. (See also IC.02.01.01, EP 5)</element>
+<element epid='IC.01.05.01' id='6'>6.	The organization identifies the responsibilities for preventing and controlling infection for everyone who works in the organization and for those who collaborate on an ongoing basis with the qualified individual(s) managing the infection control program. (See also HR.01.04.01, EPs 2 and 4; HR.02.02.01, EP 4)</element>
+<element epid='IC.01.05.01' id='7'>7.	The organization has a method for communicating responsibilities for preventing and controlling infection to licensed independent practitioners, staff, visitors, residents, and families. Information for visitors, residents, and families includes hand and respiratory hygiene practices. (See also IC.02.01.01, EP 7) Note: Information may be in different forms of media, such as posters or pamphlets.</element>
+<element epid='IC.01.05.01' id='8'>8.	The organization identifies methods for reporting infection surveillance, prevention, and control information to local, state, and federal public health authorities in accordance with law and regulation. (See also IC.01.01.01, EP 3; IC.02.01.01, EP 9)</element>
+<element epid='IC.01.06.01' id='1'>1.	The organization identifies resources that can provide information about infections that could cause an increased number of potentially infectious residents.</element>
+<element epid='IC.01.06.01' id='2'>2.	The organization obtains current clinical and epidemiological information from its resources regarding new infections that could cause an increased number of potentially infectious residents.</element>
+<element epid='IC.01.06.01' id='3'>3.	The organization has a method for communicating critical information to licensed independent practitioners and staff about emerging infections that could cause an increase in the number of infectious residents.</element>
+<element epid='IC.01.06.01' id='4'>4.	The organization describes, in writing, how it will respond to an increased number of potentially infectious residents. This planned response is documented. (See also EM.01.01.01, EP 2) Note: One acceptable response is to decide not to accept residents.</element>
+<element epid='IC.01.06.01' id='5'>6.	When the organization determines it is necessary, the organization activates its response to an increased number of potentially infectious residents.</element>
+<element epid='IC.02.01.01' id='1'>1.	The organization implements its infection prevention and control activities, including surveillance, to reduce and/or minimize the risk of infection.</element>
+<element epid='IC.02.01.01' id='2'>2.	The organization uses standard precautions, * including the use of personal protective equipment, to reduce the risk of infection.</element>
+<element epid='IC.02.01.01' id='3'>3.	The organization implements transmission-based precautions * in response to the pathogens that are suspected or identified within the organization�s service setting and community. (See also EC.02.02.01, EP 3)</element>
+<element epid='IC.02.01.01' id='4'>5.	The organization investigates outbreaks of infectious disease as described in its process. (See also IC.01.05.01, EP 5)</element>
+<element epid='IC.02.01.01' id='5'>6.	The organization minimizes the risk of infection when storing and disposing of infectious waste. (See also EC.02.02.01, EP 1)</element>
+<element epid='IC.02.01.01' id='6'>7.	The organization implements its methods to communicate responsibilities for preventing and controlling infection to licensed independent practitioners, staff, visitors, residents, and families. Information for visitors, residents, and families includes hand and respiratory hygiene practices. (See also HR.01.04.01, EP 4; IC.01.05.01, EP 7)</element>
+<element epid='IC.02.01.01' id='7'>8.	The organization reports infection surveillance, prevention, and control information to organization staff consistent with their responsibilities for infection prevention and control activities.</element>
+<element epid='IC.02.01.01' id='8'>9.	The organization reports infection surveillance, prevention, and control information to local, state, and federal public health authorities in accordance with law and regulation. (See also IC.01.01.01, EP 3 and IC.01.05.01, EP 8)</element>
+<element epid='IC.02.01.01' id='9'>11. When the organization becomes aware that it transferred a resident who has an infection requiring monitoring, treatment, and/or isolation, it informs the receiving organization.</element>
+<element epid='IC.02.01.01' id='10'>11. When the organization becomes aware that it received a resident from another organization who has an infection requiring action, and the infection was not communicated by the referring organization, it informs the referring organization.</element>
+<element epid='IC.02.01.01' id='11'>11. The organization reduces the risks associated with animals in the facility, including potential problems with cleanliness, immunizations, and management of waste.</element>
+<element epid='IC.02.02.01' id='1'>1.	The organization implements infection prevention and control activities when doing the following: Cleaning and performing low-level disinfection of medical equipment, devices, and supplies. * Note: Low-level disinfection is used for items such as stethoscopes and blood glucose meters.</element>
+<element epid='IC.02.02.01' id='2'>2.	The organization implements infection prevention and control activities when doing the following: Performing intermediate and high-level disinfection and sterilization of medical equipment, devices, and supplies. *</element>
+<element epid='IC.02.02.01' id='3'>3.	The organization implements infection prevention and control activities when doing the following: Disposing of medical equipment, devices, and supplies.</element>
+<element epid='IC.02.02.01' id='4'>4.	The organization implements infection prevention and control activities when doing the following: Storing medical equipment, devices, and supplies.</element>
+<element epid='IC.02.02.01' id='5'>5.	When reprocessing single-use devices, the organization implements infection prevention and control activities that are consistent with regulatory and professional standards.</element>
+<element epid='IC.02.03.01' id='1'>1.	The organization makes screening for exposure and/or immunity to infectious disease available to licensed independent practitioners and staff who may come in contact with infections at the workplace.</element>
+<element epid='IC.02.03.01' id='2'>2.	When licensed independent practitioners or staff have, or are suspected of having, an infectious disease that puts others at risk, the organization provides them with or refers them for assessment and potential testing, prophylaxis/treatment, or counseling.</element>
+<element epid='IC.02.03.01' id='3'>3.	When licensed independent practitioners or staff have been occupationally exposed to an infectious disease, the organization provides them with or refers them for assessment and potential testing, prophylaxis/treatment, or counseling.</element>
+<element epid='IC.02.03.01' id='4'>4.	When residents have been exposed to an infectious disease, the organization provides them with or refers them for assessment and potential testing, prophylaxis/treatment, or counseling.</element>
+<element epid='IC.02.04.01' id='1'>1.	The organization establishes an annual influenza vaccination program that is offered to licensed independent practitioners and staff.</element>
+<element epid='IC.02.04.01' id='2'>2.	The organization educates licensed independent practitioners and staff about, at a minimum, the influenza vaccine; non-vaccine control and prevention measures; and the diagnosis, spread, and impact of influenza. (See also HR.01.04.01, EP 4)</element>
+<element epid='IC.02.04.01' id='3'>3.	The organization provides influenza vaccination at sites and times accessible to licensed independent practitioners and staff.</element>
+<element epid='IC.02.04.01' id='4'>4.	The organization includes in its infection control plan the goal of improving influenza vaccination rates. (For more information, refer to Standard IC.01.04.01.)</element>
+<element epid='IC.02.04.01' id='5'>5.	The organization sets incremental influenza vaccination goals, consistent with achieving the 90% rate established in the national influenza initiatives for 2021. Note: The U.S. Department of Health and Human Services' Action Plan to Prevent Healthcare- Associated Infections is located at http://www.hhs.gov/ash/initiatives/hai/tier2_flu.html.</element>
+<element epid='IC.02.04.01' id='6'>6.	The organization has a written description of the methodology used to determine influenza vaccination rates. (See also IC.02.04.01, EP 1)</element>
+<element epid='IC.02.04.01' id='7'>7.	The organization evaluates the reasons given by staff and licensed independent practitioners for declining the influenza vaccination. This evaluation occurs at least annually.</element>
+<element epid='IC.02.04.01' id='8'>8.	The organization improves its vaccination rates according to its established goals at least annually. (For more information, refer to Standards PI.02.01.01 and PI.03.01.01.)</element>
+<element epid='IC.02.04.01' id='9'>9.	The organization provides influenza vaccination rate data to key stakeholders which may include leaders, licensed independent practitioners, nursing staff, and other staff at least annually.</element>
+<element epid='IC.02.04.03' id='1'>1.	The organization develops protocols on when to administer the influenza vaccine to a resident.</element>
+<element epid='IC.02.04.03' id='2'>2.	Residents identified as being high-risk for influenza are vaccinated. *</element>
+<element epid='IC.02.04.05' id='1'>1.	The organization develops protocols on when to administer the pneumococcal vaccine to a resident.</element>
+<element epid='IC.02.04.05' id='2'>2.	Residents identified as being high-risk for pneumococcal infection are vaccinated. *</element>
+<element epid='IC.02.04.05' id='3'>Footnote *: See the Centers for Disease Control and Prevention guidelines on high-risk populations (Pneumococcal polysaccharide vaccine (PPSV): CDC answers your questions http://immunize.org/catg.d/p2015.pdf).</element>
+<element epid='IC.03.01.01' id='1'>1.	The organization evaluates the effectiveness of its infection prevention and control plan annually and whenever a change in risks impacts the organization.</element>
+<element epid='IC.03.01.01' id='2'>2.	The evaluation includes a review of the following: The infection prevention and control plan's prioritized risks.</element>
+<element epid='IC.03.01.01' id='3'>3.	The evaluation includes a review of the following: The infection prevention and control plan's goals. (See also NPSG.07.01.01, EP 2)</element>
+<element epid='IC.03.01.01' id='4'>4.	The evaluation includes a review of the following: Implementation of the infection prevention and control plan�s activities.</element>
+<element epid='IC.03.01.01' id='5'>7.	The organization uses the findings of its evaluation of the infection prevention and control plan when revising the plan.</element>
+</elements>
+
+<notes>
+<note epid='IC.01.03.01' itemid='4'>Note: The purpose of surveillance is to support the organization's efforts to reduce the risk of infections spreading among residents. Information from the surveillance activities may be used within the organization to improve processes and outcomes related to infection prevention and control.</note>
+<note epid='IC.01.04.01' itemid='1'>Note: See NPSG.07.01.01 for hand hygiene guidelines.</note>
+<note epid='IC.01.05.01' itemid='3'>Note: The purpose of surveillance is to support the organization�s efforts to reduce the risk of infections spreading among residents. Information from the surveillance activities may be used within the organization to improve processes and outcomes related to infection prevention and control.</note>
+<note epid='IC.01.05.01' itemid='5'>Note: The organization can have one policy that covers all departments or separate policies for each department.</note>
+<note epid='IC.01.05.01' itemid='7'>Note: A variety of individuals may collaborate on infection prevention and control activities and/or have defined responsibilities, including licensed independent practitioners, staff, students/trainees, volunteers, residents, families, and visitors.</note>
+<note epid='IC.01.05.01' itemid='9'>Note: Other Joint Commission expectations for reporting infection surveillance, prevention, and control information can be found in the sentinel event reporting procedures.</note>
+<note epid='IC.01.06.01' itemid='2'>Note: Resources may include local, state, and federal public health systems.</note>
+<note epid='IC.02.01.01' itemid='2'>Note: The purpose of surveillance is to support the organization�s efforts to reduce the risk of infections spreading among residents. Information from the surveillance activities is used within the organization to improve processes and outcomes related to infection prevention and control.</note>
+<note epid='IC.02.01.01' itemid='3'>Note: Standard precautions are infection prevention and control measures to protect against possible exposure to infectious agents. These precautions are general and applicable to all residents; the type of precaution used depends on the risk of exposure to body fluids.</note>
+<note epid='IC.02.01.01' itemid='4'>Note: Transmission-based precautions are infection prevention and control measures to protect against exposure to a suspected or identified pathogen. These precautions are specific and based on the way the pathogen is spread. Transmission-based precautions include contact, droplet, airborne,  or a combination of these precautions.</note>
+<note epid='IC.02.01.01' itemid='7'>Note: Information may have different forms of media, such as posters or pamphlets.</note>
+<note epid='IC.02.01.01' itemid='9'>Note: Other Joint Commission expectations for reporting infection surveillance, prevention, and control information can be found in the sentinel event reporting procedures.</note>
+<note epid='IC.02.01.01' itemid='11'>Note: Infections requiring action include those that require isolation and/or public health reporting or those that may aid in the referring organization's surveillance.</note>
+<note epid='IC.02.02.01' itemid='3'>Note: Sterilization is used for items such as implants and surgical instruments. High-level disinfection may also be used if sterilization is not possible, as is the case with flexible endoscopes.</note>
+<note epid='IC.02.04.01' itemid='1'>Note: This standard is applicable to staff and licensed independent practitioners only when care, treatment, or services are provided on site. When care, treatment, or services are provided off site, such as with telemedicine or telephone consultation, this standard is not applicable to off-site staff and licensed independent practitioners.</note>
+<note epid='IC.02.04.01' itemid='2'>Note: Some jurisdictions mandate that organizations limit access to residents by health care workers who have declined the influenza vaccination.</note>
+<note epid='IC.02.04.01' itemid='7'>Note: The National Quality Forum (NQF) Measure Submission and Evaluation Worksheet 5.0  provides recommendations for the numerator and denominator for NQF performance measure #0431 Influenza Vaccination Coverage Among Healthcare Personnel (see http://www.qualityforum.org/WorkArea/linkit.aspx?LinkIdentifier=id&ItemID=68275). While The Joint Commission recommends that organizations use the Centers for Disease Control and Prevention (CDC) and the NQF proposed performance measure to calculate influenza vaccination rates for staff and licensed independent practitioners, it does not include all contracted staff. Therefore, The Joint Commission additionally recommends that organizations also track influenza vaccination rates for all individuals providing care, treatment, and services through a contract, since contracted individuals  also transmit influenza.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='6' epid='IC.01.05.01'><element>IC.02.01.01</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='7' epid='IC.01.05.01'><element>HR.01.04.01</element><epitem>EPs 2 and 4</epitem></referencedelement>
+<referencedelement itemid='7' epid='IC.01.05.01'><element>HR.02.02.01</element><epitem>EP 4</epitem></referencedelement>
+<referencedelement itemid='8' epid='IC.01.05.01'><element>IC.02.01.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='9' epid='IC.01.05.01'><element>IC.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='9' epid='IC.01.05.01'><element>IC.02.01.01</element><epitem>EP 9</epitem></referencedelement>
+<referencedelement itemid='5' epid='IC.01.06.01'><element>EM.01.01.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='4' epid='IC.02.01.01'><element>EC.02.02.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='5' epid='IC.02.01.01'><element>IC.01.05.01</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='6' epid='IC.02.01.01'><element>EC.02.02.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='7' epid='IC.02.01.01'><element>HR.01.04.01</element><epitem>EP 4</epitem></referencedelement>
+<referencedelement itemid='7' epid='IC.02.01.01'><element>IC.01.05.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='9' epid='IC.02.01.01'><element>IC.01.01.01</element><epitem>EP 3 and IC.01.05.01</epitem></referencedelement>
+<referencedelement itemid='3' epid='IC.02.04.01'><element>HR.01.04.01</element><epitem>EP 4</epitem></referencedelement>
+<referencedelement itemid='7' epid='IC.02.04.01'><element>IC.02.04.01</element><epitem>EP 1</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='IC.01.05.01' id='5'>-	Clinical services (for example, nursing, rehabilitation, respiratory therapy, dialysis)</subitems>
+<subitems  epid='IC.01.05.01' id='5'>-	Food services (for example, food preparation, dining services, room service)</subitems>
+<subitems  epid='IC.01.05.01' id='5'>-	Housekeeping</subitems>
+<subitems  epid='IC.01.05.01' id='5'>-	Maintenance and laundry services</subitems>
+<subitems  epid='IC.01.05.01' id='5'>-	Ancillary services (for example, beauty shops)</subitems>
+<subitems  epid='IC.01.05.01' id='5'>-	Resident activities</subitems>
+<subitems  epid='IC.01.05.01' id='5'>-	Staff health</subitems>
+</subitems>
+
+</chapter>

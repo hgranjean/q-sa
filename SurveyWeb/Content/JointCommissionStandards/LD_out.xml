@@ -1,0 +1,251 @@
+<chapter>
+<chaptertitle>Leadership Chapter</chaptertitle>
+<titles>
+<title epid='LD.01.03.01'>Governance is ultimately accountable for the safety and quality of care, treatment, and services.</title>
+<title epid='LD.01.04.01'>An administrator manages the organization.</title>
+<title epid='LD.01.06.01'>A medical director oversees the care, treatment, and services provided to residents.</title>
+<title epid='LD.01.07.01'>Individual leaders have the knowledge needed for their roles in the organization or they seek guidance to fulfill their roles.</title>
+<title epid='LD.02.01.01'>The mission, vision, and goals of the organization support the safety and quality of care, treatment, and services.</title>
+<title epid='LD.02.03.01'>Leaders regularly communicate with each other on issues of safety and quality.</title>
+<title epid='LD.03.01.01'>Leaders create and maintain a culture of safety and quality throughout the organization.</title>
+<title epid='LD.03.01.02'>The leaders create and maintain a culture of person-centered care.</title>
+<title epid='LD.03.02.01'>The organization uses data and information to guide decisions and to understand variation in the performance of processes supporting safety and quality.</title>
+<title epid='LD.03.03.01'>Leaders use organization-wide planning to establish structures and processes that focus on safety and quality.</title>
+<title epid='LD.03.04.01'>The organization communicates information related to safety and quality to those who need it, including staff, residents, families, and external interested parties.</title>
+<title epid='LD.03.05.01'>Leaders implement changes in existing processes to improve the performance of the organization.</title>
+<title epid='LD.03.06.01'>Those who work in the organization are focused on improving safety and quality.</title>
+<title epid='LD.04.01.01'>The organization complies with law and regulation.</title>
+<title epid='LD.04.01.03'>The organization develops an annual operating budget and, when needed, a long-term capital expenditure plan.</title>
+<title epid='LD.04.01.05'>The organization effectively manages its programs, services, sites, or departments.</title>
+<title epid='LD.04.01.07'>The organization has policies and procedures that guide and support resident care, treatment, and services.</title>
+<title epid='LD.04.01.11'>The organization makes space and equipment available as needed for the provision of care, treatment, and services.</title>
+<title epid='LD.04.02.01'>The leaders address any conflict of interest involving licensed independent practitioners and/or staff that affects or has the potential to affect the safety or quality of care, treatment, and services.</title>
+<title epid='LD.04.02.03'>Ethical principles guide the organization�s business practices.</title>
+<title epid='LD.04.02.05'>When internal or external review results in the denial of care, treatment, and services, or payment, the organization makes decisions regarding the ongoing provision of care, treatment, and services, and discharge or transfer, based on the assessed needs of the resident.</title>
+<title epid='LD.04.03.01'>The organization provides services that meet resident needs.</title>
+<title epid='LD.04.03.07'>Residents with comparable needs receive the same standard of care, treatment, and services throughout the organization.</title>
+<title epid='LD.04.03.09'>Care, treatment, and services provided through contractual agreement are provided safely and effectively.</title>
+<title epid='LD.04.04.01'>Leaders establish priorities for performance improvement. (Refer to the "Performance Improvement" [PI] chapter.)</title>
+<title epid='LD.04.04.03'>New or modified services or processes are well designed.</title>
+<title epid='LD.04.04.05'>The organization has an organization-wide, integrated resident safety program.</title>
+</titles>
+
+<elements>
+<element epid='LD.01.03.01' id='1'>2.	Governance provides for organization management and planning.</element>
+<element epid='LD.01.03.01' id='2'>3.	Governance approves the organization's written scope of services. (See also PC.01.01.01, EP 1)</element>
+<element epid='LD.01.03.01' id='3'>5.	Governance provides for the resources needed to maintain safe, quality care, treatment, and services.</element>
+<element epid='LD.01.03.01' id='4'>6.	Governance works with other leaders to annually evaluate the organization�s performance in relation to its mission, vision, and goals.</element>
+<element epid='LD.01.04.01' id='1'>1.	The administrator provides for the following: Information and support systems.</element>
+<element epid='LD.01.04.01' id='2'>2.	The administrator provides for the following: Recruitment and retention of staff.</element>
+<element epid='LD.01.04.01' id='3'>3.	The administrator provides for the following: Physical and financial assets.</element>
+<element epid='LD.01.04.01' id='4'>6.	The administrator identifies a registered nurse, qualified by education and experience, to direct nursing services.</element>
+<element epid='LD.01.04.01' id='5'>9.	The individual with the authority to address administrative issues is accessible to the organization on a full-time basis.</element>
+<element epid='LD.01.04.01' id='6'>11. When the administrator is absent from the organization, a qualified individual is designated to perform the duties of this position.</element>
+<element epid='LD.01.06.01' id='1'>1.	The medical director is a licensed physician and is appointed by the chief executive or is designated by the medical staff.</element>
+<element epid='LD.01.06.01' id='2'>2.	The responsibilities of the medical director are defined in a written agreement with the governing body.</element>
+<element epid='LD.01.06.01' id='3'>3.	The medical director provides clinical leadership by doing the following:</element>
+<element epid='LD.01.06.01' id='4'>4.	The medical director advises the administration, the governance, and other professionals on the following:</element>
+<element epid='LD.01.06.01' id='5'>-	Methods for monitoring employee health status and the content of employee health policies (See also EC.04.01.03, EP 3)</element>
+<element epid='LD.01.06.01' id='6'>5.	The medical director provides physician leadership in the following ways:</element>
+<element epid='LD.01.07.01' id='1'>2.	Leaders are oriented to all of the following:</element>
+<element epid='LD.01.07.01' id='2'>3.	Governance provides leaders with access to information and training in areas where they need additional skills or expertise.</element>
+<element epid='LD.01.07.01' id='3'>4.	If the facility�s medical director does not have the expertise to direct specialty programs, another physician with that expertise is identified to direct the medical care provided, and the relationship between these two positions is clearly defined.</element>
+<element epid='LD.02.01.01' id='1'>2.	The organization's mission, vision, and goals guide the actions of leaders.</element>
+<element epid='LD.02.01.01' id='2'>3.	Leaders communicate the mission, vision, and goals to staff and the population(s) the organization serves.</element>
+<element epid='LD.02.03.01' id='1'>1.	Leaders discuss issues that affect the organization and the population(s) it serves, including the following:</element>
+<element epid='LD.02.03.01' id='2'>2.	The organization establishes time frames for the discussion of issues that affect the organization and the population(s) it serves.</element>
+<element epid='LD.03.01.01' id='1'>1.	Leaders regularly evaluate the culture of safety and quality.</element>
+<element epid='LD.03.01.01' id='2'>2.	Leaders prioritize and implement changes identified by the evaluation.</element>
+<element epid='LD.03.01.01' id='3'>3.	Leaders provide opportunities for all individuals who work in the organization to participate in safety and quality initiatives.</element>
+<element epid='LD.03.01.01' id='4'>4.	Leaders develop a code of conduct that defines acceptable behavior and behaviors that undermine a culture of safety.</element>
+<element epid='LD.03.01.01' id='5'>5.	Leaders create and implement a process for managing behaviors that undermine a culture of safety.</element>
+<element epid='LD.03.01.01' id='6'>6.	Leaders provide education that focuses on safety and quality for all individuals.</element>
+<element epid='LD.03.01.01' id='7'>7.	Leaders establish a team approach among all staff at all levels.</element>
+<element epid='LD.03.01.01' id='8'>8.	All individuals who work in the organization, including staff and licensed independent practitioners, are able to openly discuss issues of safety and quality. (See also LD.04.04.05, EP 6)</element>
+<element epid='LD.03.01.01' id='9'>9.	Literature and advisories relevant to resident safety are available to all individuals who work in the organization.</element>
+<element epid='LD.03.01.01' id='10'>11. Leaders define how members of the population(s) served can help identify and manage issues of safety and quality within the organization.</element>
+<element epid='LD.03.01.02' id='1'>1.	At a frequency determined by the organization, leaders evaluate the organization�s culture in providing person-centered care. * (See also Standard PI.01.01.01, EP 16 and EP 30)</element>
+<element epid='LD.03.01.02' id='2'>2.	Based on the organization�s culture evaluation, leaders work with residents, families, and staff to develop strategies that promote person-centered care.</element>
+<element epid='LD.03.01.02' id='3'>3.	Leaders work with residents, families, and staff to implement strategies that promote person-centered care. (See also HR.01.05.03, EP 23)</element>
+<element epid='LD.03.02.01' id='1'>1.	Leaders set expectations for using data and information to improve the safety and quality of care, treatment, and services.</element>
+<element epid='LD.03.02.01' id='2'>3.	The organization uses processes to support systematic data and information use.</element>
+<element epid='LD.03.02.01' id='3'>4.	Leaders provide the resources needed for data and information use, including staff, equipment, and information systems.</element>
+<element epid='LD.03.02.01' id='4'>5.	The organization uses data and information in decision making that supports the safety and quality of care, treatment, and services. (See also PI.02.01.01, EP 8)</element>
+<element epid='LD.03.02.01' id='5'>6.	The organization uses data and information to identify and respond to internal and external changes in the environment.</element>
+<element epid='LD.03.02.01' id='6'>7.	Leaders evaluate how effectively data and information are used throughout the organization.</element>
+<element epid='LD.03.03.01' id='1'>1.	Planning activities focus on improving resident safety and health care quality.</element>
+<element epid='LD.03.03.01' id='2'>3.	Planning is systematic, and it involves designated individuals and information sources.</element>
+<element epid='LD.03.03.01' id='3'>4.	Leaders provide the resources needed to support the safety and quality of care, treatment, and services.</element>
+<element epid='LD.03.03.01' id='4'>5.	Safety and quality planning is organization-wide.</element>
+<element epid='LD.03.03.01' id='5'>6.	Planning activities adapt to changes in the environment.</element>
+<element epid='LD.03.03.01' id='6'>7.	Leaders evaluate the effectiveness of planning activities.</element>
+<element epid='LD.03.04.01' id='1'>1.	Communication processes foster the safety of the resident and the quality of care.</element>
+<element epid='LD.03.04.01' id='2'>3.	Communication is designed to meet the needs of internal and external users.</element>
+<element epid='LD.03.04.01' id='3'>4.	Leaders provide the resources required for communication, based on the needs of residents, staff, and administration.</element>
+<element epid='LD.03.04.01' id='4'>5.	Communication supports safety and quality throughout the organization. (See also LD.04.04.05, EPs 6 and 12)</element>
+<element epid='LD.03.04.01' id='5'>6.	When changes in the environment occur, the organization communicates those changes effectively.</element>
+<element epid='LD.03.04.01' id='6'>7.	Leaders evaluate the effectiveness of communication methods.</element>
+<element epid='LD.03.05.01' id='1'>1.	Structures for managing change and performance improvements exist that foster the safety of the resident and the quality of care, treatment, and services.</element>
+<element epid='LD.03.05.01' id='2'>3.	The organization has a systematic approach to change and performance improvement.</element>
+<element epid='LD.03.05.01' id='3'>4.	Leaders provide the resources required for performance improvement and change management, including sufficient staff, access to information, and training.</element>
+<element epid='LD.03.05.01' id='4'>7.	Leaders evaluate the effectiveness of processes for the management of change and performance improvement. (See also PI.02.01.01, EP 13)</element>
+<element epid='LD.03.06.01' id='1'>1.	Leaders design work processes to focus individuals on safety and quality issues.</element>
+<element epid='LD.03.06.01' id='2'>3.	Leaders provide for a sufficient number and mix of individuals to support safe, quality care, treatment, and services. (See also HR.01.01.01, EPs 21 and 23)</element>
+<element epid='LD.03.06.01' id='3'>6.	Leaders evaluate the effectiveness of those who work in the organization to promote safety and quality.</element>
+<element epid='LD.04.01.01' id='1'>1.	The organization is licensed, is certified, or has a permit, in accordance with law and regulation, to provide the care, treatment, and services for which the organization is seeking accreditation from The Joint Commission. *</element>
+<element epid='LD.04.01.01' id='2'>Footnote *: For more information on how to obtain a CLIA certificate, see http://www.cms.hhs.gov/CLIA/downloads/HowObtainCLIACertificate.pdf. (See also WT.01.01.01, EP 1; WT.04.01.01, EP 1)</element>
+<element epid='LD.04.01.01' id='3'>2.	The organization provides care, treatment, and services in accordance with licensure requirements, laws, and rules and regulations.</element>
+<element epid='LD.04.01.01' id='4'>3.	Leaders act on or comply with reports or recommendations from external authorized agencies, such as accreditation, certification, or regulatory bodies.</element>
+<element epid='LD.04.01.03' id='1'>1.	Leaders solicit comments from those who work in the organization when developing the operational and capital budgets.</element>
+<element epid='LD.04.01.03' id='2'>3.	The operating budget reflects the organization�s goals and objectives.</element>
+<element epid='LD.04.01.03' id='3'>5.	Leaders monitor the implementation of the budget and long-term capital expenditure plan.</element>
+<element epid='LD.04.01.05' id='1'>1.	Leaders of the program, service, site, or department oversee operations.</element>
+<element epid='LD.04.01.05' id='2'>2.	Programs, services, sites, or departments providing resident care are directed by one or more qualified professionals or by a qualified licensed independent practitioner with clinical privileges.</element>
+<element epid='LD.04.01.05' id='3'>3.	The organization defines, in writing, the responsibility of those with administrative and clinical direction of its programs, services, sites, or departments.</element>
+<element epid='LD.04.01.05' id='4'>4.	Staff are held accountable for their responsibilities.</element>
+<element epid='LD.04.01.05' id='5'>5.	Leaders provide for the coordination of care, treatment, and services among the organization's different programs, services, sites, or departments.</element>
+<element epid='LD.04.01.07' id='1'>1.	Leaders review and approve policies and procedures that guide and support resident care, treatment, and services.</element>
+<element epid='LD.04.01.07' id='2'>2.	The organization manages the implementation of policies and procedures.</element>
+<element epid='LD.04.01.11' id='1'>5.	The leaders provide for equipment, supplies, and other resources.</element>
+<element epid='LD.04.02.01' id='1'>1.	The leaders define conflict of interest involving licensed independent practitioners or staff. This definition is in writing.</element>
+<element epid='LD.04.02.01' id='2'>2.	The leaders develop a written policy that defines how the organization will address conflicts of interest involving licensed independent practitioners and/or staff.</element>
+<element epid='LD.04.02.01' id='3'>3.	Existing or potential conflicts of interest involving licensed independent practitioners and/or staff, as defined by the organization, are disclosed.</element>
+<element epid='LD.04.02.01' id='4'>4.	The organization reviews its relationships with other care providers, educational institutions, manufacturers, and payers to determine whether conflicts of interest exist and whether they are within law and regulation.</element>
+<element epid='LD.04.02.01' id='5'>5.	Policies, procedures, and information about the relationship between care, treatment, and services and financial incentives are available upon request to all residents and those individuals who work in the organization, including staff and licensed independent practitioners.</element>
+<element epid='LD.04.02.03' id='1'>1.	The organization has a process that allows staff, residents, and families to address ethical issues or issues prone to conflict.</element>
+<element epid='LD.04.02.03' id='2'>2.	The organization uses its process to address ethical issues or issues prone to conflict.</element>
+<element epid='LD.04.02.03' id='3'>3.	The organization follows ethical practices for marketing and billing.</element>
+<element epid='LD.04.02.03' id='4'>4.	Marketing materials accurately represent the organization and address the care, treatment, and services that the organization provides either directly or by contractual arrangement.</element>
+<element epid='LD.04.02.03' id='5'>5.	Care, treatment, and services are provided based on resident needs, regardless of compensation or financial risk-sharing with those who work in the organization, including staff and licensed independent practitioners.</element>
+<element epid='LD.04.02.03' id='6'>6.	When leaders excuse staff members from a job responsibility, care, treatment, and services are not affected in a negative way.</element>
+<element epid='LD.04.02.03' id='7'>7.	Residents receive information about charges for which they will be responsible.</element>
+<element epid='LD.04.02.03' id='8'>8.	Residents are informed whenever services, charges, or coverage change.</element>
+<element epid='LD.04.02.05' id='1'>1.	Decisions regarding the provision of ongoing care, treatment, and services, discharge, or transfer are based on the assessed needs of the resident, regardless of the recommendations of any internal or external review.</element>
+<element epid='LD.04.02.05' id='2'>2.	The safety and quality of care, treatment, and services do not depend on the resident�s ability to pay.</element>
+<element epid='LD.04.03.01' id='1'>1.	The needs of the population(s) served guide decisions about which services will be provided directly or through referral, consultation, contractual arrangements, or other agreements.</element>
+<element epid='LD.04.03.07' id='1'>1.	Variances in staff, setting, or payment source do not affect outcomes of care, treatment, and services in a negative way. (See also RI.01.01.01, EP 19)</element>
+<element epid='LD.04.03.07' id='2'>6.	Regardless of payment method, residents have access to the following:</element>
+<element epid='LD.04.03.07' id='3'>-	Care-planning and discharge-planning processes (See also RI.01.01.01, EP 19)</element>
+<element epid='LD.04.03.09' id='1'>1.	Clinical leaders have an opportunity to provide advice about the sources of clinical services to be provided through contractual agreement.</element>
+<element epid='LD.04.03.09' id='2'>2.	The organization describes, in writing, the nature and scope of services provided through contractual agreements.</element>
+<element epid='LD.04.03.09' id='3'>3.	Designated leaders approve contractual agreements.</element>
+<element epid='LD.04.03.09' id='4'>4.	Leaders monitor contracted services by establishing expectations for the performance of the contracted services.</element>
+<element epid='LD.04.03.09' id='5'>5.	Leaders monitor contracted services by communicating the expectations in writing to the provider of the contracted services.</element>
+<element epid='LD.04.03.09' id='6'>6.	Leaders monitor contracted services by evaluating these services in relation to the organization's expectations.</element>
+<element epid='LD.04.03.09' id='7'>7.	Leaders take steps to improve contracted services that do not meet expectations. Note: Examples of improvement efforts to consider include the following:</element>
+<element epid='LD.04.03.09' id='8'>8.	When contractual agreements are renegotiated or terminated, the organization maintains the continuity of resident care.</element>
+<element epid='LD.04.03.09' id='9'>11. Reference and contract laboratory services meet the federal regulations for clinical laboratories and maintain evidence of the same.</element>
+<element epid='LD.04.04.01' id='1'>1.	Leaders set priorities for performance improvement activities and resident health outcomes. (See also PI.01.01.01, EPs 1 and 3)</element>
+<element epid='LD.04.04.01' id='2'>2.	Leaders give priority to high-volume, high-risk, or problem-prone processes for performance improvement activities. (See also PI.01.01.01, EPs 9, 12, 14, 15)</element>
+<element epid='LD.04.04.01' id='3'>3.	Leaders reprioritize performance improvement activities in response to changes in the internal or external environment.</element>
+<element epid='LD.04.04.01' id='4'>4.	Performance improvement occurs organization-wide.</element>
+<element epid='LD.04.04.03' id='1'>1.	The organization's design of new or modified services or processes incorporates the needs of residents, staff, and others.</element>
+<element epid='LD.04.04.03' id='2'>2.	The organization's design of new or modified services or processes incorporates the results of performance improvement activities.</element>
+<element epid='LD.04.04.03' id='3'>3.	The organization's design of new or modified services or processes incorporates information about potential risks to residents. (See also LD.04.04.05, EPs 6, 10-11)</element>
+<element epid='LD.04.04.03' id='4'>4.	The organization's design of new or modified services or processes incorporates evidence-based information in the decision-making process.</element>
+<element epid='LD.04.04.03' id='5'>5.	The organization's design of new or modified services or processes incorporates information about sentinel events.</element>
+<element epid='LD.04.04.03' id='6'>6.	The organization tests and analyzes its design of new or modified services or processes to determine whether the proposed design or modification is an improvement.</element>
+<element epid='LD.04.04.03' id='7'>7.	Leaders involve staff and residents in the design of new or modified services or processes.</element>
+<element epid='LD.04.04.05' id='1'>1.	The leaders implement an organization-wide resident safety program.</element>
+<element epid='LD.04.04.05' id='2'>2.	One or more qualified individuals or an interdisciplinary group manages the safety program.</element>
+<element epid='LD.04.04.05' id='3'>3.	The scope of the safety program includes the full range of safety issues, from potential or no-harm errors (sometimes referred to as near misses, close calls, or good catches) to hazardous conditions and sentinel events.</element>
+<element epid='LD.04.04.05' id='4'>4.	All departments, programs, and services within the organization participate in the safety program.</element>
+<element epid='LD.04.04.05' id='5'>5.	As part of the safety program, the leaders create procedures for responding to system or process failures.</element>
+<element epid='LD.04.04.05' id='6'>6.	The leaders provide and encourage the use of systems for blame-free internal reporting of a system or process failure, or the results of a proactive risk assessment. (See also LD.03.01.01, EP 8; LD.03.04.01, EP 5; LD.04.04.03, EP 3)</element>
+<element epid='LD.04.04.05' id='7'>7.	The leaders define �sentinel event� and communicate this definition throughout the organization. Note: At a minimum, the organization's definition includes those events subject to review in the "Sentinel Events" (SE) chapter of this manual. The definition may include any process variation that does not affect the outcome or result in an adverse event, but for which a recurrence carries significant chance of a serious adverse outcome or result in an adverse event, often referred to as a near miss.</element>
+<element epid='LD.04.04.05' id='8'>8.	The organization conducts thorough and credible root cause analyses in response to sentinel events as described in the "Sentinel Events" (SE) chapter of this manual.</element>
+<element epid='LD.04.04.05' id='9'>9.	The leaders make support systems available for staff who have been involved in an adverse or sentinel event.</element>
+<element epid='LD.04.04.05' id='10'>11. At least every 18 months, the organization selects one high-risk process and conducts a proactive risk assessment. (See also LD.04.04.03, EP 3)</element>
+<element epid='LD.04.04.05' id='11'>11. To improve safety, the organization analyzes and uses information about system or process failures and the results of proactive risk assessments. (See also LD.04.04.03, EP 3)</element>
+<element epid='LD.04.04.05' id='12'>11. The leaders disseminate lessons learned from root cause analyses, system or process failures, and the results of proactive risk assessments to all staff who provide services for the specific situation. (See also LD.03.04.01, EP 5)</element>
+<element epid='LD.04.04.05' id='13'>11. At least once a year, the leaders provide governance with written reports on the following:</element>
+<element epid='LD.04.04.05' id='14'>-	All results of the analyses related to the adequacy of staffing (See also PI.02.01.01, EP 14)</element>
+<element epid='LD.04.04.05' id='15'>11. The leaders encourage external reporting of significant adverse events, including voluntary reporting programs in addition to mandatory programs.</element>
+</elements>
+
+<notes>
+<note epid='LD.01.06.01' itemid='7'>Note: This standard does not require the creation of a medical staff where one does not exist. The long term care organization chooses whether or not to create a medical staff.</note>
+<note epid='LD.04.01.01' itemid='2'>Note 1: Applicable law and regulation include, but are not limited to, individual and facility licensure, certification, U.S. Food and Drug Administration regulations, Drug Enforcement Agency regulations, Centers for Medicare & Medicaid Services regulations, Occupational Safety and Health Administration regulations, Department of Transportation regulations, Health Insurance Portability and Accountability Act, and other local, state, and federal laws and regulations.</note>
+<note epid='LD.04.01.01' itemid='2'>Note 2: Each service location that performs laboratory testing (waived or nonwaived) must have a Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate as specified by the federal CLIA regulations (42 CFR 493.55 and 493.3) and applicable state law.</note>
+<note epid='LD.04.03.09' itemid='5'>Note: When the organization contracts with another accredited organization for resident care, treatment, and services to be provided off site, it can do the following:</note>
+<note epid='LD.04.03.09' itemid='6'>Note: A written description of the expectations can be provided either as part of the written agreement or in addition to it.</note>
+<note epid='LD.04.04.03' itemid='4'>Note: A proactive risk assessment is one of several ways to assess potential risks to residents. For suggested components, refer to the Proactive Risk Assessment section at the beginning of this chapter.</note>
+<note epid='LD.04.04.03' itemid='5'>Note: For example, evidence-based information could include practice guidelines, successful practices, information from current literature, and clinical standards.</note>
+<note epid='LD.04.04.05' itemid='6'>Note: Responses might include continuing to provide care, treatment, and services to those affected, containing the risk to others, and preserving factual information for subsequent analysis.</note>
+<note epid='LD.04.04.05' itemid='10'>Note: Support systems recognize that conscientious health care workers who are involved in sentinel events are themselves victims of the event and require support. Support systems provide staff with additional help and support as well as additional resources through the human resources function or an employee assistance program. Support systems also focus on the process rather than blaming the involved individuals.</note>
+<note epid='LD.04.04.05' itemid='11'>Note: For suggested components, refer to the Proactive Risk Assessment section at the beginning of this chapter.</note>
+<note epid='LD.04.04.05' itemid='16'>Note: Examples of voluntary programs include The Joint Commission Sentinel Event Database and the U.S. Food and Drug Administration (FDA) MedWatch. Mandatory programs are often state initiated.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='3' epid='LD.01.03.01'><element>PC.01.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='6' epid='LD.01.06.01'><element>EC.04.01.03</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='9' epid='LD.03.01.01'><element>LD.04.04.05</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='4' epid='LD.03.01.02'><element>HR.01.05.03</element><epitem>EP 23</epitem></referencedelement>
+<referencedelement itemid='5' epid='LD.03.02.01'><element>PI.02.01.01</element><epitem>EP 8</epitem></referencedelement>
+<referencedelement itemid='5' epid='LD.03.04.01'><element>LD.04.04.05</element><epitem>EPs 6 and 12</epitem></referencedelement>
+<referencedelement itemid='5' epid='LD.03.05.01'><element>PI.02.01.01</element><epitem>EP 13</epitem></referencedelement>
+<referencedelement itemid='3' epid='LD.03.06.01'><element>HR.01.01.01</element><epitem>EPs 21 and 23</epitem></referencedelement>
+<referencedelement itemid='3' epid='LD.04.01.01'><element>WT.01.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='3' epid='LD.04.01.01'><element>WT.04.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='2' epid='LD.04.03.07'><element>RI.01.01.01</element><epitem>EP 19</epitem></referencedelement>
+<referencedelement itemid='4' epid='LD.04.03.07'><element>RI.01.01.01</element><epitem>EP 19</epitem></referencedelement>
+<referencedelement itemid='2' epid='LD.04.04.01'><element>PI.01.01.01</element><epitem>EPs 1 and 3</epitem></referencedelement>
+<referencedelement itemid='3' epid='LD.04.04.01'><element>PI.01.01.01</element><epitem>EPs 9</epitem></referencedelement>
+<referencedelement itemid='4' epid='LD.04.04.03'><element>LD.04.04.05</element><epitem>EPs 6</epitem></referencedelement>
+<referencedelement itemid='7' epid='LD.04.04.05'><element>LD.03.01.01</element><epitem>EP 8</epitem></referencedelement>
+<referencedelement itemid='7' epid='LD.04.04.05'><element>LD.03.04.01</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='7' epid='LD.04.04.05'><element>LD.04.04.03</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='11' epid='LD.04.04.05'><element>LD.04.04.03</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='12' epid='LD.04.04.05'><element>LD.04.04.03</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='13' epid='LD.04.04.05'><element>LD.03.04.01</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='15' epid='LD.04.04.05'><element>PI.02.01.01</element><epitem>EP 14</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='LD.01.06.01' id='4'>-	Directing and coordinating medical care in the organization</subitems>
+<subitems  epid='LD.01.06.01' id='4'>-	Participating in the creation of policies, procedures, and guidelines for clinical care, treatment, and services and the development of emergency treatment procedures for residents</subitems>
+<subitems  epid='LD.01.06.01' id='4'>-	Participating in the provision of in-service training programs</subitems>
+<subitems  epid='LD.01.06.01' id='4'>-	Making recommendations to governance on whether or not a licensed independent practitioner can provide care, treatment, and services at the organization</subitems>
+<subitems  epid='LD.01.06.01' id='4'>-	Monitoring the performance of medical services</subitems>
+<subitems  epid='LD.01.06.01' id='4'>-	Understanding the policies and programs of public health agencies that affect resident care programs</subitems>
+<subitems  epid='LD.01.06.01' id='4'>-	Acting as the organization's medical representative in the community</subitems>
+<subitems  epid='LD.01.06.01' id='5'>-	The development and maintenance of the clinical record system</subitems>
+<subitems  epid='LD.01.06.01' id='5'>-	The degree to which the organization�s scope of services, its medical equipment, and its professional and support staff meet residents� needs</subitems>
+<subitems  epid='LD.01.06.01' id='5'>-	Future resident care programs</subitems>
+<subitems  epid='LD.01.06.01' id='5'>-	Health and safety recommendations to resolve hazards identified in the environment</subitems>
+<subitems  epid='LD.01.06.01' id='7'>-	By helping to arrange and internally communicate physician availability and coverage</subitems>
+<subitems  epid='LD.01.06.01' id='7'>-	By communicating medical staff responsibilities and medical care policies, procedures, and guidelines to all licensed independent practitioners providing or ordering care</subitems>
+<subitems  epid='LD.01.06.01' id='7'>-	By serving as a member of the organized medical staff if the organization has one</subitems>
+<subitems  epid='LD.01.06.01' id='7'>-	By collaborating with the administrator and the organized medical staff, if the organization has one, to formulate the bylaws and the rules and regulations</subitems>
+<subitems  epid='LD.01.06.01' id='7'>-	By being responsible, when there is no medical staff, for the written rules and regulations for all licensed independent practitioners who attend residents in the organization</subitems>
+<subitems  epid='LD.01.07.01' id='2'>-	The organization�s mission and vision</subitems>
+<subitems  epid='LD.01.07.01' id='2'>-	The organization�s safety and quality goals</subitems>
+<subitems  epid='LD.01.07.01' id='2'>-	The organization�s structure and the decision-making process</subitems>
+<subitems  epid='LD.01.07.01' id='2'>-	The development of the budget as well as the interpretation of the organization�s financial statements</subitems>
+<subitems  epid='LD.01.07.01' id='2'>-	The population(s) served by the organization and any issues related to that population(s)</subitems>
+<subitems  epid='LD.01.07.01' id='2'>-	The individual and interdependent responsibilities and accountabilities of leaders as they relate to supporting the mission of the organization and to providing safe and quality care</subitems>
+<subitems  epid='LD.01.07.01' id='2'>-	Applicable law and regulation</subitems>
+<subitems  epid='LD.02.03.01' id='2'>-	Performance improvement activities</subitems>
+<subitems  epid='LD.02.03.01' id='2'>-	Reported safety and quality issues</subitems>
+<subitems  epid='LD.02.03.01' id='2'>-	Proposed solutions and their impact on the organization�s resources</subitems>
+<subitems  epid='LD.02.03.01' id='2'>-	Reports on key quality measures and safety indicators</subitems>
+<subitems  epid='LD.02.03.01' id='2'>-	Safety and quality issues specific to the population served</subitems>
+<subitems  epid='LD.02.03.01' id='2'>-	Input from the population(s) served</subitems>
+<subitems  epid='LD.04.03.07' id='3'>-	Care that is timely and meets their needs</subitems>
+<subitems  epid='LD.04.03.07' id='3'>-	Their attending physician</subitems>
+<subitems  epid='LD.04.03.07' id='3'>-	Staff, including administrative staff</subitems>
+<subitems  epid='LD.04.03.09' id='5'>-	Verify that all licensed independent practitioners who will be providing resident care, treatment, and services have appropriate privileges by obtaining, for example, a copy of the list of privileges.</subitems>
+<subitems  epid='LD.04.03.09' id='5'>-	Specify in the written agreement that the contracted organization will ensure that all contracted services provided by licensed independent practitioners will be within the scope of their privileges.</subitems>
+<subitems  epid='LD.04.03.09' id='8'>-	Increase monitoring of the contracted services.</subitems>
+<subitems  epid='LD.04.03.09' id='8'>-	Provide consultation or training to the contractor.</subitems>
+<subitems  epid='LD.04.03.09' id='8'>-	Renegotiate the contract terms.</subitems>
+<subitems  epid='LD.04.03.09' id='8'>-	Apply defined penalties.</subitems>
+<subitems  epid='LD.04.03.09' id='8'>-	Terminate the contract.</subitems>
+<subitems  epid='LD.04.04.05' id='14'>-	All system or process failures</subitems>
+<subitems  epid='LD.04.04.05' id='14'>-	The number and type of sentinel events</subitems>
+<subitems  epid='LD.04.04.05' id='14'>-	Whether the residents and the families were informed of the event</subitems>
+<subitems  epid='LD.04.04.05' id='14'>-	All actions taken to improve safety, both proactively and in response to actual occurrences</subitems>
+</subitems>
+
+</chapter>

@@ -1,14 +1,14 @@
 ﻿@model SurveyWeb.Models.TOCElementViewModel
 
 @{
-    ViewBag.Title = "StandardElement";
+    ViewBag.Title = Model.Key + " Standard ";
 }
 
-<h2>StandardElement</h2>
-<div>
+<h2>@Model.Key <span>Standard</span></h2>
+<div class="form-horizontal">
     <h4>TOCElementViewModel</h4>
-	<hr />
-    <dl class="dl-horizontal">
+    <hr />
+    <dl>
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -29,8 +29,11 @@
 @foreach (var item in Model.Elements)
 {
     <div class="col-md-offset-0 col-md-10">
-        @Html.ActionLink(item.Key, "PerformanceElement", new { performanceElementId = item.Key }, null) - @item.Content
+        @Html.ActionLink(item.Key, "PerformanceElement", new { standardElementId = item.ParentKey, performanceItemId = item.Key }, null) - @item.Content
 
     </div>
 }
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -35,6 +35,47 @@ namespace Atum.Domain.NLP.NaiveBayes
             return new List<string>(excludedWords);
         }
 
+
+        private XmlNodeList LoadClassText(XmlDocument xmlDoc, string standardId)
+        {
+            string itemsPath = "chapter/elements/element[@epid='standardId']".Replace("standardId", standardId);
+            return xmlDoc.SelectNodes(itemsPath);
+        }
+        /// <summary>
+        /// Training From Standard
+        /// </summary>
+        /// <param name="chapterFile"></param>
+        public void trainFromChapter(string chapterFile)
+        {
+            System.Xml.XmlDocument xmlDoc = new System.Xml.XmlDocument();
+            xmlDoc.Load(chapterFile);
+
+            string elementsTitlePath = "chapter/titles[title]/*";
+            string catIdPath = "epid";
+
+            XmlNodeList nodes = xmlDoc.SelectNodes(elementsTitlePath);
+
+            foreach (XmlNode node in nodes)
+            {
+                XmlAttribute att = node.Attributes[catIdPath];
+
+                string StandardId = att.InnerText;
+                XmlNodeList virtualObservationNodes = LoadClassText(xmlDoc, StandardId);
+
+                string epIdPath = "id";
+                foreach (XmlNode item in virtualObservationNodes)
+                {
+                    //XmlAttribute att = node.Attributes[epIdPath];
+
+                    string docText = node.InnerText;
+                    TrainingDocument classDoc = new TrainingDocument(StandardId, docText, this.Tokenizer);
+                        TrainingSet.Add(classDoc);
+
+                }
+            }
+
+        }
+
         public void trainFromXML(string[] classFiles)
         {
 
@@ -109,7 +150,7 @@ namespace Atum.Domain.NLP.NaiveBayes
             
         }
 
-        internal void trainFromChapter(string chapterFileName)
+        internal void trainFromChapterx(string chapterFileName)
         {
             //<title epid='EC.01.01.01'>The organization plans activities that minimize risks in the environment of care. Note: One or more persons can be assigned to manage risks associated with the management plans described in this standard.</title>
             //<element epid='EC.01.01.01' id='1'>1.	Leaders identify an individual(s) to manage risk, coordinate risk reduction activities in the environment of care, collect information on deficiencies, and disseminate summaries of actions and results.</element>
@@ -318,5 +359,6 @@ namespace Atum.Domain.NLP.NaiveBayes
         }
 
         public Tokenizer Tokenizer { get; set; }
+
     }
 }

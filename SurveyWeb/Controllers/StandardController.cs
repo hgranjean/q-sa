@@ -10,7 +10,6 @@ namespace SurveyWeb.Controllers
     public class StandardController : Controller
     {
         
-        
         public ActionResult Document(int? id)
         {
             Models.StandardDocumentViewModel model = new Models.StandardDocumentViewModel();
@@ -120,6 +119,14 @@ namespace SurveyWeb.Controllers
         public ActionResult StandardElement(string standardElementId)
         {
             Models.TOCElementViewModel model = Services.StandardsManagementServices.GetStandardElement(standardElementId);
+            return View(model);
+
+        }
+
+        public ActionResult PerformanceElement(string standardElementId, string performanceItemId)
+        {
+            Models.PerformanceElementViewModel model = Services.StandardsManagementServices.GetPerformanceElementViewModel(standardElementId, performanceItemId);
+            model.StandardId = standardElementId;
             return View(model);
 
         }

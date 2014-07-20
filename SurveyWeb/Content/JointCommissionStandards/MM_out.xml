@@ -1,0 +1,239 @@
+<chapter>
+<chaptertitle>Medication Management Chapter</chaptertitle>
+<titles>
+<title epid='MM.01.01.01'>The organization plans its medication management processes.</title>
+<title epid='MM.01.01.03'>The organization safely manages high-alert and hazardous medications.</title>
+<title epid='MM.01.01.05'>The organization monitors the use of psychotropic medications.</title>
+<title epid='MM.01.02.01'>The organization addresses the safe use of look-alike/sound-alike medications.</title>
+<title epid='MM.02.01.01'>The organization selects and procures medications.</title>
+<title epid='MM.03.01.01'>The organization safely stores medications.</title>
+<title epid='MM.03.01.03'>The organization safely manages emergency medications.</title>
+<title epid='MM.03.01.05'>The organization safely controls medications brought into the organization by residents, their families, or licensed independent practitioners.</title>
+<title epid='MM.04.01.01'>Medication orders are clear and accurate.</title>
+<title epid='MM.05.01.01'>A pharmacist reviews the appropriateness of all medication orders for medications to be dispensed in the organization.</title>
+<title epid='MM.05.01.07'>The organization safely prepares medications.</title>
+<title epid='MM.05.01.09'>Medications are labeled.</title>
+<title epid='MM.05.01.11'>The organization safely dispenses medications.</title>
+<title epid='MM.05.01.13'>The organization safely obtains medications when the pharmacy is closed.  Note: This standard is applicable only to organizations that operate a pharmacy.</title>
+<title epid='MM.05.01.15'>The organization safely obtains medications when it does not operate a pharmacy.</title>
+<title epid='MM.05.01.17'>The organization follows a process to retrieve recalled or discontinued medications.</title>
+<title epid='MM.05.01.19'>The organization safely manages returned medications.</title>
+<title epid='MM.06.01.01'>The organization safely administers medications.</title>
+<title epid='MM.06.01.03'>Self-administered medications are administered safely and accurately.</title>
+<title epid='MM.06.01.05'>The organization safely manages investigational medications.</title>
+<title epid='MM.07.01.01'>The organization monitors residents to determine the effects of their medication(s).</title>
+<title epid='MM.07.01.03'>The organization responds to actual or potential adverse drug events, significant adverse drug reactions, and medication errors.</title>
+<title epid='MM.08.01.01'>The organization evaluates the effectiveness of its medication management system.</title>
+</titles>
+
+<elements>
+<element epid='MM.01.01.01' id='1'>1.	The organization has a written policy that describes that the following information about the resident is accessible to licensed independent practitioners and staff who participate in the management of the resident�s medications:</element>
+<element epid='MM.01.01.01' id='2'>-	Any additional information required by the organization (See also IM.02.01.01, EP 3; RC.01.01.01, EP 13)</element>
+<element epid='MM.01.01.01' id='3'>2.	The organization implements its policy to make information about the resident accessible to licensed independent practitioners and staff who participate in the management of the resident�s medications. Note: This element of performance does not apply in emergency situations.</element>
+<element epid='MM.01.01.03' id='1'>1.	The organization identifies, in writing, its high-alert and hazardous medications. * (See also EC.02.02.01, EP 8)</element>
+<element epid='MM.01.01.03' id='2'>2.	The organization has a process for managing high-alert and hazardous medications. (See also EC.02.02.01, EP 8; MM.03.01.01, EP 9)</element>
+<element epid='MM.01.01.03' id='3'>3.	The organization implements its process for managing high-alert and hazardous medications. (See also EC.02.02.01, EPs 1 and 8)</element>
+<element epid='MM.01.01.05' id='1'>2.	The organization uses an interdisciplinary process that includes the physician, pharmacist, nurse, and other members of the health care team, as identified by the organization, to monitor residents' psychotropic medications.</element>
+<element epid='MM.01.01.05' id='2'>3.	Psychotropic medications are prescribed only as follows:</element>
+<element epid='MM.01.01.05' id='3'>4.	The organization reviews the use of "as needed" orders (PRN orders) for psychotropic medications to determine their appropriateness and effectiveness and to minimize use.</element>
+<element epid='MM.01.01.05' id='4'>5.	The organization evaluates compliance with its process for monitoring the use of psychotropic medications within a time frame defined by the organization.</element>
+<element epid='MM.01.02.01' id='1'>1.	The organization develops a list of look-alike/sound-alike medications it stores, dispenses, or administers.</element>
+<element epid='MM.01.02.01' id='2'>2.	The organization takes action to prevent errors involving the interchange of the medications on its list of look-alike/sound-alike medications.</element>
+<element epid='MM.01.02.01' id='3'>3.	The organization annually reviews and, as necessary, revises its list of look-alike/sound-alike medications.</element>
+<element epid='MM.02.01.01' id='1'>1.	The medical director, licensed independent practitioners, pharmacists, and other clinical staff (for example, the director of nursing, respiratory therapists) develop criteria for determining which medications are available for dispensing or administering to residents.</element>
+<element epid='MM.02.01.01' id='2'>2.	The organization develops and approves criteria for selecting medications, which include the following:</element>
+<element epid='MM.02.01.01' id='3'>3.	Before using a medication new to the organization, the organization determines a method to monitor the response of the resident. (See also MM.07.01.01, EP 2)</element>
+<element epid='MM.02.01.01' id='4'>6.	The organization standardizes and limits the number of medication concentrations available to meet resident care needs.</element>
+<element epid='MM.02.01.01' id='5'>9.	Medications designated as available for dispensing or administration are reviewed at least annually based on emerging safety and efficacy information.</element>
+<element epid='MM.02.01.01' id='6'>11. The organization communicates medication shortages and outages to licensed independent practitioners and staff who participate in medication management.</element>
+<element epid='MM.02.01.01' id='7'>11. The organization develops and approves written medication substitution protocols to be used in the event of a medication shortage or outage.</element>
+<element epid='MM.02.01.01' id='8'>11. The organization implements its approved medication substitution protocols.</element>
+<element epid='MM.03.01.01' id='1'>2.	The organization stores medications according to the manufacturers' recommendations or, in the absence of such recommendations, according to a pharmacist's instructions.</element>
+<element epid='MM.03.01.01' id='2'>3.	The organization stores controlled (scheduled) medications to prevent diversion, in accordance with law and regulation.</element>
+<element epid='MM.03.01.01' id='3'>4.	The organization has a written policy addressing the control of medication between receipt by an individual health care provider and administration of the medication, including safe storage, handling, security, disposition, and return to storage.</element>
+<element epid='MM.03.01.01' id='4'>5.	The organization implements its policy addressing the control of medication between receipt by an individual health care provider and its administration.</element>
+<element epid='MM.03.01.01' id='5'>6.	The organization prevents unauthorized individuals from obtaining medications in accordance with its policy and law and regulation.</element>
+<element epid='MM.03.01.01' id='6'>7.	All stored medications and the components used in their preparation are labeled with the contents, expiration date, and any applicable warnings.</element>
+<element epid='MM.03.01.01' id='7'>8.	The organization removes all expired, damaged, and/or contaminated medications and stores them separately from medications available for administration.</element>
+<element epid='MM.03.01.01' id='8'>11. The organization inspects all medication storage areas periodically, as defined by the organization, to verify that medications are stored properly.</element>
+<element epid='MM.03.01.03' id='1'>1.	Organization leaders, in conjunction with the medical director, licensed independent practitioners, pharmacists, and other clinical staff, decide which emergency medications and their associated supplies will be readily accessible based on the population served.</element>
+<element epid='MM.03.01.03' id='2'>2.	Emergency medications and their associated supplies are readily accessible.</element>
+<element epid='MM.03.01.03' id='3'>3.	Whenever possible, emergency medications are available in unit-dose, age-specific, and ready-to- administer forms.</element>
+<element epid='MM.03.01.03' id='4'>6.	When emergency medications or supplies are used, the organization replaces them as soon as possible, in accordance with organization policies and procedures, to maintain a full stock.</element>
+<element epid='MM.03.01.05' id='1'>1.	The organization determines whether medications brought into the organization by residents, their families, or licensed independent practitioners can be used or administered.</element>
+<element epid='MM.03.01.05' id='2'>2.	Before use or administration of a medication brought into the organization by a resident, his or her family, or a licensed independent practitioner, the organization identifies the medication and visually evaluates the medication's integrity. (See also MM.05.01.07, EP 3; MM.06.01.01, EP 4)</element>
+<element epid='MM.03.01.05' id='3'>3.	The organization informs the prescriber and resident if the medications brought into the organization by residents, their families, or licensed independent practitioners are not permitted.</element>
+<element epid='MM.04.01.01' id='1'>1.	The organization has a written policy that identifies the specific types of medication orders that it deems acceptable for use.</element>
+<element epid='MM.04.01.01' id='2'>2.	The organization has a written policy that defines the following: The required elements of a complete medication order.</element>
+<element epid='MM.04.01.01' id='3'>3.	The organization has a written policy that defines the following: When indication for use is required on a medication order.</element>
+<element epid='MM.04.01.01' id='4'>4.	The organization has a written policy that defines the following: The precautions for ordering medications with look-alike or sound-alike names.</element>
+<element epid='MM.04.01.01' id='5'>5.	The organization has a written policy that defines the following: Actions to take when medication orders are incomplete, illegible, or unclear.</element>
+<element epid='MM.04.01.01' id='6'>7.	The organization reviews and updates preprinted order sheets, within time frames it identifies or sooner if necessary, based on current evidence and practice.</element>
+<element epid='MM.04.01.01' id='7'>8.	The organization prohibits summary (blanket) orders to resume previous medications.</element>
+<element epid='MM.04.01.01' id='8'>9.	A diagnosis, condition, or indication for use exists for each medication ordered.</element>
+<element epid='MM.04.01.01' id='9'>11. The organization implements its policies for medication orders.</element>
+<element epid='MM.05.01.01' id='1'>1.	Before dispensing or removing medications from floor stock or from an automated storage and distribution device, a pharmacist reviews all medication orders or prescriptions unless a licensed independent practitioner controls the ordering, preparation, and administration of the medication or when a delay would harm the resident in an urgent situation (including sudden changes in a resident's clinical status), in accordance with law and regulation.</element>
+<element epid='MM.05.01.01' id='2'>2.	When an on-site pharmacy is not open 24 hours a day, 7 days a week, a health care professional determined to be qualified by the organization reviews the medication order in the pharmacist�s absence.</element>
+<element epid='MM.05.01.01' id='3'>3.	When an on-site pharmacy is not open 24 hours a day, 7 days a week, a pharmacist conducts a retrospective review of all medication orders during this period as soon as a pharmacist is available or the pharmacy opens.</element>
+<element epid='MM.05.01.01' id='4'>4.	All medication orders are reviewed for the following: Resident allergies or potential sensitivities.</element>
+<element epid='MM.05.01.01' id='5'>5.	All medication orders are reviewed for the following: Existing or potential interactions between the medication ordered and food and medications the resident is currently taking.</element>
+<element epid='MM.05.01.01' id='6'>6.	All medication orders are reviewed for the following: The appropriateness of the medication, dose, frequency, and route of administration.</element>
+<element epid='MM.05.01.01' id='7'>7.	All medication orders are reviewed for the following: Current or potential impact as indicated by laboratory values.</element>
+<element epid='MM.05.01.01' id='8'>8.	All medication orders are reviewed for the following: Therapeutic duplication.</element>
+<element epid='MM.05.01.01' id='9'>9.	All medication orders are reviewed for the following: Other contraindications.</element>
+<element epid='MM.05.01.01' id='10'>11. After the medication order has been reviewed, all concerns, issues, or questions are clarified with the prescriber before dispensing. (See also NPSG.03.06.01, EP 1)</element>
+<element epid='MM.05.01.07' id='1'>1.	When an on-site pharmacy is available, a pharmacist, or pharmacy staff under the supervision of a pharmacist, compounds or admixes all compounded sterile preparations except in urgent situations in which a delay could harm the resident or when the product�s stability is short.</element>
+<element epid='MM.05.01.07' id='2'>2.	Staff use clean or sterile techniques and maintain clean, uncluttered, and functionally separate areas for product preparation to avoid contamination of medications.</element>
+<element epid='MM.05.01.07' id='3'>3.	During preparation, staff visually inspect the medication for particulates, discoloration, or other loss of integrity. (See also MM.03.01.05, EP 2; MM.06.01.01, EP 4)</element>
+<element epid='MM.05.01.07' id='4'>4.	When an organization has an on-site pharmacy, the organization uses a laminar airflow hood or other ISO Class 5 environment in the pharmacy for preparing intravenous (IV) admixture or any sterile product that will not be used within 24 hours.</element>
+<element epid='MM.05.01.09' id='1'>1.	Medication containers are labeled whenever medications are prepared but not immediately administered.</element>
+<element epid='MM.05.01.09' id='2'>2.	Information on medication labels is displayed in a standardized format, in accordance with law and regulation and standards of practice.</element>
+<element epid='MM.05.01.09' id='3'>3.	All medications prepared in the organization are correctly labeled with the following: Medication name, strength, and amount (if not apparent from the container).</element>
+<element epid='MM.05.01.09' id='4'>4.	All medications prepared in the organization are correctly labeled with the following: Expiration date when not used within 24 hours.</element>
+<element epid='MM.05.01.09' id='5'>5.	All medications prepared in the organization are correctly labeled with the following: Expiration time when expiration occurs in less than 24 hours.</element>
+<element epid='MM.05.01.09' id='6'>6.	All medications prepared in the organization are correctly labeled with the following: The date   prepared and the diluent for all compounded intravenous admixtures and parenteral nutrition formulas.</element>
+<element epid='MM.05.01.09' id='7'>7.	When preparing individualized medications for multiple residents, the label also includes the following: The resident's name.</element>
+<element epid='MM.05.01.09' id='8'>8.	When preparing individualized medications for multiple residents, the label also includes the following: The location where the medication is to be delivered. (See also NPSG.01.01.01, EP 1)</element>
+<element epid='MM.05.01.09' id='9'>11. When an individualized medication(s) is prepared by someone other than the person administering the medication, the label includes the following: The resident's name.</element>
+<element epid='MM.05.01.09' id='10'>11. When an individualized medication(s) is prepared by someone other than the person administering the medication, the label includes the following: The location where the medication is to be delivered. (See also NPSG.01.01.01, EP 1)</element>
+<element epid='MM.05.01.11' id='1'>1.	The organization dispenses quantities of medications that are consistent with resident needs.</element>
+<element epid='MM.05.01.11' id='2'>2.	The organization dispenses medications and maintains records in accordance with law and regulation, licensure, and professional standards of practice.</element>
+<element epid='MM.05.01.11' id='3'>3.	The organization dispenses medications within time frames it defines to meet resident needs.</element>
+<element epid='MM.05.01.11' id='4'>4.	Medications are dispensed in the most ready-to-administer forms commercially available and, if feasible, in unit doses that have been repackaged by the pharmacy or licensed repackager.</element>
+<element epid='MM.05.01.13' id='1'>1.	For organizations that operate a pharmacy: The organization has a process for providing medications to meet resident needs when the pharmacy is closed.</element>
+<element epid='MM.05.01.13' id='2'>7.	For organizations that operate a pharmacy: The organization implements its process for providing medications to meet resident needs when the pharmacy is closed.</element>
+<element epid='MM.05.01.15' id='1'>1.	If the organization does not operate a pharmacy, the organization has a process for obtaining medications from a pharmacy or licensed pharmaceutical supplier in the most ready-to-administer forms commercially available and, if feasible, in unit doses that will meet resident needs.</element>
+<element epid='MM.05.01.15' id='2'>2.	If the organization obtains medications from a pharmacy that is not open 24 hours a day, 7 days a week, the organization has a process for obtaining medications from another source for urgent or emergent conditions when the pharmacy is closed.</element>
+<element epid='MM.05.01.15' id='3'>3.	The organization implements its process for obtaining medications from a pharmacy or licensed pharmaceutical supplier.</element>
+<element epid='MM.05.01.15' id='4'>4.	Organizations that do not operate a pharmacy validate that all medications coming into the organization are appropriately labeled.</element>
+<element epid='MM.05.01.15' id='5'>5.	When an unlabeled medication comes into an organization that does not operate a pharmacy, the organization takes action to have the medication correctly labeled.</element>
+<element epid='MM.05.01.17' id='1'>1.	The organization has a written policy describing how it will retrieve and handle medications within the organization that are recalled or discontinued for safety reasons by the manufacturer or the U.S. Food and Drug Administration (FDA). (See also EC.02.01.01, EP 11)</element>
+<element epid='MM.05.01.17' id='2'>2.	The organization implements its policy on retrieving and handling medications when they are recalled or discontinued for safety reasons. (See also EC.02.01.01, EP 11)</element>
+<element epid='MM.05.01.17' id='3'>3.	When a medication is recalled or discontinued for safety reasons by the manufacturer or the U.S. Food and Drug Administration (FDA), the organization notifies the prescribers and those who dispense or administer the medication. (See also EC.02.01.01, EP 11)</element>
+<element epid='MM.05.01.17' id='4'>4.	When required by law and regulation or organization policy, the organization informs residents that their medication has been recalled or discontinued for safety reasons by the manufacturer or the U.S. Food and Drug Administration (FDA). (See also EC.02.01.01, EP 11)</element>
+<element epid='MM.05.01.19' id='1'>2.	The organization has a process for returning unused, expired, or returned medications to the pharmacy�s or organization�s control, that includes procedures for preventing diversion.</element>
+<element epid='MM.05.01.19' id='2'>4.	The organization implements its process for managing unused, expired, or returned medications.</element>
+<element epid='MM.06.01.01' id='1'>1.	The organization defines, in writing, licensed independent practitioners and the clinical staff disciplines that are authorized to administer medication, with or without supervision, in accordance with law and regulation. (See also MM.06.01.03, EP 1)</element>
+<element epid='MM.06.01.01' id='2'>2.	Only authorized licensed independent practitioners and clinical staff administer medications.</element>
+<element epid='MM.06.01.01' id='3'>3.	Before administration, the individual administering the medication does the following: Verifies that the medication selected matches the medication order and product label.</element>
+<element epid='MM.06.01.01' id='4'>4.	Before administration, the individual administering the medication does the following: Visually inspects the medication for particulates, discoloration, or other loss of integrity. (See also MM.03.01.05, EP 2; MM.05.01.07, EP 3)</element>
+<element epid='MM.06.01.01' id='5'>5.	Before administration, the individual administering the medication does the following: Verifies that the medication has not expired.</element>
+<element epid='MM.06.01.01' id='6'>6.	Before administration, the individual administering the medication does the following: Verifies that no contraindications exist.</element>
+<element epid='MM.06.01.01' id='7'>7.	Before administration, the individual administering the medication does the following: Verifies that the medication is being administered at the proper time, in the prescribed dose, and by the correct route.</element>
+<element epid='MM.06.01.01' id='8'>8.	Before administration, the individual administering the medication does the following: Discusses any unresolved concerns about the medication with the resident�s licensed independent practitioner, prescriber (if different from the licensed independent practitioner), and/or staff involved with the resident�s care, treatment, and services.</element>
+<element epid='MM.06.01.01' id='9'>9.	Before administering a new medication, the resident or family is informed about any potential clinically significant adverse drug reactions or other concerns regarding administration of a new medication. (See also MM.06.01.03, EPs 3-6; PC.02.03.01, EP 10)</element>
+<element epid='MM.06.01.03' id='1'>1.	If self-administration of medications is allowed, written processes that address training, supervision, and documentation guide the safe and accurate self-administration of medications or the administration of medications by a family member. (See also MM.06.01.01, EPs 1 and 2)</element>
+<element epid='MM.06.01.03' id='2'>2.	The organization implements its written processes for medication self-administration or medication administration.</element>
+<element epid='MM.06.01.03' id='3'>3.	The organization educates residents and families involved in self-administration about the following: Medication name, type, and reason for use. (See also MM.06.01.01, EP 9; PC.02.03.01, EP 10)</element>
+<element epid='MM.06.01.03' id='4'>4.	The organization educates residents and families involved in self-administration about the following: How to administer medication, including process, time, frequency, route, and dose. (See also MM.06.01.01, EP 9; PC.02.03.01, EP 10)</element>
+<element epid='MM.06.01.03' id='5'>5.	The organization educates residents and families involved in self-administration about the following: Anticipated actions and potential side effects of the medication administered. (See also MM.06.01.01, EP 9; PC.02.03.01, EP 10)</element>
+<element epid='MM.06.01.03' id='6'>6.	The organization educates residents and families involved in self-administration about the following: Monitoring the effects of the medication. (See also MM.06.01.01, EP 9; PC.02.03.01, EP 10)</element>
+<element epid='MM.06.01.03' id='7'>7.	The organization determines that the resident or the family member who administers the medication is competent at medication administration before allowing him or her to administer medications.</element>
+<element epid='MM.06.01.05' id='1'>1.	The organization has a written process addressing the use of investigational medications that includes review, approval, supervision, and monitoring.</element>
+<element epid='MM.06.01.05' id='2'>2.	If the organization operates a pharmacy, the written process for the use of investigational medications specifies that the pharmacy controls the storage, dispensing, labeling, and distribution of investigational medications.</element>
+<element epid='MM.06.01.05' id='3'>3.	When a resident is involved in an investigational protocol that is independent of the organization, the organization evaluates and, if no contraindication exists, accommodates the resident�s continued participation in the protocol.</element>
+<element epid='MM.06.01.05' id='4'>4.	The organization implements its processes for the use of investigational medications.</element>
+<element epid='MM.07.01.01' id='1'>1.	The organization monitors the resident�s perception of side effects and the effectiveness of his or her medication(s). (See also RC.02.01.27, EP 1)</element>
+<element epid='MM.07.01.01' id='2'>2.	The organization monitors the resident's response to medication(s) by taking into account clinical information from the clinical record, relevant lab values, clinical response, and medication profile. (See also MM.02.01.01, EP 3; RC.02.01.27, EP 2)</element>
+<element epid='MM.07.01.01' id='3'>4.	The clinical or consultant pharmacist reviews each resident�s medication regimen at least monthly.</element>
+<element epid='MM.07.01.01' id='4'>5.	The clinical or consultant pharmacist documents in the clinical record the findings, conclusions, and recommendations that result from monitoring the medication regimen.</element>
+<element epid='MM.07.01.01' id='5'>6.	The clinical or consultant pharmacist communicates to the physician, prescriber (if different from the physician), and those involved in the resident�s care the findings, conclusions, and recommendations that result from monitoring the medication regimen.</element>
+<element epid='MM.07.01.03' id='1'>1.	The organization has a written process to respond to actual or potential adverse drug events, significant adverse drug reactions, and medication errors.</element>
+<element epid='MM.07.01.03' id='2'>2.	The organization has a written process for notifying the prescriber in the event of an adverse drug event, significant adverse drug reaction, or medication error.</element>
+<element epid='MM.07.01.03' id='3'>3.	The organization complies with internal and external reporting requirements for actual or potential adverse drug events, significant adverse drug reactions, and medication errors.</element>
+<element epid='MM.07.01.03' id='4'>5.	The organization implements its process for responding to adverse drug events, significant adverse drug reactions, and medication errors.</element>
+<element epid='MM.08.01.01' id='1'>1.	The organization collects data on the effectiveness of its medication management system. (See also PI.01.01.01, EPs 14 and 15)</element>
+<element epid='MM.08.01.01' id='2'>2.	The organization analyzes data on its medication management system.</element>
+<element epid='MM.08.01.01' id='3'>6.	The organization, in collaboration with its primary pharmacy, takes action on improvement opportunities identified as priorities for its medication management system.</element>
+<element epid='MM.08.01.01' id='4'>7.	The organization evaluates its actions to confirm that they resulted in improvements for its medication management system.</element>
+<element epid='MM.08.01.01' id='5'>8.	The organization takes action when planned improvements for its medication management processes are either not achieved or not sustained.</element>
+</elements>
+
+<notes>
+<note epid='MM.01.02.01' itemid='2'>Note: One source of look-alike/sound-alike medications is The Institute for Safe Medication Practices (http://www.ismp.org/Tools/confuseddrugnames.pdf).</note>
+<note epid='MM.04.01.01' itemid='2'>Note: There are several different types of medication orders. Medication orders commonly used include the following:</note>
+<note epid='MM.04.01.01' itemid='2'>Note: Hold orders are not included in this list. While their use may be appropriate in a limited number of situations, it is discouraged because of safety concerns.</note>
+<note epid='MM.04.01.01' itemid='9'>Note: This information can be anywhere in the clinical record and need not be on the order itself. For example, it might be part of the medical history.</note>
+<note epid='MM.05.01.01' itemid='1'>Note: This standard applies to all organizations, whether they have an on-site pharmacy or contract for pharmacy services.</note>
+<note epid='MM.05.01.07' itemid='1'>Note: This standard is applicable to all organizations that prepare medications for administration.</note>
+<note epid='MM.05.01.09' itemid='2'>Note: An immediately administered medication is one that an authorized staff member prepares or obtains, takes directly to a resident, and administers to that resident without any break in the process.</note>
+<note epid='MM.05.01.09' itemid='9'>Note: The location is not to be used as a resident identifier during administration of a medication, as indicated by NPSG.01.01.01, EP 1. 9.	When preparing individualized medications for multiple residents, the label also includes the following: Directions for use and applicable accessory and cautionary instructions.</note>
+<note epid='MM.05.01.09' itemid='11'>Note: The location is not to be used as a resident identifier during administration of a medication, as indicated by NPSG.01.01.01, EP 1. 11. When an individualized medication(s) is prepared by someone other than the person administering the medication, the label includes the following: Directions for use and applicable accessory and cautionary instructions.</note>
+<note epid='MM.05.01.11' itemid='1'>Note: This standard applies to all organizations, whether they have an on-site pharmacy or contract for pharmacy services.</note>
+<note epid='MM.05.01.11' itemid='3'>Note: Dispensing practices and recordkeeping include antidiversion strategies.</note>
+<note epid='MM.06.01.01' itemid='3'>Note: This does not prohibit self-administration of medications by residents, when indicated. (See also MM.06.01.03, EP 1)</note>
+<note epid='MM.06.01.03' itemid='1'>Note: The term self-administered medication(s) may refer to medications administered by a family member.</note>
+<note epid='MM.07.01.01' itemid='3'>Note: Monitoring the resident�s response to medications is an important assessment activity for  nurses, physicians, and pharmacists. In particular, monitoring the resident�s response to the first dose of a new medication is essential to the safety of the resident because any adverse reactions, including serious ones, are more unpredictable if the medication has never been used before with the resident.</note>
+<note epid='MM.08.01.01' itemid='1'>Note: This evaluation includes reconciling medication information. (Refer to NPSG.03.06.01 for more information)</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='3' epid='MM.01.01.01'><element>IM.02.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.01.01.01'><element>RC.01.01.01</element><epitem>EP 13</epitem></referencedelement>
+<referencedelement itemid='2' epid='MM.01.01.03'><element>EC.02.02.01</element><epitem>EP 8</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.01.01.03'><element>EC.02.02.01</element><epitem>EP 8</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.01.01.03'><element>MM.03.01.01</element><epitem>EP 9</epitem></referencedelement>
+<referencedelement itemid='4' epid='MM.01.01.03'><element>EC.02.02.01</element><epitem>EPs 1 and 8</epitem></referencedelement>
+<referencedelement itemid='4' epid='MM.02.01.01'><element>MM.07.01.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.03.01.05'><element>MM.05.01.07</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.03.01.05'><element>MM.06.01.01</element><epitem>EP 4</epitem></referencedelement>
+<referencedelement itemid='4' epid='MM.05.01.07'><element>MM.03.01.05</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='4' epid='MM.05.01.07'><element>MM.06.01.01</element><epitem>EP 4</epitem></referencedelement>
+<referencedelement itemid='2' epid='MM.05.01.17'><element>EC.02.01.01</element><epitem>EP 11</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.05.01.17'><element>EC.02.01.01</element><epitem>EP 11</epitem></referencedelement>
+<referencedelement itemid='4' epid='MM.05.01.17'><element>EC.02.01.01</element><epitem>EP 11</epitem></referencedelement>
+<referencedelement itemid='5' epid='MM.05.01.17'><element>EC.02.01.01</element><epitem>EP 11</epitem></referencedelement>
+<referencedelement itemid='2' epid='MM.06.01.01'><element>MM.06.01.03</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='5' epid='MM.06.01.01'><element>MM.03.01.05</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='5' epid='MM.06.01.01'><element>MM.05.01.07</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='10' epid='MM.06.01.01'><element>MM.06.01.03</element><epitem>EPs 3-6</epitem></referencedelement>
+<referencedelement itemid='10' epid='MM.06.01.01'><element>PC.02.03.01</element><epitem>EP 10</epitem></referencedelement>
+<referencedelement itemid='2' epid='MM.06.01.03'><element>MM.06.01.01</element><epitem>EPs 1 and 2</epitem></referencedelement>
+<referencedelement itemid='4' epid='MM.06.01.03'><element>MM.06.01.01</element><epitem>EP 9</epitem></referencedelement>
+<referencedelement itemid='4' epid='MM.06.01.03'><element>PC.02.03.01</element><epitem>EP 10</epitem></referencedelement>
+<referencedelement itemid='5' epid='MM.06.01.03'><element>MM.06.01.01</element><epitem>EP 9</epitem></referencedelement>
+<referencedelement itemid='5' epid='MM.06.01.03'><element>PC.02.03.01</element><epitem>EP 10</epitem></referencedelement>
+<referencedelement itemid='6' epid='MM.06.01.03'><element>MM.06.01.01</element><epitem>EP 9</epitem></referencedelement>
+<referencedelement itemid='6' epid='MM.06.01.03'><element>PC.02.03.01</element><epitem>EP 10</epitem></referencedelement>
+<referencedelement itemid='7' epid='MM.06.01.03'><element>MM.06.01.01</element><epitem>EP 9</epitem></referencedelement>
+<referencedelement itemid='7' epid='MM.06.01.03'><element>PC.02.03.01</element><epitem>EP 10</epitem></referencedelement>
+<referencedelement itemid='2' epid='MM.07.01.01'><element>RC.02.01.27</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.07.01.01'><element>MM.02.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='3' epid='MM.07.01.01'><element>RC.02.01.27</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='2' epid='MM.08.01.01'><element>PI.01.01.01</element><epitem>EPs 14 and 15</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Age</subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Sex</subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Diagnoses</subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Allergies</subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Sensitivities</subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Current medications</subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Height and weight (when necessary)</subitems>
+<subitems  epid='MM.01.01.01' id='2'>-	Laboratory results (when necessary)</subitems>
+<subitems  epid='MM.01.01.05' id='3'>-	When indicated by assessment and medical necessity</subitems>
+<subitems  epid='MM.01.01.05' id='3'>-	After other nonpharmacological interventions or alternatives have been considered or used</subitems>
+<subitems  epid='MM.01.01.05' id='3'>-	At the lowest effective therapeutic dose</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Indications for use</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Effectiveness</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Drug interactions</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Potential for errors and abuse</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Adverse drug events</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Sentinel event advisories</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Other risks</subitems>
+<subitems  epid='MM.02.01.01' id='3'>-	Costs</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	As needed (PRN) orders: orders acted on based on the occurrence of a specific indication or symptom</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Standing orders: A pre-written medication order and specific instructions from the licensed independent practitioner to administer a medication to a person in clearly defined circumstances</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Automatic stop orders: Orders that include a date or time to discontinue a medication</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Titrating orders: Orders in which the dose is either progressively increased or decreased in response to the resident�s status</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Taper orders: Orders in which the dose is decreased by a particular amount with each dosing interva</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Range orders: Orders in which the dose or dosing interval varies over a prescribed range, depending on the situation or resident�s status</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Orders for compounded drugs or drug mixtures not commercially available</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Orders for medication-related devices (for example, nebulizers, catheters)</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Orders for investigational medications</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Orders for herbal products</subitems>
+<subitems  epid='MM.04.01.01' id='2'>-	Orders for medications at discharge or transfer</subitems>
+</subitems>
+
+</chapter>

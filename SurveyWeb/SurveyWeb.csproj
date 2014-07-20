@@ -266,6 +266,19 @@
     <Content Include="Content\ecoicons\Read Me.txt" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\JointCommissionStandards\EC_out.xml" />
+    <Content Include="Content\JointCommissionStandards\EM_out.xml" />
+    <Content Include="Content\JointCommissionStandards\HR_out.xml" />
+    <Content Include="Content\JointCommissionStandards\IC_out.xml" />
+    <Content Include="Content\JointCommissionStandards\IM_out.xml" />
+    <Content Include="Content\JointCommissionStandards\LD_out.xml" />
+    <Content Include="Content\JointCommissionStandards\LS_out.xml" />
+    <Content Include="Content\JointCommissionStandards\MM_out.xml" />
+    <Content Include="Content\JointCommissionStandards\PC_out.xml" />
+    <Content Include="Content\JointCommissionStandards\PI_out.xml" />
+    <Content Include="Content\JointCommissionStandards\RC_out.xml" />
+    <Content Include="Content\JointCommissionStandards\RI_out.xml" />
+    <Content Include="Content\JointCommissionStandards\WT_out.xml" />
     <Content Include="Content\menu4.gif" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -582,6 +595,7 @@
     <Content Include="Views\Surveillance\AuditDelivery.cshtml" />
     <Content Include="Views\Report\CompletionReport.cshtml" />
     <Content Include="Views\Standard\StandardElement.cshtml" />
+    <Content Include="Views\Standard\PerformanceElement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />
