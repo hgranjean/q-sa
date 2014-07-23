@@ -119,6 +119,7 @@ namespace SurveyWeb.Controllers
         public ActionResult StandardElement(string standardElementId)
         {
             Models.TOCElementViewModel model = Services.StandardsManagementServices.GetStandardElement(standardElementId);
+            model.Key = standardElementId;
             return View(model);
 
         }

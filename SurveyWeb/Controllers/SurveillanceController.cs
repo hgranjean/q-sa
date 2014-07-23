@@ -1,12 +1,9 @@
-﻿using System.Configuration;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Validation;
-using System.Web.Routing;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
-using Atum.Domain.QualityManagement;
 using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
 using Atum.Utility.XML;
@@ -22,7 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace MvcApplication1.Controllers
+namespace SurveyWeb.Controllers
 {
     [Authorize]
     public class SurveillanceController : Controller

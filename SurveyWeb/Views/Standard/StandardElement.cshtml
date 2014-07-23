@@ -4,36 +4,33 @@
     ViewBag.Title = Model.Key + " Standard ";
 }
 
-<h2>@Model.Key <span>Standard</span></h2>
-<div class="form-horizontal">
-    <h4>TOCElementViewModel</h4>
-    <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+<h2><span>Standard </span>@Model.Key</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-    </dl>
-@foreach (var item in Model.Elements)
+@using (Html.BeginForm())
 {
-    <div class="col-md-offset-0 col-md-10">
-        @Html.ActionLink(item.Key, "PerformanceElement", new { standardElementId = item.ParentKey, performanceItemId = item.Key }, null) - @item.Content
+    @Html.AntiForgeryToken()
 
+    <div class="form-horizontal">
+        <h4>@Model.Title</h4>
+        <div>
+            <div ><span style="font:bold"><h4>Elements of Performance</h4></span>
+                @*@Html.DisplayNameFor(model => model.Content)*@
+            </div>
+
+            <div>
+                @Html.DisplayFor(model => model.Content)
+            </div>
+
+        </div>
+        @foreach (var item in Model.Elements)
+        {
+            <div class="col-md-offset-0 col-md-10">
+                @Html.ActionLink("EP " + item.Key, "PerformanceElement", new { standardElementId = item.ParentKey, performanceItemId = item.Key }, null) - @item.Content
+
+            </div>
+        }
     </div>
 }
-</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

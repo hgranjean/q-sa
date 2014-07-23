@@ -32,7 +32,7 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static Chapter loadChapter(string chapterId)
+        internal static Chapter loadChapter(string chapterId)
         {
             //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
             XmlDocument xmlDoc = loadChapterDoc();// new XmlDocument();

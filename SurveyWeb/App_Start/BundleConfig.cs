@@ -11,8 +11,12 @@ namespace SurveyWeb
             // Fix for bundles not rendered correctly in the release version
             bundles.IgnoreList.Clear();
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            bundles.Add(new ScriptBundle("~/bundles/aqs").Include(
+                        "~/Scripts/AQS/aqs.js",
                         "~/Scripts/jquery-{version}.js"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            //            "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

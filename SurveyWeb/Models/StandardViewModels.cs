@@ -29,6 +29,12 @@ namespace SurveyWeb.Models
         public string StandardId { get; set; }
     }
     
+    public class StandardElementViewModel 
+    {
+        public string StandardId { get; set; }
+        public IEnumerable<string> EPIds { get; set; }
+
+    }
     public class TOCElementViewModel
     {
         public string Title { get; set; }
