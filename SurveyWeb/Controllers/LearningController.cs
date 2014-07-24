@@ -17,7 +17,12 @@ namespace SurveyWeb.Controllers
         {
             //View will contain Classification and list of EP Choices
             StandardElementViewModel model = new StandardElementViewModel();
-            model = LearningServices.Classify(observation);
+            if (observation!=null&&observation.Length>0)
+            {
+                model.Observation = observation;
+                model = LearningServices.Classify(observation);
+                    
+            }
 
             return View(model);
         }

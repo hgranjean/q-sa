@@ -34,6 +34,8 @@ namespace SurveyWeb.Models
         public string StandardId { get; set; }
         public IEnumerable<string> EPIds { get; set; }
 
+
+        public string Observation { get; set; }
     }
     public class TOCElementViewModel
     {

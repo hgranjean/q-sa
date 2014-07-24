@@ -249,9 +249,9 @@ namespace Atum.Domain.NLP.NaiveBayes
             ClassDocument observationDoc = new ClassDocument(observation, this.Tokenizer);
 
 
-            string outFile = @"C:\Atum Technology Group\AQS\NLP\TrainingSets\ClassificationDetails" + counter++ + ".txt";
-            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(outFile))
-            {
+            //string outFile = @"C:\Atum Technology Group\AQS\NLP\TrainingSets\ClassificationDetails" + counter++ + ".txt";
+            //using (System.IO.StreamWriter sw = new System.IO.StreamWriter(outFile))
+            //{
                 //foreach (var item in TrainingSet.TrainingDocuments)
                 //{
                 //    foreach (string word in observationDoc.Words)
@@ -313,14 +313,14 @@ namespace Atum.Domain.NLP.NaiveBayes
                         maxClassProb = (curClassProb.Probability > maxClassProb.Probability) ? curClassProb : maxClassProb;
                     }
                 }
-                foreach (var item in logProbsByClass.Values)
-                {
+            //    foreach (var item in logProbsByClass.Values)
+            //    {
 
-                    sw.WriteLine("Class:{0} Prior: {1} Probality: {2}", item.Class, item.Prior, item.Probability);
+            //        sw.WriteLine("Class:{0} Prior: {1} Probality: {2}", item.Class, item.Prior, item.Probability);
 
-                }
-                sw.WriteLine("maxClassProb:{0}", maxClassProb.Probability);
-            }
+            //    }
+            //    sw.WriteLine("maxClassProb:{0}", maxClassProb.Probability);
+            //}
 
             return getMaxtClass(logProbsByClass);
         }
