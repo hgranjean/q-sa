@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TracerViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SurveyId>1</SurveyId>
+  <FacilityId>1</FacilityId>
+  <BuildingId>1</BuildingId>
+  <FloorNumber>3</FloorNumber>
+  <AreaId>1</AreaId>
+  <TracerTypeId>0</TracerTypeId>
+  <SurveyorId>099b604b-8c96-43ed-be91-2f17e1eca425</SurveyorId>
+  <SurveyDate>2014-07-17T20:05:38</SurveyDate>
+  <UpdatedDate>2014-07-17T20:44:49.5314706-05:00</UpdatedDate>
+  <CompletedDate>0001-01-01T00:00:00</CompletedDate>
+  <DepartmentId>1</DepartmentId>
+  <SurveyTypeId>0</SurveyTypeId>
+  <ResponseId>8ceebc19-efe0-4856-ac2b-9e0fe25a1c8f</ResponseId>
+  <Responses>
+    <ResponseViewModel>
+      <Response>
+        <Question>
+          <ID>0</ID>
+          <Text>My Question Text</Text>
+          <Number>1</Number>
+          <Rank>0</Rank>
+          <BasisReference>
+            <ID>0</ID>
+            <Level>0</Level>
+          </BasisReference>
+          <QuestionType>SelectOne</QuestionType>
+          <ResponseChoices>
+            <ResponseChoice>
+              <ID>0</ID>
+              <Text>Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>1</ID>
+              <Text>Non Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>2</ID>
+              <Text>N/A</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>3</ID>
+              <Text>Follow-Up</Text>
+            </ResponseChoice>
+          </ResponseChoices>
+        </Question>
+        <Answer>
+          <ID>0</ID>
+          <Text>Compliant</Text>
+        </Answer>
+      </Response>
+      <ResponseId>0</ResponseId>
+      <NextQuestionId>0</NextQuestionId>
+    </ResponseViewModel>
+    <ResponseViewModel>
+      <Response>
+        <Question>
+          <ID>0</ID>
+          <Text>My SelectOne Question Text</Text>
+          <Number>2</Number>
+          <Rank>0</Rank>
+          <BasisReference>
+            <ID>0</ID>
+            <Level>0</Level>
+          </BasisReference>
+          <QuestionType>SelectOne</QuestionType>
+          <ResponseChoices>
+            <ResponseChoice>
+              <ID>4</ID>
+              <Text>Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>5</ID>
+              <Text>Non Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>6</ID>
+              <Text>N/A</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>7</ID>
+              <Text>Follow-Up</Text>
+            </ResponseChoice>
+          </ResponseChoices>
+        </Question>
+        <Answer>
+          <ID>4</ID>
+          <Text>Compliant</Text>
+        </Answer>
+      </Response>
+      <ResponseId>4</ResponseId>
+      <NextQuestionId>0</NextQuestionId>
+    </ResponseViewModel>
+    <ResponseViewModel>
+      <Response>
+        <Question>
+          <ID>0</ID>
+          <Text>My TrueFalse Question Text</Text>
+          <Number>3</Number>
+          <Rank>0</Rank>
+          <BasisReference>
+            <ID>0</ID>
+            <Level>0</Level>
+          </BasisReference>
+          <QuestionType>SelectOne</QuestionType>
+          <ResponseChoices>
+            <ResponseChoice>
+              <ID>8</ID>
+              <Text>Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>9</ID>
+              <Text>Non Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>10</ID>
+              <Text>N/A</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>11</ID>
+              <Text>Follow-Up</Text>
+            </ResponseChoice>
+          </ResponseChoices>
+        </Question>
+        <Answer>
+          <ID>8</ID>
+          <Text>Compliant</Text>
+        </Answer>
+      </Response>
+      <ResponseId>8</ResponseId>
+      <NextQuestionId>0</NextQuestionId>
+    </ResponseViewModel>
+    <ResponseViewModel>
+      <Response>
+        <Question>
+          <ID>0</ID>
+          <Text>My SelectOne Question Text</Text>
+          <Number>4</Number>
+          <Rank>0</Rank>
+          <BasisReference>
+            <ID>0</ID>
+            <Level>0</Level>
+          </BasisReference>
+          <QuestionType>SelectOne</QuestionType>
+          <ResponseChoices>
+            <ResponseChoice>
+              <ID>12</ID>
+              <Text>Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>13</ID>
+              <Text>Non Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>14</ID>
+              <Text>N/A</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>15</ID>
+              <Text>Follow-Up</Text>
+            </ResponseChoice>
+          </ResponseChoices>
+        </Question>
+        <Answer>
+          <ID>12</ID>
+          <Text>Compliant</Text>
+        </Answer>
+      </Response>
+      <ResponseId>12</ResponseId>
+      <NextQuestionId>0</NextQuestionId>
+    </ResponseViewModel>
+    <ResponseViewModel>
+      <Response>
+        <Question>
+          <ID>0</ID>
+          <Text>My SelectMultiple Question Text</Text>
+          <Number>5</Number>
+          <Rank>0</Rank>
+          <BasisReference>
+            <ID>0</ID>
+            <Level>0</Level>
+          </BasisReference>
+          <QuestionType>SelectOne</QuestionType>
+          <ResponseChoices>
+            <ResponseChoice>
+              <ID>16</ID>
+              <Text>Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>17</ID>
+              <Text>Non Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>18</ID>
+              <Text>N/A</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>19</ID>
+              <Text>Follow-Up</Text>
+            </ResponseChoice>
+          </ResponseChoices>
+        </Question>
+        <Answer>
+          <ID>16</ID>
+          <Text>Compliant</Text>
+        </Answer>
+      </Response>
+      <ResponseId>16</ResponseId>
+      <NextQuestionId>0</NextQuestionId>
+    </ResponseViewModel>
+    <ResponseViewModel>
+      <Response>
+        <Question>
+          <ID>0</ID>
+          <Text>Something</Text>
+          <Number>6</Number>
+          <Rank>0</Rank>
+          <BasisReference>
+            <ID>0</ID>
+            <Level>0</Level>
+          </BasisReference>
+          <QuestionType>SelectOne</QuestionType>
+          <ResponseChoices>
+            <ResponseChoice>
+              <ID>20</ID>
+              <Text>Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>21</ID>
+              <Text>Non Compliant</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>22</ID>
+              <Text>N/A</Text>
+            </ResponseChoice>
+            <ResponseChoice>
+              <ID>23</ID>
+              <Text>Follow-Up</Text>
+            </ResponseChoice>
+          </ResponseChoices>
+        </Question>
+        <Answer>
+          <ID>20</ID>
+          <Text>Compliant</Text>
+        </Answer>
+      </Response>
+      <ResponseId>20</ResponseId>
+      <NextQuestionId>0</NextQuestionId>
+    </ResponseViewModel>
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+    <ResponseViewModel xsi:nil="true" />
+  </Responses>
+</TracerViewModel>
