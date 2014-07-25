@@ -126,7 +126,7 @@ namespace SurveyWeb.Models
         public int SurveyTypeId { get; set; }
 
         [XmlIgnore]
-        public List<SurveyType> SurveyTypes { get; set; }
+        public IEnumerable<Building> SurveyTypes { get; set; }
 
         [XmlIgnore]
         public QuestionGroupsViewModel QuestionGroups { get; set; }

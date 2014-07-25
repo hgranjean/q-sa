@@ -27,7 +27,14 @@
                     &nbsp;
                 </div>
                 <div style="display: table-cell">
-                    &nbsp;
+                    @if (completedSurvey.CompletedDate == DateTime.MinValue)
+                    {
+                        @Html.ActionLink("Resume", "SurveyDelivery", new { id = completedSurvey.SurveyId, responseId = completedSurvey.ResponseId }, new { @class = "btn btn-default"})
+                    }
+                    else
+                    {
+                        @Html.ValueFor(m => completedSurvey.CompletedDate)
+                    }                    
                 </div>
                 <div style="display: table-cell; padding-bottom: 5px">
                     @Html.ActionLink("Export", "Export", null, new { @class = "btn btn-default" })

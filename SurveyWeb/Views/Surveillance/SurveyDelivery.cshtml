@@ -39,6 +39,7 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     @Html.HiddenFor(m => m.SurveyId)
+    @Html.HiddenFor(m => m.ResponseId)
 
     <fieldset>
         <legend>Surveillance</legend>
@@ -106,8 +107,8 @@
                 <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
                 <div style="display:table-cell;width:45%" class="table-cell">
                     <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
+                    <div id="editorField" class="editor-field">                     
+                        @Html.DropDownListFor(m => m.SurveyTypeId, new SelectList(Model.SurveyTypes, "Id", "Name"), "Please select...", new { @class = "form-control" })
                     </div>
                 </div>
             </div>
