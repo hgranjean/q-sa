@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - @System.Configuration.ConfigurationManager.AppSettings["WhiteLabel"]</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/Scripts/gnmenu.js")
 </head>
     <body>
         
@@ -62,6 +61,7 @@
 			</ul>
         </div>
         
+        @Scripts.Render("~/Scripts/gnmenu.js")
         <script>
             new gnMenu(document.getElementById('gn-menu'));
 		</script>
