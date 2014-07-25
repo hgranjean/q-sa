@@ -1,0 +1,130 @@
+<chapter>
+<chaptertitle>Life Safety Chapter</chaptertitle>
+<titles>
+<title epid='LS.01.01.01'>The organization designs and manages the physical environment to comply with the Life Safety Code.</title>
+<title epid='LS.01.02.01'>The organization protects occupants during periods when the Life Safety Code is not met or during periods of construction.</title>
+<title epid='LS.02.01.10'>Building and fire protection features are designed and maintained to minimize the effects of fire, smoke, and heat.</title>
+<title epid='LS.02.01.20'>The organization maintains the integrity of the means of egress.</title>
+<title epid='LS.02.01.30'>The organization provides and maintains building features to protect individuals from the hazards of fire and smoke.</title>
+<title epid='LS.02.01.34'>The organization provides and maintains fire alarm systems.</title>
+<title epid='LS.02.01.35'>The organization provides and maintains systems for extinguishing fires.</title>
+<title epid='LS.02.01.70'>The organization provides and maintains operating features that conform to fire and smoke prevention requirements.</title>
+</titles>
+
+<elements>
+<element epid='LS.01.01.01' id='1'>1.	The organization assigns an individual(s) to assess compliance with the Life Safety Code, complete the electronic Statement of Conditions (E-SOC), and manage the resolution of deficiencies.</element>
+<element epid='LS.01.01.01' id='2'>2.	The organization maintains a current electronic Statement of Conditions (E-SOC).</element>
+<element epid='LS.01.01.01' id='3'>3.	When the organization plans to resolve a deficiency through a Plan for Improvement (PFI), the organization meets the time frames identified in the PFI accepted by The Joint Commission. (See also LS.01.02.01, EPs 1-14)</element>
+<element epid='LS.01.02.01' id='1'>1.	The organization notifies the fire department (or other emergency response group) and initiates a fire watch when a fire alarm or sprinkler system is out of service more than 4 hours in a 24-hour period in an occupied building. Notification and fire watch times are documented. (For full text and any exceptions, refer to NFPA 101-2000: 9.6.1.8 and 9.7.6.1) (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='2'>2.	The organization posts signage identifying the location of alternative exits to everyone affected. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='3'>3.	The organization has a written interim life safety measure (ILSM) policy that covers situations when Life Safety Code deficiencies cannot be immediately corrected or during periods of construction. The policy includes criteria for evaluating when and to what extent the organization follows special measures to compensate for increased life safety risk.(See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='4'>4.	When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected or during periods of construction, the organization does the following: Inspects exits in affected areas on a daily basis. The need for these inspections is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='5'>5.	When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected or during periods of construction, the organization does the following: Provides temporary but equivalent fire alarm and detection systems for use when a fire system is impaired. The need for equivalent systems is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='6'>6.	When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected or during periods of construction, the organization does the following: Provides additional firefighting equipment. The need for this equipment is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='7'>7.	When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected   or during periods of construction, the organization does the following: Uses temporary construction partitions that are smoke-tight, or made of noncombustible or limited-combustible material that will not contribute to the development or spread of fire. The need for these partitions is based on criteria in   the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='8'>8.	When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected or during periods of construction, the organization does the following: Increases surveillance of buildings, grounds, and equipment, giving special attention to construction areas and storage, excavation, and field offices. The need for increased surveillance is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='9'>9.	When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected or during periods of construction, the organization does the following: Enforces storage, housekeeping, and debris-removal practices that reduce the building�s flammable and combustible fire load to the lowest feasible level. The need for these practices is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='10'>11. When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected or during periods of construction, the organization does the following: Provides additional training to those who work in the organization on the use of firefighting equipment. The need for additional training is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='11'>11. When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected  or during periods of construction, the organization does the following: Conducts one additional fire drill per shift per quarter. The need for additional drills is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also EC.02.03.03, EP 1; LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='12'>11. When the organization identifies Life Safety Code deficiencies that cannot be immediately corrected  or during periods of construction, the organization does the following: Inspects and tests temporary systems monthly. The completion date of the tests is documented. The need for these inspections and tests is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='13'>11. The organization conducts education to promote awareness of building deficiencies, construction hazards, and temporary measures implemented to maintain fire safety. The need for education is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.01.02.01' id='14'>11. The organization trains those who work in the organization to compensate for impaired structural or compartmental fire safety features. The need for training is based on criteria in the organization's interim life safety measure (ILSM) policy. (See also LS.01.01.01, EP 3)</element>
+<element epid='LS.02.01.10' id='1'>5.	Doors required to be fire rated have functioning hardware, including positive latching devices and self- closing or automatic-closing devices. Gaps between meeting edges of door pairs are no more than  1/8 inch wide, and undercuts are no larger than 3/4 inch. (See also LS.02.01.30, EP 2; LS.02.01.34, EP 2) (For full text and any exceptions, refer to NFPA 101-2000: 8.2.3.2.3.1, 8.2.3.2.1 and NFPA 80- 1999: 2-4.4.3, 2-3.1.7, and 1-11.4)</element>
+<element epid='LS.02.01.20' id='1'>1.	Doors in a means of egress are unlocked in the direction of egress. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.2.2.4)</element>
+<element epid='LS.02.01.20' id='2'>8.	Exits discharge to the outside at grade level or through an approved exit passageway that is continuous and terminates at a public way or at an exterior exit discharge. (For full text and any exceptions, refer to NFPA 101-2000: 7.7)</element>
+<element epid='LS.02.01.20' id='3'>11. In new buildings, exit corridors are at least 8 feet wide; in existing buildings, exit corridors are at least 4 feet wide. If modifying existing buildings with exit corridors that exceed 8 feet, the exit corridors cannot be reduced to less than 8 feet. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.3.3)</element>
+<element epid='LS.02.01.20' id='4'>11. Exits, exit accesses, and exit discharges are clear of obstructions or impediments to the public way, such as clutter (for example, equipment, carts, furniture), construction material, and snow and ice. (For full text and any exceptions, refer to NFPA 101-2000: 7.1.10.1)</element>
+<element epid='LS.02.01.20' id='5'>21. Resident sleeping rooms open directly onto an exit access corridor. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.5.1)</element>
+<element epid='LS.02.01.20' id='6'>21. Means of egress are adequately illuminated at all points, including angles and intersections of  corridors and passageways, stairways, stairway landings, exit doors, and exit discharges. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.8)</element>
+<element epid='LS.02.01.20' id='7'>21. Illumination in the means of egress, including exit discharges, is arranged so that failure of any single light fixture or bulb will not leave the area in darkness. (For full text and any exceptions, refer to NFPA 101-2000: 7.8.1.4)</element>
+<element epid='LS.02.01.30' id='1'>2.	All hazardous areas are protected by walls and doors in accordance with NFPA 101-2000: 18/19.3.2.1. (See also LS.02.01.10, EP 5; LS.02.01.20, EP 18) Hazardous areas include, but are not limited, to the following:</element>
+<element epid='LS.02.01.30' id='2'>Flammable liquid storage rooms (See NFPA 30-1996:4-4.2.1 and 4-4.4.2)</element>
+<element epid='LS.02.01.30' id='3'>-	Existing laboratories that are severe hazard areas (See NFPA 99-1999: 10-3.1.1) have 2-hour fire- rated walls with 1 1/2-hour fire-rated doors. When there is a sprinkler system, the walls are fire rated for 1 hour with 3/4-hour fire-rated doors.</element>
+<element epid='LS.02.01.30' id='4'>-	New laboratories that are severe hazard areas (See NFPA 99-1999: 10-3.1.1) have sprinkler systems and have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</element>
+<element epid='LS.02.01.30' id='5'>-	Existing flammable gas storage rooms in laboratories have 2-hour fire-rated walls with 1 1/2-hour fire-rated doors. (See NFPA 99-1999: 10-10.2.2)</element>
+<element epid='LS.02.01.30' id='6'>-	New flammable gas storage rooms in laboratories have sprinkler systems and have 2-hour fire-rated walls with 1 1/2-hour fire-rated doors. (See NFPA 99-1999: 10-10.2.2)</element>
+<element epid='LS.02.01.30' id='7'>Piped oxygen tank supply rooms (See NFPA 99-1999: 4-3.1.1.2)</element>
+<element epid='LS.02.01.30' id='8'>11. Corridor doors are fitted with positive latching hardware, are arranged to restrict the movement of smoke, and are hinged so that they swing. The gap between meeting edges of door pairs is no wider than 1/8 inch, and undercuts are no larger than 1 inch. Roller latches are not acceptable.</element>
+<element epid='LS.02.01.30' id='9'>21. Doors in smoke barriers are self-closing or automatic-closing, constructed of 1 3/4-inch or thicker  solid bonded wood core or equivalent, and fitted to resist the passage of smoke. The gap between meeting edges of door pairs is no wider than 1/8 inch, and undercuts are no larger than 3/4 inch. Doors do not have nonrated protective plates more than 48 inches above the bottom of the door. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.3.7.5, 18/19.3.7.6, and 8.3.4.1)</element>
+<element epid='LS.02.01.34' id='1'>1.	The fire alarm signal automatically transmits to one of the following (For full text and any exceptions, refer to NFPA 101-2000: 9.6.4):</element>
+<element epid='LS.02.01.35' id='1'>1.	The fire alarm system monitors approved automatic sprinkler system components. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.3.5.2 and 9.7.2.2)</element>
+<element epid='LS.02.01.35' id='2'>5.	Sprinkler heads are not damaged and are free from corrosion, foreign materials, and paint. (For full text and any exceptions, refer to NFPA 25-1998: 2-2.1.1)</element>
+<element epid='LS.02.01.35' id='3'>6.	There are 18 inches or more of open space maintained below the sprinkler deflector to the top of storage.</element>
+<element epid='LS.02.01.35' id='4'>8.	The travel distance from any point to the nearest fire extinguisher is 75 feet or less. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.3.5.6 and NFPA 10-1998: 3-1.1)</element>
+<element epid='LS.02.01.35' id='5'>9.	Class K�type portable fire extinguishers are located within 30 feet of grease-producing cooking devices such as deep fat fryers, ranges, griddles, or broilers. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.3.5.6 and NFPA 10-1998: 2-3.2)</element>
+<element epid='LS.02.01.35' id='6'>11. The organization meets all other Life Safety Code automatic extinguishing requirements related to NFPA 101-2000: 18/19.3.1. LS.02.01.50</element>
+<element epid='LS.02.01.35' id='7'>4.	New elevators are equipped with the following:</element>
+<element epid='LS.02.01.35' id='8'>Existing elevators that have a travel distance of 25 feet or more above or below the level that best serves the needs of firefighters also meet these requirements. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.5.3 and 9.4.3)</element>
+<element epid='LS.02.01.35' id='9'>5.	Trash chutes discharge into collection rooms that are not used for any other purpose. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.5.4.3)</element>
+<element epid='LS.02.01.35' id='10'>9.	All linen and waste chute inlet and discharge service doors have both self-closing and positive latching devices.</element>
+<element epid='LS.02.01.35' id='11'>text and any exceptions, refer to NFPA 101-2000: 18/19.5.4.1 and 8.2.3.2.3.1; NFPA 82-1999: 3-2.2.9)</element>
+<element epid='LS.02.01.70' id='1'>1.	The organization prohibits all combustible decorations that are not flame retardant. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.7.5.4)</element>
+<element epid='LS.02.01.70' id='2'>2.	Soiled linen and trash receptacles larger than 32 gallons (including recycling containers) are located in a room protected as a hazardous area. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.7.5.5)</element>
+<element epid='LS.02.01.70' id='3'>3.	The organization prohibits portable space heaters within smoke compartments containing resident sleeping areas and treatment areas. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.7.8)</element>
+</elements>
+
+<notes>
+<note epid='LS.01.01.01' itemid='3'>Note: The E-SOC is available to each organization through The Joint Commission Connect� extranet site.</note>
+<note epid='LS.01.02.01' itemid='15'>Note: Compartmentalization is the concept of using various building components (for example, fire- rated walls and doors, smoke barriers, fire-rated floor slabs) to prevent the spread of fire and the products of combustion so as to provide a safe means of egress to an approved exit. The presence of these features varies, depending on the building occupancy classification.</note>
+<note epid='LS.02.01.30' itemid='9'>Note: For existing doors, it is acceptable to use a device that keeps the door closed when a force of 5 foot-pounds are applied to the edge of the door. (For full text and any exceptions, refer to NFPA 101- 2000: 18/19.3.6.3.2, 18/19.3.6.3.1, and 7.2.1.4.1)</note>
+<note epid='LS.02.01.35' itemid='4'>Note: Perimeter wall and stack shelving may extend up to the ceiling when not located directly below a sprinkler head. (For full text and any exceptions, refer to NFPA 13-1999: 5-8.5.2.1)</note>
+<note epid='LS.02.01.35' itemid='11'>Note: Discharge doors may be held open with fusible links or electrical hold-open devices. (For full</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='4' epid='LS.01.01.01'><element>LS.01.02.01</element><epitem>EPs 1-14</epitem></referencedelement>
+<referencedelement itemid='2' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='3' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='4' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='5' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='6' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='7' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='8' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='9' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='10' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='11' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='12' epid='LS.01.02.01'><element>EC.02.03.03</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='12' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='13' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='14' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='15' epid='LS.01.02.01'><element>LS.01.01.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='2' epid='LS.02.01.10'><element>LS.02.01.30</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='2' epid='LS.02.01.10'><element>LS.02.01.34</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='2' epid='LS.02.01.30'><element>LS.02.01.10</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='2' epid='LS.02.01.30'><element>LS.02.01.20</element><epitem>EP 18</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='LS.02.01.30' id='2'>-	Existing boiler/fuel-fired heater rooms have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the rooms have 1-hour fire-rated walls and 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='2'>-	New boiler/fuel-fired heater rooms have sprinkler systems and have 1-hour fire-rated walls and 3/4- hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='2'>-	Existing central/bulk laundries larger than 100 square feet have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the laundries have 1-hour fire-rated walls and 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='2'>-	New central/bulk laundries larger than 100 square feet have sprinkler systems and have 1-hour fire- rated walls and 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='3'>-	Existing flammable liquid storage rooms have 2-hour fire-rated walls with 1 1/2-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='3'>-	New flammable liquid storage rooms have sprinkler systems and have 2-hour fire-rated walls with 1 1/2-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='3'>-	Existing laboratories that are not severe hazard areas have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the laboratories have walls fire rated for 1 hour with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='3'>-	New laboratories that are not severe hazard areas have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices.</subitems>
+<subitems  epid='LS.02.01.30' id='7'>-	Existing maintenance repair shops have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the shops have 1-hour fire-rated walls with at least 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='7'>-	New maintenance repair shops have sprinkler systems and have 1-hour fire-rated walls with 3/4- hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	Existing piped oxygen tank supply rooms have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	New piped oxygen tank supply rooms have sprinkler systems and have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	Existing paint shops that are not severe hazard areas have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the shops have 1-hour fire- rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	New paint shops that are not severe hazard areas have sprinkler systems and have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	Existing soiled linen rooms have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the rooms have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	New soiled linen rooms have sprinkler systems and have 1-hour fire-rated walls with 3/4-hour fire- rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	Existing storage rooms for combustible materials larger than 50 square feet have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the rooms have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	New storage rooms for combustible materials 50 to 100 square feet are sprinklered, resist the passage of smoke, and have doors with self-closing or automatic-closing devices.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	New storage rooms for combustible materials larger than 100 square feet are sprinklered and have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	Existing trash collection rooms have sprinkler systems, resist the passage of smoke, and have doors with self-closing or automatic-closing devices; or the rooms have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.30' id='8'>-	New trash collection rooms are sprinklered and have 1-hour fire-rated walls with 3/4-hour fire-rated doors.</subitems>
+<subitems  epid='LS.02.01.34' id='2'>-	An auxiliary fire alarm system with direct connection to the servicing fire department as described in NFPA 72-1999: 6-16</subitems>
+<subitems  epid='LS.02.01.34' id='2'>-	Central station service as described in NFPA 72-1999: 5-2</subitems>
+<subitems  epid='LS.02.01.34' id='2'>-	A proprietary supervising station system as described in NFPA 72-1999: 5-3 or The Joint Commission�s approved method for a manual transmission system at http://www.jointcommission.org/lsc</subitems>
+<subitems  epid='LS.02.01.34' id='2'>-	A remote supervising station fire alarm system as described in NFPA 72-1999: 5-4</subitems>
+<subitems  epid='LS.02.01.35' id='8'>-	Firefighters' service key recall</subitems>
+<subitems  epid='LS.02.01.35' id='8'>-	Smoke detector automatic recall</subitems>
+<subitems  epid='LS.02.01.35' id='8'>-	Firefighters' service emergency in-car key operation</subitems>
+<subitems  epid='LS.02.01.35' id='8'>-	Machine room smoke detectors</subitems>
+<subitems  epid='LS.02.01.35' id='8'>-	Elevator lobby smoke detectors</subitems>
+</subitems>
+
+</chapter>

@@ -1,0 +1,63 @@
+<chapter>
+<chaptertitle>Performance Improvement Chapter</chaptertitle>
+<titles>
+<title epid='PI.01.01.01'>The organization collects data to monitor its performance.</title>
+<title epid='PI.02.01.01'>The organization compiles and analyzes data.</title>
+<title epid='PI.03.01.01'>The organization improves performance.</title>
+</titles>
+
+<elements>
+<element epid='PI.01.01.01' id='1'>1.	The leaders set priorities for data collection. (See also LD.04.04.01, EP 1)</element>
+<element epid='PI.01.01.01' id='2'>2.	The organization identifies the frequency for data collection.</element>
+<element epid='PI.01.01.01' id='3'>3.	The organization collects data on the following: Performance improvement priorities identified by leaders. (See also LD.04.04.01, EP 1)</element>
+<element epid='PI.01.01.01' id='4'>9.	The organization collects data on the following: The use of restraints. (See also LD.04.04.01, EP 2)</element>
+<element epid='PI.01.01.01' id='5'>11. The organization collects data on the following: Behavior management and treatment. (See also LD.04.04.01, EP 2)</element>
+<element epid='PI.01.01.01' id='6'>11. The organization collects data on the following: Quality control activities.</element>
+<element epid='PI.01.01.01' id='7'>11. The organization collects data on the following: Significant medication errors. (See also LD.04.04.01, EP 2; MM.08.01.01, EP 1)</element>
+<element epid='PI.01.01.01' id='8'>11. The organization collects data on the following: Significant adverse drug reactions. (See also LD.04.04.01, EP 2; MM.08.01.01, EP 1)</element>
+<element epid='PI.01.01.01' id='9'>11. The organization collects data on the following: Resident (and, as needed, the family) perception of the safety and quality of care, treatment, and services. Quality of care includes the organization�s provision of person-centered care, treatment, and services.</element>
+<element epid='PI.01.01.01' id='10'>31. The organization considers collecting data on the following:</element>
+<element epid='PI.02.01.01' id='1'>1.	The organization compiles data into formats that enable them to be analyzed.</element>
+<element epid='PI.02.01.01' id='2'>2.	The organization identifies the frequency for data analysis.</element>
+<element epid='PI.02.01.01' id='3'>3.	The organization uses statistical tools and techniques to analyze and display data.</element>
+<element epid='PI.02.01.01' id='4'>4.	The organization analyzes and compares internal data over time to identify levels of performance, patterns, trends, and variations.</element>
+<element epid='PI.02.01.01' id='5'>5.	The organization compares data with external sources, when available.</element>
+<element epid='PI.02.01.01' id='6'>8.	The organization uses the results of data analysis to identify improvement opportunities. (See also LD.03.02.01, EP 5; PI.03.01.01, EP 1)</element>
+<element epid='PI.02.01.01' id='7'>11. When the organization identifies undesirable patterns, trends, or variations in its performance related  to the safety or quality of care (for example, as identified in the analysis of data or a single undesirable event), it includes the adequacy of staffing, including nurse staffing, in its analysis of possible causes. Note 1: Adequacy of staffing includes the number, skill mix, and competency of all staff. In their analysis, organizations may also wish to examine issues such as processes related to work flow; competency assessment; credentialing; supervision of staff; and orientation, training, and education. Note 2: Organizations may find value in using the staffing effectiveness indicators (which include National Quality Forum Nursing Sensitive Measures) to help identify potential staffing issues. (Refer    to the �Staffing Effectiveness Indicators� (SEI) chapter)</element>
+<element epid='PI.02.01.01' id='8'>11. When analysis reveals a problem with the adequacy of staffing, the leaders responsible for the organization-wide resident safety program (as addressed at LD.04.04.05, EP 1) are informed, in a manner determined by the safety program, of the results of this analysis and actions taken to resolve the identified problem(s). (See also LD.03.05.01, EP 7)</element>
+<element epid='PI.02.01.01' id='9'>11. At least once a year, the leaders responsible for the organization-wide resident safety program review a written report on the results of any analyses related to the adequacy of staffing and any actions taken to resolve identified problems. (See also LD.04.04.05, EP 13)</element>
+<element epid='PI.03.01.01' id='1'>2.	The organization takes action on improvement priorities. (See also LD.04.04.01, EP 1; PI.02.01.01, EP 8)</element>
+<element epid='PI.03.01.01' id='2'>3.	The organization evaluates whether action(s) taken resulted in improvement.</element>
+<element epid='PI.03.01.01' id='3'>4.	The organization takes action when it does not achieve or sustain planned improvements.</element>
+</elements>
+
+<notes>
+<note epid='PI.01.01.01' itemid='7'>Note: Examples of topics for quality control activities include the delivery and content of food trays and laundry services.</note>
+<note epid='PI.01.01.01' itemid='11'>Note: If the organization has not collected data on this topic, consideration can be demonstrated through methods such as interviews or meeting minutes.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='2' epid='PI.01.01.01'><element>LD.04.04.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='4' epid='PI.01.01.01'><element>LD.04.04.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='5' epid='PI.01.01.01'><element>LD.04.04.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='6' epid='PI.01.01.01'><element>LD.04.04.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='8' epid='PI.01.01.01'><element>LD.04.04.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='8' epid='PI.01.01.01'><element>MM.08.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='9' epid='PI.01.01.01'><element>LD.04.04.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='9' epid='PI.01.01.01'><element>MM.08.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='7' epid='PI.02.01.01'><element>LD.03.02.01</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='7' epid='PI.02.01.01'><element>PI.03.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='9' epid='PI.02.01.01'><element>LD.03.05.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='10' epid='PI.02.01.01'><element>LD.04.04.05</element><epitem>EP 13</epitem></referencedelement>
+<referencedelement itemid='2' epid='PI.03.01.01'><element>LD.04.04.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='2' epid='PI.03.01.01'><element>PI.02.01.01</element><epitem>EP 8</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='PI.01.01.01' id='11'>-	Staff opinions and needs</subitems>
+<subitems  epid='PI.01.01.01' id='11'>-	Staff perceptions of risk to individuals</subitems>
+<subitems  epid='PI.01.01.01' id='11'>-	Staff suggestions for improving resident safety</subitems>
+<subitems  epid='PI.01.01.01' id='11'>-	Staff willingness to report adverse events</subitems>
+</subitems>
+
+</chapter>

@@ -1,0 +1,36 @@
+﻿@model SurveyWeb.Models.TOCElementViewModel
+
+@{
+    ViewBag.Title = Model.Key + " Standard ";
+}
+
+<h2><span>Standard </span>@Model.Key</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Model.Title</h4>
+        <div>
+            <div ><span style="font:bold"><h4>Elements of Performance</h4></span>
+                @*@Html.DisplayNameFor(model => model.Content)*@
+            </div>
+
+            <div>
+                @Html.DisplayFor(model => model.Content)
+            </div>
+
+        </div>
+        @foreach (var item in Model.Elements)
+        {
+            <div class="col-md-offset-0 col-md-10">
+                @Html.ActionLink("EP " + item.Key, "PerformanceElement", new { standardElementId = item.ParentKey, performanceItemId = item.Key }, null) - @item.Content
+
+            </div>
+        }
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

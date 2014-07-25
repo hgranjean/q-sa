@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\ClassDocument.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\ClassificationProbalities.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\EPClassifier.cs" />

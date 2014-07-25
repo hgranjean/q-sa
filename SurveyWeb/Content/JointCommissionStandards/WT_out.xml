@@ -1,0 +1,88 @@
+<chapter>
+<chaptertitle>Waived Testing Chapter</chaptertitle>
+<titles>
+<title epid='WT.01.01.01'>Policies and procedures for waived tests are established, current, approved, and readily available.</title>
+<title epid='WT.02.01.01'>The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate identifies the staff responsible for performing and supervising waived testing.</title>
+<title epid='WT.03.01.01'>Staff and licensed independent practitioners performing waived tests are competent.</title>
+<title epid='WT.04.01.01'>The organization performs quality control checks for waived testing on each procedure. Note: Internal quality controls may include electronic, liquid, or control zone. External quality controls may include electronic or liquid.</title>
+<title epid='WT.05.01.01'>The organization maintains records for waived testing.</title>
+</titles>
+
+<elements>
+<element epid='WT.01.01.01' id='1'>1.	The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate approves a consistent approach for when waived test results can be used for diagnosis and treatment and when follow-up testing is required. (See also LD.04.01.01, EP 1)</element>
+<element epid='WT.01.01.01' id='2'>2.	The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate, or a qualified designee, establishes written policies and procedures for waived testing that address the following:</element>
+<element epid='WT.01.01.01' id='3'>3.	If manufacturers� manuals or package inserts are used as the policies or procedures for each waived test, they are enhanced to include specific operational policies (that is, detailed quality control protocols and any other institution-specific procedures regarding the test or instrument).</element>
+<element epid='WT.01.01.01' id='4'>4.	The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate, or a qualified designee, approves in writing policies and procedures for waived testing at the following times:</element>
+<element epid='WT.01.01.01' id='5'>5.	Current and complete policies and procedures are available for use during testing to the person performing the waived test.</element>
+<element epid='WT.01.01.01' id='6'>6.	Written policies, procedures, and manufacturers' instructions for waived testing are followed. (See also WT.04.01.01, EPs 3-5)</element>
+<element epid='WT.01.01.01' id='7'>7.	The criteria for confirmatory testing are followed as specified in the waived testing written procedures.</element>
+<element epid='WT.01.01.01' id='8'>8.	Clinical use of results is consistent with the organization�s policies and the manufacturers' recommendations for waived tests.</element>
+<element epid='WT.02.01.01' id='1'>1.	The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate, or a qualified designee, identifies, in writing, the staff responsible for performing waived testing.</element>
+<element epid='WT.02.01.01' id='2'>2.	The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate, or a qualified designee, identifies, in writing, the staff responsible for supervising waived testing.</element>
+<element epid='WT.03.01.01' id='1'>1.	The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate, or a qualified designee, provides orientation and training to, and assesses the competency of, staff and licensed independent practitioners who perform waived testing.</element>
+<element epid='WT.03.01.01' id='2'>2.	Staff and licensed independent practitioners who perform waived testing have received orientation in accordance with the organization�s specific services. The orientation for waived testing is documented.</element>
+<element epid='WT.03.01.01' id='3'>3.	Staff and licensed independent practitioners who perform waived testing have been trained for each test that they are authorized to perform. The training for each waived test is documented.</element>
+<element epid='WT.03.01.01' id='4'>4.	Staff and licensed independent practitioners who perform waived testing that requires the use of an instrument have been trained on its use and operator maintenance. The training on the use and operator maintenance of an instrument for waived testing is documented.</element>
+<element epid='WT.03.01.01' id='5'>5.	Competency for waived testing is assessed using at least two of the following methods per person per test:</element>
+<element epid='WT.03.01.01' id='6'>6.	Competence for waived testing is assessed according to organization policy at defined intervals, but at least at the time of orientation and annually thereafter. This competency is documented.</element>
+<element epid='WT.04.01.01' id='1'>1.	The person from the organization whose name appears on the Clinical Laboratory Improvement Amendments of 1988 (CLIA '88) certificate establishes a written quality control plan for waived testing that specifies the method(s) for controlling procedures for quality, establishes timetables, and explains the rationale for choice of procedures and timetables. (See also LD.04.01.01, EP 1)</element>
+<element epid='WT.04.01.01' id='2'>2.	The documented quality control rationale for waived testing is based on the following:</element>
+<element epid='WT.04.01.01' id='3'>3.	For non�instrument-based waived testing, quality control checks are performed at the frequency and number of levels recommended by the manufacturer and as defined by the organization�s policies. (See also WT.01.01.01, EP 6)</element>
+<element epid='WT.04.01.01' id='4'>4.	For instrument-based waived testing, quality control checks are performed on each instrument used for resident testing per manufacturers' instructions. (See also WT.01.01.01, EP 6)</element>
+<element epid='WT.04.01.01' id='5'>5.	For instrument-based waived testing, quality control checks require two levels of control, if commercially available. (See also WT.01.01.01, EP 6)</element>
+<element epid='WT.05.01.01' id='1'>1.	Quality control results, including internal and external controls for waived testing, are documented. Note 1: Internal quality controls may include electronic, liquid, or control zone. External quality controls may include electronic or liquid.</element>
+<element epid='WT.05.01.01' id='2'>2.	Test results for waived testing are documented in the resident's clinical record.</element>
+<element epid='WT.05.01.01' id='3'>3.	Quantitative test result reports in the resident's clinical record for waived testing are accompanied by reference intervals (normal values) specific to the test method used and the population served.</element>
+<element epid='WT.05.01.01' id='4'>4.	Individual test results for waived testing are associated with quality control results and instrument records.</element>
+<element epid='WT.05.01.01' id='5'>5.	Quality control result records, test result records, and instrument records for waived testing are retained for at least two years.</element>
+</elements>
+
+<notes>
+<note epid='WT.01.01.01' itemid='3'>Note: The designee should be knowledgeable by virtue of training, experience, and competence about the waived testing performed.</note>
+<note epid='WT.01.01.01' itemid='7'>Note: Manufacturers' recommendations and suggestions are surveyed as requirements.</note>
+<note epid='WT.02.01.01' itemid='1'>Note 1: Responsible staff may be employees of the organization, contracted staff, or employees of a contracted service.</note>
+<note epid='WT.02.01.01' itemid='1'>Note 2: Responsible staff may be identified within job descriptions or by listing job titles or individual names.</note>
+<note epid='WT.03.01.01' itemid='7'>Note: Provider-performed microscopy (PPM) procedures are not waived tests.</note>
+<note epid='WT.04.01.01' itemid='4'>Note: If these elements are not defined by the manufacturer, the organization defines the frequency and number of levels for quality control.</note>
+<note epid='WT.05.01.01' itemid='2'>Note 2: Quality control results may be located in the clinical record.</note>
+<note epid='WT.05.01.01' itemid='4'>Note 1: Semiquantitative results, such as urine macroscopic and urine dipsticks, are not required to comply with this element of performance.</note>
+<note epid='WT.05.01.01' itemid='4'>Note 2: If the reference intervals (normal values) are not documented on the same page as and adjacent to the waived test result, they must be located elsewhere within the resident's permanent clinical record. The result must have a notation directing the reader to the location of the reference intervals (normal values) in the resident's clinical record.</note>
+<note epid='WT.05.01.01' itemid='5'>Note: A formal log is not required, but a functional audit trail is maintained that allows retrieval of individual test results and their association with quality control and instrument records.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='2' epid='WT.01.01.01'><element>LD.04.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='7' epid='WT.01.01.01'><element>WT.04.01.01</element><epitem>EPs 3-5</epitem></referencedelement>
+<referencedelement itemid='2' epid='WT.04.01.01'><element>LD.04.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='4' epid='WT.04.01.01'><element>WT.01.01.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='5' epid='WT.04.01.01'><element>WT.01.01.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='6' epid='WT.04.01.01'><element>WT.01.01.01</element><epitem>EP 6</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Clinical usage and limitations of the test methodology</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Need for confirmatory testing (for example, recommendations made by the manufacturer for rapid tests) and result follow-up recommendations (for example, a recommendation to repeat the test when results are higher or lower than the reportable range of the test)</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Specimen type, collection, and identification, and required labeling</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Specimen preservation, if applicable</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Instrument maintenance and function checks, such as calibration</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Storage conditions for test components</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Reagent use, including not using a reagent after its expiration date</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Quality control (including frequency and type) and corrective action when quality control is unacceptable</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Test performance</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Result reporting, including not reporting individual resident results unless quality control is acceptable</subitems>
+<subitems  epid='WT.01.01.01' id='3'>-	Equipment performance evaluation</subitems>
+<subitems  epid='WT.01.01.01' id='5'>-	Before initial use of the test for resident testing</subitems>
+<subitems  epid='WT.01.01.01' id='5'>-	Periodically thereafter, as defined by the person whose name appears on the CLIA certificate but at least once every three years</subitems>
+<subitems  epid='WT.01.01.01' id='5'>-	When changes in procedures occur (for example, when manufacturers' updates to package inserts include procedural changes or when a different manufacturer is used)</subitems>
+<subitems  epid='WT.03.01.01' id='6'>-	Performance of a test on a blind specimen</subitems>
+<subitems  epid='WT.03.01.01' id='6'>-	Periodic observation of routine work by the supervisor or qualified designee</subitems>
+<subitems  epid='WT.03.01.01' id='6'>-	Monitoring of each user's quality control performance</subitems>
+<subitems  epid='WT.03.01.01' id='6'>-	Use of a written test specific to the test assessed</subitems>
+<subitems  epid='WT.04.01.01' id='3'>-	How the test is used</subitems>
+<subitems  epid='WT.04.01.01' id='3'>-	Reagent stability</subitems>
+<subitems  epid='WT.04.01.01' id='3'>-	Manufacturers' recommendations</subitems>
+<subitems  epid='WT.04.01.01' id='3'>-	The organization's experience with the test</subitems>
+<subitems  epid='WT.04.01.01' id='3'>-	Currently accepted guidelines</subitems>
+</subitems>
+
+</chapter>

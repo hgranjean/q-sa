@@ -1,0 +1,163 @@
+<chapter>
+<chaptertitle>Record of Care, Treatment, and Services Chapter</chaptertitle>
+<titles>
+<title epid='RC.01.01.01'>The organization maintains complete and accurate clinical records.</title>
+<title epid='RC.01.02.01'>Entries in the clinical record are authenticated.</title>
+<title epid='RC.01.03.01'>Documentation in the clinical record is entered in a timely manner.</title>
+<title epid='RC.01.04.01'>The organization audits its clinical records.</title>
+<title epid='RC.02.01.01'>The clinical record contains information that reflects the resident's care, treatment, and services.</title>
+<title epid='RC.02.01.05'>The clinical record contains documentation of the use of restraint.</title>
+<title epid='RC.02.01.09'>Clinical record documentation includes the provision of and response to the activities program at least quarterly.</title>
+<title epid='RC.02.01.11'>Clinical record documentation includes the provision of and response to nutrition care services at least quarterly.</title>
+<title epid='RC.02.01.13'>Clinical record documentation includes the provision of and response to nursing care.</title>
+<title epid='RC.02.01.15'>Clinical record documentation includes the provision of and response to medical treatment and care, and changes in the resident�s condition.</title>
+<title epid='RC.02.01.17'>Clinical record documentation includes the provision of and response to rehabilitation services.</title>
+<title epid='RC.02.01.19'>Clinical record documentation includes the provision of and response to social services.</title>
+<title epid='RC.02.01.21'>Clinical record documentation includes resident education.</title>
+<title epid='RC.02.01.25'>Treatment provided to the resident by external resources is documented in the clinical record.</title>
+<title epid='RC.02.01.27'>Effects of medications on residents, and associated pharmacist evaluation and physician consultation, are documented in the clinical record.</title>
+<title epid='RC.02.03.07'>Qualified staff receive and record verbal orders.</title>
+<title epid='RC.02.04.01'>The organization documents the resident�s discharge information.</title>
+</titles>
+
+<elements>
+<element epid='RC.01.01.01' id='1'>1.	The organization defines the components of a complete clinical record. (See also RC.01.04.01, EP 1)</element>
+<element epid='RC.01.01.01' id='2'>4.	The clinical record contains information unique to the resident, which is used for resident identification.</element>
+<element epid='RC.01.01.01' id='3'>5.	The clinical record contains the information needed to support the resident�s diagnosis and condition.</element>
+<element epid='RC.01.01.01' id='4'>6.	The clinical record contains the information needed to justify the resident�s care, treatment, and services.</element>
+<element epid='RC.01.01.01' id='5'>7.	The clinical record contains information that documents the course and result of the resident's care, treatment, and services.</element>
+<element epid='RC.01.01.01' id='6'>8.	The clinical record contains information about the resident�s care, treatment, and services needed to provide continuity of care among providers.</element>
+<element epid='RC.01.01.01' id='7'>9.	The organization uses standardized formats to document the care, treatment, and services it provides to residents.</element>
+<element epid='RC.01.01.01' id='8'>11. All entries in the clinical record are dated.</element>
+<element epid='RC.01.01.01' id='9'>11. The organization tracks the location of all components of the clinical record.</element>
+<element epid='RC.01.01.01' id='10'>11. If the clinical record is not maintained as a single entity, the organization has a system that allows staff to access information needed to provide care, treatment, and services to residents. (See also MM.01.01.01, EP 1)</element>
+<element epid='RC.01.02.01' id='1'>1.	Only authorized individuals make entries in the clinical record.</element>
+<element epid='RC.01.02.01' id='2'>2.	The organization defines the types of entries in the clinical record made by nonindependent practitioners that require countersigning, in accordance with law and regulation.</element>
+<element epid='RC.01.02.01' id='3'>3.	The author of each clinical record entry is identified in the clinical record.</element>
+<element epid='RC.01.02.01' id='4'>4.	Entries in the clinical record are authenticated by the author. Information introduced into the clinical record through transcription or dictation is authenticated by the author.</element>
+<element epid='RC.01.02.01' id='5'>5.	The individual identified by the signature stamp or method of electronic authentication is the only individual who uses it.</element>
+<element epid='RC.01.03.01' id='1'>1.	The organization has a written policy that requires timely entry of information into the clinical record. (See also PC.01.02.03, EP 1)</element>
+<element epid='RC.01.03.01' id='2'>2.	The organization defines the time frame for completion of the clinical record, which does not exceed 30 days after the resident�s discharge.</element>
+<element epid='RC.01.03.01' id='3'>3.	The organization implements its policy requiring timely entry of information into the resident�s clinical record. (See also PC.01.02.03, EP 2)</element>
+<element epid='RC.01.04.01' id='1'>1.	The organization conducts an ongoing review of clinical records at the point of care, based on the following indicators: presence, timeliness, legibility (whether handwritten or printed), accuracy, authentication, and completeness of data and information. (See also RC.01.01.01, EP 1)</element>
+<element epid='RC.02.01.01' id='1'>1.	The clinical record contains the following demographic information:</element>
+<element epid='RC.02.01.01' id='2'>2.	The clinical record contains the following clinical information:</element>
+<element epid='RC.02.01.01' id='3'>-	Any assessment findings (See also PC.01.02.01, EP 1)</element>
+<element epid='RC.02.01.01' id='4'>4.	As needed to provide care, treatment, and services, the clinical record contains the following additional information:</element>
+<element epid='RC.02.01.01' id='5'>-	Any advance directives (See also RI.01.05.01, EP 11)</element>
+<element epid='RC.02.01.01' id='6'>-	Any informed consent, when required by organization policy (See also RI.01.03.01, EP 13)</element>
+<element epid='RC.02.01.05' id='1'>2.	The use of restraint, including the trial of alternatives to restraint, is documented in the clinical record. (See also PC.03.02.09, EP 5; PC.03.02.13, EP 1)</element>
+<element epid='RC.02.01.09' id='1'>1.	The activity providers document the provision of activities to the resident based on the interdisciplinary care plan at least quarterly in the clinical record.</element>
+<element epid='RC.02.01.09' id='2'>2.	The activity providers document the resident's response to the activities program based on the interdisciplinary care plan at least quarterly in the clinical record.</element>
+<element epid='RC.02.01.09' id='3'>3.	The activity providers document in the clinical record any report given to the primary nurse of changes in the resident�s response to the activity program.</element>
+<element epid='RC.02.01.11' id='1'>1.	The provision of nutrition care services is documented at least quarterly in the clinical record.</element>
+<element epid='RC.02.01.11' id='2'>2.	The resident's response to nutrition care services based on the interdisciplinary care plan is documented at least quarterly in the clinical record.</element>
+<element epid='RC.02.01.11' id='3'>3.	Clinical record documentation includes the following information regarding nutrition care services:</element>
+<element epid='RC.02.01.13' id='1'>1.	The provision of nursing care that is based on the interdisciplinary care plan is documented in the clinical record.</element>
+<element epid='RC.02.01.13' id='2'>2.	The resident's response to the nursing care that is based on the interdisciplinary care plan is documented in the clinical record.</element>
+<element epid='RC.02.01.13' id='3'>3.	Clinical record documentation includes the following information regarding nursing care:</element>
+<element epid='RC.02.01.15' id='1'>1.	The provision of medical treatment and care is documented in the clinical record.</element>
+<element epid='RC.02.01.15' id='2'>2.	The resident�s response to medical treatment and care is documented in the clinical record.</element>
+<element epid='RC.02.01.15' id='3'>3.	Documentation in the resident�s clinical record includes, before or on admission, the following:</element>
+<element epid='RC.02.01.15' id='4'>4.	Documentation in the resident�s clinical record includes medical observations and recommendations made after the initial medical assessment, as well as progress notes that are reported at the time of observation and that describe significant changes, as defined by the organization, in the resident�s condition.</element>
+<element epid='RC.02.01.15' id='5'>5.	Documentation in the resident�s clinical record includes progress notes recorded by the physician at each visit.</element>
+<element epid='RC.02.01.15' id='6'>6.	Upon the resident�s discharge, documentation in the resident�s clinical record includes the complete transfer form and the discharge summary.</element>
+<element epid='RC.02.01.15' id='7'>7.	If the resident dies in the organization, the course of events leading up to the resident�s death is documented.</element>
+<element epid='RC.02.01.15' id='8'>8.	Documentation in the resident�s clinical record includes evidence that the attending physician has reviewed the consulting physician�s orders for consistency with the interdisciplinary plan of care.</element>
+<element epid='RC.02.01.15' id='9'>9.	Clinical record documentation includes significant changes, as determined by the organization, in the resident�s condition, care, treatment, and services.</element>
+<element epid='RC.02.01.17' id='1'>1.	Documentation in the clinical record describes the provision of rehabilitation services that are based on the interdisciplinary care plan and includes the following:</element>
+<element epid='RC.02.01.17' id='2'>2.	Documentation in the clinical record describes the resident's response to rehabilitation services, including the progress toward treatment goals as described in the interdisciplinary care plan.</element>
+<element epid='RC.02.01.17' id='3'>3.	Documentation in the clinical record includes a summary of rehabilitation achievement and estimates of further rehabilitation potential at time frames defined by the organization in accordance with law and regulation, or more often if the resident's condition warrants.</element>
+<element epid='RC.02.01.17' id='4'>4.	Documentation in the clinical record includes a rehabilitation discharge plan.</element>
+<element epid='RC.02.01.19' id='1'>1.	Documentation in the clinical record describes the provision of social services, including the following:</element>
+<element epid='RC.02.01.19' id='2'>2.	Documentation in the clinical record describes the response to social services, including the following:</element>
+<element epid='RC.02.01.21' id='1'>1.	The provision of resident education is documented in the clinical record.</element>
+<element epid='RC.02.01.21' id='2'>2.	The resident�s response to education is documented in the clinical record.</element>
+<element epid='RC.02.01.25' id='1'>1.	The clinical record includes information from external resources who provide treatment to the resident.</element>
+<element epid='RC.02.01.27' id='1'>1.	Clinical records include documentation of the resident�s response to medications. (See also MM.07.01.01, EPs 1 and 2)</element>
+<element epid='RC.02.01.27' id='2'>2.	Clinical records include documentation of the clinical or consultant pharmacists' findings, conclusions, and recommendations (for example, additional laboratory monitoring) resulting from monitoring of the medication regimen.</element>
+<element epid='RC.02.03.07' id='1'>2.	Only authorized staff receive and record verbal orders.</element>
+<element epid='RC.02.03.07' id='2'>3.	Documentation of verbal orders includes the date and the names of individuals who gave, received, recorded, and implemented the orders.</element>
+<element epid='RC.02.03.07' id='3'>4.	Verbal orders are authenticated within the time frame specified by law and regulation.</element>
+<element epid='RC.02.04.01' id='1'>1.	The organization documents in the clinical record the discharge information it provides to the resident and to the receiving organization.</element>
+<element epid='RC.02.04.01' id='2'>2.	The resident�s discharge information includes the following:</element>
+</elements>
+
+<notes>
+<note epid='RC.01.02.01' itemid='5'>Note 1: Authentication can be verified through electronic signatures, written signatures or initials, rubber-stamp signatures, or computer key.</note>
+<note epid='RC.01.02.01' itemid='5'>Note 2: For paper-based records, signatures entered for purposes of authentication after transcription or for verbal orders are dated when required by law or regulation or organization policy. For electronic records, electronic signatures will be date-stamped.</note>
+<note epid='RC.02.01.13' itemid='4'>Note: In determining the frequency of preparing a summary of the residents condition, consideration should be given to residents with complex needs or short lengths of stay.</note>
+<note epid='RC.02.01.19' itemid='3'>Note: In determining the frequency of preparing a summary, consideration should be given to residents with complex needs or short lengths of stay.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='2' epid='RC.01.01.01'><element>RC.01.04.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='11' epid='RC.01.01.01'><element>MM.01.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='2' epid='RC.01.03.01'><element>PC.01.02.03</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='4' epid='RC.01.03.01'><element>PC.01.02.03</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='2' epid='RC.01.04.01'><element>RC.01.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='4' epid='RC.02.01.01'><element>PC.01.02.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='6' epid='RC.02.01.01'><element>RI.01.05.01</element><epitem>EP 11</epitem></referencedelement>
+<referencedelement itemid='7' epid='RC.02.01.01'><element>RI.01.03.01</element><epitem>EP 13</epitem></referencedelement>
+<referencedelement itemid='2' epid='RC.02.01.05'><element>PC.03.02.09</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='2' epid='RC.02.01.05'><element>PC.03.02.13</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='2' epid='RC.02.01.27'><element>MM.07.01.01</element><epitem>EPs 1 and 2</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='RC.02.01.01' id='2'>-	The resident�s name, address, date of birth, and the name of any legally authorized representative</subitems>
+<subitems  epid='RC.02.01.01' id='2'>-	The resident�s sex</subitems>
+<subitems  epid='RC.02.01.01' id='2'>-	The resident�s language and communication needs</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	The reason(s) for admission for care, treatment, and services</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any observations relevant to care, treatment, and services</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any progress notes made by authorized individuals</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any orders, including medications ordered or prescribed, and diagnostic and therapeutic orders</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any allergies to medications</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any medications administered, including the strength, dose, and rate</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any medication administration devices used, including access site or route</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any adverse drug reactions</subitems>
+<subitems  epid='RC.02.01.01' id='3'>-	Any medications dispensed or prescribed on discharge</subitems>
+<subitems  epid='RC.02.01.01' id='4'>-	Any consultation reports</subitems>
+<subitems  epid='RC.02.01.01' id='4'>-	Any food allergies</subitems>
+<subitems  epid='RC.02.01.01' id='6'>-	Orders, renewal of orders, and documentation that resuscitative services are to be withheld or life- sustaining treatment withdrawn</subitems>
+<subitems  epid='RC.02.01.01' id='7'>-	Any records of communication with the resident, such as telephone calls or e-mail</subitems>
+<subitems  epid='RC.02.01.01' id='7'>-	Any resident-generated information (for example, choices, habits, routine)</subitems>
+<subitems  epid='RC.02.01.01' id='7'>-	Referrals or communication made to external or internal care providers and community agencies</subitems>
+<subitems  epid='RC.02.01.01' id='7'>-	Any physician�s summary and final diagnosis when the resident is admitted either from a hospital or from another health care organization</subitems>
+<subitems  epid='RC.02.01.01' id='7'>-	The discharge plan or the reason for lack of an ongoing plan when discharge potential does not exist</subitems>
+<subitems  epid='RC.02.01.11' id='4'>-	The resident�s understanding of prescribed diets</subitems>
+<subitems  epid='RC.02.01.11' id='4'>-	The resident�s food consumption and nutrient status</subitems>
+<subitems  epid='RC.02.01.11' id='4'>-	The resident's fluid consumption and hydration status</subitems>
+<subitems  epid='RC.02.01.11' id='4'>-	Significant weight changes, in accordance with law or regulation</subitems>
+<subitems  epid='RC.02.01.11' id='4'>-	The resident�s ability to eat with or without adaptive devices</subitems>
+<subitems  epid='RC.02.01.11' id='4'>-	Current status and changes in the resident�s physical or behavioral status that affect nutrition (for example, the ability to function with or without natural teeth or dentures)</subitems>
+<subitems  epid='RC.02.01.11' id='4'>-	Summary of the resident�s nutritional status, including the extent to which nutritional goals included in the interdisciplinary care plan are affected or achieved</subitems>
+<subitems  epid='RC.02.01.13' id='4'>-	Medications and treatment given and untoward reactions</subitems>
+<subitems  epid='RC.02.01.13' id='4'>-	Nursing care provided</subitems>
+<subitems  epid='RC.02.01.13' id='4'>-	Current status and changes in the resident�s physical or behavioral condition, including symptoms</subitems>
+<subitems  epid='RC.02.01.13' id='4'>-	Summary by licensed nursing staff of the resident�s condition, which includes the extent to which nursing goals included in the interdisciplinary care plan are achieved, at least quarterly or more often if the resident's condition warrants</subitems>
+<subitems  epid='RC.02.01.15' id='4'>-	Admitting diagnosis</subitems>
+<subitems  epid='RC.02.01.15' id='4'>-	Current medical findings</subitems>
+<subitems  epid='RC.02.01.15' id='4'>-	Diet prescribed</subitems>
+<subitems  epid='RC.02.01.15' id='4'>-	The resident�s functional status</subitems>
+<subitems  epid='RC.02.01.17' id='2'>-	Reason for admission or referral to rehabilitation services</subitems>
+<subitems  epid='RC.02.01.17' id='2'>-	Rehabilitation treatments, modalities, or procedures provided</subitems>
+<subitems  epid='RC.02.01.17' id='2'>-	The resident�s involvement in rehabilitation services</subitems>
+<subitems  epid='RC.02.01.19' id='2'>-	Summary of the resident�s problems and condition</subitems>
+<subitems  epid='RC.02.01.19' id='2'>-	Specified goals related to social services, including discharge planning</subitems>
+<subitems  epid='RC.02.01.19' id='2'>-	Services provided</subitems>
+<subitems  epid='RC.02.01.19' id='2'>-	Referrals to outside agencies, resources, or individuals</subitems>
+<subitems  epid='RC.02.01.19' id='3'>-	Outcomes of services provided</subitems>
+<subitems  epid='RC.02.01.19' id='3'>-	The extent to which social services goals are achieved, as described in the interdisciplinary care plan. This documentation occurs at least quarterly or more often if the resident�s condition warrants.</subitems>
+<subitems  epid='RC.02.01.19' id='3'>-	Follow-up actions or recommendations of outside agencies, resources, or individuals</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	The reason for transfer, discharge, or referral</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	Treatment provided, diet, medication orders, and orders for the resident�s immediate care</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	Referrals provided to the resident, the referring licensed independent practitioner�s name, and the name of the licensed independent practitioner who has agreed to be responsible for the resident�s medical care and treatment, if this person is someone other than the referring licensed independent practitioner</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	Medical findings and diagnoses; a summary of the care, treatment, and services provided; and progress reached toward goals</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	Information about the resident�s behavior, ambulation, nutrition, physical status, psychosocial status, and potential for rehabilitation</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	Nursing information that is useful in the resident�s care</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	Any advance directives</subitems>
+<subitems  epid='RC.02.04.01' id='3'>-	Instructions given to the resident before discharge</subitems>
+</subitems>
+
+</chapter>

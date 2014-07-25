@@ -1,0 +1,310 @@
+<chapter>
+<chaptertitle>Provision of Care, Treatment, and Services Chapter</chaptertitle>
+<titles>
+<title epid='PC.01.01.01'>The organization accepts the resident for care, treatment, and services based on its ability to meet the resident�s needs.</title>
+<title epid='PC.01.02.01'>The organization assesses and reassesses its residents.</title>
+<title epid='PC.01.02.03'>The organization assesses and reassesses the resident and his or her condition according to defined time frames.</title>
+<title epid='PC.01.02.05'>Qualified staff or licensed independent practitioners assess and reassess the resident.</title>
+<title epid='PC.01.02.07'>The organization assesses and manages the resident's pain.</title>
+<title epid='PC.01.02.09'>The organization assesses the resident who may be a victim of possible abuse, neglect, or exploitation.</title>
+<title epid='PC.01.02.15'>The organization provides for diagnostic testing.</title>
+<title epid='PC.01.03.01'>The organization plans the resident�s care.</title>
+<title epid='PC.02.01.01'>The organization provides care, treatment, and services for each resident.</title>
+<title epid='PC.02.01.03'>The organization provides care, treatment, and services in accordance with orders or prescriptions, as required by law and regulation.</title>
+<title epid='PC.02.01.05'>The organization provides interdisciplinary, collaborative care, treatment, and services.</title>
+<title epid='PC.02.01.07'>The organization safely administers blood and blood component(s).</title>
+<title epid='PC.02.01.09'>The organization plans for and responds to life-threatening emergencies.</title>
+<title epid='PC.02.01.13'>The attending physician visits the resident in accordance with the resident's needs and at least once during the 30 days after admission.</title>
+<title epid='PC.02.01.15'>Residents at risk for health-related complications receive preventive care.</title>
+<title epid='PC.02.01.17'>Residents receive restorative services, including assistance with activities of daily living.</title>
+<title epid='PC.02.02.01'>The organization coordinates the resident�s care, treatment, and services based on the resident�s needs.</title>
+<title epid='PC.02.02.03'>The organization makes food and nutrition products available to its residents.</title>
+<title epid='PC.02.02.07'>The organization arranges for academic education to children and youth, as needed.</title>
+<title epid='PC.02.02.09'>Residents are provided with opportunities to participate in social and recreational activities.</title>
+<title epid='PC.02.02.13'>The resident�s comfort and dignity receive priority during end-of-life care.</title>
+<title epid='PC.02.03.01'>The organization provides resident education and training based on each resident�s needs and abilities.</title>
+<title epid='PC.03.02.09'>The organization designs a system to achieve a restraint-free environment.</title>
+<title epid='PC.03.02.13'>When alternatives to restraint are ineffective, restraint is safely used.</title>
+<title epid='PC.04.01.01'>The organization has a process that addresses transitions in the resident�s care.</title>
+<title epid='PC.04.01.03'>The organization transfers or discharges the resident based on his or her assessed needs and the organization�s ability to meet those needs.</title>
+<title epid='PC.04.01.05'>Before the organization transfers or discharges a resident, it informs and educates the resident about his or her follow-up care, treatment, and services.</title>
+<title epid='PC.04.01.07'>Residents are not transferred or discharged from the organization unless they meet specific criteria, in accordance with law and regulation.</title>
+<title epid='PC.04.02.01'>When a resident is transferred or discharged, the organization gives information about the care, treatment, and services provided to the resident to other service providers who will provide the resident with care, treatment, and services.</title>
+<title epid='PC.04.02.03'>The organization tells residents and their families of its bed-hold policy.</title>
+</titles>
+
+<elements>
+<element epid='PC.01.01.01' id='1'>1.	The organization has a written process for accepting a resident based on its ability to provide the care, treatment, and services required by the resident. (See also LD.01.03.01, EP 3)</element>
+<element epid='PC.01.01.01' id='2'>7.	The organization follows its written process for accepting a resident for care, treatment, and services.</element>
+<element epid='PC.01.01.01' id='3'>21. The interdisciplinary team is consulted when necessary to determine whether a prospective resident is eligible for admission.</element>
+<element epid='PC.01.01.01' id='4'>21. If a prospective resident is not accepted after referral and preadmission screening, the reasons for denying admission are documented.</element>
+<element epid='PC.01.02.01' id='1'>1.	The organization defines, in writing, the scope and content of screening, assessment, and reassessment information it collects. (See also RC.02.01.01, EP 2)</element>
+<element epid='PC.01.02.01' id='2'>2.	The organization defines, in writing, criteria that identify when additional, specialized, or more in-depth assessments are performed. (See also PC.01.02.07, EP 1)</element>
+<element epid='PC.01.02.01' id='3'>11. The organization defines, in writing, the information to be gathered during the initial assessment(s), including the following:</element>
+<element epid='PC.01.02.01' id='4'>21. During assessments and reassessments of the resident, the organization gathers the defined data and information.</element>
+<element epid='PC.01.02.03' id='1'>1.	The organization defines, in writing, for each discipline the time frame(s) within which it conducts the resident�s initial assessment, in accordance with law and regulation. (See also RC.01.03.01, EP 1)</element>
+<element epid='PC.01.02.03' id='2'>2.	The organization performs the initial assessments of the resident within its defined time frame(s). (See also RC.01.03.01, EP 3)</element>
+<element epid='PC.01.02.03' id='3'>3.	Each resident is reassessed based on his or her plan of care or changes in his or her condition.   Note: Reassessments may also be based on the resident's diagnosis; desire for care, treatment, and services; response to previous care, treatment, and services; and/or his or her setting requirements, resident acuity and needs.</element>
+<element epid='PC.01.02.03' id='4'>4.	The attending physician or licensed independent practitioner performs the resident�s medical history and physical examination within 24 hours prior to or 72 hours (For post acute care: within 24 hours prior to or 48 hours) after the resident�s admission or readmission to the organization.</element>
+<element epid='PC.01.02.03' id='5'>5.	When the medical history and physical examination is performed by someone other than the attending physician or licensed independent practitioner within 30 days of admission, the attending physician or licensed independent practitioner does the following within 24 hours prior to or 72 hours (For post acute care: within 24 hours prior to or 48 hours) after the resident�s admission or readmission to the organization:</element>
+<element epid='PC.01.02.03' id='6'>11. The organization specifies, in writing, the following time frames for completion of initial assessments:</element>
+<element epid='PC.01.02.03' id='7'>-	For post acute care: The organization assesses the resident within the first hour to determine immediate care needs (based on the resident�s admission diagnosis) to assist in developing the interim plan of care. (See also PC.01.03.01, EP 3)</element>
+<element epid='PC.01.02.03' id='8'>21. The organization reassesses each resident based on the following:</element>
+<element epid='PC.01.02.03' id='9'>-	For post acute care: Factors that hinder the achievement of desired outcomes (See also PC.01.03.01, EP 28)</element>
+<element epid='PC.01.02.05' id='1'>1.	Based on the initial assessment, a registered nurse determines the resident�s need for nursing care, as required by organization policy and in accordance with law and regulation.</element>
+<element epid='PC.01.02.07' id='1'>1.	The organization conducts a comprehensive pain assessment of the resident that is consistent with the resident's condition. (See also PC.01.02.01, EP 2; RI.01.01.01, EP 8)</element>
+<element epid='PC.01.02.07' id='2'>2.	The organization uses methods to assess pain that are consistent with the resident�s age, condition, and cognitive ability.</element>
+<element epid='PC.01.02.07' id='3'>3.	The organization reassesses the resident�s pain, based on its reassessment criteria.</element>
+<element epid='PC.01.02.07' id='4'>4.	The organization either treats the resident�s pain or refers the resident for treatment. Note: Treatment of pain includes interventions for breakthrough pain.</element>
+<element epid='PC.01.02.09' id='1'>1.	The organization has written criteria to identify those residents who may be victims of physical assault, sexual assault, sexual molestation, domestic abuse, elder or child abuse, neglect, or exploitation. (See also RI.01.06.03, EP 2)</element>
+<element epid='PC.01.02.09' id='2'>2.	To assist with referrals of possible victims of abuse, neglect, or exploitation, the organization maintains a list of private and public community agencies that can provide or arrange for assessment and care.</element>
+<element epid='PC.01.02.09' id='3'>3.	The organization educates staff about how to recognize signs of possible abuse, neglect, and exploitation, and about their roles in follow-up, including reporting. (See also HR.01.05.03, EP 5)</element>
+<element epid='PC.01.02.09' id='4'>4.	The organization uses its criteria to identify possible victims of abuse, neglect, and exploitation, upon admission into the organization and on an ongoing basis.</element>
+<element epid='PC.01.02.09' id='5'>5.	The organization either assesses the resident who meets criteria for possible abuse, neglect, and exploitation, or refers the resident to a public or private community agency for assessment.</element>
+<element epid='PC.01.02.09' id='6'>6.	The organization internally reports cases of possible abuse, neglect, and exploitation. (See also RI.01.06.03, EP 3)</element>
+<element epid='PC.01.02.09' id='7'>7.	The organization reports cases of possible abuse, neglect, and exploitation to external agencies, in accordance with law and regulation. (See also RI.01.06.03, EP 3)</element>
+<element epid='PC.01.02.15' id='1'>1.	Diagnostic testing and procedures are performed as ordered. (See also PC.02.01.03, EP 7)</element>
+<element epid='PC.01.02.15' id='2'>2.	Diagnostic testing and procedures are performed within time frames defined by the organization.</element>
+<element epid='PC.01.02.15' id='3'>3.	When a test report requires clinical interpretation, information necessary to interpret the results is provided with the request for the test.</element>
+<element epid='PC.01.02.15' id='4'>4.	The organization makes available radiologic and other diagnostic services, including pathology and clinical laboratory services, 24 hours a day, 7 days a week.</element>
+<element epid='PC.01.03.01' id='1'>1.	The organization plans the resident�s individualized care, treatment, and services based on needs identified by the resident�s assessment (including strengths and goals), reassessment, and results of diagnostic testing.</element>
+<element epid='PC.01.03.01' id='2'>2.	The resident�s written plan for care, treatment, and services is developed by an interdisciplinary team comprised of health care professionals, including the attending physician.</element>
+<element epid='PC.01.03.01' id='3'>3.	An interim plan for care, treatment, and services is developed and documented for each resident immediately after the resident is admitted.</element>
+<element epid='PC.01.03.01' id='4'>4.	The organization develops the resident�s plan for care, treatment, and services as soon as possible after admission in accordance with law and regulation, but no later than seven calendar days after the resident�s comprehensive assessments are completed.</element>
+<element epid='PC.01.03.01' id='5'>7.	The interdisciplinary team collaborates on the review and revision of the plan for care, treatment, and services.</element>
+<element epid='PC.01.03.01' id='6'>8.	The plan for care, treatment, and services identifies the following:</element>
+<element epid='PC.01.03.01' id='7'>21. At 90-day intervals, or more frequently based on response to the resident�s condition, the interdisciplinary care team does the following:</element>
+<element epid='PC.01.03.01' id='8'>-	Collaborates with the family in revising the plan for care, treatment, and services (See also PC.01.02.03, EP 23)</element>
+<element epid='PC.01.03.01' id='9'>41. The resident's written plan for care, treatment, and services is based on the resident's personal preferences and freedom of choice.</element>
+<element epid='PC.02.01.01' id='1'>1.	The organization provides the resident with care, treatment, and services according to his or her individualized plan of care.</element>
+<element epid='PC.02.01.03' id='1'>1.	Orders are obtained from a physician or other authorized individual, in accordance with law and regulation and professional practice acts, before care, treatment, and services are provided. Note: For information on the credentialing process for physicians, refer to HR.02.01.01. 7.	The organization provides care, treatment, and services according to current orders. (See also PC.01.02.15, EP 1)</element>
+<element epid='PC.02.01.03' id='2'>11. Each order is tailored to the resident's needs and includes all elements required by law and regulation.</element>
+<element epid='PC.02.01.03' id='3'>11. All orders are renewed or updated based on the following:</element>
+<element epid='PC.02.01.03' id='4'>11. Each attending physician designates a covering or on-call physician whom the organization can contact to obtain orders for routine or emergency care when the attending physician is not available. (See also HR.02.01.07, EP 3)</element>
+<element epid='PC.02.01.03' id='5'>21. Before taking action on a verbal order or verbal report of a critical test result, staff uses a record and "read back" process to verify the information.</element>
+<element epid='PC.02.01.05' id='1'>1.	Care, treatment, and services are provided to the resident in an interdisciplinary, collaborative manner.</element>
+<element epid='PC.02.01.05' id='2'>9.	Information about the resident is shared among all members of the interdisciplinary team, including the physician, within the organization�s defined time frames.</element>
+<element epid='PC.02.01.05' id='3'>11. Changes in the resident�s condition are communicated to the attending physician or other authorized health care professional(s), the resident, and the resident�s family.</element>
+<element epid='PC.02.01.05' id='4'>11. Information from consultation and evaluation reports is communicated to the attending physician.</element>
+<element epid='PC.02.01.07' id='1'>11. Elements of Performance for PC.02.01.07</element>
+<element epid='PC.02.01.09' id='1'>1.	The organization has written policies and procedures for responding to life-threatening emergencies. (See also RI.01.01.01, EP 18)</element>
+<element epid='PC.02.01.09' id='2'>2.	Policies and procedures that address life-threatening emergencies include the following:</element>
+<element epid='PC.02.01.09' id='3'>3.	The organization responds to life-threatening emergencies according to its policies and procedures.</element>
+<element epid='PC.02.01.13' id='1'>1.	The attending physician visits the resident in accordance with the resident's needs.</element>
+<element epid='PC.02.01.13' id='2'>2.	The attending physician visits the resident at least once during the 30 days following admission.</element>
+<element epid='PC.02.01.13' id='3'>3.	For planned stays of less than 30 days, the resident�s attending physician visits the resident at least once before discharge.</element>
+<element epid='PC.02.01.13' id='4'>4.	The resident is seen within 72 hours of admission when the attending physician is different from the resident's primary physician.</element>
+<element epid='PC.02.01.13' id='5'>5.	Physicians' visiting schedules comply with law, regulation, and organization policy.</element>
+<element epid='PC.02.01.13' id='6'>6.	Physician assistants� and advanced practice registered nurses� visiting schedules comply with law, regulation, and organization policy.</element>
+<element epid='PC.02.01.15' id='1'>1.	The organization provides preventive care to avoid complications resulting from the resident�s inactivity, including the following:</element>
+<element epid='PC.02.01.15' id='2'>2.	The organization provides the resident with preventive care to avoid complications resulting from incontinence, including implementing the following:</element>
+<element epid='PC.02.01.15' id='3'>3.	The organization provides preventive care to avoid aspiration, dehydration, and malnutrition.</element>
+<element epid='PC.02.01.15' id='4'>4.	The organization provides preventive care to avoid complications arising from social isolation, including the following:</element>
+<element epid='PC.02.01.17' id='1'>1.	The organization provides supplies, equipment, and adaptive self-help devices to residents to support restorative services.</element>
+<element epid='PC.02.01.17' id='2'>2.	The organization keeps residents clean and well-groomed.</element>
+<element epid='PC.02.01.17' id='3'>3.	Residents are helped with activities of daily living, based on their needs, including the following:</element>
+<element epid='PC.02.01.17' id='4'>5.	The organization takes steps to keep residents safe from accident and injury as they receive restorative services.</element>
+<element epid='PC.02.02.01' id='1'>1.	The organization has a process to receive or share resident information when the resident is referred to other internal or external providers of care, treatment, and services. (See also PC.04.02.01, EP 1)</element>
+<element epid='PC.02.02.01' id='2'>2.	The organization's process for hand-off communication provides for the opportunity for discussion between the giver and receiver of resident information.</element>
+<element epid='PC.02.02.01' id='3'>3.	The organization coordinates the resident�s care, treatment, and services.</element>
+<element epid='PC.02.02.01' id='4'>11. When the organization uses external resources to meet the resident�s needs, it coordinates the resident�s care, treatment, and services.</element>
+<element epid='PC.02.02.01' id='5'>11. The organization coordinates care, treatment, and services within a time frame that meets the resident�s needs and preferences.</element>
+<element epid='PC.02.02.03' id='1'>3.	The organization plans menus in advance of providing residents with their meals, according to time frames established by the organization.</element>
+<element epid='PC.02.02.03' id='2'>4.	Menus are easy to read, dated, and posted in areas that residents can access.</element>
+<element epid='PC.02.02.03' id='3'>5.	Cycled menus are rotated over a period of at least three weeks.</element>
+<element epid='PC.02.02.03' id='4'>6.	The organization prepares food and nutrition products under proper conditions of sanitation, temperature, light, moisture, and ventilation.</element>
+<element epid='PC.02.02.03' id='5'>7.	Food and nutrition products are consistent with each resident�s care, treatment, and services.</element>
+<element epid='PC.02.02.03' id='6'>8.	The organization accommodates a resident's diet schedule, unless contraindicated.</element>
+<element epid='PC.02.02.03' id='7'>9.	When possible, the organization accommodates the resident�s cultural, religious, or ethnic food and nutrition preferences, unless contraindicated.</element>
+<element epid='PC.02.02.03' id='8'>11. When a resident refuses menu items, the organization offers substitutes of equal nutritional value.</element>
+<element epid='PC.02.02.03' id='9'>11. The organization stores food and nutrition products, including those brought in by residents or their families, under proper conditions of sanitation, temperature, light, moisture, ventilation, and security.</element>
+<element epid='PC.02.02.03' id='10'>11. Staff assist those residents who require help eating.</element>
+<element epid='PC.02.02.03' id='11'>11. Resident dining areas are supervised consistent with residents' needs.</element>
+<element epid='PC.02.02.03' id='12'>21. A food service supervisor oversees general kitchen management.</element>
+<element epid='PC.02.02.07' id='1'>1.	The organization arranges for a child or youth to receive academic education based on his or her condition, in accordance with law and regulation.</element>
+<element epid='PC.02.02.07' id='2'>2.	Educational resources are selected based on the child�s or youth's identified needs.</element>
+<element epid='PC.02.02.07' id='3'>3.	The organization makes educational resources available that offer special education experiences for children or youth whose learning is hindered by their special needs.</element>
+<element epid='PC.02.02.09' id='1'>1.	The organization offers residents a variety of social and recreational activities according to their abilities and interests.</element>
+<element epid='PC.02.02.13' id='1'>1.	To the extent possible, the organization provides care and services that accommodate the resident's and his or her family�s comfort; dignity; and psychosocial, emotional, and spiritual end-of-life needs.</element>
+<element epid='PC.02.02.13' id='2'>2.	The organization provides staff with education about the unique needs of dying residents and their families.</element>
+<element epid='PC.02.03.01' id='1'>1.	The organization performs a learning needs assessment for each resident. This assessment includes the resident�s cultural and religious beliefs, emotional barriers, desire and motivation to learn, physical or cognitive limitations, and barriers to communication.</element>
+<element epid='PC.02.03.01' id='2'>4.	The organization provides education and training to the resident based on his or her assessed needs.</element>
+<element epid='PC.02.03.01' id='3'>5.	The organization coordinates the resident's education and training provided by all disciplines involved in the resident�s care, treatment, and services.</element>
+<element epid='PC.02.03.01' id='4'>11. Based on the resident�s assessed needs, the education and training provided to the resident by the organization include, but are not limited to, the following:</element>
+<element epid='PC.02.03.01' id='5'>-	Information on the safe and effective use of medications (See also MM.06.01.01, EP 9; MM.06.01.03, EPs 3-6)</element>
+<element epid='PC.02.03.01' id='6'>-	Discussion of pain, the risk for pain, the importance of effective pain management, the pain assessment process, and methods for pain management (See also RI.01.01.01, EP 8)</element>
+<element epid='PC.02.03.01' id='7'>21. The organization evaluates the resident�s understanding of the education and training it provided.</element>
+<element epid='PC.02.03.01' id='8'>21. The organization provides the resident education on how to communicate concerns about resident safety issues that occur before, during, and after care is received.</element>
+<element epid='PC.03.02.09' id='1'>1.	The organization develops processes to minimize the use of restraint.</element>
+<element epid='PC.03.02.09' id='2'>2.	The organization implements processes to minimize the use of restraint.</element>
+<element epid='PC.03.02.09' id='3'>3.	The processes used to minimize the use of restraint emphasize alternatives to restraint, including the following:</element>
+<element epid='PC.03.02.09' id='4'>4.	Restraint is not used to discipline residents, as a staff convenience, or to prevent residents from wandering.</element>
+<element epid='PC.03.02.09' id='5'>5.	Restraint is only used to facilitate or support the resident�s medical treatment. (See also RC.02.01.05, EP 2)</element>
+<element epid='PC.03.02.09' id='6'>6.	Residents or their surrogate decision-makers are permitted to refuse restraint.</element>
+<element epid='PC.03.02.09' id='7'>7.	The use of restraint is based on the resident�s assessed needs; it is not based solely on a request from the resident�s surrogate decision-maker.</element>
+<element epid='PC.03.02.13' id='1'>2.	Restraint is used only as follows:</element>
+<element epid='PC.03.02.13' id='2'>3.	Medication to control the resident's behavior is part of a therapeutic plan and is only used after a physician or qualified licensed independent practitioner assesses the resident.</element>
+<element epid='PC.03.02.13' id='3'>4.	The organization educates the resident and family about restraint and its alternatives.</element>
+<element epid='PC.03.02.13' id='4'>5.	A licensed independent practitioner provides a written order that does not exceed 30 days for the use of restraint.</element>
+<element epid='PC.03.02.13' id='5'>6.	The organization determines time limitations for the use of restraint.</element>
+<element epid='PC.03.02.13' id='6'>7.	The organization assesses the competence of staff who apply restraint.</element>
+<element epid='PC.03.02.13' id='7'>8.	When restraint devices are used, they are correctly and safely applied.</element>
+<element epid='PC.03.02.13' id='8'>9.	The organization determines the frequency of observing and assessing the resident who is restrained.</element>
+<element epid='PC.03.02.13' id='9'>11. Staff interact with the resident and attend to the resident's needs while he or she is restrained.</element>
+<element epid='PC.03.02.13' id='10'>11. While the resident is in restraint, the interdisciplinary team monitors the continued need for restraint.</element>
+<element epid='PC.03.02.13' id='11'>11. The interdisciplinary team requests a new physician order if there are changes in the resident's condition that require removing or modifying restraint.</element>
+<element epid='PC.03.02.13' id='12'>11. Restraint is removed or released in accordance with law and regulation and the resident's needs.</element>
+<element epid='PC.03.02.13' id='13'>11. The organization-wide use of restraint is measured and assessed, and staff implements actions to minimize its use.</element>
+<element epid='PC.04.01.01' id='1'>1.	The organization documents the reason(s) for and conditions under which the resident is transferred or discharged.</element>
+<element epid='PC.04.01.01' id='2'>2.	The organization documents the method for transitioning the responsibility for a resident�s care from one clinician, organization, program, or service to another.</element>
+<element epid='PC.04.01.01' id='3'>4.	The organization agrees with the receiving organization about each of their roles to keep the resident safe during transfer.</element>
+<element epid='PC.04.01.01' id='4'>5.	The organization includes in its transfer and discharge processes: Interdisciplinary team planning.</element>
+<element epid='PC.04.01.01' id='5'>6.	The organization includes in its transfer and discharge processes: The resident's and caregiver's knowledge of and demonstration of all necessary activities.</element>
+<element epid='PC.04.01.01' id='6'>7.	The organization includes in its transfer and discharge processes: Evaluation of the environment (home, hospital, other facility) to which the resident is being discharged.</element>
+<element epid='PC.04.01.01' id='7'>9.	The organization includes in its transfer and discharge processes: Planning for providing necessary care, treatment, and services; assistance; and instruction.</element>
+<element epid='PC.04.01.01' id='8'>11. The organization transfers or discharges a resident upon order of his or her attending licensed independent practitioner.</element>
+<element epid='PC.04.01.01' id='9'>21. The organization follows an established process for emergency transfer or discharge resulting from medical necessity.</element>
+<element epid='PC.04.01.03' id='1'>2.	The organization identifies, prior to transfer or discharge, any needs the resident may have for continuing psychosocial and physical care, treatment, and services after transfer or discharge. (See also RI.01.01.01, EP 19)</element>
+<element epid='PC.04.01.03' id='2'>3.	The resident, the resident�s family, licensed independent practitioners, and staff involved in the resident�s care, treatment, and services participate in planning the resident�s transfer or discharge. (See also RI.01.01.01, EP 19)</element>
+<element epid='PC.04.01.03' id='3'>4.	Prior to discharge, the organization arranges or assists in arranging the services required by the resident after discharge in order to meet his or her continuing needs for care, treatment, and services. (See also RI.01.01.01, EP 19)</element>
+<element epid='PC.04.01.05' id='1'>1.	When the decision is made to transfer or discharge the resident, the organization determines the resident�s transfer or discharge needs and informs the resident about the kinds of care, treatment, and services the resident will require.</element>
+<element epid='PC.04.01.05' id='2'>3.	Before the resident is transferred or discharged, the organization provides the resident with information about why the he or she is being transferred or discharged.</element>
+<element epid='PC.04.01.05' id='3'>4.	The organization notifies the resident's family and encourages a family member to participate in the transfer, whenever possible.</element>
+<element epid='PC.04.01.05' id='4'>5.	Before the resident is transferred, the organization provides the resident with information about any alternatives to the transfer.</element>
+<element epid='PC.04.01.05' id='5'>6.	Before the resident is transferred, the organization provides the resident with information on the facility or program to which the resident is being transferred.</element>
+<element epid='PC.04.01.05' id='6'>7.	The organization educates the resident about how to obtain any continuing care, treatment, and services that he or she will need.</element>
+<element epid='PC.04.01.05' id='7'>8.	The organization provides written discharge instructions in a manner that the resident and/or the resident�s family or caregiver can understand. (See also RI.01.01.03, EP 1)</element>
+<element epid='PC.04.01.07' id='1'>1.	The organization transfers or discharges residents only when at least one of the following conditions is met:</element>
+<element epid='PC.04.02.01' id='1'>1.	At the time of the resident�s transfer or discharge, the organization informs other service providers who will provide care, treatment, and services to the resident about the following:</element>
+<element epid='PC.04.02.01' id='2'>-	A list of community resources or referrals made or provided to the resident (See also PC.02.02.01, EP 1)</element>
+<element epid='PC.04.02.03' id='1'>1.	At admission and when a resident transfers to a hospital, the organization explains, in writing, the conditions of its bed-hold policy to the resident and a family member or surrogate decision-maker.</element>
+</elements>
+
+<notes>
+<note epid='PC.01.02.03' itemid='5'>Note: When permitted by law and regulation, a medical history and physical examination performed by the attending physician or licensed independent practitioner within 30 days prior to the resident�s admission or readmission can be used, provided it is updated with a summary of the resident�s condition and course of care during the 30-day time period.</note>
+<note epid='PC.01.02.09' itemid='2'>Note: Criteria can be based on age, sex, and circumstance.</note>
+<note epid='PC.02.01.05' itemid='3'>Note: Examples of this information include changes in the resident�s condition, consultation and evaluation reports, and diagnostic testing results.</note>
+<note epid='PC.02.02.01' itemid='3'>Note: Such information may include the resident�s condition, care, treatment, medications, services, and any recent or anticipated changes to any of these.</note>
+<note epid='PC.02.02.01' itemid='4'>Note: Coordination involves resolving scheduling conflicts and duplication of care, treatment, and services.</note>
+<note epid='PC.04.01.01' itemid='7'>Note: The evaluation may be conducted through interview, review of services offered, or other methods that provide the information needed to meet the resident's needs.</note>
+<note epid='PC.04.01.05' itemid='2'>Note: Residents may rely on surrogate decision-makers to participate in situations in which the resident cannot or chooses not to make a decision. Instead of stating "resident and/or surrogate decision-maker" in each occurrence where the surrogate decision-maker may need to play a role, "resident" is used with the understanding that if the resident is unable or chooses not to make decisions or participate in education, the surrogate decision-maker may do so, in accordance with law and regulation.</note>
+<note epid='PC.04.01.05' itemid='4'>Note: If the resident has a surrogate decision-maker, he or she will be informed of and involved with the transfer process.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='2' epid='PC.01.01.01'><element>LD.01.03.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.01.02.01'><element>RC.02.01.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='3' epid='PC.01.02.01'><element>PC.01.02.07</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.01.02.03'><element>RC.01.03.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='3' epid='PC.01.02.03'><element>RC.01.03.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='8' epid='PC.01.02.03'><element>PC.01.03.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='10' epid='PC.01.02.03'><element>PC.01.03.01</element><epitem>EP 28</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.01.02.07'><element>PC.01.02.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.01.02.07'><element>RI.01.01.01</element><epitem>EP 8</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.01.02.09'><element>RI.01.06.03</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='4' epid='PC.01.02.09'><element>HR.01.05.03</element><epitem>EP 5</epitem></referencedelement>
+<referencedelement itemid='7' epid='PC.01.02.09'><element>RI.01.06.03</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='8' epid='PC.01.02.09'><element>RI.01.06.03</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.01.02.15'><element>PC.02.01.03</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='9' epid='PC.01.03.01'><element>PC.01.02.03</element><epitem>EP 23</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.02.01.03'><element>PC.01.02.15</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='5' epid='PC.02.01.03'><element>HR.02.01.07</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.02.01.09'><element>RI.01.01.01</element><epitem>EP 18</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.02.02.01'><element>PC.04.02.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='6' epid='PC.02.03.01'><element>MM.06.01.01</element><epitem>EP 9</epitem></referencedelement>
+<referencedelement itemid='6' epid='PC.02.03.01'><element>MM.06.01.03</element><epitem>EPs 3-6</epitem></referencedelement>
+<referencedelement itemid='7' epid='PC.02.03.01'><element>RI.01.01.01</element><epitem>EP 8</epitem></referencedelement>
+<referencedelement itemid='6' epid='PC.03.02.09'><element>RC.02.01.05</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='2' epid='PC.04.01.03'><element>RI.01.01.01</element><epitem>EP 19</epitem></referencedelement>
+<referencedelement itemid='3' epid='PC.04.01.03'><element>RI.01.01.01</element><epitem>EP 19</epitem></referencedelement>
+<referencedelement itemid='4' epid='PC.04.01.03'><element>RI.01.01.01</element><epitem>EP 19</epitem></referencedelement>
+<referencedelement itemid='8' epid='PC.04.01.05'><element>RI.01.01.03</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='3' epid='PC.04.02.01'><element>PC.02.02.01</element><epitem>EP 1</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident�s current diagnosis, pertinent history, medication history (including allergies and sensitivities), current medication, and current treatments</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident�s physical and neuropsychiatric status</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident�s communication status</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident�s functional status</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident�s rehabilitation status, potential, and needs</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident's nutritional and hydration status</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident's oral health status, including the condition of the oral cavity, teeth, and tooth- supporting structures; the presence or absence of natural teeth or dentures; and the ability to function with or without natural teeth or dentures</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident's pain status, including recent pain history, origin, location, severity, alleviating, and exacerbating factors; current treatment for pain; and response to treatment</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident's psychosocial and spiritual needs</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident's cultural and ethnic factors that can influence care, treatment, and services</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	The resident's personal preferences regarding schedules, activities, and grooming</subitems>
+<subitems  epid='PC.01.02.01' id='4'>-	For the dying resident, the social, spiritual, and cultural variables that influence both the resident's and family's perceptions and experience of the process of dying</subitems>
+<subitems  epid='PC.01.02.03' id='6'>-	Reviews the resident's medical history</subitems>
+<subitems  epid='PC.01.02.03' id='6'>-	Reexamines the resident</subitems>
+<subitems  epid='PC.01.02.03' id='6'>-	Updates any findings or other information as needed and provides a summary of the resident�s physical condition and psychosocial status</subitems>
+<subitems  epid='PC.01.02.03' id='6'>-	Signs and dates the updated information and findings</subitems>
+<subitems  epid='PC.01.02.03' id='7'>-	Each resident's comprehensive interdisciplinary assessment is to be completed within 14 days of admission.</subitems>
+<subitems  epid='PC.01.02.03' id='8'>-	For post acute care: The organization assesses the resident for pain, fall risk, skin condition, assistance needed in activities of daily living, and risk for re-hospitalization no later than eight hours after admission.</subitems>
+<subitems  epid='PC.01.02.03' id='8'>-	For post acute care: For residents with complex needs or for whom a short stay is anticipated, assessment is completed in accordance with law and regulation.</subitems>
+<subitems  epid='PC.01.02.03' id='9'>-	The resident's plan of care</subitems>
+<subitems  epid='PC.01.02.03' id='9'>-	Changes in the resident's condition</subitems>
+<subitems  epid='PC.01.02.03' id='9'>-	The scheduled evaluation of the resident's interdisciplinary plan of care</subitems>
+<subitems  epid='PC.01.03.01' id='7'>-	The care, treatment, and services, including interventions to facilitate the resident�s return to the community, or discharge or transfer to an appropriate level of care</subitems>
+<subitems  epid='PC.01.03.01' id='7'>-	The frequency at which care, treatment, and services will occur</subitems>
+<subitems  epid='PC.01.03.01' id='7'>-	The team members responsible for providing care, treatment, and services</subitems>
+<subitems  epid='PC.01.03.01' id='7'>-	For post acute care: Any advance directives of the resident</subitems>
+<subitems  epid='PC.01.03.01' id='8'>-	Evaluates the resident�s progress toward meeting the goals of care, treatment, and services</subitems>
+<subitems  epid='PC.01.03.01' id='8'>-	Revises the plan for care, treatment, and services</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	Changes in the care, treatment, and services being provided</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	Changes in the resident's physical or psychosocial condition</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	The resident's response to care, treatment, and services</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	The resident's outcome(s) related to care, treatment, and services</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	Changes in diagnosis</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	Changes in equipment used in the resident's care, treatment, and services</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	The minimum review time frame as defined by the organization</subitems>
+<subitems  epid='PC.02.01.03' id='4'>-	Applicable law and regulation</subitems>
+<subitems  epid='PC.02.01.09' id='3'>-	Availability of first aid and Basic Life Support (CPR) services</subitems>
+<subitems  epid='PC.02.01.09' id='3'>-	Emergency transfer to another organization</subitems>
+<subitems  epid='PC.02.01.09' id='3'>-	Placement of a phone call to outside emergency assistance</subitems>
+<subitems  epid='PC.02.01.15' id='2'>-	Encouraging and helping residents to spend time out of bed, except when prohibited by a physician�s order</subitems>
+<subitems  epid='PC.02.01.15' id='2'>-	Maintaining proper body position and alignment</subitems>
+<subitems  epid='PC.02.01.15' id='2'>-	Helping with ambulation, including maintenance of gait training</subitems>
+<subitems  epid='PC.02.01.15' id='2'>-	Providing active and passive range-of-motion exercises</subitems>
+<subitems  epid='PC.02.01.15' id='3'>-	A skin integrity program</subitems>
+<subitems  epid='PC.02.01.15' id='3'>-	A bowel management program</subitems>
+<subitems  epid='PC.02.01.15' id='3'>-	A bladder management program</subitems>
+<subitems  epid='PC.02.01.15' id='5'>-	Encouraging and helping chair-fast residents to leave their rooms for a change in environment</subitems>
+<subitems  epid='PC.02.01.15' id='5'>-	Helping residents cope with the effects of illness, disability, treatment, or stay in the organization</subitems>
+<subitems  epid='PC.02.01.17' id='4'>-	Bathing</subitems>
+<subitems  epid='PC.02.01.17' id='4'>-	Dressing</subitems>
+<subitems  epid='PC.02.01.17' id='4'>-	Eating</subitems>
+<subitems  epid='PC.02.01.17' id='4'>-	Oral hygiene (including cleaning of any prostheses)</subitems>
+<subitems  epid='PC.02.01.17' id='4'>-	Ambulation</subitems>
+<subitems  epid='PC.02.01.17' id='4'>-	Toileting activities</subitems>
+<subitems  epid='PC.02.03.01' id='5'>-	Education regarding his or her illness</subitems>
+<subitems  epid='PC.02.03.01' id='5'>-	An explanation of the plan for care, treatment, and services</subitems>
+<subitems  epid='PC.02.03.01' id='5'>-	Basic health practices and safety</subitems>
+<subitems  epid='PC.02.03.01' id='6'>-	Nutrition interventions (for example, supplements) and modified diets</subitems>
+<subitems  epid='PC.02.03.01' id='7'>-	Information on oral health</subitems>
+<subitems  epid='PC.02.03.01' id='7'>-	Information on the safe and effective use of medical and nonmedical equipment or supplies provided by the organization</subitems>
+<subitems  epid='PC.02.03.01' id='7'>-	Habilitation or rehabilitation techniques to help the resident reach maximum independence</subitems>
+<subitems  epid='PC.02.03.01' id='7'>-	Physical risks within the environment of care</subitems>
+<subitems  epid='PC.03.02.09' id='4'>-	Use of restorative programs</subitems>
+<subitems  epid='PC.03.02.09' id='4'>-	Management of the resident�s personal environment</subitems>
+<subitems  epid='PC.03.02.09' id='4'>-	Use of well-trained staff who support each resident</subitems>
+<subitems  epid='PC.03.02.09' id='4'>-	Support of the resident�s rights</subitems>
+<subitems  epid='PC.03.02.09' id='4'>-	Recognition of and respect for the resident�s interests</subitems>
+<subitems  epid='PC.03.02.09' id='4'>-	Use of supportive devices and special equipment</subitems>
+<subitems  epid='PC.03.02.09' id='4'>-	Involvement of nursing assistants, housekeeping staff, secretaries, and other administrative staff who have been trained in resident-orientation techniques</subitems>
+<subitems  epid='PC.03.02.13' id='2'>-	When alternatives to restraint do not meet the resident's needs as determined by the interdisciplinary team, with resident and family involvement</subitems>
+<subitems  epid='PC.03.02.13' id='2'>-	When necessary to protect the safety of the resident, other residents, and staff</subitems>
+<subitems  epid='PC.04.01.07' id='2'>-	The resident�s health has improved to the point where he or she no longer needs the organization�s services.</subitems>
+<subitems  epid='PC.04.01.07' id='2'>-	The transfer or discharge is necessary for the resident�s benefit or if the organization cannot meet the resident�s needs.</subitems>
+<subitems  epid='PC.04.01.07' id='2'>-	The health or safety of the resident is endangered by remaining in the organization.</subitems>
+<subitems  epid='PC.04.01.07' id='2'>-	The resident�s presence endangers the safety of other residents.</subitems>
+<subitems  epid='PC.04.01.07' id='2'>-	The resident has not paid for his or her stay, and, as defined by the organization and in accordance with law and regulation, the organization has provided the resident with reasonable notice of transfer or discharge.</subitems>
+<subitems  epid='PC.04.01.07' id='2'>-	The organization ceases operation.</subitems>
+<subitems  epid='PC.04.01.07' id='2'>-	The resident leaves against medical advice and signs a form stating that his or her action runs contrary to medical advice.</subitems>
+<subitems  epid='PC.04.02.01' id='2'>-	The reason for the resident�s transfer or discharge</subitems>
+<subitems  epid='PC.04.02.01' id='2'>-	The resident�s physical and psychosocial status</subitems>
+<subitems  epid='PC.04.02.01' id='2'>-	A summary of care, treatment, and services it provided to the resident</subitems>
+<subitems  epid='PC.04.02.01' id='2'>-	The resident�s progress toward goals</subitems>
+</subitems>
+
+</chapter>

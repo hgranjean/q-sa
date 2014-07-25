@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\QualityManagement\Healthcare\JointCommision\Chapter.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\Chapter.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\PerformanceElement.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\PerformanceCategory.cs" />
     <Compile Include="Domain\QualityManagement\Observation.cs" />
     <Compile Include="Domain\QualityManagement\QualityManager.cs" />
     <Compile Include="Domain\QualityManagement\SurveillanceTask.cs" />

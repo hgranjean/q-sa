@@ -1,0 +1,143 @@
+<chapter>
+<chaptertitle>Human Resources Chapter</chaptertitle>
+<titles>
+<title epid='HR.01.01.01'>The organization has the necessary staff to support the care, treatment, and services it provides.</title>
+<title epid='HR.01.02.01'>The organization defines staff qualifications.</title>
+<title epid='HR.01.02.05'>The organization verifies staff qualifications.</title>
+<title epid='HR.01.02.07'>The organization determines how staff function within the organization.</title>
+<title epid='HR.01.04.01'>The organization provides orientation to staff.</title>
+<title epid='HR.01.05.03'>Staff participate in education and training.</title>
+<title epid='HR.01.06.01'>Staff are competent to perform their responsibilities.</title>
+<title epid='HR.01.07.01'>The organization evaluates staff performance.</title>
+<title epid='HR.02.01.04'>The organization permits licensed independent practitioners to provide care, treatment, and services.</title>
+<title epid='HR.02.01.05'>The organization may permit licensed independent practitioners to provide care, treatment, and services on a temporary basis.</title>
+<title epid='HR.02.01.07'>Licensed independent practitioners who provide on-call coverage for attending licensed independent practitioners are competent.</title>
+<title epid='HR.02.02.01'>The organization provides orientation to licensed independent practitioners.</title>
+</titles>
+
+<elements>
+<element epid='HR.01.01.01' id='1'>21. Elements of Performance for HR.01.01.01</element>
+<element epid='HR.01.01.01' id='2'>The organization provides licensed nurses and other nursing personnel 24 hours a day, 7 days a week, in accordance with law and regulation. (See also LD.03.06.01, EP 3)</element>
+<element epid='HR.01.01.01' id='3'>21. The organization provides the services of a registered nurse at least 8 consecutive hours a day, 7 days a week, in accordance with law and regulation.</element>
+<element epid='HR.01.01.01' id='4'>21. If any resident(s) requires the services of a registered nurse, the organization has at least one registered nurse on duty. (See also LD.03.06.01, EP 3)</element>
+<element epid='HR.01.02.01' id='1'>1.	The organization defines staff qualifications specific to their job responsibilities.</element>
+<element epid='HR.01.02.05' id='1'>1.	When law or regulation requires care providers to be currently licensed, certified, or registered to practice their professions, the organization both verifies these credentials with the primary source and documents this verification when a provider is hired and when his or her credentials are renewed.  (See also HR.01.02.07, EP 2)</element>
+<element epid='HR.01.02.05' id='2'>2.	When the organization requires licensure, registration, or certification not required by law and regulation, the organization both verifies these credentials and documents this verification at time of hire and when credentials are renewed. (See also HR.01.02.07, EP 2)</element>
+<element epid='HR.01.02.05' id='3'>3.	The organization verifies and documents that the applicant has the education and experience  required by the job responsibilities, unless this information has already been verified by the entity that issued his or her licensure, certification, or registration authority.</element>
+<element epid='HR.01.02.05' id='4'>4.	The organization obtains a criminal background check on the applicant as required by law and regulation or organization policy. Criminal background checks are documented.</element>
+<element epid='HR.01.02.05' id='5'>5.	Staff comply with health screening in accordance with law and regulation or organization policy. Health screening compliance is documented.</element>
+<element epid='HR.01.02.05' id='6'>6.	The organization uses the following information to make decisions about staff job responsibilities:</element>
+<element epid='HR.01.02.05' id='7'>7.	Before providing care, treatment, and services, the organization confirms that nonemployees who are brought into the organization by a licensed independent practitioner to provide care, treatment, and services have the same qualifications and competencies required of employed individuals performing the same or similar services at the organization.</element>
+<element epid='HR.01.02.07' id='1'>1.	All staff who provide residents with care, treatment, and services possess a current license, certification, or registration, in accordance with law and regulation.</element>
+<element epid='HR.01.02.07' id='2'>2.	Staff who provide residents with care, treatment, and services practice within the scope of their license, certification, or registration and as required by law and regulation. (See also HR.01.02.05, EPs 1 and 2)</element>
+<element epid='HR.01.04.01' id='1'>1.	The organization determines the key safety content of orientation provided to staff. (See also EC.03.01.01, EPs 1-3)</element>
+<element epid='HR.01.04.01' id='2'>2.	The organization orients its staff to the key safety content before staff provides care, treatment, and services. Completion of this orientation is documented. (See also IC.01.05.01, EP 6)</element>
+<element epid='HR.01.04.01' id='3'>3.	The organization orients staff on the following: Organization-wide and unit-specific policies and procedures related to job duties and responsibilities. Completion of this orientation is documented.</element>
+<element epid='HR.01.04.01' id='4'>4.	The organization orients staff on the following: Their specific job duties and responsibilities, including those related to infection prevention and control and, if applicable to their role, assessing and managing pain. Completion of this orientation is documented. (See also IC.01.05.01, EP 6; IC.02.01.01, EP 7; IC.02.04.01, EP 2; RI.01.01.01, EP 8)</element>
+<element epid='HR.01.04.01' id='5'>5.	The organization orients staff on the following: Sensitivity to cultural diversity based on their job duties and responsibilities. Completion of this orientation is documented.</element>
+<element epid='HR.01.04.01' id='6'>6.	The organization orients staff on the following: Resident rights, including ethical aspects of care, treatment, and services and the process used to address ethical issues based on their job duties and responsibilities. Completion of this orientation is documented.</element>
+<element epid='HR.01.04.01' id='7'>8.	Based on their responsibilities, staff are oriented about psychotropic medications, including the following:</element>
+<element epid='HR.01.05.03' id='1'>4.	Staff participate in education and training whenever staff responsibilities change. Staff participation is documented.</element>
+<element epid='HR.01.05.03' id='2'>5.	Staff participate in education and training that is specific to the needs of the resident population served by the organization. Staff participation is documented. (See also PC.01.02.09, EP 3)</element>
+<element epid='HR.01.05.03' id='3'>21. Staff participate in education and training that is specific to person-centered care, according to job responsibilities and performance expectations. Staff participation is documented. (See also LD.03.01.02, EP 3 and HR.01.07.01, EP 1 and EP 6)</element>
+<element epid='HR.01.06.01' id='1'>1.	The organization defines the competencies it requires of its staff who provide resident care, treatment, and services.</element>
+<element epid='HR.01.06.01' id='2'>2.	The organization uses assessment methods to determine the individual's competence in the skills being assessed.</element>
+<element epid='HR.01.06.01' id='3'>3.	An individual with the educational background, experience, or knowledge related to the skills being reviewed assesses competence.</element>
+<element epid='HR.01.06.01' id='4'>5.	The organization conducts an initial assessment of staff competence as part of orientation. This assessment is documented.</element>
+<element epid='HR.01.06.01' id='5'>6.	Staff competence is assessed and documented once every three years, or more frequently as required by organization policy or in accordance with law and regulation.</element>
+<element epid='HR.01.06.01' id='6'>11. The organization takes action when a staff member�s competence does not meet expectations. Note: Actions may include, but are not limited to, providing additional training or supervision, or modifying job responsibilities.</element>
+<element epid='HR.01.07.01' id='1'>1.	The organization evaluates staff based on performance expectations that reflect their job responsibilities.</element>
+<element epid='HR.01.07.01' id='2'>2.	The organization evaluates staff performance once every three years, or more frequently as required by organization policy or in accordance with law and regulation. This evaluation is documented.</element>
+<element epid='HR.01.07.01' id='3'>5.	When a licensed independent practitioner brings a nonemployee individual into the organization to provide care, treatment, and services, the organization reviews the individual�s competencies and performance at the same frequency as individuals employed by the organization.</element>
+<element epid='HR.01.07.01' id='4'>6.	The organization�s performance expectations for staff include providing person-centered care and following person-centered workplace practices. (See also HR.01.05.03, EP 23)</element>
+<element epid='HR.02.01.04' id='1'>1.	Before permitting licensed independent practitioners new to the organization to provide care, treatment, and services, the organization does the following: The organization documents current licensure and any disciplinary actions against the license available through the primary source.</element>
+<element epid='HR.02.01.04' id='2'>2.	Before permitting licensed independent practitioners new to the organization to provide care, treatment, and services, the organization does the following: The organization verifies the identity of the individual by viewing a valid state or federal government-issued picture identification (for example, a driver's license or passport).</element>
+<element epid='HR.02.01.04' id='3'>3.	Before permitting licensed independent practitioners new to the organization to provide care, treatment, and services, the organization does the following: The organization obtains and documents information from the National Practitioner Data Bank (NPDB) on physicians and dentists. The medical director evaluates this information.</element>
+<element epid='HR.02.01.04' id='4'>4.	Before permitting licensed independent practitioners new to the organization to provide care, treatment, and services, the organization does the following: The organization determines and documents that the practitioner is currently privileged at a Joint Commission�accredited organization; this determination is verified through the accredited organization. If the organization cannot verify that the practitioner is currently privileged at a Joint Commission�accredited organization, the medical director oversees the monitoring of the practitioner's performance and reviews the results of the monitoring. This monitoring continues until it is determined that the practitioner is able to provide the care, treatment, and services that he or she is being permitted to provide.</element>
+<element epid='HR.02.01.04' id='5'>5.	At least every two years, before permitting licensed independent practitioners to continue to provide care, treatment, and services, the organization does the following: The organization documents  current licensure and any disciplinary actions against the license available through the primary source.</element>
+<element epid='HR.02.01.04' id='6'>6.	At least every two years, before permitting licensed independent practitioners to continue to provide care, treatment, and services, the organization does the following: The organization obtains and documents information from the National Practitioner Data Bank (NPDB) on physicians and dentists. The medical director evaluates this information.</element>
+<element epid='HR.02.01.04' id='7'>7.	At least every two years, before permitting licensed independent practitioners to continue to provide care, treatment, and services, the organization does the following: The medical director reviews any clinical performance in the organization that is outside acceptable standards.</element>
+<element epid='HR.02.01.04' id='8'>8.	At least every two years, before permitting licensed independent practitioners to continue to provide care, treatment, and services, the organization does the following: The medical director reviews information from any of the organization's performance improvement activities pertaining to professional performance, judgment, and clinical or technical skills.</element>
+<element epid='HR.02.01.04' id='9'>9.	At least every two years, before permitting licensed independent practitioners to continue to provide care, treatment, and services, the organization does the following: The organization confirms the licensed independent practitioner�s adherence to organization policies, procedures, rules, and regulations.</element>
+<element epid='HR.02.01.04' id='10'>11. The Medical Director provides the licensed independent practitioner with a written list of any limitations on the care, treatment, and services he or she can provide.</element>
+<element epid='HR.02.01.04' id='11'>11. The licensed independent practitioner provides only the care, treatment, and services that he or she has been permitted to perform.</element>
+<element epid='HR.02.01.04' id='12'>11. The organization grants a licensed independent practitioner permission to provide care, treatment, and services for no longer than a two-year period.</element>
+<element epid='HR.02.01.04' id='13'>11. In order to make a decision to allow a licensed independent practitioner to provide or continue to provide care, treatment, and services, the governing body reviews the following:</element>
+<element epid='HR.02.01.04' id='14'>-Recommendations made by the medical director (see LD.01.06.01, EP 3)</element>
+<element epid='HR.02.01.04' id='15'>11. The governing body designates, in writing, those licensed independent practitioners who it has determined can provide care, treatment, and services.</element>
+<element epid='HR.02.01.04' id='16'>11. All licensed independent practitioners that provide care, treatment, and services possess a current license, certification, or registration, as required by law and regulation.</element>
+<element epid='HR.02.01.04' id='17'>11. At the time of licensure expiration, the organization documents the licensed independent practitioner's current licensure and any disciplinary actions against the license available through the primary source.</element>
+<element epid='HR.02.01.05' id='1'>1.	The organization has a process to permit licensed independent practitioners to provide care, treatment, and services on a temporary basis to meet important resident needs.</element>
+<element epid='HR.02.01.05' id='2'>2.	Before the organization permits licensed independent practitioners to provide care, treatment, and services on a temporary basis to meet important resident needs, the organization documents required current licensure using primary sources, if available.</element>
+<element epid='HR.02.01.05' id='3'>3.	Before the organization permits licensed independent practitioners to provide care, treatment, and services on a temporary basis to meet important resident needs, the organization uses primary source verification to document current competency.</element>
+<element epid='HR.02.01.05' id='4'>9.	The administrator or the administrator�s designee grants permission to licensed independent practitioners to provide care, treatment, and services on a temporary basis to meet important resident needs upon recommendation of clinical leadership or the medical director.</element>
+<element epid='HR.02.01.07' id='1'>1.	When the attending licensed independent practitioner designates an on-call licensed independent practitioner (who is not currently permitted to provide care, treatment, and services at the organization) to cover in his or her absence, the medical director and the attending licensed independent practitioner determine that the on-call licensed independent practitioner can perform the required care, treatment, and services.</element>
+<element epid='HR.02.01.07' id='2'>2.	When the attending licensed independent practitioner designates an on-call licensed independent practitioner (who is not currently permitted to provide care, treatment, and services at the organization) to cover in his or her absence, the following requirements are met: The organization documents required current licensure using primary sources, if available.</element>
+<element epid='HR.02.01.07' id='3'>3.	When the attending licensed independent practitioner designates an on-call licensed independent practitioner (who is not currently permitted to provide care, treatment, and services at the  organization) to cover in his or her absence, the following requirements are met: A documented  review of orders issued by the on-call licensed independent practitioner is conducted by the attending licensed independent practitioner upon his or her return in the time frame defined by the organization. (See also PC.02.01.03, EP 19)</element>
+<element epid='HR.02.01.07' id='4'>4.	The organization defines the maximum time frame an on-call licensed independent practitioner (who is not currently permitted to provide care, treatment, and services at the organization) can provide coverage in the absence of the attending licensed independent practitioner before he or she is permitted to provide care, treatment, and services.</element>
+<element epid='HR.02.02.01' id='1'>1.	The organization determines the key safety content of orientation provided to licensed independent practitioners.</element>
+<element epid='HR.02.02.01' id='2'>2.	The organization orients its licensed independent practitioners to the key safety content before they provide care, treatment, and services. Completion of this orientation is documented.</element>
+<element epid='HR.02.02.01' id='3'>3.	The organization orients licensed independent practitioners on the following: Relevant policies and procedures. Completion of this orientation is documented.</element>
+<element epid='HR.02.02.01' id='4'>4.	The organization orients licensed independent practitioners on the following: Their specific responsibilities, including those related to infection prevention and control, and assessing and managing pain. Completion of this orientation is documented. (See also IC.01.05.01, EP 6; RI.01.01.01, EP 8)</element>
+<element epid='HR.02.02.01' id='5'>5.	The organization orients licensed independent practitioners on the following: Sensitivity to cultural diversity based on their specific responsibilities. Completion of this orientation is documented.</element>
+</elements>
+
+<notes>
+<note epid='HR.01.02.05' itemid='2'>Note 1: It is acceptable to verify current licensure, certification, or registration with the primary source via a secure electronic communication or by telephone, if this verification is documented.</note>
+<note epid='HR.01.02.05' itemid='2'>Note 2: A primary verification source may designate another agency to communicate credentials information. The designated agency can then be used as a primary source.</note>
+<note epid='HR.01.02.05' itemid='2'>Note 3: An external organization (for example, a credentials verification organization [CVO]) may be used to verify credentials information. A CVO must meet the CVO guidelines identified in the Glossary.</note>
+<note epid='HR.01.02.05' itemid='4'>Note: Verification of education does not have to be obtained from the primary source.</note>
+<note epid='HR.01.02.05' itemid='8'>Note 1: This confirmation can be accomplished either through the organization's regular process or with the licensed independent practitioner who brought in the individual.</note>
+<note epid='HR.01.02.05' itemid='8'>Note 2: When the care, treatment, and services provided by the nonemployee are not currently performed by anyone employed by the organization, leadership consults the appropriate professional organization guidelines for the required credentials and competencies.</note>
+<note epid='HR.01.04.01' itemid='2'>Note: Key safety content may include specific processes and procedures related to the provision of care, treatment, and services; the environment of care; and infection control.</note>
+<note epid='HR.01.06.01' itemid='2'>Note: Competencies may relate to the techniques, procedures, technology, equipment, and skills required to provide the population served with care, treatment, and services. (See also NPSG.03.06.01, EP 3)</note>
+<note epid='HR.01.06.01' itemid='3'>Note: Methods may include test taking, return demonstration, or the use of simulation.</note>
+<note epid='HR.01.06.01' itemid='4'>Note: When a suitable individual cannot be found to assess staff competence, the organization can utilize an outside individual for this task. Alternatively, the organization may consult the competency guidelines from an appropriate professional organization to make its assessment.</note>
+<note epid='HR.01.07.01' itemid='4'>Note: This review can be accomplished either through the organization's regular process or an alternative process with input from the licensed independent practitioner who brought staff into the organization.</note>
+<note epid='HR.02.01.04' itemid='5'>Note 1: The methodology used to perform monitoring of the licensed independent practitioner is determined by the organization. Some methods for monitoring that can be used by the organization include periodic chart review, direct observation, and discussion with others involved in the care of the resident such as physicians, nurses, and administrative personnel. Some areas to monitor might include resident care, clinical knowledge, interpersonal and communication skills, and  professionalism.</note>
+<note epid='HR.02.01.04' itemid='5'>Note 2: If the medical director is new to the organization and will be providing care, treatment, and services to residents, results of the monitoring of the medical director�s performance may be reviewed by a physician providing care, treatment, and services in the organization or at another health care organization.</note>
+<note epid='HR.02.01.04' itemid='15'>Note: The organization administrator or a committee of two or more governing body members may substitute for a governing body.</note>
+<note epid='HR.02.01.04' itemid='16'>Note: The governing body may delegate to the organization administrator or a committee of two or more voting members of the governing body the authority to designate these individuals.</note>
+<note epid='HR.02.01.05' itemid='4'>Note: Primary source verification of competency can be obtained through peer references or verification that the practitioner is privileged at a Joint Commission�accredited organization.</note>
+<note epid='HR.02.01.07' itemid='3'>Note: It may be more efficient to obtain a list of possible covering licensed independent practitioners ahead of time and verify licensure from the primary source in advance of the licensed independent practitioner actually covering for the attending licensed independent practitioner.</note>
+<note epid='HR.02.02.01' itemid='2'>Note: Key safety content may include specific processes and procedures related to the provision of care, the environment of care, and infection control.</note>
+<note epid='HR.02.02.01' itemid='3'>Note: The organization determines the specific responsibilities included in orientation. For example, a covering licensed independent practitioner may have different or fewer responsibilities than an attending licensed independent practitioner.</note>
+<note epid='HR.02.02.01' itemid='5'>Note: The organization determines the specific responsibilities included in orientation. For example, a covering licensed independent practitioner may have different or fewer responsibilities than a licensed independent practitioner who is privileged.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='3' epid='HR.01.01.01'><element>LD.03.06.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.01.01.01'><element>LD.03.06.01</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='2' epid='HR.01.02.05'><element>HR.01.02.07</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='3' epid='HR.01.02.05'><element>HR.01.02.07</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='3' epid='HR.01.02.07'><element>HR.01.02.05</element><epitem>EPs 1 and 2</epitem></referencedelement>
+<referencedelement itemid='2' epid='HR.01.04.01'><element>EC.03.01.01</element><epitem>EPs 1-3</epitem></referencedelement>
+<referencedelement itemid='3' epid='HR.01.04.01'><element>IC.01.05.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.01.04.01'><element>IC.01.05.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.01.04.01'><element>IC.02.01.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.01.04.01'><element>IC.02.04.01</element><epitem>EP 2</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.01.04.01'><element>RI.01.01.01</element><epitem>EP 8</epitem></referencedelement>
+<referencedelement itemid='3' epid='HR.01.05.03'><element>PC.01.02.09</element><epitem>EP 3</epitem></referencedelement>
+<referencedelement itemid='4' epid='HR.01.05.03'><element>LD.03.01.02</element><epitem>EP 3 and HR.01.07.01</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.01.07.01'><element>HR.01.05.03</element><epitem>EP 23</epitem></referencedelement>
+<referencedelement itemid='4' epid='HR.02.01.07'><element>PC.02.01.03</element><epitem>EP 19</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.02.02.01'><element>IC.01.05.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='5' epid='HR.02.02.01'><element>RI.01.01.01</element><epitem>EP 8</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='HR.01.02.05' id='7'>-	Verified licensure, certification, or registration required by law or regulation or the organization</subitems>
+<subitems  epid='HR.01.02.05' id='7'>-	Verified education and experience</subitems>
+<subitems  epid='HR.01.02.05' id='7'>-	Results of criminal background check(s), in accordance with law and regulation or organization policy</subitems>
+<subitems  epid='HR.01.02.05' id='7'>-	Outcomes of applicable health screenings, in accordance with law and regulation or organization policy</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	The need for a medication in relation to the resident�s documented diagnosis and condition</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	The potential for drug-drug and drug-food interactions</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	Effects and adverse reactions to psychotropic medications</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	The use of a medication for an appropriate duration</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	Optimal dosages</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	Frequent monitoring of the medication�s effectiveness</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	Nonmedication interventions and alternatives developed through interdisciplinary team assessment</subitems>
+<subitems  epid='HR.01.04.01' id='8'>-	Reduction and discontinuation of a medication</subitems>
+</subitems>
+
+</chapter>

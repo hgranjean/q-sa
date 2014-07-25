@@ -1,0 +1,72 @@
+<chapter>
+<chaptertitle>Information Management Chapter</chaptertitle>
+<titles>
+<title epid='IM.01.01.01'>The organization plans for managing information.</title>
+<title epid='IM.01.01.03'>The organization plans for continuity of its information management processes.</title>
+<title epid='IM.02.01.01'>The organization protects the privacy of health information.</title>
+<title epid='IM.02.01.03'>The organization maintains the security and integrity of health information.</title>
+<title epid='IM.02.02.01'>The organization effectively manages the collection of health information.</title>
+<title epid='IM.02.02.03'>The organization retrieves, disseminates, and transmits health information in useful formats.</title>
+</titles>
+
+<elements>
+<element epid='IM.01.01.01' id='1'>1.	The organization identifies the internal and external information needed to provide safe, quality care.</element>
+<element epid='IM.01.01.01' id='2'>2.	The organization identifies how data and information enter, flow within, and leave the organization. Note: The flow of data and information within the organization includes how it moves into and out of storage.</element>
+<element epid='IM.01.01.01' id='3'>3.	The organization uses the information identified to develop processes to manage information.</element>
+<element epid='IM.01.01.03' id='1'>1.	The organization has a written plan for managing interruptions to its information processes (paper- based, electronic, or a mix of paper-based and electronic). (See also EM.01.01.01, EP 6)</element>
+<element epid='IM.01.01.03' id='2'>2.	The plan for managing interruptions to electronic information systems addresses the following: Scheduled and unscheduled interruptions. (See also IM.03.01.01, EP 1; EM.01.01.01, EP 6)</element>
+<element epid='IM.01.01.03' id='3'>3.	The plan for managing interruptions to electronic information systems addresses the following: Training for staff and licensed independent practitioners on alternate procedures to follow when systems are unavailable. (See also EM.01.01.01, EP 6)</element>
+<element epid='IM.01.01.03' id='4'>4.	The plan for managing interruptions to electronic information systems addresses the following: Backup of the electronic information systems. (See also EM.01.01.01, EP 6)</element>
+<element epid='IM.01.01.03' id='5'>5.	The organization's plan for managing interruptions to electronic information systems is tested for effectiveness according to time frames defined by the organization.</element>
+<element epid='IM.01.01.03' id='6'>6.	The organization implements its plan for managing interruptions to information processes to maintain access to information needed for resident care, treatment, and services. (See also IM.03.01.01, EP 1)</element>
+<element epid='IM.02.01.01' id='1'>1.	The organization has a written policy addressing the privacy of health information. (See also RI.01.01.01, EP 7)</element>
+<element epid='IM.02.01.01' id='2'>2.	The organization implements its policy on the privacy of health information. (See also RI.01.01.01, EP 7)</element>
+<element epid='IM.02.01.01' id='3'>3.	The organization uses health information only for purposes permitted by law and regulation or as further limited by its policy on privacy. (See also MM.01.01.01, EP 1; RI.01.01.01, EP 7)</element>
+<element epid='IM.02.01.01' id='4'>4.	The organization discloses health information only as authorized by the resident or as otherwise consistent with law and regulation. (See also RI.01.01.01, EP 7)</element>
+<element epid='IM.02.01.01' id='5'>5.	The organization monitors compliance with its policy on the privacy of health information. (See also RI.01.01.01, EP 7)</element>
+<element epid='IM.02.01.03' id='1'>3.	The organization has a written policy addressing the intentional destruction of health information.</element>
+<element epid='IM.02.01.03' id='2'>5.	The organization protects against unauthorized access, use, and disclosure of health information.</element>
+<element epid='IM.02.01.03' id='3'>6.	The organization protects health information against loss, damage, unauthorized alteration, unintentional change, and accidental destruction.</element>
+<element epid='IM.02.01.03' id='4'>7.	The organization controls the intentional destruction of health information.</element>
+<element epid='IM.02.02.01' id='1'>1.	The organization uses uniform data sets to standardize data collection throughout the organization.</element>
+<element epid='IM.02.02.01' id='2'>2.	The organization uses standardized terminology, definitions, abbreviations, acronyms, symbols, and dose designations.</element>
+<element epid='IM.02.02.01' id='3'>3.	The organization follows its list of prohibited abbreviations, acronyms, symbols, and dose designations, which includes the following:</element>
+<element epid='IM.02.02.03' id='1'>2.	The organization's storage and retrieval systems make health information accessible when needed for resident care, treatment, and services. (See also IC.01.02.01, EP 1)</element>
+<element epid='IM.02.02.03' id='2'>3.	The organization disseminates data and information in useful formats within time frames that are defined by the organization and consistent with law and regulation.</element>
+</elements>
+
+<notes>
+<note epid='IM.01.01.03' itemid='5'>Note: A backup system can be electronic or manual.</note>
+<note epid='IM.02.02.01' itemid='4'>Note 1: A trailing zero may be used only when required to demonstrate the level of precision of the value being reported, such as for laboratory results, imaging studies that report the size of lesions, or catheter/tube sizes. It may not be used in medication orders or other medication-related documentation.</note>
+<note epid='IM.02.02.01' itemid='4'>Note 2: The prohibited list applies to all orders, preprinted forms, and medication-related documentation. Medication-related documentation can be either handwritten or electronic.</note>
+</notes>
+
+<referencedelements>
+<referencedelement itemid='2' epid='IM.01.01.03'><element>EM.01.01.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='3' epid='IM.01.01.03'><element>IM.03.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='3' epid='IM.01.01.03'><element>EM.01.01.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='4' epid='IM.01.01.03'><element>EM.01.01.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='5' epid='IM.01.01.03'><element>EM.01.01.01</element><epitem>EP 6</epitem></referencedelement>
+<referencedelement itemid='7' epid='IM.01.01.03'><element>IM.03.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='2' epid='IM.02.01.01'><element>RI.01.01.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='3' epid='IM.02.01.01'><element>RI.01.01.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='4' epid='IM.02.01.01'><element>MM.01.01.01</element><epitem>EP 1</epitem></referencedelement>
+<referencedelement itemid='4' epid='IM.02.01.01'><element>RI.01.01.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='5' epid='IM.02.01.01'><element>RI.01.01.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='6' epid='IM.02.01.01'><element>RI.01.01.01</element><epitem>EP 7</epitem></referencedelement>
+<referencedelement itemid='2' epid='IM.02.02.03'><element>IC.01.02.01</element><epitem>EP 1</epitem></referencedelement>
+</referencedelements>
+
+<subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	U,u</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	IU</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	Q.D., QD, q.d., qd</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	Q.O.D., QOD, q.o.d, qod</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	Trailing zero (X.0 mg)</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	Lack of leading zero (.X mg)</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	MS</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	MSO4</subitems>
+<subitems  epid='IM.02.02.01' id='4'>-	MgSO4</subitems>
+</subitems>
+
+</chapter>
