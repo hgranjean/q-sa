@@ -9,7 +9,6 @@ using Atum.Domain.SurveyManagement;
 using Atum.Utility.XML;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using SurveyWeb.Controllers;
 using SurveyWeb.Models;
 using SurveyWeb.RuleApp;
 using SurveyWeb.Services;
@@ -48,6 +47,30 @@ namespace SurveyWeb.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+        /// <summary>
+        /// Display a list of Ad-hoc Observations
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Observations(int? ownerId)
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Update Observation View
+        /// </summary>
+        /// <param name="observation"></param>
+        /// <returns></returns>
+        public ActionResult ClassifyObservation(string observation)
+        {
+            return View();
+        }
+
+
+
 
         //
         // GET: /Surveillance/
@@ -149,7 +172,7 @@ namespace SurveyWeb.Controllers
             }
             else
             {
-                survey = LoadSurvey("Survey Title 1");
+                //survey = LoadSurvey("Survey Title 1");
             }
             
             var model = new SurveyViewModel(survey);
@@ -273,67 +296,67 @@ namespace SurveyWeb.Controllers
             retVal.FloorNumber = 3;
         }
 
-        private Survey LoadSurvey(string title)
-        {
-            var survey = new Survey(title);
+        //private Survey LoadSurvey(string title)
+        //{
+        //    var survey = new Survey(title);
 
-            ////Set Survey Type - Overwrite Survey Type
-            survey.SurveyType = SurveyType.Audit;
+        //    ////Set Survey Type - Overwrite Survey Type
+        //    survey.SurveyType = SurveyType.Audit;
 
-            // Step 2 - Initialize TOC
+        //    // Step 2 - Initialize TOC
 
-            //Survey Basis Document (assert that we can see the TOCElements
-            var surveyBasis = new SurveyBasis();
-            surveyBasis.TableOfContents = LoadTableOContents();
+        //    //Survey Basis Document (assert that we can see the TOCElements
+        //    var surveyBasis = new SurveyBasis();
+        //    surveyBasis.TableOfContents = LoadTableOContents();
 
-            Question question = null;
-            var qGroup0211 = survey.AddQuestionGroup("0211_Doors ");
-            question = qGroup0211.AddQuestion("0211", "No items covering doors, i.e. decorations, paper, etc. ", QuestionType.SelectOne);
-            SetQuestionChoices(question);
-
-
-            var qGroup0214 = survey.AddQuestionGroup("0214_Adequate Lighting");
-            question = qGroup0214.AddQuestion("0214", "Lighting is adequate. ", QuestionType.SelectOne);
-            question.BasisReference = new TOCElement("Std: LS.02.01.20 EP27 ");
-            SetQuestionChoices(question);
-
-            var qGroup0215 = survey.AddQuestionGroup("0215_ Personal Items");
-            question = qGroup0215.AddQuestion("0215", "No items stored under the sink in kitchen area.  ", QuestionType.SelectOne);
-            SetQuestionChoices(question);
+        //    Question question = null;
+        //    var qGroup0211 = survey.AddQuestionGroup("0211_Doors ");
+        //    question = qGroup0211.AddQuestion("0211", "No items covering doors, i.e. decorations, paper, etc. ", QuestionType.SelectOne);
+        //    SetQuestionChoices(question);
 
 
-            var qGroup0218 = survey.AddQuestionGroup("0218_Unoccupied Rooms ");
-            question = qGroup0218.AddQuestion("0218", "Unoccupied rooms are locked.", QuestionType.SelectOne);
-            SetQuestionChoices(question);
+        //    var qGroup0214 = survey.AddQuestionGroup("0214_Adequate Lighting");
+        //    question = qGroup0214.AddQuestion("0214", "Lighting is adequate. ", QuestionType.SelectOne);
+        //    question.BasisReference = new TOCElement("Std: LS.02.01.20 EP27 ");
+        //    SetQuestionChoices(question);
+
+        //    var qGroup0215 = survey.AddQuestionGroup("0215_ Personal Items");
+        //    question = qGroup0215.AddQuestion("0215", "No items stored under the sink in kitchen area.  ", QuestionType.SelectOne);
+        //    SetQuestionChoices(question);
 
 
-            var qGroup0219 = survey.AddQuestionGroup("0219_ Violent/Disruptive Behavior");
-            question = qGroup0219.AddQuestion("0219", "How do you respond to violent or disruptive behavior?", QuestionType.SelectOne);
-            SetQuestionChoices(question);
+        //    var qGroup0218 = survey.AddQuestionGroup("0218_Unoccupied Rooms ");
+        //    question = qGroup0218.AddQuestion("0218", "Unoccupied rooms are locked.", QuestionType.SelectOne);
+        //    SetQuestionChoices(question);
 
 
-            var qGroup0220 = survey.AddQuestionGroup("0220_Weapons");
-            question = qGroup0220.AddQuestion("0220", "How do you respond to violent or disruptive behavior with weapons? ", QuestionType.SelectOne);
-            SetQuestionChoices(question);
+        //    var qGroup0219 = survey.AddQuestionGroup("0219_ Violent/Disruptive Behavior");
+        //    question = qGroup0219.AddQuestion("0219", "How do you respond to violent or disruptive behavior?", QuestionType.SelectOne);
+        //    SetQuestionChoices(question);
 
 
-            var qGroup0221 = survey.AddQuestionGroup("0221_Authorized Identification");
-            question = qGroup0221.AddQuestion("0221", "Are all individuals in area wearing their authorized identification according to hospital policy?", QuestionType.SelectOne);
-            SetQuestionChoices(question);
+        //    var qGroup0220 = survey.AddQuestionGroup("0220_Weapons");
+        //    question = qGroup0220.AddQuestion("0220", "How do you respond to violent or disruptive behavior with weapons? ", QuestionType.SelectOne);
+        //    SetQuestionChoices(question);
 
 
-            var qGroup0222 = survey.AddQuestionGroup("0222_Emergency Numbers Posted");
-            question = qGroup0222.AddQuestion("0222", "Emergency numbers are visibly posted. ", QuestionType.SelectOne);
-            question.BasisReference = new TOCElement("Std: EC.02.01.01 EP10 ");
-            SetQuestionChoices(question);
+        //    var qGroup0221 = survey.AddQuestionGroup("0221_Authorized Identification");
+        //    question = qGroup0221.AddQuestion("0221", "Are all individuals in area wearing their authorized identification according to hospital policy?", QuestionType.SelectOne);
+        //    SetQuestionChoices(question);
 
-            var qGroup0223 = survey.AddQuestionGroup("0223_Gas Cylinders Secured");
-            question = qGroup0223.AddQuestion("0223", "Are gas cylinders properly secured? ", QuestionType.SelectOne);
-            question.BasisReference = new TOCElement("Std: EC.02.03.01 EP1");
-            SetQuestionChoices(question);
 
-            return survey;
-        }
+        //    var qGroup0222 = survey.AddQuestionGroup("0222_Emergency Numbers Posted");
+        //    question = qGroup0222.AddQuestion("0222", "Emergency numbers are visibly posted. ", QuestionType.SelectOne);
+        //    question.BasisReference = new TOCElement("Std: EC.02.01.01 EP10 ");
+        //    SetQuestionChoices(question);
+
+        //    var qGroup0223 = survey.AddQuestionGroup("0223_Gas Cylinders Secured");
+        //    question = qGroup0223.AddQuestion("0223", "Are gas cylinders properly secured? ", QuestionType.SelectOne);
+        //    question.BasisReference = new TOCElement("Std: EC.02.03.01 EP1");
+        //    SetQuestionChoices(question);
+
+        //    return survey;
+        //}
 
         private int _questionChoiceNextId = 0;
 
@@ -424,57 +447,17 @@ namespace SurveyWeb.Controllers
         public ActionResult ViewReference(string standardId) 
         {
             TOCElement model = new TOCElement("");
-            model = GetViewModel(standardId);
+            //TODO: Get Reference View Model from Standard Services
+            //model = GetViewModel(standardId);
 
 
             return View(model);            
         }
 
-        public TOCElement GetViewModel(string Id)
-        {
-
-            var model = new TOCElement(Id);
-
-            if (Id=="LS.02.01.20 EP27")
-            {
-                model.Content = LoadContent(Id);
-            }
-
-            if (Id == "LS.04.03.02")
-            {   
-                string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
-
-                appPath = appPath + @"\\..\RuleApp\";
-
-                model = (TOCElement)XmlSerializationUtility.GetObjectFromFile(appPath + @"Standards\"+Id+".xml", typeof(TOCElement));
-            }
-
-            return model;
-        }
-
-        public IEnumerable GetTOCs()
-        {
-            yield return new KeyValuePair<string, TOCElement>("", TOCElement.None);
-            yield return new KeyValuePair<string, TOCElement>("LS.02.01.20 EP27", GetViewModel("LS.02.01.20 EP27"));
-            yield return new KeyValuePair<string, TOCElement>("LS.04.03.02", GetViewModel("LS.04.03.02"));
-        }
-
-        private string[] LoadContent(string Id)
-        {
-            List<string> retVal = new List<string>();
-            retVal.Add("LS.02.01.20");
-            retVal.Add("Elements of Performance for LS.02.01.20");
-            retVal.Add("Doors in a means of egress are unlocked in the direction of egress. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.2.2.4)");
-            retVal.Add("1. Exits discharge to the outside at grade level or through an approved exit passageway that is continuous and terminates at a public way or at an exterior exit discharge. (For full text and any exceptions, refer to NFPA 101-2000: 7.7)");
-            retVal.Add("8. In new buildings, exit corridors are at least 8 feet wide; in existing buildings, exit corridors are at least 4 feet wide. If modifying existing buildings with exit corridors that exceed 8 feet, the exit corridors cannot be reduced to less than 8 feet. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.3.3)");
-            retVal.Add("11. Exits, exit accesses, and exit discharges are clear of obstructions or impediments to the public way, such as clutter (for example, equipment, carts, furniture), construction material, and snow and ice. (For full text and any exceptions, refer to NFPA 101-2000: 7.1.10.1)");
-            retVal.Add("13. Resident sleeping rooms open directly onto an exit access corridor. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.5.1)");
-            retVal.Add("21. Means of egress are adequately illuminated at all points, including angles and intersections of corridors and passageways, stairways, stairway landings, exit doors, and exit discharges. (For full text and any exceptions, refer to NFPA 101-2000: 18/19.2.8)");
-            retVal.Add("27. Illumination in the means of egress, including exit discharges, is arranged so that failure of any single light fixture or bulb will not leave the area in darkness. (For full text and any exceptions, refer to NFPA 101-2000: 7.8.1.4)");
-
-            return retVal.ToArray();
-        }
-        
+        /// <summary>
+        /// TODO: Move to Dashboard/Menu Controller
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Dashboard()
         {
             ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
@@ -485,7 +468,7 @@ namespace SurveyWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
+        public ActionResult SaveSurveillance(TracerViewModel viewModel, FormCollection values)
         {
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var survey = persistenceService.GetSurvey(viewModel.SurveyId);
@@ -553,156 +536,8 @@ namespace SurveyWeb.Controllers
             
             return View("SurveyAnalysis", analysisViewModel);
         }
-        
-        public ActionResult Create(Survey survey)
-        {
-            var viewModel = new SurveyViewModel(survey);
 
-            viewModel.Save();
 
-            return View(viewModel);
-        }
-
-        public ActionResult CreateQuestionGroup(long surveyId)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurveys().First(item => item.ID == surveyId);
-
-            return View(new SurveyViewModel(survey));
-        }
-
-        [HttpPost]
-        public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
-
-            if (survey.QuestionGroups == null)
-            {
-                survey.QuestionGroups = new QuestionGroups();
-            }
-            int newGroupIndex = survey.QuestionGroups.Count() + 1;
-
-            survey.AddQuestionGroup("New Group " + newGroupIndex);
-
-            viewModel = new SurveyViewModel(survey);
-
-            viewModel.Save();
-
-            return View("SurveyDesign", viewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Save(SurveyViewModel viewModel)
-        {
-            if (viewModel.Survey.Guid == Guid.Empty)
-            {
-                viewModel.Survey.Guid = Guid.NewGuid();
-
-                _dbContext.Surveys.Add(new SurveyEntry
-                    {
-                        Id = viewModel.Survey.Guid.ToString("d"),
-                        Title = viewModel.Survey.Title
-                    });
-            }
-            else
-            {
-                var id = viewModel.Survey.Guid.ToString("d");
-                var surveyEntry = _dbContext.Surveys.FirstOrDefault(m => m.Id == id);
-
-                surveyEntry.Title = viewModel.Survey.Title;
-            }
-
-            _dbContext.SaveChanges();
-
-            viewModel.Save();
-
-            return View();
-        }
-
-        public ActionResult EditQuestionGroup(string surveyId, string groupId)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
-
-            ViewBag.QuestionGroupId = groupId;
-
-            return View(new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
-                {
-                    SurveyId = surveyId,
-                    Number = int.Parse(groupId)
-                });
-        }
-
-        [HttpPost]
-        public ActionResult EditQuestionGroup(QuestionGroupViewModel viewModel)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
-
-            if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
-            {   
-                survey.QuestionGroups[viewModel.Number] = viewModel.QuestionGroup;
-            }
-
-            var surveyViewModel = new SurveyViewModel(survey);
-
-            surveyViewModel.Save();
-
-            return View("SurveyDesign", surveyViewModel);
-        }
-
-        public ActionResult DeleteQuestionGroup(string surveyId, string groupId)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
-
-            ViewBag.QuestionGroupId = groupId;
-
-            return View(new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
-                {
-                    SurveyId = surveyId,
-                    Number = int.Parse(groupId)
-                });
-        }
-
-        [HttpPost]
-        public ActionResult DeleteQuestionGroup(QuestionGroupViewModel viewModel)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
-
-            if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
-            {
-                var questionGroupToDelete = survey.QuestionGroups[viewModel.Number];
-                survey.QuestionGroups.Remove(questionGroupToDelete.Number);
-            }
-
-            var surveyViewModel = new SurveyViewModel(survey);
-
-            surveyViewModel.Save();
-
-            return View("SurveyDesign", surveyViewModel);
-        }
-
-        public ActionResult AddQuestion(string surveyId, string questionGroupId)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var survey = persistenceService.GetSurvey(Convert.ToInt32(surveyId));
-
-            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
-
-            questionGroup.AddQuestion(string.Empty, QuestionType.SelectOne);
-
-            new SurveyViewModel(survey).Save();
-
-            return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup){SurveyId = surveyId});
-        }
-
-        public ActionResult EditNotes(string questionId)
-        {
-            return View();
-        }
 
         public ActionResult Calendar()
         {
@@ -746,6 +581,11 @@ namespace SurveyWeb.Controllers
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// TODO: Add descriptive comment here.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult EditEvent(Guid id)
         {
             var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
@@ -768,6 +608,11 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// TODO: Consider Update vs Edit 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditEvent(EventViewModel model)
@@ -848,6 +693,10 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// TODO: Specify Type of Event i.e. Change Action Method Name to be more descriptive
+        /// </summary>
+        /// <returns></returns>
         public ActionResult CreateEvent()
         {
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
@@ -864,6 +713,10 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// TODO: Specify Type of Event i.e. Change Action Method Name to be more descriptive
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult CreateEvent(EventViewModel model)
         {
@@ -903,6 +756,12 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+
+
+        /// <summary>
+        /// TODO: Specify Type of Event i.e. Change Action Method Name to be more descriptive
+        /// </summary>
+        /// <param name="user"></param>
         private void SendAssignedEventEmail(AspNetUser user)
         {
             var email = user.Person.Email;

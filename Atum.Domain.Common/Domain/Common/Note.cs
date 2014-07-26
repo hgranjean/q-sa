@@ -11,7 +11,6 @@ namespace Atum.Domain.Common
 		public Note()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 

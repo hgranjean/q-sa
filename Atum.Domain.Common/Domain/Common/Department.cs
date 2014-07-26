@@ -11,7 +11,6 @@ namespace Atum.Domain.Common
     {
         public Department(string name, int Id)
         {
-            // TODO: Complete member initialization
             this.SetId(Id);
             this.Name = name;
         }

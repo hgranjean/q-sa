@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Atum.Domain.Common;
+using Atum.Utility.XML;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +12,47 @@ namespace SurveyWeb.Controllers
     [Authorize]
     public class StandardController : Controller
     {
-        
+
+
+
+        /// <summary>
+        /// Standard Content
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public TOCElement GetViewModel(string Id)
+        {
+
+            var model = new TOCElement(Id);
+
+            if (Id == "LS.02.01.20 EP27")
+            {
+                //model.Content = LoadContent(Id);
+            }
+
+            if (Id == "LS.04.03.02")
+            {
+                string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
+
+                appPath = appPath + @"\\..\RuleApp\";
+                //TODO: Get From Standard Services
+                model = (TOCElement)XmlSerializationUtility.GetObjectFromFile(appPath + @"Standards\" + Id + ".xml", typeof(TOCElement));
+            }
+
+            return model;
+        }
+
+        /// <summary>
+        /// Standard Content
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable GetTOCs()
+        {
+            yield return new KeyValuePair<string, TOCElement>("", TOCElement.None);
+            yield return new KeyValuePair<string, TOCElement>("LS.02.01.20 EP27", GetViewModel("LS.02.01.20 EP27"));
+            yield return new KeyValuePair<string, TOCElement>("LS.04.03.02", GetViewModel("LS.04.03.02"));
+        }
+
         public ActionResult Document(int? id)
         {
             Models.StandardDocumentViewModel model = new Models.StandardDocumentViewModel();

@@ -14,7 +14,7 @@
         {
             HttpMethod = "get",
             InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "epIdList"
+            UpdateTargetId = "EPIdList"
 
         }))
 {
@@ -33,16 +33,18 @@
         </div>
 
     </div>
-    <div id="epIdList" style="display: table-row">
-        <div >
-            @Html.TextBoxFor(model => model.StandardId)
+    <div>
+        <div id="epIdList" style="display: table-row">
+            <div>
+                @Html.TextBoxFor(model => model.StandardId)
 
-            @if (Model.EPIds != null)
-            {
+                @if (Model.EPIds != null)
+                {
 
-                @Html.DropDownListFor(model => model.EPIds,
+                    @Html.DropDownListFor(model => model.EPIds,
                                         new SelectList(Model.EPIds), "", new { id = "EPIdList" })
-            }
+                }
+            </div>
         </div>
     </div>
 }

@@ -11,9 +11,6 @@ namespace Atum.Domain.Common
     {
         public Credential()
         {
-            //
-            // TODO: Add constructor logic here
-            //
         }
 
         protected override void SetId(long id)

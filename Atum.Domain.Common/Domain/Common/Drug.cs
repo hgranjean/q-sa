@@ -11,7 +11,6 @@ namespace Atum.Domain.Common
 		public Drug()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 

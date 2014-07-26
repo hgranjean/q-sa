@@ -13,7 +13,6 @@ namespace Atum.Domain.QualityManagement
         public Observation(Common.Person person, string observationTarget)
             : base(new Question(observationTarget,QuestionType.SelectOne),new ResponseChoice(""))
         {
-            // TODO: Complete member initialization
             this.person = person;
         }
     }

@@ -9,7 +9,6 @@ namespace Atum.Domain.SurveyManagement
 
         public QuestionStrategy(Questions questions)
         {
-            // TODO: Complete member initialization
             this.Questions = questions;
         }
 

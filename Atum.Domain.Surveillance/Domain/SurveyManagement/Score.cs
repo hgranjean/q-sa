@@ -9,7 +9,6 @@ namespace Atum.Domain.SurveyManagement
     {
         public Score(int supporting, int opposing)
         {
-            // TODO: Complete member initialization
             this.Supporting = supporting;
             this.Opposing = opposing;
         }

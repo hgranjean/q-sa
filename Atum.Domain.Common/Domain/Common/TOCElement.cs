@@ -13,7 +13,6 @@ namespace Atum.Domain.Common
 
         public TOCElement(string elementTitle)
         {
-            // TODO: Complete member initialization
             Title = elementTitle;
         }
 

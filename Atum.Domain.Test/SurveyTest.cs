@@ -40,10 +40,6 @@ namespace Atum.Domain.Test
             //Create/Add Survey Questions in default QuestionGroup
             var qGroup = survey.AddQuestionGroup();
 
-            //Create New QuestionGroup
-            var groupTitle = "My Group Title";
-            var qGroupNew = survey.AddQuestionGroup(groupTitle); // TODO: herve, QG is added but not used anywhere ??
-
             //Create/Add Survey Questions in new QuestionGroup
             string questionText = "My Question Text";
             var qType = QuestionType.OpenText;

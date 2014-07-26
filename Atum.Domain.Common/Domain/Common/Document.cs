@@ -1,6 +1,5 @@
 using System;
 using Atum.Domain.Basis;
-using System;
 
 namespace Atum.Domain.Common
 {

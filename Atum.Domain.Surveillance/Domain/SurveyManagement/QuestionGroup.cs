@@ -14,7 +14,6 @@ namespace Atum.Domain.SurveyManagement
 
         public QuestionGroup(string groupTitle)
         {
-            // TODO: Complete member initialization
             this.Title = groupTitle;
         }
         public Questions Questions { get; set; }

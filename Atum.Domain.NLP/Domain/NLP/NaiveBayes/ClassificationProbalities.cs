@@ -10,7 +10,6 @@ namespace Atum.Domain.NLP.NaiveBayes
 
         public ClassificationProbalities(string className, double prior)
         {
-            // TODO: Complete member initialization
             this.Class = className;
             this.Prior = prior;
         }

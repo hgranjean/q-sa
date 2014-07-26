@@ -13,13 +13,11 @@ namespace Atum.Domain.SurveyManagement
 
         public SurveyStrategy(DesignFeatures designFeatures)
         {
-            // TODO: Complete member initialization
             this.designFeatures = designFeatures;
         }
 
         public SurveyStrategy(Questions questions)
         {
-            // TODO: Complete member initialization
             this.questions = questions;
             LoadQuestionStack(questions);
         }
@@ -44,7 +42,6 @@ namespace Atum.Domain.SurveyManagement
 
         public SurveyStrategy(QuestionStrategies qs)
         {
-            // TODO: Complete member initialization
             this.QuestionStrategies = qs;
         }
 

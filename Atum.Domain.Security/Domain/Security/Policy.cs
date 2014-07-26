@@ -17,7 +17,6 @@ Private m_AttributeList As New Collection
 		public Policy()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 	}

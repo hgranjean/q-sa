@@ -11,7 +11,6 @@ namespace Atum.Domain.Common
 		public FinancialClass()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 

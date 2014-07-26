@@ -1,6 +1,6 @@
 ﻿using System;
 
-using System; namespace Atum.Domain.SurveyManagement.Specifications
+namespace Atum.Domain.SurveyManagement.Specifications
 {
     [Serializable]public class SurveySpecification : Atum.Domain.Specification.ISpecification
     {

@@ -226,6 +226,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\SurveillanceManagement.cs" />
+    <Compile Include="Mappers\SurveyManagement.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BundlesFormats.cs" />

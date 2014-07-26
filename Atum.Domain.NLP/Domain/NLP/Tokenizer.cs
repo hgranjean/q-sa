@@ -14,6 +14,10 @@ namespace Atum.Domain.NLP
     {
         private List<string> excludedWords;
 
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="excludedWords"></param>
         public Tokenizer(List<string> excludedWords)
         {
             this.excludedWords = excludedWords;

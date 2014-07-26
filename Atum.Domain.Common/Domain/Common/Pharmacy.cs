@@ -11,7 +11,6 @@ namespace Atum.Domain.Common
 		public Pharmacy()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 

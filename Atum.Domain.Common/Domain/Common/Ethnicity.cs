@@ -11,7 +11,6 @@ namespace Atum.Domain.Common
 		public Ethnicity()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 

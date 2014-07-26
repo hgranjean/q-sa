@@ -11,7 +11,6 @@ namespace Atum.Domain.SurveyManagement
     {
         public Question(string questionText, QuestionType qType)
         {
-            // TODO: Complete member initialization
             this.Text = questionText;
             this.QuestionType = qType;
         }

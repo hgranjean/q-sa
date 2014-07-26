@@ -13,7 +13,6 @@ namespace Atum.Domain.Security
 		public SecurityEvent()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 	}

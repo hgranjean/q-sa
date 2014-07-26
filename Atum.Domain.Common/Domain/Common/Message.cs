@@ -11,7 +11,6 @@ namespace Atum.Domain.Common
 		public Message()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 

@@ -12,9 +12,6 @@ namespace Atum.Domain.Security
 	{
 		public ApplicationSystem()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
 		}
 	}
 }

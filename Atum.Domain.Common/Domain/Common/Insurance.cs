@@ -11,7 +11,6 @@ namespace Atum.Domain.Billing
 		public Insurance()
 		{
 			//
-			// TODO: Add constructor logic here
 			//
 		}
 

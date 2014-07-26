@@ -12,7 +12,6 @@ namespace Atum.Domain.SurveyManagement
 
         public SurveyManager(Survey survey)
         {
-            // TODO: Complete member initialization
             this.survey = survey;
 
             //Initialize Manager
