@@ -554,12 +554,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Surveillance\Survey.cshtml" />
+    <Content Include="Views\Survey\Survey.cshtml" />
     <Content Include="Views\Surveillance\SurveyAnalysis.cshtml" />
     <Content Include="Views\Surveillance\SurveyDelivery.cshtml" />
-    <Content Include="Views\Surveillance\SurveyDesign.cshtml" />
+    <Content Include="Views\Survey\SurveyDesign.cshtml" />
     <Content Include="Views\Surveillance\SurveyProcessing.cshtml" />
-    <Content Include="Views\Surveillance\Surveys.cshtml" />
+    <Content Include="Views\Survey\Surveys.cshtml" />
     <Content Include="Views\Surveillance\ViewReference.cshtml" />
     <Content Include="Views\Surveillance\Dashboard.cshtml" />
     <Content Include="Views\Home\Settings.cshtml" />
@@ -570,16 +570,16 @@
     <Content Include="Views\Hospital\Index.cshtml" />
     <Content Include="Views\Hospital\UserHospitalEdit.cshtml" />
     <Content Include="Views\Hospital\UserHospitalIndex.cshtml" />
-    <Content Include="Views\Surveillance\CreateQuestionGroup.cshtml" />
+    <Content Include="Views\Survey\CreateQuestionGroup.cshtml" />
     <Content Include="Views\Surveillance\EditorTemplates\QuestionGroupViewModel.cshtml" />
-    <Content Include="Views\Surveillance\Save.cshtml" />
-    <Content Include="Views\Surveillance\EditQuestionGroup.cshtml" />
+    <Content Include="Views\Survey\Save.cshtml" />
+    <Content Include="Views\Survey\EditQuestionGroup.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Surveillance\SurveySchedules.cshtml" />
     <Content Include="Views\Surveillance\CompletedSurveys.cshtml" />
     <Content Include="Views\Shared\ConfirmMessageBox.cshtml" />
-    <Content Include="Views\Surveillance\DeleteSurvey.cshtml" />
-    <Content Include="Views\Surveillance\DeleteQuestionGroup.cshtml" />
+    <Content Include="Views\Survey\DeleteSurvey.cshtml" />
+    <Content Include="Views\Survey\DeleteQuestionGroup.cshtml" />
     <Content Include="Views\Surveillance\Calendar.cshtml" />
     <Content Include="Views\Surveillance\EditEvent.cshtml" />
     <Content Include="Views\Surveillance\CreateEvent.cshtml" />
@@ -605,7 +605,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />
-    <Folder Include="Views\Survey\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
