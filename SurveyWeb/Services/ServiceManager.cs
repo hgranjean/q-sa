@@ -17,6 +17,8 @@ namespace SurveyWeb.Services
         {
             persistenceServices = new PersistenceServices();
             MailService = new MailService();
+            LearningService = new LearningServices();
+            StandardsManagementService = new StandardsManagementServices();
         }
 
         public static T GetService<T>() where T : class
