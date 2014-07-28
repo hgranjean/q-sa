@@ -50,7 +50,11 @@ namespace SurveyWeb.Services
 
         private static XmlDocument loadChapterDoc()
         {
-            string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
+
+            string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/");
+            
+            string chapterFileName = appPath + "EC_out.xml";
+
             XmlDocument xmlDoc =  new XmlDocument();
             
             xmlDoc.Load(chapterFileName);
