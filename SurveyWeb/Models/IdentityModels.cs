@@ -12,7 +12,7 @@ namespace SurveyWeb.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("AtumSurveillanceContext", throwIfV1Schema: false)
+            : base("AtumSurveillanceContext")
         {
         }
 

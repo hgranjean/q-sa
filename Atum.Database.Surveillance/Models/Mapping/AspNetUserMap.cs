@@ -16,9 +16,11 @@ namespace Atum.Database.Surveillance.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(128);
 
-            this.Property(t => t.Discriminator)
+            /*this.Property(t => t.Discriminator)
                 .IsRequired()
-                .HasMaxLength(128);
+                .HasMaxLength(128);*/
+            
+                       
 
             // Table & Column Mappings
             this.ToTable("AspNetUsers");
@@ -26,9 +28,17 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.Property(t => t.UserName).HasColumnName("UserName");
             this.Property(t => t.PasswordHash).HasColumnName("PasswordHash");
             this.Property(t => t.SecurityStamp).HasColumnName("SecurityStamp");
-            this.Property(t => t.Discriminator).HasColumnName("Discriminator");
+            /*this.Property(t => t.Discriminator).HasColumnName("Discriminator");*/
             this.Property(t => t.PersonId).HasColumnName("PersonId");
 
+            this.Property(t => t.IsConfirmed).HasColumnName("IsConfirmed");
+
+            this.Property(t => t.Email).HasColumnName("Email");
+
+            this.Property(t => t.EmailConfirmed).HasColumnName("EmailConfirmed");
+
+            this.Property(t => t.PhoneNumber).HasColumnName("PhoneNumber");
+            
             // Relationships
             this.HasOptional(t => t.Person)
                 .WithMany()
