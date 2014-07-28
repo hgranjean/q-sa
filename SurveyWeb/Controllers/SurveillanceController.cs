@@ -111,8 +111,11 @@ namespace SurveyWeb.Controllers
                 var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
 
                 var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
-                
-                eventSurveys.Add(survey);    
+
+                if (survey != default(Survey))
+                {
+                    eventSurveys.Add(survey);    
+                }
             }
 
             return View(model);
