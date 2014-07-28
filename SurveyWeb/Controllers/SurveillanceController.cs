@@ -111,8 +111,11 @@ namespace SurveyWeb.Controllers
                 var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
 
                 var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
-                
-                eventSurveys.Add(survey);    
+
+                if (survey != default(Survey))
+                {
+                    eventSurveys.Add(survey);    
+                }
             }
 
             return View(model);
@@ -462,9 +465,18 @@ namespace SurveyWeb.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-                ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
-                ViewBag.ShowTeamMemberContent = UserManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                try
+                {
+                    ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+                    ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
+                    ViewBag.ShowTeamMemberContent = UserManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                }
+                catch (Exception ex)
+                {
+                    Session.Abandon();
+
+                    RedirectToAction("Index", "Home");
+                }
             }
             
             return View();

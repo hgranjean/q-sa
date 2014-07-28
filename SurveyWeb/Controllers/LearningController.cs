@@ -18,11 +18,11 @@ namespace SurveyWeb.Controllers
         public ActionResult ObservationClassifier(string observation)
         {
             //View will contain Classification and list of EP Choices
-            StandardElementViewModel model = new StandardElementViewModel();
-            if (observation != null && observation.Length > 0)
+            var model = new StandardElementViewModel();
+            if (!string.IsNullOrWhiteSpace(observation))
             {
                 model.Observation = observation;
-                model = LearningServices.Classify(observation);
+                model = ServiceManager.GetService<LearningServices>().Classify(observation);
 
             }
 
