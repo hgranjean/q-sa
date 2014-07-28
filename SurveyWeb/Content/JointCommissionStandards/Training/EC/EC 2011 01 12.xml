@@ -1,0 +1,314 @@
+<Documents>
+  <DOC>
+    <EP>
+      EC.02.01.01
+      The hospital manages safety and security risks..
+      EP 1.  The hospital identifies safety and security risks associated with the
+      environment of care.
+      Note: Risks are identified from internal sources such as ongoing
+      monitoring of the environment, results of root cause analyses, results of
+      annual proactive risk assessments of high-risk processes, and from
+      credible external sources such as Sentinel Event Alerts. (See also
+    </EP>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.01, EP 14)
+    </EP>
+    <FINDING>
+      The organization did not perform routine assessments of collected data (PI indicators, EC rounds
+      results, ect) to formulate risks assessments.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization should use collected data to formulate a risk assessment. This assessment
+      should be completed annually and used to devise goals and plans for the upcoming year.
+      Additionally, the organization should use the data from this assessment to develop detailed
+      analysis of identified risks (security issues, safety concerns, etc.) The risk assessment format
+      should be used to document these assessments.
+      ?	The organization has addressed this concern.
+      EP 3.  The hospital takes action to minimize or eliminate identified
+      safety and security risks in the physical environment.
+    </RECOMMENDED>
+    <FINDING>
+      During the building tour of departments, the following was observed:
+      1.	staff not wearing gloved while handling specimens in the lab
+      2.	Fire extinguisher not secured in the Tulsa MCCA office
+      3.	Door stops used to prop open doors in the women’s center clinic
+      4.	Staff on floor no. 4 west did not know the location of the chemo spill kit
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization should address each issue listed.
+      ?	The organization has addressed this concern.
+      EP 8.  The hospital controls access to and from areas it identifies as
+      security sensitive.
+    </RECOMMENDED>
+    <FINDING>
+      On review of separated/terminated employee information for the past 60 days, the following was
+      revealed:
+      1.	employees were not removed from access to the Pharmacy, ISM (Information System
+      Management) BCMA and CPRS systems
+      2.	Employee badges were not collected on discharge
+      3.	employees were not properly removed from the HR system.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Based on information and review of separated/terminated employees, the organization has
+      not controlled access to all information systems, clinical systems, and hospital areas. The
+      organization must develop a method to effectively collect and terminate employee access
+      upon termination or discharge.
+      ?	The organization has addressed this concern.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.03.05
+      The hospital maintains fire safety equipment and fire safety building features.
+      Note: This standard does not require hospitals to have the types of fire safety equipment and
+      building features described below. However, if these types of equipment or features exist
+      within the building, then the following maintenance, testing, and inspection requirements
+      apply.
+      EP 1.  At least quarterly, the hospital tests supervisory signal devices
+      (except valve tamper switches). The completion date of the tests is
+      documented.
+      Note: For additional guidance on performing tests, see NFPA 72, 1999
+      edition (Table 7-3.2).
+    </EP>
+    <FINDING>
+      During the review of fire component testing records, documentation of quarterly testing
+      for the fire pump supervisory signal was not provided. The organization has not
+      documented testing of the supervisor signal from the fire pump quarterly
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must test and verify operational of supervisory signals at least
+      quarterly. The fire pump supervisory signal must be tested and include "pump
+      running" and "pump failure" signal tests
+      EP 10.  For automatic sprinkler systems: Every quarter, the hospital
+      inspects all fire department water supply connections. The completion
+      dates of the inspections are documented.
+      Note: For additional guidance on performing tests, see NFPA 25, 1998
+      edition (Section 9-7.1).
+    </RECOMMENDED>
+    <FINDING>
+      CBOC Tulsa: quarterly inspection of the FDC (fire department connections) was not
+      completed and documented.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must inspect and document inspection of FDC at least quarterly
+      EP 13.  Every 6 months, the hospital inspects any automatic fire-
+      extinguishing systems in a kitchen. The completion dates of the
+      inspections are documented.
+      Note 1: Discharge of the fire-extinguishing systems is not required.
+      Note 2: For additional guidance on performing inspections, see NFPA
+      96, 1998 edition.
+    </RECOMMENDED>
+    <FINDING>
+      Semi-annual testing of the kitchen hood automatic extinguishing system was not completed
+      and documented. Staff indicated that testing was completed one time during 2010.
+      However, documentation of testing was not provided.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must ensure that al kitchen hood extinguisher devices are tested at
+      least semi-annually
+      EP 15.  At least monthly, the hospital inspects portable fire
+      extinguishers. The completion dates of the inspections are documented.
+      Note 1: There are many ways to document the inspections, such as using
+      bar-coding equipment, using check marks on a tag, or using an
+      inventory.
+      Note 2: Inspections involve a visual check for the presence and correct
+      type of extinguisher, broken parts, full charge, and ease of access.
+      Note 3: For additional guidance on inspection of fire extinguishers, see
+      NFPA 10, Standard for Portable Fire Extinguishers, 1998 edition
+      (Sections 1-6, 4-3, and 4-4).
+    </RECOMMENDED>
+    <FINDING>
+      Fire extinguishers in the facility were not checked since April 2009.
+      One fire extinguisher was out of date more than one year.
+      Fire extinguisher inspections were not completed at least every 30 days. Inspection tag
+      indicated inconsistencies in testing frequency
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must check each fire extinguisher at least every 30 days. The monthly
+      check must be documented.
+      ?	The organization must conduct monthly fire extinguisher testing at frequency not
+      greater than 30 days.
+      EP 19.  Every 12 months, the hospital tests automatic smoke-detection
+      shutdown devices for air-handling equipment. The completion date of
+      the tests is documented.
+      Note: For additional guidance on performing tests, see NFPA 90A,
+      Standard for the Installation of Air Conditioning and Ventilation
+      Systems, 1999 edition (Section 4-4.1).
+    </RECOMMENDED>
+    <FINDING>
+      CBOC Tulsa: AHIUs (air handler units) do not shut down on activation of duct detectors
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must provide required HVAC and AHU shut-down devices. AHU's
+      must shut-down on activation of duct detectors.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.01
+      The hospital manages risks associated with its utility systems.
+      EP 2.  The hospital maintains a written inventory of all operating
+      components of utility systems or maintains a written inventory of
+      selected operating components of utility systems based on risks for
+      infection, occupant needs, and systems critical to patient care (including
+      all life-support systems). The hospital evaluates new types of utility
+      components before initial use to determine whether they should be
+      included in the inventory. (See also EC.02.05.05, EPs 1, 3-5)
+    </EP>
+    <FINDING>
+      Utility components included in the program were not selected based on risk criteria listed in the
+      standard
+    </FINDING>
+    <RECOMMENDED>
+      ?	Every utility must be evaluated and included in the program based on risks. The organization
+      must develop a risk criteria based evaluation for evaluation of utility components and need
+      to include in program.
+      ?	This remains a concern.
+      EP 4.  The hospital identifies, in writing, the intervals for inspecting,
+      testing, and maintaining all operating components of the utility systems
+      on the inventory, based on criteria such as manufacturers'
+      recommendations, risk levels, or hospital experience. (See also
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.05, EPs 3-5)
+    </EP>
+    <FINDING>
+      The organization has developed written intervals for inspecting utilities. The intervals are
+      not based on risk levels (See EP 2) and hospital experience
+    </FINDING>
+    <RECOMMENDED>
+      ?	Once the hospital completes the risk assessment, intervals for PM (preventative
+      maintenance activates must be developed using manufacturers recommended guides,
+      risk level, and past experience for that utility. The organization must document (in
+      policy) how the frequency for testing was developed.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.07
+      The hospital inspects, tests, and maintains medical gas and vacuum systems.
+      Note: This standard does not require hospitals to have the medical gas and vacuum systems
+      discussed below. However, if a hospital has these types of systems, then the following
+      inspection, testing, and maintenance requirements apply.
+      EP 1.  At 30-day intervals, the hospital performs a functional test of
+      battery-powered lights required for egress for a minimum duration of 30
+      seconds. The completion date of the tests is documented.
+    </EP>
+    <FINDING>
+      At 30-day intervals, the hospital performs a functional test of battery-powered lights required for
+      egress for a minimum duration of 30 seconds. The completion date of the tests is documented.
+      The organization has a medical gas and vacuum system policy. However, the policy did not
+      define the testing frequency for components of the program.
+    </FINDING>
+    <RECOMMENDED>
+      ?	For the 11th street CBOC in Tulsa, the emergency egress lighting was not checked at least
+      monthly for 30 seconds.
+      ?	The organization must listed specific testing frequency for each component, including
+      but not limited to: manifold, zone valves, and in-room connection.
+      EP 2.  Every 12 months, the hospital either performs a functional test of
+      battery-powered lights required for egress for a duration of 1 1/2 hours;
+      or the hospital replaces all batteries every 12 months and, during
+      replacement, performs a random test of 10% of all batteries for 1 1/2
+      hours. The completion date of the tests is documented.
+    </RECOMMENDED>
+    <FINDING>
+      For the 11th street CBOC, the emergency egress lighting was not checked at least annually for 90
+      minutes, or the batteries replaced.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization should test batteries or;  replace batteries and test  10%  of all replaced
+      batteries.
+      ?	The organization has addressed this concern.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.09
+      The hospital inspects, tests, and maintains medical gas and vacuum systems.
+      Note: This standard does not require hospitals to have the medical gas and vacuum systems
+      discussed below. However, if a hospital has these types of systems, then the following
+      inspection, testing, and maintenance requirements apply.
+      EP 1.  In time frames defined by the hospital, the hospital inspects, tests,
+      and maintains critical components of piped medical gas systems,
+      including master signal panels, area alarms, automatic pressure switches,
+      shutoff valves, flexible connectors, and outlets. These activities are
+      documented. (See also EC.02.05.01, EP 3)
+    </EP>
+    <FINDING>
+      The organization has a medical gas and vacuum system policy. However, the policy did not
+      define the testing frequency for components of the program.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must listed specific testing frequency for each component, including
+      but not limited to: manifold, zone valves, and in-room connection.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.06.05
+      The hospital manages its environment during demolition, renovation, or new construction
+      to reduce risk to those in the organization.
+      EP 3.  The hospital takes action based on its assessment to minimize
+      risks during demolition, construction, or renovation.
+    </EP>
+    <FINDING>
+      During review of the OR renovation project, it was revealed that negative air pressure
+      from the entrance was not sufficient. The manometer indicated -0.005 inches water.
+    </FINDING>
+    <RECOMMENDED>
+      ?	In order to prevent dust exposure during construction activities, the organization must
+      provide adequate negative pressure. Recommended negative pressurization should be
+      maintained between 0.03 and 0.05 inches water.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.01
+      The hospital collects information to monitor conditions in the environment.
+      EP 15.  Every 12 months, the hospital evaluates each environment of
+      care management plan, including a review of the plan’s objectives,
+      scope, performance, and effectiveness. (See also EC.01.01.01, EPs 3-8;
+    </EP>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.03, EP 1)
+    </EP>
+    <FINDING>
+      Review of annual evaluation for environment of care plans revealed that effectives was not
+      consistently evaluated.  Effectiveness of the program was documented for only the
+      "medical equipment program".
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must ensure that each plan is evaluated for effectiveness
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.05
+      The hospital collects information to monitor conditions in the environment.
+      EP 3.  The hospital reports performance improvement results to those
+      responsible for analyzing environment of care issues. (See also
+    </EP>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.03, EP 1; EM.03.01.03, EP 15)
+    </EP>
+    <FINDING>
+      The organizations EOC committee and EOC group collect data for performance improvement.
+      However, the data is not reported in the EOC committee at least quarterly or discussed during
+      the year in the committee.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The consultant recommends that the EOC committee discuss PI measures at least quarterly.
+      These measures should be measurable and used to improve identified issues important to the
+      EOC group and leadership. Effectiveness of PI and results of improvement actions must be
+      documented in the committee and on the annual report.
+    </RECOMMENDED>
+  </DOC>
+</Documents>

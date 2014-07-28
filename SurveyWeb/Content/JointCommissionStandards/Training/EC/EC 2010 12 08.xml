@@ -1,0 +1,232 @@
+<Documents>
+  <DOC>
+      <EP>
+        EC.02.01.01
+        The hospital manages safety and security risks.
+        EP 3.  The hospital takes action to minimize or eliminate identified
+        safety and security risks in the physical environment.
+        </EP>
+      <FINDING>
+        During unit surveys the following safety issues were identified:
+        1.	OR staff were not familiar with the process to shut-off O2 during a fire or who is
+        responsible.
+        2.	The electrical panel (no. 13B-1) breakers located in the closet on the nursing unit was not
+        completely labeled.
+      </FINDING>
+      <RECOMMENDED>
+?	Staff must be educated on the organizations policy for oxygen shut-off during a fire.
+?	The identified panel components must be labeled to indicate what areas are served by 
+specific breakers. 
+EP 10.  When a security incident occurs, the hospital follows its 
+identified procedures.
+ </RECOMMENDED>
+     <FINDING>
+      During site visit at the Fort Smith CBOC, the staff were asked to activate panic alarm for
+      Behavior Health treatment areas.  Two staff members activated the portable alarms and
+      indicated that the alarm was silent and would alert security staff.  However, on activation the
+      portable device started to beep and security did not respond for some time.  Front reception staff
+      stated that they did not call security because they thought it was a drill.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must provide safe alerting system.  The system must be tested monthly and
+      provide silent alerting system for BH staff.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.01.03
+      The hospital prohibits smoking except in specific circumstances.
+      EP 1.  The hospital develops a written policy prohibiting smoking in all
+      buildings. Exceptions for patients in specific circumstances are defined.
+      </EP>
+    <FINDING>
+      During the survey, several patients were observed smoking on the ground of the facility.
+      The organizations smoke policy states that no smoking is allowed and doesn’t define how and
+      when patients are given permission to smoking.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The policy must detail the process for granting smoking privileges to patients.  The
+      organization must change policy to reflect this process.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.02.01
+      The hospital manages risks related to hazardous materials and waste.
+      EP 4.  The hospital implements its procedures in response to hazardous
+      material and waste spills or exposures.
+      </EP>
+    <FINDING>
+      During interview of employees in the Infusion Center, it was revealed that there had been a spill
+      of chemo fluids.  The spill was greater than 5 cc.  Staff in the Infusion Center responded as well
+      as EMS personnel.
+      Infusion Center and EMS staff have not been fit-tested on respiratory protection for spill
+      response greater than 5cc of Chemo as recommended in OSHA guidelines.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Response personnel must be fit-tested for appropriate respiratory protection.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.03.03
+      The hospital conducts fire drills.
+      EP 2.  The hospital conducts fire drills every 12 months from the date of
+      the last drill in all freestanding buildings classified as business
+      occupancies and in which patients are seen or treated.
+      Note: In leased or rented facilities, drills need be conducted only in
+      areas of the building that the hospital occupies.
+      </EP>
+    <FINDING>
+      At Fort Smith CBOC clinic, documentation of a fire drill/event was not completed at least
+      annually.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Fire drills or events must be documented and evaluated for effectiveness. The organization
+      must document an annual fire drill.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.03.05
+      The hospital maintains fire safety equipment and fire safety building features.
+      Note: This standard does not require hospitals to have the types of fire safety equipment and
+      building features described below. However, if these types of equipment or features exist
+      within the building, then the following maintenance, testing, and inspection requirements
+      apply.
+      EP 10.  For automatic sprinkler systems: Every quarter, the hospital
+      inspects all fire department water supply connections. The completion
+      dates of the inspections are documented.
+      Note: For additional guidance on performing tests, see NFPA 25, 1998
+      edition (Section 9-7.1).
+      </EP>
+    <FINDING>
+      Inspection of the FDC (fire department connection) in front of building no. 1 revealed that the
+      caps were missing.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must ensure that caps are in place on the FDC.
+      EP 11.  For automatic sprinkler systems: Every 12 months, the hospital
+      tests fire pumps under flow. The completion date of the tests is
+      documented.
+      Note: For additional guidance on performing tests, see NFPA 25, 1998
+      edition.
+  </RECOMMENDED><FINDING>
+        The organization did test its fire pumps annually.  However, the collected data was not plotted to
+        compare factory performance.
+      </FINDING><RECOMMENDED>
+        ?	The annual test data must be compared to the certified performance test curve.  The test data
+        must be plotted.  Variations in performance (generally 5% or greater) must be further
+        examined.
+        ?	The organization must refer to NFPA 25.
+      </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.04.03
+      The hospital inspects, tests, and maintains medical equipment.
+      EP 3.  The hospital inspects, tests, and maintains non–life-support
+      equipment identified on the medical equipment inventory. These
+      activities are documented. (See also EC.02.04.01, EPs 2-4 and
+      PC.02.01.11, EP 2)
+      </EP>
+    <FINDING>
+      In the Nuclear Medicine department, two (2) injection infusion devices were out of date for
+      preventative maintenance.  The label indicated that inspection was due October 2009.  The
+      devices were used for current patients.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must ensure that all equipment in included in the inventory and checked as
+      required.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.03
+      The hospital has a reliable emergency electrical power source.
+      The hospital provides emergency power for the following (EPs 1-6):
+       EP 2.  Exit route and exit sign illumination, as required by the Life
+      Safety Code.
+      </EP>
+    <FINDING>
+      Battery operated lighting was not provided in generator as required by NFPA 110 and 101.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must install battery operated lighting in the portable generator.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.05
+      The hospital inspects, tests, and maintains utility systems.
+      Note: At times, maintenance is performed by an external service. In these cases, hospitals are
+      not required to possess maintenance documentation but must have access to such
+      documentation during survey and as needed.
+      EP 1.  The hospital tests utility system components on the inventory
+      before initial use. The completion date of the tests is documented. (See
+      also EC.02.05.01, EP 2)
+      </EP>
+    <FINDING>
+      The organization has installed a portable emergency generator.  Observation of the generator
+      revealed that battery warmers were not installed as required to provide reliable operation and
+      starting (NFPA 110- for outdoor areas).
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must install a battery warmer on battery assembly for the outdoor
+      emergency generator.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.07
+      The hospital inspects, tests, and maintains emergency power systems.
+      Note: This standard does not require hospitals to have the types of emergency power
+      equipment discussed below. However, if these types of equipment exist within the building,
+      then the following maintenance, testing, and inspection requirements apply.
+      EP 1.  At 30-day intervals, the hospital performs a functional test of
+      battery-powered lights required for egress for a minimum duration of 30
+      seconds. The completion date of the tests is documented.
+      </EP>
+    <FINDING>
+      At the CBOC Fort Smith: Battery operated emergency egress lighting and exit signs were not
+      tested monthly for 30 seconds.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Battery operated components must be tested for operation at least monthly (30 seconds).
+      The organization must complete and document tests.
+      EP 2.  Every 12 months, the hospital either performs a functional test of
+      battery-powered lights required for egress for a duration of 1 1/2 hours;
+      or the hospital replaces all batteries every 12 months and, during
+      replacement, performs a random test of 10% of all batteries for 1 1/2
+      hours. The completion date of the tests is documented.
+  </RECOMMENDED><FINDING>
+        At the CBOC Fort Smith: Battery operated emergency egress lighting and exit signs were not
+        tested yearly for 90 minutes.
+      </FINDING><RECOMMENDED>
+        ?	Battery operated components must be tested for operation at least yearly (90 minutes). The
+        organization must complete and document tests.
+      </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.09
+      The hospital inspects, tests, and maintains medical gas and vacuum systems.
+      Note: This standard does not require hospitals to have the medical gas and vacuum systems
+      discussed below. However, if a hospital has these types of systems, then the following
+      inspection, testing, and maintenance requirements apply.
+      EP 1.  In time frames defined by the hospital, the hospital inspects, tests,
+      and maintains critical components of piped medical gas systems,
+      including master signal panels, area alarms, automatic pressure switches,
+      shutoff valves, flexible connectors, and outlets. These activities are
+      documented. (See also EC.02.05.01, EP 3)
+      </EP>
+    <FINDING>
+      The hospitals policy defines testing frequency as annually for oxygen/medical gas outlets and
+      zone shut off valves. Testing records indicate that this testing was not completed annually.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must review NFPA 99 requirements and complete required testing. Testing
+      of medical gas components must be completed as define in the policy.
+    </RECOMMENDED>
+  </DOC>
+</Documents>

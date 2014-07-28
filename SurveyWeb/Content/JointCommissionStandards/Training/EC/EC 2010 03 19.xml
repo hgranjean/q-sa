@@ -1,0 +1,143 @@
+<Documents>
+  <DOC>
+    <EP>
+      EC.02.01.01
+      The hospital manages safety and security risks.
+      EP 1.  The hospital identifies safety and security risks associated with the
+      environment of care.
+      Note: Risks are identified from internal sources such as ongoing
+      monitoring of the environment, results of root cause analyses, results of
+      annual proactive risk assessments of high-risk processes, and from
+      credible external sources such as Sentinel Event Alerts. (See also
+    </EP>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.01, EP 14)
+    </EP>
+    <FINDING>
+      During the survey and evaluation of conditions, the following safety issues were observed:
+      LTC:
+      1. Pictures on the hallway wall were not secured. Patients ambulating may displace picture.
+      2. Patient in the smoke lounge was asleep and had cigarette still in mouth (not lite, but burned
+      out)
+      3. e-cyliners in the gas storage room were not chained tightly and secured from potentially
+      falling over.
+    </FINDING>
+    <RECOMMENDED>
+      ?	All pictures should be secured to the wall to avoid patient falls and injury.
+      ?	Patients in the smoking lounge must be monitored for lite cigarettes.
+      ?	Chain and secure all tanks in storage room.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.02.01
+      The hospital manages risks related to hazardous materials and waste.
+      EP 1.  The hospital maintains a written, current inventory of hazardous
+      materials and waste that it uses, stores, or generates. The only materials
+      that need to be included on the inventory are those whose handling, use,
+      and storage are addressed by law and regulation. (See also IC.02.01.01,
+      EP 6; MM.01.01.03, EP 3)
+    </EP>
+    <FINDING>
+      A list of wastes was not created or maintained at the facility.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must create a list of it's waste by type. The list should be maintained in the
+      plan or other accessable area.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.03.05
+      The hospital maintains fire safety equipment and fire safety building features.
+      Note: This standard does not require hospitals to have the types of fire safety equipment and
+      building features described below. However, if these types of equipment or features exist
+      within the building, then the following maintenance, testing, and inspection requirements
+      apply.
+      EP 2.  Every 6 months, the hospital tests valve tamper switches and
+      water-flow devices. The completion date of the tests is documented.
+      Note: For additional guidance on performing tests, see NFPA 72, 1999
+      edition (Table 7-3.2).
+    </EP>
+    <FINDING>
+      In Jennings CBOC, the facility is fully sprinklered, detected, and alarmed. Visual and audible
+      devices are present. The facility systems have not been checked since 2006.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Please see each EP listed below. The facility must ensure that each listed component is
+      checked by the prescribed timeframe.
+      EP 9.  For automatic sprinkler systems: Every 12 months, the hospital
+      tests main drains at system low point or at all system risers. The
+      completion date of the tests is documented.
+      Note: For additional guidance on performing tests, see NFPA 25, 1998
+      edition (Section 9-2.6).
+      See EP 2
+      ?	See EP 2
+      EP 19.  Every 12 months, the hospital tests automatic smoke-detection
+      shutdown devices for air-handling equipment. The completion date of
+      the tests is documented.
+      Note: For additional guidance on performing tests, see NFPA 90A,
+      Standard for the Installation of Air Conditioning and Ventilation
+      Systems, 1999 edition (Section 4-4.1).
+    </RECOMMENDED>
+    <FINDING>
+      In Building no. 7, it was reported that the HVAC system will not shut down on activation of the
+      fire alarm.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must address this issue. In the  interium, this issue should be listed as a PFI
+      in the e-SOC.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.04.03
+      The hospital inspects, tests, and maintains medical equipment.
+      EP 2.  The hospital inspects, tests, and maintains all life-support
+      equipment. These activities are documented. (See also EC.02.04.01, EPs
+      3 and 4; PC.02.01.11, EP 2)
+    </EP>
+    <FINDING>
+      PM rate data presented dosent indicates the type of equipment (life support vs non-life support).
+      Based on presented data, the PM completion rate indicates that life support equipment is not
+      maintained 100% of time.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization should separate it's data to indicate life support and non-life support PM
+      completion rates.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.07
+      The hospital inspects, tests, and maintains emergency power systems.
+      Note: This standard does not require hospitals to have the types of emergency power
+      equipment discussed below. However, if these types of equipment exist within the building,
+      then the following maintenance, testing, and inspection requirements apply.
+      EP 1.  At 30-day intervals, the hospital performs a functional test of
+      battery-powered lights required for egress for a minimum duration of 30
+      seconds. The completion date of the tests is documented.
+    </EP>
+    <FINDING>
+      At the Layefatte CBOC, battery operated emergency egress EXIT signs were not checked at
+      least every 30 days for 30 seconds.
+    </FINDING>
+    <RECOMMENDED>
+      ?	All battery operated egress EXIT signs must be checked monthly.
+      EP 2.  Every 12 months, the hospital either performs a functional test of
+      battery-powered lights required for egress for duration of 1 1/2 hours; or
+      the hospital replaces all batteries every 12 months and, during
+      replacement, performs a random test of 10% of all batteries for 1 1/2
+      hours. The completion date of the tests is documented.
+    </RECOMMENDED>
+    <FINDING>
+      At the Layefatte CBOC, battery operated emergency egress EXIT signs were not checked
+      yearly
+    </FINDING>
+    <RECOMMENDED>
+      ?	Battery operated exit lights must be check for 90 minutes annually.
+    </RECOMMENDED>
+  </DOC>
+</Documents>

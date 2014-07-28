@@ -1,0 +1,377 @@
+<Documents>
+  <DOC>
+    <EP>
+      EC.02.01.01
+      The hospital manages safety and security risks.
+      EP 1.  The hospital identifies safety and security risks associated with the
+      environment of care that could affect patients, staff, and other people
+      coming to the hospital's facilities.
+      Note: Risks are identified from internal sources such as ongoing
+      monitoring of the environment, results of root cause analyses, results of
+      annual proactive risk assessments of high-risk processes, and from
+      credible external sources such as Sentinel Event Alerts. (See also
+    </EP>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.01, EP 14)
+    </EP>
+    <FINDING>
+      Safety concerns identified during the bulidng tour were very limited.  The organization has done
+      a nice job of reviewing and identifing common items on EC rounds.
+
+      In addition, a Global Risk Asssement was compelted by the safety officer.
+
+      SPECIFIC FINDINGS:
+      During the walk-through of the facilities and specifically building nos. 1 and 22, the following
+      safety issues were identified:
+      1.	Oxygen storage room for CLC (Room 22-1431) contain tanks in racks.  The rack with full
+      tanks was not readily identified as "full".
+      2.	Oxygen storage room for CLC (Room 22-1431): the door did not contain a sign stating
+      "Caution-Oxidizing Agent Storage" "No Smoking".
+      3.	Exhaust fan units location on the roof top were not labled "hazardous" or did not contain
+      similar warning information to warn staff and contractor of the inherent risk of exposure to
+      exhasut.  Observed for pharmacy chemo exhaust and laboratory chemical hood exhaust
+      systems.
+      4.	In the old ICU (new One Day Surgery) suite, the blanket warmer indicated the temperature
+      was above 150 degree F.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization has done a nice job of reviewing and identifing common items on EC
+      rounds.  A Global Risk Asssement was compelted by the safety officer and identified several
+      issues for improvement.  This practice should continue and include resolution of identified
+      risks through the safety committee.  Information pertaining the past SEA (Sentinel Event
+      Alerts) such as SEA no. 48 and 47 should be addressed in the committee and by means of
+      assessments.
+      ?	The organization should inspect all oxygen storage rooms and ensure that tank racks are
+      labeled "empty" or "full".  An appropriate sign must be place on the door stating information
+      listed in finding no. 2.
+      ?	Roof top exhaust fan units and discharge points must be labled as "warning-hazardous
+      exhaust" or similar warning.
+      ?	The organization must ensure that blanket warmer do not exceed maximum temperature.
+      ECRI changed its recommendations for cabinet blanket warmers in 2009.  Cabinet blanket
+      warmers should not be set above 130º F (54ºC). Ref: ECRI Institute. ECRI Institute revises
+      its recommendation for temperature limits on blanket warmers (hazard report). Health
+      Devices. July 2009; 38(7):  230-231.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.02.01
+      The hospital manages risks related to hazardous materials and waste.
+      EP 1.  The hospital maintains a written, current inventory of hazardous
+      materials and waste that it uses, stores, or generates. The only materials
+      that need to be included on the inventory are those whose handling, use,
+      and storage are addressed by law and regulation. (See also IC.02.01.01,
+      EP 6; MM.01.01.03, EP 3)
+    </EP>
+    <FINDING>
+      The organization has not developed a complete and accurate list of hazardous WASTES at the
+      facility.
+      The list must include pharmaceuticals and chemotherapeutic drugs.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The pharmacy and safety department must review the State of Michigan hazardous
+      medications list and determine which products they have. At a minimum, the following
+      actions are recommended:
+      a.	The organization must review its inventory and create a current list of watses.
+      b.	“Unused Hazardous Medications” must be identified and proper disposal practices
+      implemented.
+      EP 3.  The hospital has written procedures, including the use of
+      precautions and personal protective equipment, to follow in response to
+      hazardous material and waste spills or exposures.
+    </RECOMMENDED>
+    <FINDING>
+      During review of the chemo spill plan, it was revealed that the policy did not list the required
+      PPE (personal protective equipment) for responding to a spill.
+      The plan did not address recommended practice and protocols for responding to spills greater
+      than 5cc and the need for N-95 repiratory protection.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must review and update all spill plans. Appropriate PPE and proper
+      procedure for clean-up must be listed. Staff must be fit-tested on selected respiratory
+      protection.
+      ?	Please refer to the OSHA technical manual for control of exposures to hazardous drugs:
+      http://www.osha.gov/dts/osta/otm/otm_vi/otm_vi_2.html
+      EP 8.  The hospital minimizes risks associated with disposing of
+      hazardous medications. (See also MM.01.01.03, EPs 1-3)
+    </RECOMMENDED>
+    <FINDING>
+      The organiazation is currenly in progress of implementing a plan and procedure to address this
+      EP.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization should implement effective collection and disposl practices as soon as
+      possible. Once the practices have been formulated, the program elements must be included
+      in the Hazardous Materials and Waste plan.
+      EP 12.  The hospital labels hazardous materials and waste. Labels
+      identify the contents and hazard warnings.
+      Footnote: The Occupational Safety and Health Administration’s (OSHA)
+      Bloodborne Pathogens and Hazard Communications Standards and the
+      National Fire Protection Association (NFPA) provide details on labeling
+      requirements.
+    </RECOMMENDED>
+    <FINDING>
+      During evaluation of EMS closets, three (3) spray bottles used for chemical cleaner dispensing
+      were not labeled.
+      Product information was not listed or provided for identified spray bottles.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must ensure that all hazardous materials containers are properly labeled.
+      The label must contain the following:
+      a. Manufacturers name
+      b. Product name
+      c. An appropriate hazard warning.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.03.05
+      The hospital maintains fire safety equipment and fire safety building features.
+      Note: This standard does not require hospitals to have the types of fire safety equipment and
+      building features described below. However, if these types of equipment or features exist
+      within the building, then the following maintenance, testing, and inspection requirements
+      apply.
+      EP 3.  Every 12 months, the hospital tests duct detectors,
+      electromechanical releasing devices, heat detectors, manual fire alarm
+      boxes, and smoke detectors. The completion date of the tests is
+      documented.
+      Note: For additional guidance on performing tests, see NFPA 72, 1999
+      edition (Table 7-3.2).
+    </EP>
+    <FINDING>
+      For building nos. 1 and 22: Documentation provided during the review did not indicate the
+      number of magnetic held doors tested for each building.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Test documentation must indicate the number of electromechanical doors tested during
+      alarm activation and releasing for each building.
+      ?	PLEASE NOTE FOR ALL FIRE TEST RECORD:
+      ?	The organization must ensure that all testing records indicate the following items:
+      1. Name of test/activity, including number of devices tested, number passed, number failed.
+      2. Date completed.
+      3. Required frequency.
+      4. Name and contact information of person conducting the test.
+      5. NFPA standard.
+      6. Results or test.
+      7. Recommendations and follow-up if applicable.
+      EP 4.  Every 12 months, the hospital tests visual and audible fire alarms,
+      including speakers. The completion date of the tests is documented.
+      Note: For additional guidance on performing tests, see NFPA 72, 1999
+      edition (Table 7-3.2).
+    </RECOMMENDED>
+    <FINDING>
+      For building nos. 1 and 22: Documentation provided during the review did not indicate the
+      number of devices tested annually for each building.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Test documentation must indicate the number of audible and visual devices tested for each
+      building.
+      ?	PLEASE NOTE FOR ALL FIRE TEST RECORD:
+      ?	The organization must ensure that all testing records indicate the following items:
+      1. Name of test/activity, including number of devices tested, number passed, number failed.
+      2. Date completed.
+      3. Required frequency.
+      4. Name and contact information of person conducting the test.
+      5. NFPA standard.
+      6. Results or test.
+      7. Recommendations and follow-up if applicable.
+      EP 12.  Every 5 years, the hospital conducts water-flow tests for
+      standpipe systems. The completion date of the tests is documented.
+      Note: For additional guidance on performing tests, see NFPA 25, 1998
+      edition.
+    </RECOMMENDED>
+    <FINDING>
+      Review of the provided information and data indicated that this test was performed.
+      However, pressure was not recorded and it was undetermined if the testing results were
+      satisfactory.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must perform the 5-year water flow test and determine pressure and GPM.
+      ?	PLEASE Note: The VA has a written interpretation of understanding that this test is not
+      reqiured if they count on the fire service to provide pressure.  The organization should locate
+      this interpretation document and determine if the test is not required.
+      EP 13.  Every 6 months, the hospital inspects any automatic fire-
+      extinguishing systems in a kitchen. The completion dates of the
+      inspections are documented.
+      Note 1: Discharge of the fire-extinguishing systems is not required.
+      Note 2: For additional guidance on performing inspections, see NFPA
+      96, 1998 edition.
+    </RECOMMENDED>
+    <FINDING>
+      Over the last 12 month the hospital only completed one test.  The staff was able to provide
+      documentation for one test only.
+    </FINDING>
+    <RECOMMENDED>
+      ?	Please have the documentation available of completed testing for every six month.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.04.03
+      The hospital inspects, tests, and maintains medical equipment.
+      EP 3.  The hospital inspects, tests, and maintains non–life-support
+      equipment identified on the medical equipment inventory. These
+      activities are documented. (See also EC.02.04.01, EPs 2-4 and
+      PC.02.01.11, EP 2)
+    </EP>
+    <FINDING>
+      In the Claire CBOC, tags for two (2) pieces of medical equipment indicated that the PM
+      (preventative maintenace) was overdue.
+      The equipment was due for inspection in September 2011.  Equipment was identified as
+      Stimulator (sn. T1251) and a monitor (sn.1026051).
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must ensure that all equipment PM's are completed timely.
+      ?	These two items must be sent for service.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.01
+      The hospital manages risks associated with its utility systems.
+      EP 2.  The hospital maintains a written inventory of all operating
+      components of utility systems or maintains a written inventory of
+      selected operating components of utility systems based on risks for
+      infection, occupant needs, and systems critical to patient care (including
+      all life-support systems). The hospital evaluates new types of utility
+      components before initial use to determine whether they should be
+      included in the inventory. (See also EC.02.05.05, EPs 1, 3-5)
+    </EP>
+    <FINDING>
+      An inventory of utilities based on the hospitals inclusion criteria (see hospitals Environment of
+      Care Plan-Utitilites Management) was not created.
+      The hospital has a electronic PM and maintenance system.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must develop and maintain a complete utility inventory based on the
+      policies inclusion criteria.
+      ?	The inventory must be available for review.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.09
+      The hospital inspects, tests, and maintains medical gas and vacuum systems.
+      Note: This standard does not require hospitals to have the medical gas and vacuum systems
+      discussed below. However, if a hospital has these types of systems, then the following
+      inspection, testing, and maintenance requirements apply.
+      EP 1.  In time frames defined by the hospital, the hospital inspects, tests,
+      and maintains critical components of piped medical gas systems,
+      including master signal panels, area alarms, automatic pressure switches,
+      shutoff valves, flexible connectors, and outlets. These activities are
+      documented. (See also EC.02.05.01, EP 3)
+    </EP>
+    <FINDING>
+      The organization did not develop a written policy describing the components for testing,
+      frequency of testing, and reference to manufacturer and industry approved standards for medical
+      gas and vacuum systems.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must develop a written policy listing the elements of the medical gas
+      system and components for testing.
+      ?	The policy must contain the organization time frames for testing listed components (zone
+      shutoff valves, connections, outlets).
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.06.05
+      The hospital manages its environment during demolition, renovation, or new construction
+      to reduce risk to those in the organization.
+      EP 3.  The hospital takes action based on its assessment to minimize
+      risks during demolition, construction, or renovation.
+    </EP>
+    <FINDING>
+      During review of current construction project [HVAC upgrade] in building no. 1, on floor no. 4,
+      area FPB210- the ICRA (Infection Control Risk Assessment) calls for Class III precautions.
+      The following was observed:
+      1.	Negative air was provided, however indication and measurement of pressurization was
+      not provided.
+      2.	Sticky mats were not place at door exit.
+      3.	Above the ceiling space was not sealed and isolated from adjacent space.
+    </FINDING>
+    <RECOMMENDED>
+      1.	The organization ensure that industry accepted standards and the requirements for ICRA in
+      the current FPG (Facilities Planning Guide) for construciton of healthcare facilities, 2010 are
+      implemented.  This guide has been adopted by the Joint Commission.  The requirement for
+      Class III and IV precuastions is negaitve presurization of -0.03 "H2O (inches water) or
+      greater and direct monitoring.
+      2.	The organization must require negative pressurization monitoring to ensure proper pressure
+      for construction areas.
+      3.	Stick mats must be placed at entrance in order to remove dust from workers shoes.
+      4.	Above ceiling space must be sealed in order to provide appropriate barrier protection.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.01
+      The hospital collects information to monitor conditions in the environment.
+      EP 1.  The hospital establishes a process(es) for continually monitoring,
+      internally reporting, and investigating the following:
+      ?	Injuries to patients or others within the hospital’s facilities
+      ?	Occupational illnesses and staff injuries
+      ?	Incidents of damage to its property or the property of others
+      ?	Security incidents involving patients, staff, or others within its
+      facilities
+      ?	Hazardous materials and waste spills and exposures
+      ?	Fire safety management problems, deficiencies, and failures
+      ?	Medical or laboratory equipment management problems, failures,
+      and use errors
+      ?	Utility systems management problems, failures, or use errors
+      Note 1: All the incidents and issues listed above may be reported to staff
+      in quality assessment, improvement, or other functions. A summary of
+      such incidents may also be shared with the person designated to
+      coordinate safety management activities.
+      Note 2: Review of incident reports often requires that legal processes be
+      followed to preserve confidentiality. Opportunities to improve care,
+      treatment, or services, or to prevent similar incidents, are not lost as a
+      result of following the legal process.
+    </EP>
+    <FINDING>
+      The organization appears to have covered most items listed this EP.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The consultant recommends that items listed in this element are clearly identified in the EC
+      minutes and reported at least quarterly.
+      EP 15.  Every 12 months, the hospital evaluates each environment of
+      care management plan, including a review of the plan’s objectives,
+      scope, performance, and effectiveness. (See also EC.01.01.01, EPs 3-8;
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.03, EP 1)
+    </EP>
+    <FINDING>
+      The hospitals annual evaluation did not effectievly list scope and objective for each plan.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must list these items in the annual evaluation for each plan and identify if
+      the scope or objective have changed.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.03
+      The hospital analyzes identified environment of care issues.
+      EP 3.  Annually, representatives from clinical, administrative, and
+      support services recommend one or more priorities for improving the
+      environment of care.
+    </EP>
+    <FINDING>
+      The organizations EOC (Environment of Care) committee effectively collected performance
+      data.
+      However, discussion of PI measure data and selection of a “measure for improvement” by the
+      leadership was not completed.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organizations EOC committee must seek approval of one or more measures at least
+      annually.  The committee must send these specific measures based on the committees
+      selection of priorities identified during EOC activities.  Documentation of selection and
+      acceptance by the leadership must be documented at least annually, preferably during the
+      annual review process.
+      ?	Routine (quarterly) progress of selected PI measure must be reported and monitored.
+    </RECOMMENDED>
+  </DOC>
+</Documents>

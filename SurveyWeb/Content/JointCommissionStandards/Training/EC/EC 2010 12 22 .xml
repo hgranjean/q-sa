@@ -1,0 +1,211 @@
+<Documents>
+  <DOC>
+    <EP>
+      EC.02.02.01
+      The hospital manages risks related to hazardous materials and waste.
+      EP 1.  The hospital maintains a written, current inventory of hazardous
+      materials and waste that it uses, stores, or generates. The only materials
+      that need to be included on the inventory are those who are handling,
+      use, and storage is addressed by law and regulation. (See also
+      IC.02.01.01, EP 6; MM.01.01.03, EP 3)
+    </EP>
+    <FINDING>
+      The organization has not developed a complete list of hazardous waste at the facility.
+      Review of documents and the Hazardous Materials and Waste program revealed that the
+      organization has not identified pharmacy related wastes (including but not limited to,
+      chemotherapeutic drugs and pharmaceuticals.).
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must identify all hazardous wastes and construct a detailed list of types of
+      wastes.
+      ?	The list should be provided for review in the program or other document.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.03.05
+      The hospital maintains fire safety equipment and fire safety building features.
+      Note: This standard does not require hospitals to have the types of fire safety equipment and
+      building features described below. However, if these types of equipment or features exist
+      within the building, then the following maintenance, testing, and inspection requirements
+      apply.
+      EP 1.  At least quarterly, the hospital tests supervisory signal devices
+      (except valve tamper switches). The completion date of the tests is
+      documented.
+      Note: For additional guidance on performing tests, see NFPA 72, 1999
+      edition (Table 7-3.2).
+    </EP>
+    <FINDING>
+      During the review of fire component testing documents, documentation of quarterly testing for
+      the fire pump was not provided.  The organization has not tested and documented "pump on"
+      and "failure".
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must test and verify operational of supervisory signals at least quarterly.
+      ?	The fire pump supervisory signal must be tested and documented.
+      EP 3.  Every 12 months, the hospital tests duct detectors,
+      electromechanical releasing devices, heat detectors, manual fire alarm
+      boxes, and smoke detectors. The completion date of the tests is
+      documented.
+      Note: For additional guidance on performing tests, see NFPA 72, 1999
+      edition (Table 7-3.2).
+    </RECOMMENDED>
+    <FINDING>
+      The organization tests all components. However, a detailed list of devices was not maintained.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization should develop a complete inventory of tested devices.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.04.03
+      The hospital inspects, tests, and maintains medical equipment.
+      EP 1.  Before initial use of medical equipment on the medical equipment
+      inventory, the hospital performs safety, operational, and functional
+      checks. (See also EC.02.04.01, EP 2)
+
+    </EP>
+    <FINDING>
+      The hospital allows patient to bring in their own medical devices (such as C-PAP), but have no
+      process for testing "patient owned equipment".
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must develop a process for inspecting/testing patient owned equipment
+      brought in to the facility.
+      ?	A policy defining the process must be developed.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.01
+      The hospital manages risks associated with its utility systems.
+      EP 2.  The hospital maintains a written inventory of all operating
+      components of utility systems or maintains a written inventory of
+      selected operating components of utility systems based on risks for
+      infection, occupant needs, and systems critical to patient care (including
+      all life-support systems). The hospital evaluates new types of utility
+      components before initial use to determine whether they should be
+      included in the inventory. (See also EC.02.05.05, EPs 1, 3-5)
+    </EP>
+    <FINDING>
+      The hospitals maintained a list of utility and developed PM schedule.  The inventory and
+      maintenance schedule was not developed by risk based criteria evaluations.
+      The hospital EC plan for utilities states that risk criteria is used, but during the evaluation, the
+      method of evaluation was not provided.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must develop risk based evaluation criteria before use of equipment.
+      ?	The evaluation must be conducted prior to use on all new equipment installed in the utility
+      program
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.05
+      The hospital inspects, tests, and maintains utility systems.
+      Note: At times, maintenance is performed by an external service. In these cases, hospitals are
+      not required to possess maintenance documentation but must have access to such
+      documentation during survey and as needed.
+      EP 1.  The hospital tests utility system components on the inventory
+      before initial use. The completion date of the tests is documented. (See
+      also EC.02.05.01, EP 2)
+    </EP>
+    <FINDING>
+      The organization has installed a portable emergency generator.  Observation of the generator
+      revealed that battery warmers were not installed as required to provide reliable operation and
+      starting (NFPA 110- for outdoor areas).
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must install a battery warmer on battery assembly for the outdoor
+      emergency generator.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.09
+      The hospital inspects, tests, and maintains medical gas and vacuum systems.
+      Note: This standard does not require hospitals to have the medical gas and vacuum systems
+      discussed below. However, if a hospital has these types of systems, then the following
+      inspection, testing, and maintenance requirements apply.
+      EP 1.  In time frames defined by the hospital, the hospital inspects, tests,
+      and maintains critical components of piped medical gas systems,
+      including master signal panels, area alarms, automatic pressure switches,
+      shutoff valves, flexible connectors, and outlets. These activities are
+      documented. (See also EC.02.05.01, EP 3)
+    </EP>
+    <FINDING>
+      The hospitals policy did not define the testing frequency for oxygen/medical gas outlets and
+      zone shut off valves.  Testing records indicate that this testing was done periodically
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must review NFPA 99 requirements and complete required testing as
+      required.
+      ?	Testing frequency for all components of medical gas system must be defined in the
+      organizations medical gas policy.
+    </RECOMMENDED>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.06.05
+      The hospital manages its environment during demolition, renovation, or new construction
+      to reduce risk to those in the organization.
+      EP 2.  When planning for demolition, construction, or renovation, the
+      hospital conducts a preconstruction risk assessment for air quality
+      requirements, infection control, utility requirements, noise, vibration, and
+      other hazards that affect care, treatment, and services.
+      Note: See LS.01.02.01 for information on fire safety procedures to
+      implement during construction or renovation.
+
+
+
+
+
+    </EP>
+    <FINDING>
+      Review of one (1) construction project underway revealed that negative air was discontinued
+      and that the ICRA was outdated.
+      Review of one (1) construction project underway and in demo and rebuild stage revealed that
+      negative air pressurization monitoring was not conducted. It was unclear if negative air was
+      achieved.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must enhance it ICRA review process and monitoring.
+      ?	A current ICRA form must be in place for all projects.
+      ?	Negative air monitoring (manometers) must be in place to determine pressurization.
+      ?	Negative pressurization must be between 0.01 and 0.03 inches water ("H2O).
+      EP 3.  The hospital takes action based on its assessment to minimize
+      risks during demolition, construction, or renovation.
+    </RECOMMENDED>
+    <FINDING>
+        See EP 2
+      </FINDING><RECOMMENDED>
+        ?	See EP 2
+      </RECOMMENDED>
+    </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.01
+      The hospital collects information to monitor conditions in the environment.
+      EP 15.  Every 12 months, the hospital evaluates each environment of
+      care management plan, including a review of the plan’s objectives,
+      scope, performance, and effectiveness. (See also EC.01.01.01, EPs 3-8;
+    </EP>
+    </DOC>
+  <DOC>
+    <EP>
+      EC.04.01.03, EP 1)
+    </EP>
+    <FINDING>
+      Review of the annual evaluation of EC programs revealed that not all programs were evaluated
+      for effectiveness and scope.
+      The EC plans did not include performance indicators and quality improvement measures.
+    </FINDING>
+    <RECOMMENDED>
+      ?	The organization must develop a standard evaluation format and effectively report on each
+      plans objectives, scope, performance, and effectiveness.
+      ?	The organization should list each plans performance indicators and quality improvement (PI-
+      performance improvement) activities.
+    </RECOMMENDED>
+  </DOC>
+</Documents>

@@ -70,13 +70,14 @@ namespace SurveyWeb.Services
             if (classifier==null)
             {
                 classifier = new EPClassifier();
+                string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/");
 
-                string[] xmlClassFiles = System.IO.Directory.GetFiles(@"C:\Atum Technology Group\AQS\NLP\TrainingSets\EC\XML");
+                string[] xmlClassFiles = System.IO.Directory.GetFiles(appPath);
                 classifier.trainFromXML(xmlClassFiles);
 
-                string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
+                //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
 
-                classifier.trainFromChapter(chapterFileName);
+                //classifier.trainFromChapter(chapterFileName);
             }
 
             return classifier;

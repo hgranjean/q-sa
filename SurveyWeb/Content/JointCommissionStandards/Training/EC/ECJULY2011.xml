@@ -1,0 +1,58 @@
+<Documents>
+  <DOC>
+    <EP>
+      EC.02.01.01
+      The hospital manages safety and security risks.
+      Elements of Performance	Score
+      EP 3.  The hospital takes action to minimize or eliminate identified safety and security risks in the physical environment.
+    </EP>
+    <FINDING>
+      The staff could not articulate the acceptable temperature range for the blanket warmer in SICU.
+      Recommended Action(s)
+      ?	Determine manufacturer's recommendation and post it on the warmer to alert staff.
+    </FINDING>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.02.01
+      The hospital manages risks related to hazardous materials and waste.
+      Elements of Performance	Score
+      EP 6.  The hospital minimizes risks associated with selecting, handling, storing, transporting, using, and disposing of radioactive materials.
+    </EP>
+    <FINDING>
+      There was an abundance of lead shields in the OR's and anesthesia work room.  Some of them were not stored properly so as to prevent cracks and staff were unable to locate identifiers to ensure that every apron, etc. was checked as required.
+      Recommended Action(s)
+      ?	Consider a better tagging system to more easily identify annual monitoring.
+      ?	Evaluate the need for so many in this area.
+    </FINDING>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.01
+      The hospital manages risks associated with its utility systems.
+      Elements of Performance	Score
+      EP 6.  In areas designed to control airborne contaminants (such as biological agents, gases, fumes, dust), the ventilation system provides appropriate pressure relationships, air-exchange rates, and filtration efficiencies.
+      Note: Areas designed for control of airborne contaminants include spaces such as operating rooms, special procedure rooms, delivery rooms for patients diagnosed with or suspected of having airborne communicable diseases (for example, pulmonary or laryngeal tuberculosis), patients in "protective environment" rooms (for example, those receiving bone marrow transplants), laboratories, pharmacies, and sterile supply rooms. For further information, see Guidelines for Design and Construction of Hospitals and Health Care Facilities, 2001 edition, published by the American Institute of Architects.	00
+    </EP>
+    <FINDING>
+      The negative pressure for an isolation room on 5B 199 did not activate when the doors were closed.
+      Recommended Action(s)
+      ?	These rooms must be evaluated on a regular basis to ensure they are ready for use when needed.
+      ?	Engineering must notify nursing if a room is out of service due to air flow.
+    </FINDING>
+  </DOC>
+  <DOC>
+    <EP>
+      EC.02.05.09
+      The hospital inspects, tests, and maintains medical gas and vacuum systems.
+      Note: This standard does not require hospitals to have the medical gas and vacuum systems discussed below. However, if a hospital has these types of systems, then the following inspection, testing, and maintenance requirements apply.
+      Elements of Performance	Score
+      EP 3.  The hospital makes main supply valves and area shutoff valves for piped medical gas and vacuum systems accessible and clearly identifies what the valves control.	00
+    </EP>
+    <FINDING>
+      The shut off valves for medical gases in SICU were partially obstructed due to equipment.
+      Recommended Action(s)
+      ?	Relocate the equipment to allow free access.
+    </FINDING>
+  </DOC>
+</Documents>
