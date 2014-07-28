@@ -25,7 +25,7 @@ namespace SurveyWeb.Services
 
         private Dictionary<string, EPClassifier> ClassifierMap { get; set; }
 
-        internal static Models.StandardElementViewModel Classify(string observation)
+        internal Models.StandardElementViewModel Classify(string observation)
         {
             string observationClass = GetClassifier().Classify(observation);
 

@@ -22,7 +22,7 @@ namespace SurveyWeb.Controllers
             if (observation != null && observation.Length > 0)
             {
                 model.Observation = observation;
-                model = LearningServices.Classify(observation);
+                model = ServiceManager.GetService<LearningServices>().Classify(observation);
 
             }
 

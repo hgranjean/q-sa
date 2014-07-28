@@ -9,6 +9,8 @@ namespace SurveyWeb.Services
     {
         private static readonly PersistenceServices persistenceServices;
         private static readonly MailService MailService;
+        private static readonly LearningServices LearningService;
+        private static readonly StandardsManagementServices StandardsManagementService;
 
 
         static ServiceManager()
@@ -26,6 +28,14 @@ namespace SurveyWeb.Services
             else if (typeof (T) == typeof (MailService))
             {
                 return MailService as T;
+            }
+            else if (typeof(T) == typeof(LearningServices))
+            {
+                return LearningService as T;
+            }
+            else if (typeof(T) == typeof(StandardsManagementServices))
+            {
+                return StandardsManagementService as T;
             }
             return null;
         }
