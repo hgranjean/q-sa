@@ -38,7 +38,7 @@ namespace SurveyWeb.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("AtumSurveillanceContext", "AspNetUsers", "Id", "UserName", autoCreateTables: false);
+                    WebSecurity.InitializeDatabaseConnection("AtumSurveillanceContext", "AspNetUsers", "Id", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
