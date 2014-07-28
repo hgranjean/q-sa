@@ -462,9 +462,18 @@ namespace SurveyWeb.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-                ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
-                ViewBag.ShowTeamMemberContent = UserManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                try
+                {
+                    ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+                    ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
+                    ViewBag.ShowTeamMemberContent = UserManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                }
+                catch (Exception ex)
+                {
+                    Session.Abandon();
+
+                    RedirectToAction("Index", "Home");
+                }
             }
             
             return View();
