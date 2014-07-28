@@ -7,6 +7,9 @@ using Atum.Domain.SurveyManagement;
 
 namespace SurveyWeb.Models
 {
+    /// <summary>
+    /// TODO: Define Models per View
+    /// </summary>
     public class EventViewModel : ViewModelBase
     {
         public string Id { get; set; }

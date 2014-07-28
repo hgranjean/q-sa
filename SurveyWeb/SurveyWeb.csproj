@@ -605,6 +605,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />
+    <Folder Include="Views\SurveyAnalysis\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
