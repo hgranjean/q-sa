@@ -117,6 +117,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\AtumSurveillanceContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtumSurveillanceContext.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201402200556066_DbMigration1.cs" />
     <Compile Include="Migrations\201402200556066_DbMigration1.Designer.cs">
       <DependentUpon>201402200556066_DbMigration1.cs</DependentUpon>
@@ -170,6 +175,10 @@
     <None Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
     <None Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
     <None Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
+    <EntityDeploy Include="DataModel\AtumSurveillanceContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AtumSurveillanceContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

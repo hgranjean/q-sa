@@ -618,6 +618,7 @@
     <Content Include="Views\Standard\StandardElement.cshtml" />
     <Content Include="Views\Standard\PerformanceElement.cshtml" />
     <Content Include="Views\Learning\ObservationClassifier.cshtml" />
+    <Content Include="Views\Surveillance\_GreetingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

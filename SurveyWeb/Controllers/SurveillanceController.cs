@@ -99,34 +99,24 @@ namespace SurveyWeb.Controllers
 
         public ActionResult SurveySchedules()
         {
-            var surveys = SurveyViewModel.GetSurveys();
-
-            var userId = User.Identity.GetUserId();
-            var events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId);
-
-            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>()};
-            
-            foreach (var @event in events)
-            {   
-                var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
-
-                var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
-
-                if (survey != default(Survey))
-                {
-                    eventSurveys.Add(survey);    
-                }
-            }
+            var model = GetSurveySchedules(false);
 
             return View(model);
         }
 
-        public ActionResult PastDueSurveys()
+        private SurveysViewModel GetSurveySchedules(bool isPastDue)
         {
             var surveys = SurveyViewModel.GetSurveys();
 
             var userId = User.Identity.GetUserId();
-            var events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start <= DateTime.Now);
+
+            IEnumerable<EventUser> events = null;
+            if (isPastDue)
+            {
+                events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start <= DateTime.Now);
+            } else {
+                events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start >= DateTime.Now);
+            }            
 
             var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>() };
 
@@ -136,10 +126,33 @@ namespace SurveyWeb.Controllers
 
                 var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
 
-                eventSurveys.Add(survey);
+                if (survey != default(Survey))
+                {
+                    eventSurveys.Add(survey);
+                }
             }
+            return model;
+        }
+
+        public ActionResult SurveySchedulesPartial()
+        {
+            var model = GetSurveySchedules(false);
+
+            return PartialView("SurveySchedules", model);
+        }
+
+        public ActionResult PastDueSurveys()
+        {
+            var model = GetSurveySchedules(true);
 
             return View(model);
+        }
+
+        public ActionResult PastDueSurveysPartial()
+        {
+            var model = GetSurveySchedules(true);
+
+            return PartialView("PastDueSurveys", model);
         }
 
         public ActionResult DeleteSurvey(long id)
@@ -203,9 +216,23 @@ namespace SurveyWeb.Controllers
 
         public ActionResult CompletedSurveys()
         {
+            var model = GetCompletedSurveys();
+
+            return View(model);
+        }
+
+        public ActionResult CompletedSurveysPartial()
+        {
+            var model = GetCompletedSurveys();
+
+            return PartialView("CompletedSurveys", model);
+        }
+
+        private CompletedSurveyViewModel GetCompletedSurveys()
+        {
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var surveys = persistenceService.GetSurveys();
-            
+
             // Filtering out responses by user
             var userId = User.Identity.GetUserId();
             var responses = _dbContext.Responses.Where(m => m.UserId == userId).Select(m => m.Id);
@@ -219,8 +246,7 @@ namespace SurveyWeb.Controllers
             }
 
             var model = new CompletedSurveyViewModel(models);
-
-            return View(model);
+            return model;
         }
 
         public ActionResult ViewCompletedSurvey(string responseId)
@@ -787,6 +813,16 @@ namespace SurveyWeb.Controllers
             mailService.SendEmail("donotreply@" + baseUrl, email,
                                   "An event was assigned to you at " + baseUrl, template.ToString(), true, baseUrl);
             
+        }
+        public ActionResult GreetingPartial()
+        {
+            var userName = User.Identity.GetUserName();
+
+            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
+
+            var model = new PersonViewModel(user.Person) { UserId = user.Id };
+
+            return PartialView("_GreetingPartial", model);
         }
     }
 }
