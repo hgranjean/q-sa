@@ -10,6 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - @System.Configuration.ConfigurationManager.AppSettings["WhiteLabel"]</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/component.css", "~/Content/Demo.css", "~/Content/Normalize.css")
+    @Scripts.Render("~/Scripts/classie.js")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/aqs")
+    @Scripts.Render("~/bundles/bootstrap")
 </head>
     <body>
         
@@ -91,13 +96,6 @@
             <footer>
                 <p>&copy; @DateTime.Now.Year - Atum Solutions, LLC</p>
             </footer>
-        </div>
-        @Styles.Render("~/Content/component.css", "~/Content/Demo.css", "~/Content/Normalize.css")
-        @Scripts.Render("~/Scripts/classie.js")
-        @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/aqs")
-        @Scripts.Render("~/bundles/bootstrap")
-
-    
+        </div>        
     </body>
 </html>

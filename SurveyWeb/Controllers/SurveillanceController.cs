@@ -113,7 +113,7 @@ namespace SurveyWeb.Controllers
             IEnumerable<EventUser> events = null;
             if (isPastDue)
             {
-                events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start <= DateTime.Now);
+                events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start < DateTime.Now);
             } else {
                 events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start >= DateTime.Now);
             }            
@@ -126,10 +126,10 @@ namespace SurveyWeb.Controllers
 
                 var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
 
-                if (survey != default(Survey))
-                {
+                // if (survey != default(Survey))
+                //{
                     eventSurveys.Add(survey);
-                }
+                //}
             }
             return model;
         }
