@@ -3,10 +3,10 @@
 @using SurveyWeb.Models
 @model SurveysViewModel
 @{
-    ViewBag.Title = "My Audits";
+    ViewBag.Title = "Calendar";
 }
 
-<h2>My Audits</h2>
+<h2 style="background-color: lightgray;">Calendar</h2>
 
 @if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Manager") ||
 new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Member"))

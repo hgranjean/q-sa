@@ -126,10 +126,10 @@ namespace SurveyWeb.Controllers
 
                 var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
 
-                // if (survey != default(Survey))
-                //{
+                if (survey != default(Survey))
+                {
                     eventSurveys.Add(survey);
-                //}
+                }
             }
             return model;
         }

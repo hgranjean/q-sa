@@ -10,43 +10,68 @@
     ViewBag.Title = "Dashboard";
 }
 
+@Html.Action("GreetingPartial")
 
-<h2>Dashboard</h2>
- 
-@if (ViewBag.ShowAdminContent || ViewBag.ShowManagerContent)
-{
-    <div>
-        <div><h3>Manager Dashboard</h3></div>
-        <div>@Html.ActionLink("Calendar", "Calendar")</div>
-        <div>@Html.ActionLink("Templates", "Surveys")</div>
-        <div>@Html.ActionLink("Schedules", "SurveySchedules")</div>
-        <div>@Html.ActionLink("Completed Assessments", "CompletedSurveys")</div>
-        <div>@Html.ActionLink("Annual Schedule", "Surveys")</div>
-        <div>@Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</div>
-        <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
-        <div>@Html.ActionLink("Manage Standard", "Document", "Standard", new { id = 1 }, null)</div>
-        <div>@Html.ActionLink("Completion Grid", "CompletedSurveys")</div>
-        <div>@Html.ActionLink("Reports", "Index", "Report")</div>
-        <div>@Html.ActionLink("Invite  People", "InvitePeople", "Account")</div>
-        <div>@Html.ActionLink("Observation Classification", "ObservationClassifier","Learning")</div>
+<div id="wrapper">
+    <div style="display: table;">
+        <div style="display: table-row;">
+            <div style="display: table-cell;">
+                <div style="display: table; width: 100%">
+                    <div style="display: table-row;">
+                        <div style="display: table-cell; width: 50%">
+                            @Html.Action("PastDueSurveysPartial")</br>
+                            @Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</br>
+                            @Html.ActionLink("Follow-ups", "Surveys")</br>
+                        </div>
+                        <div style="display: table-cell; width: 50%">
+                            @Html.Action("SurveySchedulesPartial")</br>
+                            @Html.ActionLink("Calendar", "Calendar")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell;">
+                @Html.Action("CompletedSurveysPartial")</br>
+                @Html.ActionLink("Completed Assessments", "CompletedSurveys")</br>
+                @Html.ActionLink("Observation Classification", "ObservationClassifier", "Learning")</br>
+            </div>
+        </div>
+    </div>
+</div>
 
-    </div>
-}
-else if (ViewBag.ShowTeamMemberContent)
-{
-    <div>
-        <div><h3>Team Dashboard</h3></div>
-        <div>@Html.ActionLink("Calendar", "Calendar")</div>
-        <div>@Html.ActionLink("Scheduled", "SurveySchedules")</div>
-        <div>@Html.ActionLink("Completed Assessments", "Surveys")</div>
-        <div>@Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</div>
-        <div>@Html.ActionLink("Follow-ups", "Surveys")</div>
-    </div>
-}
-@if (!ViewBag.ShowAdminContent && !ViewBag.ShowTeamMemberContent && !ViewBag.ShowManagerContent)
-{
-    <div>
-        <div><h3>User Dashboard</h3></div>
-        <div>@Html.ActionLink("Contact your Administrator to get access to the system", "About", "Home")</div>
-    </div>
-}
+
+            @if (ViewBag.ShowAdminContent || ViewBag.ShowManagerContent)
+            {
+                <div>
+                    <!--<div><h3>Manager Dashboard</h3></div>-->
+                    <!--<div>@Html.ActionLink("Calendar", "Calendar")</div>-->
+                    <!--<div>@Html.ActionLink("Templates", "Surveys")</div>-->
+                    <!--<div>@Html.ActionLink("Schedules", "SurveySchedules")</div>-->
+                    <!--<div>@Html.ActionLink("Completed Assessments", "CompletedSurveys")</div>-->                    
+                    <!--<div>@Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</div>-->
+                    <!--<div>@Html.ActionLink("Follow-ups", "Surveys")</div>-->
+                    
+                    <!--<div>@Html.ActionLink("Reports", "Index", "Report")</div>-->
+                    
+                </div>
+            }
+            else if (ViewBag.ShowTeamMemberContent)
+            {
+                <div>
+                    <div><h3>Team Dashboard</h3></div>
+                    <!--<div>@Html.ActionLink("Calendar", "Calendar")</div>-->
+                    <!--<div>@Html.ActionLink("Scheduled", "SurveySchedules")</div>-->
+                    <!--<div>@Html.ActionLink("Completed Assessments", "Surveys")</div>-->
+                    <!--<div>@Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</div>-->
+                    <!--<div>@Html.ActionLink("Follow-ups", "Surveys")</div>-->
+                </div>
+            }
+            @if (!ViewBag.ShowAdminContent && !ViewBag.ShowTeamMemberContent && !ViewBag.ShowManagerContent)
+            {
+                <div>
+                    <div><h3>User Dashboard</h3></div>
+                    <div>@Html.ActionLink("Contact your Administrator to get access to the system", "About", "Home")</div>
+                </div>
+            }
