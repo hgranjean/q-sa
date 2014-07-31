@@ -3,7 +3,7 @@
 @using SurveyWeb.Models
 @model SurveysViewModel
 @{
-    ViewBag.Title = "My Audits";
+    ViewBag.Title = "My Tasks";
 }
 
 <h2 style="background-color: lightgray;">Tasks</h2>
@@ -19,7 +19,7 @@
             <div>
                 @foreach (var survey in Model.SurveysByDate[item])
                 {
-                    <div>@Html.ActionLink(survey.Title ?? "Survey" + survey.ID, "SurveyDelivery", new {surveyId = survey.ID})</div>
+                    <div>@Html.ActionLink(survey.Title ?? "Survey" + survey.ID, "SurveyDelivery", new {id = survey.ID})</div>
                 }
             </div>
         }

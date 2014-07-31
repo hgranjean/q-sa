@@ -26,3 +26,34 @@ new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Me
         
     </div>
 }
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<style>
+    #datepicker {
+        font-size: 0.8em;
+    }
+</style>
+@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+@Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+            onSelect: function (date) {                
+                $.ajax({
+                    type: 'GET',
+                    url: '/Surveillance/RedirectToCalendar',
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data);
+                        window.location.href = data;
+                    },                    
+                });                
+            }
+            });
+    });
+</script>
+
+<div>
+    <div id="datepicker"></div>
+</div>

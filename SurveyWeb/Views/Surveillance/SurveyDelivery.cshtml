@@ -34,7 +34,7 @@
   });
 </script>
 
-@using (Html.BeginForm("SaveSurveillance", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
