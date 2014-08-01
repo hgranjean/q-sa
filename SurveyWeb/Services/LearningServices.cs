@@ -27,6 +27,8 @@ namespace SurveyWeb.Services
 
         internal Models.StandardElementViewModel Classify(string observation)
         {
+            //TODO: Service should return model, not viewModel!
+
             string observationClass = GetClassifier().Classify(observation);
 
             Models.StandardElementViewModel retVal = new Models.StandardElementViewModel();

@@ -67,6 +67,13 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult ClassifyObservation(string observation)
         {
+            var model = new StandardElementViewModel();
+            if (!string.IsNullOrWhiteSpace(observation))
+            {
+                model.Observation = observation;
+                model = ServiceManager.GetService<LearningServices>().Classify(observation);
+
+            }
             return View();
         }
 
@@ -478,7 +485,9 @@ namespace SurveyWeb.Controllers
                 if (!String.IsNullOrWhiteSpace(observationText))
                 {
                     // Add observation
-                    questionGroup.Value.AddQuestion(observationText, QuestionType.SelectOne);
+                    var newQuestion = questionGroup.Value.AddQuestion(observationText, QuestionType.SelectOne);
+                    var classifyModel = ServiceManager.GetService<LearningServices>().Classify(observationText);
+                    newQuestion.TOCReference = classifyModel.StandardId;
                     isObservation = true;
                 }
             }

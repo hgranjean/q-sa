@@ -42,7 +42,7 @@ new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Me
             onSelect: function (date) {                
                 $.ajax({
                     type: 'POST',
-                    url: '/Surveillance/RedirectToCalendar',
+                    url: '@Url.Action("RedirectToCalendar")',
                     data: { date: date },
                     dataType: 'json',
                     success: function (data) {                        
@@ -53,6 +53,8 @@ new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Me
             });
     });
 </script>
+
+<div>&nbsp;</div>
 
 <div>
     <div id="datepicker"></div>
