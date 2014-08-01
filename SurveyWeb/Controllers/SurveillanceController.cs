@@ -237,6 +237,7 @@ namespace SurveyWeb.Controllers
             foreach (var response in responses)
             {
                 var tracerModel = persistenceService.LoadTracer(response);
+                LoadTracerReferenceData(tracerModel);
                 tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
                 models.Add(tracerModel);
             }
@@ -245,16 +246,16 @@ namespace SurveyWeb.Controllers
             return model;
         }
 
-        public ActionResult ViewCompletedSurvey(string responseId)
+        public ActionResult ViewCompletedSurvey(string id)
         {
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var availableResponses = persistenceService.GetResponses();
 
             foreach (var response in availableResponses)
             {
-                if (response.Contains(responseId))
+                if (response.Contains(id))
                 {   
-                    var model = persistenceService.LoadTracer(responseId);
+                    var model = persistenceService.LoadTracer(id);
 
                     LoadTracerReferenceData(model);
 
@@ -266,7 +267,7 @@ namespace SurveyWeb.Controllers
                 }
             }
 
-            throw new KeyNotFoundException("Response was not found - " + responseId);
+            throw new KeyNotFoundException("Response was not found - " + id);
         }
 
         private void LoadSurveyData(TracerViewModel model)
@@ -540,8 +541,10 @@ namespace SurveyWeb.Controllers
         {
             return View();
         }
-        public ActionResult RedirectToCalendar(DateTime date)
-        {
+        
+        [HttpPost]
+        public ActionResult RedirectToCalendar(string date)
+        {            
             return Json(Url.Action("Calendar"));
         }
         
@@ -757,7 +760,7 @@ namespace SurveyWeb.Controllers
         private void SendAssignedTaskEmail(AspNetUser user)
         {
             var email = user.Person.Email;
-            var baseUrl = Request.Url.Host == "localhost" ? "localhost.com" : EmailHelper.GetDomainNameFromHost(Request.Url.Host);
+            var baseUrl = EmailHelper.GetDomainNameFromHost(Request.Url.Host);
             var mailService = ServiceManager.GetService<MailService>();
             var template = AccountController.GetEmailTemplate(AccountController.EmailTemplate.EventAssigned);
             
@@ -774,6 +777,16 @@ namespace SurveyWeb.Controllers
             var model = new PersonViewModel(user.Person) { UserId = user.Id };
 
             return PartialView("_GreetingPartial", model);
+        }
+
+        public ActionResult Export()
+        {
+            return View();
+        }
+
+        public ActionResult Archive()
+        {
+            return View();
         }
     }
 }

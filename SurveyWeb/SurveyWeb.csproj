@@ -619,6 +619,9 @@
     <Content Include="Views\Standard\PerformanceElement.cshtml" />
     <Content Include="Views\Learning\ObservationClassifier.cshtml" />
     <Content Include="Views\Surveillance\_GreetingPartial.cshtml" />
+    <Content Include="Views\Report\PersonPerformance.cshtml" />
+    <Content Include="Views\Surveillance\Export.cshtml" />
+    <Content Include="Views\Surveillance\Archive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

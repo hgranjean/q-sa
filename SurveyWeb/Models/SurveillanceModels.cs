@@ -34,13 +34,34 @@ namespace SurveyWeb.Models
     // TODO: Split view model from data
     public class TracerViewModel    
     {
-        public Facility Facility { get; set; }
+        public Facility Facility
+        {
+            get
+            {
+                if (this.Facilities == null)
+                    return default(Facility);
+                
+                return this.Facilities.FirstOrDefault(m => m.ID == FacilityId);
+            }
+        }
+
+        public Person Surveyor
+        {
+            get
+            {
+                if (this.Surveyors == null)                
+                    return default(Person);                
+                
+                var surveyorId = SurveyorId.ToString("d");
+                return this.Surveyors.FirstOrDefault(m => m.Id == surveyorId);
+            }
+        }
+                    
         public int SurveyId { get; set; }
         private Survey Survey { get; set; }
 
         public TracerViewModel()
-        {
-            // Default ctor for saving
+        {            
         }
 
         public TracerViewModel(Survey survey)

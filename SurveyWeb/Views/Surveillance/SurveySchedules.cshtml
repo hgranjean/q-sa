@@ -41,13 +41,13 @@ new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Me
         $("#datepicker").datepicker({
             onSelect: function (date) {                
                 $.ajax({
-                    type: 'GET',
+                    type: 'POST',
                     url: '/Surveillance/RedirectToCalendar',
+                    data: { date: date },
                     dataType: 'json',
-                    success: function (data) {
-                        alert(data);
+                    success: function (data) {                        
                         window.location.href = data;
-                    },                    
+                    }                       
                 });                
             }
             });

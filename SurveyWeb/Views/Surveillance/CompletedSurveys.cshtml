@@ -25,10 +25,10 @@
                     @Html.ValueFor(m => completedSurvey.Facility.Name)
                 </div>
                 <div style="display: table-cell">
-                    @Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
+                    @Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { id = completedSurvey.ResponseId })
                 </div>
                 <div style="display: table-cell">
-                    &nbsp;
+                    @Html.ValueFor(m => completedSurvey.Surveyor.FullName)
                 </div>
                 <div style="display: table-cell">
                     &nbsp;
