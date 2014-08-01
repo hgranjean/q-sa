@@ -13,53 +13,92 @@ namespace Atum.Domain.NLP
     public class Tokenizer
     {
         private List<string> excludedWords;
+        private string _modelPath;// = @"C:\Atum Technology Group\Projects\englishparsing_net2_0_src\ToolsExample\Models\";
+        private OpenNLP.Tools.Tokenize.EnglishMaximumEntropyTokenizer mTokenizer;
+
+        private string[] TokenizeSentence(string sentence)
+        {
+            if (mTokenizer == null)
+            {
+                mTokenizer = new OpenNLP.Tools.Tokenize.EnglishMaximumEntropyTokenizer(_modelPath + "EnglishTok.nbin");
+            }
+
+            return mTokenizer.Tokenize(sentence);
+        }
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="excludedWords"></param>
-        public Tokenizer(List<string> excludedWords)
+        public Tokenizer(List<string> excludedWords, string modelPath)
         {
+            this._modelPath = modelPath;
             this.excludedWords = excludedWords;
         }
 
         internal string[] Tokenize(string observation)
         {
-            string[] retVal = null;
-            List<string> words = new List<string>();
 
             //remove numbers and punctuation
             observation = Regex.Replace(observation, "\\.|;|:|,|[0-9]|’", "");
 
-            //create collection of words
-            var wordCollection = Regex.Matches(observation, @"[\w]+");
+            string[] observationTokens = TokenizeSentence(observation);
+            string[] observationPOSTags = new WordPOS(this._modelPath).PosTagTokens(observationTokens);
+            int length = observationTokens.Length;
 
-            //calculate word frequencies
-            //var dict = new Dictionary<string, int>();
-            for (int i = 0; i < wordCollection.Count; i++)
+
+            string[] retVal = null;
+            List<string> words = new List<string>();
+
+            for (int i = 0; i < length; i++)
             {
-                string word = wordCollection[i].Value.ToLower();
+                string word = observationTokens[i];
+                string posTag = observationPOSTags[i];
 
                 PluralizationService ps = PluralizationService.CreateService(CultureInfo.GetCultureInfo("en-us"));
                 if (ps.IsPlural(word))
                 {
                     word = ps.Singularize(word);
                 }
-
-                bool excludedWord = isExcluded(word); ;
+                bool excludedWord = isExcluded(word,posTag); ;
 
                 if (!excludedWord) { words.Add(word); }
 
             }
+
+
+
+
+
+            ////create collection of words
+            //var wordCollection = Regex.Matches(observation, @"[\w]+");
+
+            ////calculate word frequencies
+            ////var dict = new Dictionary<string, int>();
+            //for (int i = 0; i < wordCollection.Count; i++)
+            //{
+            //    string word = wordCollection[i].Value.ToLower();
+
+            //    PluralizationService ps = PluralizationService.CreateService(CultureInfo.GetCultureInfo("en-us"));
+            //    if (ps.IsPlural(word))
+            //    {
+            //        word = ps.Singularize(word);
+            //    }
+
+            //    bool excludedWord = isExcluded(word); ;
+
+            //    if (!excludedWord) { words.Add(word); }
+
+            //}
             retVal = words.ToArray();
 
             return retVal;
         }
 
-        private bool isExcluded(string word)
+        private bool isExcluded(string word, string posTag)
         {
             bool retVal = excludedWords.Contains(word);
-            WordPOS.POS wPOS = WordPOS.WordPos(word);
+            WordPOS.POS wPOS = WordPOS.WordPos(posTag);
 
             switch (wPOS)
             {

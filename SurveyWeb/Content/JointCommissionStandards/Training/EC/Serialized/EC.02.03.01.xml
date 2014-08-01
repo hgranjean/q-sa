@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <WordFrequencySerializable>
+    <SerializableKVOfStringInt32>
+      <Key>blocked</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>egress</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>corridor</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>am</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>issue</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>mentioned</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>area</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>report</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+  </WordFrequencySerializable>
+  <Class>EC.02.03.01</Class>
+  <Text>
+      Blocked egress corridors are a serious issue mentioned in various areas of this report.
+    </Text>
+  <Words>
+    <string>blocked</string>
+    <string>egress</string>
+    <string>corridor</string>
+    <string>am</string>
+    <string>issue</string>
+    <string>mentioned</string>
+    <string>area</string>
+    <string>report</string>
+  </Words>
+  <HasWords>true</HasWords>
+</TrainingDocument>

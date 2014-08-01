@@ -20,9 +20,9 @@ namespace Atum.Domain.NLP.NaiveBayes
         public const string MATCH_EP_FINDING = "^<EP></EP><finding>";
         public static int counter = 1;
 
-        public EPClassifier()
+        public EPClassifier(string modelPath)
         {
-            this.Tokenizer = new Tokenizer(getExcludedWords());
+            this.Tokenizer = new Tokenizer(getExcludedWords(),modelPath);
             this.TrainingSet = new TrainingSet();
         }
 
@@ -62,7 +62,6 @@ namespace Atum.Domain.NLP.NaiveBayes
                 string StandardId = att.InnerText;
                 XmlNodeList virtualObservationNodes = LoadClassText(xmlDoc, StandardId);
 
-                string epIdPath = "id";
                 foreach (XmlNode item in virtualObservationNodes)
                 {
                     //XmlAttribute att = node.Attributes[epIdPath];
@@ -99,7 +98,7 @@ namespace Atum.Domain.NLP.NaiveBayes
                         docClass = Regex.Match(docClass, classIdPattern).Value;
 
                         TrainingDocument classDoc = new TrainingDocument(docClass, docText, this.Tokenizer);
-//                        saveToXML(classDoc);
+                        saveToXML(classDoc);
                         TrainingSet.Add(classDoc);
 
                     }
@@ -107,21 +106,23 @@ namespace Atum.Domain.NLP.NaiveBayes
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="classFiles"></param>
         public void trainFromXMLSerialized(string[] classFiles)
         {
 
             foreach (var trainingDocumentFileName in classFiles)
             {
-
                 TrainingDocument td = readFromXML(trainingDocumentFileName);
-                td.init();
-                TrainingDocument classDoc = new TrainingDocument(td.Class, td.Text, this.Tokenizer);
-                TrainingSet.Add(classDoc);
+                //td.init();
+                TrainingSet.Add(td);
+
+                //TrainingDocument classDoc = new TrainingDocument(td.Class, td.Text, this.Tokenizer);
+                //TrainingSet.Add(classDoc);
             }
         }
-
-
 
 
         private void saveToXML(TrainingDocument classDoc)
@@ -248,42 +249,6 @@ namespace Atum.Domain.NLP.NaiveBayes
             ClassificationProbalities curClassProb = null;
             ClassDocument observationDoc = new ClassDocument(observation, this.Tokenizer);
 
-
-            //string outFile = @"C:\Atum Technology Group\AQS\NLP\TrainingSets\ClassificationDetails" + counter++ + ".txt";
-            //using (System.IO.StreamWriter sw = new System.IO.StreamWriter(outFile))
-            //{
-                //foreach (var item in TrainingSet.TrainingDocuments)
-                //{
-                //    foreach (string word in observationDoc.Words)
-                //    {
-                //        decimal condProb = TrainingSet.ConditionalProbability(word, item.Class);
-                //        double logProb = Math.Log((double)condProb);
-                //        string itemClass = item.Class;
-                //        double prior = this.Priors()[item.Class];
-
-                //        if (logProbsByClass.ContainsKey(itemClass))
-                //        {
-                //            logProbsByClass[itemClass].AddLogProb(logProb);
-                //            curClassProb = logProbsByClass[itemClass];
-                //        }
-                //        else
-                //        {
-                //            ClassificationProbalities cprob = new ClassificationProbalities(itemClass, prior);
-                //            cprob.AddLogProb(logProb);
-                //            logProbsByClass.Add(itemClass, cprob);
-                //            curClassProb = cprob;
-
-                //            if (maxClassProb == null)
-                //            {
-                //                maxClassProb = cprob;
-                //            }
-                //        }
-
-                //        maxClassProb = (curClassProb.Probability > maxClassProb.Probability) ? curClassProb : maxClassProb;
-                        
-                //    }
-                    
-                //}
                 foreach (var classId in TrainingSet.TSetClasses)
                 {
                     foreach (string word in observationDoc.Words)
@@ -313,14 +278,6 @@ namespace Atum.Domain.NLP.NaiveBayes
                         maxClassProb = (curClassProb.Probability > maxClassProb.Probability) ? curClassProb : maxClassProb;
                     }
                 }
-            //    foreach (var item in logProbsByClass.Values)
-            //    {
-
-            //        sw.WriteLine("Class:{0} Prior: {1} Probality: {2}", item.Class, item.Prior, item.Probability);
-
-            //    }
-            //    sw.WriteLine("maxClassProb:{0}", maxClassProb.Probability);
-            //}
 
             return getMaxtClass(logProbsByClass);
         }

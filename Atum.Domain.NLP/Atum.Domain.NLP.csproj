@@ -11,6 +11,8 @@
     <AssemblyName>Atum.Domain.NLP</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="stanford-postagger">
+      <HintPath>..\..\..\..\WordPOSConsoleApp\packages\Stanford.NLP.POSTagger.3.4.0.0\lib\stanford-postagger.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +48,7 @@
     <Compile Include="Domain\NLP\NaiveBayes\ClassDocument.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\ClassificationProbalities.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\EPClassifier.cs" />
+    <Compile Include="Domain\NLP\NaiveBayes\SerializableKV.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\TrainingDocument.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\TrainingSet.cs" />
     <Compile Include="Domain\NLP\Tokenizer.cs" />
@@ -53,8 +56,27 @@
     <Compile Include="Domain\NLP\WordPOS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{8b96b61d-6ddd-44f0-8418-889acbaaa097}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNLP\OpenNLP.csproj">
+      <Project>{b70185df-81fd-4417-914f-7c90e65e7d9f}</Project>
+      <Name>OpenNLP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

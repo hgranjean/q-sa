@@ -65,19 +65,31 @@ namespace SurveyWeb.Services
         }
 
         static EPClassifier classifier;
+        /// <summary>
+        /// TODO: Add Option to 
+        /// </summary>
+        /// <returns></returns>
         private static EPClassifier GetClassifier()
         {
             if (classifier==null)
             {
-                classifier = new EPClassifier();
+             
                 string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/");
+                string modelPath = HttpContext.Current.Server.MapPath("~/OpenNLP/Models/");
+                classifier = new EPClassifier(modelPath);
 
                 string[] xmlClassFiles = System.IO.Directory.GetFiles(appPath);
-                classifier.trainFromXML(xmlClassFiles);
+                //classifier.trainFromXML(xmlClassFiles);
 
                 //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
 
                 //classifier.trainFromChapter(chapterFileName);
+
+                appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
+                xmlClassFiles = System.IO.Directory.GetFiles(appPath);
+                
+                classifier.trainFromXMLSerialized(xmlClassFiles);
+
             }
 
             return classifier;

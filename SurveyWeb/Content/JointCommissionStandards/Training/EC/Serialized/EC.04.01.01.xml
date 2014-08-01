@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <WordFrequencySerializable>
+    <SerializableKVOfStringInt32>
+      <Key>organization</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>appear</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>covered</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>most</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>item</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>listed</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+  </WordFrequencySerializable>
+  <Class>EC.04.01.01</Class>
+  <Text>
+      The organization appears to have covered most items listed this EP.
+    </Text>
+  <Words>
+    <string>organization</string>
+    <string>appear</string>
+    <string>covered</string>
+    <string>most</string>
+    <string>item</string>
+    <string>listed</string>
+  </Words>
+  <HasWords>true</HasWords>
+</TrainingDocument>
