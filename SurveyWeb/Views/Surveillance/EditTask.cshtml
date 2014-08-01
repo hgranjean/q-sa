@@ -1,9 +1,9 @@
-﻿@model SurveyWeb.Models.EventViewModel
+﻿@model SurveyWeb.Models.TaskViewModel
 @{
-    ViewBag.Title = "Edit Event";
+    ViewBag.Title = "Edit Task";
 }
 
-<h2>Edit Event</h2>
+<h2>Edit Task</h2>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
@@ -32,13 +32,13 @@
   });
 </script>
 
-@using (Html.BeginForm("EditEvent", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
+@using (Html.BeginForm("EditTask", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Event Info</legend>
+        <legend>Task Info</legend>
 
         @Html.HiddenFor(m => m.Id)
 

@@ -23,7 +23,7 @@
         
             // US Holidays
             // events: 'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic',
-            events: { url: 'GetEvents?start=1&end=2' },
+            events: { url: 'GetTasks?start=1&end=2' },
 
             eventClick: function (event) {
                 // opens events in a popup window
@@ -67,6 +67,6 @@
 
 <h2>Calendar</h2>
 
-@Html.ActionLink("Create event", "CreateEvent", "Surveillance")
+@Html.ActionLink("Create task", "CreateTask", "Surveillance")
 
 <div id="calendar"></div>

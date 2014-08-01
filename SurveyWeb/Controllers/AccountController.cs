@@ -304,9 +304,6 @@ namespace SurveyWeb.Controllers
 
             return View();
         }
-
-
-
         //
         // POST: /Account/Manage
         [HttpPost]

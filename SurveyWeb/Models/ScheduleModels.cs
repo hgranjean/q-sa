@@ -10,7 +10,7 @@ namespace SurveyWeb.Models
     /// <summary>
     /// TODO: Define Models per View
     /// </summary>
-    public class EventViewModel : ViewModelBase
+    public class TaskViewModel : ViewModelBase
     {
         public string Id { get; set; }
 
@@ -39,11 +39,11 @@ namespace SurveyWeb.Models
         [Display(Name = "Survey")]
         public string SurveyId { get; set; }
         
-        public EventViewModel()
+        public TaskViewModel()
         {
         }
 
-        public EventViewModel(Event model)
+        public TaskViewModel(Event model)
         {
             Id = model.Id;
             Title = model.Title;

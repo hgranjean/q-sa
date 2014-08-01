@@ -4,14 +4,15 @@
     ViewBag.Title = "Completed surveys";
 }
 
-<h2>Completed surveys</h2>
+<h2 style="background-color: lightgray;">My observations</h2>
     
     <div style="display: table; table-layout: fixed; width: 900px">
         <div style="display: table-row">
-            <div style="display: table-cell">Audit Date</div>
-            <div style="display: table-cell">Title</div>            
-            <div style="display: table-cell">Score</div>
-            <div style="display: table-cell">Completed</div>
+            <div style="display: table-cell">Date</div>
+            <div style="display: table-cell">Department</div>
+            <div style="display: table-cell">Observation</div>            
+            <div style="display: table-cell">Assigned To</div>
+            <div style="display: table-cell">Photo</div>
             <div style="display: table-cell">&nbsp;</div>
         </div>
         @foreach (var completedSurvey in Model.CompletedSurveys)
@@ -20,6 +21,9 @@
                 <div style="display: table-cell">
                     @Html.ValueFor(m => completedSurvey.SurveyDate)
                 </div>                
+                <div style="display: table-cell">
+                    @Html.ValueFor(m => completedSurvey.Facility.Name)
+                </div>
                 <div style="display: table-cell">
                     @Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
                 </div>

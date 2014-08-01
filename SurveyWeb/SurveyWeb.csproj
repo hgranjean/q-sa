@@ -625,8 +625,8 @@
     <Content Include="Views\Survey\DeleteSurvey.cshtml" />
     <Content Include="Views\Survey\DeleteQuestionGroup.cshtml" />
     <Content Include="Views\Surveillance\Calendar.cshtml" />
-    <Content Include="Views\Surveillance\EditEvent.cshtml" />
-    <Content Include="Views\Surveillance\CreateEvent.cshtml" />
+    <Content Include="Views\Surveillance\EditTask.cshtml" />
+    <Content Include="Views\Surveillance\CreateTask.cshtml" />
     <Content Include="Views\Standard\Document.cshtml" />
     <Content Include="Views\Standard\Content.cshtml" />
     <Content Include="Views\Standard\Chapter.cshtml" />
@@ -646,6 +646,7 @@
     <Content Include="Views\Standard\StandardElement.cshtml" />
     <Content Include="Views\Standard\PerformanceElement.cshtml" />
     <Content Include="Views\Learning\ObservationClassifier.cshtml" />
+    <Content Include="Views\Surveillance\_GreetingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

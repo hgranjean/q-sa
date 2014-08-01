@@ -34,12 +34,12 @@
   });
 </script>
 
-@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
+@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     @Html.HiddenFor(m => m.SurveyId)
-
+    
     <fieldset>
         <legend>Surveillance</legend>
         <div id="tracerHeader" style="display:table">
