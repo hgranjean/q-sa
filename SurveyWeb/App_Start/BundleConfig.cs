@@ -13,7 +13,9 @@ namespace SurveyWeb
 
             bundles.Add(new ScriptBundle("~/bundles/aqs").Include(
                         "~/Scripts/AQS/aqs.js",
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-1.11.0.js", // "~/Scripts/jquery-{version}.js"
+                        "~/Scripts/jquery-ui-1.11.0.js" 
+                        ));
 
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
@@ -32,8 +34,12 @@ namespace SurveyWeb
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
-            
+                      "~/Content/site.css",
+                      "~/Content/component.css",
+                      "~/Content/Demo.css",
+                      "~/Content/Normalize.css",
+                      "~/Content/jquery-ui.css"));            
+                      
             bundles.Add(new ScriptBundle("~/bundles/rgraph").Include(
                     "~/Scripts/rgraph/libraries/RGraph.common.core.js",
                     "~/Scripts/rgraph/libraries/RGraph.common.dynamic.js",
@@ -41,6 +47,12 @@ namespace SurveyWeb
                     "~/Scripts/rgraph/libraries/RGraph.drawing.marker1.js",
                     "~/Scripts/rgraph/libraries/RGraph.bar.js",
                     "~/Scripts/rgraph/libraries/RGraph.gantt.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dropdown").Include(
+                      "~/Content/dropit.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dropdown").Include(
+                      "~/Scripts/dropit.js"));
         }
     }
 }

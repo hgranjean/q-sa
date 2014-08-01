@@ -346,3 +346,7 @@ div label input {
     color:#333;
 }
 
+.section-header {
+    background-color: lightgray;
+    border-radius: 3px;
+}

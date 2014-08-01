@@ -18,14 +18,14 @@
             <div style="display: table-cell;">
                 <div style="display: table; width: 100%">
                     <div style="display: table-row;">
-                        <div style="display: table-cell; width: 50%">
+                        <div style="display: table-cell; width: 50%; padding: 2px;">
                             @Html.Action("PastDueSurveysPartial")</br>
                             @* Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</br> *@
-                            @Html.ActionLink("Follow-ups", "Surveys")</br>
+                            @Html.ActionLink("Follow-ups", "Surveys", null, new { @class = "btn btn-default" })</br>
                         </div>
                         <div style="display: table-cell; width: 50%">
                             @Html.Action("SurveySchedulesPartial")</br>
-                            @Html.ActionLink("View Full Calendar", "Calendar")
+                            @Html.ActionLink("View Full Calendar", "Calendar", null, new { @class = "btn btn-default" })
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
         <div style="display: table-row;">
             <div style="display: table-cell;">
                 @Html.Action("CompletedSurveysPartial")</br>
-                @Html.ActionLink("View All Completed Assessments", "CompletedSurveys")</br>                
+                @Html.ActionLink("View All", "CompletedSurveys", null, new { @class = "btn btn-default" })</br>                
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
             else if (ViewBag.ShowTeamMemberContent)
             {
                 <div>
-                    <div><h3>Team Dashboard</h3></div>
+                    <!--<div><h3>Team Dashboard</h3></div>-->
                     <!--<div>@Html.ActionLink("Calendar", "Calendar")</div>-->
                     <!--<div>@Html.ActionLink("Scheduled", "SurveySchedules")</div>-->
                     <!--<div>@Html.ActionLink("Completed Assessments", "Surveys")</div>-->
