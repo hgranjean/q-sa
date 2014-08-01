@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Word = Microsoft.Office.Interop.Word;
+//using Word = Microsoft.Office.Interop.Word;
 
 namespace Atum.Domain.NLP.Domain.NLP
 {
@@ -24,32 +24,54 @@ namespace Atum.Domain.NLP.Domain.NLP
 
         }
 
-        public WordPOS()
+        public WordPOS(string modelPath)
         {
+            _modelPath = modelPath;
         }
 
 
-        static Word.Application WordApp = new Word.Application();
+        //static Word.Application WordApp = new Word.Application();
 
-        static public WordPOS.POS WordPos(string word)
+        static public WordPOS.POS WordPos(string posTag)
         {
             WordPOS.POS retVal = WordPOS.POS.Other;
-            var synInfo = WordApp.SynonymInfo[word, Word.WdLanguageID.wdEnglishUS];
-
-            if (synInfo.Found && synInfo.MeaningCount > 0)
+            if (posTag.StartsWith("NN"))
             {
-                var synInfoMeaningList = synInfo.MeaningList as Array;
-                var synInfoPartsOfSpeechList = synInfo.PartOfSpeechList as Array;
-
-                retVal = (synInfo.MeaningCount > 0) ? (WordPOS.POS)synInfoPartsOfSpeechList.GetValue(1) : WordPOS.POS.Other;
+                retVal = POS.Noun;
             }
-
+            else if (posTag.StartsWith("JJ"))
+            {
+                retVal = POS.Adjective;
+            }
+            else if (posTag.StartsWith("VB"))
+            {
+                retVal = POS.Verb;
+            }
+            else if (posTag.StartsWith("RB"))
+            {
+                retVal = POS.Adverb;
+            }
             return retVal;
         }
 
+
+        private string _modelPath;
+        private OpenNLP.Tools.PosTagger.EnglishMaximumEntropyPosTagger mPosTagger;
+        public string[] PosTagTokens(string[] tokens)
+        {
+            if (mPosTagger == null)
+            {
+                mPosTagger = new OpenNLP.Tools.PosTagger.EnglishMaximumEntropyPosTagger(_modelPath + "EnglishPOS.nbin", _modelPath + @"\Parser\tagdict");
+            }
+
+            return mPosTagger.Tag(tokens);
+        }
+        
+        
+        
         public void Dispose()
         {
-            ((Word._Application)WordApp).Quit();
+            //((Word._Application)WordApp).Quit();
         }
     }
 }

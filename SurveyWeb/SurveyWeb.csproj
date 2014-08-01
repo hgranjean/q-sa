@@ -32,6 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -67,6 +68,9 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -299,6 +303,26 @@
     <Content Include="Content\JointCommissionStandards\Training\EC\EC 2013 07 03.xml" />
     <Content Include="Content\JointCommissionStandards\Training\EC\ECJULY2011.xml" />
     <Content Include="Content\JointCommissionStandards\Training\EC\EC_out.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.01.01.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.01.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.01.03.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.02.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.03.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.03.03.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.03.05.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.04.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.04.03.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.05.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.05.03.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.05.05.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.05.07.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.05.09.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.06.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.02.06.05.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.03.01.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.04.01.01.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.04.01.03.xml" />
+    <Content Include="Content\JointCommissionStandards\Training\EC\Serialized\EC.04.01.05.xml" />
     <Content Include="Content\JointCommissionStandards\WT_out.xml" />
     <Content Include="Content\menu4.gif" />
     <Content Include="Content\normalize.css" />
@@ -383,6 +407,10 @@
     <Content Include="Content\ecoicons\ecoicons.ttf" />
     <Content Include="Content\ecoicons\ecoicons.woff" />
     <Content Include="Content\codropicons\.DS_Store" />
+    <Content Include="OpenNLP\Models\EnglishPOS.nbin" />
+    <Content Include="OpenNLP\Models\EnglishSD.nbin" />
+    <Content Include="OpenNLP\Models\EnglishTok.nbin" />
+    <Content Include="OpenNLP\Models\Parser\tagdict" />
     <None Include="Properties\PublishProfiles\aqspartners.com - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\aqspartners.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\consetconsulting.pubxml" />

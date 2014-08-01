@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Atum.Domain.NLP.NaiveBayes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Atum.Domain.NLP.Domain.NLP.NaiveBayes
+namespace Atum.Domain.NLP.NaiveBayes
 {
     public class TrainingSet
     {

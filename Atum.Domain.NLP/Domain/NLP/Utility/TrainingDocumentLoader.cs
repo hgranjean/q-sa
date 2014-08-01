@@ -1,4 +1,4 @@
-﻿using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
+﻿using Atum.Domain.NLP.NaiveBayes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Atum.Domain.NLP.Domain.NLP.Utility
+namespace Atum.Domain.NLP.Utility
 {
     public class TrainingDocumentLoader
     {

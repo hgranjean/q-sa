@@ -14,7 +14,7 @@ namespace Atum.Domain.Test.NLP
         [TestMethod]
         public void TestMethod1()
         {
-            var classifier = new EPClassifier();
+ //           var classifier = new EPClassifier();
             // classifier.trainFromXML();
 
             Assert.Fail("Not implemented.");

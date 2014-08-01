@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <WordFrequencySerializable>
+    <SerializableKVOfStringInt32>
+      <Key>physician</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>resident</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>participation</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>annual</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>training</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>include</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>environment</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>care</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>unsatisfactory</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>rate</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>low</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>range</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+  </WordFrequencySerializable>
+  <Class>EC.03.01.01</Class>
+  <Text>
+      Physician and Resident participation in Annual Stafety Training, which includes environment of
+      care training, is unsatisfactory.
+      Rates for Physicians were in the low 50% range and 0% for Residents.
+    </Text>
+  <Words>
+    <string>physician</string>
+    <string>resident</string>
+    <string>participation</string>
+    <string>annual</string>
+    <string>training</string>
+    <string>include</string>
+    <string>environment</string>
+    <string>care</string>
+    <string>training</string>
+    <string>unsatisfactory</string>
+    <string>rate</string>
+    <string>physician</string>
+    <string>low</string>
+    <string>range</string>
+    <string>resident</string>
+  </Words>
+  <HasWords>true</HasWords>
+</TrainingDocument>

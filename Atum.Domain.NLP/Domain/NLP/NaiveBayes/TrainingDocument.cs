@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Atum.Domain.NLP.Domain.NLP.NaiveBayes
+namespace Atum.Domain.NLP.NaiveBayes
 {
     /// <summary>
     /// Represent a Training Document in a Training Set
@@ -60,9 +61,31 @@ namespace Atum.Domain.NLP.Domain.NLP.NaiveBayes
 
             return retVal;
         }
-
+        //TODO: Investigate Serializable Dictionary. See Survey
         [XmlIgnore]
         public Dictionary<string, int> WordFrequency { get; set; }
+
+        public SerializableKV<string, int>[] WordFrequencySerializable
+        {
+            get
+            {
+                var list = new List<SerializableKV<string, int>>();
+                if (WordFrequency != null)
+                {
+                    list.AddRange(WordFrequency.Keys.Select(key => new SerializableKV<string, int>() { Key = key, Value = WordFrequency[key] }));
+                }
+                return list.ToArray();
+            }
+            set
+            {
+                WordFrequency = new Dictionary<string,int>();
+                foreach (var item in value)
+                {
+                    WordFrequency.Add(item.Key, item.Value);
+                }
+            }
+        }
+        
         public string Class { get; set; }
         public string Text { get; set; }
         public List<string> Words { get; set; }

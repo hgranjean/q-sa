@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <WordFrequencySerializable>
+    <SerializableKVOfStringInt32>
+      <Key>see</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+  </WordFrequencySerializable>
+  <Class>EC.02.06.05</Class>
+  <Text>See EP 3.</Text>
+  <Words>
+    <string>see</string>
+  </Words>
+  <HasWords>true</HasWords>
+</TrainingDocument>
