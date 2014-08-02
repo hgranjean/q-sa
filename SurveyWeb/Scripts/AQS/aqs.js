@@ -17,6 +17,7 @@
         $('#observationText').focusout(function () {
             $(this).closest('form').submit();
         });
+
     });
 
 

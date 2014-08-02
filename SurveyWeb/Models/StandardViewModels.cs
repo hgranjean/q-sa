@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -31,7 +32,10 @@ namespace SurveyWeb.Models
     
     public class StandardElementViewModel 
     {
+        [Display(Name = "Standard")]
         public string StandardId { get; set; }
+
+        [Display(Name = "Element of Performance")]
         public IEnumerable<string> EPIds { get; set; }
 
 
