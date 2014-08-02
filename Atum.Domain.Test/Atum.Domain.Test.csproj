@@ -63,10 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atum.Data.Surveillance\Atum.Data.Surveillance.csproj">
-      <Project>{2fe3be00-7279-46cc-b1db-3579976a3b78}</Project>
-      <Name>Atum.Data.Surveillance</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
       <Project>{94bcb49a-cb7d-4f37-8340-9a9b8cd05614}</Project>
       <Name>Atum.Domain.Basis</Name>

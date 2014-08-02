@@ -9,9 +9,9 @@ namespace Atum.Domain.QualityManagement.Healthcare.JointCommission
     public class Chapter
     {
         public string Title { get; set; }
-        public List<PerformanceCategory> Elements { get; set; }
+        public List<Standard> Elements { get; set; }
 
-        public PerformanceCategory GetPerformanceCategory(string standardElementId)
+        public Standard GetPerformanceCategory(string standardElementId)
         {
             
             int length = Elements.Count;

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Atum.Domain.QualityManagement.Healthcare.JointCommission
 {
-    public class PerformanceCategory
+    public class Standard
     {
         public string StandardId { get; set; }
         public string Title { get; set; }
-        public List<PerformanceElement> Items { get; set; }
+        public List<ElementOfPerformance> Items { get; set; }
     }
 }
