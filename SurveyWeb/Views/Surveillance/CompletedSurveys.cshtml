@@ -5,20 +5,23 @@
 }
 
 
+
+
 <script type="text/javascript">
-    $(function () {
-        $('.example1').dropit();
+    $(document).ready(function () {
+        $(".actionmenu").dropit();
     });
 </script>
+
 
 
 <h2 class="section-header">My observations</h2>
     
     <div style="display: table; table-layout: fixed; width: 900px">
         <div style="display: table-row">
-            <div style="display: table-cell; width: 10%">Date</div>
-            <div style="display: table-cell; width: 30%">Department</div>
-            <div style="display: table-cell; width: 30%">Observation</div>            
+            <div style="display: table-cell; width: 20%">Date</div>
+            <div style="display: table-cell; width: 15%">Department</div>
+            <div style="display: table-cell; width: 35%">Observation</div>            
             <div style="display: table-cell; width: 10%">Assigned To</div>
             <div style="display: table-cell; width: 10%">Photo</div>
             <div style="display: table-cell; width: 10%">Action</div>
@@ -43,14 +46,13 @@
                 <div style="display: table-cell">
                     &nbsp;
                 </div>
-                <div style="display: table-cell; padding-bottom: 5px">
-                    
-                    <ul class="example1">
+                <div style="display: table-cell; padding-bottom: 5px">                    
+                    <ul class="actionmenu">
                         <li>
-                            <a href="#" class="btn btn-default" style="width: 100px;">Action</a>
+                            <a href="#" style="width: 100px;" class="btn btn-default">Action</a>
                             <ul>
-                                <li>@Html.ActionLink("Export", "Export", null, new { @class = "btn btn-default", style = "width: 100px;" })</li>
-                                <li>@Html.ActionLink("Archive", "Archive", null, new { @class = "btn btn-default", style = "width: 100px;" })</li>
+                                <li>@Html.ActionLink("Export", "Export", new { id = completedSurvey.ResponseId }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
+                                <li>@Html.ActionLink("Archive", "Archive", new { id = completedSurvey.ResponseId }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
                             </ul>
                         </li>
                     </ul>
@@ -58,6 +60,3 @@
             </div>
         }
     </div>
-
-
-

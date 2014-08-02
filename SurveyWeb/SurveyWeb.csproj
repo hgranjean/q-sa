@@ -264,16 +264,12 @@
     <None Include="App_Data\aspnet-SurveyWebApp-20140128065722_log.ldf">
       <DependentUpon>aspnet-SurveyWebApp-20140128065722.mdf</DependentUpon>
     </None>
-    <Content Include="Content\arrows-000000.png" />
-    <Content Include="Content\arrows-ffffff.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\codropicons\codropsicons.svg" />
     <Content Include="Content\codropicons\license.txt" />
     <Content Include="Content\component.css" />
     <Content Include="Content\demo.css" />
-    <Content Include="Content\dropdown-menu-skin.css" />
-    <Content Include="Content\dropdown-menu.css" />
     <Content Include="Content\dropit.css" />
     <Content Include="Content\ecoicons\ecoicons.dev.svg" />
     <Content Include="Content\ecoicons\ecoicons.svg" />
@@ -442,8 +438,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\classie.js" />
-    <Content Include="Scripts\dropdown-menu.js" />
-    <Content Include="Scripts\dropdown-menu.min.js" />
     <Content Include="Scripts\dropit.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.min.js" />
@@ -491,6 +485,7 @@
     <Content Include="Scripts\gcal.js" />
     <Content Include="Scripts\gnmenu.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.11.0.js" />
     <Content Include="Scripts\jquery-ui-1.11.0.js" />
     <Content Include="Scripts\jquery-ui-1.11.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
