@@ -4,17 +4,27 @@
     ViewBag.Title = "Completed surveys";
 }
 
-<h2 style="background-color: lightgray;">My observations</h2>
+
+<script type="text/javascript">
+    $(function () {
+        $('.example1').dropit();
+    });
+</script>
+
+
+<h2 class="section-header">My observations</h2>
     
     <div style="display: table; table-layout: fixed; width: 900px">
         <div style="display: table-row">
-            <div style="display: table-cell">Date</div>
-            <div style="display: table-cell">Department</div>
-            <div style="display: table-cell">Observation</div>            
-            <div style="display: table-cell">Assigned To</div>
-            <div style="display: table-cell">Photo</div>
-            <div style="display: table-cell">&nbsp;</div>
+            <div style="display: table-cell; width: 10%">Date</div>
+            <div style="display: table-cell; width: 30%">Department</div>
+            <div style="display: table-cell; width: 30%">Observation</div>            
+            <div style="display: table-cell; width: 10%">Assigned To</div>
+            <div style="display: table-cell; width: 10%">Photo</div>
+            <div style="display: table-cell; width: 10%">Action</div>
         </div>
+               
+
         @foreach (var completedSurvey in Model.CompletedSurveys)
         {
             <div style="display: table-row">
@@ -25,17 +35,25 @@
                     @Html.ValueFor(m => completedSurvey.Facility.Name)
                 </div>
                 <div style="display: table-cell">
-                    @Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { responseId = completedSurvey.ResponseId })
+                    @Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { id = completedSurvey.ResponseId })
                 </div>
                 <div style="display: table-cell">
-                    &nbsp;
+                    @Html.ValueFor(m => completedSurvey.Surveyor.FullName)
                 </div>
                 <div style="display: table-cell">
                     &nbsp;
                 </div>
                 <div style="display: table-cell; padding-bottom: 5px">
-                    @Html.ActionLink("Export", "Export", null, new { @class = "btn btn-default" })
-                    @Html.ActionLink("Archive", "Archive", null, new { @class = "btn btn-default" })
+                    
+                    <ul class="example1">
+                        <li>
+                            <a href="#" class="btn btn-default" style="width: 100px;">Action</a>
+                            <ul>
+                                <li>@Html.ActionLink("Export", "Export", null, new { @class = "btn btn-default", style = "width: 100px;" })</li>
+                                <li>@Html.ActionLink("Archive", "Archive", null, new { @class = "btn btn-default", style = "width: 100px;" })</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         }

@@ -6,7 +6,7 @@
     ViewBag.Title = "My Tasks";
 }
 
-<h2 style="background-color: lightgray;">Tasks</h2>
+<h2 class="section-header">Tasks</h2>
 
 @if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Member") ||
     new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Manager"))
