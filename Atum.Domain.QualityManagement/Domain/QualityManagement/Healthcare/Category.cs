@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atum.Data.Surveillance
+namespace Atum.Domain.Domain.QualityManagement.Healthcare
 {
-    public class Class1
+    public class Category
     {
     }
 }

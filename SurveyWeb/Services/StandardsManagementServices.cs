@@ -71,7 +71,7 @@ namespace SurveyWeb.Services
             return retVal;
         }
         
-        private static List<TOCElementViewModel> buildTOC(List<PerformanceCategory> list)
+        private static List<TOCElementViewModel> buildTOC(List<Standard> list)
         {
             List<TOCElementViewModel> retVal = new List<TOCElementViewModel>();
             
@@ -89,17 +89,17 @@ namespace SurveyWeb.Services
 
         }
 
-        private static List<PerformanceCategory> loadElements(XmlDocument xmlDoc)
+        private static List<Standard> loadElements(XmlDocument xmlDoc)
         {
             string elementsTitlePath = "chapter/titles[title]/*";
             string catIdPath = "epid";
-            List<PerformanceCategory> retVal = new List<PerformanceCategory>();
+            List<Standard> retVal = new List<Standard>();
 
             XmlNodeList nodes = xmlDoc.SelectNodes(elementsTitlePath);
 
             foreach (XmlNode node in nodes)
             {
-                PerformanceCategory epCat = new PerformanceCategory();
+                Standard epCat = new Standard();
                 XmlAttribute att = node.Attributes[catIdPath];
 
                 epCat.Title = node.InnerText;
@@ -116,9 +116,9 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static List<PerformanceElement> LoadEPItems(XmlDocument xmlDoc, string standardId)
+        private static List<ElementOfPerformance> LoadEPItems(XmlDocument xmlDoc, string standardId)
         {
-            List<PerformanceElement> retVal = new List<PerformanceElement>();
+            List<ElementOfPerformance> retVal = new List<ElementOfPerformance>();
 
             string itemsPath = "chapter/elements/element[@epid='standardId']".Replace("standardId", standardId);
 
@@ -128,7 +128,7 @@ namespace SurveyWeb.Services
 
             foreach (XmlNode node in nodes)
             {
-                PerformanceElement epItem = new PerformanceElement();
+                ElementOfPerformance epItem = new ElementOfPerformance();
                 XmlAttribute att = node.Attributes[epIdPath];
 
                 epItem.Text = node.InnerText;
@@ -140,9 +140,9 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static PerformanceElement LoadEPItem(XmlDocument xmlDoc, string standardId, string epId)
+        private static ElementOfPerformance LoadEPItem(XmlDocument xmlDoc, string standardId, string epId)
         {
-            PerformanceElement  retVal = new PerformanceElement();
+            ElementOfPerformance  retVal = new ElementOfPerformance();
             //element epid='EC.01.01.01' id='1'
             string itemPath = "chapter/elements/element[@epid='standardId' and @id='epId']".Replace("standardId", standardId).Replace("epId", epId);
             string epIdPath = "id";
@@ -157,7 +157,7 @@ namespace SurveyWeb.Services
 
             return retVal;
         }
-        private static List<string> LoadNotes(XmlDocument xmlDoc, PerformanceElement epItem, string standardId)
+        private static List<string> LoadNotes(XmlDocument xmlDoc, ElementOfPerformance epItem, string standardId)
         {
             List<string> retVal = new List<string>();
 
@@ -183,17 +183,17 @@ namespace SurveyWeb.Services
             Chapter chapter = loadChapter(chapterId);
 
 
-            PerformanceCategory ep = chapter.GetPerformanceCategory(standardElementId);
+            Standard ep = chapter.GetPerformanceCategory(standardElementId);
             retVal.Title = ep.Title;
             retVal.Elements = loadTOCElements(ep);
             return retVal;
 
         }
 
-        private static List<TOCElementViewModel> loadTOCElements(PerformanceCategory ep)
+        private static List<TOCElementViewModel> loadTOCElements(Standard ep)
         {
             List<TOCElementViewModel> retVal = new List<TOCElementViewModel>();
-            List<PerformanceElement> list = ep.Items;
+            List<ElementOfPerformance> list = ep.Items;
 
             foreach (var item in list)
             {
@@ -245,7 +245,7 @@ namespace SurveyWeb.Services
                 
             }
 
-            PerformanceElement epItem = new PerformanceElement();
+            ElementOfPerformance epItem = new ElementOfPerformance();
             epItem.EPId = int.Parse(performanceItemId);
 
             retVal.Notes = LoadNotes(xmlDoc, epItem, standardElementId);
@@ -254,7 +254,7 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static List<HtmlString> setReferencedElementLinks(PerformanceElement epItem, string standardId,XmlDocument xmlDoc)
+        private static List<HtmlString> setReferencedElementLinks(ElementOfPerformance epItem, string standardId,XmlDocument xmlDoc)
         {
             //<referencedelement itemid='4' epid='EC.01.01.01'><element>EC.04.01.01</element><epitem>EP 15</epitem></referencedelement>
             List<HtmlString> retVal = new List<HtmlString>();

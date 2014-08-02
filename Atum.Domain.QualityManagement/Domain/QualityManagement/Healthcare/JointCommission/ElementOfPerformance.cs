@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Atum.Domain.QualityManagement.Healthcare.JointCommission
 {
-    public class PerformanceElement
+    public class ElementOfPerformance
     {
         public string Text { get; set; }
         public List<string> Notes { get; set; }

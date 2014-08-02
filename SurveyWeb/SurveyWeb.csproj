@@ -666,10 +666,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atum.Data.Surveillance\Atum.Data.Surveillance.csproj">
-      <Project>{2fe3be00-7279-46cc-b1db-3579976a3b78}</Project>
-      <Name>Atum.Data.Surveillance</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Atum.Database.Surveillance\Atum.Database.Surveillance.csproj">
       <Project>{5B4ECA76-AD97-41B6-A802-E9AA34A95A91}</Project>
       <Name>Atum.Database.Surveillance</Name>
