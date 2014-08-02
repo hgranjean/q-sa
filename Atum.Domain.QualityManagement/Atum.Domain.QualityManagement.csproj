@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Domain\QualityManagement\Healthcare\Area.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Category.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\FollowUp.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\Chapter.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\ElementOfPerformance.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\Standard.cs" />
