@@ -7,13 +7,24 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SurveyWeb.Models;
+using SurveyWeb.Repository;
+using SurveyWeb.Services;
 
 namespace SurveyWeb.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly ITaskRepository taskRepository;
+        private readonly UserManager<ApplicationUser> userManager;
+
+        public HomeController(ITaskRepository taskRepository, UserManager<ApplicationUser> userManager)
+        {
+            this.taskRepository = taskRepository;
+            this.userManager = userManager;
+        }                    
+
+        /*public HomeController()
            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
@@ -21,22 +32,22 @@ namespace SurveyWeb.Controllers
         public HomeController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
-        }
-
-        public UserManager<ApplicationUser> UserManager { get; private set; }
+        }*/       
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && UserManager != null)
-            {
-                UserManager.Dispose();
-                UserManager = null;
-            }
+            // if (disposing && userManager != null)
+            //{
+                // userManager.Dispose();
+                //userManager = null;
+            //}
             base.Dispose(disposing);
         }
         
         public ActionResult Index()
         {
+            var taskService = new TaskService(taskRepository);
+
             return RedirectToAction("Dashboard", "Surveillance");
         }
 
@@ -66,8 +77,8 @@ namespace SurveyWeb.Controllers
         {
             ViewBag.Message = "The settings page.";
 
-            ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-            ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
 
             return View();
         }
