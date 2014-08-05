@@ -29,12 +29,6 @@ namespace SurveyWeb.Models
             this.QuestionGroupsViewModel = new QuestionGroupsViewModel(this.Survey.ID.ToString(), this.Survey.QuestionGroups);
         }
         
-        public static IEnumerable<Survey> GetSurveys()
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            return persistenceService.GetSurveys();
-        }
-
         public void Save()
         {
             // Restore items from viewmodel
@@ -48,6 +42,8 @@ namespace SurveyWeb.Models
             
             this.Survey.QuestionGroups = questionGroups;
 
+            // [aschmidt]: Move this out of the model as it pertains to the action
+            
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
             persistenceService.SaveSurvey(this.Survey);
         }

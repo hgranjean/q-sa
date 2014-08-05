@@ -18,34 +18,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Atum.Utility;
+using SurveyWeb.Repository;
 
 namespace SurveyWeb.Controllers
 {
     [Authorize]
     public class SurveillanceController : Controller
     {
-        private AtumSurveillanceContext _dbContext = null;
+        private readonly ISurveillanceRepository surveillanceRepository;
+        private readonly ISurveyRepository surveyRepository;
+        private readonly ITaskRepository taskRepository;
+        private readonly UserManager<ApplicationUser> userManager;
         
-        public SurveillanceController()
-           : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+        public SurveillanceController(ISurveillanceRepository surveillanceRepository,
+            ITaskRepository taskRepository,
+            ISurveyRepository surveyRepository,
+            UserManager<ApplicationUser> userManager)
         {
-            _dbContext = new AtumSurveillanceContext();
+            this.surveillanceRepository = surveillanceRepository;
+            this.surveyRepository = surveyRepository;
+            this.taskRepository = taskRepository;
+            this.userManager = userManager;
         }
-
-        public SurveillanceController(UserManager<ApplicationUser> userManager)
-        {
-            UserManager = userManager;
-        }
-
-        public UserManager<ApplicationUser> UserManager { get; private set; }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && UserManager != null)
+            /*if (disposing && userManager != null)
             {
-                UserManager.Dispose();
-                UserManager = null;
-            }
+                userManager.Dispose();
+                userManager = null;
+            }*/
             base.Dispose(disposing);
         }
 
@@ -78,31 +80,12 @@ namespace SurveyWeb.Controllers
         }
 
 
-
-
         //
         // GET: /Surveillance/
 
         public ActionResult Index()
         {
             return View();
-        }
-
-        /// <summary>
-        /// View List of Surveys
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Surveys()
-        {
-            var surveys = SurveyViewModel.GetSurveys();
-            
-            var model = new SurveysViewModel { Surveys = new Surveys() };
-            model.Surveys.AddRange(surveys);
-
-            ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-            ViewBag.ShowSurveyorContent = UserManager.IsInRole(User.Identity.GetUserId(), "Surveyor");
-            
-            return View(model);
         }
 
         public ActionResult SurveySchedules()
@@ -114,17 +97,20 @@ namespace SurveyWeb.Controllers
 
         private SurveysViewModel GetSurveySchedules(bool isPastDue)
         {
-            var surveys = SurveyViewModel.GetSurveys();
+            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            var surveys = persistenceService.GetSurveys();            
 
             var userId = User.Identity.GetUserId();
 
+            var taskService = new TaskService(this.taskRepository);
+            
             IEnumerable<EventUser> events = null;
             if (isPastDue)
-            {
-                events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start < DateTime.Now);
+            {                
+                events = taskService.GetPastDueTasks(userId);
             } else {
-                events = _dbContext.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start >= DateTime.Now);
-            }            
+                events = taskService.GetNextTasks(userId);            
+            }         
 
             var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>() };
 
@@ -141,7 +127,7 @@ namespace SurveyWeb.Controllers
             }
             return model;
         }
-
+        
         public ActionResult SurveySchedulesPartial()
         {
             var model = GetSurveySchedules(false);
@@ -163,45 +149,10 @@ namespace SurveyWeb.Controllers
             return PartialView("PastDueSurveys", model);
         }
 
-        public ActionResult DeleteSurvey(long id)
+
+        public ActionResult EditNotes(string questionId)
         {
-            var model = SurveyViewModel.GetSurveys().FirstOrDefault(m => m.ID == id);
-
-            return View(model);
-        }
-        
-        [HttpPost]
-        public ActionResult DeleteSurvey(SurveyViewModel model)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            persistenceService.DeleteSurvey(model.Survey.ID.ToString());
-
-            return RedirectToAction("Surveys");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult SurveyDesign(string id)
-        {
-            //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
-
-            Survey survey = null;
-            if (!String.IsNullOrWhiteSpace(id))
-            {
-                var surveys = SurveyViewModel.GetSurveys();
-
-                survey = surveys.FirstOrDefault(item => item.ID.ToString() == id);
-            }
-            else
-            {
-                //survey = LoadSurvey("Survey Title 1");
-            }
-            
-            var model = new SurveyViewModel(survey);
-
-            return View(model);            
+            return View();
         }
         
         /// <summary>
@@ -212,6 +163,8 @@ namespace SurveyWeb.Controllers
         public ActionResult SurveyDelivery(int id)
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
+            var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+
             var model = LoadTracerViewModel(id);
 
             return View(model);
@@ -238,7 +191,10 @@ namespace SurveyWeb.Controllers
 
             // Filtering out responses by user
             var userId = User.Identity.GetUserId();
-            var responses = _dbContext.Responses.Where(m => m.UserId == userId).Select(m => m.Id);
+
+            var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+
+            var responses = surveillanceService.GetResponses(userId);
 
             var models = new List<TracerViewModel>();
             foreach (var response in responses)
@@ -319,7 +275,7 @@ namespace SurveyWeb.Controllers
             return retVal;
         }
 
-        private void LoadTracerReferenceData(TracerViewModel retVal)
+        internal void LoadTracerReferenceData(TracerViewModel retVal)
         {
             retVal.Buildings = LoadBuildings();
             retVal.Facilities = LoadFacilities();
@@ -372,7 +328,7 @@ namespace SurveyWeb.Controllers
             };
         }
 
-        private TableOfContents LoadTableOContents()
+        private TableOfContents LoadTableOfContents()
         {
             var toc = new TableOfContents();
             toc.AddElement("Element Title");
@@ -389,7 +345,10 @@ namespace SurveyWeb.Controllers
         {
             // yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
             // yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
-            return _dbContext.Persons;
+
+            var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+
+            return surveillanceService.GetPersons();
         }
 
         private IEnumerable<Area> LoadAreas()
@@ -435,9 +394,9 @@ namespace SurveyWeb.Controllers
             {
                 try
                 {
-                    ViewBag.ShowAdminContent = UserManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-                    ViewBag.ShowManagerContent = UserManager.IsInRole(User.Identity.GetUserId(), "Manager");
-                    ViewBag.ShowTeamMemberContent = UserManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                    ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+                    ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+                    ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
                 }
                 catch (Exception ex)
                 {
@@ -518,13 +477,11 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == userId);
+            var surveillanceService = new SurveillanceService(this.surveillanceRepository);
 
-            var responseEntry = new ResponseEntry { Id = Guid.NewGuid().ToString("d"), User = user };
+            var user = surveillanceService.GetUser(userId);
 
-            _dbContext.Responses.Add(responseEntry);
-
-            _dbContext.SaveChanges();
+            var responseEntry = surveillanceService.AddResponse(user);            
 
             viewModel.ResponseId = responseEntry.Id;
 
@@ -564,25 +521,37 @@ namespace SurveyWeb.Controllers
 
         public JsonResult GetTasks(double? start, double? end)
         {
-            // var fromDate = ConvertFromUnixTimestamp(start);
-            // var toDate = ConvertFromUnixTimestamp(end);
+            var fromDate = ConvertFromUnixTimestamp(start);
+            var toDate = ConvertFromUnixTimestamp(end);
 
             // var rep = Resolver.Resolve<IEventRepository>();
             // var events = rep.ListEventsForUser(userName, fromDate, toDate);
+
+            var userId = User.Identity.GetUserId();                      
+
+            var taskService = new TaskService(this.taskRepository);
                         
-            var rows = _dbContext.Events.ToList().Select(e =>
+            var rows = taskService.GetTasksForUser(userId, fromDate, toDate).ToList().Select(e =>
                 new
                 {
-                    id = e.Id,
-                    title = e.Title,
+                    id = e.EventId,
+                    title = e.Event.Title,
                     // url = "http://google.com/",
-                    start = e.Start.ToString("s"),
-                    end = e.End.ToString("s"),
+                    start = e.Event.Start.ToString("s"),
+                    end = e.Event.End.ToString("s"),
                     allDay = false
                 });
 
             // var rows = eventList.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
+        }
+
+        private DateTime ConvertFromUnixTimestamp(double? unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp.Value).ToLocalTime();
+            return dtDateTime;            
         }
 
         /// <summary>
@@ -592,21 +561,22 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult EditTask(Guid id)
         {
-            var evt = _dbContext.Events.FirstOrDefault(m => m.Id == id.ToString());
+            var taskService = new TaskService(this.taskRepository);
+            var surveyService = new SurveyService(this.surveyRepository);
+            var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+            
+            var evt = taskService.GetTask(id.ToString());
 
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var availableSurveys = persistenceService.GetSurveys();
 
             var model = new TaskViewModel(evt)
             {
-                Survey = _dbContext.Surveys.FirstOrDefault(m => m.Id == evt.SurveyId),
-                SurveyId = evt.SurveyId,
+                Survey = surveyService.GetSurvey(evt.Event.SurveyId),
+                SurveyId = evt.Event.SurveyId,
                 AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
-                AvailableUsers = _dbContext.AspNetUsers,
-                Users = from a in _dbContext.EventUsers
-                        join b in _dbContext.AspNetUsers on a.UserId equals b.Id
-                        where a.EventId == evt.Id
-                        select b
+                AvailableUsers = surveillanceService.GetUsers(),
+                Users = taskService.GetUsersForTask(evt.EventId)
             };
             
             return View(model);
@@ -623,7 +593,9 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var taskService = new TaskService(this.taskRepository);
+                var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+                
                 var evt = new Event
                     {
                         Id = model.Id,
@@ -634,46 +606,19 @@ namespace SurveyWeb.Controllers
                         SurveyId = model.SurveyId
                     };
 
-                _dbContext.Events.Attach(evt);
-                _dbContext.Entry(evt).CurrentValues.SetValues(evt);
-                _dbContext.Entry(evt).State = EntityState.Modified;
+                taskService.UpdateTask(evt);                
 
                 if (model.SelectedUsers != null)
                 {
-                    // Remove unselected items
-
-                    var availableUsers = _dbContext.AspNetUsers;
-                    foreach (var item in availableUsers)
-                        {
-                            if (model.SelectedUsers.Count(userId => userId == item.Id) == 0)
-                            {
-                                var toDelete = _dbContext.EventUsers.First(eventUser => eventUser.EventId == model.Id && eventUser.UserId == item.Id);
-
-                                _dbContext.EventUsers.Remove(toDelete);
-                            }
-                        }
-                    
-
-                    // Add newly selected items
-                    foreach (var userId in model.SelectedUsers)
-                    {
-                        if (model.Users.Count(user => user.Id == userId) == 0)
-                        {
-                            _dbContext.EventUsers.Add(new EventUser { EventId = model.Id, UserId = userId });
-                        }
-                    }
-
-                    _dbContext.SaveChanges();
+                    taskService.UpdateUsersForTask(model.Id, model.Users.Select(m => m.Id), model.SelectedUsers);                    
                 }
 
-                // Update users on their assignments
+                // Notify users on their assignments
                 if (model.SelectedUsers != null)
-                {
-                    
-                    var availableUsers = _dbContext.AspNetUsers;
+                {                    
+                    var availableUsers = taskService.GetUsersForTask(model.Id);
                     foreach (var item in model.SelectedUsers)
-                    {
-                        
+                    {                        
                         var user = availableUsers.FirstOrDefault(m => m.Id == item);
                         if (user != default(AspNetUser))
                         {
@@ -681,17 +626,8 @@ namespace SurveyWeb.Controllers
                         }
                     }
                 }
-            
-                try
-                {
-                    _dbContext.SaveChanges();
 
-                    return RedirectToAction("Calendar");
-                }
-                catch (DbEntityValidationException e)
-                {
-                    this.AddErrors(e);
-                }
+                return RedirectToAction("Calendar");            
             }
 
             return View(model);
@@ -706,10 +642,13 @@ namespace SurveyWeb.Controllers
             var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var availableSurveys = persistenceService.GetSurveys();
 
+            var taskService = new TaskService(this.taskRepository);
+            var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+
             var model = new TaskViewModel
                 {
                     AvailableSurveys = availableSurveys.Select(m => new SurveyEntry{Id = m.Guid.ToString(), Title = m.Title}),
-                    AvailableUsers = _dbContext.AspNetUsers,
+                    AvailableUsers = surveillanceService.GetUsers(),
                     Users = new List<AspNetUser>()
                 };
 
@@ -726,7 +665,9 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var @event = _dbContext.Events.Add(new Event
+                var taskService = new TaskService(this.taskRepository);
+
+                var evt = new Event
                     {
                         Id = Guid.NewGuid().ToString(),
                         Title = model.Title,
@@ -734,27 +675,31 @@ namespace SurveyWeb.Controllers
                         End = model.End,
                         // UserId = model.UserId, // Owner
                         SurveyId = model.SurveyId
-                    });
+                    };
 
-                foreach (var selectedUser in model.SelectedUsers)
+                var @event = taskService.CreateTask(evt);
+
+                taskService.UpdateUsersForTask(evt.Id, new List<string>(), model.SelectedUsers);
+
+                foreach (var user in taskService.GetUsersForTask(evt.Id))
                 {
-                    var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == selectedUser);
+                    // var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == selectedUser);
                     
-                    _dbContext.EventUsers.Add(new EventUser { Event = @event, User = user});
+                    // _dbContext.EventUsers.Add(new EventUser { Event = @event, User = user});
 
                     SendAssignedTaskEmail(user);
                 }
 
-                try
-                {
-                    _dbContext.SaveChanges();
+                return RedirectToAction("Calendar");
 
-                    return RedirectToAction("Calendar");
+                /*try
+                {
+                    //_dbContext.SaveChanges();                    
                 }
                 catch (DbEntityValidationException e)
                 {
                     this.AddErrors(e);
-                }
+                }*/
             }
             
             return View(model);
@@ -779,9 +724,11 @@ namespace SurveyWeb.Controllers
         }
         public ActionResult GreetingPartial()
         {
-            var userName = User.Identity.GetUserName();
+            var userId = User.Identity.GetUserId();
 
-            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
+            var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+
+            var user = surveillanceService.GetUser(userId);
 
             var model = new PersonViewModel(user.Person) { UserId = user.Id };
 

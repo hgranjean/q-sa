@@ -12,6 +12,8 @@ namespace SurveyWeb.Models
     /// </summary>
     public class TaskViewModel : ViewModelBase
     {
+        private Atum.Domain.EventUser evt;
+
         public string Id { get; set; }
 
         [Required]
@@ -49,6 +51,12 @@ namespace SurveyWeb.Models
             Title = model.Title;
             Start = model.Start;
             End = model.End;
+        }
+
+        public TaskViewModel(Atum.Domain.EventUser evt)
+        {
+            // TODO: Complete member initialization
+            this.evt = evt;
         }
     }
 }

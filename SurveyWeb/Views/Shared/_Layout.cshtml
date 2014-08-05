@@ -46,7 +46,7 @@
                                     </li>
                                     @if ( (new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())).IsInRole(User.Identity.GetUserId(), "Manager")) )
                                     { 
-                                        <li>@Html.ActionLink("Templates", "Surveys", "Surveillance", null, new { @class = "gn-icon gn-icon-article" })</li>
+                                        <li>@Html.ActionLink("Templates", "Surveys", "Survey", null, new { @class = "gn-icon gn-icon-article" })</li>
                                     }
                                     <li>@Html.ActionLink("Audits", "SurveySchedules", "Surveillance", null, new { @class = "gn-icon gn-icon-archive" })</li>
 						        

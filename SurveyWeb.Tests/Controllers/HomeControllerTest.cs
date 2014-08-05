@@ -5,17 +5,36 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SurveyWeb.Controllers;
+using SurveyWeb.App_Start;
+using Microsoft.Practices.Unity;
+using SurveyWeb.Repository;
+using Microsoft.AspNet.Identity;
+using SurveyWeb.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SurveyWeb.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+        private IUnityContainer container;
+
+        [AssemblyInitialize]
+        public void Initialize()
+        {
+            var unityContainer = new UnityContainer();
+
+            UnityConfig.RegisterTypes(unityContainer);
+        }
+
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var taskRepository = container.Resolve<ITaskRepository>();
+            var userManager = container.Resolve<UserManager<ApplicationUser>>();
+            
+            HomeController controller = new HomeController(taskRepository, userManager);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -28,7 +47,10 @@ namespace SurveyWeb.Tests.Controllers
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var taskRepository = container.Resolve<ITaskRepository>();
+            var userManager = container.Resolve<UserManager<ApplicationUser>>();
+
+            HomeController controller = new HomeController(taskRepository, userManager);
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -41,7 +63,10 @@ namespace SurveyWeb.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var taskRepository = container.Resolve<ITaskRepository>();
+            var userManager = container.Resolve<UserManager<ApplicationUser>>();
+
+            HomeController controller = new HomeController(taskRepository, userManager);
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
