@@ -34,7 +34,7 @@ namespace SurveyWeb.Models
     {
         [Display(Name = "Standard")]
         public string StandardId { get; set; }
-
+        public string Content { get; set; }
         [Display(Name = "Element of Performance")]
         public IEnumerable<string> EPIds { get; set; }
 

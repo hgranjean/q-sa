@@ -30,5 +30,22 @@ namespace SurveyWeb.Controllers
         }
 
 
+
+        public ActionResult NBTrainingDocument(string trainingDocumetId) 
+        {
+            trainingDocumetId = (string.IsNullOrEmpty(trainingDocumetId)) ? "EC.01.01.01" : trainingDocumetId;
+            TrainingDocumentViewModel model = ServiceManager.GetService<LearningServices>().GetTrainingDocument(trainingDocumetId);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult NBTrainingDocument(TrainingDocumentViewModel model)
+        {
+
+            model = ServiceManager.GetService<LearningServices>().SaveTrainingDocument(model);
+
+            return View(model);
+        }
     }
 }

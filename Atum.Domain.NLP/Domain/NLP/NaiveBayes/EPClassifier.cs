@@ -26,7 +26,7 @@ namespace Atum.Domain.NLP.NaiveBayes
             this.TrainingSet = new TrainingSet();
         }
 
-        private static List<string> getExcludedWords()
+        public static List<string> getExcludedWords()
         {
             string[] excludedWords = { "hospital", "the", "and", "a", "is", "are","s", "not","an","e","to","or","for","of", "in","out","other","were","was","be",
                                          "because","these","it","has","than","that","there","do","did","should","by","with","being"

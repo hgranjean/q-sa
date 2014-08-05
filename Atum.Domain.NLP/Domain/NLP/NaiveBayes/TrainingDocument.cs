@@ -38,6 +38,13 @@ namespace Atum.Domain.NLP.NaiveBayes
             init();
         }
 
+        public TrainingDocument(string docClass, string docText, List<string> words)
+        {
+            this.Words = words;
+            HasWords = this.Words.Count > 0;
+            init();
+        }
+
         internal void init() 
         {
             WordFrequency = calucalteWordFrequency(Words); ;
@@ -92,5 +99,7 @@ namespace Atum.Domain.NLP.NaiveBayes
         public bool HasWords { get; set; }
 
         public string Id { get; set; }
+
+        public string DocumentId { get; set; }
     }
 }

@@ -1,9 +1,13 @@
-﻿using Atum.Domain.NLP.NaiveBayes;
+﻿using Atum.Domain.NLP;
+using Atum.Domain.NLP.NaiveBayes;
 using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+using SurveyWeb.Mappers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace SurveyWeb.Services
 {
@@ -32,18 +36,27 @@ namespace SurveyWeb.Services
             string observationClass = GetClassifier().Classify(observation);
 
             Models.StandardElementViewModel retVal = new Models.StandardElementViewModel();
+
+            Standard standard = GetStandardChapter().GetPerformanceCategory(observationClass);
+            
             retVal.StandardId = observationClass;
-            retVal.EPIds = LoadEPIds(observationClass);
+            retVal.Content = standard.Title ;
+            retVal.EPIds = LoadEPIds(standard.Items);
 
             return retVal;
         }
 
-        private static IEnumerable<string> LoadEPIds(string observationClass)
+        private string GetStandardChapter(string observationClass)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static IEnumerable<string> LoadEPIds(List<ElementOfPerformance> epIds)
         {
             List<string> eps = new List<string>();
             IEnumerable<string> retVal = eps;
 
-            var epIds = GetStandardChapter().GetPerformanceCategory(observationClass).Items;
+            //var epIds = GetStandardChapter().GetPerformanceCategory(observationClass).Items;
 
             foreach (var epId in epIds)
             {
@@ -96,6 +109,77 @@ namespace SurveyWeb.Services
 
             return classifier;
         }
+
+
+        internal Models.TrainingDocumentViewModel GetTrainingDocument(string trainingDocumentId)
+        {
+            string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
+            string filePath = appPath + trainingDocumentId + ".xml";
+
+            TrainingDocument trainingDoc = readFromXML(filePath);
+            Models.TrainingDocumentViewModel retVal = Learning.MapToViewModel(trainingDoc);
+
+            retVal.ClassList = loadClassList(StandardsManagementServices.GetChapter("EC"));
+
+            return retVal;
+
+        }
+
+        private IEnumerable<string> loadClassList(Models.StandardDocumentViewModel standardDocumentViewModel)
+        {
+            List<string> retVal = new List<string>();
+
+            foreach (var item in standardDocumentViewModel.TableOfContents)
+            {
+                string classKey = item.Key;
+                retVal.Add(classKey);
+            }
+
+            return retVal;
+        }
+
+
+        private TrainingDocument readFromXML(string path)
+        {
+            TrainingDocument retVal = null;
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                XmlSerializer xSer = new XmlSerializer(typeof(TrainingDocument));
+
+                retVal = (TrainingDocument)xSer.Deserialize(sr);
+            }
+
+            return retVal;
+
+        }
+
+
+        internal Models.TrainingDocumentViewModel SaveTrainingDocument(Models.TrainingDocumentViewModel model)
+        {
+            string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/");
+            string modelPath = HttpContext.Current.Server.MapPath("~/OpenNLP/Models/");
+            Atum.Domain.NLP.Tokenizer Tokenizer = new Tokenizer(EPClassifier.getExcludedWords(), modelPath);
+
+            TrainingDocument classDoc = Learning.MapToDomainModel(model, Tokenizer);
+            saveToXML(classDoc);
+
+            return Learning.MapToViewModel(classDoc);
+        }
+
+        private void saveToXML(TrainingDocument classDoc)
+        {
+            string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
+            string filePath = appPath + classDoc.Class + ".xml";
+
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                XmlSerializer xSer = new XmlSerializer(typeof(TrainingDocument));
+
+                xSer.Serialize(sw, classDoc);
+            }
+        }
+
 
     }
 }
