@@ -29,16 +29,19 @@ namespace SurveyWeb.Controllers
         private readonly ISurveyRepository surveyRepository;
         private readonly ITaskRepository taskRepository;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IPersistenceServices persistenceService;
         
         public SurveillanceController(ISurveillanceRepository surveillanceRepository,
             ITaskRepository taskRepository,
             ISurveyRepository surveyRepository,
+            IPersistenceServices persistenceService,
             UserManager<ApplicationUser> userManager)
         {
             this.surveillanceRepository = surveillanceRepository;
             this.surveyRepository = surveyRepository;
             this.taskRepository = taskRepository;
             this.userManager = userManager;
+            this.persistenceService = persistenceService;
         }
 
         protected override void Dispose(bool disposing)
@@ -97,7 +100,7 @@ namespace SurveyWeb.Controllers
 
         private SurveysViewModel GetSurveySchedules(bool isPastDue)
         {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            // var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var surveys = persistenceService.GetSurveys();            
 
             var userId = User.Identity.GetUserId();
@@ -186,7 +189,7 @@ namespace SurveyWeb.Controllers
 
         private CompletedSurveyViewModel GetCompletedSurveys()
         {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            // var persistenceService = ServiceManager.GetService<PersistenceServices>();
             var surveys = persistenceService.GetSurveys();
 
             // Filtering out responses by user
@@ -521,8 +524,8 @@ namespace SurveyWeb.Controllers
 
         public JsonResult GetTasks(double? start, double? end)
         {
-            var fromDate = ConvertFromUnixTimestamp(start);
-            var toDate = ConvertFromUnixTimestamp(end);
+            var fromDate = start.ConvertFromUnixTimestamp();
+            var toDate = end.ConvertFromUnixTimestamp();
 
             // var rep = Resolver.Resolve<IEventRepository>();
             // var events = rep.ListEventsForUser(userName, fromDate, toDate);
@@ -545,15 +548,7 @@ namespace SurveyWeb.Controllers
             // var rows = eventList.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
-
-        private DateTime ConvertFromUnixTimestamp(double? unixTimeStamp)
-        {
-            // Unix timestamp is seconds past epoch
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp.Value).ToLocalTime();
-            return dtDateTime;            
-        }
-
+        
         /// <summary>
         /// Edit the task.
         /// </summary>
@@ -566,11 +561,10 @@ namespace SurveyWeb.Controllers
             var surveillanceService = new SurveillanceService(this.surveillanceRepository);
             
             var evt = taskService.GetTask(id.ToString());
-
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+                     
             var availableSurveys = persistenceService.GetSurveys();
 
-            var model = new TaskViewModel(evt)
+            var model = new TaskViewModel(evt.Event)
             {
                 Survey = surveyService.GetSurvey(evt.Event.SurveyId),
                 SurveyId = evt.Event.SurveyId,
@@ -610,15 +604,13 @@ namespace SurveyWeb.Controllers
 
                 if (model.SelectedUsers != null)
                 {
-                    taskService.UpdateUsersForTask(model.Id, model.Users.Select(m => m.Id), model.SelectedUsers);                    
-                }
+                    // Update users list in the repository
+                    taskService.UpdateUsersForTask(model.Id, surveillanceService.GetUsers().Select(m => m.Id), model.SelectedUsers);
 
-                // Notify users on their assignments
-                if (model.SelectedUsers != null)
-                {                    
+                    // Notify newly-assigned users on their assignments
                     var availableUsers = taskService.GetUsersForTask(model.Id);
                     foreach (var item in model.SelectedUsers)
-                    {                        
+                    {
                         var user = availableUsers.FirstOrDefault(m => m.Id == item);
                         if (user != default(AspNetUser))
                         {
@@ -626,7 +618,7 @@ namespace SurveyWeb.Controllers
                         }
                     }
                 }
-
+                
                 return RedirectToAction("Calendar");            
             }
 
@@ -638,12 +630,11 @@ namespace SurveyWeb.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult CreateTask()
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var availableSurveys = persistenceService.GetSurveys();
-
+        {   
             var taskService = new TaskService(this.taskRepository);
             var surveillanceService = new SurveillanceService(this.surveillanceRepository);
+
+            var availableSurveys = persistenceService.GetSurveys();
 
             var model = new TaskViewModel
                 {

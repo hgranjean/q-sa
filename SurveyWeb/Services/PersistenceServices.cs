@@ -9,13 +9,20 @@ using Atum.Utility.XML;
 using SurveyWeb.Models;
 using Atum.Domain.QualityManagement;
 using Atum.Domain.SurveyManagement;
+using SurveyWeb.Repository;
 
 namespace SurveyWeb.Services
 {
-    internal class PersistenceServices
+    internal class PersistenceServices : IPersistenceServices
     {
         private static List<Survey> surveys; 
         private static SurveyManager _surverManager;
+        private readonly ISurveyStore _store;
+
+        public PersistenceServices(ISurveyStore store)
+        {
+            _store = store;
+        }
         
         public SurveyManager GetSurveyManager(Survey survey)
         {
@@ -162,13 +169,7 @@ namespace SurveyWeb.Services
 
         private string GetAppPath()
         {
-            string appPath = HttpContext.Current.Server.MapPath("~/bin");
-            
-            int binPos = appPath.LastIndexOf(@"\bin", StringComparison.CurrentCultureIgnoreCase);
-
-            appPath = appPath.Substring(0, binPos) + @"\RuleApp\";
-            
-            return appPath;
+            return _store.GetPath();
         }
 
         internal void DeleteSurvey(string id)

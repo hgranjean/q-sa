@@ -7,15 +7,17 @@ namespace SurveyWeb.Services
 {
     internal class ServiceManager
     {
-        private static readonly PersistenceServices persistenceServices;
+        private static IPersistenceServices persistenceServices;
         private static readonly MailService MailService;
         private static readonly LearningServices LearningService;
         private static readonly StandardsManagementServices StandardsManagementService;
 
-
-        static ServiceManager()
+        public ServiceManager(IPersistenceServices persistenceService)
         {
-            persistenceServices = new PersistenceServices();
+            persistenceServices = persistenceService; // new PersistenceServices();
+        }
+        static ServiceManager()
+        {   
             MailService = new MailService();
             LearningService = new LearningServices();
             StandardsManagementService = new StandardsManagementServices();

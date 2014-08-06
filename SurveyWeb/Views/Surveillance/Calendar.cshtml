@@ -18,8 +18,17 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            defaultView: 'month',
-            editable: true,
+            @if (Request["Date"] != null) {
+                <text>
+                defaultView: "agendaDay",
+                defaultDate: "@Request["Date"]",
+                </text>
+            } else {
+                <text>
+                defaultView: "month",
+                </text>
+            }
+            editable: true,            
         
             // US Holidays
             // events: 'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic',
@@ -28,7 +37,7 @@
             eventClick: function (event) {
                 // opens events in a popup window
                 // window.open(event.url, 'gcalevent', 'width=700,height=600');
-                window.location.href = "EditEvent/" + event.id;
+                window.location.href = "EditTask/" + event.id;
                 return false;
             },
             

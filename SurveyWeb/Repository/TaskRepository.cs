@@ -75,6 +75,7 @@ namespace SurveyWeb.Repository
             _context.Events.Attach(evt);
             _context.Entry(evt).CurrentValues.SetValues(evt);
             _context.Entry(evt).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
 
@@ -108,7 +109,9 @@ namespace SurveyWeb.Repository
 
         public Event CreateTask(Event evt)
         {
-            return _context.Events.Add(evt);
+            var @event = _context.Events.Add(evt);
+            _context.SaveChanges();
+            return @event;
         }
     }
 }

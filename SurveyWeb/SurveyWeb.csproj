@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5FA45FDA-4439-4631-B43F-944309F6901F}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SurveyWeb</RootNamespace>
@@ -273,8 +273,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SurveillanceRepository.cs" />
     <Compile Include="Repository\SurveyRepository.cs" />
+    <Compile Include="Repository\SurveyStore.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
-    <Compile Include="RuleApp\SurveyDeliveryRuleApp.cs" />
+    <Compile Include="Store\SurveyDeliveryRuleApp.cs" />
+    <Compile Include="Services\IPersistenceServices.cs" />
     <Compile Include="Services\LearningServices.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\ServiceManager.cs" />
@@ -445,7 +447,7 @@
     <None Include="Properties\PublishProfiles\aqspartners.com - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\aqspartners.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\consetconsulting.pubxml" />
-    <None Include="RuleApp\SurveyApp.ruleapp" />
+    <None Include="Store\SurveyApp.ruleapp" />
     <Content Include="Images\Camera-icon.png" />
     <Content Include="Images\Home-icon.png" />
     <Content Include="Images\Messaging-icon.png" />
@@ -453,15 +455,15 @@
     <Content Include="Images\Settings-Icon.png" />
     <Content Include="Images\Upload-icon.png" />
     <Content Include="Images\Users-icon.png" />
-    <None Include="RuleApp\Standards\LS.04.03.02.xml" />
-    <Content Include="RuleApp\Emails\EventAssigned.xml" />
-    <Content Include="RuleApp\Emails\InvitationEmail.xml">
+    <None Include="Store\Standards\LS.04.03.02.xml" />
+    <Content Include="Store\Emails\EventAssigned.xml" />
+    <Content Include="Store\Emails\InvitationEmail.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RuleApp\Survey1.xml" />
-    <Content Include="RuleApp\survey2.xml" />
-    <Content Include="RuleApp\survey3.xml" />
-    <Content Include="RuleApp\survey4.xml" />
+    <Content Include="Store\Survey1.xml" />
+    <Content Include="Store\survey2.xml" />
+    <Content Include="Store\survey3.xml" />
+    <Content Include="Store\survey4.xml" />
     <Content Include="Scripts\AQS\aqs.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -687,7 +689,7 @@
     <Content Include="Views\Report\ProgressReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="RuleApp\Domain\" />
+    <Folder Include="Store\Domain\" />
     <Folder Include="Views\SurveyAnalysis\" />
   </ItemGroup>
   <ItemGroup>

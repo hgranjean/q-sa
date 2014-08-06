@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using System.Configuration;
 using System.Data.Entity;
+using SurveyWeb.Services;
 
 namespace SurveyWeb.App_Start
 {
@@ -48,15 +49,19 @@ namespace SurveyWeb.App_Start
             // Read more about DI with Unity at http://msdn.microsoft.com/en-us/library/dn178463(v=pandp.30).aspx
 
             string connectionString = ConfigurationManager.ConnectionStrings["AtumSurveillanceContext"].ConnectionString;
+            string location = ConfigurationManager.ConnectionStrings["AtumSurveillanceContext"].ConnectionString ?? "RuleApp";
 
             // TODO: Register your types here                       
-            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(new ApplicationDbContext()));
+            // container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
             container.RegisterType<UserManager<ApplicationUser>, UserManager<ApplicationUser>>(new HttpContextLifetimeManager());
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ITaskRepository, TaskRepository>(new InjectionConstructor(connectionString));            
             container.RegisterType<ISurveillanceRepository, SurveillanceRepository>(new InjectionConstructor(connectionString));
-            container.RegisterType<ISurveyRepository, SurveyRepository>(new InjectionConstructor(connectionString));            
+            container.RegisterType<ISurveyRepository, SurveyRepository>(new InjectionConstructor(connectionString));
+            container.RegisterType<IPersistenceServices, PersistenceServices>(new InjectionConstructor(new SurveyStore(location)));
+            container.RegisterType<ISurveyStore, SurveyStore>(new InjectionConstructor(location));
         }
     }
 }
