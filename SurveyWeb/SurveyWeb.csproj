@@ -440,6 +440,8 @@
     <Content Include="Content\ecoicons\ecoicons.ttf" />
     <Content Include="Content\ecoicons\ecoicons.woff" />
     <Content Include="Content\codropicons\.DS_Store" />
+    <Content Include="Images\compliance_bg1.jpg" />
+    <Content Include="Images\compliance_bg2.jpg" />
     <Content Include="OpenNLP\Models\EnglishPOS.nbin" />
     <Content Include="OpenNLP\Models\EnglishSD.nbin" />
     <Content Include="OpenNLP\Models\EnglishTok.nbin" />

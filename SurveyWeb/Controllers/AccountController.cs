@@ -796,9 +796,10 @@ namespace SurveyWeb.Controllers
 
         public static XDocument GetEmailTemplate(EmailTemplate template)
         {
+
             string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
 
-            appPath = appPath + @"\..\RuleApp\";
+            appPath = appPath + @"\..\Store\";
 
             var emailFileName = string.Empty;
             if (template == EmailTemplate.Invitation)

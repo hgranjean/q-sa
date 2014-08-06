@@ -7,7 +7,6 @@
 <h2>Edit Task</h2>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
 @Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
 
 <script>
@@ -46,36 +45,36 @@
         <div style="display: table">
             
             <div style="display: table-row">
-                <div class="editor-label">
+                <div class="editor-label" class="table-cell">
                     @Html.LabelFor(m => m.Title)
                 </div>
-                <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Title)
+                <div class="editor-field" class="table-cell">
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                 </div>
             </div>
             <div style="display: table-row">
-                <div class="editor-label">
+                <div class="editor-label" class="table-cell">
                     @Html.LabelFor(model => model.Start)
                 </div>
-                <div class="editor-field">
-                    @Html.TextBoxFor(m => m.Start, new {@id = "startdatepicker"})
+                <div class="editor-field" class="table-cell">
+                    @Html.TextBoxFor(m => m.Start, new { @id = "startdatepicker", @class = "form-control" })
                 </div>
             </div>
             <div style="display: table-row">
-                <div class="editor-label">
+                <div class="editor-label" class="table-cell">
                     @Html.LabelFor(model => model.End)
                 </div>
-                <div class="editor-field">
-                    @Html.TextBoxFor(m => m.End, new {@id = "enddatepicker"})
+                <div class="editor-field" class="table-cell">
+                    @Html.TextBoxFor(m => m.End, new { @id = "enddatepicker", @class = "form-control" })
                 </div>
             </div>
 
             <div style="display: table-row">
-                <div class="editor-label">
+                <div class="editor-label" class="table-cell">
                     @Html.LabelFor(model => model.Survey)
                 </div>
-                <div class="editor-field">
-                    @Html.DropDownList("SurveyId", new SelectList(Model.AvailableSurveys, "Id", "Title"), "Please select...", Model.SurveyId)
+                <div class="editor-field" class="table-cell">
+                    @Html.DropDownListFor(m => m.SurveyId, new SelectList(Model.AvailableSurveys, "Id", "Title"), "Please select...", new { @class = "form-control" })
                 </div>
             </div>
         </div>
@@ -88,7 +87,7 @@
             @Html.LabelFor(model => model.SelectedUsers)
         </div>
         <div class="editor-field">
-            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.Users, "Id", "Person.FullName"))
+            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.Users, "Id", "Person.FullName"), new { @class = "form-control" })
         </div>
         
         <br/>
@@ -99,7 +98,7 @@
             @Html.LabelFor(model => model.AvailableUsers)
         </div>
         <div class="editor-field">
-            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.AvailableUsers, "Id", "Person.FullName"))
+            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.AvailableUsers, "Id", "Person.FullName"), new { @class = "form-control" })
         </div>
     </fieldset>
 

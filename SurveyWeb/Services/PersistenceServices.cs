@@ -172,7 +172,7 @@ namespace SurveyWeb.Services
             return _store.GetPath();
         }
 
-        internal void DeleteSurvey(string id)
+        public void DeleteSurvey(string id)
         {   
             var toDelete = surveys.FirstOrDefault(survey => survey.ID == Int32.Parse(id));
 

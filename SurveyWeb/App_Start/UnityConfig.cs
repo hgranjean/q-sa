@@ -41,8 +41,7 @@ namespace SurveyWeb.App_Start
         {
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-
-            // TODO: Register your types here
+                        
             // container.RegisterType<IProductRepository, ProductRepository>();
             // container.RegisterType<UserManager<ApplicationUser>>( new InjectionFactory( c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>( new ApplicationDbContext())), new HttpContextLifetimeManager() ));
 
@@ -50,18 +49,25 @@ namespace SurveyWeb.App_Start
 
             string connectionString = ConfigurationManager.ConnectionStrings["AtumSurveillanceContext"].ConnectionString;
             string location = ConfigurationManager.ConnectionStrings["AtumSurveillanceContext"].ConnectionString ?? "RuleApp";
-
-            // TODO: Register your types here                       
+            
+            // Registration of the DI components
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(new ApplicationDbContext()));
             // container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
             container.RegisterType<UserManager<ApplicationUser>, UserManager<ApplicationUser>>(new HttpContextLifetimeManager());
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<ITaskRepository, TaskRepository>(new InjectionConstructor(connectionString));            
+            container.RegisterType<ITaskRepository, TaskRepository>(new InjectionConstructor(connectionString));
+            container.RegisterType<TaskService>(new InjectionConstructor(typeof(ITaskRepository)));
+            
             container.RegisterType<ISurveillanceRepository, SurveillanceRepository>(new InjectionConstructor(connectionString));
+            container.RegisterType<SurveillanceService>(new InjectionConstructor(typeof(ISurveillanceRepository)));
+            
             container.RegisterType<ISurveyRepository, SurveyRepository>(new InjectionConstructor(connectionString));
-            container.RegisterType<IPersistenceServices, PersistenceServices>(new InjectionConstructor(new SurveyStore(location)));
+            container.RegisterType<SurveyService>(new InjectionConstructor(typeof(ISurveyRepository)));
+            
             container.RegisterType<ISurveyStore, SurveyStore>(new InjectionConstructor(location));
+            container.RegisterType<IPersistenceServices, PersistenceServices>(new InjectionConstructor(typeof(SurveyStore)));
+            
         }
     }
 }
