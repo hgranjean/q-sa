@@ -8,8 +8,7 @@
 
 <h2 class="section-header">Tasks</h2>
 
-@if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Member") ||
-    new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Manager"))
+@if (ViewBag.ShowTeamMemberContent || ViewBag.ShowManagerContent)
 {
 
     <div>

@@ -96,13 +96,21 @@ namespace SurveyWeb.Controllers
 
         public ActionResult SurveySchedules()
         {
+            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+
             var model = GetSurveySchedules(false);
 
             return View(model);
         }
 
         private SurveysViewModel GetSurveySchedules(bool isPastDue)
-        {            
+        {
+            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+
             var surveys = persistenceService.GetSurveys();            
 
             var userId = User.Identity.GetUserId();
@@ -140,6 +148,10 @@ namespace SurveyWeb.Controllers
 
         public ActionResult PastDueSurveys()
         {
+            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+
             var model = GetSurveySchedules(true);
 
             return View(model);
@@ -147,6 +159,10 @@ namespace SurveyWeb.Controllers
 
         public ActionResult PastDueSurveysPartial()
         {
+            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+
             var model = GetSurveySchedules(true);
 
             return PartialView("PastDueSurveys", model);

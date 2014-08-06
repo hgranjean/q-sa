@@ -8,8 +8,7 @@
 
 <h2 class="section-header">Calendar</h2>
 
-@if (new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Manager") ||
-new AccountController().UserManager.IsInRole(User.Identity.GetUserId(), "Team Member"))
+@if (ViewBag.ShowTeamMemberContent || ViewBag.ShowManagerContent)
 {
 
     <div>
