@@ -99,8 +99,7 @@ namespace SurveyWeb.Controllers
         }
 
         private SurveysViewModel GetSurveySchedules(bool isPastDue)
-        {
-            // var persistenceService = ServiceManager.GetService<PersistenceServices>();
+        {            
             var surveys = persistenceService.GetSurveys();            
 
             var userId = User.Identity.GetUserId();
@@ -188,8 +187,7 @@ namespace SurveyWeb.Controllers
         }
 
         private CompletedSurveyViewModel GetCompletedSurveys()
-        {
-            // var persistenceService = ServiceManager.GetService<PersistenceServices>();
+        {            
             var surveys = persistenceService.GetSurveys();
 
             // Filtering out responses by user
@@ -213,8 +211,7 @@ namespace SurveyWeb.Controllers
         }
 
         public ActionResult ViewCompletedSurvey(string id)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+        {            
             var availableResponses = persistenceService.GetResponses();
 
             foreach (var response in availableResponses)
@@ -249,8 +246,7 @@ namespace SurveyWeb.Controllers
         {
             Survey survey = null; // = LoadSurvey("Survey Template 1");
             if (surveyId.HasValue)
-            {
-                var persistenceService = ServiceManager.GetService<PersistenceServices>();
+            {                
                 survey = persistenceService.GetSurvey(surveyId.Value);
 
                 foreach (var questionGroup in survey.QuestionGroups)
@@ -415,8 +411,7 @@ namespace SurveyWeb.Controllers
 
         [HttpPost]
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
+        {            
             var survey = persistenceService.GetSurvey(viewModel.SurveyId);
 
             var questions = new Questions();
