@@ -8,7 +8,7 @@ namespace SurveyWeb.Services
     internal class ServiceManager
     {
         private static IPersistenceServices persistenceServices;
-        private static readonly MailService MailService;
+        // private static readonly MailService MailService;
         private static readonly LearningServices LearningService;
         private static readonly StandardsManagementServices StandardsManagementService;
 
@@ -18,7 +18,7 @@ namespace SurveyWeb.Services
         }
         static ServiceManager()
         {   
-            MailService = new MailService();
+            // MailService = new MailService();
             LearningService = new LearningServices();
             StandardsManagementService = new StandardsManagementServices();
         }
@@ -29,10 +29,10 @@ namespace SurveyWeb.Services
             {
                 return persistenceServices as T;
             }
-            else if (typeof (T) == typeof (MailService))
-            {
-                return MailService as T;
-            }
+            //else if (typeof (T) == typeof (MailService))
+            //{
+            //    return MailService as T;
+            //}
             else if (typeof(T) == typeof(LearningServices))
             {
                 return LearningService as T;

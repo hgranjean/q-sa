@@ -28,12 +28,14 @@ namespace SurveyWeb.Controllers
         private readonly SurveillanceService surveillanceService;
         private readonly SurveyService surveyService;
         private readonly TaskService taskService;
+        private readonly MailService mailService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPersistenceServices persistenceService;
         
         public SurveillanceController(SurveillanceService surveillanceService,
             TaskService taskService,
             SurveyService surveyService,
+            MailService mailService,
             IPersistenceServices persistenceService,
             UserManager<ApplicationUser> userManager)
         {
@@ -678,8 +680,8 @@ namespace SurveyWeb.Controllers
         {
             var email = user.Person.Email;
             var baseUrl = EmailHelper.GetDomainNameFromHost(Request.Url.Host);
-            var mailService = ServiceManager.GetService<MailService>();
-            var template = AccountController.GetEmailTemplate(AccountController.EmailTemplate.EventAssigned);
+            // var mailService = ServiceManager.GetService<MailService>();
+            var template = mailService.GetEmailTemplate(EmailTemplate.EventAssigned);
             
             mailService.SendEmail("donotreply@" + baseUrl, email,
                                   "A task was assigned to you at " + baseUrl, template.ToString(), true, baseUrl);

@@ -227,6 +227,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Services\ISurveillanceService.cs" />
     <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ModelHelper.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -271,10 +272,12 @@
     <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Repository\SurveillanceRepository.cs" />
     <Compile Include="Repository\SurveyRepository.cs" />
     <Compile Include="Repository\SurveyStore.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
+    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Store\SurveyDeliveryRuleApp.cs" />
     <Compile Include="Services\IPersistenceServices.cs" />
     <Compile Include="Services\LearningServices.cs" />
