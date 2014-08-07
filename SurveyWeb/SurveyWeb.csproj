@@ -280,7 +280,7 @@
     <Compile Include="Repository\SurveyStore.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Store\SurveyDeliveryRuleApp.cs" />
+    <Compile Include="Store\Workflows\SurveyDeliveryRuleApp.cs" />
     <Compile Include="Services\IPersistenceServices.cs" />
     <Compile Include="Services\LearningServices.cs" />
     <Compile Include="Services\MailService.cs" />
@@ -453,7 +453,7 @@
     <None Include="Properties\PublishProfiles\aqspartners.com - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\aqspartners.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\consetconsulting.pubxml" />
-    <None Include="Store\SurveyApp.ruleapp" />
+    <None Include="Store\Workflows\SurveyApp.ruleapp" />
     <Content Include="Images\Camera-icon.png" />
     <Content Include="Images\Home-icon.png" />
     <Content Include="Images\Messaging-icon.png" />
@@ -466,10 +466,10 @@
     <Content Include="Store\Emails\InvitationEmail.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Store\Survey1.xml" />
-    <Content Include="Store\survey2.xml" />
-    <Content Include="Store\survey3.xml" />
-    <Content Include="Store\survey4.xml" />
+    <Content Include="Store\Surveys\Survey1.xml" />
+    <Content Include="Store\Surveys\survey2.xml" />
+    <Content Include="Store\Surveys\survey3.xml" />
+    <Content Include="Store\Surveys\survey4.xml" />
     <Content Include="Scripts\AQS\aqs.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -699,6 +699,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Store\Domain\" />
+    <Folder Include="Store\Responses\" />
     <Folder Include="Views\SurveyAnalysis\" />
   </ItemGroup>
   <ItemGroup>
