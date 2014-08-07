@@ -1,5 +1,7 @@
 ﻿using Atum.Domain.Common;
 using Atum.Utility.XML;
+using SurveyWeb.Models;
+using SurveyWeb.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +14,12 @@ namespace SurveyWeb.Controllers
     [Authorize]
     public class StandardController : Controller
     {
+        private readonly StandardsManagementServices _standardManagementService;
 
+        public StandardController(StandardsManagementServices standardManagementService)
+        {
+            _standardManagementService = standardManagementService;
+        }
 
 
         /// <summary>
@@ -68,112 +75,103 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
-        private Models.StandardDocumentViewModel loadDocument(int? id)
+        private StandardDocumentViewModel loadDocument(int? id)
         {
-            Models.StandardDocumentViewModel retVal = new Models.StandardDocumentViewModel();
+            var retVal = new Models.StandardDocumentViewModel();
             retVal.Title = "Proposed Core Reqirements - All chapters Hospital Accreditation Program";
-            retVal.TableOfContents = loadTableOfContent();
+            retVal.TableOfContents = LoadTableOfContent();
             return retVal;
         }
 
-        private List<Models.TOCElementViewModel> loadTableOfContent()
+        private IEnumerable<TOCElementViewModel> LoadTableOfContent()
         {
-            List<Models.TOCElementViewModel> retVal = new List<Models.TOCElementViewModel>();
-
-            Models.TOCElementViewModel tocElement = new Models.TOCElementViewModel();
+            var tocElement = new TOCElementViewModel();
             tocElement.Title = "Environment of Care (EC)";
             tocElement.Key = "EC";
-            retVal.Add(tocElement);
+            yield return tocElement;
 
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Emergency Management (EM) ";
             tocElement.Key = "EM";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Human Resources (HR) ";
             tocElement.Key = "HR";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Infection Prevention and Control (IC) ";
             tocElement.Key = "IC";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Information Management (IM) ";
             tocElement.Key = "IM";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Leadership (LD) ";
             tocElement.Key = "LD";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Life Safety (LS)";
             tocElement.Key = "LS";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Medication Management (MM) ";
             tocElement.Key = "MM";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Provision of Care, Treatment, and Services (PC) ";
             tocElement.Key = "PC";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Performance Improvement (PI) ";
             tocElement.Key = "PC";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Record of Care, Treatment, and Services (RC) ";
             tocElement.Key = "RC";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Rights and Responsibilities of the Individual (RI) ";
             tocElement.Key = "RI";
-            retVal.Add(tocElement);
+            yield return tocElement;
             
-            tocElement = new Models.TOCElementViewModel();
+            tocElement = new TOCElementViewModel();
             tocElement.Title = "Waived Testing (WT) ";
             tocElement.Key = "WT";
-            retVal.Add(tocElement);
-            
-
-            return retVal;
+            yield return tocElement;            
         }
 
 
         public ActionResult Chapter(string chapterId)
         {
-            Models.StandardDocumentViewModel model = new Models.StandardDocumentViewModel();
-            //model.TableOfContents = new List<Models.TOCElementViewModel>();
-            model = Services.StandardsManagementServices.GetChapter(chapterId);
+            var model = _standardManagementService.GetChapter(chapterId);
+            //model.TableOfContents = new List<Models.TOCElementViewModel>();            
             return View(model);
         }
 
 
         public ActionResult StandardElement(string standardElementId)
         {
-            Models.TOCElementViewModel model = Services.StandardsManagementServices.GetStandardElement(standardElementId);
-            model.Key = standardElementId;
+            var model = _standardManagementService.GetStandardElement(standardElementId);            
+            model.Key = standardElementId;            
             return View(model);
-
         }
 
         public ActionResult PerformanceElement(string standardElementId, string performanceItemId)
         {
-            Models.PerformanceElementViewModel model = Services.StandardsManagementServices.GetPerformanceElementViewModel(standardElementId, performanceItemId);
-            model.StandardId = standardElementId;
+            var model = _standardManagementService.GetPerformanceElementViewModel(standardElementId, performanceItemId);            
+            model.StandardId = standardElementId;            
             return View(model);
-
         }
-
     }
 }

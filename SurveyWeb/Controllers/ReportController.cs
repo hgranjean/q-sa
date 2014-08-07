@@ -24,11 +24,13 @@ namespace SurveyWeb.Controllers
     [Authorize]
     public class ReportController : Controller
     {
-        private AtumSurveillanceContext _dbContext = null;
+        private readonly IPersistenceServices _persistenceService;
+        private readonly SurveillanceService _surveillanceService;
 
-        public ReportController()           
+        public ReportController(IPersistenceServices persistenceService, SurveillanceService surveillanceService)           
         {
-            _dbContext = new AtumSurveillanceContext();
+            _persistenceService = persistenceService;
+            _surveillanceService = surveillanceService;
         }
 
         //
@@ -40,20 +42,19 @@ namespace SurveyWeb.Controllers
         }
 
         public ActionResult ProgressReport()
-        {
-            var persistenceService = ServiceManager.GetService<PersistenceServices>();
-            var surveys = persistenceService.GetSurveys();
+        {        
+            var surveys = _persistenceService.GetSurveys();
 
             // Filtering out responses by user
             var userId = User.Identity.GetUserId();
-            var responses = _dbContext.Responses.Where(m => m.UserId == userId).Select(m => m.Id);
+            var responses = _surveillanceService.GetResponses(userId);
 
             var surveyModels = new List<TracerViewModel>();
             // var refData = new SurveillanceController();
             foreach (var response in responses)
             {
-                var tracerModel = persistenceService.LoadTracer(response);
-                var survey = persistenceService.GetSurvey(tracerModel.SurveyId);
+                var tracerModel = _persistenceService.LoadTracer(response);
+                var survey = _persistenceService.GetSurvey(tracerModel.SurveyId);
                 tracerModel.QuestionGroups = new QuestionGroupsViewModel(tracerModel.SurveyId.ToString(), survey.QuestionGroups);
                 
                 // refData.LoadTracerReferenceData(tracerModel);

@@ -86,7 +86,7 @@ namespace SurveyWeb.Services
 
             var settings = new XmlWriterSettings {Indent = true};
             
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName), settings))
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, "Surveys", fileName), settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
@@ -106,7 +106,7 @@ namespace SurveyWeb.Services
 
             var settings = new XmlWriterSettings { Indent = true };
             
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName), settings))
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, "Responses", fileName), settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
@@ -116,7 +116,7 @@ namespace SurveyWeb.Services
         {
             var appPath = GetAppPath();
 
-            var fullPath = Path.Combine(appPath, "response" + responseId + ".xml");
+            var fullPath = Path.Combine(appPath, "Responses", "response" + responseId + ".xml");
 
             return (TracerViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(TracerViewModel));
         }
@@ -157,14 +157,14 @@ namespace SurveyWeb.Services
         {
             var appPath = GetAppPath();
             
-            return Directory.GetFiles(appPath, "survey*.xml");
+            return Directory.GetFiles(Path.Combine(appPath, "Surveys"), "survey*.xml");
         }
         
         private string[] EnumerateResponses()
         {
             var appPath = GetAppPath();
             
-            return Directory.GetFiles(appPath, "response*.xml");
+            return Directory.GetFiles(Path.Combine(appPath, "Responses"), "response*.xml");
         }
 
         private string GetAppPath()
@@ -183,7 +183,7 @@ namespace SurveyWeb.Services
 
             var appPath = GetAppPath();
 
-            var fullPath = Path.Combine(appPath, "survey" + toDelete.ID + ".xml");
+            var fullPath = Path.Combine(Path.Combine(appPath, "Surveys"), "survey" + toDelete.ID + ".xml");
             
             if (File.Exists(fullPath))
             {

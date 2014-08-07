@@ -15,7 +15,7 @@ namespace SurveyWeb.Models
     public class StandardDocumentViewModel
     {
         public string Title { get; set; }
-        public List<TOCElementViewModel> TableOfContents { get; set; }
+        public IEnumerable<TOCElementViewModel> TableOfContents { get; set; }
     
     }
 

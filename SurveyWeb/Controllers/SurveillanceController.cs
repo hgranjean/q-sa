@@ -25,26 +25,29 @@ namespace SurveyWeb.Controllers
     [Authorize]
     public class SurveillanceController : Controller
     {        
-        private readonly SurveillanceService surveillanceService;
-        private readonly SurveyService surveyService;
-        private readonly TaskService taskService;
-        private readonly MailService mailService;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IPersistenceServices persistenceService;
+        private readonly SurveillanceService _surveillanceService;
+        private readonly SurveyService _surveyService;
+        private readonly TaskService _taskService;
+        private readonly MailService _mailService;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IPersistenceServices _persistenceService;
+        private readonly LearningServices _learningService;
         
         public SurveillanceController(SurveillanceService surveillanceService,
             TaskService taskService,
             SurveyService surveyService,
             MailService mailService,
+            LearningServices learningService,
             IPersistenceServices persistenceService,
             UserManager<ApplicationUser> userManager)
         {
             
-            this.surveillanceService = surveillanceService;
-            this.surveyService = surveyService;
-            this.taskService = taskService;
-            this.userManager = userManager;
-            this.persistenceService = persistenceService;
+            _surveillanceService = surveillanceService;
+            _surveyService = surveyService;
+            _taskService = taskService;
+            _userManager = userManager;
+            _learningService = learningService;
+            _persistenceService = persistenceService;
         }
 
         protected override void Dispose(bool disposing)
@@ -75,14 +78,16 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult ClassifyObservation(string observation)
         {
-            var model = new StandardElementViewModel();
+            StandardElementViewModel model = null;
             if (!string.IsNullOrWhiteSpace(observation))
-            {
-                model.Observation = observation;
-                model = ServiceManager.GetService<LearningServices>().Classify(observation);
-
+            {            
+                model = _learningService.Classify(observation);
             }
-            return View();
+            else
+            {
+                model = new StandardElementViewModel { Observation = observation };
+            }
+            return View(model);
         }
 
 
@@ -96,9 +101,9 @@ namespace SurveyWeb.Controllers
 
         public ActionResult SurveySchedules()
         {
-            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
 
             var model = GetSurveySchedules(false);
 
@@ -107,20 +112,20 @@ namespace SurveyWeb.Controllers
 
         private SurveysViewModel GetSurveySchedules(bool isPastDue)
         {
-            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
 
-            var surveys = persistenceService.GetSurveys();            
+            var surveys = _persistenceService.GetSurveys();            
 
             var userId = User.Identity.GetUserId();
             
             IEnumerable<EventUser> events = null;
             if (isPastDue)
             {                
-                events = taskService.GetPastDueTasks(userId);
+                events = _taskService.GetPastDueTasks(userId);
             } else {
-                events = taskService.GetNextTasks(userId);            
+                events = _taskService.GetNextTasks(userId);            
             }         
 
             var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>() };
@@ -148,9 +153,9 @@ namespace SurveyWeb.Controllers
 
         public ActionResult PastDueSurveys()
         {
-            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
 
             var model = GetSurveySchedules(true);
 
@@ -159,9 +164,9 @@ namespace SurveyWeb.Controllers
 
         public ActionResult PastDueSurveysPartial()
         {
-            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-            ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
 
             var model = GetSurveySchedules(true);
 
@@ -203,17 +208,17 @@ namespace SurveyWeb.Controllers
 
         private CompletedSurveyViewModel GetCompletedSurveys()
         {            
-            var surveys = persistenceService.GetSurveys();
+            var surveys = _persistenceService.GetSurveys();
 
             // Filtering out responses by user
             var userId = User.Identity.GetUserId();
 
-            var responses = surveillanceService.GetResponses(userId);
+            var responses = _surveillanceService.GetResponses(userId);
 
             var models = new List<TracerViewModel>();
             foreach (var response in responses)
             {
-                var tracerModel = persistenceService.LoadTracer(response);
+                var tracerModel = _persistenceService.LoadTracer(response);
                 LoadTracerReferenceData(tracerModel);
                 tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
                 models.Add(tracerModel);
@@ -225,13 +230,13 @@ namespace SurveyWeb.Controllers
 
         public ActionResult ViewCompletedSurvey(string id)
         {            
-            var availableResponses = persistenceService.GetResponses();
+            var availableResponses = _persistenceService.GetResponses();
 
             foreach (var response in availableResponses)
             {
                 if (response.Contains(id))
                 {   
-                    var model = persistenceService.LoadTracer(id);
+                    var model = _persistenceService.LoadTracer(id);
 
                     LoadTracerReferenceData(model);
 
@@ -260,7 +265,7 @@ namespace SurveyWeb.Controllers
             Survey survey = null; // = LoadSurvey("Survey Template 1");
             if (surveyId.HasValue)
             {                
-                survey = persistenceService.GetSurvey(surveyId.Value);
+                survey = _persistenceService.GetSurvey(surveyId.Value);
 
                 foreach (var questionGroup in survey.QuestionGroups)
                 {
@@ -358,7 +363,7 @@ namespace SurveyWeb.Controllers
             // yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
             // yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
             
-            return surveillanceService.GetPersons();
+            return _surveillanceService.GetPersons();
         }
 
         private IEnumerable<Area> LoadAreas()
@@ -404,9 +409,9 @@ namespace SurveyWeb.Controllers
             {
                 try
                 {
-                    ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-                    ViewBag.ShowManagerContent = userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-                    ViewBag.ShowTeamMemberContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                    ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+                    ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+                    ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
                 }
                 catch (Exception ex)
                 {
@@ -423,7 +428,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
         {            
-            var survey = persistenceService.GetSurvey(viewModel.SurveyId);
+            var survey = _persistenceService.GetSurvey(viewModel.SurveyId);
 
             var questions = new Questions();
             var responses = new Responses();
@@ -454,7 +459,7 @@ namespace SurveyWeb.Controllers
                 {
                     // Add observation
                     var newQuestion = questionGroup.Value.AddQuestion(observationText, QuestionType.SelectOne);
-                    var classifyModel = ServiceManager.GetService<LearningServices>().Classify(observationText);
+                    var classifyModel = _learningService.Classify(observationText);
                     newQuestion.TOCReference = classifyModel.StandardId;
                     isObservation = true;
                 }
@@ -486,13 +491,13 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();
             
-            var user = surveillanceService.GetUser(userId);
+            var user = _surveillanceService.GetUser(userId);
 
-            var responseEntry = surveillanceService.AddResponse(user);            
+            var responseEntry = _surveillanceService.AddResponse(user);            
 
             viewModel.ResponseId = responseEntry.Id;
 
-            persistenceService.SaveTracer(viewModel);
+            _persistenceService.SaveTracer(viewModel);
 
             if (isObservation)
             {
@@ -536,7 +541,7 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();                      
                         
-            var rows = taskService.GetTasksForUser(userId, fromDate, toDate).ToList().Select(e =>
+            var rows = _taskService.GetTasksForUser(userId, fromDate, toDate).ToList().Select(e =>
                 new
                 {
                     id = e.EventId,
@@ -558,17 +563,17 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult EditTask(Guid id)
         {   
-            var evt = taskService.GetTask(id.ToString());
+            var evt = _taskService.GetTask(id.ToString());
                      
-            var availableSurveys = persistenceService.GetSurveys();
+            var availableSurveys = _persistenceService.GetSurveys();
 
             var model = new TaskViewModel(evt.Event)
             {
-                Survey = surveyService.GetSurvey(evt.Event.SurveyId),
+                Survey = _surveyService.GetSurvey(evt.Event.SurveyId),
                 SurveyId = evt.Event.SurveyId,
                 AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
-                AvailableUsers = surveillanceService.GetUsers(),
-                Users = taskService.GetUsersForTask(evt.EventId)
+                AvailableUsers = _surveillanceService.GetUsers(),
+                Users = _taskService.GetUsersForTask(evt.EventId)
             };
             
             return View(model);
@@ -595,15 +600,15 @@ namespace SurveyWeb.Controllers
                         SurveyId = model.SurveyId
                     };
 
-                taskService.UpdateTask(evt);                
+                _taskService.UpdateTask(evt);                
 
                 if (model.SelectedUsers != null)
                 {
                     // Update users list in the repository
-                    taskService.UpdateUsersForTask(model.Id, surveillanceService.GetUsers().Select(m => m.Id), model.SelectedUsers);
+                    _taskService.UpdateUsersForTask(model.Id, _surveillanceService.GetUsers().Select(m => m.Id), model.SelectedUsers);
 
                     // Notify newly-assigned users on their assignments
-                    var availableUsers = taskService.GetUsersForTask(model.Id);
+                    var availableUsers = _taskService.GetUsersForTask(model.Id);
                     foreach (var item in model.SelectedUsers)
                     {
                         var user = availableUsers.FirstOrDefault(m => m.Id == item);
@@ -626,12 +631,12 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult CreateTask()
         {   
-            var availableSurveys = persistenceService.GetSurveys();
+            var availableSurveys = _persistenceService.GetSurveys();
 
             var model = new TaskViewModel
                 {
                     AvailableSurveys = availableSurveys.Select(m => new SurveyEntry{Id = m.Guid.ToString(), Title = m.Title}),
-                    AvailableUsers = surveillanceService.GetUsers(),
+                    AvailableUsers = _surveillanceService.GetUsers(),
                     Users = new List<AspNetUser>()
                 };
 
@@ -658,11 +663,11 @@ namespace SurveyWeb.Controllers
                         SurveyId = model.SurveyId
                     };
 
-                var @event = taskService.CreateTask(evt);
+                var @event = _taskService.CreateTask(evt);
 
-                taskService.UpdateUsersForTask(evt.Id, new List<string>(), model.SelectedUsers);
+                _taskService.UpdateUsersForTask(evt.Id, new List<string>(), model.SelectedUsers);
 
-                foreach (var user in taskService.GetUsersForTask(evt.Id))
+                foreach (var user in _taskService.GetUsersForTask(evt.Id))
                 {
                     // var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == selectedUser);
                     
@@ -697,9 +702,9 @@ namespace SurveyWeb.Controllers
             var email = user.Person.Email;
             var baseUrl = EmailHelper.GetDomainNameFromHost(Request.Url.Host);
             // var mailService = ServiceManager.GetService<MailService>();
-            var template = mailService.GetEmailTemplate(EmailTemplate.EventAssigned);
+            var template = _mailService.GetEmailTemplate(EmailTemplate.EventAssigned);
             
-            mailService.SendEmail("donotreply@" + baseUrl, email,
+            _mailService.SendEmail("donotreply@" + baseUrl, email,
                                   "A task was assigned to you at " + baseUrl, template.ToString(), true, baseUrl);
             
         }
@@ -708,7 +713,7 @@ namespace SurveyWeb.Controllers
             var userId = User.Identity.GetUserId();
                         
 
-            var user = surveillanceService.GetUser(userId);
+            var user = _surveillanceService.GetUser(userId);
 
             var model = new PersonViewModel(user.Person) { UserId = user.Id };
 
