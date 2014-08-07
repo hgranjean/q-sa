@@ -72,7 +72,7 @@ namespace SurveyWeb.App_Start
             container.RegisterType<AccountService>(new InjectionConstructor(typeof(IAccountRepository)));
 
             container.RegisterType<MailService>(new InjectionConstructor(typeof(ISurveyStore)));
-            container.RegisterType<LearningServices>(new InjectionConstructor(typeof(ISurveyStore)));
+            container.RegisterType<LearningServices>(new InjectionConstructor(typeof(ISurveyStore), typeof(StandardsManagementServices)));
             container.RegisterType<StandardsManagementServices>(new InjectionConstructor(typeof(ISurveyStore)));            
             
         }
