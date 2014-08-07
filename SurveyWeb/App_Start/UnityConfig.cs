@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using System.Configuration;
 using System.Data.Entity;
+using SurveyWeb.Services;
 
 namespace SurveyWeb.App_Start
 {
@@ -40,23 +41,38 @@ namespace SurveyWeb.App_Start
         {
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-
-            // TODO: Register your types here
+                        
             // container.RegisterType<IProductRepository, ProductRepository>();
             // container.RegisterType<UserManager<ApplicationUser>>( new InjectionFactory( c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>( new ApplicationDbContext())), new HttpContextLifetimeManager() ));
 
             // Read more about DI with Unity at http://msdn.microsoft.com/en-us/library/dn178463(v=pandp.30).aspx
 
             string connectionString = ConfigurationManager.ConnectionStrings["AtumSurveillanceContext"].ConnectionString;
-
-            // TODO: Register your types here                       
-            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
+            string location = ConfigurationManager.ConnectionStrings["AtumSurveillanceContext"].ConnectionString ?? "RuleApp";
+            
+            // Registration of the DI components
+            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(new ApplicationDbContext()));
+            // container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
             container.RegisterType<UserManager<ApplicationUser>, UserManager<ApplicationUser>>(new HttpContextLifetimeManager());
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<ITaskRepository, TaskRepository>(new InjectionConstructor(connectionString));            
+            container.RegisterType<ITaskRepository, TaskRepository>(new InjectionConstructor(connectionString));
+            container.RegisterType<TaskService>(new InjectionConstructor(typeof(ITaskRepository)));
+            
             container.RegisterType<ISurveillanceRepository, SurveillanceRepository>(new InjectionConstructor(connectionString));
-            container.RegisterType<ISurveyRepository, SurveyRepository>(new InjectionConstructor(connectionString));            
+            container.RegisterType<SurveillanceService>(new InjectionConstructor(typeof(ISurveillanceRepository)));
+            
+            container.RegisterType<ISurveyRepository, SurveyRepository>(new InjectionConstructor(connectionString));
+            container.RegisterType<SurveyService>(new InjectionConstructor(typeof(ISurveyRepository)));
+            
+            container.RegisterType<ISurveyStore, SurveyStore>(new InjectionConstructor(location));
+            container.RegisterType<IPersistenceServices, PersistenceServices>(new InjectionConstructor(typeof(SurveyStore)));
+
+            container.RegisterType<IAccountRepository, AccountRepository>(new InjectionConstructor(connectionString));
+            container.RegisterType<AccountService>(new InjectionConstructor(typeof(IAccountRepository)));
+
+            container.RegisterType<MailService>();
+            
         }
     }
 }

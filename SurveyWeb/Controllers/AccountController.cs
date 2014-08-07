@@ -30,33 +30,24 @@ namespace SurveyWeb.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private AtumSurveillanceContext _dbContext = null;
-        private ApplicationUserManager _userManager;
+        // private AtumSurveillanceContext _dbContext = null;
+        // private ApplicationUserManager _userManager;
+        private readonly SurveillanceService _surveillanceService;
+        private readonly MailService _mailService;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly AccountService _accountService;
         private const int InviteeMaxCount = 6;
 
-        public AccountController(ApplicationUserManager userManager) : this()
+        public AccountController(MailService mailService, SurveillanceService surveillanceService,
+            AccountService accountService,
+            UserManager<ApplicationUser> userManager)
         {
-            UserManager = userManager;
+            _mailService = mailService;
+            _surveillanceService = surveillanceService;
+            _accountService = accountService;
+            _userManager = userManager;            
         }
-
-
-        public AccountController()
-        {
-            _dbContext = new AtumSurveillanceContext();
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-        
+               
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -75,7 +66,7 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
+                var user = await _userManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
@@ -112,7 +103,7 @@ namespace SurveyWeb.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.UserName, };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
@@ -140,7 +131,7 @@ namespace SurveyWeb.Controllers
         // GET: /Account/ManageProfile
         public ActionResult ManageProfile(string userName, string email, string hospitalId)
         {
-            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
+            var user = _surveillanceService.GetUsers().FirstOrDefault(m => m.UserName == userName);
 
             var model = new PersonViewModel { UserId = user.Id };
 
@@ -160,7 +151,7 @@ namespace SurveyWeb.Controllers
 
             if (!string.IsNullOrWhiteSpace(hospitalId))
             {
-                var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
+                var hospital = _surveillanceService.GetHospital(hospitalId);
 
                 if (hospital != default(Hospital))
                 {
@@ -185,13 +176,12 @@ namespace SurveyWeb.Controllers
                 if (string.IsNullOrWhiteSpace(model.Person.Id))
                 {
                     model.Person.Id = Guid.NewGuid().ToString("D");
-                    _dbContext.Persons.Add(model.Person);
+                    _surveillanceService.AddPerson(model.Person);                    
                 }
                 else
                 {
-                    _dbContext.Persons.Attach(model.Person);
-                    _dbContext.Entry(model.Person).CurrentValues.SetValues(model.Person);
-                    _dbContext.Entry(model.Person).State = EntityState.Modified;
+                    _surveillanceService.UpdatePerson(model.Person);
+                    
                 }
 
                 // Hospital was not entered, create a new one
@@ -199,16 +189,15 @@ namespace SurveyWeb.Controllers
                 {
                     model.Person.Hospital.Id = Guid.NewGuid().ToString("D");
                     model.Person.Hospital.DomainName = EmailHelper.GetDomainNameFromEmail(model.Email);
-                    _dbContext.Hospitals.Add(model.Person.Hospital);
+                    _surveillanceService.AddHospital(model.Person.Hospital);                    
                 }
                 else
                 {
-                    _dbContext.Hospitals.Attach(model.Person.Hospital);
-                    _dbContext.Entry(model.Person.Hospital).CurrentValues.SetValues(model.Person.Hospital);
-                    _dbContext.Entry(model.Person.Hospital).State = EntityState.Modified;
+                    _surveillanceService.UpdateHospital(model.Person.Hospital);
+                    
                 }
                 
-                var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.UserId);
+                var user = _surveillanceService.GetUser(model.UserId);
 
                 if (user != default(AspNetUser))
                 {
@@ -219,43 +208,33 @@ namespace SurveyWeb.Controllers
                     this.AddErrors(new IdentityResult("User not found with id: " + model.UserId));
                 }
 
-                // Add user to hospital, if its not present there already
-                if (_dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id && m.UserId == user.Id) == 0)
-                {
-                    _dbContext.UserHospitals.Add(new UserHospital { HospitalId = model.Person.Hospital.Id, UserId = user.Id});
-                }
+                _accountService.AddUserHospital(user.Id, model.Person.Hospital.Id);         
 
                 // if first user in the hospital, make it a manager, otherwise, team member
-                int count = _dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id);
-                if (count <= 1)
-                {   
-                    var managerRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Manager");
+                int count = _accountService.GetHospitalUsers(model.Person.Hospital.Id).Count();
 
-                    if (user.AspNetRoles.Count(m => m.Id == managerRole.Id) == 0)
-                    {
-                        user.AspNetRoles.Add(managerRole);
-                    }
+                // int count = _dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id);
+                if (count <= 1)
+                {
+                    _accountService.AddRoleToUser("Manager", user.Id);                    
                 }
                 else
                 {
-                    var memberRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Team Member");
-
-                    if (user.AspNetRoles.Count(m => m.Id == memberRole.Id) == 0)
-                    {
-                        user.AspNetRoles.Add(memberRole);
-                    }
+                    _accountService.AddRoleToUser("Team Member", user.Id);
                 }
+
+                return RedirectToAction("Welcome", "Home");
                 
-                try
+                /*try
                 {
                     _dbContext.SaveChanges();
                     
-                    return RedirectToAction("Welcome", "Home");
+                    
                 }
                 catch (DbEntityValidationException e)
                 {
                     this.AddErrors(e);
-                }
+                }*/
             }
 
             // If we got this far, something failed, redisplay form
@@ -269,7 +248,7 @@ namespace SurveyWeb.Controllers
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
             ManageMessageId? message = null;
-            IdentityResult result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+            IdentityResult result = await _userManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
             {
                 message = ManageMessageId.RemoveLoginSuccess;
@@ -296,7 +275,7 @@ namespace SurveyWeb.Controllers
 
             var userName = User.Identity.GetUserName();
 
-            var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName);
+            var user = _surveillanceService.GetUsers().FirstOrDefault(m => m.UserName == userName);
             
             var model = new PersonViewModel(user.Person) { UserId = user.Id};
 
@@ -317,7 +296,7 @@ namespace SurveyWeb.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                    IdentityResult result = await _userManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
@@ -339,7 +318,7 @@ namespace SurveyWeb.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+                    IdentityResult result = await _userManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
@@ -357,7 +336,7 @@ namespace SurveyWeb.Controllers
         
         public ActionResult DeleteUser(string userId)
         {
-            var model = _dbContext.AspNetUsers.FirstOrDefault(user => user.Id == userId);
+            var model = _surveillanceService.GetUser(userId);
 
             return View("DeleteUser", model);
         }
@@ -366,22 +345,18 @@ namespace SurveyWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteUser(AspNetUser model)
         {
-            IList<UserLoginInfo> logins = await UserManager.GetLoginsAsync(model.Id);
+            IList<UserLoginInfo> logins = await _userManager.GetLoginsAsync(model.Id);
             
             foreach (var login in logins)
             {
-                IdentityResult result = await UserManager.RemoveLoginAsync(model.Id, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
+                IdentityResult result = await _userManager.RemoveLoginAsync(model.Id, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
                 if (!result.Succeeded)
                 {
                     this.AddErrors(result);
                 }
             }
 
-            var toDelete = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == model.Id);
-
-            _dbContext.AspNetUsers.Remove(toDelete);
-
-            await _dbContext.SaveChangesAsync();
+            _surveillanceService.DeleteUser(model.Id);            
 
             return RedirectToAction("UserHospitalIndex", "Hospital");
         }
@@ -409,7 +384,7 @@ namespace SurveyWeb.Controllers
             }
 
             // Sign in the user with this external login provider if the user already has a login
-            var user = await UserManager.FindAsync(loginInfo.Login);
+            var user = await _userManager.FindAsync(loginInfo.Login);
             if (user != null)
             {
                 await SignInAsync(user, isPersistent: false);
@@ -443,7 +418,7 @@ namespace SurveyWeb.Controllers
             {
                 return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
             }
-            var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+            var result = await _userManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             if (result.Succeeded)
             {
                 return RedirectToAction("Manage");
@@ -472,10 +447,10 @@ namespace SurveyWeb.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser { UserName = model.UserName };
-                var result = await UserManager.CreateAsync(user);
+                var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    result = await _userManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
@@ -510,18 +485,18 @@ namespace SurveyWeb.Controllers
         [ChildActionOnly]
         public ActionResult RemoveAccountList()
         {
-            var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
+            var linkedAccounts = _userManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && UserManager != null)
+            /*if (disposing && UserManager != null)
             {
                 UserManager.Dispose();
                 UserManager = null;
-            }
+            }*/
             base.Dispose(disposing);
         }
 
@@ -540,13 +515,13 @@ namespace SurveyWeb.Controllers
         private async Task SignInAsync(ApplicationUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            var identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 
         private bool HasPassword()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
+            var user = _userManager.FindById(User.Identity.GetUserId());
             if (user != null)
             {
                 return user.PasswordHash != null;
@@ -619,20 +594,20 @@ namespace SurveyWeb.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user;
-                using (var context = _dbContext)
-                {
-                    var foundUserName = (from u in context.AspNetUsers
+                
+                    /*var foundUserName = (from u in context.AspNetUsers
                               where u.Person.Email == model.Email
-                              select u.UserName).FirstOrDefault();
-                    if (foundUserName != null)
-                    {
-                        user = UserManager.FindByName(foundUserName.ToString());
-                    }
-                    else
-                    {
-                        user = null;
-                    }
+                              select u.UserName).FirstOrDefault();*/
+                var foundUserName = _surveillanceService.GetUsers().FirstOrDefault(m => m.Email == model.Email).UserName;
+                if (foundUserName != null)
+                {
+                    user = _userManager.FindByName(foundUserName.ToString());
                 }
+                else
+                {
+                    user = null;
+                }
+                
                 if (user != null)
                 {
                     // Generate password token that will be used in the email link to authenticate user
@@ -700,16 +675,11 @@ namespace SurveyWeb.Controllers
                 //bool resetResponse = WebSecurity.ResetPassword(model.ReturnToken, model.Password);
 
                 var userName = EmailHelper.GetUsernameFromToken(model.ReturnToken);
-                var user = UserManager.FindByName(userName);
+                var user = _userManager.FindByName(userName);
                 if (user != null)
                 {
-                    using (var store = new UserStore<ApplicationUser>())
-                    {
-                        store.SetPasswordHashAsync(user, UserManager.PasswordHasher.HashPassword(model.Password)).ContinueWith(t =>
-                            UserManager.UpdateAsync(user)).Wait();
-                        
-                        _dbContext.SaveChanges();
-                    }
+                    _surveillanceService.SetPasswordHashAsync(user, model.Password, _userManager);
+                    
                     ViewBag.Message = "Successfully Changed";
                 }
                 else
@@ -725,7 +695,7 @@ namespace SurveyWeb.Controllers
         {
             var invitees = new List<InvitePersonViewModel>();
             var userName = User.Identity.GetUserName();
-            var person = _dbContext.AspNetUsers.FirstOrDefault(m => m.UserName == userName).Person;
+            var person = _surveillanceService.GetUsers().FirstOrDefault(m => m.UserName == userName).Person;
             if (person != null)
             {
                 for (int i = 0; i < InviteeMaxCount; i++)
@@ -752,7 +722,7 @@ namespace SurveyWeb.Controllers
             string body = template.ToString();
 
             string userName = User.Identity.GetUserId();
-            var person = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == userName).Person;
+            var person = _surveillanceService.GetUsers().FirstOrDefault(m => m.Id == userName).Person;
 
             var appPath = Request.ApplicationPath;
 
@@ -786,19 +756,15 @@ namespace SurveyWeb.Controllers
             return View(invitees);
         }
 
-        public enum EmailTemplate
-        {
-            Invitation,
-            ResetPassword,
-            EventAssigned
-        }
 
-
-        public static XDocument GetEmailTemplate(EmailTemplate template)
+        public XDocument GetEmailTemplate(EmailTemplate template)
         {
+            return _mailService.GetEmailTemplate(template);
+
+            /*
             string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
 
-            appPath = appPath + @"\..\RuleApp\";
+            appPath = appPath + @"\..\Store\";
 
             var emailFileName = string.Empty;
             if (template == EmailTemplate.Invitation)
@@ -816,7 +782,7 @@ namespace SurveyWeb.Controllers
 
             var result = XDocument.Load(appPath + @"Emails\" + emailFileName);
 
-            return result;
+            return result;*/
         }
     }
 }

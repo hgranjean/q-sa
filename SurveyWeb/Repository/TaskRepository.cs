@@ -75,6 +75,7 @@ namespace SurveyWeb.Repository
             _context.Events.Attach(evt);
             _context.Entry(evt).CurrentValues.SetValues(evt);
             _context.Entry(evt).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
 
@@ -87,9 +88,12 @@ namespace SurveyWeb.Repository
             {
                 if (selectedUsers.Count(userId => userId == item.Id) == 0)
                 {
-                    var toDelete = _context.EventUsers.First(eventUser => eventUser.EventId == taskId && eventUser.UserId == item.Id);
+                    var toDelete = _context.EventUsers.FirstOrDefault(eventUser => eventUser.EventId == taskId && eventUser.UserId == item.Id);
 
-                    _context.EventUsers.Remove(toDelete);
+                    if (toDelete != default(EventUser))
+                    {
+                        _context.EventUsers.Remove(toDelete);
+                    }
                 }
             }
                         
@@ -108,7 +112,9 @@ namespace SurveyWeb.Repository
 
         public Event CreateTask(Event evt)
         {
-            return _context.Events.Add(evt);
+            var @event = _context.Events.Add(evt);
+            _context.SaveChanges();
+            return @event;
         }
     }
 }

@@ -16,6 +16,19 @@
     @Scripts.Render("~/bundles/aqs")
     @Scripts.Render("~/bundles/bootstrap")    
     @Scripts.Render("~/bundles/dropdown")
+
+    @if (!User.Identity.IsAuthenticated)    
+    {
+        <style>
+            html {
+                background-image: url(../Images/compliance_bg2.jpg);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        </style>
+    }
 </head>
     <body>
         
@@ -63,7 +76,7 @@
                             </div><!-- /gn-scroller -->
                         </nav>
                     </li>
-                }
+                }                                
                 <li>&nbsp;</li>
 			</ul>
         </div>
@@ -92,11 +105,12 @@
         </div>
 
         <div class="container body-content">
-            @RenderBody()
+            @RenderBody()            
+
             <hr />
             <footer>
                 <p>&copy; @DateTime.Now.Year - Atum Solutions, LLC</p>
             </footer>
-        </div>        
+        </div>
     </body>
 </html>

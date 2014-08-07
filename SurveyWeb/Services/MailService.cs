@@ -1,12 +1,28 @@
-﻿using System;
+﻿using SurveyWeb.Repository;
+using System;
 using System.Configuration;
+using System.Diagnostics.Contracts;
+using System.IO;
 using System.Net.Mail;
+using System.Xml.Linq;
 
 namespace SurveyWeb.Services
-{
-    internal class MailService
+{   public enum EmailTemplate
+    {
+        Invitation,
+        ResetPassword,
+        EventAssigned
+    }
+
+    public class MailService
     {
         private static readonly Lazy<SmtpClient> _smtpClient;
+        private readonly ISurveyStore _store;
+
+        public MailService(ISurveyStore store)
+        {
+            _store = store;
+        }
 
         static MailService()
         {
@@ -25,6 +41,34 @@ namespace SurveyWeb.Services
             message.IsBodyHtml = true;
             
             _smtpClient.Value.Send(message);
+        }
+
+        public XDocument GetEmailTemplate(EmailTemplate template)
+        {
+            Contract.Requires(_store != null);
+            // string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
+
+            // appPath = appPath + @"\..\Store\";
+
+            var appPath = _store.GetPath();
+
+            var emailFileName = string.Empty;
+            if (template == EmailTemplate.Invitation)
+            {
+                emailFileName = Path.Combine(appPath, "Emails", "InvitationEmail.xml");
+            }
+            else if (template == EmailTemplate.ResetPassword)
+            {
+                emailFileName = Path.Combine(appPath, "Emails", "ResetPassword.xml");
+            }
+            else if (template == EmailTemplate.EventAssigned)
+            {
+                emailFileName = Path.Combine(appPath, "Emails", "EventAssigned.xml");
+            }
+
+            var result = XDocument.Load(emailFileName); // appPath + @"Emails\" + emailFileName
+
+            return result;
         }
     }
 }
