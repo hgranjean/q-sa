@@ -253,6 +253,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\Learning.cs" />
     <Compile Include="Mappers\SurveillanceManagement.cs" />
     <Compile Include="Mappers\SurveyManagement.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\HtmlExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\NLPModels.cs" />
     <Compile Include="Models\QuestionGroupsViewModelBinder.cs" />
     <Compile Include="Models\RadioButtonListViewModel.cs" />
     <Compile Include="Models\ReportModels.cs" />
@@ -691,6 +693,9 @@
     <Content Include="Views\Surveillance\Export.cshtml" />
     <Content Include="Views\Surveillance\Archive.cshtml" />
     <Content Include="Views\Report\ProgressReport.cshtml" />
+    <Content Include="Views\Learning\NBTrainingDocument.cshtml" />
+    <Content Include="Views\Learning\_ObservationClass.cshtml" />
+    <Content Include="Views\Learning\_NBTrainingDocumentText.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Store\Domain\" />

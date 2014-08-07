@@ -9,43 +9,24 @@
 
 <h2>Observation Classifier</h2>
 
-@using (Ajax.BeginForm(
-        new AjaxOptions
-        {
-            HttpMethod = "get",
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "EPIdList"
+ <form method="get" >
 
-        }))
-{
+    <div style="display: table-row">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Observation)
+        </div>
+    </div>
     <div id="observation-text" style="display: table-row">
-        @Html.TextAreaFor(model => model.Observation, new { id = "observationText", name = "observation", cols = 75, @rows = 5 })
-        @*<textarea name="observation" id="observationText"></textarea>*@
-        @*<input type="submit" name="classify" value="classify" />*@
+        @Html.TextAreaFor(model => model.Observation, new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#classDisplay", cols = 75, @rows = 5 })
     </div>
-    <div id="labels" style="display: table-row">
+</form>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.StandardId)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EPIds)
-        </div>
+@Html.Partial("_ObservationClass",Model)
 
-    </div>
-    <div>
-        <div id="epIdList" style="display: table-row">
-            <div>
-                @Html.TextBoxFor(model => model.StandardId)
+<script>
+    $(‘#standardText’).tooltip({
+        track: true
+    });
 
-                @if (Model.EPIds != null)
-                {
-
-                    @Html.DropDownListFor(model => model.EPIds,
-                                        new SelectList(Model.EPIds), "", new { id = "EPIdList" })
-                }
-            </div>
-        </div>
-    </div>
-}
+</script>
 <script src="~/Scripts/AQS/aqs.js"></script>

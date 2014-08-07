@@ -11,6 +11,7 @@ namespace SurveyWeb.Controllers
 {
     public class LearningController : Controller
     {
+        private const string DefaultTrainingDocumentIdentifier = "EC.01.01.01";
         private readonly LearningServices _learningService;
         
         public LearningController(LearningServices learningService)
@@ -31,16 +32,37 @@ namespace SurveyWeb.Controllers
             StandardElementViewModel model = null;
             
             if (!string.IsNullOrWhiteSpace(observation))
-            {             
+            {
                 model = _learningService.Classify(observation);
             }
             else
             {
                 model = new StandardElementViewModel { Observation = observation };
             }
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ObservationClass", model);
+            }
+            return View(model);
+        }
+
+        public ActionResult NBTrainingDocument(string trainingDocumetId) 
+        {   
+            TrainingDocumentViewModel model = _learningService.GetTrainingDocument(trainingDocumetId ?? DefaultTrainingDocumentIdentifier);
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_NBTrainingDocumentText", model);
+            }
 
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult NBTrainingDocument(TrainingDocumentViewModel model)
+        {
+            model = _learningService.SaveTrainingDocument(model);
+
+            return View(model);
+        }
     }
 }

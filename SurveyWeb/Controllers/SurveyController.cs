@@ -38,9 +38,9 @@ namespace SurveyWeb.Controllers
             IPersistenceServices persistenceService,
             UserManager<ApplicationUser> userManager)
         {            
-            this._surveyService = surveyService;        
-            this._userManager = userManager;
-            this._persistenceService = persistenceService;
+            _surveyService = surveyService;        
+            _userManager = userManager;
+            _persistenceService = persistenceService;
         }
 
         //
