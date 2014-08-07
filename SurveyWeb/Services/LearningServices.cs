@@ -1,16 +1,26 @@
 ﻿using Atum.Domain.NLP.NaiveBayes;
 using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+using SurveyWeb.Models;
+using SurveyWeb.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
 namespace SurveyWeb.Services
-{
-    internal class LearningServices
+{   public class LearningServices
     {
+        private readonly ISurveyStore _store;
+        private readonly StandardsManagementServices _standardManagementService;
 
-        EPClassifier GetClassifier(string classifierId)
+        public LearningServices(ISurveyStore store, StandardsManagementServices standardManagementService)
+        {
+            _store = store;
+            _standardManagementService = standardManagementService;
+        }
+
+        private EPClassifier GetClassifier(string classifierId)
         {
             EPClassifier retVal = null;
             Dictionary<string, EPClassifier> classifierMap = this.ClassifierMap;
@@ -25,76 +35,72 @@ namespace SurveyWeb.Services
 
         private Dictionary<string, EPClassifier> ClassifierMap { get; set; }
 
-        internal Models.StandardElementViewModel Classify(string observation)
+        internal StandardElementViewModel Classify(string observation)
         {
             //TODO: Service should return model, not viewModel!
 
             string observationClass = GetClassifier().Classify(observation);
 
-            Models.StandardElementViewModel retVal = new Models.StandardElementViewModel();
+            StandardElementViewModel retVal = new StandardElementViewModel();
             retVal.StandardId = observationClass;
             retVal.EPIds = LoadEPIds(observationClass);
 
             return retVal;
         }
 
-        private static IEnumerable<string> LoadEPIds(string observationClass)
+        private IEnumerable<string> LoadEPIds(string observationClass)
         {
-            List<string> eps = new List<string>();
-            IEnumerable<string> retVal = eps;
+            var standard = GetStandardChapter().GetPerformanceCategory(observationClass);
 
-            var epIds = GetStandardChapter().GetPerformanceCategory(observationClass).Items;
+            var epIds = standard.Items;
 
-            foreach (var epId in epIds)
-            {
-                string strToAdd = string.Format("EP {0}", epId.EPId);
-                eps.Add(strToAdd);
-            }
-
-            return retVal;
+            return epIds.ConvertAll(m => string.Format("EP {0}", m.EPId));
         }
 
 
-        static Chapter standardChapter;
-        private static Chapter GetStandardChapter()
+        private static Chapter s_standardChapter;
+        private Chapter GetStandardChapter()
         {
-            if (standardChapter==null)
+            if (s_standardChapter == null)
             {
-                standardChapter = StandardsManagementServices.loadChapter("EC");
+                s_standardChapter = _standardManagementService.LoadChapter("EC");
             }
 
-            return standardChapter;
+            return s_standardChapter;
         }
 
-        static EPClassifier classifier;
+        private static EPClassifier s_classifier;
         /// <summary>
         /// TODO: Add Option to 
         /// </summary>
         /// <returns></returns>
-        private static EPClassifier GetClassifier()
+        private EPClassifier GetClassifier()
         {
-            if (classifier==null)
+            if (s_classifier == null)
             {
              
-                string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/");
-                string modelPath = HttpContext.Current.Server.MapPath("~/OpenNLP/Models/");
-                classifier = new EPClassifier(modelPath);
+                var standardsPath = Path.Combine(_store.GetPath(), "JointCommissionStandards/Training/EC");
+                var modelPath = Path.Combine(_store.GetPath(), "OpenNLP/Models");
+                
+                s_classifier = new EPClassifier(modelPath);
 
-                string[] xmlClassFiles = System.IO.Directory.GetFiles(appPath);
+                var xmlClassFiles = Directory.GetFiles(standardsPath);
+                
                 //classifier.trainFromXML(xmlClassFiles);
 
                 //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
 
                 //classifier.trainFromChapter(chapterFileName);
 
-                appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
-                xmlClassFiles = System.IO.Directory.GetFiles(appPath);
+                standardsPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC\\Serialized");
                 
-                classifier.trainFromXMLSerialized(xmlClassFiles);
+                xmlClassFiles = Directory.GetFiles(standardsPath);
+                
+                s_classifier.TrainFromXmlSerialized(xmlClassFiles);
 
             }
 
-            return classifier;
+            return s_classifier;
         }
 
     }

@@ -1,16 +1,28 @@
 ﻿using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using SurveyWeb.Models;
+using SurveyWeb.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml;
 
 namespace SurveyWeb.Services
 {
-    internal class StandardsManagementServices
+    /// <summary>
+    /// TODO: Replace XmlDocument with XDocument!
+    /// </summary>
+    public class StandardsManagementServices
     {
-        internal static StandardDocumentViewModel GetChapter(string chapterId)
+        private readonly ISurveyStore _store;
+
+        public StandardsManagementServices(ISurveyStore store)
+        {
+            _store = store;
+        }
+
+        internal StandardDocumentViewModel GetChapter(string chapterId)
         {
 
             StandardDocumentViewModel retVal = new StandardDocumentViewModel();
@@ -21,21 +33,21 @@ namespace SurveyWeb.Services
             //xmlDoc.Load(chapterFileName);
 
             //string chapterTitlePath = "chapter/chaptertitle";
-            Chapter chapter = loadChapter(chapterId);
+            Chapter chapter = LoadChapter(chapterId);
             //string chapterTitle = xmlDoc.SelectSingleNode(chapterTitlePath).InnerText;
             //chapter.Title = chapterTitle;
             //chapter.Elements = loadElements(xmlDoc);
 
-            retVal = buildStandardViewModel(chapter);
+            retVal = BuildStandardViewModel(chapter);
             
 
             return retVal;
         }
 
-        internal static Chapter loadChapter(string chapterId)
+        internal Chapter LoadChapter(string chapterId)
         {
             //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
-            XmlDocument xmlDoc = loadChapterDoc();// new XmlDocument();
+            XmlDocument xmlDoc = LoadChapterDoc();// new XmlDocument();
 
             //xmlDoc.Load(chapterFileName);
 
@@ -43,17 +55,16 @@ namespace SurveyWeb.Services
             Chapter chapter = new Chapter();
             string chapterTitle = xmlDoc.SelectSingleNode(chapterTitlePath).InnerText;
             chapter.Title = chapterTitle;
-            chapter.Elements = loadElements(xmlDoc);
+            chapter.Elements = LoadElements(xmlDoc);
             
             return chapter;
         }
 
-        private static XmlDocument loadChapterDoc()
+        private XmlDocument LoadChapterDoc()
         {
-
-            string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/");
+            string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards");
             
-            string chapterFileName = appPath + "EC_out.xml";
+            string chapterFileName = Path.Combine(appPath, "EC_out.xml");
 
             XmlDocument xmlDoc =  new XmlDocument();
             
@@ -61,17 +72,17 @@ namespace SurveyWeb.Services
             return xmlDoc;
         }
 
-        private static StandardDocumentViewModel buildStandardViewModel(Chapter chapter)
+        private StandardDocumentViewModel BuildStandardViewModel(Chapter chapter)
         {
             StandardDocumentViewModel retVal = new StandardDocumentViewModel();
 
             retVal.Title = chapter.Title;
-            retVal.TableOfContents = buildTOC(chapter.Elements);
+            retVal.TableOfContents = BuildTOC(chapter.Elements);
 
             return retVal;
         }
         
-        private static List<TOCElementViewModel> buildTOC(List<Standard> list)
+        private static List<TOCElementViewModel> BuildTOC(List<Standard> list)
         {
             List<TOCElementViewModel> retVal = new List<TOCElementViewModel>();
             
@@ -89,7 +100,7 @@ namespace SurveyWeb.Services
 
         }
 
-        private static List<Standard> loadElements(XmlDocument xmlDoc)
+        private static List<Standard> LoadElements(XmlDocument xmlDoc)
         {
             string elementsTitlePath = "chapter/titles[title]/*";
             string catIdPath = "epid";
@@ -176,21 +187,21 @@ namespace SurveyWeb.Services
         }
 
 
-        internal static TOCElementViewModel GetStandardElement(string standardElementId)
+        internal TOCElementViewModel GetStandardElement(string standardElementId)
         {
             TOCElementViewModel retVal = new TOCElementViewModel();
             string chapterId = GetChapterId(standardElementId);
-            Chapter chapter = loadChapter(chapterId);
+            Chapter chapter = LoadChapter(chapterId);
 
 
             Standard ep = chapter.GetPerformanceCategory(standardElementId);
             retVal.Title = ep.Title;
-            retVal.Elements = loadTOCElements(ep);
+            retVal.Elements = LoadTOCElements(ep);
             return retVal;
 
         }
 
-        private static List<TOCElementViewModel> loadTOCElements(Standard ep)
+        private static List<TOCElementViewModel> LoadTOCElements(Standard ep)
         {
             List<TOCElementViewModel> retVal = new List<TOCElementViewModel>();
             List<ElementOfPerformance> list = ep.Items;
@@ -219,7 +230,6 @@ namespace SurveyWeb.Services
             {
             }
 
-
             return retVal;
         }
         /// <summary>
@@ -228,9 +238,9 @@ namespace SurveyWeb.Services
         /// <param name="standardElementId"></param>
         /// <param name="performanceItemId"></param>
         /// <returns></returns>
-        internal static PerformanceElementViewModel GetPerformanceElementViewModel(string standardElementId, string performanceItemId)
+        internal PerformanceElementViewModel GetPerformanceElementViewModel(string standardElementId, string performanceItemId)
         {
-            XmlDocument xmlDoc = loadChapterDoc();// new XmlDocument();
+            XmlDocument xmlDoc = LoadChapterDoc();// new XmlDocument();
             PerformanceElementViewModel retVal = new PerformanceElementViewModel();
             //string itemsPath = "chapter/notes/note[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardId).Replace("epItemId", epItem.EPId.ToString());
 

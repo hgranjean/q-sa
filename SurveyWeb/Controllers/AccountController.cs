@@ -623,12 +623,11 @@ namespace SurveyWeb.Controllers
                     string subject = "Reset your password for @" + domainName;
                     string body = "You link: " + resetLink;
                     string from = "donotreply@ " + domainName;
-
-                    var mailService = ServiceManager.GetService<MailService>();
+                                        
                     // Attempt to send the email
                     try
                     {
-                        mailService.SendEmail(from, model.Email, subject, body, true, domainName);
+                        _mailService.SendEmail(from, model.Email, subject, body, true, domainName);
                     }
                     catch (Exception e)
                     {
@@ -731,8 +730,7 @@ namespace SurveyWeb.Controllers
             body = body.Replace("{{APP_PATH}}", appPath);
 
             try
-            {
-                var mailService = ServiceManager.GetService<MailService>();
+            {                
                 foreach (var item in invitees)
                 {
                     // Verify that email was filled in, otherwise skip
@@ -743,7 +741,7 @@ namespace SurveyWeb.Controllers
 
                     // Send the email
                     string to = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
-                    mailService.SendEmail(from, to, subject, body, true, baseUrl);
+                    _mailService.SendEmail(from, to, subject, body, true, baseUrl);
                 }
 
                 ViewBag.Message = "Invited People Successfully.";

@@ -29,18 +29,18 @@ namespace SurveyWeb.Controllers
     /// </summary>
     public class SurveyController : Controller
     {        
-        private readonly SurveyService surveyService;        
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IPersistenceServices persistenceService;
+        private readonly SurveyService _surveyService;        
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IPersistenceServices _persistenceService;
 
         public SurveyController(            
             SurveyService surveyService,
             IPersistenceServices persistenceService,
             UserManager<ApplicationUser> userManager)
         {            
-            this.surveyService = surveyService;        
-            this.userManager = userManager;
-            this.persistenceService = persistenceService;
+            this._surveyService = surveyService;        
+            this._userManager = userManager;
+            this._persistenceService = persistenceService;
         }
 
         //
@@ -56,13 +56,13 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult Surveys()
         {            
-            var surveys = persistenceService.GetSurveys();            
+            var surveys = _persistenceService.GetSurveys();            
 
             var model = new SurveysViewModel { Surveys = new Surveys() };
             model.Surveys.AddRange(surveys);
 
-            ViewBag.ShowAdminContent = userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-            ViewBag.ShowSurveyorContent = userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+            ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowSurveyorContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
 
             return View(model);
         }
@@ -77,22 +77,22 @@ namespace SurveyWeb.Controllers
         {
             var viewModel = new SurveyViewModel(survey);
 
-            viewModel.Save();
+            viewModel.Save(_persistenceService);
 
             return View(viewModel);
         }
 
-        public ActionResult CreateQuestionGroup(long surveyId)
+        public ActionResult CreateQuestionGroup(int surveyId)
         {            
-            var survey = persistenceService.GetSurveys().First(item => item.ID == surveyId);
+            var survey = _persistenceService.GetSurvey(surveyId);
 
             return View(new SurveyViewModel(survey));
         }
 
         [HttpPost]
-        public ActionResult CreateQuestionGroup(SurveyViewModel viewModel)
+        public ActionResult CreateQuestionGroup(SurveyViewModel surveyViewModel)
         {            
-            var survey = persistenceService.GetSurvey(Convert.ToInt32(viewModel.Survey.ID));
+            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyViewModel.Survey.ID));
 
             if (survey.QuestionGroups == null)
             {
@@ -102,11 +102,11 @@ namespace SurveyWeb.Controllers
 
             survey.AddQuestionGroup("New Group " + newGroupIndex);
 
-            viewModel = new SurveyViewModel(survey);
+            surveyViewModel = new SurveyViewModel(survey);
 
-            viewModel.Save();
+            surveyViewModel.Save(_persistenceService);
 
-            return View("SurveyDesign", viewModel);
+            return View("SurveyDesign", surveyViewModel);
         }
                
         /// <summary>
@@ -117,7 +117,7 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult EditQuestionGroup(string surveyId, string groupId)
         {            
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
+            var survey = _persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
 
             ViewBag.QuestionGroupId = groupId;
 
@@ -137,7 +137,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult EditQuestionGroup(QuestionGroupViewModel viewModel)
         {            
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+            var survey = _persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
             {
@@ -146,7 +146,7 @@ namespace SurveyWeb.Controllers
 
             var surveyViewModel = new SurveyViewModel(survey);
 
-            surveyViewModel.Save();
+            surveyViewModel.Save(_persistenceService);
 
             return View("SurveyDesign", surveyViewModel);
         }
@@ -159,7 +159,7 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult DeleteQuestionGroup(string surveyId, string groupId)
         {            
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
+            var survey = _persistenceService.GetSurveys().First(item => item.ID.ToString() == surveyId);
 
             ViewBag.QuestionGroupId = groupId;
 
@@ -179,7 +179,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult DeleteQuestionGroup(QuestionGroupViewModel viewModel)
         {            
-            var survey = persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
+            var survey = _persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
             if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
             {
@@ -189,7 +189,7 @@ namespace SurveyWeb.Controllers
 
             var surveyViewModel = new SurveyViewModel(survey);
 
-            surveyViewModel.Save();
+            surveyViewModel.Save(_persistenceService);
 
             return View("SurveyDesign", surveyViewModel);
         }
@@ -202,13 +202,13 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult AddQuestion(string surveyId, string questionGroupId)
         {            
-            var survey = persistenceService.GetSurvey(Convert.ToInt32(surveyId));
+            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
 
             var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
 
             questionGroup.AddQuestion(string.Empty, QuestionType.SelectOne);
 
-            new SurveyViewModel(survey).Save();
+            new SurveyViewModel(survey).Save(_persistenceService);
 
             return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup) { SurveyId = surveyId });
         }
@@ -226,7 +226,7 @@ namespace SurveyWeb.Controllers
             Survey survey = null;
             if (!String.IsNullOrWhiteSpace(id))
             {                
-                var surveys = persistenceService.GetSurveys();                
+                var surveys = _persistenceService.GetSurveys();                
 
                 survey = surveys.FirstOrDefault(item => item.ID.ToString() == id);
             }
@@ -239,7 +239,7 @@ namespace SurveyWeb.Controllers
 
         public ActionResult DeleteSurvey(long id)
         {            
-            var surveys = persistenceService.GetSurveys();
+            var surveys = _persistenceService.GetSurveys();
             
             var model = surveys.FirstOrDefault(m => m.ID == id);
             
@@ -251,7 +251,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult DeleteSurvey(SurveyViewModel model)
         {            
-            persistenceService.DeleteSurvey(model.Survey.ID.ToString());
+            _persistenceService.DeleteSurvey(model.Survey.ID.ToString());
 
             return RedirectToAction("Surveys");
         }

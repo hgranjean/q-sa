@@ -110,7 +110,7 @@ namespace Atum.Domain.NLP.NaiveBayes
         /// 
         /// </summary>
         /// <param name="classFiles"></param>
-        public void trainFromXMLSerialized(string[] classFiles)
+        public void TrainFromXmlSerialized(string[] classFiles)
         {
 
             foreach (var trainingDocumentFileName in classFiles)
