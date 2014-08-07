@@ -1,0 +1,32 @@
+﻿
+@model SurveyWeb.Models.StandardElementViewModel
+
+
+<div id="classDisplay">
+    <div id="labels" style="display: table-row">
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StandardId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EPIds)
+        </div>
+
+    </div>
+    <div>
+        <div style="display: table-row">
+            <div id="epIdList">
+                @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content })
+
+                @if (Model.EPIds != null)
+                {
+                    @Html.DropDownListFor(model => model.EPIds,
+                                        new SelectList(Model.EPIds), "", new { id = "EPIdList" })
+                }
+
+            </div>
+            <div>@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
+        </div>
+    </div>
+</div>
+

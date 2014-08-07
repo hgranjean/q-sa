@@ -163,8 +163,10 @@ namespace SurveyWeb.Services
 
             TrainingDocument classDoc = Learning.MapToDomainModel(model, Tokenizer);
             saveToXML(classDoc);
+            Models.TrainingDocumentViewModel retVal = Learning.MapToViewModel(classDoc);
+            retVal.ClassList = loadClassList(StandardsManagementServices.GetChapter("EC"));
 
-            return Learning.MapToViewModel(classDoc);
+            return retVal;
         }
 
         private void saveToXML(TrainingDocument classDoc)

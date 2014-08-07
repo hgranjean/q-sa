@@ -8,61 +8,20 @@
 }
 
 <h2>Observation Classifier</h2>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
-@*@using (Ajax.BeginForm(
-        new AjaxOptions
-        {
-            HttpMethod = "get",
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "EPIdList"
+ <form method="get" >
 
-        }))
-{*@
-
-    <form method="get" action="@Url.Action("ObservationClassifier")" data-aqs-ajax="true" data-aqs-target="#epIdList">
-
-    <div id="observation-text" style="display: table-row">
+    <div style="display: table-row">
         <div class="editor-label">
             @Html.LabelFor(model => model.Observation)
         </div>
     </div>
     <div id="observation-text" style="display: table-row">
-        @Html.TextAreaFor(model => model.Observation, new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#epIdList", cols = 75, @rows = 5 })
-    </div>
-    <input type="submit" value="submit" />
-    <div id="labels" style="display: table-row">
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.StandardId)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EPIds)
-        </div>
-
-    </div>
-    <div>
-        <div style="display: table-row">
-            <div id="epIdList">
-                @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content })
-
-                @if (Model.EPIds != null)
-                {
-                    @Html.DropDownListFor(model => model.EPIds,
-                                        new SelectList(Model.EPIds), "", new { id = "EPIdList" })
-                }
-
-            </div>
-            <div>@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
-        </div>
+        @Html.TextAreaFor(model => model.Observation, new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#classDisplay", cols = 75, @rows = 5 })
     </div>
 </form>
 
-
-
-
-
-
+@Html.Partial("_ObservationClass",Model)
 
 <script>
     $(‘#standardText’).tooltip({

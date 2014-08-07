@@ -688,6 +688,8 @@
     <Content Include="Views\Surveillance\Archive.cshtml" />
     <Content Include="Views\Report\ProgressReport.cshtml" />
     <Content Include="Views\Learning\NBTrainingDocument.cshtml" />
+    <Content Include="Views\Learning\_ObservationClass.cshtml" />
+    <Content Include="Views\Learning\_NBTrainingDocumentText.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RuleApp\Domain\" />

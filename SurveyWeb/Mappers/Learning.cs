@@ -23,7 +23,7 @@ namespace SurveyWeb.Mappers
         public static TrainingDocumentViewModel MapToViewModel(TrainingDocument trainingDocument)
         {
             TrainingDocumentViewModel retVal = new TrainingDocumentViewModel();
-            retVal.DocumentId = trainingDocument.DocumentId;
+            retVal.DocumentId = string.IsNullOrEmpty(trainingDocument.DocumentId) ? trainingDocument.Class : trainingDocument.DocumentId;
             retVal.WordList = trainingDocument.Words;
             retVal.Text = trainingDocument.Text;
             retVal.Class = trainingDocument.Class;
