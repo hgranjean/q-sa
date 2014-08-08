@@ -9,6 +9,7 @@ using Atum.Domain.SurveyManagement;
 using Atum.Domain.Business;
 using SurveyWeb.Models;
 using Microsoft.AspNet.Identity;
+using Atum.Domain.Healthcare;
 
 namespace SurveyWeb.Services
 {
@@ -79,6 +80,26 @@ namespace SurveyWeb.Services
         internal void SetPasswordHashAsync(ApplicationUser user, string password, UserManager<ApplicationUser> userManager)
         {
             _repository.SetPasswordHashAsync(user, password, userManager);
+        }
+
+        internal IEnumerable<Area> GetAreas(string hospitalId)
+        {
+            return _repository.GetAreas(hospitalId);
+        }
+
+        internal IEnumerable<Facility> GetFacilities()
+        {
+            return _repository.GetFacilities();
+        }
+
+        internal IEnumerable<Building> GetBuildings()
+        {
+            return _repository.GetBuildings();
+        }
+
+        internal IEnumerable<Department> GetDepartments()
+        {
+            return _repository.GetDepartments();
         }
     }   
 }

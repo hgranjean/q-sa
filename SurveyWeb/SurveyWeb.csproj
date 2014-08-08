@@ -227,6 +227,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Services\IPersistenceServices.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Services\ISurveillanceService.cs" />
     <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ModelHelper.cs" />
@@ -280,8 +283,8 @@
     <Compile Include="Repository\SurveyStore.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\ReportService.cs" />
     <Compile Include="Store\Workflows\SurveyDeliveryRuleApp.cs" />
-    <Compile Include="Services\IPersistenceServices.cs" />
     <Compile Include="Services\LearningServices.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\SessionBag.cs" />
@@ -593,6 +596,7 @@
     <Content Include="Scripts\rgraph\libraries\RGraph.waterfall.js" />
     <Content Include="Scripts\rgraph\license.txt" />
     <Content Include="Scripts\rgraph\scripts\jsmin.txt" />
+    <Content Include="Store\Surveys\survey5.xml" />
     <Content Include="Views\Shared\component.css" />
     <Content Include="Views\Shared\demo.css" />
     <Content Include="Views\Shared\normalize.css" />
