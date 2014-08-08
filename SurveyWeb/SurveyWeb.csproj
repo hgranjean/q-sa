@@ -283,7 +283,9 @@
     <Compile Include="Repository\SurveyStore.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\ReportService.cs" />
+    <Compile Include="Services\ReportService.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Store\Workflows\SurveyDeliveryRuleApp.cs" />
     <Compile Include="Services\LearningServices.cs" />
     <Compile Include="Services\MailService.cs" />
