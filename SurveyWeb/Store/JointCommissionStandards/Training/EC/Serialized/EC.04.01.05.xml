@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WordFrequencySerializable>
+    <SerializableKVOfStringInt32>
+      <Key>Not</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
       <Key>accident</Key>
       <Value>1</Value>
@@ -33,12 +37,83 @@
       <Key>basis</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>organization</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>take</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>action</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>identified</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>opportunity</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>resolve</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>environmental</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>safety</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>issue</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>See</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>also</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>EC</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>EP</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>evaluate</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>change</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>determine</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>resolved</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
   </WordFrequencySerializable>
   <Class>EC.04.01.05</Class>
-  <Text>
-      Not all accident and incident reports are completed nor submitted on a timely basis.
-    </Text>
+  <Text>Not all accident and incident reports are completed nor submitted on a timely basis.
+
+The organization takes action on the identified opportunities to resolve environmental safety issues. (See also EC.04.01.03, EP 2)
+2.	The organization evaluates changes to determine if they resolved environmental safety issues.
+</Text>
   <Words>
+    <string>Not</string>
     <string>accident</string>
     <string>incident</string>
     <string>report</string>
@@ -47,6 +122,28 @@
     <string>submitted</string>
     <string>timely</string>
     <string>basis</string>
+    <string>organization</string>
+    <string>take</string>
+    <string>action</string>
+    <string>identified</string>
+    <string>opportunity</string>
+    <string>resolve</string>
+    <string>environmental</string>
+    <string>safety</string>
+    <string>issue</string>
+    <string>See</string>
+    <string>also</string>
+    <string>EC</string>
+    <string>EP</string>
+    <string>organization</string>
+    <string>evaluate</string>
+    <string>change</string>
+    <string>determine</string>
+    <string>resolved</string>
+    <string>environmental</string>
+    <string>safety</string>
+    <string>issue</string>
   </Words>
   <HasWords>true</HasWords>
+  <DocumentId>EC.01.01.01</DocumentId>
 </TrainingDocument>

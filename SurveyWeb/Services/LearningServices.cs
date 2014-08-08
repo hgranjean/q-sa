@@ -8,6 +8,7 @@ using SurveyWeb.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Web;
 
 namespace SurveyWeb.Services
@@ -111,13 +112,41 @@ namespace SurveyWeb.Services
 
         internal Models.TrainingDocumentViewModel GetTrainingDocument(string trainingDocumentId)
         {
-            string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
-            string filePath = appPath + trainingDocumentId + ".xml";
+            //TODO: Clean string etc...
+            //string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
+            string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards/Training/EC/Serialized");
+            string filePath = Path.Combine(appPath, trainingDocumentId + ".xml");
+
 
             TrainingDocument trainingDoc = ReadFromXML(filePath);
             Models.TrainingDocumentViewModel retVal = Learning.MapToViewModel(trainingDoc);
 
-            retVal.ClassList = LoadClassList(_standardManagementService.GetChapter("EC"));
+            StandardDocumentViewModel stdViewModel = _standardManagementService.GetChapter("EC");
+            Standard standard = GetStandardChapter(trainingDocumentId).GetPerformanceCategory(trainingDocumentId);
+            
+            retVal.ClassList = LoadClassList(stdViewModel);
+            retVal.StandardText = LoadStandardText(standard);
+            retVal.StandardTitle = standard.Title;
+
+            return retVal;
+
+        }
+
+        private string LoadStandardText(Standard standard)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(standard.Title);
+
+            foreach (var item in standard.Items)
+            {
+                sb.AppendLine(item.Text);
+                foreach (var noteItem in item.Notes)
+                {
+                    sb.AppendLine("\t"+ noteItem);
+                }
+            }
+            string retVal = sb.ToString();
 
             return retVal;
 
@@ -145,6 +174,7 @@ namespace SurveyWeb.Services
         {
             var appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC");
             var modelPath = Path.Combine(_store.GetPath(), "OpenNLP\\Models");
+            
             Tokenizer Tokenizer = new Tokenizer(EPClassifier.getExcludedWords(), modelPath);
 
             var classDoc = Learning.MapToDomainModel(model, Tokenizer);

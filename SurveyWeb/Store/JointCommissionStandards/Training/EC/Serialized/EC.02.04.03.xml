@@ -6,6 +6,10 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
+      <Key>AED</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
       <Key>testing</Key>
       <Value>2</Value>
     </SerializableKVOfStringInt32>
@@ -18,7 +22,7 @@
       <Value>2</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>two</Key>
+      <Key>preform</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -42,7 +46,7 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>however</Key>
+      <Key>However</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -70,6 +74,10 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
+      <Key>preforming</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
       <Key>additional</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
@@ -82,17 +90,19 @@
   <Text>During discussion of AED testing, it was revealed that the organization preforms a two year check on the equipment as required by the manufacturer. However, the equipment (AED) is life support and requires more frequent testing and examination. The organization is not preforming the additional inspections.</Text>
   <Words>
     <string>discussion</string>
+    <string>AED</string>
     <string>testing</string>
     <string>revealed</string>
     <string>organization</string>
-    <string>two</string>
+    <string>preform</string>
     <string>year</string>
     <string>check</string>
     <string>equipment</string>
     <string>required</string>
     <string>manufacturer</string>
-    <string>however</string>
+    <string>However</string>
     <string>equipment</string>
+    <string>AED</string>
     <string>life</string>
     <string>support</string>
     <string>require</string>
@@ -101,6 +111,7 @@
     <string>testing</string>
     <string>examination</string>
     <string>organization</string>
+    <string>preforming</string>
     <string>additional</string>
     <string>inspection</string>
   </Words>

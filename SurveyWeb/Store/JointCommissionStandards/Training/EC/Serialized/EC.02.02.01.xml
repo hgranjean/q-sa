@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WordFrequencySerializable>
     <SerializableKVOfStringInt32>
@@ -14,15 +14,15 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
+      <Key>OR</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
       <Key>work</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
       <Key>room</Key>
-      <Value>1</Value>
-    </SerializableKVOfStringInt32>
-    <SerializableKVOfStringInt32>
-      <Key>some</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -58,11 +58,11 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>ensure</Key>
+      <Key>identifier</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>every</Key>
+      <Key>ensure</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -78,15 +78,15 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>recommended</Key>
+      <Key>Recommended</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>action</Key>
+      <Key>Action(s</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>consider</Key>
+      <Key>Consider</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -122,7 +122,7 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>evaluate</Key>
+      <Key>Evaluate</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -139,8 +139,7 @@
     </SerializableKVOfStringInt32>
   </WordFrequencySerializable>
   <Class>EC.02.02.01</Class>
-  <Text>
-      There was an abundance of lead shields in the OR's and anesthesia work room.  Some of them were not stored properly so as to prevent cracks and staff were unable to locate identifiers to ensure that every apron, etc. was checked as required.
+  <Text>There was an abundance of lead shields in the OR's and anesthesia work room.  Some of them were not stored properly so as to prevent cracks and staff were unable to locate identifiers to ensure that every apron, etc. was checked as required.
       Recommended Action(s)
       ?	Consider a better tagging system to more easily identify annual monitoring.
       ?	Evaluate the need for so many in this area.
@@ -149,9 +148,9 @@
     <string>abundance</string>
     <string>lead</string>
     <string>shield</string>
+    <string>OR</string>
     <string>work</string>
     <string>room</string>
-    <string>some</string>
     <string>stored</string>
     <string>properly</string>
     <string>so</string>
@@ -160,14 +159,14 @@
     <string>staff</string>
     <string>unable</string>
     <string>locate</string>
+    <string>identifier</string>
     <string>ensure</string>
-    <string>every</string>
     <string>apron</string>
     <string>checked</string>
     <string>required</string>
-    <string>recommended</string>
-    <string>action</string>
-    <string>consider</string>
+    <string>Recommended</string>
+    <string>Action(s</string>
+    <string>Consider</string>
     <string>better</string>
     <string>tagging</string>
     <string>system</string>
@@ -176,11 +175,12 @@
     <string>identify</string>
     <string>annual</string>
     <string>monitoring</string>
-    <string>evaluate</string>
+    <string>Evaluate</string>
     <string>need</string>
     <string>so</string>
     <string>many</string>
     <string>area</string>
   </Words>
   <HasWords>true</HasWords>
+  <DocumentId>EC.01.01.01</DocumentId>
 </TrainingDocument>

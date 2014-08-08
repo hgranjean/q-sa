@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Atum.Domain.NLP.Domain.NLP;
+using System.IO;
 
 namespace Atum.Domain.NLP
 {
@@ -18,9 +19,12 @@ namespace Atum.Domain.NLP
 
         private string[] TokenizeSentence(string sentence)
         {
+
+            string modelPath = EnglishTokenizerModelPath;
+
             if (mTokenizer == null)
             {
-                mTokenizer = new OpenNLP.Tools.Tokenize.EnglishMaximumEntropyTokenizer(_modelPath + "EnglishTok.nbin");
+                mTokenizer = new OpenNLP.Tools.Tokenize.EnglishMaximumEntropyTokenizer(EnglishTokenizerModelPath);
             }
 
             return mTokenizer.Tokenize(sentence);
@@ -33,6 +37,7 @@ namespace Atum.Domain.NLP
         public Tokenizer(List<string> excludedWords, string modelPath)
         {
             this._modelPath = modelPath;
+            this.EnglishTokenizerModelPath = Path.Combine(_modelPath, "EnglishTok.nbin");
             this.excludedWords = excludedWords;
         }
 
@@ -134,5 +139,7 @@ namespace Atum.Domain.NLP
             return retVal;
         }
 
+
+        public string EnglishTokenizerModelPath { get; set; }
     }
 }

@@ -1,16 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WordFrequencySerializable>
     <SerializableKVOfStringInt32>
       <Key>organization</Key>
+      <Value>3</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>EOC</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>environment</Key>
+      <Key>Environment</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>care</Key>
+      <Key>Care</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -30,7 +34,11 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>however</Key>
+      <Key>datum</Key>
+      <Value>4</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>However</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -38,15 +46,27 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
+      <Key>PI</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
       <Key>measure</Key>
-      <Value>2</Value>
+      <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
       <Key>selection</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
+      <Key>“measure</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
       <Key>improvement</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>”</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -57,30 +77,164 @@
       <Key>completed</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>analyze</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>identified</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>environment</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>care</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>issue</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>Representative</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>clinical</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>administrative</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>support</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>service</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>participate</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>analysis</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>See</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>also</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>EC</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>EP</Key>
+      <Value>2</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>us</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>result</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>identify</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>opportunity</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>resolve</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>environmental</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>safety</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
   </WordFrequencySerializable>
   <Class>EC.04.01.03</Class>
-  <Text>
-      The organizations EOC (Environment of Care) committee effectively collected performance
-      data.
+  <Text>The organizations EOC (Environment of Care) committee effectively collected performance data.
       However, discussion of PI measure data and selection of a “measure for improvement” by the
       leadership was not completed.
-    </Text>
+ 
+The organization analyzes identified environment of care issues.
+1.	Representatives from clinical, administrative, and support services participate in the analysis of environment of care data. (See also EC.04.01.01, EPs 3-6 and 8-15)
+2.	The organization uses the results of data analysis to identify opportunities to resolve environmental safety issues. (See also EC.04.01.05, EP 1)</Text>
   <Words>
     <string>organization</string>
-    <string>environment</string>
-    <string>care</string>
+    <string>EOC</string>
+    <string>Environment</string>
+    <string>Care</string>
     <string>committee</string>
     <string>effectively</string>
     <string>collected</string>
     <string>performance</string>
-    <string>however</string>
+    <string>datum</string>
+    <string>However</string>
     <string>discussion</string>
+    <string>PI</string>
     <string>measure</string>
+    <string>datum</string>
     <string>selection</string>
-    <string>measure</string>
+    <string>“measure</string>
     <string>improvement</string>
+    <string>”</string>
     <string>leadership</string>
     <string>completed</string>
+    <string>organization</string>
+    <string>analyze</string>
+    <string>identified</string>
+    <string>environment</string>
+    <string>care</string>
+    <string>issue</string>
+    <string>Representative</string>
+    <string>clinical</string>
+    <string>administrative</string>
+    <string>support</string>
+    <string>service</string>
+    <string>participate</string>
+    <string>analysis</string>
+    <string>environment</string>
+    <string>care</string>
+    <string>datum</string>
+    <string>See</string>
+    <string>also</string>
+    <string>EC</string>
+    <string>EP</string>
+    <string>organization</string>
+    <string>us</string>
+    <string>result</string>
+    <string>datum</string>
+    <string>analysis</string>
+    <string>identify</string>
+    <string>opportunity</string>
+    <string>resolve</string>
+    <string>environmental</string>
+    <string>safety</string>
+    <string>issue</string>
+    <string>See</string>
+    <string>also</string>
+    <string>EC</string>
+    <string>EP</string>
   </Words>
   <HasWords>true</HasWords>
+  <DocumentId>EC.01.01.01</DocumentId>
 </TrainingDocument>

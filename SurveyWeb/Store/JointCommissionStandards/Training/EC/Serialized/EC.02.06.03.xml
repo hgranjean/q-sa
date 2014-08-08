@@ -1,141 +1,133 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WordFrequencySerializable>
     <SerializableKVOfStringInt32>
-      <Key>negative</Key>
+      <Key>dining</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>pressure</Key>
+      <Key>environment</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>isolation</Key>
+      <Key>encourage</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>room</Key>
-      <Value>3</Value>
-    </SerializableKVOfStringInt32>
-    <SerializableKVOfStringInt32>
-      <Key>B</Key>
+      <Key>eating</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>activate</Key>
+      <Key>socialization</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>door</Key>
+      <Key>providing</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>closed</Key>
+      <Key>small</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>Recommended</Key>
+      <Key>group</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>Action(s</Key>
+      <Key>setting</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>evaluated</Key>
+      <Key>minimizing</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>regular</Key>
+      <Key>distraction</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>basis</Key>
+      <Key>such</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>ensure</Key>
+      <Key>noise</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>am</Key>
+      <Key>activity</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>ready</Key>
+      <Key>Dining</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>use</Key>
+      <Key>area</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>needed</Key>
+      <Key>adequate</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>Engineering</Key>
+      <Key>space</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>notify</Key>
+      <Key>resident</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>nursing</Key>
+      <Key>equipment</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>required</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>care</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>treatment</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
       <Key>service</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
-    <SerializableKVOfStringInt32>
-      <Key>due</Key>
-      <Value>1</Value>
-    </SerializableKVOfStringInt32>
-    <SerializableKVOfStringInt32>
-      <Key>air</Key>
-      <Value>1</Value>
-    </SerializableKVOfStringInt32>
-    <SerializableKVOfStringInt32>
-      <Key>flow</Key>
-      <Value>1</Value>
-    </SerializableKVOfStringInt32>
   </WordFrequencySerializable>
-  <Class>EC.02.05.01</Class>
-  <Text>The negative pressure for an isolation room on 5B 199 did not activate when the doors were closed.
-Recommended Action(s)
-  - These rooms must be evaluated on a regular basis to ensure they are ready for use when needed.
-  - Engineering must notify nursing if a room is out of service due to air flow.
+  <Class>EC.02.06.03</Class>
+  <Text>The dining environment encourages eating and socialization by providing small group settings and minimizing distractions, such as noise or activities. 
+
+Dining areas have adequate space for residents with equipment required for care, treatment, and services.
 </Text>
   <Words>
-    <string>negative</string>
-    <string>pressure</string>
-    <string>isolation</string>
-    <string>room</string>
-    <string>B</string>
-    <string>activate</string>
-    <string>door</string>
-    <string>closed</string>
-    <string>Recommended</string>
-    <string>Action(s</string>
-    <string>room</string>
-    <string>evaluated</string>
-    <string>regular</string>
-    <string>basis</string>
-    <string>ensure</string>
-    <string>am</string>
-    <string>ready</string>
-    <string>use</string>
-    <string>needed</string>
-    <string>Engineering</string>
-    <string>notify</string>
-    <string>nursing</string>
-    <string>room</string>
+    <string>dining</string>
+    <string>environment</string>
+    <string>encourage</string>
+    <string>eating</string>
+    <string>socialization</string>
+    <string>providing</string>
+    <string>small</string>
+    <string>group</string>
+    <string>setting</string>
+    <string>minimizing</string>
+    <string>distraction</string>
+    <string>such</string>
+    <string>noise</string>
+    <string>activity</string>
+    <string>Dining</string>
+    <string>area</string>
+    <string>adequate</string>
+    <string>space</string>
+    <string>resident</string>
+    <string>equipment</string>
+    <string>required</string>
+    <string>care</string>
+    <string>treatment</string>
     <string>service</string>
-    <string>due</string>
-    <string>air</string>
-    <string>flow</string>
   </Words>
   <HasWords>true</HasWords>
   <DocumentId>EC.01.01.01</DocumentId>

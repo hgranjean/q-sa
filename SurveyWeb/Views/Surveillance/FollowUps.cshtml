@@ -1,0 +1,14 @@
+﻿@model SurveyWeb.Models.FollowUpsViewModel
+@using SurveyWeb.Models
+
+@{
+    ViewBag.Title = "Follow-Ups";
+}
+
+<h2>Follow-Ups</h2>
+
+@foreach (FollowUpViewModel item in Model)
+{
+    <p>@Html.ActionLink(item.ItemDetails, "FollowUp", new { followUpId = item.FollowUpId })</p>
+}
+

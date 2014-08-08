@@ -2,7 +2,7 @@
 <TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WordFrequencySerializable>
     <SerializableKVOfStringInt32>
-      <Key>battery</Key>
+      <Key>Battery</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -14,6 +14,10 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
+      <Key>provided</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
       <Key>generator</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
@@ -21,17 +25,22 @@
       <Key>required</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
+    <SerializableKVOfStringInt32>
+      <Key>NFPA</Key>
+      <Value>1</Value>
+    </SerializableKVOfStringInt32>
   </WordFrequencySerializable>
   <Class>EC.02.05.03</Class>
-  <Text>
-      Battery operated lighting was not provided in generator as required by NFPA 110 and 101.
+  <Text>Battery operated lighting was not provided in generator as required by NFPA 110 and 101.
     </Text>
   <Words>
-    <string>battery</string>
+    <string>Battery</string>
     <string>operated</string>
     <string>lighting</string>
+    <string>provided</string>
     <string>generator</string>
     <string>required</string>
+    <string>NFPA</string>
   </Words>
   <HasWords>true</HasWords>
 </TrainingDocument>

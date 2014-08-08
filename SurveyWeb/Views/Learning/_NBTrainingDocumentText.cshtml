@@ -1,11 +1,28 @@
-﻿@model SurveyWeb.Models.TrainingDocumentViewModel
+﻿@using SurveyWeb.Models
+@model SurveyWeb.Models.TrainingDocumentViewModel
 
 <div id="documentText" class="form-group">
-    @Html.LabelFor(m => m.Text, new { @class = "col-md-2 control-label" })
+    @Html.LabelFor(model => model.Text, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
-        @Html.TextAreaFor(m => m.Text, new { id = "classText", name = "classText",  cols = 175, @rows = 15, @class = "form-control" })
-    </div>
-    <div>@Html.TextBoxFor(m => m.Text, new { @class = "form-control" })
+            <table >
+                <tr>
+                    <td></td>
+                    <td colspan="4" width="300px">@Html.TextBoxFor(model => model.StandardTitle, new { id = "standardTitle", name = "standardTitle", @class = "form-control" })
+                    </td>
+                </tr>                
+                <tr >
+                    <td>
+                        @Html.TextAreaFor(model => model.Text, new { id = "classText", name = "classText", cols = 175, @rows = 15, @class = "form-control" })
+                    </td>
+                <td>
+                    @Html.TextAreaFor(model => model.StandardText, new { id = "standardText", name = "standardText", cols = 175, @rows = 15, @class = "form-control" })
+                </td>
+               </tr>
+            </table>
+            </div>
+    <label class="col-md-2 control-label" for="Text">Word Count</label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(model => model.WordList.Count, new { @class = "form-control" })
     </div>
 </div>
 

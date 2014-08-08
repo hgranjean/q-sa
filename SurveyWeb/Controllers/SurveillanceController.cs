@@ -91,6 +91,45 @@ namespace SurveyWeb.Controllers
         }
 
 
+        public ActionResult FollowUps(string OwnerId)
+        {
+            FollowUpsViewModel model = new FollowUpsViewModel();
+            model.Add(loadFollowUp(1));
+            model.Add(loadFollowUp(2));
+
+            return View(model);
+        }
+
+        public ActionResult FollowUp(int? followUpId)
+        {
+            
+            FollowUpViewModel model = loadFollowUp(followUpId ?? 1);
+
+            return View(model);
+        }
+
+        private FollowUpViewModel loadFollowUp(int followUpId)
+        {
+            FollowUpViewModel retVal = new FollowUpViewModel();
+            retVal.FollowUpId = followUpId;
+            retVal.TimeSent = 1;
+            retVal.LastSent = DateTime.Parse("04/25/2012");
+            retVal.SurveillanceId = "March 2014";
+            retVal.InspectionDate = DateTime.Parse("03/20/2012");
+            retVal.InspectedBy = "Michelle Kadoun";
+            retVal.Category = "Patient Safety";
+            retVal.ItemInspected = "Clutter ((0735)";
+            retVal.Area = new Area("2 North (027)",27);
+            retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
+            retVal.Score = "Non Compliant";
+            retVal.EstimatedCompletionDate = DateTime.Today.AddDays(2.0D);
+            retVal.ItemDetails = "Issue Details_" + followUpId;
+            retVal.History = new List<Event>();
+
+            return retVal;  
+        }
+
+
         //
         // GET: /Surveillance/
 

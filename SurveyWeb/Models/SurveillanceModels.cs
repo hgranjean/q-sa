@@ -315,7 +315,10 @@ namespace SurveyWeb.Models
         public List<Event> History { get; set; }
     }
 
-
+    public class FollowUpsViewModel : List<FollowUpViewModel>
+    {
+        public string SearchCriteria { get; set; }    
+    }
 
 
 
