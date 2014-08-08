@@ -48,7 +48,10 @@ namespace SurveyWeb.Controllers
 
         public ActionResult NBTrainingDocument(string trainingDocumetId) 
         {   
-            TrainingDocumentViewModel model = _learningService.GetTrainingDocument(trainingDocumetId ?? DefaultTrainingDocumentIdentifier);
+            trainingDocumetId = string.IsNullOrEmpty(trainingDocumetId) ? DefaultTrainingDocumentIdentifier: trainingDocumetId;
+
+            TrainingDocumentViewModel model = _learningService.GetTrainingDocument(trainingDocumetId);
+            
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_NBTrainingDocumentText", model);

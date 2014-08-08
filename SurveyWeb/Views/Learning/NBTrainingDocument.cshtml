@@ -26,24 +26,31 @@
     @Html.ValidationSummary()
 
     @Html.HiddenFor(m => m.DocumentId)
+    @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>*@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Class, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @*@Html.TextBoxFor(m => m.Class, new { @class = "form-control" })*@
             @Html.DropDownListFor(model => model.Class,
-                                                          new SelectList(Model.ClassList), "", new { id = "ClassList", data_aqs_ajax = "true", data_aqs_target = "documentText", @class = "form-control" })
+                                                          new SelectList(Model.ClassList), Model.Class, new { id = "ClassList", data_aqs_ajax = "true", data_aqs_target = "documentText", @class = "form-control" })
         </div>
     </div>
 
-    @Html.Partial("_NBTrainingDocumentText", Model)
+    <div>
+        @Html.Partial("_NBTrainingDocumentText", Model)
+    </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
-</form>   
+</form>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

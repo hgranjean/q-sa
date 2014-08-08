@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TrainingDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WordFrequencySerializable>
     <SerializableKVOfStringInt32>
-      <Key>currently</Key>
+      <Key>Currently</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -47,13 +47,11 @@
     </SerializableKVOfStringInt32>
   </WordFrequencySerializable>
   <Class>EC.01.01.01</Class>
-  <Text>
-      Currently, vendor registration and identification does not meet this standard.
-      As required, vendor background check, competencies and registration is not being
-      accomplished.
+  <Text>Currently, vendor registration and identification does not meet this standard.
+      As required, vendor background check, competencies and registration is not being accomplished.
     </Text>
   <Words>
-    <string>currently</string>
+    <string>Currently</string>
     <string>vendor</string>
     <string>registration</string>
     <string>identification</string>
@@ -68,4 +66,5 @@
     <string>accomplished</string>
   </Words>
   <HasWords>true</HasWords>
+  <DocumentId>EC.01.01.01</DocumentId>
 </TrainingDocument>

@@ -59,9 +59,12 @@ namespace Atum.Domain.NLP.Domain.NLP
         private OpenNLP.Tools.PosTagger.EnglishMaximumEntropyPosTagger mPosTagger;
         public string[] PosTagTokens(string[] tokens)
         {
+            string EnglishPOSTaggerModelPath = System.IO.Path.Combine(_modelPath, "EnglishPOS.nbin");
+            string tagDictPath = System.IO.Path.Combine(_modelPath, @"Parser\tagdict");
+
             if (mPosTagger == null)
             {
-                mPosTagger = new OpenNLP.Tools.PosTagger.EnglishMaximumEntropyPosTagger(_modelPath + "EnglishPOS.nbin", _modelPath + @"\Parser\tagdict");
+                mPosTagger = new OpenNLP.Tools.PosTagger.EnglishMaximumEntropyPosTagger(EnglishPOSTaggerModelPath, tagDictPath);
             }
 
             return mPosTagger.Tag(tokens);

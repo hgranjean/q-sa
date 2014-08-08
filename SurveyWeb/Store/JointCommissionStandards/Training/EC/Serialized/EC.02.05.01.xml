@@ -18,12 +18,12 @@
       <Value>3</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>activate</Key>
+      <Key>B</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>when</Key>
-      <Value>2</Value>
+      <Key>activate</Key>
+      <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
       <Key>door</Key>
@@ -34,16 +34,12 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>recommended</Key>
+      <Key>Recommended</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>action</Key>
+      <Key>Action(s</Key>
       <Value>1</Value>
-    </SerializableKVOfStringInt32>
-    <SerializableKVOfStringInt32>
-      <Key>must</Key>
-      <Value>2</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
       <Key>evaluated</Key>
@@ -78,7 +74,7 @@
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
-      <Key>engineering</Key>
+      <Key>Engineering</Key>
       <Value>1</Value>
     </SerializableKVOfStringInt32>
     <SerializableKVOfStringInt32>
@@ -107,25 +103,23 @@
     </SerializableKVOfStringInt32>
   </WordFrequencySerializable>
   <Class>EC.02.05.01</Class>
-  <Text>
-      The negative pressure for an isolation room on 5B 199 did not activate when the doors were closed.
-      Recommended Action(s)
-      ?	These rooms must be evaluated on a regular basis to ensure they are ready for use when needed.
-      ?	Engineering must notify nursing if a room is out of service due to air flow.
-    </Text>
+  <Text>The negative pressure for an isolation room on 5B 199 did not activate when the doors were closed.
+Recommended Action(s)
+  - These rooms must be evaluated on a regular basis to ensure they are ready for use when needed.
+  - Engineering must notify nursing if a room is out of service due to air flow.
+</Text>
   <Words>
     <string>negative</string>
     <string>pressure</string>
     <string>isolation</string>
     <string>room</string>
+    <string>B</string>
     <string>activate</string>
-    <string>when</string>
     <string>door</string>
     <string>closed</string>
-    <string>recommended</string>
-    <string>action</string>
+    <string>Recommended</string>
+    <string>Action(s</string>
     <string>room</string>
-    <string>must</string>
     <string>evaluated</string>
     <string>regular</string>
     <string>basis</string>
@@ -133,10 +127,8 @@
     <string>am</string>
     <string>ready</string>
     <string>use</string>
-    <string>when</string>
     <string>needed</string>
-    <string>engineering</string>
-    <string>must</string>
+    <string>Engineering</string>
     <string>notify</string>
     <string>nursing</string>
     <string>room</string>
@@ -146,4 +138,5 @@
     <string>flow</string>
   </Words>
   <HasWords>true</HasWords>
+  <DocumentId>EC.01.01.01</DocumentId>
 </TrainingDocument>
