@@ -332,10 +332,10 @@ namespace SurveyWeb.Controllers
         }
 
         internal void LoadTracerReferenceData(TracerViewModel retVal)
-        {
+        {            
             retVal.Buildings = LoadBuildings();
             retVal.Facilities = LoadFacilities();
-            retVal.Areas = LoadAreas();
+            retVal.Areas = LoadAreas(retVal.FacilityId.ToString());
             retVal.Surveyors = LoadSurveyors();
             retVal.Departments = LoadDepartments();
             retVal.FloorNumber = 3;
@@ -393,8 +393,7 @@ namespace SurveyWeb.Controllers
 
         private IEnumerable<Department> LoadDepartments()
         {
-            yield return new Department("Department1", 1);
-            yield return new Department("Department2", 2);
+            return _surveillanceService.GetDepartments();            
         }
 
         private IEnumerable<Person> LoadSurveyors()
@@ -405,28 +404,20 @@ namespace SurveyWeb.Controllers
             return _surveillanceService.GetPersons();
         }
 
-        private IEnumerable<Area> LoadAreas()
+        private IEnumerable<Area> LoadAreas(string hospitalId)
         {
-            yield return new Area("Area1", 1);
-            yield return new Area("Area2", 2);
+            return _surveillanceService.GetAreas(hospitalId);            
         }
 
         private IEnumerable<Facility> LoadFacilities()
         {
-            // var _dbContext = new AtumSurveillanceContext();
-
-            // return _dbContext.Hospitals.Select(hospital => new Facility(hospital.Name, Int32.Parse(hospital.Id)));
-
-            yield return new Facility("Facility1", 1);
-            yield return new Facility("Facility2", 2);
+            return _surveillanceService.GetFacilities();            
         }
 
         private IEnumerable<Building> LoadBuildings()
         {
-            yield return new Building("Building1", 1);
-            yield return new Building("Building2", 2);
+            return _surveillanceService.GetBuildings();
         }
-
 
         public ActionResult ViewReference(string standardId) 
         {

@@ -1,12 +1,14 @@
-﻿
+﻿@using SurveyWeb.Models
+@model ProgressReportViewModel
+
 @{
-    ViewBag.Title = "ProgressReport";
+    ViewBag.Title = "Progress Report";
 }
 
-<h2>ProgressReport</h2>
+<h2>Progress Report</h2>
 
 <p>
-    This chart shows a completion progress.
+    This matrix shows completion progress.
 </p>
 
 <div class="fc-content" style="width:900px">
@@ -17,56 +19,108 @@
                 <span class="fc-event-title">test</span></div>
             </div>-->
         </div>
-        <table class="fc-border-separate" style="width:100%" cellspacing="0">
+        <div>
+            <button id="btnExport" class="btn btn-default">Export to Excel</button>
+        </div>
+
+        <script>
+            var tableToExcel = (function () {
+                var uri = 'data:application/vnd.ms-excel;base64,'
+                  , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+                  , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                  , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+                return function (table, name) {
+                    if (!table.nodeType) table = document.getElementById(table)
+                    var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+                    window.location.href = uri + base64(format(template, ctx))
+                }
+            })()
+            $("#btnExport").click(function (e) {
+                alert("clicked");
+                tableToExcel("dvData", "Progress Report");
+                e.preventDefault();
+                // window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
+                // e.preventDefault();
+            });
+        </script>
+
+
+
+        <table id="dvData" class="fc-border-separate" style="width:100%" cellspacing="0">
             <thead>
-                <tr class="fc-first fc-last">
-                    <th class="fc-day-header fc-sun fc-widget-header fc-first" style="width: 128px;">Area</th>
-                    <th class="fc-day-header fc-mon fc-widget-header" style="width: 128px;">Element 1</th>
-                    <th class="fc-day-header fc-tue fc-widget-header" style="width: 128px;">Element 2</th>
-                    <th class="fc-day-header fc-wed fc-widget-header" style="width: 128px;">Element 3</th>
-                    <th class="fc-day-header fc-thu fc-widget-header" style="width: 128px;">Element 4</th>
-                    <th class="fc-day-header fc-fri fc-widget-header" style="width: 128px;">Element 5</th>
-                    <th class="fc-day-header fc-sat fc-widget-header fc-last">% Completion</th>
+                <tr>
+                    <th>Area</th>
+                    @for (var i = 1; i <= Model.ElementsByAreas.GetLength(1); i++ )
+                    {
+                        <th>Element @i</th>
+                    }
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="fc-week fc-first">
-                    <td class="fc-day fc-sun fc-widget-content fc-past fc-first" data-date="2014-06-29"><div style="min-height: 28px;"><div class="fc-day-number">A</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-mon fc-widget-content fc-past" data-date="2014-06-30"><div><div class="fc-day-number">30</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-tue fc-widget-content fc-past" data-date="2014-07-01"><div><div class="fc-day-number">1</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-wed fc-widget-content fc-past" data-date="2014-07-02"><div><div class="fc-day-number">2</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-thu fc-widget-content fc-past" data-date="2014-07-03"><div><div class="fc-day-number">3</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-fri fc-widget-content fc-past" data-date="2014-07-04"><div><div class="fc-day-number">4</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-sat fc-widget-content fc-past fc-last" data-date="2014-07-05"><div><div class="fc-day-number">5</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                </tr>
-                <tr class="fc-week">
-                    <td class="fc-day fc-sun fc-widget-content fc-past fc-first" data-date="2014-07-06"><div style="min-height: 28px;"><div class="fc-day-number">B</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-mon fc-widget-content fc-past" data-date="2014-07-07"><div><div class="fc-day-number">7</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-tue fc-widget-content fc-past" data-date="2014-07-08"><div><div class="fc-day-number">8</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-wed fc-widget-content fc-past" data-date="2014-07-09"><div><div class="fc-day-number">9</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-thu fc-widget-content fc-past" data-date="2014-07-10"><div><div class="fc-day-number">10</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-fri fc-widget-content fc-past" data-date="2014-07-11"><div><div class="fc-day-number">11</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-sat fc-widget-content fc-past fc-last" data-date="2014-07-12"><div><div class="fc-day-number">12</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                </tr>
-                <tr class="fc-week">
-                    <td class="fc-day fc-sun fc-widget-content fc-future fc-first" data-date="2014-07-20"><div style="min-height: 28px;"><div class="fc-day-number">C</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-mon fc-widget-content fc-future" data-date="2014-07-21"><div><div class="fc-day-number">21</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-tue fc-widget-content fc-future" data-date="2014-07-22"><div><div class="fc-day-number">22</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-wed fc-widget-content fc-future" data-date="2014-07-23"><div><div class="fc-day-number">23</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-thu fc-widget-content fc-future" data-date="2014-07-24"><div><div class="fc-day-number">24</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-fri fc-widget-content fc-future" data-date="2014-07-25"><div><div class="fc-day-number">25</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-sat fc-widget-content fc-future fc-last" data-date="2014-07-26"><div><div class="fc-day-number">26</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                </tr>
-                <tr class="fc-week fc-last">
-                    <td class="fc-day fc-sun fc-widget-content fc-future fc-first" data-date="2014-07-27"><div style="min-height: 28px;"><div class="fc-day-number">D</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-mon fc-widget-content fc-future" data-date="2014-07-28"><div><div class="fc-day-number">28</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-tue fc-widget-content fc-future" data-date="2014-07-29"><div><div class="fc-day-number">29</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-wed fc-widget-content fc-future" data-date="2014-07-30"><div><div class="fc-day-number">30</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-thu fc-widget-content fc-future" data-date="2014-07-31"><div><div class="fc-day-number">31</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-fri fc-widget-content fc-future" data-date="2014-08-01"><div><div class="fc-day-number">1</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                    <td class="fc-day fc-sat fc-widget-content fc-future fc-last" data-date="2014-08-02"><div><div class="fc-day-number">2</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
-                </tr>
+                @for (var i = 0; i < Model.ElementsByAreas.GetLength(0); i++)
+                {
+                    <tr>
+                        <td>Area @(i + 1)</td>
+                        @for (var j = 0; j < Model.ElementsByAreas.GetLength(1); j++)
+                        {   
+                            <td>@Model.ElementsByAreas[i,j].ToString("0.00")</td>                            
+                        }                        
+                    </tr>                    
+                }
             </tbody>
         </table>
+                <!--<table class="fc-border-separate" style="width:100%" cellspacing="0">
+                    <thead>
+                        <tr class="fc-first fc-last">
+                            <th class="fc-day-header fc-sun fc-widget-header fc-first" style="width: 128px;">Area</th>
+                            <th class="fc-day-header fc-mon fc-widget-header" style="width: 128px;">Element 1</th>
+                            <th class="fc-day-header fc-tue fc-widget-header" style="width: 128px;">Element 2</th>
+                            <th class="fc-day-header fc-wed fc-widget-header" style="width: 128px;">Element 3</th>
+                            <th class="fc-day-header fc-thu fc-widget-header" style="width: 128px;">Element 4</th>
+                            <th class="fc-day-header fc-fri fc-widget-header" style="width: 128px;">Element 5</th>
+                            <th class="fc-day-header fc-sat fc-widget-header fc-last">% Completion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fc-week fc-first">
+                            <td class="fc-day fc-sun fc-widget-content fc-past fc-first" data-date="2014-06-29"><div style="min-height: 28px;"><div class="fc-day-number">A</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-mon fc-widget-content fc-past" data-date="2014-06-30"><div><div class="fc-day-number">30</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-tue fc-widget-content fc-past" data-date="2014-07-01"><div><div class="fc-day-number">1</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-wed fc-widget-content fc-past" data-date="2014-07-02"><div><div class="fc-day-number">2</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-thu fc-widget-content fc-past" data-date="2014-07-03"><div><div class="fc-day-number">3</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-fri fc-widget-content fc-past" data-date="2014-07-04"><div><div class="fc-day-number">4</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-sat fc-widget-content fc-past fc-last" data-date="2014-07-05"><div><div class="fc-day-number">5</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                        </tr>
+                        <tr class="fc-week">
+                            <td class="fc-day fc-sun fc-widget-content fc-past fc-first" data-date="2014-07-06"><div style="min-height: 28px;"><div class="fc-day-number">B</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-mon fc-widget-content fc-past" data-date="2014-07-07"><div><div class="fc-day-number">7</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-tue fc-widget-content fc-past" data-date="2014-07-08"><div><div class="fc-day-number">8</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-wed fc-widget-content fc-past" data-date="2014-07-09"><div><div class="fc-day-number">9</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-thu fc-widget-content fc-past" data-date="2014-07-10"><div><div class="fc-day-number">10</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-fri fc-widget-content fc-past" data-date="2014-07-11"><div><div class="fc-day-number">11</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-sat fc-widget-content fc-past fc-last" data-date="2014-07-12"><div><div class="fc-day-number">12</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                        </tr>
+                        <tr class="fc-week">
+                            <td class="fc-day fc-sun fc-widget-content fc-future fc-first" data-date="2014-07-20"><div style="min-height: 28px;"><div class="fc-day-number">C</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-mon fc-widget-content fc-future" data-date="2014-07-21"><div><div class="fc-day-number">21</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-tue fc-widget-content fc-future" data-date="2014-07-22"><div><div class="fc-day-number">22</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-wed fc-widget-content fc-future" data-date="2014-07-23"><div><div class="fc-day-number">23</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-thu fc-widget-content fc-future" data-date="2014-07-24"><div><div class="fc-day-number">24</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-fri fc-widget-content fc-future" data-date="2014-07-25"><div><div class="fc-day-number">25</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-sat fc-widget-content fc-future fc-last" data-date="2014-07-26"><div><div class="fc-day-number">26</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                        </tr>
+                        <tr class="fc-week fc-last">
+                            <td class="fc-day fc-sun fc-widget-content fc-future fc-first" data-date="2014-07-27"><div style="min-height: 28px;"><div class="fc-day-number">D</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-mon fc-widget-content fc-future" data-date="2014-07-28"><div><div class="fc-day-number">28</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-tue fc-widget-content fc-future" data-date="2014-07-29"><div><div class="fc-day-number">29</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-wed fc-widget-content fc-future" data-date="2014-07-30"><div><div class="fc-day-number">30</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-thu fc-widget-content fc-future" data-date="2014-07-31"><div><div class="fc-day-number">31</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-fri fc-widget-content fc-future" data-date="2014-08-01"><div><div class="fc-day-number">1</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                            <td class="fc-day fc-sat fc-widget-content fc-future fc-last" data-date="2014-08-02"><div><div class="fc-day-number">2</div><div class="fc-day-content"><div style="position: relative; height: 0px;">&nbsp;</div></div></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                -->
     </div>
 </div>

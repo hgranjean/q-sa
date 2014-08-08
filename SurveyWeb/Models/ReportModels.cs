@@ -6,11 +6,21 @@ using System.Web;
 namespace SurveyWeb.Models
 {   public class ProgressReportViewModel
     {
-        private decimal[,] elementsByAreas;
-
-        public ProgressReportViewModel(decimal[,] elementsByAreas)
+        private readonly ProgressReport _model;
+        public ProgressReportViewModel(ProgressReport model)    
         {
-            this.elementsByAreas = elementsByAreas;
+            _model = model;
+        }
+        public decimal[,] ElementsByAreas { get { return _model.ElementsByAreas; } }
+    }
+
+    public class ProgressReport
+    {
+        public decimal[,] ElementsByAreas { get; private set; }
+
+        public ProgressReport(decimal[,] elementsByAreas)
+        {
+            this.ElementsByAreas = elementsByAreas;
         }
     }
 }

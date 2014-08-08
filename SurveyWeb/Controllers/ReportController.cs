@@ -26,11 +26,13 @@ namespace SurveyWeb.Controllers
     {
         private readonly IPersistenceServices _persistenceService;
         private readonly SurveillanceService _surveillanceService;
+        private readonly ReportService _reportService;
 
-        public ReportController(IPersistenceServices persistenceService, SurveillanceService surveillanceService)           
+        public ReportController(IPersistenceServices persistenceService, SurveillanceService surveillanceService, ReportService reportService)           
         {
             _persistenceService = persistenceService;
             _surveillanceService = surveillanceService;
+            _reportService = reportService;
         }
 
         //
@@ -43,53 +45,13 @@ namespace SurveyWeb.Controllers
 
         public ActionResult ProgressReport()
         {        
-            var surveys = _persistenceService.GetSurveys();
-
-            // Filtering out responses by user
             var userId = User.Identity.GetUserId();
-            var responses = _surveillanceService.GetResponses(userId);
-
-            var surveyModels = new List<TracerViewModel>();
-            // var refData = new SurveillanceController();
-            foreach (var response in responses)
-            {
-                var tracerModel = _persistenceService.LoadTracer(response);
-                var survey = _persistenceService.GetSurvey(tracerModel.SurveyId);
-                tracerModel.QuestionGroups = new QuestionGroupsViewModel(tracerModel.SurveyId.ToString(), survey.QuestionGroups);
-                
-                // refData.LoadTracerReferenceData(tracerModel);
-                surveyModels.Add(tracerModel);
-            }
-
-            // x - elements
-            // y - areas
-            // value - completion
-            var areas = surveyModels.First().Areas.ToList();            
-            var elements = surveyModels.First().QuestionGroups.ToList();
-            decimal[,] elementsByAreas = new decimal[areas.Count(), elements.Count()];
-            foreach (var survey in surveyModels)
-            {
-                int qIndex = 0;                
-                foreach (var questionGroup in survey.QuestionGroups)
-                {
-                    int responseCount = 0;
-                    foreach (var question in questionGroup.QuestionGroup.Questions)
-                    {                        
-                        if (survey.Responses[qIndex] != null)
-                        {
-                            responseCount++;
-                        }                        
-                        qIndex++;
-                    }
-                    var completionPercent = (responseCount / qIndex) * 100;
-                    
-                    elementsByAreas[areas.FindIndex(area => area.ID == survey.AreaId), questionGroup.Number-1] = completionPercent; // TODO aggregate
-                }                
-            }
-
-            var progressReportViewModel = new ProgressReportViewModel(elementsByAreas);
             
-            return View();
+            var model = _reportService.GetProgressReport(userId);
+
+            var viewModel = new ProgressReportViewModel(model);
+
+            return View(viewModel);
         }
         
         public ActionResult CompletionReport()

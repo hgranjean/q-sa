@@ -10,6 +10,7 @@ using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SurveyWeb.Models;
 using Microsoft.AspNet.Identity;
+using Atum.Domain.Healthcare;
 
 namespace SurveyWeb.Repository
 {
@@ -37,6 +38,14 @@ namespace SurveyWeb.Repository
         Hospital AddHospital(Hospital hospital);
 
         void UpdateHospital(Hospital hospital);
+
+        IEnumerable<Area> GetAreas(string hospitalId);
+
+        IEnumerable<Facility> GetFacilities();
+
+        IEnumerable<Building> GetBuildings();
+
+        IEnumerable<Department> GetDepartments();
     }
 
     public class SurveillanceRepository : ISurveillanceRepository
@@ -138,6 +147,38 @@ namespace SurveyWeb.Repository
             _context.Entry(hospital).State = EntityState.Modified;
 
             _context.SaveChanges();
+        }
+
+
+        public IEnumerable<Area> GetAreas(string hospitalId)
+        {
+            // TODO: Load from the database
+            yield return new Area("Area1", 1);
+            yield return new Area("Area2", 2);
+        }
+
+        public IEnumerable<Facility> GetFacilities()
+        {
+            // TODO: Load from the database, i.e.
+            // return _dbContext.Hospitals.Select(hospital => new Facility(hospital.Name, Int32.Parse(hospital.Id)));
+            yield return new Facility("Facility1", 1);
+            yield return new Facility("Facility2", 2);            
+        }
+
+
+        public IEnumerable<Building> GetBuildings()
+        {
+            // TODO: Load from the database
+            yield return new Building("Building1", 1);
+            yield return new Building("Building2", 2);
+        }
+
+
+        public IEnumerable<Department> GetDepartments()
+        {
+            // TODO: Load from the database
+            yield return new Department("Department1", 1);
+            yield return new Department("Department2", 2);
         }
     }
 }
