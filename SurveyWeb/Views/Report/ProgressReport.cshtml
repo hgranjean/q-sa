@@ -35,8 +35,7 @@
                     window.location.href = uri + base64(format(template, ctx))
                 }
             })()
-            $("#btnExport").click(function (e) {
-                alert("clicked");
+            $("#btnExport").click(function (e) {                
                 tableToExcel("dvData", "Progress Report");
                 e.preventDefault();
                 // window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
