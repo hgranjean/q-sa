@@ -26,40 +26,13 @@ namespace SurveyWeb.Controllers
             _standardManagementService = standardManagementService;
         }
 
-
-        /// <summary>
-        /// Standard Content
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        public TOCElement GetViewModel(string Id)
-        {
-            var model = new TOCElement(Id);
-
-            if (Id == "LS.02.01.20 EP27")
-            {
-                //model.Content = LoadContent(Id);
-            }
-
-            if (Id == "LS.04.03.02")
-            {
-                var appPath = _store.GetPath();
-                //TODO: Get From Standard Services
-                model = (TOCElement)XmlSerializationUtility.GetObjectFromFile(Path.Combine(appPath, "Standards", Id + ".xml"), typeof(TOCElement));
-            }
-
-            return model;
-        }
-
         /// <summary>
         /// Standard Content
         /// </summary>
         /// <returns></returns>
         public IEnumerable<KeyValuePair<string, TOCElement>> GetTOCs()
         {
-            yield return new KeyValuePair<string, TOCElement>(string.Empty, TOCElement.None);
-            yield return new KeyValuePair<string, TOCElement>("LS.02.01.20 EP27", GetViewModel("LS.02.01.20 EP27"));
-            yield return new KeyValuePair<string, TOCElement>("LS.04.03.02", GetViewModel("LS.04.03.02"));
+            return _standardManagementService.GetTOCs();
         }
 
         public ActionResult Document(int? id)

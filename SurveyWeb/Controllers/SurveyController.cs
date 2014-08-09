@@ -32,15 +32,18 @@ namespace SurveyWeb.Controllers
         private readonly SurveyService _surveyService;        
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IPersistenceServices _persistenceService;
+        private readonly StandardsManagementServices _standardManagementService;
 
         public SurveyController(            
             SurveyService surveyService,
             IPersistenceServices persistenceService,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            StandardsManagementServices standardManagementService)
         {            
             _surveyService = surveyService;        
             _userManager = userManager;
             _persistenceService = persistenceService;
+            _standardManagementService = standardManagementService;
         }
 
         //
@@ -121,11 +124,13 @@ namespace SurveyWeb.Controllers
 
             ViewBag.QuestionGroupId = groupId;
 
-            return View(new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
+            var viewModel = new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
             {
                 SurveyId = surveyId,
-                Number = int.Parse(groupId)
-            });
+                Number = int.Parse(groupId),
+                AvailableTOCs = _standardManagementService.GetTOCs()
+            };
+            return View(viewModel);
         }
 
 
@@ -234,6 +239,35 @@ namespace SurveyWeb.Controllers
             var model = new SurveyViewModel(survey);
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Save(SurveyViewModel viewModel)
+        {
+            if (viewModel.Survey.Guid == Guid.Empty)
+            {
+                viewModel.Survey.Guid = Guid.NewGuid();
+
+                var surveyEntry = new SurveyEntry
+                {
+                    Id = viewModel.Survey.Guid.ToString("d"),
+                    Title = viewModel.Survey.Title
+                };
+                
+                surveyEntry = _surveyService.AddSurvey(surveyEntry);
+            }
+            else
+            {
+                var id = viewModel.Survey.Guid.ToString("d");
+                
+                var surveyEntry = _surveyService.GetSurvey(id);
+
+                surveyEntry.Title = viewModel.Survey.Title;
+            }
+            
+            _persistenceService.SaveSurvey(viewModel.Survey);            
+
+            return View(viewModel);
         }
 
 

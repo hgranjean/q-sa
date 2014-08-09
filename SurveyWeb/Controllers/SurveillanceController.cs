@@ -49,6 +49,7 @@ namespace SurveyWeb.Controllers
             _userManager = userManager;
             _learningService = learningService;
             _persistenceService = persistenceService;
+            _mailService = mailService;
         }
 
         protected override void Dispose(bool disposing)
@@ -472,15 +473,19 @@ namespace SurveyWeb.Controllers
                 foreach (var question in questionGroup.Value.Questions)
                 {
                     questions.Add(question);
-                    var value = values.GetValue("Responses[" + question.Number /* qIndex  */ + "]");
+                    var value = values.GetValue("Responses[" + qIndex  /*question.Number qIndex  */ + "]");
                     if (value != null)
                     {
                         var responseId = (int)value.ConvertTo(typeof(int));
 
-                        var response = new Response(question, question.ResponseChoices.FirstOrDefault(r => r.ID == responseId));
-                        responses.Add(response);
+                        var choice = question.ResponseChoices.FirstOrDefault(r => r.ID == responseId);
+                        if (choice != default(ResponseChoice))
+                        {
+                            var response = new Response(question, choice);
+                            responses.Add(response);
 
-                        responsesViewModels[qIndex] = new ResponseViewModel(response) { ResponseId = responseId };
+                            responsesViewModels[qIndex] = new ResponseViewModel(response) { ResponseId = responseId };
+                        }
                     }
                     qIndex++;
                 }
@@ -639,7 +644,7 @@ namespace SurveyWeb.Controllers
                     _taskService.UpdateUsersForTask(model.Id, _surveillanceService.GetUsers().Select(m => m.Id), model.SelectedUsers);
 
                     // Notify newly-assigned users on their assignments
-                    var availableUsers = _taskService.GetUsersForTask(model.Id);
+                    var availableUsers = _surveillanceService.GetUsers();
                     foreach (var item in model.SelectedUsers)
                     {
                         var user = availableUsers.FirstOrDefault(m => m.Id == item);
@@ -762,7 +767,7 @@ namespace SurveyWeb.Controllers
         }
 
         public ActionResult TakePhoto(string surveyId, string questionId)
-        {
+        {            
             var viewModel = new PhotoViewModel { SurveyId = surveyId, QuestionId = questionId };
 
             return View(viewModel);
@@ -771,7 +776,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]        
         public ActionResult TakePhoto(PhotoViewModel model)
         {        
-            string fileName = "MyUniqueImageFileName.png";
+            string fileName = Guid.NewGuid().ToString("d") + ".png";
             string fileNameWitPath = Path.Combine(Server.MapPath("~/Store/Photos"), fileName);
 
             using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))

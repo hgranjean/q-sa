@@ -10,6 +10,8 @@ namespace SurveyWeb.Repository
     public interface ISurveyRepository
     {
         SurveyEntry GetSurvey(string surveyId);
+
+        SurveyEntry AddSurvey(SurveyEntry entry);
     }
 
     public class SurveyRepository : ISurveyRepository
@@ -24,6 +26,16 @@ namespace SurveyWeb.Repository
         public SurveyEntry GetSurvey(string surveyId)
         {
             return _context.Surveys.FirstOrDefault(m => m.Id == surveyId);
+        }
+
+
+        public SurveyEntry AddSurvey(SurveyEntry entry)
+        {
+            _context.Surveys.Add(entry);
+
+            _context.SaveChanges();
+
+            return entry;
         }
     }
 }

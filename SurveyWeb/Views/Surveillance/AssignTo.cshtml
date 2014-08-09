@@ -1,0 +1,25 @@
+﻿@using SurveyWeb.Models
+@model AssignToViewModel
+
+@using (Html.BeginForm("AssignTo", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.ResponseId)
+        
+
+        <div style="display: table">
+            <div style="display:table-row">
+                <div style="display:table-cell;width:50%" class="table-cell">
+                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.AssignedTo)</div>
+                    <div id="editorField" class="editor-field">
+                        @Html.DropDownListFor(m => m.AssignedTo, new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <input type="submit" value="Save" />
+}
+
+

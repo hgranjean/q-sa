@@ -328,7 +328,8 @@ namespace SurveyWeb.Models
     }
 
     public class PhotoViewModel
-    {        public string SurveyId { get; set; }
+    {        
+        public string SurveyId { get; set; }
         public string QuestionId { get; set; }
         public string FileName { get; set;}
         public bool IsPublished { get; set; }

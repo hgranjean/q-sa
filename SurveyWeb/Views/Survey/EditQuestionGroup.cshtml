@@ -48,7 +48,7 @@
                     </div>
                     <div id="questionStandard" class="editor-field" style="display: table-cell;width: 17%">
                         @Html.DropDownListFor(m => m.QuestionGroup.Questions[i].TOCReference, 
-                                              new SelectList(new SurveillanceController().GetTOCs(), "Value.Title", "Key", Model.QuestionGroup.Questions[i].TOCReference), new { style = "width: auto", @class="form-control"})
+                                              new SelectList(Model.AvailableTOCs, "Value.Title", "Key", Model.QuestionGroup.Questions[i].TOCReference), new { style = "width: auto", @class="form-control"})
                     </div>
                 </div>                
             }
