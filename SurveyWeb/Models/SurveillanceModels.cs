@@ -320,6 +320,13 @@ namespace SurveyWeb.Models
         public string SearchCriteria { get; set; }    
     }
 
+    public class AssignToViewModel
+    {
+        public string ResponseId { get; set; }
+        public string AssignedTo { get; set; }
+        public IEnumerable<Person> Surveyors { get; set; }
+    }
+
     public class PhotoViewModel
     {        public string SurveyId { get; set; }
         public string QuestionId { get; set; }
