@@ -74,21 +74,28 @@ namespace SurveyWeb.Services
             decimal[,] elementsByAreas = new decimal[areas.Count(), elements];
             foreach (var survey in surveyModels)
             {
-                int qIndex = 0;
-                foreach (var questionGroup in survey.QuestionGroups)
+                try
                 {
-                    int responseCount = 0;
-                    foreach (var question in questionGroup.QuestionGroup.Questions)
+                    int qIndex = 0;
+                    foreach (var questionGroup in survey.QuestionGroups)
                     {
-                        if (survey.Responses[qIndex] != null)
+                        int responseCount = 0;
+                        foreach (var question in questionGroup.QuestionGroup.Questions)
                         {
-                            responseCount++;
+                            if (survey.Responses[qIndex] != null)
+                            {
+                                responseCount++;
+                            }
+                            qIndex++;
                         }
-                        qIndex++;
-                    }
-                    var completionPercent = ((decimal)responseCount / (decimal)qIndex) * 100m;
+                        var completionPercent = ((decimal)responseCount / (decimal)qIndex) * 100m;
 
-                    elementsByAreas[areas.FindIndex(area => area.ID == survey.AreaId), questionGroup.Number] += completionPercent; // TODO aggregate
+                        elementsByAreas[areas.FindIndex(area => area.ID == survey.AreaId), questionGroup.Number] += completionPercent; // TODO aggregate
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Skip problematic survey for now
                 }
             }
 

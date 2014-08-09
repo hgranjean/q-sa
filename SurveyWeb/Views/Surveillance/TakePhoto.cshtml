@@ -1,0 +1,88 @@
+﻿@model SurveyWeb.Models.PhotoViewModel
+
+<script>
+
+// Put event listeners into place
+window.addEventListener("DOMContentLoaded", function() {
+	// Grab elements, create settings, etc.
+	var canvas = document.getElementById("canvas"),
+		context = canvas.getContext("2d"),
+		video = document.getElementById("video"),
+		videoObj = { "video": true },
+		errBack = function(error) {
+			console.log("Video capture error: ", error.code);
+		};
+
+	// Put video listeners into place
+	if(navigator.getUserMedia) { // Standard
+		navigator.getUserMedia(videoObj, function(stream) {
+			video.src = stream;
+			video.play();
+		}, errBack);
+	} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+		navigator.webkitGetUserMedia(videoObj, function(stream){
+			video.src = window.webkitURL.createObjectURL(stream);
+			video.play();
+		}, errBack);
+	} else if(navigator.mozGetUserMedia) { // WebKit-prefixed
+		navigator.mozGetUserMedia(videoObj, function(stream){
+			video.src = window.URL.createObjectURL(stream);
+			video.play();
+		}, errBack);
+	}
+
+	// Trigger photo take
+	document.getElementById("snap").addEventListener("click", function() {
+		context.drawImage(video, 0, 0, 200, 200);
+	});
+}, false);
+
+</script>
+
+<div style="display: table">
+    <div style="display: table-row">
+        <div style="display: table-cell">
+            <video id="video" width="200" height="200" autoplay></video>
+        </div>
+        <div style="display: table-cell">
+            <canvas id="canvas" width="200" height="200"></canvas>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <button id="snap" class="btn btn-default">Snap Photo</button>
+    <button id="btnSave" class="btn btn-default">Save</button>
+    @Html.ActionLink("Close", "SurveyDelivery", new { id = Model.SurveyId })
+</div>
+
+<script type="text/javascript">
+
+    // Send the canvas image to the server.
+
+    $(function () {
+
+        $("#btnSave").click(function () {            
+            var image = document.getElementById("canvas").toDataURL("image/png");
+
+            image = image.replace('data:image/png;base64,', '');
+
+            $.ajax({
+                type: 'POST',
+                url: '/Surveillance/TakePhoto',
+                data: '{ ImageData : "' + image + '" }',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (msg) {
+                    alert('Image saved successfully !');
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        });
+    });
+
+</script>
+
