@@ -18,5 +18,10 @@ namespace SurveyWeb.Services
         {
             return _repository.GetSurvey(surveyId);
         }
+
+        internal SurveyEntry AddSurvey(SurveyEntry entry)
+        {
+            return _repository.AddSurvey(entry);
+        }
     }
 }

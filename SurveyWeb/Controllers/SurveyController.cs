@@ -241,6 +241,35 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Save(SurveyViewModel viewModel)
+        {
+            if (viewModel.Survey.Guid == Guid.Empty)
+            {
+                viewModel.Survey.Guid = Guid.NewGuid();
+
+                var surveyEntry = new SurveyEntry
+                {
+                    Id = viewModel.Survey.Guid.ToString("d"),
+                    Title = viewModel.Survey.Title
+                };
+                
+                surveyEntry = _surveyService.AddSurvey(surveyEntry);
+            }
+            else
+            {
+                var id = viewModel.Survey.Guid.ToString("d");
+                
+                var surveyEntry = _surveyService.GetSurvey(id);
+
+                surveyEntry.Title = viewModel.Survey.Title;
+            }
+            
+            _persistenceService.SaveSurvey(viewModel.Survey);            
+
+            return View(viewModel);
+        }
+
 
         public ActionResult DeleteSurvey(long id)
         {            
