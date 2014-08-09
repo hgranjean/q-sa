@@ -49,6 +49,7 @@ namespace SurveyWeb.Controllers
             _userManager = userManager;
             _learningService = learningService;
             _persistenceService = persistenceService;
+            _mailService = mailService;
         }
 
         protected override void Dispose(bool disposing)
@@ -643,7 +644,7 @@ namespace SurveyWeb.Controllers
                     _taskService.UpdateUsersForTask(model.Id, _surveillanceService.GetUsers().Select(m => m.Id), model.SelectedUsers);
 
                     // Notify newly-assigned users on their assignments
-                    var availableUsers = _taskService.GetUsersForTask(model.Id);
+                    var availableUsers = _surveillanceService.GetUsers();
                     foreach (var item in model.SelectedUsers)
                     {
                         var user = availableUsers.FirstOrDefault(m => m.Id == item);
