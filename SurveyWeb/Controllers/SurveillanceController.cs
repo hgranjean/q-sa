@@ -19,6 +19,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Atum.Utility;
 using SurveyWeb.Repository;
+using System.IO;
 
 namespace SurveyWeb.Controllers
 {
@@ -120,7 +121,7 @@ namespace SurveyWeb.Controllers
             retVal.Category = "Patient Safety";
             retVal.ItemInspected = "Clutter ((0735)";
             retVal.Area = new Area("2 North (027)",27);
-            retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
+            // retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
             retVal.Score = "Non Compliant";
             retVal.EstimatedCompletionDate = DateTime.Today.AddDays(2.0D);
             retVal.ItemDetails = "Issue Details_" + followUpId;
@@ -758,6 +759,47 @@ namespace SurveyWeb.Controllers
         public ActionResult Archive()
         {
             return View();
+        }
+
+        public ActionResult TakePhoto(string surveyId, string questionId)
+        {
+            var viewModel = new PhotoViewModel { SurveyId = surveyId, QuestionId = questionId };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]        
+        public ActionResult TakePhoto(PhotoViewModel model)
+        {        
+            string fileName = "MyUniqueImageFileName.png";
+            string fileNameWitPath = Path.Combine(Server.MapPath("~/Store/Photos"), fileName);
+
+            using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
+            {
+                using (BinaryWriter bw = new BinaryWriter(fs))
+                {
+                    byte[] data = Convert.FromBase64String(model.ImageData);
+                    bw.Write(data);
+                    bw.Close();
+                }
+                fs.Close();
+            }
+
+            model.FileName = fileName;
+            model.IsPublished = true;
+            model.UserName = User.Identity.Name;            
+            model.CreatedDateTime = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                // db.DrawingModels.Add(model);
+                // db.SaveChanges();
+
+                // return RedirectToAction("Index");
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false });
         }
     }
 }

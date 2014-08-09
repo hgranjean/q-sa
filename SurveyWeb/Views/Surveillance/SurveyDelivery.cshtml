@@ -113,7 +113,7 @@
         </div>
         
         <div>&nbsp;</div>
-
+        
         <div style="display: table;" class="gn-table">
             
             @foreach (var group in Model.QuestionGroups)
@@ -171,12 +171,13 @@
 
                             <div style="display: table-cell; width: 10%; white-space: nowrap; vertical-align: middle" class="gn-table-row-withborders">
                                 @Html.ActionLink("Notes", "EditNotes", "Surveillance", null, new {@class = "gn-notes-icon", style = "display:inline"})
+                                @Html.ActionLink("Load", "Load", "Surveillance", null, new { @class = "gn-upload-icon", style = "display:inline" })
                                 @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
+                                @Html.ActionLink("Take Photo", "TakePhoto", "Surveillance", new {surveyId = @Model.SurveyId, questionId = question.Number}, new { @class = "gn-camera-icon", style = "display:inline" })
                                 <span style="white-space: nowrap">
-                                    <span id="file" class="gn-camera-icon" style="display: inline"></span>
-                                    @Html.ActionLink("Load", "Load", "Surveillance", null, new {@class = "gn-upload-icon", style = "display:inline"})
-                                    <input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline; width:10px"
-                                        onchange=" document.getElementById('file').innerHTML = this.value; " />
+                                    <!--<span id="file" class="gn-camera-icon" style="display: inline"></span>-->                                    
+                                    <!--<input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline; width:10px"
+                                        onchange="alert("changed"); "document.getElementById('file').innerHTML = this.value; " /> -->
                                 </span>
                             </div>                        
                     </div>

@@ -320,8 +320,14 @@ namespace SurveyWeb.Models
         public string SearchCriteria { get; set; }    
     }
 
+    public class PhotoViewModel
+    {        public string SurveyId { get; set; }
+        public string QuestionId { get; set; }
+        public string FileName { get; set;}
+        public bool IsPublished { get; set; }
+        public string UserName { get; set;}
+        public DateTime CreatedDateTime { get; set;}
 
-
-
-
+        public string ImageData { get; set; }
+    }
 }

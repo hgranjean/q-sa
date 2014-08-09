@@ -704,9 +704,11 @@
     <Content Include="Views\Learning\_NBTrainingDocumentText.cshtml" />
     <Content Include="Views\Surveillance\FollowUps.cshtml" />
     <Content Include="Views\Surveillance\FollowUp.cshtml" />
+    <Content Include="Views\Surveillance\TakePhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Store\Domain\" />
+    <Folder Include="Store\Photos\" />
     <Folder Include="Store\Responses\" />
     <Folder Include="Views\SurveyAnalysis\" />
   </ItemGroup>
