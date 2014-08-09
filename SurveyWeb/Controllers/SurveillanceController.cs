@@ -472,7 +472,7 @@ namespace SurveyWeb.Controllers
                 foreach (var question in questionGroup.Value.Questions)
                 {
                     questions.Add(question);
-                    var value = values.GetValue("Responses[" + question.Number /* qIndex  */ + "]");
+                    var value = values.GetValue("Responses[" + qIndex  /*question.Number qIndex  */ + "]");
                     if (value != null)
                     {
                         var responseId = (int)value.ConvertTo(typeof(int));
