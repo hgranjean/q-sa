@@ -801,5 +801,25 @@ namespace SurveyWeb.Controllers
 
             return Json(new { success = false });
         }
+
+        public ActionResult AssignTo(string id)
+        {
+            var surveyors = LoadSurveyors();
+
+            var viewModel = new AssignToViewModel { ResponseId = id, Surveyors = surveyors };
+
+            return View(viewModel);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignTo(AssignToViewModel viewModel)
+        {
+            var tracer = _persistenceService.LoadTracer(viewModel.ResponseId);
+            tracer.SurveyorId = new Guid(viewModel.AssignedTo);
+            _persistenceService.SaveTracer(tracer);
+            return RedirectToAction("Dashboard");
+        }
     }
 }
