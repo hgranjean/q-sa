@@ -602,6 +602,9 @@
     <Content Include="Views\Shared\component.css" />
     <Content Include="Views\Shared\demo.css" />
     <Content Include="Views\Shared\normalize.css" />
+    <Content Include="Views\Surveillance\AssignTo.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\Surveillance\TakePhoto.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -666,7 +669,7 @@
     <Content Include="Views\Hospital\UserHospitalEdit.cshtml" />
     <Content Include="Views\Hospital\UserHospitalIndex.cshtml" />
     <Content Include="Views\Survey\CreateQuestionGroup.cshtml" />
-    <Content Include="Views\Surveillance\EditorTemplates\QuestionGroupViewModel.cshtml" />
+    <Content Include="Views\Survey\EditorTemplates\QuestionGroupViewModel.cshtml" />
     <Content Include="Views\Survey\Save.cshtml" />
     <Content Include="Views\Survey\EditQuestionGroup.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
@@ -707,7 +710,6 @@
     <Content Include="Views\Learning\_NBTrainingDocumentText.cshtml" />
     <Content Include="Views\Surveillance\FollowUps.cshtml" />
     <Content Include="Views\Surveillance\FollowUp.cshtml" />
-    <Content Include="Views\Surveillance\AssignTo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Store\Domain\" />

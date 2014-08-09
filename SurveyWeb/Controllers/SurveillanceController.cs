@@ -477,10 +477,14 @@ namespace SurveyWeb.Controllers
                     {
                         var responseId = (int)value.ConvertTo(typeof(int));
 
-                        var response = new Response(question, question.ResponseChoices.FirstOrDefault(r => r.ID == responseId));
-                        responses.Add(response);
+                        var choice = question.ResponseChoices.FirstOrDefault(r => r.ID == responseId);
+                        if (choice != default(ResponseChoice))
+                        {
+                            var response = new Response(question, choice);
+                            responses.Add(response);
 
-                        responsesViewModels[qIndex] = new ResponseViewModel(response) { ResponseId = responseId };
+                            responsesViewModels[qIndex] = new ResponseViewModel(response) { ResponseId = responseId };
+                        }
                     }
                     qIndex++;
                 }

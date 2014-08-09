@@ -2,6 +2,7 @@
 using Atum.Domain.QualityManagement;
 using SurveyWeb.Services;
 using Atum.Domain.SurveyManagement;
+using Atum.Domain.Common;
 
 namespace SurveyWeb.Models
 {
@@ -76,6 +77,8 @@ namespace SurveyWeb.Models
             this.QuestionGroup = questionGroup;
             this.Number = questionGroup.Number;
         }
+
+        public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs { get; set; }
     }
 
     public class ScheduleViewModel : ViewModelBase

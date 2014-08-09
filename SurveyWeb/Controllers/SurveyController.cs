@@ -32,15 +32,18 @@ namespace SurveyWeb.Controllers
         private readonly SurveyService _surveyService;        
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IPersistenceServices _persistenceService;
+        private readonly StandardsManagementServices _standardManagementService;
 
         public SurveyController(            
             SurveyService surveyService,
             IPersistenceServices persistenceService,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            StandardsManagementServices standardManagementService)
         {            
             _surveyService = surveyService;        
             _userManager = userManager;
             _persistenceService = persistenceService;
+            _standardManagementService = standardManagementService;
         }
 
         //
@@ -121,11 +124,13 @@ namespace SurveyWeb.Controllers
 
             ViewBag.QuestionGroupId = groupId;
 
-            return View(new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
+            var viewModel = new QuestionGroupViewModel(survey.QuestionGroups[int.Parse(groupId)])
             {
                 SurveyId = surveyId,
-                Number = int.Parse(groupId)
-            });
+                Number = int.Parse(groupId),
+                AvailableTOCs = _standardManagementService.GetTOCs()
+            };
+            return View(viewModel);
         }
 
 
