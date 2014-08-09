@@ -766,7 +766,7 @@ namespace SurveyWeb.Controllers
         }
 
         public ActionResult TakePhoto(string surveyId, string questionId)
-        {
+        {            
             var viewModel = new PhotoViewModel { SurveyId = surveyId, QuestionId = questionId };
 
             return View(viewModel);
@@ -775,7 +775,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]        
         public ActionResult TakePhoto(PhotoViewModel model)
         {        
-            string fileName = "MyUniqueImageFileName.png";
+            string fileName = Guid.NewGuid().ToString("d") + ".png";
             string fileNameWitPath = Path.Combine(Server.MapPath("~/Store/Photos"), fileName);
 
             using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))

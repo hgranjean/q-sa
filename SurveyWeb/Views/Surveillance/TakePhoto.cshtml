@@ -1,5 +1,6 @@
 ﻿@model SurveyWeb.Models.PhotoViewModel
 
+<script type="text/javascript" src="/Scripts/getUserMedia.js"></script>
 <script>
 
 // Put event listeners into place
@@ -39,25 +40,33 @@ window.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
-<div style="display: table">
-    <div style="display: table-row">
-        <div style="display: table-cell">
-            <video id="video" width="200" height="200" autoplay></video>
+<div id="chrome_upload">
+    <div style="display: table">
+        <div style="display: table-row">
+            <div style="display: table-cell">
+                <video id="video" width="200" height="200" autoplay></video>
+                <div id="webcam"></div>
+            </div>
+            <div style="display: table-cell">
+                <canvas id="canvas" width="200" height="200"></canvas>
+            </div>
         </div>
-        <div style="display: table-cell">
-            <canvas id="canvas" width="200" height="200"></canvas>
-        </div>
+    </div>
+
+
+    <div>
+        <button id="snap" class="btn btn-default">Snap Photo</button>
+        <button id="btnSave" class="btn btn-default">Save</button>        
     </div>
 </div>
 
-
-<div>
-    <button id="snap" class="btn btn-default">Snap Photo</button>
-    <button id="btnSave" class="btn btn-default">Save</button>
-    @Html.ActionLink("Close", "SurveyDelivery", new { id = Model.SurveyId })
+<div id="safari_upload">
+    <input type="file" accept="image/*;capture=camera" >
 </div>
 
-<input type="file" accept="image/*;capture=camera">
+<div>
+    @Html.ActionLink("Close", "SurveyDelivery", new { id = Model.SurveyId })
+</div>
 
 <script type="text/javascript">
 
@@ -83,7 +92,30 @@ window.addEventListener("DOMContentLoaded", function() {
                     alert("error");
                 }
             });
-        });
+        });        
+    });
+
+    $(document).ready(function () {
+
+        /* Get browser */
+        $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
+        $.browser.safari = /safari/.test(navigator.userAgent.indexOf("Safari"));
+
+        /* Detect Chrome */
+        if ($.browser.chrome) {
+            /* Do something for Chrome at this point */
+            /* Finally, if it is Chrome then jQuery thinks it's 
+               Safari so we have to tell it isn't */
+            $.browser.safari = false;
+            document.getElementById("safari_upload").style = "visibility: hidden";
+        }
+
+        /* Detect Safari */
+        if ($.browser.safari) {
+            /* Do something for Safari */
+            document.getElementById("chrome_upload").style = "visibility: hidden";
+        }
+
     });
 
 </script>

@@ -316,6 +316,7 @@
     <Content Include="Content\ecoicons\Read Me.txt" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Scripts\getUserMedia.js" />
     <Content Include="Store\JointCommissionStandards\EC_out.xml" />
     <Content Include="Store\JointCommissionStandards\EM_out.xml" />
     <Content Include="Store\JointCommissionStandards\HR_out.xml" />
