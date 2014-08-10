@@ -97,7 +97,8 @@ namespace SurveyWeb.Repository
 
         public void AddPerson(Person person)
         {
-            _context.Persons.Add(person);            
+            _context.Persons.Add(person);
+            _context.SaveChanges();
         }
 
 
@@ -106,6 +107,7 @@ namespace SurveyWeb.Repository
             _context.Persons.Attach(person);
             _context.Entry(person).CurrentValues.SetValues(person);
             _context.Entry(person).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
 
@@ -145,7 +147,6 @@ namespace SurveyWeb.Repository
             _context.Hospitals.Attach(hospital);
             _context.Entry(hospital).CurrentValues.SetValues(hospital);
             _context.Entry(hospital).State = EntityState.Modified;
-
             _context.SaveChanges();
         }
 
