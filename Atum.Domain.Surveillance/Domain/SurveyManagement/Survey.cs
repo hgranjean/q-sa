@@ -175,10 +175,13 @@ namespace Atum.Domain.SurveyManagement
             int qIndex = 1;
             foreach (var qGroup in QuestionGroups)
             {
-                foreach (var q in qGroup.Value.Questions)
+                if (qGroup.Value.Questions != null)
                 {
-                    q.Number = qIndex;
-                    qIndex++;
+                    foreach (var q in qGroup.Value.Questions)
+                    {
+                        q.Number = qIndex;
+                        qIndex++;
+                    }
                 }
             }
         }

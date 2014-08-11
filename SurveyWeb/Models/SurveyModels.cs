@@ -70,15 +70,20 @@ namespace SurveyWeb.Models
         public QuestionGroupViewModel()
         {
             this.QuestionGroup = new QuestionGroup();
+            this.AvailableTOCs = new List<KeyValuePair<string, TOCElement>>();
         }
 
         public QuestionGroupViewModel(QuestionGroup questionGroup)
         {
             this.QuestionGroup = questionGroup;
             this.Number = questionGroup.Number;
+            this.AvailableTOCs = new List<KeyValuePair<string, TOCElement>>();
         }
 
-        public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs { get; set; }
+        public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs
+        {
+            get; set;
+        }
     }
 
     public class ScheduleViewModel : ViewModelBase

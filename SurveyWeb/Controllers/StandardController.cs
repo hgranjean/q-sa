@@ -75,7 +75,7 @@ namespace SurveyWeb.Controllers
 
         public ActionResult Chapter(string chapterId)
         {
-            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(chapterId));
+            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(chapterId));
 
             var model = _standardManagementService.GetChapter(chapterId);
             //model.TableOfContents = new List<Models.TOCElementViewModel>();            
@@ -85,7 +85,7 @@ namespace SurveyWeb.Controllers
 
         public ActionResult StandardElement(string standardElementId)
         {
-            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
+            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
 
             var model = _standardManagementService.GetStandardElement(standardElementId);            
             
@@ -96,8 +96,8 @@ namespace SurveyWeb.Controllers
 
         public ActionResult PerformanceElement(string standardElementId, string performanceItemId)
         {
-            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
-            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(performanceItemId));
+            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
+            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(performanceItemId));
 
             var model = _standardManagementService.GetPerformanceElementViewModel(standardElementId, performanceItemId);            
             
