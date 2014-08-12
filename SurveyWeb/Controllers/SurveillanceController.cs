@@ -122,7 +122,7 @@ namespace SurveyWeb.Controllers
             retVal.Category = "Patient Safety";
             retVal.ItemInspected = "Clutter ((0735)";
             retVal.Area = new Area("2 North (027)",27);
-            // retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
+            retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
             retVal.Score = "Non Compliant";
             retVal.EstimatedCompletionDate = DateTime.Today.AddDays(2.0D);
             retVal.ItemDetails = "Issue Details_" + followUpId;

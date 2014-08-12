@@ -1,0 +1,37 @@
+﻿@model SurveyWeb.Models.StandardDocumentViewModel
+
+@{
+    ViewBag.Title = "Standard Training";
+}
+
+<h2>Standard Training</h2>
+
+<div>
+    <h4>StandardDocumentViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+    </dl>
+    <div class="form-group">
+        @foreach (var item in Model.TableOfContents)
+        {
+            <div class="col-md-offset-0 col-md-10">
+                @Html.ActionLink(item.Title, "NBTrainingDocument", new { chapterId = item.Key }, null)
+
+            </div>
+
+        }
+
+    </div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

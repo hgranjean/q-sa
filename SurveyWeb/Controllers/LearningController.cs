@@ -13,11 +13,26 @@ namespace SurveyWeb.Controllers
     {
         private const string DefaultTrainingDocumentIdentifier = "EC.01.01.01";
         private readonly LearningServices _learningService;
-        
-        public LearningController(LearningServices learningService)
+        private readonly StandardsManagementServices _standardManagementService;
+
+        public LearningController(LearningServices learningService, StandardsManagementServices standardsManagementService)
         {
             _learningService = learningService;
+            _standardManagementService = standardsManagementService;
         }
+
+
+        public ActionResult StandardTraining(int? id)
+        {
+            var model = new StandardDocumentViewModel();
+            if (id.HasValue)
+            {
+                //Load Document
+                model = _standardManagementService.LoadDocument(id);
+            }
+            return View(model);
+        }
+
 
         /// <summary>
         /// Review performance of Learning Module
@@ -46,11 +61,30 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+        //public ActionResult NBTrainingDocument(string chapterId, object dummy)
+        //{
+        //    string trainingDocumetId = null;
+        //    trainingDocumetId = string.IsNullOrEmpty(trainingDocumetId) ? DefaultTrainingDocumentIdentifier : trainingDocumetId;
+        //    string classifierId = trainingDocumetId.Split('.')[0];
+        //    TrainingDocumentViewModel model = _learningService.GetTrainingDocument(classifierId, trainingDocumetId);
+
+        //    if (Request.IsAjaxRequest())
+        //    {
+        //        return PartialView("_NBTrainingDocumentText", model);
+        //    }
+
+        //    return View(model);
+
+        //}
+
         public ActionResult NBTrainingDocument(string trainingDocumetId) 
         {   
             trainingDocumetId = string.IsNullOrEmpty(trainingDocumetId) ? DefaultTrainingDocumentIdentifier: trainingDocumetId;
+            string classifierId = trainingDocumetId.Split('.')[0];
 
-            TrainingDocumentViewModel model = _learningService.GetTrainingDocument(trainingDocumetId);
+
+
+            TrainingDocumentViewModel model = _learningService.GetTrainingDocument(classifierId, trainingDocumetId);
             
             if (Request.IsAjaxRequest())
             {

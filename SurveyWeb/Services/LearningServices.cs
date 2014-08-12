@@ -70,16 +70,19 @@ namespace SurveyWeb.Services
             return epIds.ConvertAll(m => string.Format("EP {0}", m.EPId));
         }
 
-
-        private static Chapter s_standardChapter;
-        private Chapter GetStandardChapter(string observationClass)
+        //TODO Load multiple chapters
+        //private static Chapter s_standardChapter;
+        private Chapter GetStandardChapter(string chapterId)
         {
-            if (s_standardChapter == null)
-            {
-                s_standardChapter = _standardManagementService.LoadChapter(observationClass);
-            }
+            //if (s_standardChapter == null)
+            //{
+            //    s_standardChapter = _standardManagementService.LoadChapter(observationClass);
+            //}
 
-            return s_standardChapter;
+            //return s_standardChapter;
+
+
+            return _standardManagementService.LoadChapter(chapterId);
         }
 
         private static EPClassifier s_classifier;
@@ -110,7 +113,7 @@ namespace SurveyWeb.Services
         }
 
 
-        internal Models.TrainingDocumentViewModel GetTrainingDocument(string trainingDocumentId)
+        internal Models.TrainingDocumentViewModel GetTrainingDocument(string classifierId, string trainingDocumentId)
         {
             //TODO: Clean string etc...
             //string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
@@ -118,11 +121,13 @@ namespace SurveyWeb.Services
             string filePath = Path.Combine(appPath, trainingDocumentId + ".xml");
 
 
+            string chapterId = classifierId;
+
             TrainingDocument trainingDoc = ReadFromXML(filePath);
             Models.TrainingDocumentViewModel retVal = Learning.MapToViewModel(trainingDoc);
 
-            StandardDocumentViewModel stdViewModel = _standardManagementService.GetChapter("EC");
-            Standard standard = GetStandardChapter(trainingDocumentId).GetPerformanceCategory(trainingDocumentId);
+            StandardDocumentViewModel stdViewModel = _standardManagementService.GetChapter(chapterId);
+            Standard standard = GetStandardChapter(chapterId).GetPerformanceCategory(trainingDocumentId);
             
             retVal.ClassList = LoadClassList(stdViewModel);
             retVal.StandardText = LoadStandardText(standard);
@@ -193,5 +198,6 @@ namespace SurveyWeb.Services
 
             XmlSerializationUtility.SaveObjectToFile(filePath, classDoc);            
         }
+
     }
 }

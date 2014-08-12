@@ -20,7 +20,7 @@
             @foreach (var item in Model.TableOfContents)
             {
             <div class="col-md-offset-0 col-md-10">
-                @Html.ActionLink(item.Title, "Chapter", new { contentId = item.Key }, null)
+                @Html.ActionLink(item.Title, "Chapter", new { chapterId = item.Key }, null)
                 
             </div>
 
