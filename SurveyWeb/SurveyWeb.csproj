@@ -286,6 +286,7 @@
     <Compile Include="Services\ReportService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Services\WorkflowService.cs" />
     <Compile Include="Store\Workflows\SurveyDeliveryRuleApp.cs" />
     <Compile Include="Services\LearningServices.cs" />
     <Compile Include="Services\MailService.cs" />

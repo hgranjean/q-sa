@@ -235,6 +235,10 @@ namespace SurveyWeb.Controllers
 
                 survey = surveys.FirstOrDefault(item => item.ID.ToString() == id);
             }
+            else
+            {
+                survey = new Survey();
+            }
 
             var model = new SurveyViewModel(survey);
 
@@ -264,7 +268,10 @@ namespace SurveyWeb.Controllers
 
                 surveyEntry.Title = viewModel.Survey.Title;
             }
-            
+            var questionGroups = viewModel.QuestionGroupsViewModel.ConvertAll(m => m.QuestionGroup);
+            viewModel.Survey.QuestionGroups = new QuestionGroups();
+            questionGroups.ForEach(m => viewModel.Survey.QuestionGroups.Add(m.Number, m));
+
             _persistenceService.SaveSurvey(viewModel.Survey);            
 
             return View(viewModel);

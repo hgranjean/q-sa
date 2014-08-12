@@ -34,10 +34,16 @@
         <p>
             Manage standards, chapters, elements and test observation classifications.
         </p>        
+<<<<<<< HEAD
             <div>@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>         
             <div
                  >@Html.ActionLink("Observation Classification", "ObservationClassifier", "Learning", null, new {@class = "btn btn-default" })</div>
             <div>@Html.ActionLink("Standard Training", "StandardTraining", "Learning", new { id = 1 }, new {@class = "btn btn-default" })</div>
+=======
+            <div class="col-lg-2">@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>         
+            <div class="col-lg-2">@Html.ActionLink("Observation Classification", "ObservationClassifier", "Learning", null, new {@class = "btn btn-default" })</div>
+            <div class="col-lg-2">@Html.ActionLink("Standard Training", "NBTrainingDocument", "Learning", null, new {@class = "btn btn-default" })</div>
+>>>>>>> 411edd0bf73caec5586baf8e1b7d80f1868f2c8f
         
         
         </div>

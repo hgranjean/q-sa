@@ -9,7 +9,7 @@
     <h1>@ViewBag.Title</h1>
 </hgroup>
 
-@using (Html.BeginForm("Save", "Surveillance", FormMethod.Post, new {enctype="multipart/form-data"}))
+@using (Html.BeginForm("Save", "Survey", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()

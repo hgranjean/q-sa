@@ -41,7 +41,7 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult ObservationClassifier(string observation)
         {
-            Contract.Assert(!string.IsNullOrWhiteSpace(observation));
+            // Contract.Assert(!string.IsNullOrWhiteSpace(observation));
 
             //View will contain Classification and list of EP Choices
             StandardElementViewModel model = null;

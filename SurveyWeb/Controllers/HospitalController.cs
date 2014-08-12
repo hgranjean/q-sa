@@ -300,5 +300,12 @@ namespace MvcApplication1.Controllers
 
             return RedirectToAction("UserHospitalIndex", "Hospital");
         }
+
+        public ActionResult EmulateUser(string id)
+        {
+            // var model = _dbContext.Hospitals.First(item => item.Id == id);
+
+            return View();
+        }
     }
 }
