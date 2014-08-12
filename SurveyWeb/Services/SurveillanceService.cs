@@ -46,6 +46,11 @@ namespace SurveyWeb.Services
         {
             return _repository.GetUsers();
         }
+
+        internal IEnumerable<Hospital> GetHospitals()
+        {
+            return _repository.GetHospitals();
+        }
         
         internal Hospital GetHospital(string hospitalId)
         {

@@ -45,14 +45,12 @@ namespace SurveyWeb.Services
 
         public XDocument GetEmailTemplate(EmailTemplate template)
         {
-            Contract.Requires(_store != null);
-            // string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
-
-            // appPath = appPath + @"\..\Store\";
-
+            Contract.Assert(_store != null);
+            
             var appPath = _store.GetPath();
 
             var emailFileName = string.Empty;
+            
             if (template == EmailTemplate.Invitation)
             {
                 emailFileName = Path.Combine(appPath, "Emails", "InvitationEmail.xml");

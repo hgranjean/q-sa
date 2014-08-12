@@ -46,6 +46,8 @@ namespace SurveyWeb.Repository
         IEnumerable<Building> GetBuildings();
 
         IEnumerable<Department> GetDepartments();
+
+        IEnumerable<Hospital> GetHospitals();
     }
 
     public class SurveillanceRepository : ISurveillanceRepository
@@ -132,6 +134,10 @@ namespace SurveyWeb.Repository
             }            
         }
 
+        public IEnumerable<Hospital> GetHospitals()
+        {
+            return _context.Hospitals;
+        }
 
         public Hospital AddHospital(Hospital hospital)
         {
@@ -180,6 +186,6 @@ namespace SurveyWeb.Repository
             // TODO: Load from the database
             yield return new Department("Department1", 1);
             yield return new Department("Department2", 2);
-        }
+        }        
     }
 }

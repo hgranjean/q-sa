@@ -23,17 +23,7 @@ namespace SurveyWeb.Controllers
             this.taskRepository = taskRepository;
             this.userManager = userManager;
         }                    
-
-        /*public HomeController()
-           : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
-        {
-        }
-
-        public HomeController(UserManager<ApplicationUser> userManager)
-        {
-            UserManager = userManager;
-        }*/       
-
+        
         protected override void Dispose(bool disposing)
         {
             // if (disposing && userManager != null)
@@ -45,9 +35,7 @@ namespace SurveyWeb.Controllers
         }
         
         public ActionResult Index()
-        {
-            var taskService = new TaskService(taskRepository);
-
+        {   
             return RedirectToAction("Dashboard", "Surveillance");
         }
 
