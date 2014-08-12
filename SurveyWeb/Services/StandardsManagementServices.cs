@@ -49,7 +49,7 @@ namespace SurveyWeb.Services
         internal Chapter LoadChapter(string chapterId)
         {
             //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
-            XmlDocument xmlDoc = LoadChapterDoc();// new XmlDocument();
+            XmlDocument xmlDoc = LoadChapterDoc(chapterId);// new XmlDocument();
 
             //xmlDoc.Load(chapterFileName);
 
@@ -62,11 +62,11 @@ namespace SurveyWeb.Services
             return chapter;
         }
 
-        private XmlDocument LoadChapterDoc()
+        private XmlDocument LoadChapterDoc(string chapterId)
         {
             string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards");
             
-            string chapterFileName = Path.Combine(appPath, "EC_out.xml");
+            string chapterFileName = Path.Combine(appPath, "EC_out.xml".Replace("EC",chapterId));
 
             XmlDocument xmlDoc =  new XmlDocument();
             
@@ -240,9 +240,9 @@ namespace SurveyWeb.Services
         /// <param name="standardElementId"></param>
         /// <param name="performanceItemId"></param>
         /// <returns></returns>
-        internal PerformanceElementViewModel GetPerformanceElementViewModel(string standardElementId, string performanceItemId)
+        internal PerformanceElementViewModel GetPerformanceElementViewModel(string chapterId, string standardElementId, string performanceItemId)
         {
-            XmlDocument xmlDoc = LoadChapterDoc();// new XmlDocument();
+            XmlDocument xmlDoc = LoadChapterDoc(chapterId);// new XmlDocument();
             PerformanceElementViewModel retVal = new PerformanceElementViewModel();
             //string itemsPath = "chapter/notes/note[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardId).Replace("epItemId", epItem.EPId.ToString());
 
@@ -317,5 +317,33 @@ namespace SurveyWeb.Services
 
             return model;
         }
+
+
+        internal StandardDocumentViewModel LoadDocument(int? id)
+        {
+            //TODO: Load Document Title Form Store
+            var retVal = new StandardDocumentViewModel { Title = "Proposed Core Reqirements - All chapters Hospital Accreditation Program" };
+            retVal.TableOfContents = LoadTableOfContent();
+            return retVal;
+        }
+
+        //TODO: Move to aoppropriate store
+        private IEnumerable<TOCElementViewModel> LoadTableOfContent()
+        {
+            yield return new TOCElementViewModel { Key = "EC", Title = "Environment of Care (EC)" };
+            yield return new TOCElementViewModel { Key = "EM", Title = "Emergency Management (EM)" };
+            yield return new TOCElementViewModel { Key = "HR", Title = "Human Resources (HR) " };
+            yield return new TOCElementViewModel { Key = "IC", Title = "Infection Prevention and Control (IC)" };
+            yield return new TOCElementViewModel { Key = "IM", Title = "Information Management (IM) " };
+            yield return new TOCElementViewModel { Key = "LD", Title = "Leadership (LD) " };
+            yield return new TOCElementViewModel { Key = "LS", Title = "Life Safety (LS)" };
+            yield return new TOCElementViewModel { Key = "MM", Title = "Medication Management (MM) " };
+            yield return new TOCElementViewModel { Key = "PC", Title = "Provision of Care, Treatment, and Services (PC) " };
+            yield return new TOCElementViewModel { Key = "PC", Title = "Performance Improvement (PI)" };
+            yield return new TOCElementViewModel { Key = "RC", Title = "Record of Care, Treatment, and Services (RC) " };
+            yield return new TOCElementViewModel { Key = "RI", Title = "Rights and Responsibilities of the Individual (RI)" };
+            yield return new TOCElementViewModel { Key = "WT", Title = "Waived Testing (WT)" };
+        }
+
     }
 }
