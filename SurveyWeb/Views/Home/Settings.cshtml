@@ -21,23 +21,21 @@
     @if (ViewBag.ShowAdminContent || ViewBag.ShowManagerContent)
     {
         <div class="col-md-4">
-        <h2>Manage users</h2>
-        <p>
-            Manage user records, their assignments to facilities.
-        </p>
-        <p>@Html.ActionLink("List users and facilities", "UserHospitalIndex", "Hospital", null, new {@class = "btn btn-default"})</p>
-            
+            <h2>Manage users</h2>
+            <p>
+                Manage user records, their assignments to facilities.
+            </p>
+            <p>@Html.ActionLink("List users", "UserHospitalIndex", "Hospital", null, new {@class = "btn btn-default"})</p>            
         </div>
         
         <div class="col-md-4">
-        <h2>Manage standards</h2>
-        <p>
-            Manage standards, chapters, elements and test observation classifications.
-        </p>        
-            <div>@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>         
-            <div>@Html.ActionLink("Observation Classification", "ObservationClassifier", "Learning", null, new {@class = "btn btn-default" })</div>
-            <div>@Html.ActionLink("Standard Training", "StandardTraining", "Learning", new { id = 1 }, new {@class = "btn btn-default" })</div>        
-        
+            <h2>Manage standards</h2>
+            <p>
+                Manage standards, chapters, elements and test observation classifications.
+            </p>
+            <p>@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</p>         
+            <p>@Html.ActionLink("Observation Classification", "ObservationClassifier", "Learning", null, new {@class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Standard Training", "StandardTraining", "Learning", new { id = 1 }, new {@class = "btn btn-default" })</p>
         </div>
     }
 </div>

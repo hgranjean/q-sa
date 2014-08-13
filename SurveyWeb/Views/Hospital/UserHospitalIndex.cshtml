@@ -16,6 +16,7 @@
         <div style="display: table-row">
             <div style="display: table-cell; width: 100px">Username</div>
             <div style="display: table-cell; width: 100px"></div>
+            <div style="display: table-cell; width: 100px"></div>
         </div>
 
         @foreach (AspNetUser item in ViewBag.Users)
@@ -24,7 +25,12 @@
                 <div style="display: table-cell">@Html.Label(item.UserName)</div>
                 <div style="display: table-cell">@Html.ActionLink("Edit", "EditUserHospital", new { userId=item.Id })</div>
                 <div style="display: table-cell">@Html.ActionLink("Delete", "DeleteUser", "Account", new { userId=item.Id }, null)</div>
-                <div style="display: table-cell">@Html.ActionLink("Emulate", "EmulateUser", "Account", new { userId = item.Id }, null)</div>
+                <div style="display: table-cell">                
+                    @if (ViewBag.ShowAdminContent)
+                    {
+                        @Html.ActionLink("Emulate", "EmulateUser", "Account", new { userId = item.Id }, null)
+                    }
+                </div>
             </div>
         }
     </div>

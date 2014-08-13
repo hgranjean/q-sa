@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
-using Atum.Database.Surveillance.Models;
+﻿using Atum.Database.Surveillance.Models;
 using Atum.Domain.Business;
 using Microsoft.AspNet.Identity;
 using SurveyWeb.Models;
+using SurveyWeb.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace MvcApplication1.Controllers
 {
@@ -14,20 +14,19 @@ namespace MvcApplication1.Controllers
     public class HospitalController : Controller
     {
         private AtumSurveillanceContext _dbContext = null;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SurveillanceService _surveillanceService;
 
-        public HospitalController()
+        public HospitalController(UserManager<ApplicationUser> userManager, SurveillanceService surveillanceService)
         {
             _dbContext = new AtumSurveillanceContext();
+            _userManager = userManager;
+            _surveillanceService = surveillanceService;
         }
-
-        public IEnumerable<Hospital> GetHospitals()
-        {
-            return _dbContext.Hospitals;
-        }
-
+        
         public ActionResult Index()
         {
-            var model = _dbContext.Hospitals;
+            var model = _surveillanceService.GetHospitals();
             
             return View(model);
         }
@@ -106,7 +105,10 @@ namespace MvcApplication1.Controllers
             ViewBag.Users = from a in _dbContext.AspNetUsers.ToList()
                             join b in model.ToList() on a.Id equals b.UserId
                             select a;
-            
+
+            ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+                        
             return View("UserHospitalIndex", model);
         }
 
@@ -299,13 +301,6 @@ namespace MvcApplication1.Controllers
             _dbContext.SaveChanges();
 
             return RedirectToAction("UserHospitalIndex", "Hospital");
-        }
-
-        public ActionResult EmulateUser(string id)
-        {
-            // var model = _dbContext.Hospitals.First(item => item.Id == id);
-
-            return View();
-        }
+        }       
     }
 }

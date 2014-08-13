@@ -278,14 +278,10 @@ namespace SurveyWeb.Controllers
         }
 
 
-        public ActionResult DeleteSurvey(long id)
+        public ActionResult DeleteSurvey(int id)
         {            
-            var surveys = _persistenceService.GetSurveys();
-            
-            var model = surveys.FirstOrDefault(m => m.ID == id);
-            
-            Contract.Requires(model != default(Survey));
-
+            var model = _persistenceService.GetSurvey(id);
+                        
             return View(model);
         }
 

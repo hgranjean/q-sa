@@ -24,6 +24,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using SurveyWeb.Services;
+using System.Diagnostics.Contracts;
+using System.Web.Security;
+using System.Security.Claims;
 
 namespace SurveyWeb.Controllers
 {
@@ -468,8 +471,13 @@ namespace SurveyWeb.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public async Task<ActionResult> LogOff()
         {
+            if (ClaimsPrincipal.Current.IsImpersonating())
+            {
+                await RevertImpersonationAsync();
+            }
+
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
@@ -754,33 +762,51 @@ namespace SurveyWeb.Controllers
             return View(invitees);
         }
 
-
         public XDocument GetEmailTemplate(EmailTemplate template)
         {
             return _mailService.GetEmailTemplate(template);
+        }
 
-            /*
-            string appPath = AppDomain.CurrentDomain.RelativeSearchPath;
+        public async Task<ActionResult> EmulateUser(string userId)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(userId));
+            
+            await ImpersonateUserAsync(userId);
+            
+            return RedirectToAction("Index", "Home");
+        }
 
-            appPath = appPath + @"\..\Store\";
+        private async Task ImpersonateUserAsync(string userId)
+        {
+            var originalUsername = User.Identity.GetUserName();
 
-            var emailFileName = string.Empty;
-            if (template == EmailTemplate.Invitation)
+            var userNameToImpersonate = _surveillanceService.GetUser(userId);
+
+            var impersonatedUser = await _userManager.FindByNameAsync(userNameToImpersonate.UserName);
+
+            var impersonatedIdentity = await _userManager.CreateIdentityAsync(impersonatedUser, DefaultAuthenticationTypes.ApplicationCookie);
+            impersonatedIdentity.AddClaim(new Claim("UserImpersonation", "true"));
+            impersonatedIdentity.AddClaim(new Claim("OriginalUsername", originalUsername));
+
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, impersonatedIdentity);
+        }
+
+        private async Task RevertImpersonationAsync()
+        {   
+            if (!ClaimsPrincipal.Current.IsImpersonating())
             {
-                emailFileName = "InvitationEmail.xml";
-            }
-            else if (template == EmailTemplate.ResetPassword)
-            {
-                emailFileName = "ResetPassword.xml";
-            }
-            else if (template == EmailTemplate.EventAssigned)
-            {
-                emailFileName = "EventAssigned.xml";
+                throw new Exception("Unable to remove impersonation because there is no impersonation");
             }
 
-            var result = XDocument.Load(appPath + @"Emails\" + emailFileName);
+            var originalUsername = ClaimsPrincipal.Current.GetOriginalUsername();
 
-            return result;*/
+            var originalUser = await _userManager.FindByNameAsync(originalUsername);
+
+            var impersonatedIdentity = await _userManager.CreateIdentityAsync(originalUser, DefaultAuthenticationTypes.ApplicationCookie);
+            
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, impersonatedIdentity);
         }
     }
 }

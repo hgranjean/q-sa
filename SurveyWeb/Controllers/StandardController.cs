@@ -91,7 +91,7 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult Chapter(string chapterId)
         {
-            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(chapterId));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(chapterId));
 
             var model = _standardManagementService.GetChapter(chapterId);
             //model.TableOfContents = new List<Models.TOCElementViewModel>();            
@@ -101,7 +101,7 @@ namespace SurveyWeb.Controllers
 
         public ActionResult StandardElement(string standardElementId)
         {
-            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
 
             var model = _standardManagementService.GetStandardElement(standardElementId);            
             
@@ -114,8 +114,9 @@ namespace SurveyWeb.Controllers
         {
 
             string chapterId = standardElementId.Split('.')[0];
-            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
-            // Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(performanceItemId));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(performanceItemId));
+
 
             var model = _standardManagementService.GetPerformanceElementViewModel(chapterId, standardElementId, performanceItemId);            
             
@@ -124,4 +125,5 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
     }
+
 }
