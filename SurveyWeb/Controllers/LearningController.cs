@@ -77,14 +77,15 @@ namespace SurveyWeb.Controllers
 
         //}
 
-        public ActionResult NBTrainingDocument(string trainingDocumetId) 
+        public ActionResult NBTrainingDocument(string standardId, string trainingDocumetId) 
         {   
-            trainingDocumetId = string.IsNullOrEmpty(trainingDocumetId) ? DefaultTrainingDocumentIdentifier: trainingDocumetId;
-            string classifierId = trainingDocumetId.Split('.')[0];
+//            string classifierId = trainingDocumetId.Split('.')[0];
+            string defaultTrainingDocumetId = _learningService.GetDefaultTrainingDocumentId(standardId);
+            trainingDocumetId = string.IsNullOrEmpty(trainingDocumetId) ? defaultTrainingDocumetId : trainingDocumetId;
 
 
 
-            TrainingDocumentViewModel model = _learningService.GetTrainingDocument(classifierId, trainingDocumetId);
+            TrainingDocumentViewModel model = _learningService.GetTrainingDocument(standardId, trainingDocumetId);
             
             if (Request.IsAjaxRequest())
             {

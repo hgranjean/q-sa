@@ -113,15 +113,13 @@ namespace SurveyWeb.Services
         }
 
 
-        internal Models.TrainingDocumentViewModel GetTrainingDocument(string classifierId, string trainingDocumentId)
+        internal Models.TrainingDocumentViewModel GetTrainingDocument(string chapterId, string trainingDocumentId)
         {
             //TODO: Clean string etc...
             //string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
             string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards/Training/EC/Serialized");
             string filePath = Path.Combine(appPath, trainingDocumentId + ".xml");
 
-
-            string chapterId = classifierId;
 
             TrainingDocument trainingDoc = ReadFromXML(filePath);
             Models.TrainingDocumentViewModel retVal = Learning.MapToViewModel(trainingDoc);
@@ -175,8 +173,12 @@ namespace SurveyWeb.Services
             return (TrainingDocument)XmlSerializationUtility.GetObjectFromFile(path, typeof(TrainingDocument));
         }
 
+        //TODO: Fix hardcoded strings
         internal TrainingDocumentViewModel SaveTrainingDocument(TrainingDocumentViewModel model)
         {
+            string standardBody = "JointCommissionStandards";
+            string standardChapter = "EC";
+            
             var appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC");
             var modelPath = Path.Combine(_store.GetPath(), "OpenNLP\\Models");
             
@@ -191,13 +193,29 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
+        //TODO Extend to other Chapters
         private void SaveToXML(TrainingDocument classDoc)
         {
+            string standardBody = "JointCommissionStandards";
+            string standardChapter = "EC";
+
             string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC\\Serialized");
             string filePath = Path.Combine(appPath, classDoc.Class + ".xml");
 
             XmlSerializationUtility.SaveObjectToFile(filePath, classDoc);            
         }
 
+        static Dictionary<string, string> _standardDefaultClassLookUp;
+        internal string GetDefaultTrainingDocumentId(string standardId)
+        {
+            if (_standardDefaultClassLookUp == null)
+            { 
+                _standardDefaultClassLookUp = new Dictionary<string, string>();
+                _standardDefaultClassLookUp.Add("EC", "EC.");
+                
+            }
+
+            return _standardDefaultClassLookUp[standardId];
+        }
     }
 }
