@@ -30,22 +30,13 @@ namespace SurveyWeb.Services
         internal IEnumerable<Person> GetPersons()
         {
             return _repository.GetPersons();
-        }
-
-        internal AspNetUser GetUser(string userId)
-        {
-            return _repository.GetUser(userId);
-        }
+        }        
+               
 
         internal ResponseEntry AddResponse(AspNetUser user)
         {
             return _repository.AddResponse(user);
-        }
-
-        internal IEnumerable<AspNetUser> GetUsers()
-        {
-            return _repository.GetUsers();
-        }
+        }        
 
         internal IEnumerable<Hospital> GetHospitals()
         {
@@ -76,11 +67,7 @@ namespace SurveyWeb.Services
         {
             _repository.UpdatePerson(person);
         }
-
-        internal void DeleteUser(string userId)
-        {
-            _repository.DeleteUser(userId);            
-        }
+               
 
         internal void SetPasswordHashAsync(ApplicationUser user, string password, UserManager<ApplicationUser> userManager)
         {
@@ -105,6 +92,11 @@ namespace SurveyWeb.Services
         internal IEnumerable<Department> GetDepartments()
         {
             return _repository.GetDepartments();
+        }
+
+        internal void DeleteHospital(string hospitalId)
+        {
+            _repository.DeleteHospital(hospitalId);
         }
     }   
 }

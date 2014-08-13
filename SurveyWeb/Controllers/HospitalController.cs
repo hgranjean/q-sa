@@ -16,12 +16,14 @@ namespace MvcApplication1.Controllers
         private AtumSurveillanceContext _dbContext = null;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SurveillanceService _surveillanceService;
+        private readonly AccountService _accountService;
 
-        public HospitalController(UserManager<ApplicationUser> userManager, SurveillanceService surveillanceService)
+        public HospitalController(UserManager<ApplicationUser> userManager, SurveillanceService surveillanceService, AccountService accountService)
         {
             _dbContext = new AtumSurveillanceContext();
             _userManager = userManager;
             _surveillanceService = surveillanceService;
+            _accountService = accountService;
         }
         
         public ActionResult Index()
@@ -69,14 +71,14 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Details(string id)
         {
-            var model = _dbContext.Hospitals.First(item => item.Id == id);
+            var model = _surveillanceService.GetHospital(id);
 
             return View(model);
         }
 
         public ActionResult Delete(string id)
         {
-            var model = _dbContext.Hospitals.First(item => item.Id == id);
+            var model = _surveillanceService.GetHospital(id);
 
             return View(model);
         }
@@ -84,14 +86,7 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult Delete(Hospital model)
         {
-            var toDelete = _dbContext.Hospitals.First(item => item.Id == model.Id);
-
-            if (toDelete != null)
-            {
-                _dbContext.Hospitals.Remove(toDelete);
-
-                _dbContext.SaveChanges();
-            }
+            _surveillanceService.DeleteHospital(model.Id);            
 
             return RedirectToAction("Index");
         }
@@ -99,10 +94,10 @@ namespace MvcApplication1.Controllers
         public ActionResult UserHospitalIndex()
         {
             var listOnlyThisUserHospitals = ListOnlyThisUserHospitals();
-
+            
             var model = GetUserHospitals(listOnlyThisUserHospitals);
-
-            ViewBag.Users = from a in _dbContext.AspNetUsers.ToList()
+                        
+            ViewBag.Users = from a in _accountService.GetUsers().ToList()
                             join b in model.ToList() on a.Id equals b.UserId
                             select a;
 
@@ -114,9 +109,9 @@ namespace MvcApplication1.Controllers
 
         private bool ListOnlyThisUserHospitals()
         {
-            var adminRole = _dbContext.AspNetRoles.FirstOrDefault(m => m.Name == "Administrator");
+            var adminRole = _accountService.GetRole("Administrator");
             var userId = User.Identity.GetUserId();
-            var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == userId);
+            var aspNetUser = _accountService.GetUserWithRoles(userId);
 
             bool listOnlyThisUserHospitals = !aspNetUser.AspNetRoles.Contains(adminRole);
             return listOnlyThisUserHospitals;
@@ -124,30 +119,30 @@ namespace MvcApplication1.Controllers
 
         private IEnumerable<UserHospitalViewModel> GetUserHospitals(bool listOnlyThisUserHospitals)
         {
-            var availableHospitals = _dbContext.Hospitals.ToList();
-            var availableRoles = _dbContext.AspNetRoles.ToList();
+            var availableHospitals = _surveillanceService.GetHospitals().ToList();
+            var availableRoles = _accountService.GetRoles().ToList();
 
             // If user is not system admin, list only users from the user's hospitals list
             
             if (listOnlyThisUserHospitals)
             {
                 var userId = User.Identity.GetUserId();
-                var userHospitalIds = _dbContext.UserHospitals.Where(m => m.UserId == userId).Select(m => m.HospitalId).ToList();
+                var userHospitalIds = _accountService.GetUserHospitals(userId).Select(m => m.HospitalId).ToList();
                 availableHospitals = availableHospitals.Where(m => userHospitalIds.Contains(m.Id)).ToList();
             }
 
             var currentUserId = User.Identity.GetUserId();
-            var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == currentUserId);
-            var adminRole = availableRoles.FirstOrDefault(m => m.Name == "Administrator");
+            var aspNetUser = _accountService.GetUser(currentUserId);
+            var adminRole = _accountService.GetRole("Administrator");
             if (!aspNetUser.AspNetRoles.Contains(adminRole))
             {
                 availableRoles.Remove(adminRole);
             }
 
             var userHospitalMap = new Dictionary<string, List<Hospital>>();
-            var hospitals = from a in _dbContext.UserHospitals.ToList()
+            var hospitals = from a in _accountService.GetUserHospitals().ToList()
                             join b in availableHospitals on a.HospitalId equals b.Id
-                            select a;
+                            select a;            
 
             foreach (var userHospital in hospitals.ToList())
             {
@@ -168,18 +163,14 @@ namespace MvcApplication1.Controllers
                         UserId = userId,
 
                         AvailableRoles = availableRoles,
-                        Roles = _dbContext.AspNetUsers.First(user => user.Id == userId).AspNetRoles
+                        Roles = _accountService.GetUserWithRoles(userId).AspNetRoles
                     };
             }
         }
         
         public ActionResult CreateUserHospital(string userId, string hospitalId)
         {
-            var model = new UserHospital {UserId = userId, HospitalId = hospitalId};
-            
-            _dbContext.UserHospitals.Add(model);
-
-            _dbContext.SaveChanges();
+            _accountService.AddUserHospital(userId, hospitalId);            
 
             return RedirectToAction("UserHospitalIndex", "Hospital");
         }

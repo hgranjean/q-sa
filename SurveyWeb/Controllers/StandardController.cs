@@ -111,12 +111,11 @@ namespace SurveyWeb.Controllers
         }
 
         public ActionResult PerformanceElement(string standardElementId, string performanceItemId)
-        {
-
-            string chapterId = standardElementId.Split('.')[0];
+        {   
             Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(standardElementId));
             Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(performanceItemId));
 
+            var chapterId = standardElementId.Split('.')[0];
 
             var model = _standardManagementService.GetPerformanceElementViewModel(chapterId, standardElementId, performanceItemId);            
             

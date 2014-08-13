@@ -18,20 +18,16 @@ namespace SurveyWeb.Repository
     {
         IEnumerable<string> GetResponses(string userId);
 
-        IEnumerable<Atum.Domain.Common.Person> GetPersons();
-
-        AspNetUser GetUser(string userId);
-
-        ResponseEntry AddResponse(AspNetUser user);
-        IEnumerable<AspNetUser> GetUsers();
+        IEnumerable<Person> GetPersons();
+        
+        ResponseEntry AddResponse(AspNetUser user);        
 
         Hospital GetHospital(string hospitalId);
 
         void AddPerson(Person person);
 
         void UpdatePerson(Person person);
-
-        void DeleteUser(string userId);
+        
 
         void SetPasswordHashAsync(ApplicationUser user, string password, UserManager<ApplicationUser> userManager);
 
@@ -48,6 +44,8 @@ namespace SurveyWeb.Repository
         IEnumerable<Department> GetDepartments();
 
         IEnumerable<Hospital> GetHospitals();
+
+        void DeleteHospital(string hospitalId);
     }
 
     public class SurveillanceRepository : ISurveillanceRepository
@@ -111,17 +109,7 @@ namespace SurveyWeb.Repository
             _context.Entry(person).State = EntityState.Modified;
             _context.SaveChanges();
         }
-
-
-        public void DeleteUser(string userId)
-        {
-            var toDelete = _context.AspNetUsers.FirstOrDefault(m => m.Id == userId);
-
-            _context.AspNetUsers.Remove(toDelete);
-
-            _context.SaveChanges();            
-        }
-
+        
 
         public void SetPasswordHashAsync(ApplicationUser user, string password, UserManager<ApplicationUser> userManager)
         {
@@ -186,6 +174,16 @@ namespace SurveyWeb.Repository
             // TODO: Load from the database
             yield return new Department("Department1", 1);
             yield return new Department("Department2", 2);
-        }        
+        }
+
+
+        public void DeleteHospital(string hospitalId)
+        {
+            var toDelete = _context.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
+                        
+            _context.Hospitals.Remove(toDelete);
+
+            _context.SaveChanges();            
+        }
     }
 }

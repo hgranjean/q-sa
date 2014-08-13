@@ -33,6 +33,7 @@ namespace SurveyWeb.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IPersistenceServices _persistenceService;
         private readonly LearningServices _learningService;
+        private readonly AccountService _accountService;
         
         public SurveillanceController(SurveillanceService surveillanceService,
             TaskService taskService,
@@ -40,6 +41,7 @@ namespace SurveyWeb.Controllers
             MailService mailService,
             LearningServices learningService,
             IPersistenceServices persistenceService,
+            AccountService accountService,
             UserManager<ApplicationUser> userManager)
         {
             
@@ -50,6 +52,7 @@ namespace SurveyWeb.Controllers
             _learningService = learningService;
             _persistenceService = persistenceService;
             _mailService = mailService;
+            _accountService = accountService;
         }
 
         protected override void Dispose(bool disposing)
@@ -527,7 +530,7 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();
             
-            var user = _surveillanceService.GetUser(userId);
+            var user = _accountService.GetUser(userId);
 
             var responseEntry = _surveillanceService.AddResponse(user);            
 
@@ -608,7 +611,7 @@ namespace SurveyWeb.Controllers
                 Survey = _surveyService.GetSurvey(evt.Event.SurveyId),
                 SurveyId = evt.Event.SurveyId,
                 AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
-                AvailableUsers = _surveillanceService.GetUsers(),
+                AvailableUsers = _accountService.GetUsers(),
                 Users = _taskService.GetUsersForTask(evt.EventId)
             };
             
@@ -641,10 +644,10 @@ namespace SurveyWeb.Controllers
                 if (model.SelectedUsers != null)
                 {
                     // Update users list in the repository
-                    _taskService.UpdateUsersForTask(model.Id, _surveillanceService.GetUsers().Select(m => m.Id), model.SelectedUsers);
+                    _taskService.UpdateUsersForTask(model.Id, _accountService.GetUsers().Select(m => m.Id), model.SelectedUsers);
 
                     // Notify newly-assigned users on their assignments
-                    var availableUsers = _surveillanceService.GetUsers();
+                    var availableUsers = _accountService.GetUsers();
                     foreach (var item in model.SelectedUsers)
                     {
                         var user = availableUsers.FirstOrDefault(m => m.Id == item);
@@ -672,7 +675,7 @@ namespace SurveyWeb.Controllers
             var model = new TaskViewModel
                 {
                     AvailableSurveys = availableSurveys.Select(m => new SurveyEntry{Id = m.Guid.ToString(), Title = m.Title}),
-                    AvailableUsers = _surveillanceService.GetUsers(),
+                    AvailableUsers = _accountService.GetUsers(),
                     Users = new List<AspNetUser>()
                 };
 
@@ -748,8 +751,7 @@ namespace SurveyWeb.Controllers
         {
             var userId = User.Identity.GetUserId();
                         
-
-            var user = _surveillanceService.GetUser(userId);
+            var user = _accountService.GetUser(userId);
 
             var model = new PersonViewModel(user.Person) { UserId = user.Id };
 

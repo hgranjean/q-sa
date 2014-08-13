@@ -134,7 +134,7 @@ namespace SurveyWeb.Controllers
         // GET: /Account/ManageProfile
         public ActionResult ManageProfile(string userName, string email, string hospitalId)
         {
-            var user = _surveillanceService.GetUsers().FirstOrDefault(m => m.UserName == userName);
+            var user = _accountService.GetUsers().FirstOrDefault(m => m.UserName == userName);
 
             var model = new PersonViewModel { UserId = user.Id };
 
@@ -200,7 +200,7 @@ namespace SurveyWeb.Controllers
                     
                 }
                 
-                var user = _surveillanceService.GetUser(model.UserId);
+                var user = _accountService.GetUser(model.UserId);
 
                 if (user != default(AspNetUser))
                 {
@@ -278,7 +278,7 @@ namespace SurveyWeb.Controllers
 
             var userName = User.Identity.GetUserName();
 
-            var user = _surveillanceService.GetUsers().FirstOrDefault(m => m.UserName == userName);
+            var user = _accountService.GetUsers().FirstOrDefault(m => m.UserName == userName);
             
             var model = new PersonViewModel(user.Person) { UserId = user.Id};
 
@@ -339,7 +339,7 @@ namespace SurveyWeb.Controllers
         
         public ActionResult DeleteUser(string userId)
         {
-            var model = _surveillanceService.GetUser(userId);
+            var model = _accountService.GetUser(userId);
 
             return View("DeleteUser", model);
         }
@@ -359,7 +359,7 @@ namespace SurveyWeb.Controllers
                 }
             }
 
-            _surveillanceService.DeleteUser(model.Id);            
+            _accountService.DeleteUser(model.Id);            
 
             return RedirectToAction("UserHospitalIndex", "Hospital");
         }
@@ -606,7 +606,7 @@ namespace SurveyWeb.Controllers
                     /*var foundUserName = (from u in context.AspNetUsers
                               where u.Person.Email == model.Email
                               select u.UserName).FirstOrDefault();*/
-                var foundUserName = _surveillanceService.GetUsers().FirstOrDefault(m => m.Email == model.Email).UserName;
+                var foundUserName = _accountService.GetUsers().FirstOrDefault(m => m.Email == model.Email).UserName;
                 if (foundUserName != null)
                 {
                     user = _userManager.FindByName(foundUserName.ToString());
@@ -702,7 +702,7 @@ namespace SurveyWeb.Controllers
         {
             var invitees = new List<InvitePersonViewModel>();
             var userName = User.Identity.GetUserName();
-            var person = _surveillanceService.GetUsers().FirstOrDefault(m => m.UserName == userName).Person;
+            var person = _accountService.GetUsers().FirstOrDefault(m => m.UserName == userName).Person;
             if (person != null)
             {
                 for (int i = 0; i < InviteeMaxCount; i++)
@@ -729,7 +729,7 @@ namespace SurveyWeb.Controllers
             string body = template.ToString();
 
             string userName = User.Identity.GetUserId();
-            var person = _surveillanceService.GetUsers().FirstOrDefault(m => m.Id == userName).Person;
+            var person = _accountService.GetUsers().FirstOrDefault(m => m.Id == userName).Person;
 
             var appPath = Request.ApplicationPath;
 
@@ -780,7 +780,7 @@ namespace SurveyWeb.Controllers
         {
             var originalUsername = User.Identity.GetUserName();
 
-            var userNameToImpersonate = _surveillanceService.GetUser(userId);
+            var userNameToImpersonate = _accountService.GetUser(userId);
 
             var impersonatedUser = await _userManager.FindByNameAsync(userNameToImpersonate.UserName);
 
