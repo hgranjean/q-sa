@@ -1,7 +1,9 @@
 ﻿using Atum.Database.Surveillance.Models;
+using Atum.Domain.Business;
 using Atum.Domain.Security.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -28,6 +30,8 @@ namespace SurveyWeb.Repository
         IEnumerable<AspNetRole> GetRoles();
 
         IEnumerable<UserHospital> GetUserHospitals();
+
+        void UpdateUser(AspNetUser user);
     }
     public class AccountRepository : IAccountRepository
     {
@@ -43,7 +47,10 @@ namespace SurveyWeb.Repository
             // Add user to hospital, if its not present there already
             if (_context.UserHospitals.Count(m => m.HospitalId == hospitalId && m.UserId == userId) == 0)
             {
-                _context.UserHospitals.Add(new UserHospital { HospitalId = hospitalId, UserId = userId });
+                var user = _context.AspNetUsers.FirstOrDefault(m => m.Id == userId);
+                var hospital = _context.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
+
+                user.Hospitals.Add(hospital);                
             }
 
             _context.SaveChanges();
@@ -112,6 +119,16 @@ namespace SurveyWeb.Repository
         public IEnumerable<UserHospital> GetUserHospitals()
         {
             return _context.UserHospitals;
+        }
+
+        public void UpdateUser(AspNetUser user)
+        {
+            _context.AspNetUsers.Attach(user);
+            _context.Persons.Attach(user.Person);
+            _context.Hospitals.Attach(user.Person.Hospital);
+            _context.Entry(user).CurrentValues.SetValues(user);            
+            _context.Entry(user).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

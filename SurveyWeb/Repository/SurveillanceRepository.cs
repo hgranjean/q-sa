@@ -98,6 +98,11 @@ namespace SurveyWeb.Repository
         public void AddPerson(Person person)
         {
             _context.Persons.Add(person);
+            // _context.Entry(person.Hospital).CurrentValues.SetValues(person.Hospital);
+            if (_context.Entry(person.Hospital).State != EntityState.Added)
+            {
+                _context.Entry(person.Hospital).State = EntityState.Modified;
+            }
             _context.SaveChanges();
         }
 
@@ -130,10 +135,8 @@ namespace SurveyWeb.Repository
         public Hospital AddHospital(Hospital hospital)
         {
             _context.Hospitals.Add(hospital);
-
             _context.SaveChanges();
-
-            return hospital;
+            return _context.Hospitals.FirstOrDefault(m => m.Id == hospital.Id);
         }
 
         public void UpdateHospital(Hospital hospital)

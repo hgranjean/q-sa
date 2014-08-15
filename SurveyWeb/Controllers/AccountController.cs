@@ -175,48 +175,41 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Person Id does not exist, create a new one
-                if (string.IsNullOrWhiteSpace(model.Person.Id))
-                {
-                    model.Person.Id = Guid.NewGuid().ToString("D");
-                    _surveillanceService.AddPerson(model.Person);                    
-                }
-                else
-                {
-                    _surveillanceService.UpdatePerson(model.Person);
-                    
-                }
-
                 // Hospital was not entered, create a new one
                 if (string.IsNullOrWhiteSpace(model.Person.Hospital.Id))
                 {
                     model.Person.Hospital.Id = Guid.NewGuid().ToString("D");
                     model.Person.Hospital.DomainName = EmailHelper.GetDomainNameFromEmail(model.Email);
-                    _surveillanceService.AddHospital(model.Person.Hospital);                    
+                    model.Person.Hospital = _surveillanceService.AddHospital(model.Person.Hospital);
                 }
                 else
                 {
                     _surveillanceService.UpdateHospital(model.Person.Hospital);
-                    
-                }
-                
-                var user = _accountService.GetUser(model.UserId);
 
-                if (user != default(AspNetUser))
+                }
+
+                // Person Id does not exist, create a new one
+                if (string.IsNullOrWhiteSpace(model.Person.Id))
                 {
-                    user.Person = model.Person;
+                    model.Person.Id = Guid.NewGuid().ToString("D");
+                    _surveillanceService.AddPerson(model.Person);
                 }
                 else
                 {
-                    this.AddErrors(new IdentityResult("User not found with id: " + model.UserId));
-                }
+                    _surveillanceService.UpdatePerson(model.Person);                    
+                }                
+                
+                // Update user with person reference
+                var user = _accountService.GetUser(model.UserId);
+
+                user.Person = _surveillanceService.GetPersons().First(m => m.Id == model.Person.Id);
+
+                _accountService.UpdateUser(user);
 
                 _accountService.AddUserHospital(user.Id, model.Person.Hospital.Id);         
 
                 // if first user in the hospital, make it a manager, otherwise, team member
                 int count = _accountService.GetHospitalUsers(model.Person.Hospital.Id).Count();
-
-                // int count = _dbContext.UserHospitals.Count(m => m.HospitalId == model.Person.Hospital.Id);
                 if (count <= 1)
                 {
                     _accountService.AddRoleToUser("Manager", user.Id);                    
@@ -226,18 +219,7 @@ namespace SurveyWeb.Controllers
                     _accountService.AddRoleToUser("Team Member", user.Id);
                 }
 
-                return RedirectToAction("Welcome", "Home");
-                
-                /*try
-                {
-                    _dbContext.SaveChanges();
-                    
-                    
-                }
-                catch (DbEntityValidationException e)
-                {
-                    this.AddErrors(e);
-                }*/
+                return RedirectToAction("Welcome", "Home");                
             }
 
             // If we got this far, something failed, redisplay form

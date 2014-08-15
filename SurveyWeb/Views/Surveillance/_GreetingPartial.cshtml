@@ -1,5 +1,8 @@
 ﻿@model SurveyWeb.Models.PersonViewModel
 
-<h2 style="margin: 0; margin-top: initial">@Html.Label(Model.FirstName) @Html.Label(Model.LastName)</h2>
-<h4 style="margin: 0">@Html.Label(Model.JobTitle) // @Html.Label(Model.CompanyName)</h4>
+@if (@Model.Person != null)
+{ 
+    <h2 style="margin: 0; margin-top: initial">@Html.Label(Model.FirstName) @Html.Label(Model.LastName)</h2>
+    <h4 style="margin: 0">@Html.Label(Model.JobTitle) // @Html.Label(Model.CompanyName)</h4>
+}
 

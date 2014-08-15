@@ -31,6 +31,10 @@ namespace SurveyWeb.Services
         {
             _repository.DeleteUser(userId);
         }
+        internal void UpdateUser(AspNetUser user)
+        {
+            _repository.UpdateUser(user);
+        }
 
         public void AddUserHospital(string userId, string hospitalId)
         {
