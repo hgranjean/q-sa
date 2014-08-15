@@ -20,6 +20,8 @@ using System.Web.Mvc;
 using Atum.Utility;
 using SurveyWeb.Repository;
 using System.IO;
+using System.Diagnostics;
+using Atum.Utility.Diagnostics;
 
 namespace SurveyWeb.Controllers
 {
@@ -262,10 +264,17 @@ namespace SurveyWeb.Controllers
             var models = new List<TracerViewModel>();
             foreach (var response in responses)
             {
-                var tracerModel = _persistenceService.LoadTracer(response);
-                LoadTracerReferenceData(tracerModel);
-                tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
-                models.Add(tracerModel);
+                try
+                {
+                    var tracerModel = _persistenceService.LoadTracer(response);
+                    LoadTracerReferenceData(tracerModel);
+                    tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
+                    models.Add(tracerModel);
+                }
+                catch (FileNotFoundException ex)
+                {
+                    DebugUtil.WriteLine("Response file was not found: {0}. {1}", response, ex.ToString());
+                }
             }
 
             var model = new CompletedSurveyViewModel(models);

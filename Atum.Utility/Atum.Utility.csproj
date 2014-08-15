@@ -31,6 +31,8 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -103,6 +105,9 @@
     <Compile Include="Atum\Utility\Calculator\LongLatPoint.cs" />
     <Compile Include="Atum\Utility\Calculator\SphericalDistanceCalculator.cs" />
     <Compile Include="Atum\Utility\Constants\PhysicalConstants.cs" />
+    <Compile Include="Atum\Utility\Diagnostics\DebugUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Atum\Utility\Email\EmailHelper.cs" />
     <Compile Include="Atum\Utility\Logic\Constraint.cs" />
     <Compile Include="Atum\Utility\Logic\Criteria.cs" />
@@ -127,4 +132,11 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>
