@@ -199,24 +199,7 @@ namespace SurveyWeb.Controllers
             return View("SurveyDesign", surveyViewModel);
         }
 
-        /// <summary>
-        /// Add a Question to a Survey
-        /// </summary>
-        /// <param name="surveyId"></param>
-        /// <param name="questionGroupId"></param>
-        /// <returns></returns>
-        public ActionResult AddQuestion(string surveyId, string questionGroupId)
-        {            
-            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
-
-            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
-
-            questionGroup.AddQuestion(string.Empty, QuestionType.SelectOne);
-
-            new SurveyViewModel(survey).Save(_persistenceService);
-
-            return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup) { SurveyId = surveyId });
-        }
+        
 
 
 
@@ -270,7 +253,7 @@ namespace SurveyWeb.Controllers
             }
             var questionGroups = viewModel.QuestionGroupsViewModel.ConvertAll(m => m.QuestionGroup);
             viewModel.Survey.QuestionGroups = new QuestionGroups();
-            questionGroups.ForEach(m => viewModel.Survey.QuestionGroups.Add(m.Number, m));
+            questionGroups.ForEach(m => viewModel.Survey.QuestionGroups.AddOrUpdate(m.Number, m));
 
             _persistenceService.SaveSurvey(viewModel.Survey);            
 
@@ -293,5 +276,110 @@ namespace SurveyWeb.Controllers
             return RedirectToAction("Surveys");
         }
 
+        [HttpPost]
+        /// <summary>
+        /// Add a Question to a Survey
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <param name="questionGroupId"></param>
+        /// <returns></returns>
+        public ActionResult AddQuestion(string surveyId, string questionGroupId)
+        {            
+            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
+
+            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
+
+            var question = questionGroup.AddQuestion(string.Empty, QuestionType.SelectOne);
+
+            new SurveyViewModel(survey).Save(_persistenceService);
+
+            // return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup) { SurveyId = surveyId });
+
+            var viewModel = new QuestionViewModel(question);
+
+            viewModel.AvailableTOCs = _standardManagementService.GetTOCs();
+
+            return PartialView("EditorTemplates/QuestionViewModel", viewModel);
+        }
+                
+        public ActionResult EditQuestion(string surveyId, string questionId)
+        {
+            var ajax = Request.IsAjaxRequest();
+
+            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
+
+            var id = Int32.Parse(questionId);
+
+            var questionGroup = from a in survey.QuestionGroups
+                           where a.Value.Questions.Exists(m=>m.Number == id)
+                           select a;
+            var question = questionGroup.First().Value.Questions.First(m => m.Number == id);
+                        
+            var viewModel = new QuestionViewModel(question);
+            viewModel.SurveyId = surveyId;
+            viewModel.AvailableTOCs = _standardManagementService.GetTOCs();
+            viewModel.QuestionGroupNumber = questionGroup.First().Value.Number;
+
+            if (ajax)
+            {
+                return PartialView(viewModel);
+            }
+
+            return View(viewModel);
+        }
+
+        public PartialViewResult ShowQuestion(string surveyId, string questionGroupId, string questionId)
+        {
+            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
+
+            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
+
+            var question = questionGroup.Questions.First(m => m.Number == Int32.Parse(questionId));
+
+            var viewModel = new QuestionViewModel(question);
+
+            viewModel.SurveyId = surveyId;
+            
+            return PartialView("EditorTemplates/QuestionViewModel", viewModel);
+        }
+
+        [HttpPost]
+        public PartialViewResult EditQuestion(QuestionViewModel viewModel)
+        {
+            var survey = _persistenceService.GetSurvey(Int32.Parse(viewModel.SurveyId));
+
+            survey.QuestionGroups[viewModel.QuestionGroupNumber].Questions.First(m => m.Number == viewModel.Number).Text = viewModel.Text;
+            survey.QuestionGroups[viewModel.QuestionGroupNumber].Questions.First(m => m.Number == viewModel.Number).TOCReference = viewModel.TOCReference;
+            survey.QuestionGroups[viewModel.QuestionGroupNumber].Questions.First(m => m.Number == viewModel.Number).QuestionType = viewModel.QuestionType;
+
+            _persistenceService.SaveSurvey(survey);
+
+            // TOCs are too complex to carry as a payload between the posts
+            viewModel.AvailableTOCs = _standardManagementService.GetTOCs();
+
+            return PartialView("EditorTemplates/QuestionViewModel", viewModel);
+        }
+
+        [HttpPost]
+        /// <summary>
+        /// Add a Question to a Survey
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <param name="questionGroupId"></param>
+        /// <returns></returns>
+        public ActionResult DeleteQuestion(string surveyId, string questionGroupId, string questionId)
+        {
+            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
+
+            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
+
+            var question = questionGroup.Questions.First(m => m.Number == Int32.Parse(questionId));
+
+            questionGroup.Questions.Remove(question);
+
+            new SurveyViewModel(survey).Save(_persistenceService);
+            
+            return new JsonResult { Data = "success" };
+        }
 	}
 }

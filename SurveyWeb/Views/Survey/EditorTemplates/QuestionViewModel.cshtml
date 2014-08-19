@@ -1,0 +1,7 @@
+﻿@model SurveyWeb.Models.QuestionViewModel
+
+@Html.Hidden("ModelType", Model.Question.GetType())
+
+<span>@Html.DisplayFor(m => m.Number)</span>-
+<span>@Html.DisplayFor(m => m.Text)</span>
+
