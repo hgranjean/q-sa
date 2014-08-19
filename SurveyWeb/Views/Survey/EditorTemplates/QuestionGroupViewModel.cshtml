@@ -57,19 +57,13 @@
                         <ul id="questionGroup@(Model.QuestionGroup.Number)" class="questionGroup" data-ng-href="@(Model.QuestionGroup.Number)">
                             @for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
                             {
-                                @*<!-- TODO: Implement a helper to gen hidden for each question field -->
-                                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Number)
-                                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].QuestionType)
-                                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Text)
-                                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].TOCReference)*@
-
                                 <li class="questionItem">
                                     <div style="display: table; width: 100%; margin-top: 5px">
                                         <div style="display: table-row">
                                             <div style="display: table-cell; width: 70%;">
                                                 <div id="divid@(Model.QuestionGroup.Questions[i].Number)" style="display: inline">
                                                     @{
-                                var questionViewModel = new SurveyWeb.Models.QuestionViewModel(Model.QuestionGroup.Questions[i]);
+                                                       var questionViewModel = new SurveyWeb.Models.QuestionViewModel(Model.QuestionGroup.Questions[i]);
                                                     }
                                                     @Html.EditorFor(m => questionViewModel)
                                                 </div>
