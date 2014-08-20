@@ -207,6 +207,7 @@ namespace SurveyWeb.Services
 
         static Dictionary<string, string> _standardDefaultClassLookUp;
         internal string GetDefaultTrainingDocumentId(string standardId)
+        
         {
             if (_standardDefaultClassLookUp == null)
             { 

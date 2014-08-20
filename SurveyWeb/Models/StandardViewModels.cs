@@ -11,10 +11,32 @@ namespace SurveyWeb.Models
 
     }
 
+    public class StandardViewModel : StandardDocumentViewModel
+    {
+        public int StandardTypeId { get; set; }
+
+    }
+
+
+    public class StandardSearchViewModel
+    {
+        [Display(Name = "Standard")]
+        public string StandardId { get; set; }
+        public IEnumerable<string> StandardTypes { get; set; }
+        public int StandardTypeId { get; set; }
+//        public string Content { get; set; }
+        [Display(Name = "Element of Performance")]
+
+        public List<StandardDocumentViewModel> Results { get; set; }
+    }
+
 
     public class StandardDocumentViewModel
     {
+        public int Id { get; set; }
+        public string Key { get; set; }
         public string Title { get; set; }
+        public string Text { get; set; }
         public IEnumerable<TOCElementViewModel> TableOfContents { get; set; }
     
     }

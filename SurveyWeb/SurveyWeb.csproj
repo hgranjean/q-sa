@@ -753,9 +753,11 @@
     <Content Include="Views\Surveillance\FollowUps.cshtml" />
     <Content Include="Views\Surveillance\FollowUp.cshtml" />
     <Content Include="Views\Learning\StandardTraining.cshtml" />
+    <Content Include="Views\Standard\Documents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Store\Domain\" />
+    <Folder Include="Store\Guidelines\" />
     <Folder Include="Store\Photos\" />
     <Folder Include="Store\Responses\" />
     <Folder Include="Views\SurveyAnalysis\" />
