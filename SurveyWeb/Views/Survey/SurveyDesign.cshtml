@@ -44,112 +44,94 @@
         <div style="display: table; width: 100%">
 
             <script>
-    $(document).ready(function () {
+                $(document).ready(function () {
 
-        function questionEditClickHandler() {
+                    function questionEditClickHandler() {
 
-            $(this).hide();
-            
-            var parentId = $(this).attr("data-ng-href");
-            
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Content("~/Survey/EditQuestion")',
-                data: {
-                    surveyId: "@Model.Survey.ID",
-                    questionId: parentId,
-                },
-                success: function (data) {
-                    $('#divid' + parentId).html(data);
-                    $('.questionEdit').hide();
-                    $('.questionDelete').hide();
-                },
-                error: function (xhr, status, error) {
-                    console.log(xhr.responseText);
-                }
-            });
+                        $(this).hide();
 
-        }
-        $('.questionEdit').click(questionEditClickHandler);
+                        var parentId = $(this).attr("data-ng-href");
 
-        function questionDeleteClickHandler() {
+                        $.ajax({
+                            type: 'GET',
+                            url: '@Url.Content("~/Survey/EditQuestion")',
+                            data: {
+                                surveyId: "@Model.Survey.ID",
+                                questionId: parentId,
+                            },
+                            success: function (data) {
+                                $('#divid' + parentId).html(data);
+                                $('.questionEdit').hide();
+                                $('.questionDelete').hide();
+                            },
+                            error: function (xhr, status, error) {
+                                console.log(xhr.responseText);
+                            }
+                        });
 
-            var parentId = $(this).parents('li').map(function () {
-                return $(this).find('a').first().attr("data-ng-href");
-            }).get().join(", ");
-
-            var parentGroupId = $(this).closest('li').closest('ul').attr("data-ng-href");
-
-            var liToDelete = $(this).closest('li');
-
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Content("~/Survey/DeleteQuestion")',
-                data: {
-                    surveyId: "@Model.Survey.ID",
-                    questionGroupId: parentGroupId,
-                    questionId: parentId
-                },
-                success: function (data) {
-                    liToDelete.remove();
-                },
-                error: function (xhr, status, error) {
-                    console.log(xhr.responseText);
-                }
-            });
-        }
-
-        $('.questionDelete').click(questionDeleteClickHandler);
-
-        $('.questionAdd').click(function () {
-
-            var parentGroupId = $(this).attr("data-ng-href");
-
-            // two calls are chained using deferred group when call
-            $.when(
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Content("~/Survey/AddQuestion")',
-                    dataType: 'html',
-                    data: {
-                        surveyId: "@Model.Survey.ID",
-                        questionGroupId: parentGroupId,
                     }
-                }),
+                    $('.questionEdit').click(questionEditClickHandler);
 
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Content("~/Survey/GetLastQuestionAction")',
-                    dataType: 'html',
-                    data: {
-                        surveyId: "@Model.Survey.ID",
-                                    questionGroupId: parentGroupId,
-                                }
-                            }))
-                        .done(function (questionData, actionData) {
+                    function questionDeleteClickHandler() {
 
-                            questionData = questionData[0];
-                            actionData = actionData[0];
+                        var parentId = $(this).parents('li').map(function () {
+                            return $(this).find('a').first().attr("data-ng-href");
+                        }).get().join(", ");
 
-                            var newQuestion = $("#questionGroup" + parentGroupId).append(
-                                '<li class="questionItem">' +
-                                    questionData +
-                                '</li>');
-                            
-                            var event = newQuestion.on("click", ".questionEdit", questionEditClickHandler);
-                            newQuestion.on("click", ".questionDelete", questionDeleteClickHandler);
+                        var parentGroupId = $(this).closest('li').closest('ul').attr("data-ng-href");
 
-                            alert(newQuestion.children(".questionEdit"));
-                            newQuestion.children(".questionEdit").trigger("click");
-                        })
-                        .fail(function (xhr, status, error) {
-                            console.log(xhr.responseText);
+                        var liToDelete = $(this).closest('li');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Content("~/Survey/DeleteQuestion")',
+                            data: {
+                                surveyId: "@Model.Survey.ID",
+                                questionGroupId: parentGroupId,
+                                questionId: parentId
+                            },
+                            success: function (data) {
+                                liToDelete.remove();
+                            },
+                            error: function (xhr, status, error) {
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    }
+
+                    $('.questionDelete').click(questionDeleteClickHandler);
+
+                    $('.questionAdd').click(function () {
+
+                        var parentGroupId = $(this).attr("data-ng-href");
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Content("~/Survey/AddQuestion")',
+                            dataType: 'html',
+                            data: {
+                                surveyId: "@Model.Survey.ID",
+                                questionGroupId: parentGroupId,
+                            },
+                            success: function (questionData) {
+                                
+                                var newQuestion = $("#questionGroup" + parentGroupId).append(
+                                    '<li class="questionItem">' +
+                                        questionData +
+                                    '</li>');
+
+                                var event = newQuestion.on("click", ".questionEdit", questionEditClickHandler);
+                                newQuestion.on("click", ".questionDelete", questionDeleteClickHandler);
+
+                                $("#questionGroup" + parentGroupId).children("li").last().find(".questionEdit").trigger("click");
+                            },
+                            error: function (xhr, status, error) {
+                                console.log(xhr.responseText);
+                            }
                         });
                     });
-
-
-    });
-</script>
+                });
+        </script>
 
             <h3 style="column-span: all;">Elements @Html.ActionLink("+", "CreateQuestionGroup", new { surveyId = Model.Survey.ID.ToString() })</h3>
             <div style="display: table-row;">

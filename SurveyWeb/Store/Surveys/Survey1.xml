@@ -136,9 +136,13 @@
             </Question>
             <Question>
               <ID>0</ID>
-              <Text />
+              <Text>Typing in a question!</Text>
               <Number>11</Number>
               <Rank>0</Rank>
+              <BasisReference>
+                <ID>0</ID>
+                <Level>0</Level>
+              </BasisReference>
               <QuestionType>SelectOne</QuestionType>
               <ResponseChoices />
             </Question>
@@ -148,31 +152,6 @@
               <Number>12</Number>
               <Rank>0</Rank>
               <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices />
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text />
-              <Number>13</Number>
-              <Rank>0</Rank>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices />
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text />
-              <Number>14</Number>
-              <Rank>0</Rank>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices />
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text />
-              <Number>15</Number>
-              <Rank>0</Rank>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices />
             </Question>
           </Questions>
         </QuestionGroup>
@@ -190,11 +169,23 @@
             <Question>
               <ID>0</ID>
               <Text />
-              <Number>16</Number>
+              <Number>13</Number>
               <Rank>0</Rank>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
             </Question>
           </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>3</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>New Group 3</Title>
+          <Number>3</Number>
         </QuestionGroup>
       </value>
     </item>

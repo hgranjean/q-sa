@@ -357,6 +357,7 @@
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Scripts\getUserMedia.js" />
+    <Content Include="Scripts\jquery.jeditable.js" />
     <Content Include="Store\JointCommissionStandards\EC_out.xml" />
     <Content Include="Store\JointCommissionStandards\EM_out.xml" />
     <Content Include="Store\JointCommissionStandards\HR_out.xml" />
@@ -753,6 +754,8 @@
     <Content Include="Views\Surveillance\FollowUps.cshtml" />
     <Content Include="Views\Surveillance\FollowUp.cshtml" />
     <Content Include="Views\Learning\StandardTraining.cshtml" />
+    <Content Include="Views\Survey\EditQuestion.cshtml" />
+    <Content Include="Views\Survey\EditorTemplates\QuestionViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Store\Domain\" />

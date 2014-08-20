@@ -6,13 +6,15 @@
 
 <h2>DeleteQuestionGroup</h2>
 
-@using (Html.BeginForm("DeleteQuestionGroup", "Surveillance"))
+@using (Html.BeginForm("DeleteQuestionGroup", "Survey"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
     <fieldset>
         <legend>Survey</legend>
+
+        @Html.HiddenFor(m => m.SurveyId)
 
         <div class="editor-label">
             Do you want to delete "@Html.DisplayTextFor(m => m.QuestionGroup.Title)" ?

@@ -84,18 +84,13 @@ namespace SurveyWeb.Controllers
 
             return View(viewModel);
         }
-
+                
         public ActionResult CreateQuestionGroup(int surveyId)
-        {            
+        {
             var survey = _persistenceService.GetSurvey(surveyId);
 
-            return View(new SurveyViewModel(survey));
-        }
-
-        [HttpPost]
-        public ActionResult CreateQuestionGroup(SurveyViewModel surveyViewModel)
-        {            
-            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyViewModel.Survey.ID));
+            var surveyViewModel = new SurveyViewModel(survey);
+                       
 
             if (survey.QuestionGroups == null)
             {
@@ -186,7 +181,7 @@ namespace SurveyWeb.Controllers
         {            
             var survey = _persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
-            if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
+            if (viewModel.QuestionGroup != null)
             {
                 var questionGroupToDelete = survey.QuestionGroups[viewModel.Number];
                 survey.QuestionGroups.Remove(questionGroupToDelete.Number);
@@ -298,19 +293,6 @@ namespace SurveyWeb.Controllers
             viewModel.AvailableTOCs = _standardManagementService.GetTOCs();
 
             return PartialView("EditorTemplates/QuestionViewModel", viewModel);
-        }
-
-        public PartialViewResult GetLastQuestionAction(string surveyId, string questionGroupId)
-        {
-            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
-
-            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
-
-            var question = questionGroup.Questions.Last();
-            
-            var viewModel = new QuestionActionViewModel(question);
-            
-            return PartialView("EditorTemplates/QuestionActionViewModel", viewModel);
         }
                 
         public ActionResult EditQuestion(string surveyId, string questionId)

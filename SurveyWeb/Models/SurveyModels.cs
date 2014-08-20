@@ -129,16 +129,5 @@ namespace SurveyWeb.Models
         {
             this.CompletedSurveys = completedSurveys;            
         }
-    }
-
-    public class QuestionActionViewModel : ViewModelBase
-    {
-        public int Number { get; private set; }
-        
-        public QuestionActionViewModel(Question question)
-        {
-            this.Number = question.Number;            
-        }
-    }
-    
+    }    
 }
