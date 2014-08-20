@@ -11,7 +11,7 @@
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>Atum.Utility</AssemblyName>
+    <AssemblyName>Atum.Common</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -101,29 +101,30 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Atum\Utility\Calculator\Angle.cs" />
-    <Compile Include="Atum\Utility\Calculator\LongLatPoint.cs" />
-    <Compile Include="Atum\Utility\Calculator\SphericalDistanceCalculator.cs" />
-    <Compile Include="Atum\Utility\Constants\PhysicalConstants.cs" />
-    <Compile Include="Atum\Utility\Diagnostics\DebugUtil.cs">
+    <Compile Include="Utility\Calculator\Angle.cs" />
+    <Compile Include="Utility\Calculator\LongLatPoint.cs" />
+    <Compile Include="Utility\Calculator\SphericalDistanceCalculator.cs" />
+    <Compile Include="Utility\Constants\PhysicalConstants.cs" />
+    <Compile Include="Utility\Diagnostics\DebugUtil.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Atum\Utility\Email\EmailHelper.cs" />
-    <Compile Include="Atum\Utility\Logic\Constraint.cs" />
-    <Compile Include="Atum\Utility\Logic\Criteria.cs" />
-    <Compile Include="Atum\Utility\Logic\Criterion.cs" />
-    <Compile Include="Atum\Utility\Logic\CriterionBase.cs" />
-    <Compile Include="Atum\Utility\Logic\ISpecification.cs" />
-    <Compile Include="Atum\Utility\TypeMapping\ITypeMapper.cs">
+    <Compile Include="Utility\Email\EmailHelper.cs" />
+    <Compile Include="Utility\Logic\Constraint.cs" />
+    <Compile Include="Utility\Logic\Criteria.cs" />
+    <Compile Include="Utility\Logic\Criterion.cs" />
+    <Compile Include="Utility\Logic\CriterionBase.cs" />
+    <Compile Include="Utility\Logic\ISpecification.cs" />
+    <Compile Include="DataStructures\SerializableDictionary.cs" />
+    <Compile Include="Utility\TypeMapping\ITypeMapper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Atum\Utility\XML\FileSystem.cs" />
-    <Compile Include="Atum\Utility\XML\XmlUtility.cs" />
-    <Compile Include="Atum\Utility\XML\XPathUtil.cs" />
+    <Compile Include="Utility\XML\FileSystem.cs" />
+    <Compile Include="Utility\XML\XmlUtility.cs" />
+    <Compile Include="Utility\XML\XPathUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Atum\Utility\Crypto\" />
-    <Folder Include="Atum\Utility\Specification\" />
+    <Folder Include="Utility\Crypto\" />
+    <Folder Include="Utility\Specification\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

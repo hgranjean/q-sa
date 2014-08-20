@@ -57,9 +57,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{8b96b61d-6ddd-44f0-8418-889acbaaa097}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\Atum.Utility\Atum.Common.csproj">
+      <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
+      <Name>Atum.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenNLP\OpenNLP.csproj">
       <Project>{b70185df-81fd-4417-914f-7c90e65e7d9f}</Project>

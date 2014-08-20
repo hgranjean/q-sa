@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Common;
+using Atum.Common;
 
 namespace Rules.Domain
 {

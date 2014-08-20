@@ -91,9 +91,9 @@
       <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
       <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Atum.Utility\Atum.Utility.csproj">
+    <ProjectReference Include="..\Atum.Utility\Atum.Common.csproj">
       <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
-      <Name>Atum.Utility</Name>
+      <Name>Atum.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

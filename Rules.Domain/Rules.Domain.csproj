@@ -87,9 +87,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{8B96B61D-6DDD-44F0-8418-889ACBAAA097}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\Atum.Utility\Atum.Common.csproj">
+      <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>
+      <Name>Atum.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
