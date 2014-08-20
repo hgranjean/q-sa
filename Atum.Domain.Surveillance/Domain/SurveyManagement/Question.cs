@@ -6,7 +6,7 @@ using Atum.Domain.Common;
 
 namespace Atum.Domain.SurveyManagement
 {
-    [Serializable]
+    [Serializable]    
     public class Question : DomainObject
     {
         public Question(string questionText, QuestionType qType)

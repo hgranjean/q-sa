@@ -1,16 +1,26 @@
 ﻿
 @model SurveyWeb.Models.QuestionGroupViewModel
-
-@Html.Hidden("ModelType", Model.GetType())
  
-<div style="width: 100%">
+<div>
+
+    @Html.Hidden("ModelType", Model.GetType())
+
+    <script src="~/Scripts/jquery.jeditable.js"></script>
+
     <div style="display: table; width: 100%">
         <div style="display: table-row">
-            <div style="display: table-cell; width: 50%">
-                @Html.DisplayNameFor(model => model)
-                @Html.HiddenFor(model => model.SurveyId)
+            
+            <div style="display: table-cell; width: 100%">
+                <div style="display: table">
+                    <div style="display: table-row">
+                        <div style="display: table-cell; width: 50%">
+                            @Html.DisplayNameFor(model => model)
+                            @Html.HiddenFor(model => model.SurveyId)
+                        </div>
+                        <div style="display: table-cell; width: 50%"></div>
+                    </div>
+                </div>
             </div>
-            <div style="display: table-cell; width: 50%"></div>
         </div>
 
         @if (Model.QuestionGroup != null)
@@ -18,36 +28,61 @@
             @Html.HiddenFor(model => model.Number)
             @Html.HiddenFor(model => model.QuestionGroup.Title)
 
-            <div style="display: table-row">
-                <div style="display: table-cell; width: 50%">
-                    <div><span style="font-weight: bold">Group-</span><span style="font-weight: bold">@Html.DisplayFor(modelItem => Model.QuestionGroup.Title)</span></div>
-                </div>
-                <div style="display: table-cell; width: 50%">
-                    @Html.ActionLink("Edit", "EditQuestionGroup", new {surveyId = Model.SurveyId, groupId = Model.Number}) |
-                    @Html.ActionLink("Delete", "DeleteQuestionGroup", new {surveyId = Model.SurveyId, groupId = Model.Number})
-                </div>
-            </div>
-            <div style="display: table-row">
-            @if (Model.QuestionGroup.Questions != null)
-            {
-                for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
-                {
-                    <!-- TODO: Implement a helper to gen hidden for each question field -->
-                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Number)
-                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].QuestionType)
-                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].Text)
-                    @Html.HiddenFor(m => Model.QuestionGroup.Questions[i].TOCReference)
+            <script>
+                $(document).ready(function () {
+                    $('.editTitle').editable('@Url.Action("EditQuestionGroup", "Survey", new { surveyId = Model.SurveyId, groupId = Model.Number })');
+                });
+            </script>            
 
-                    <div style="display: table-row">
-                        <div style="display: table-cell; column-span: all">
-                            <div>
-                                <span>@Html.DisplayFor(m => Model.QuestionGroup.Questions[i].Number)</span>-
-                                <span>@Html.DisplayFor(m => Model.QuestionGroup.Questions[i].Text)</span>
+            <div style="display: table-row; width: 100%">
+                <div style="display: table-cell; width: 100%">
+                    <div style="display: table; width: 100%">
+                        <div style="display: table-row">
+                            <div style="display: table-cell; width: 70%; margin-top: 5px">
+                                <span style="font-weight: bold"><div class="editTitle" style="display:inline">@Html.DisplayFor(modelItem => Model.QuestionGroup.Title)</div></span>
+                            </div>
+                            <div style="display: table-cell; width: 30%">
+                                @Html.ActionLink("Edit", "EditQuestionGroup", new { surveyId = Model.SurveyId, groupId = Model.Number }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Delete", "DeleteQuestionGroup", new { surveyId = Model.SurveyId, groupId = Model.Number }, new { @class = "btn btn-default" })
                             </div>
                         </div>
                     </div>
-                }
-            }
+                </div>                
+            </div>
+            
+            <div style="display: table-row">
+                <div style="display: table-cell; width: 100%;">
+                    @if (Model.QuestionGroup.Questions != null)
+                    {
+                        <ul id="questionGroup@(Model.QuestionGroup.Number)" class="questionGroup" data-ng-href="@(Model.QuestionGroup.Number)">
+                            @for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
+                            {
+                                <li class="questionItem">
+                                    <div style="display: table; width: 100%; margin-top: 5px">
+                                        <div style="display: table-row">
+                                            <div style="display: table-cell; width: 70%;">
+                                                <div id="divid@(Model.QuestionGroup.Questions[i].Number)" style="display: inline">
+                                                    @{
+                                                       var questionViewModel = new SurveyWeb.Models.QuestionViewModel(Model.QuestionGroup.Questions[i]);
+                                                    }
+                                                    @Html.EditorFor(m => questionViewModel)
+                                                </div>
+                                            </div>
+
+                                            <div style="display: table-cell; width: 30%; margin-top: 5px">
+                                                <div style="display: inline"><a class="questionEdit btn btn-default" data-ng-href="@(Model.QuestionGroup.Questions[i].Number)" href="#">Edit</a></div>
+                                                <div style="display: inline"><a class="questionDelete btn btn-default" data-ng-href="@(Model.QuestionGroup.Questions[i].Number)" href="#">Delete</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <div style="margin-top: 5px;"><a class="questionAdd" data-ng-href="@(Model.QuestionGroup.Number)" href="#">Add question</a></div>
+                    }
+                </div>
+
+                            
             </div>
         }
 

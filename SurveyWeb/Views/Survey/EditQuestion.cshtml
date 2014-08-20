@@ -1,0 +1,84 @@
+﻿@using Atum.Domain.SurveyManagement
+@using SurveyWeb.Models
+@model QuestionViewModel
+
+<script>
+    $(document).ready(function () {
+        $('.questionCancel').click(function () {
+
+            var parentId = $(this).parents('li').map(function () {
+                return $(this).find('a').first().attr("data-ng-href");
+            }).get().join(", ");
+
+            var liToCancel = $("#divid" + @Model.Number);
+            
+            $.ajax({
+                type: 'GET',
+                url: '/Survey/ShowQuestion',
+                data: {
+                    surveyId: "@Model.SurveyId",
+                    questionGroupId: "@Model.QuestionGroupNumber",
+                    questionId: "@Model.Number",
+                },
+                success: function (data) {
+                    liToCancel.html('<div id="divid' + @Model.Number + '" style="display: inline">' + data + '</div>');                    
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+
+            $('.questionEdit').show();                                    
+            $('.questionDelete').show();
+
+        });
+    });
+
+    function success(result) {
+        $('.questionEdit').show();                                    
+        $('.questionDelete').show();
+    }
+
+</script>
+
+@using (Ajax.BeginForm("EditQuestion", "Survey",
+    new AjaxOptions { UpdateTargetId = "divid" + Model.Number, InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess="success" },
+    new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.SurveyId)
+    @Html.HiddenFor(m => m.Number)
+    @Html.HiddenFor(m => m.QuestionGroupNumber)
+
+    <div class="choiceGroup">
+        <div style="display: table-row">
+            <div class="editor-label;" style="display: table-cell;width: 3%">
+                @Html.DisplayFor(m => m.Number, new { @class = "control-label" })
+            </div>
+            <div id="questionText" class="editor-field" style="display: table-cell;width: 70%">
+                @Html.TextBoxFor(m => m.Text, new { style = "width: 100%", @class = "form-control" })
+            </div>
+            <div id="questionType" class="editor-field" style="display: table-cell;width: 10%">
+                @Html.DropDownListFor(m => m.QuestionType,
+                                              Model.QuestionType.ToSelectList(Model.QuestionType.ToString()), new { style = "width: auto", @class = "form-control" })
+            </div>
+            <div id="questionStandard" class="editor-field" style="display: table-cell;width: 17%">
+                @Html.DropDownListFor(m => m.TOCReference,
+                                              new SelectList(Model.AvailableTOCs, "Value.Title", "Key", Model.TOCReference), new { style = "width: auto", @class = "form-control" })
+            </div>
+        </div>
+
+        <div style="display: table-row;">
+            <div style="display: table-cell;">
+            </div>
+            <div style="display: table-cell;">                
+                    <input type="submit" id="saveButton" class="btn btn-default" value="Save" />
+                    <a href="#" class="questionCancel">Cancel</a>
+            
+            </div>            
+        </div>
+    </div>
+}
+

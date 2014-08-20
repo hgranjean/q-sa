@@ -69,5 +69,19 @@ namespace Atum.Domain.SurveyManagement
             }
         }
         #endregion
+
+        public QuestionGroup AddOrUpdate(int number, QuestionGroup questionGroup)
+        {
+            if (this.ContainsKey(number))
+            {
+                this[number] = questionGroup;
+            }
+            else
+            {
+                this.Add(number, questionGroup);
+            }
+
+            return questionGroup;
+        }
     }
 }

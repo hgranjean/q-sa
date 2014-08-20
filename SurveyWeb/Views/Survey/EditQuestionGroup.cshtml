@@ -12,8 +12,8 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-@using (Html.BeginForm("EditQuestionGroup", "Survey", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+@*using (Html.BeginForm("EditQuestionGroup", "Survey", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+@*{*@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -62,7 +62,7 @@
             <input type="submit" value="Save" />
         </div>
     </fieldset>
-}
+@*}*@
 
 <div>
     @Html.ActionLink("Back to survey", "SurveyDesign", new{id=Model.SurveyId})

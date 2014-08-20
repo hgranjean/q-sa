@@ -235,16 +235,31 @@ namespace SurveyWeb.Models
     {
         public Question Question { get; set; }
 
+        public QuestionViewModel()
+        {
+            Question = new Question();
+        }
+
         public QuestionViewModel(Question question)
         {
             Question = question;
-            Choices = question.ResponseChoices;
+            Choices = question.ResponseChoices;        
         }
 
-        public string Text { get; set; }
-        public int Number { get; set; }
+        public string Text { get { return this.Question.Text; } set { this.Question.Text = value;} }
+        public int Number { get { return this.Question.Number; } set { this.Question.Number = value; } }
+
+        public int QuestionGroupNumber { get; set; }
+                
+        public QuestionType QuestionType { get { return this.Question.QuestionType; } set { this.Question.QuestionType = value; } }
+
+        public string TOCReference { get { return this.Question.TOCReference; } set { this.Question.TOCReference = value; } }
 
         public List<ResponseChoice> Choices { get; set; }
+
+        public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs { get; set; }
+
+        public string SurveyId { get; set; }
     }
 
     public class TracerType { }
