@@ -3,6 +3,7 @@ using Atum.Domain.QualityManagement;
 using SurveyWeb.Services;
 using Atum.Domain.SurveyManagement;
 using Atum.Domain.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace SurveyWeb.Models
 {
@@ -10,6 +11,14 @@ namespace SurveyWeb.Models
     {
         public string Name { get; set; }
         public Survey Survey { get; set; }
+
+        [Display(Name = "Survey Type")]
+        public SurveyType SurveyType
+        {
+            get { return Survey.SurveyType; }
+            set { Survey.SurveyType = value; }
+        }
+
         public QuestionGroupsViewModel QuestionGroupsViewModel { get; set; }
 
         public SurveyViewModel()
@@ -19,7 +28,7 @@ namespace SurveyWeb.Models
 
         public SurveyViewModel(Survey survey)
         {
-            this.Name = survey.Title;//?? "Survey" + survey.ID;
+            this.Name = survey.Title;
             this.Survey = survey;
 
             if (this.Survey.QuestionGroups == null)
@@ -121,4 +130,15 @@ namespace SurveyWeb.Models
             this.CompletedSurveys = completedSurveys;            
         }
     }
+
+    public class QuestionActionViewModel : ViewModelBase
+    {
+        public int Number { get; private set; }
+        
+        public QuestionActionViewModel(Question question)
+        {
+            this.Number = question.Number;            
+        }
+    }
+    
 }

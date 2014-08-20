@@ -292,14 +292,25 @@ namespace SurveyWeb.Controllers
             var question = questionGroup.AddQuestion(string.Empty, QuestionType.SelectOne);
 
             new SurveyViewModel(survey).Save(_persistenceService);
-
-            // return View("EditQuestionGroup", new QuestionGroupViewModel(questionGroup) { SurveyId = surveyId });
-
+            
             var viewModel = new QuestionViewModel(question);
 
             viewModel.AvailableTOCs = _standardManagementService.GetTOCs();
 
             return PartialView("EditorTemplates/QuestionViewModel", viewModel);
+        }
+
+        public PartialViewResult GetLastQuestionAction(string surveyId, string questionGroupId)
+        {
+            var survey = _persistenceService.GetSurvey(Convert.ToInt32(surveyId));
+
+            var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
+
+            var question = questionGroup.Questions.Last();
+            
+            var viewModel = new QuestionActionViewModel(question);
+            
+            return PartialView("EditorTemplates/QuestionActionViewModel", viewModel);
         }
                 
         public ActionResult EditQuestion(string surveyId, string questionId)

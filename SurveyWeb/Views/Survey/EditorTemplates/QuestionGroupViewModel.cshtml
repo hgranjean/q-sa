@@ -1,4 +1,4 @@
-﻿
+﻿@using SurveyWeb.Models
 @model SurveyWeb.Models.QuestionGroupViewModel
  
 <div>
@@ -58,28 +58,13 @@
                             @for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
                             {
                                 <li class="questionItem">
-                                    <div style="display: table; width: 100%; margin-top: 5px">
-                                        <div style="display: table-row">
-                                            <div style="display: table-cell; width: 70%;">
-                                                <div id="divid@(Model.QuestionGroup.Questions[i].Number)" style="display: inline">
-                                                    @{
-                                                       var questionViewModel = new SurveyWeb.Models.QuestionViewModel(Model.QuestionGroup.Questions[i]);
-                                                    }
-                                                    @Html.EditorFor(m => questionViewModel)
-                                                </div>
-                                            </div>
-
-                                            <div style="display: table-cell; width: 30%; margin-top: 5px">
-                                                <div style="display: inline"><a class="questionEdit btn btn-default" data-ng-href="@(Model.QuestionGroup.Questions[i].Number)" href="#">Edit</a></div>
-                                                <div style="display: inline"><a class="questionDelete btn btn-default" data-ng-href="@(Model.QuestionGroup.Questions[i].Number)" href="#">Delete</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                @{ var questionViewModel = new QuestionViewModel(Model.QuestionGroup.Questions[i]); }
+                                @Html.EditorFor(m => questionViewModel)
                                 </li>
                             }
-                        </ul>
-                        <div style="margin-top: 5px;"><a class="questionAdd" data-ng-href="@(Model.QuestionGroup.Number)" href="#">Add question</a></div>
+                        </ul>                        
                     }
+                    <div style="margin-top: 5px;"><a class="questionAdd btn btn-default" data-ng-href="@(Model.QuestionGroup.Number)" href="#">Add question</a></div>
                 </div>
 
                             
