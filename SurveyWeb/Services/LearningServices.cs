@@ -100,14 +100,14 @@ namespace SurveyWeb.Services
             if (s_classifier == null)
             {
              
-                var standardsPath = Path.Combine(_store.GetPath(), "JointCommissionStandards/Training/EC");
-                var modelPath = Path.Combine(_store.GetPath(), "OpenNLP/Models");
+                var standardsPath = Path.Combine(_store.GetPath(StoreType.JointCommissionStandards), "Training/EC");
+                var modelPath = Path.Combine(_store.GetPath(StoreType.OpenNLP), "Models");
                 
                 s_classifier = new EPClassifier(modelPath);
 
                 var xmlClassFiles = Directory.GetFiles(standardsPath);
                 
-                standardsPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC\\Serialized");
+                standardsPath = Path.Combine(_store.GetPath(StoreType.JointCommissionStandards), "Training\\EC\\Serialized");
                 
                 xmlClassFiles = Directory.GetFiles(standardsPath);
                 
@@ -119,10 +119,8 @@ namespace SurveyWeb.Services
 
 
         internal Models.TrainingDocumentViewModel GetTrainingDocument(string chapterId, string trainingDocumentId)
-        {
-            //TODO: Clean string etc...
-            //string appPath = HttpContext.Current.Server.MapPath("~/Content/JointCommissionStandards/Training/EC/Serialized/");
-            string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards/Training/EC/Serialized");
+        {   
+            string appPath = Path.Combine(_store.GetPath(StoreType.JointCommissionStandards), "Training/EC/Serialized");
             string filePath = Path.Combine(appPath, trainingDocumentId + ".xml");
 
 
@@ -179,8 +177,8 @@ namespace SurveyWeb.Services
         //TODO: Fix hardcoded strings
         internal TrainingDocumentViewModel SaveTrainingDocument(TrainingDocumentViewModel model)
         {   
-            var appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC");
-            var modelPath = Path.Combine(_store.GetPath(), "OpenNLP\\Models");
+            var appPath = Path.Combine(_store.GetPath(StoreType.JointCommissionStandards), "\\Training\\EC");
+            var modelPath = Path.Combine(_store.GetPath(StoreType.OpenNLP), "Models");
             
             var tokenizer = new Tokenizer(EPClassifier.getExcludedWords(), modelPath);
 
@@ -196,7 +194,7 @@ namespace SurveyWeb.Services
         //TODO Extend to other Chapters
         private void SaveToXML(TrainingDocument classDoc)
         {
-            string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC\\Serialized");
+            string appPath = Path.Combine(_store.GetPath(StoreType.JointCommissionStandards), "Training\\EC\\Serialized");
             string filePath = Path.Combine(appPath, classDoc.Class + ".xml");
 
             XmlSerializationUtility.SaveObjectToFile(filePath, classDoc);            
