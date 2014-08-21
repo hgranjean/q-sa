@@ -3,7 +3,7 @@
 @Html.Hidden("ModelType", Model.Question.GetType())
 
 <div id="divid@(Model.Number)" style="display: table; width: 100%; margin-top: 5px; min-height: 34px">
-    <div style="display: table-row">
+    <div style="display: table-row; width:100%">
         <div style="display: table-cell; width: 70%;">
             <div style="display: inline">
                 <span style="width: 5em;">@Html.DisplayFor(m => m.Number)</span>-<span>@Html.DisplayFor(m => m.Text)</span>

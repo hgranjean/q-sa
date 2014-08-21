@@ -101,7 +101,7 @@
 
                     $('.questionDelete').click(questionDeleteClickHandler);
 
-                    $('.questionAdd').click(function () {
+                    function questionAddClickHandler() {
 
                         var parentGroupId = $(this).attr("data-ng-href");
 
@@ -114,7 +114,7 @@
                                 questionGroupId: parentGroupId,
                             },
                             success: function (questionData) {
-                                
+
                                 var newQuestion = $("#questionGroup" + parentGroupId).append(
                                     '<li class="questionItem">' +
                                         questionData +
@@ -129,11 +129,13 @@
                                 console.log(xhr.responseText);
                             }
                         });
-                    });
+                    }
+
+                    $('.questionAdd').click(questionAddClickHandler);
                 });
         </script>
 
-            <h3 style="column-span: all;">Elements @Html.ActionLink("+", "CreateQuestionGroup", new { surveyId = Model.Survey.ID.ToString() })</h3>
+            <h3 style="column-span: all;">Elements @Html.ActionLink("+", "CreateQuestionGroup", new { surveyId = Model.Survey.ID })</h3>
             <div style="display: table-row;">
                 <div style="display: table-cell; width: 100%">
                     @Html.EditorFor(m => m.QuestionGroupsViewModel)
@@ -142,7 +144,7 @@
 
             <div style="display: table-row">
                 <div style="display: table-cell; margin-top: 5px;" class="editor-label">
-                    
+                    &nbsp;
                 </div>
             </div>
 

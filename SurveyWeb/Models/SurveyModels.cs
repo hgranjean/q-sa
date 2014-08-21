@@ -38,8 +38,8 @@ namespace SurveyWeb.Models
 
             this.QuestionGroupsViewModel = new QuestionGroupsViewModel(this.Survey.ID.ToString(), this.Survey.QuestionGroups);
         }
-        
-        public void Save(IPersistenceServices persistenceService)
+
+        public Survey GetUpdatedSurvey()
         {
             // Restore items from viewmodel
 
@@ -47,16 +47,14 @@ namespace SurveyWeb.Models
 
             foreach (var qgvm in QuestionGroupsViewModel)
             {
-                questionGroups.Add(qgvm.Number, qgvm.QuestionGroup);    
+                questionGroups.Add(qgvm.Number, qgvm.QuestionGroup);
             }
-            
+
             this.Survey.QuestionGroups = questionGroups;
 
-            // [aschmidt]: Move this out of the model as it pertains to the action
-                        
-            persistenceService.SaveSurvey(this.Survey);
+            return this.Survey;
         }
-
+        
         public void AddQuestionGroup()
         {
             if (Survey.QuestionGroups == null)

@@ -1,4 +1,5 @@
-﻿using SurveyWeb.Models;
+﻿using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
+using SurveyWeb.Models;
 using SurveyWeb.Services;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ namespace SurveyWeb.Controllers
             // Contract.Assert(!string.IsNullOrWhiteSpace(observation));
 
             //View will contain Classification and list of EP Choices
-            StandardElementViewModel model = null;
+            StandardElement model = null;
             
             if (!string.IsNullOrWhiteSpace(observation))
             {
@@ -52,8 +53,11 @@ namespace SurveyWeb.Controllers
             }
             else
             {
-                model = new StandardElementViewModel { Observation = observation };
+                model = new StandardElement { Observation = observation };
             }
+
+            var viewModel = new StandardElementViewModel(model);
+
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_ObservationClass", model);

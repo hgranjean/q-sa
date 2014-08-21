@@ -1,6 +1,8 @@
 ﻿using Atum.Domain.NLP;
+using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
 using Atum.Domain.NLP.NaiveBayes;
 using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+using Atum.Utility.XML;
 using Common.Utilities;
 using SurveyWeb.Mappers;
 using SurveyWeb.Models;
@@ -17,7 +19,11 @@ namespace SurveyWeb.Services
     {
         private readonly ISurveyStore _store;
         private readonly StandardsManagementServices _standardManagementService;
+                
         private Dictionary<string, EPClassifier> ClassifierMap { get; set; }
+
+        // TODO: Refactor to Cache
+        private static Dictionary<string, string> _standardDefaultClassLookUp;
 
         public LearningServices(ISurveyStore store, StandardsManagementServices standardManagementService)
         {
@@ -27,10 +33,9 @@ namespace SurveyWeb.Services
 
         private EPClassifier GetClassifier(string classifierId)
         {
-            EPClassifier retVal = null;
-            Dictionary<string, EPClassifier> classifierMap = this.ClassifierMap;
+            EPClassifier retVal = null;            
 
-            if (!classifierMap.ContainsKey(classifierId))
+            if (!this.ClassifierMap.ContainsKey(classifierId))
             {
                 // [aschmidt] What's this?
             }
@@ -38,19 +43,19 @@ namespace SurveyWeb.Services
             return retVal;  
         }        
 
-        internal StandardElementViewModel Classify(string observation)
-        {
-            //TODO: Service should return model, not viewModel!
+        internal StandardElement Classify(string observation)
+        {        
             string observationClass = GetClassifier().Classify(observation);
 
-            Standard standard = GetStandardChapter(observationClass).GetPerformanceCategory(observationClass);
+            var standard = GetStandardChapter(observationClass)
+                .GetPerformanceCategory(observationClass);
 
-            var retVal = new StandardElementViewModel();
-            retVal.StandardId = observationClass;
-            retVal.Content = standard.Title ;
-            retVal.EPIds = LoadEPIds(standard.Items);
-
-            return retVal;
+            var model = new StandardElement();
+            model.StandardId = observationClass;
+            model.Content = standard.Title;
+            model.EPIds = LoadEPIds(standard.Items);
+            
+            return model;
         }
             
         private IEnumerable<string> LoadEPIds(string observationClass)
@@ -157,15 +162,10 @@ namespace SurveyWeb.Services
 
         private IEnumerable<string> LoadClassList(Models.StandardDocumentViewModel standardDocumentViewModel)
         {
-            List<string> retVal = new List<string>();
-
             foreach (var item in standardDocumentViewModel.TableOfContents)
             {
-                string classKey = item.Key;
-                retVal.Add(classKey);
+                yield return item.Key;                
             }
-
-            return retVal;
         }
 
         private TrainingDocument ReadFromXML(string path)
@@ -173,18 +173,18 @@ namespace SurveyWeb.Services
             return (TrainingDocument)XmlSerializationUtility.GetObjectFromFile(path, typeof(TrainingDocument));
         }
 
+        const string standardBody = "JointCommissionStandards";
+        const string standardChapter = "EC";
+
         //TODO: Fix hardcoded strings
         internal TrainingDocumentViewModel SaveTrainingDocument(TrainingDocumentViewModel model)
-        {
-            string standardBody = "JointCommissionStandards";
-            string standardChapter = "EC";
-            
+        {   
             var appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC");
             var modelPath = Path.Combine(_store.GetPath(), "OpenNLP\\Models");
             
-            Tokenizer Tokenizer = new Tokenizer(EPClassifier.getExcludedWords(), modelPath);
+            var tokenizer = new Tokenizer(EPClassifier.getExcludedWords(), modelPath);
 
-            var classDoc = Learning.MapToDomainModel(model, Tokenizer);
+            var classDoc = Learning.MapToDomainModel(model, tokenizer);
             SaveToXML(classDoc);
             
             var retVal = Learning.MapToViewModel(classDoc);
@@ -196,23 +196,18 @@ namespace SurveyWeb.Services
         //TODO Extend to other Chapters
         private void SaveToXML(TrainingDocument classDoc)
         {
-            string standardBody = "JointCommissionStandards";
-            string standardChapter = "EC";
-
             string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards\\Training\\EC\\Serialized");
             string filePath = Path.Combine(appPath, classDoc.Class + ".xml");
 
             XmlSerializationUtility.SaveObjectToFile(filePath, classDoc);            
         }
-
-        static Dictionary<string, string> _standardDefaultClassLookUp;
+                
         internal string GetDefaultTrainingDocumentId(string standardId)
         {
             if (_standardDefaultClassLookUp == null)
-            { 
+            {
                 _standardDefaultClassLookUp = new Dictionary<string, string>();
-                _standardDefaultClassLookUp.Add("EC", "EC.");
-                
+                _standardDefaultClassLookUp.Add(standardChapter, standardChapter + Type.Delimiter);                
             }
 
             return _standardDefaultClassLookUp[standardId];

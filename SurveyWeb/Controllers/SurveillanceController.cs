@@ -22,6 +22,7 @@ using SurveyWeb.Repository;
 using System.IO;
 using System.Diagnostics;
 using Atum.Utility.Diagnostics;
+using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
 
 namespace SurveyWeb.Controllers
 {
@@ -85,15 +86,18 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult ClassifyObservation(string observation)
         {
-            StandardElementViewModel model = null;
+            StandardElement model = null;
             if (!string.IsNullOrWhiteSpace(observation))
             {            
                 model = _learningService.Classify(observation);
             }
             else
             {
-                model = new StandardElementViewModel { Observation = observation };
+                model = new StandardElement { Observation = observation };
             }
+
+            var viewModel = new StandardElementViewModel(model);
+
             return View(model);
         }
 

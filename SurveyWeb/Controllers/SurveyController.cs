@@ -80,7 +80,7 @@ namespace SurveyWeb.Controllers
         {
             var viewModel = new SurveyViewModel(survey);
 
-            viewModel.Save(_persistenceService);
+            _persistenceService.SaveSurvey(survey);
 
             return View(viewModel);
         }
@@ -90,7 +90,6 @@ namespace SurveyWeb.Controllers
             var survey = _persistenceService.GetSurvey(surveyId);
 
             var surveyViewModel = new SurveyViewModel(survey);
-                       
 
             if (survey.QuestionGroups == null)
             {
@@ -102,8 +101,8 @@ namespace SurveyWeb.Controllers
 
             surveyViewModel = new SurveyViewModel(survey);
 
-            surveyViewModel.Save(_persistenceService);
-
+            _persistenceService.SaveSurvey(surveyViewModel.GetUpdatedSurvey());
+            
             return View("SurveyDesign", surveyViewModel);
         }
                
@@ -139,14 +138,14 @@ namespace SurveyWeb.Controllers
         {            
             var survey = _persistenceService.GetSurveys().First(item => item.ID.ToString() == viewModel.SurveyId);
 
-            if (viewModel.QuestionGroup != null && viewModel.QuestionGroup.Questions != null)
+            if (viewModel.QuestionGroup != null)
             {
                 survey.QuestionGroups[viewModel.Number] = viewModel.QuestionGroup;
             }
+            
+            _persistenceService.SaveSurvey(survey);
 
             var surveyViewModel = new SurveyViewModel(survey);
-
-            surveyViewModel.Save(_persistenceService);
 
             return View("SurveyDesign", surveyViewModel);
         }
@@ -187,9 +186,9 @@ namespace SurveyWeb.Controllers
                 survey.QuestionGroups.Remove(questionGroupToDelete.Number);
             }
 
-            var surveyViewModel = new SurveyViewModel(survey);
+            _persistenceService.SaveSurvey(survey);
 
-            surveyViewModel.Save(_persistenceService);
+            var surveyViewModel = new SurveyViewModel(survey);
 
             return View("SurveyDesign", surveyViewModel);
         }
@@ -285,8 +284,8 @@ namespace SurveyWeb.Controllers
             var questionGroup = survey.QuestionGroups[Convert.ToInt32(questionGroupId)];
 
             var question = questionGroup.AddQuestion(string.Empty, QuestionType.SelectOne);
-
-            new SurveyViewModel(survey).Save(_persistenceService);
+            
+            _persistenceService.SaveSurvey(survey);
             
             var viewModel = new QuestionViewModel(question);
 
@@ -370,7 +369,7 @@ namespace SurveyWeb.Controllers
 
             questionGroup.Questions.Remove(question);
 
-            new SurveyViewModel(survey).Save(_persistenceService);
+            _persistenceService.SaveSurvey(survey);
             
             return new JsonResult { Data = "success" };
         }

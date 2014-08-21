@@ -9,7 +9,7 @@ namespace SurveyWeb.Mappers
 {
     public class Learning
     {
-        private void mapping()
+        private void Mapping()
         {
             TrainingDocument tngDoc = new TrainingDocument();
             TrainingDocumentViewModel tngDocMV = new TrainingDocumentViewModel();
