@@ -7,7 +7,7 @@
 
   <!-- Build project -->
   <Target Name="BuildProjects">
-    <MSBuild Projects="..\SurveySolution.sln" Targets="Clean;Rebuild" ContinueOnError="false" StopOnFirstFailure="true"/>
+    <MSBuild Projects="..\Survey.Web.sln" Targets="Clean;Rebuild" ContinueOnError="false" StopOnFirstFailure="true"/>
   </Target>
 
   <!-- FullBuild40 (Builds tools, projects, tests, and samples. -->
