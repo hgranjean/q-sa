@@ -7,17 +7,18 @@ using Atum.Domain.SurveyManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Atum.Domain;
 
 namespace SurveyWeb.Models
 {
     public class SurveysViewModel
     {
         public Surveys Surveys { get; set; }
-        public Dictionary<int, Surveys> SurveysByDate { get; internal set; }
+        public Dictionary<int, List<Tuple<EventUser,Survey>>> SurveysByDate { get; internal set; }
 
-        internal Surveys GetOrAddSurveysByDate(int groupIndex)
+        internal List<Tuple<EventUser,Survey>> GetOrAddSurveysByDate(int groupIndex)
         {
-            var eventSurveys = new Surveys();
+            var eventSurveys = new List<Tuple<EventUser,Survey>>();
             if (!SurveysByDate.ContainsKey(groupIndex))
             {
                 SurveysByDate.Add(groupIndex, eventSurveys);

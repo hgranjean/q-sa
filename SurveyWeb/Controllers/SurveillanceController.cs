@@ -178,7 +178,7 @@ namespace SurveyWeb.Controllers
                 events = _taskService.GetNextTasks(userId);            
             }         
 
-            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>() };
+            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Survey>>>() };
 
             foreach (var @event in events)
             {
@@ -188,7 +188,8 @@ namespace SurveyWeb.Controllers
 
                 if (survey != default(Survey))
                 {
-                    eventSurveys.Add(survey);
+                    var tuple = new Tuple<EventUser, Survey>(@event, survey);                    
+                    eventSurveys.Add(tuple);
                 }
             }
             return model;

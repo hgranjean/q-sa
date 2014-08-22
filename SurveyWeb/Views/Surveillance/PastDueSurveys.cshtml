@@ -18,7 +18,7 @@
             <div>
                 @foreach (var survey in Model.SurveysByDate[item])
                 {
-                    <div>@Html.ActionLink(survey.Title ?? "Survey" + survey.ID, "SurveyDelivery", new {id = survey.ID})</div>
+                    <div>@Html.ActionLink(survey.Item2.Title ?? "Survey" + survey.Item2.ID, "SurveyDelivery", new {id = survey.Item2.ID}) - @Html.ValueFor(m => @survey.Item1.Event.Start, "{0:dd/MM/yyyy}")</div>
                 }
             </div>
         }
