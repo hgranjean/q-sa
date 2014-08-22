@@ -15,7 +15,7 @@ namespace SurveyWeb.Services
 {
     internal class PersistenceServices : IPersistenceServices
     {
-        private static List<Survey> surveys; 
+        private static List<Survey> surveys;
         private static SurveyManager _surverManager;
         private readonly ISurveyStore _store;
 
@@ -86,7 +86,7 @@ namespace SurveyWeb.Services
 
             var settings = new XmlWriterSettings {Indent = true};
             
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "Surveys", fileName), settings))
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName), settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }

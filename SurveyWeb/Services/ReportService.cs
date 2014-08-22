@@ -62,7 +62,7 @@ namespace SurveyWeb.Services
             {
                 var tracerModel = _persistenceService.LoadTracer(response);
                 var survey = _persistenceService.GetSurvey(tracerModel.SurveyId);
-                tracerModel.QuestionGroups = new QuestionGroupsViewModel(tracerModel.SurveyId.ToString(), survey.QuestionGroups);
+                tracerModel.QuestionGroups = new QuestionGroupsViewModel(tracerModel.SurveyId, survey.QuestionGroups);
                 surveyModels.Add(tracerModel);
             }
 

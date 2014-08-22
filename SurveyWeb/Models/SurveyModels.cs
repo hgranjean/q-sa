@@ -36,7 +36,7 @@ namespace SurveyWeb.Models
                 this.Survey.AddQuestionGroup("One");
             }
 
-            this.QuestionGroupsViewModel = new QuestionGroupsViewModel(this.Survey.ID.ToString(), this.Survey.QuestionGroups);
+            this.QuestionGroupsViewModel = new QuestionGroupsViewModel((int)this.Survey.ID, this.Survey.QuestionGroups);
         }
 
         public Survey GetUpdatedSurvey()
@@ -70,7 +70,7 @@ namespace SurveyWeb.Models
 
     public class QuestionGroupViewModel : ViewModelBase
     {
-        public string SurveyId { get; set; }
+        public int SurveyId { get; set; }
         public int Number { get; set; }
         public QuestionGroup QuestionGroup { get; set; }
 

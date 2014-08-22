@@ -58,7 +58,7 @@ namespace SurveyWeb.Models
         }
                     
         public int SurveyId { get; set; }
-        private Survey Survey { get; set; }
+        private Survey _survey { get; set; }
 
         public TracerViewModel()
         {            
@@ -66,9 +66,9 @@ namespace SurveyWeb.Models
 
         public TracerViewModel(Survey survey)
         {
-            this.Survey = survey;
-            this.SurveyId = Convert.ToInt32(survey.ID);
-            this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
+            this._survey = survey;
+            this.SurveyId =(int)survey.ID;
+            this.QuestionGroups = new QuestionGroupsViewModel((int)survey.ID, survey.QuestionGroups);
             this.SurveyDate = DateTime.Now;
             this.SurveyTypeId = (int)survey.SurveyType;
             this.SurveyTitle = survey.Title;
@@ -212,7 +212,7 @@ namespace SurveyWeb.Models
         {
         }
 
-        public QuestionGroupsViewModel(string surveyId, QuestionGroups questionGroups)
+        public QuestionGroupsViewModel(int surveyId, QuestionGroups questionGroups)
         {
             this.SurveyId = surveyId;
             this.QuestionGroups = questionGroups;
@@ -228,7 +228,7 @@ namespace SurveyWeb.Models
             }
         }
 
-        public string SurveyId { get; set; }
+        public int SurveyId { get; set; }
     }
 
     public class QuestionViewModel
@@ -259,7 +259,7 @@ namespace SurveyWeb.Models
 
         public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs { get; set; }
 
-        public string SurveyId { get; set; }
+        public int SurveyId { get; set; }
     }
 
     public class TracerType { }
