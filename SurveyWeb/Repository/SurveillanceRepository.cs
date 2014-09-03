@@ -46,6 +46,8 @@ namespace SurveyWeb.Repository
         IEnumerable<Hospital> GetHospitals();
 
         void DeleteHospital(string hospitalId);
+        
+        void DeleteResponse(string responseId);
     }
 
     public class SurveillanceRepository : ISurveillanceRepository
@@ -185,6 +187,15 @@ namespace SurveyWeb.Repository
             var toDelete = _context.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
                         
             _context.Hospitals.Remove(toDelete);
+
+            _context.SaveChanges();            
+        }
+
+        public void DeleteResponse(string responseId)
+        {
+            var toDelete = _context.Responses.FirstOrDefault(m => m.Id == responseId);
+
+            _context.Responses.Remove(toDelete);
 
             _context.SaveChanges();            
         }

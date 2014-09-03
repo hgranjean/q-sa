@@ -179,5 +179,15 @@ namespace SurveyWeb.Services
                 File.Delete(fullPath);    
             }
         }
+
+        public void DeleteResponse(string id)
+        {            
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Responses), "response" + id + ".xml");
+
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+            }
+        }
     }
 }

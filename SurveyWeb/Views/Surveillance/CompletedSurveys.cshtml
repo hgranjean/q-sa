@@ -10,10 +10,69 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $(".actionmenu").dropit();
+
+        $.extend({
+            confirm: function (title, message, yesText, yesCallback) {
+                $("<div></div>").dialog({
+                    buttons: [{
+                        text: yesText,
+                        click: function () {
+                            yesCallback();
+                            $(this).remove();
+                        }
+                    },
+                    {
+                        text: "Cancel",
+                        click: function () {
+                            $(this).remove();
+                        }
+                    }
+                    ],
+                    close: function (event, ui) { $(this).remove(); },
+                    resizable: false,
+                    title: title,
+                    modal: true
+                }).text(message).parent().addClass("alert");
+            }
+        });
+
+        function questionDeleteClickHandler() {
+
+            var parentId = $(this).parents('li').map(function () {
+                return $(this).find('a').first().attr("data-ng-href");
+            }).get().join(", ");
+
+            
+
+            $.confirm(
+                "Delete response", //title
+                "Delete the response " + parentId + "?", //message
+                "Delete", //button text
+                function deleteOk() { //"yes" callback                    
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Content("~/Surveillance/Delete")',
+                        data: {                            
+                            responseId: parentId
+                        },
+                        success: function (data) {                          
+                        },
+                        error: function (xhr, status, error) {
+                            console.log(xhr.responseText);
+                        }
+                    });
+
+                    location.reload();
+                }
+            );
+        }
+
+        $('.responseDelete').click(questionDeleteClickHandler);
     });
+
+    
 </script>
-
-
 
 <h2 class="section-header">My observations</h2>
     
@@ -53,6 +112,7 @@
                             <ul>
                                 <li>@Html.ActionLink("Export", "Export", new { id = completedSurvey.ResponseId }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
                                 <li>@Html.ActionLink("Archive", "Archive", new { id = completedSurvey.ResponseId }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
+                                <li><a class="responseDelete btn btn-default" style="width: 100px;" data-ng-href ="@(completedSurvey.ResponseId)" href="#">Delete</a></li>
                                 <li>@Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = completedSurvey.SurveyId }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
                                 <li>@Html.ActionLink("Assign To", "AssignTo", new { id = completedSurvey.ResponseId }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
                             </ul>

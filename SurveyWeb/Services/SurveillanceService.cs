@@ -27,6 +27,11 @@ namespace SurveyWeb.Services
             return _repository.GetResponses(userId);            
         }
 
+        internal void DeleteResponse(string responseId)
+        {
+            _repository.DeleteResponse(responseId);
+        }
+
         internal IEnumerable<Person> GetPersons()
         {
             return _repository.GetPersons();

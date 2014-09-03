@@ -258,7 +258,7 @@ namespace SurveyWeb.Controllers
         }
 
         private CompletedSurveyViewModel GetCompletedSurveys()
-        {            
+        {
             var surveys = _persistenceService.GetSurveys();
 
             // Filtering out responses by user
@@ -273,6 +273,9 @@ namespace SurveyWeb.Controllers
                 {
                     var tracerModel = _persistenceService.LoadTracer(response);
                     LoadTracerReferenceData(tracerModel);
+
+                    // todo: remove these assignments
+                    tracerModel.ResponseId = response;
                     tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
                     models.Add(tracerModel);
                 }
@@ -779,6 +782,21 @@ namespace SurveyWeb.Controllers
 
         public ActionResult Archive()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Delete(string responseId)
+        {
+            var userId = User.Identity.GetUserId();
+
+            if (_surveillanceService.GetResponses(userId).Contains( responseId))
+            {
+                _surveillanceService.DeleteResponse(responseId);
+            }
+
+            _persistenceService.DeleteResponse(responseId);
+
             return View();
         }
 
