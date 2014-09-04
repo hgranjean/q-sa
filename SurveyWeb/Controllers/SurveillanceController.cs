@@ -788,14 +788,11 @@ namespace SurveyWeb.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            if (_surveillanceService.GetResponses(userId).Contains( responseId))
-            {
-                _surveillanceService.DeleteResponse(responseId);
-            }
+            _surveillanceService.DeleteResponse(responseId);            
 
             _persistenceService.DeleteResponse(responseId);
 
-            return View();
+            return RedirectToAction("Dashboard");
         }
 
         public ActionResult TakePhoto(string surveyId, string questionId)

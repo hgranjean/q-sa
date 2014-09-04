@@ -184,10 +184,10 @@ namespace SurveyWeb.Services
         {            
             var fullPath = Path.Combine(_store.GetPath(StoreType.Responses), "response" + id + ".xml");
 
-            if (File.Exists(fullPath))
-            {
+            // if (File.Exists(fullPath))
+            //{
                 File.Delete(fullPath);
-            }
+            //}
         }
     }
 }

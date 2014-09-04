@@ -56,14 +56,13 @@
                         data: {                            
                             responseId: parentId
                         },
-                        success: function (data) {                          
+                        success: function (data) {
+                            location.reload();
                         },
-                        error: function (xhr, status, error) {
+                        error: function (xhr, status, error) {                            
                             console.log(xhr.responseText);
                         }
-                    });
-
-                    location.reload();
+                    });                    
                 }
             );
         }
