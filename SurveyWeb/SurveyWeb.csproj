@@ -2610,6 +2610,7 @@
     <Content Include="Views\Surveillance\AssignTo.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Surveillance\NewDashboard.cshtml" />
     <Content Include="Views\Surveillance\TakePhoto.cshtml">
       <SubType>Code</SubType>
     </Content>
