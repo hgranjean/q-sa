@@ -354,4 +354,39 @@ namespace SurveyWeb.Models
 
         public string ImageData { get; set; }
     }
+
+    public class CompletedSurveyViewModel
+    {
+        public IEnumerable<TracerViewModel> CompletedSurveys { get; set; }
+
+        public CompletedSurveyViewModel()
+        { }
+
+        public CompletedSurveyViewModel(IEnumerable<TracerViewModel> completedSurveys)
+        {
+            this.CompletedSurveys = completedSurveys;
+        }
+    }  
+
+    public class CompletedObservationsViewModel
+    {
+        public IEnumerable<ObservationViewModel> Observations { get; set; }
+
+        public CompletedObservationsViewModel() { }
+
+        public CompletedObservationsViewModel(IEnumerable<ObservationViewModel> observations) {
+            this.Observations = observations;
+        }
+    }
+
+    public class ObservationViewModel
+    {
+        public Observation Observation { get; set; }
+        public ObservationViewModel() { }
+
+        public ObservationViewModel(Observation observation)
+        {
+            this.Observation = observation;
+        }
+    }
 }

@@ -2719,6 +2719,7 @@
     <Content Include="Views\Learning\StandardTraining.cshtml" />
     <Content Include="Views\Survey\EditQuestion.cshtml" />
     <Content Include="Views\Survey\EditorTemplates\QuestionViewModel.cshtml" />
+    <Content Include="Views\Surveillance\CompletedObservations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

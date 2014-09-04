@@ -116,16 +116,5 @@ namespace SurveyWeb.Models
         public IEnumerable<RuleApp.SurveyDeliveryRuleApp.EvaluationResult> Followups { get; set; }
     }
 
-    public class CompletedSurveyViewModel
-    {
-        public IEnumerable<TracerViewModel> CompletedSurveys { get; set; }
-
-        public CompletedSurveyViewModel()
-        { }
-
-        public CompletedSurveyViewModel(IEnumerable<TracerViewModel> completedSurveys)
-        {
-            this.CompletedSurveys = completedSurveys;            
-        }
-    }    
+      
 }
