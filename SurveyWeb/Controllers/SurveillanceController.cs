@@ -476,6 +476,27 @@ namespace SurveyWeb.Controllers
             return View();
         }
 
+        public ActionResult NewDashboard()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                try
+                {
+                    ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+                    ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
+                    ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                }
+                catch (Exception ex)
+                {
+                    Session.Abandon();
+
+                    RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
