@@ -547,9 +547,7 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();
             
-            var user = _accountService.GetUser(userId);
-
-            var responseEntry = _surveillanceService.AddResponse(user);            
+            var responseEntry = _surveillanceService.AddResponse(userId);            
 
             viewModel.ResponseId = responseEntry.Id;
 
@@ -845,7 +843,9 @@ namespace SurveyWeb.Controllers
         {
             var surveyors = LoadSurveyors();
 
-            var viewModel = new AssignToViewModel { ResponseId = id, Surveyors = surveyors };
+            var currentUserId = _persistenceService.LoadTracer(id).SurveyorId;
+
+            var viewModel = new AssignToViewModel { ResponseId = id, Surveyors = surveyors, AssignedTo = currentUserId.ToString() };
 
             return View(viewModel);
 

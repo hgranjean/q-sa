@@ -100,13 +100,13 @@ namespace SurveyWeb.Services
         {
             survey.UpdatedDate = DateTime.Now;
 
-            var appPath = _store.GetPath(StoreType.Surveys);
+            var appPath = _store.GetPath(StoreType.Responses);
 
-            var fileName = String.Concat("response", survey.ResponseId, ".xml");
+            var fullPath = Path.Combine(appPath, "response" + survey.ResponseId + ".xml");
 
             var settings = new XmlWriterSettings { Indent = true };
             
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "Responses", fileName), settings))
+            using (var writer = XmlWriter.Create(fullPath, settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }

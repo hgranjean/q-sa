@@ -20,7 +20,7 @@ namespace SurveyWeb.Repository
 
         IEnumerable<Person> GetPersons();
         
-        ResponseEntry AddResponse(AspNetUser user);        
+        ResponseEntry AddResponse(string userId);        
 
         Hospital GetHospital(string hospitalId);
 
@@ -74,9 +74,11 @@ namespace SurveyWeb.Repository
             return _context.AspNetUsers.First(m => m.Id == userId);
         }
 
-        public ResponseEntry AddResponse(AspNetUser user)
+        public ResponseEntry AddResponse(string userId)
         {
-            var responseEntry = new ResponseEntry { Id = Guid.NewGuid().ToString("d"), User = user };
+            var user = _context.AspNetUsers.FirstOrDefault(m => m.Id == userId);
+
+            var responseEntry = new ResponseEntry { Id = Guid.NewGuid().ToString("d"), User = user };            
 
             _context.Responses.Add(responseEntry);
 

@@ -38,9 +38,9 @@ namespace SurveyWeb.Services
         }        
                
 
-        internal ResponseEntry AddResponse(AspNetUser user)
+        internal ResponseEntry AddResponse(string userId)
         {
-            return _repository.AddResponse(user);
+            return _repository.AddResponse(userId);
         }        
 
         internal IEnumerable<Hospital> GetHospitals()
