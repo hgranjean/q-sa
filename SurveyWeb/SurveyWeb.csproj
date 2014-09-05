@@ -2460,6 +2460,7 @@
     <Content Include="Content\themes\arjuna\plugins\xchart\LICENSE" />
     <Content Include="Content\themes\arjuna\plugins\xchart\README.md" />
     <None Include="Properties\PublishProfiles\aqspartners.com - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\aqspartners.com - QA Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\aqspartners.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\consetconsulting.pubxml" />
     <None Include="Store\Workflows\SurveyApp.ruleapp" />
@@ -2720,6 +2721,7 @@
     <Content Include="Views\Survey\EditQuestion.cshtml" />
     <Content Include="Views\Survey\EditorTemplates\QuestionViewModel.cshtml" />
     <Content Include="Views\Surveillance\CompletedObservations.cshtml" />
+    <Content Include="Views\Shared\_ArjunaLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />
