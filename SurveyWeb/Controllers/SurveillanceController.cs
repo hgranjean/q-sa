@@ -24,6 +24,7 @@ using System.Diagnostics;
 using Atum.Utility.Diagnostics;
 using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
 using Atum.Domain.QualityManagement;
+using Atum.Domain.NLP.NaiveBayes;
 
 namespace SurveyWeb.Controllers
 {

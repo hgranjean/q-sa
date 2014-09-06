@@ -1,4 +1,5 @@
 ﻿using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
+using Atum.Domain.NLP.NaiveBayes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
