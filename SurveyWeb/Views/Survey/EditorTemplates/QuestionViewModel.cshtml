@@ -2,6 +2,17 @@
 
 @Html.Hidden("ModelType", Model.Question.GetType())
 
-<span>@Html.DisplayFor(m => m.Number)</span>-
-<span>@Html.DisplayFor(m => m.Text)</span>
+<div id="divid@(Model.Number)" style="display: table; width: 100%; margin-top: 5px; min-height: 34px">
+    <div style="display: table-row; width:100%">
+        <div style="display: table-cell; width: 70%;">
+            <div style="display: inline">
+                <span style="min-width: 5em;">@Html.DisplayFor(m => m.Number)</span>-<span>@Html.DisplayFor(m => m.Text)</span>
+            </div>
+        </div>
+        <div style="display: table-cell; width: 30%; margin-top: 5px">
+            <div style="display: inline"><a class="questionEdit btn btn-default" data-ng-href="@(Model.Number)" href="#">Edit</a></div>
+            <div style="display: inline"><a class="questionDelete btn btn-default" data-ng-href="@(Model.Number)" href="#">Delete</a></div>
+        </div>
+    </div>
+</divid>
 

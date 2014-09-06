@@ -47,26 +47,24 @@ namespace SurveyWeb.Services
         {
             Contract.Assert(_store != null);
             
-            var appPath = _store.GetPath();
+            var appPath = _store.GetPath(StoreType.Emails);
 
             var emailFileName = string.Empty;
             
             if (template == EmailTemplate.Invitation)
             {
-                emailFileName = Path.Combine(appPath, "Emails", "InvitationEmail.xml");
+                emailFileName = Path.Combine(appPath, "InvitationEmail.xml");
             }
             else if (template == EmailTemplate.ResetPassword)
             {
-                emailFileName = Path.Combine(appPath, "Emails", "ResetPassword.xml");
+                emailFileName = Path.Combine(appPath, "ResetPassword.xml");
             }
             else if (template == EmailTemplate.EventAssigned)
             {
-                emailFileName = Path.Combine(appPath, "Emails", "EventAssigned.xml");
+                emailFileName = Path.Combine(appPath, "EventAssigned.xml");
             }
-
-            var result = XDocument.Load(emailFileName); // appPath + @"Emails\" + emailFileName
-
-            return result;
+            
+            return XDocument.Load(emailFileName);
         }
     }
 }

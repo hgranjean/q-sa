@@ -4,7 +4,7 @@ namespace SurveyWeb.Models
 {
     public static class DateTimeUtils
     {
-        public static readonly string[] groupName = {"Older",
+        public static readonly string[] groupName = {"Older than month",
             "Last month", "4 weeks ago", "3 weeks ago", 
             "2 weeks ago", "Last week",
             "Monday", "Tuesday", "Wednesday", 
@@ -16,7 +16,7 @@ namespace SurveyWeb.Models
             "Thursday", "Friday", "Saturday", "Sunday", 
             "Next week", "In 2 weeks", 
             "In 3 weeks", "In 4 weeks", "Next month", 
-            "Newer"};
+            "Newer than next month"};
 
         public static int ToGroupIndex(this DateTime sourceDateTime)
         {

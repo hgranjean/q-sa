@@ -7,17 +7,18 @@ using Atum.Domain.SurveyManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Atum.Domain;
 
 namespace SurveyWeb.Models
 {
     public class SurveysViewModel
     {
         public Surveys Surveys { get; set; }
-        public Dictionary<int, Surveys> SurveysByDate { get; internal set; }
+        public Dictionary<int, List<Tuple<EventUser,Survey>>> SurveysByDate { get; internal set; }
 
-        internal Surveys GetOrAddSurveysByDate(int groupIndex)
+        internal List<Tuple<EventUser,Survey>> GetOrAddSurveysByDate(int groupIndex)
         {
-            var eventSurveys = new Surveys();
+            var eventSurveys = new List<Tuple<EventUser,Survey>>();
             if (!SurveysByDate.ContainsKey(groupIndex))
             {
                 SurveysByDate.Add(groupIndex, eventSurveys);
@@ -58,7 +59,7 @@ namespace SurveyWeb.Models
         }
                     
         public int SurveyId { get; set; }
-        private Survey Survey { get; set; }
+        private Survey _survey { get; set; }
 
         public TracerViewModel()
         {            
@@ -66,9 +67,9 @@ namespace SurveyWeb.Models
 
         public TracerViewModel(Survey survey)
         {
-            this.Survey = survey;
-            this.SurveyId = Convert.ToInt32(survey.ID);
-            this.QuestionGroups = new QuestionGroupsViewModel(survey.ID.ToString(), survey.QuestionGroups);
+            this._survey = survey;
+            this.SurveyId =(int)survey.ID;
+            this.QuestionGroups = new QuestionGroupsViewModel((int)survey.ID, survey.QuestionGroups);
             this.SurveyDate = DateTime.Now;
             this.SurveyTypeId = (int)survey.SurveyType;
             this.SurveyTitle = survey.Title;
@@ -212,7 +213,7 @@ namespace SurveyWeb.Models
         {
         }
 
-        public QuestionGroupsViewModel(string surveyId, QuestionGroups questionGroups)
+        public QuestionGroupsViewModel(int surveyId, QuestionGroups questionGroups)
         {
             this.SurveyId = surveyId;
             this.QuestionGroups = questionGroups;
@@ -228,7 +229,7 @@ namespace SurveyWeb.Models
             }
         }
 
-        public string SurveyId { get; set; }
+        public int SurveyId { get; set; }
     }
 
     public class QuestionViewModel
@@ -259,7 +260,7 @@ namespace SurveyWeb.Models
 
         public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs { get; set; }
 
-        public string SurveyId { get; set; }
+        public int SurveyId { get; set; }
     }
 
     public class TracerType { }
@@ -352,5 +353,40 @@ namespace SurveyWeb.Models
         public DateTime CreatedDateTime { get; set;}
 
         public string ImageData { get; set; }
+    }
+
+    public class CompletedSurveyViewModel
+    {
+        public IEnumerable<TracerViewModel> CompletedSurveys { get; set; }
+
+        public CompletedSurveyViewModel()
+        { }
+
+        public CompletedSurveyViewModel(IEnumerable<TracerViewModel> completedSurveys)
+        {
+            this.CompletedSurveys = completedSurveys;
+        }
+    }  
+
+    public class CompletedObservationsViewModel
+    {
+        public IEnumerable<ObservationViewModel> Observations { get; set; }
+
+        public CompletedObservationsViewModel() { }
+
+        public CompletedObservationsViewModel(IEnumerable<ObservationViewModel> observations) {
+            this.Observations = observations;
+        }
+    }
+
+    public class ObservationViewModel
+    {
+        public Observation Observation { get; set; }
+        public ObservationViewModel() { }
+
+        public ObservationViewModel(Observation observation)
+        {
+            this.Observation = observation;
+        }
     }
 }

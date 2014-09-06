@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -59,9 +60,15 @@ namespace SurveyWeb.Models
         public string Content { get; set; }
         [Display(Name = "Element of Performance")]
         public IEnumerable<string> EPIds { get; set; }
-
-
         public string Observation { get; set; }
+
+        public StandardElementViewModel(StandardElement model)
+        {
+            this.StandardId = model.StandardId;
+            this.Content = model.Content;
+            this.EPIds = model.EPIds;
+            this.Observation = model.Observation;
+        }
     }
     public class TOCElementViewModel
     {

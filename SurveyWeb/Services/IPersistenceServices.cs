@@ -17,5 +17,6 @@ namespace SurveyWeb.Services
         void SaveSurvey(Survey survey);
         void SaveTracer(TracerViewModel survey);
         void DeleteSurvey(string surveyId);
+        void DeleteResponse(string responseId);
     }
 }

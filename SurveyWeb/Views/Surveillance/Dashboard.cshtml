@@ -10,10 +10,7 @@
     ViewBag.Title = "Dashboard";
 }
 
-@Html.Action("GreetingPartial")
-
-
-
+@*Html.Action("GreetingPartial")*@
 
 <div id="wrapper">
     <div style="display: table;">
@@ -36,7 +33,7 @@
         </div>
         <div style="display: table-row;">
             <div style="display: table-cell;">
-                @Html.Action("CompletedSurveysPartial")</br>
+                @Html.Action("CompletedObservationsPartial")</br>
                 @Html.ActionLink("View All", "CompletedSurveys", null, new { @class = "btn btn-default" })</br>                
             </div>
         </div>
@@ -53,10 +50,8 @@
                     <!--<div>@Html.ActionLink("Schedules", "SurveySchedules")</div>-->
                     <!--<div>@Html.ActionLink("Completed Assessments", "CompletedSurveys")</div>-->                    
                     <!--<div>@Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</div>-->
-                    <!--<div>@Html.ActionLink("Follow-ups", "Surveys")</div>-->
-                    
-                    <!--<div>@Html.ActionLink("Reports", "Index", "Report")</div>-->
-                    
+                    <!--<div>@Html.ActionLink("Follow-ups", "Surveys")</div>-->                    
+                    <!--<div>@Html.ActionLink("Reports", "Index", "Report")</div>-->                    
                 </div>
             }
             else if (ViewBag.ShowTeamMemberContent)

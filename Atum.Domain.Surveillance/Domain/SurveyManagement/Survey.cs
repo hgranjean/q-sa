@@ -185,5 +185,13 @@ namespace Atum.Domain.SurveyManagement
                 }
             }
         }
+
+        public void EnsureQuestionGroups()
+        {
+            if (this.QuestionGroups == null)
+            {
+                this.QuestionGroups = new QuestionGroups();
+            }
+        }
     }
 }

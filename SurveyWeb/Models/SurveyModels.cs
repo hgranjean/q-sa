@@ -3,6 +3,7 @@ using Atum.Domain.QualityManagement;
 using SurveyWeb.Services;
 using Atum.Domain.SurveyManagement;
 using Atum.Domain.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace SurveyWeb.Models
 {
@@ -10,6 +11,14 @@ namespace SurveyWeb.Models
     {
         public string Name { get; set; }
         public Survey Survey { get; set; }
+
+        [Display(Name = "Survey Type")]
+        public SurveyType SurveyType
+        {
+            get { return Survey.SurveyType; }
+            set { Survey.SurveyType = value; }
+        }
+
         public QuestionGroupsViewModel QuestionGroupsViewModel { get; set; }
 
         public SurveyViewModel()
@@ -19,7 +28,7 @@ namespace SurveyWeb.Models
 
         public SurveyViewModel(Survey survey)
         {
-            this.Name = survey.Title;//?? "Survey" + survey.ID;
+            this.Name = survey.Title;
             this.Survey = survey;
 
             if (this.Survey.QuestionGroups == null)
@@ -27,10 +36,10 @@ namespace SurveyWeb.Models
                 this.Survey.AddQuestionGroup("One");
             }
 
-            this.QuestionGroupsViewModel = new QuestionGroupsViewModel(this.Survey.ID.ToString(), this.Survey.QuestionGroups);
+            this.QuestionGroupsViewModel = new QuestionGroupsViewModel((int)this.Survey.ID, this.Survey.QuestionGroups);
         }
-        
-        public void Save(IPersistenceServices persistenceService)
+
+        public Survey GetUpdatedSurvey()
         {
             // Restore items from viewmodel
 
@@ -38,16 +47,14 @@ namespace SurveyWeb.Models
 
             foreach (var qgvm in QuestionGroupsViewModel)
             {
-                questionGroups.Add(qgvm.Number, qgvm.QuestionGroup);    
+                questionGroups.Add(qgvm.Number, qgvm.QuestionGroup);
             }
-            
+
             this.Survey.QuestionGroups = questionGroups;
 
-            // [aschmidt]: Move this out of the model as it pertains to the action
-                        
-            persistenceService.SaveSurvey(this.Survey);
+            return this.Survey;
         }
-
+        
         public void AddQuestionGroup()
         {
             if (Survey.QuestionGroups == null)
@@ -63,7 +70,7 @@ namespace SurveyWeb.Models
 
     public class QuestionGroupViewModel : ViewModelBase
     {
-        public string SurveyId { get; set; }
+        public int SurveyId { get; set; }
         public int Number { get; set; }
         public QuestionGroup QuestionGroup { get; set; }
 
@@ -109,16 +116,5 @@ namespace SurveyWeb.Models
         public IEnumerable<RuleApp.SurveyDeliveryRuleApp.EvaluationResult> Followups { get; set; }
     }
 
-    public class CompletedSurveyViewModel
-    {
-        public IEnumerable<TracerViewModel> CompletedSurveys { get; set; }
-
-        public CompletedSurveyViewModel()
-        { }
-
-        public CompletedSurveyViewModel(IEnumerable<TracerViewModel> completedSurveys)
-        {
-            this.CompletedSurveys = completedSurveys;            
-        }
-    }
+      
 }

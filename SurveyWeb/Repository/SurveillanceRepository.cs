@@ -20,7 +20,7 @@ namespace SurveyWeb.Repository
 
         IEnumerable<Person> GetPersons();
         
-        ResponseEntry AddResponse(AspNetUser user);        
+        ResponseEntry AddResponse(string userId);        
 
         Hospital GetHospital(string hospitalId);
 
@@ -46,6 +46,8 @@ namespace SurveyWeb.Repository
         IEnumerable<Hospital> GetHospitals();
 
         void DeleteHospital(string hospitalId);
+        
+        void DeleteResponse(string responseId);
     }
 
     public class SurveillanceRepository : ISurveillanceRepository
@@ -72,9 +74,11 @@ namespace SurveyWeb.Repository
             return _context.AspNetUsers.First(m => m.Id == userId);
         }
 
-        public ResponseEntry AddResponse(AspNetUser user)
+        public ResponseEntry AddResponse(string userId)
         {
-            var responseEntry = new ResponseEntry { Id = Guid.NewGuid().ToString("d"), User = user };
+            var user = _context.AspNetUsers.FirstOrDefault(m => m.Id == userId);
+
+            var responseEntry = new ResponseEntry { Id = Guid.NewGuid().ToString("d"), User = user };            
 
             _context.Responses.Add(responseEntry);
 
@@ -185,6 +189,15 @@ namespace SurveyWeb.Repository
             var toDelete = _context.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
                         
             _context.Hospitals.Remove(toDelete);
+
+            _context.SaveChanges();            
+        }
+
+        public void DeleteResponse(string responseId)
+        {
+            var toDelete = _context.Responses.FirstOrDefault(m => m.Id == responseId);
+
+            _context.Responses.Remove(toDelete);
 
             _context.SaveChanges();            
         }

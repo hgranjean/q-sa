@@ -15,7 +15,7 @@ namespace SurveyWeb.Services
 {
     internal class PersistenceServices : IPersistenceServices
     {
-        private static List<Survey> surveys; 
+        private static List<Survey> surveys;
         private static SurveyManager _surverManager;
         private readonly ISurveyStore _store;
 
@@ -80,13 +80,13 @@ namespace SurveyWeb.Services
         {
             survey.RenumberQuestions();
 
-            var appPath = GetAppPath();
+            var appPath = _store.GetPath(StoreType.Surveys);
 
             var fileName = String.Concat("survey", survey.ID, ".xml");
 
             var settings = new XmlWriterSettings {Indent = true};
             
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "Surveys", fileName), settings))
+            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName), settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
@@ -100,13 +100,13 @@ namespace SurveyWeb.Services
         {
             survey.UpdatedDate = DateTime.Now;
 
-            var appPath = GetAppPath();
+            var appPath = _store.GetPath(StoreType.Responses);
 
-            var fileName = String.Concat("response", survey.ResponseId, ".xml");
+            var fullPath = Path.Combine(appPath, "response" + survey.ResponseId + ".xml");
 
             var settings = new XmlWriterSettings { Indent = true };
             
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, "Responses", fileName), settings))
+            using (var writer = XmlWriter.Create(fullPath, settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
@@ -114,9 +114,9 @@ namespace SurveyWeb.Services
 
         public TracerViewModel LoadTracer(string responseId)
         {
-            var appPath = GetAppPath();
+            var appPath = _store.GetPath(StoreType.Responses);
 
-            var fullPath = Path.Combine(appPath, "Responses", "response" + responseId + ".xml");
+            var fullPath = Path.Combine(appPath, "response" + responseId + ".xml");
 
             return (TracerViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(TracerViewModel));
         }
@@ -154,22 +154,13 @@ namespace SurveyWeb.Services
         }
 
         private string[] EnumerateSurveys()
-        {
-            var appPath = GetAppPath();
-            
-            return Directory.GetFiles(Path.Combine(appPath, "Surveys"), "survey*.xml");
+        {   
+            return Directory.GetFiles(_store.GetPath(StoreType.Surveys), "survey*.xml");
         }
         
         private string[] EnumerateResponses()
-        {
-            var appPath = GetAppPath();
-            
-            return Directory.GetFiles(Path.Combine(appPath, "Responses"), "response*.xml");
-        }
-
-        private string GetAppPath()
-        {
-            return _store.GetPath();
+        {             
+            return Directory.GetFiles(_store.GetPath(StoreType.Responses), "response*.xml");
         }
 
         public void DeleteSurvey(string id)
@@ -180,15 +171,23 @@ namespace SurveyWeb.Services
             {
                 surveys.Remove(toDelete);
             }
-
-            var appPath = GetAppPath();
-
-            var fullPath = Path.Combine(Path.Combine(appPath, "Surveys"), "survey" + toDelete.ID + ".xml");
+            
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Surveys), "survey" + toDelete.ID + ".xml");
             
             if (File.Exists(fullPath))
             {
                 File.Delete(fullPath);    
             }
+        }
+
+        public void DeleteResponse(string id)
+        {            
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Responses), "response" + id + ".xml");
+
+            // if (File.Exists(fullPath))
+            //{
+                File.Delete(fullPath);
+            //}
         }
     }
 }

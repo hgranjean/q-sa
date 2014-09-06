@@ -22,6 +22,8 @@ using SurveyWeb.Repository;
 using System.IO;
 using System.Diagnostics;
 using Atum.Utility.Diagnostics;
+using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
+using Atum.Domain.QualityManagement;
 
 namespace SurveyWeb.Controllers
 {
@@ -85,15 +87,18 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult ClassifyObservation(string observation)
         {
-            StandardElementViewModel model = null;
+            StandardElement model = null;
             if (!string.IsNullOrWhiteSpace(observation))
             {            
                 model = _learningService.Classify(observation);
             }
             else
             {
-                model = new StandardElementViewModel { Observation = observation };
+                model = new StandardElement { Observation = observation };
             }
+
+            var viewModel = new StandardElementViewModel(model);
+
             return View(model);
         }
 
@@ -174,7 +179,7 @@ namespace SurveyWeb.Controllers
                 events = _taskService.GetNextTasks(userId);            
             }         
 
-            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, Surveys>() };
+            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Survey>>>() };
 
             foreach (var @event in events)
             {
@@ -184,7 +189,8 @@ namespace SurveyWeb.Controllers
 
                 if (survey != default(Survey))
                 {
-                    eventSurveys.Add(survey);
+                    var tuple = new Tuple<EventUser, Survey>(@event, survey);                    
+                    eventSurveys.Add(tuple);
                 }
             }
             return model;
@@ -253,7 +259,7 @@ namespace SurveyWeb.Controllers
         }
 
         private CompletedSurveyViewModel GetCompletedSurveys()
-        {            
+        {
             var surveys = _persistenceService.GetSurveys();
 
             // Filtering out responses by user
@@ -268,6 +274,9 @@ namespace SurveyWeb.Controllers
                 {
                     var tracerModel = _persistenceService.LoadTracer(response);
                     LoadTracerReferenceData(tracerModel);
+
+                    // TODO: remove these assignments
+                    tracerModel.ResponseId = response;
                     tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
                     models.Add(tracerModel);
                 }
@@ -277,8 +286,51 @@ namespace SurveyWeb.Controllers
                 }
             }
 
-            var model = new CompletedSurveyViewModel(models);
-            return model;
+            return new CompletedSurveyViewModel(models);            
+        }
+
+        public ActionResult CompletedObservationsPartial()
+        {
+            var model = GetCompletedObservations();
+
+            return PartialView("CompletedObservations", model);
+        }
+
+        private CompletedObservationsViewModel GetCompletedObservations()
+        {
+            var surveys = _persistenceService.GetSurveys();
+
+            // Filtering out responses by user
+            var userId = User.Identity.GetUserId();
+
+            var responses = _surveillanceService.GetResponses(userId);
+
+            var models = new List<ObservationViewModel>();
+            foreach (var response in responses)
+            {
+                try
+                {
+                    var tracerModel = _persistenceService.LoadTracer(response);
+                    LoadTracerReferenceData(tracerModel);
+
+                    // TODO: remove these assignments
+                    tracerModel.ResponseId = response;
+                    var survey = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId);
+                    tracerModel.SurveyTitle = survey.Title;
+                    
+                    foreach (var question in tracerModel.Responses.Where(m => m != null))
+                    {
+                        models.Add(new ObservationViewModel(new Observation(tracerModel.Surveyor, question.Response.Question, question.Response.Answer)));
+                    }                    
+                    
+                }
+                catch (FileNotFoundException ex)
+                {
+                    DebugUtil.WriteLine("Response file was not found: {0}. {1}", response, ex.ToString());
+                }
+            }
+
+            return new CompletedObservationsViewModel(models);
         }
 
         public ActionResult ViewCompletedSurvey(string id)
@@ -453,12 +505,15 @@ namespace SurveyWeb.Controllers
             {
                 try
                 {
-                    ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
-                    ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-                    ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+                    var userId = User.Identity.GetUserId();
+                    ViewBag.ShowAdminContent = _userManager.IsInRole(userId, "Administrator");
+                    ViewBag.ShowManagerContent = _userManager.IsInRole(userId, "Manager");
+                    ViewBag.ShowTeamMemberContent = _userManager.IsInRole(userId, "Team Member");
                 }
                 catch (Exception ex)
                 {
+                    DebugUtil.WriteLine(ex.ToString());
+
                     Session.Abandon();
 
                     RedirectToAction("Index", "Home");
@@ -468,18 +523,43 @@ namespace SurveyWeb.Controllers
             return View();
         }
 
+        public ActionResult NewDashboard()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                try
+                {
+                    var userId = User.Identity.GetUserId();
+                    ViewBag.ShowAdminContent = _userManager.IsInRole(userId, "Administrator");
+                    ViewBag.ShowManagerContent = _userManager.IsInRole(userId, "Manager");
+                    ViewBag.ShowTeamMemberContent = _userManager.IsInRole(userId, "Team Member");
+                }
+                catch (Exception ex)
+                {
+                    DebugUtil.WriteLine(ex.ToString());
+
+                    Session.Abandon();
+
+                    RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult SaveSurvey(TracerViewModel viewModel, FormCollection values)
-        {            
-            var survey = _persistenceService.GetSurvey(viewModel.SurveyId);
-
+        {
             var questions = new Questions();
             var responses = new Responses();
 
             int qIndex = 0;
             bool isObservation = false;
             var responsesViewModels = new ResponseViewModel[100];
+
+            var survey = _persistenceService.GetSurvey(viewModel.SurveyId);
+            
             foreach (var questionGroup in survey.QuestionGroups)
             {
                 foreach (var question in questionGroup.Value.Questions)
@@ -502,6 +582,7 @@ namespace SurveyWeb.Controllers
                     qIndex++;
                 }
 
+                // For new observations, add them to the appropriate group
                 var observationText = values["txtObservation" + questionGroup.Key];
                 if (!String.IsNullOrWhiteSpace(observationText))
                 {
@@ -539,9 +620,7 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();
             
-            var user = _accountService.GetUser(userId);
-
-            var responseEntry = _surveillanceService.AddResponse(user);            
+            var responseEntry = _surveillanceService.AddResponse(userId);            
 
             viewModel.ResponseId = responseEntry.Id;
 
@@ -777,6 +856,18 @@ namespace SurveyWeb.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Delete(string responseId)
+        {
+            var userId = User.Identity.GetUserId();
+
+            _surveillanceService.DeleteResponse(responseId);            
+
+            _persistenceService.DeleteResponse(responseId);
+
+            return RedirectToAction("Dashboard");
+        }
+
         public ActionResult TakePhoto(string surveyId, string questionId)
         {            
             var viewModel = new PhotoViewModel { SurveyId = surveyId, QuestionId = questionId };
@@ -822,7 +913,9 @@ namespace SurveyWeb.Controllers
         {
             var surveyors = LoadSurveyors();
 
-            var viewModel = new AssignToViewModel { ResponseId = id, Surveyors = surveyors };
+            var currentUserId = _persistenceService.LoadTracer(id).SurveyorId;
+
+            var viewModel = new AssignToViewModel { ResponseId = id, Surveyors = surveyors, AssignedTo = currentUserId.ToString() };
 
             return View(viewModel);
 

@@ -1,4 +1,4 @@
-﻿
+﻿@using SurveyWeb.Models
 @model SurveyWeb.Models.QuestionGroupViewModel
  
 <div>
@@ -30,7 +30,19 @@
 
             <script>
                 $(document).ready(function () {
-                    $('.editTitle').editable('@Url.Action("EditQuestionGroup", "Survey", new { surveyId = Model.SurveyId, groupId = Model.Number })');
+                    $('.editTitle').editable(function (value, settings) {                        
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Content("~/Survey/EditQuestionGroupText")',
+                            data: {
+                                surveyId: '@Model.SurveyId',
+                                questionGroupId: '@Model.Number',                                
+                                value: value
+                            },
+                            async: false
+                        });
+                        return(value);
+                    }, { classclass: 'form-control', submit: 'OK', style: "btn btn-default" });
                 });
             </script>            
 
@@ -39,11 +51,14 @@
                     <div style="display: table; width: 100%">
                         <div style="display: table-row">
                             <div style="display: table-cell; width: 70%; margin-top: 5px">
-                                <span style="font-weight: bold"><div class="editTitle" style="display:inline">@Html.DisplayFor(modelItem => Model.QuestionGroup.Title)</div></span>
+                                <div class="editTitle" style="margin: 0; font-weight: bold">@Html.DisplayFor(m => Model.QuestionGroup.Title)</div>
                             </div>
                             <div style="display: table-cell; width: 30%">
+                                &nbsp;
+                                @*
                                 @Html.ActionLink("Edit", "EditQuestionGroup", new { surveyId = Model.SurveyId, groupId = Model.Number }, new { @class = "btn btn-default" })
                                 @Html.ActionLink("Delete", "DeleteQuestionGroup", new { surveyId = Model.SurveyId, groupId = Model.Number }, new { @class = "btn btn-default" })
+                                *@
                             </div>
                         </div>
                     </div>
@@ -58,31 +73,14 @@
                             @for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
                             {
                                 <li class="questionItem">
-                                    <div style="display: table; width: 100%; margin-top: 5px">
-                                        <div style="display: table-row">
-                                            <div style="display: table-cell; width: 70%;">
-                                                <div id="divid@(Model.QuestionGroup.Questions[i].Number)" style="display: inline">
-                                                    @{
-                                                       var questionViewModel = new SurveyWeb.Models.QuestionViewModel(Model.QuestionGroup.Questions[i]);
-                                                    }
-                                                    @Html.EditorFor(m => questionViewModel)
-                                                </div>
-                                            </div>
-
-                                            <div style="display: table-cell; width: 30%; margin-top: 5px">
-                                                <div style="display: inline"><a class="questionEdit btn btn-default" data-ng-href="@(Model.QuestionGroup.Questions[i].Number)" href="#">Edit</a></div>
-                                                <div style="display: inline"><a class="questionDelete btn btn-default" data-ng-href="@(Model.QuestionGroup.Questions[i].Number)" href="#">Delete</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @{ var questionViewModel = new QuestionViewModel(Model.QuestionGroup.Questions[i]); }
+                                    @Html.EditorFor(m => questionViewModel)
                                 </li>
                             }
-                        </ul>
-                        <div style="margin-top: 5px;"><a class="questionAdd" data-ng-href="@(Model.QuestionGroup.Number)" href="#">Add question</a></div>
+                        </ul>                        
                     }
-                </div>
-
-                            
+                    <div style="margin-top: 5px;"><a class="questionAdd btn btn-default" data-ng-href="@(Model.QuestionGroup.Number)" href="#">Add question</a></div>
+                </div>      
             </div>
         }
 

@@ -63,6 +63,7 @@ namespace SurveyWeb.Services
         }
 
         private XmlDocument LoadChapterDoc(string chapterId)
+<<<<<<< HEAD
         {
             string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards");
             if (chapterId.Length>2)
@@ -70,10 +71,15 @@ namespace SurveyWeb.Services
                 chapterId = chapterId.Remove(2, chapterId.Length - 2);  
             }
             string chapterFileName = Path.Combine(appPath, "EC_out.xml".Replace("EC",chapterId));
+=======
+        {   
+            var chapterFileName = Path.Combine(_store.GetPath(StoreType.JointCommissionStandards), "EC_out.xml".Replace("EC",chapterId));
+>>>>>>> 9acbcfef39f46cffa75995a46270120dc20dff20
 
             XmlDocument xmlDoc =  new XmlDocument();
             
             xmlDoc.Load(chapterFileName);
+
             return xmlDoc;
         }
 
@@ -313,9 +319,9 @@ namespace SurveyWeb.Services
 
             if (Id == "LS.04.03.02")
             {
-                var appPath = _store.GetPath();
+                var appPath = _store.GetPath(StoreType.Standards);
                 
-                model = (TOCElement)XmlSerializationUtility.GetObjectFromFile(Path.Combine(appPath, "Standards", Id + ".xml"), typeof(TOCElement));
+                model = (TOCElement)XmlSerializationUtility.GetObjectFromFile(Path.Combine(appPath, Id + ".xml"), typeof(TOCElement));
             }
 
             return model;

@@ -9,7 +9,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - @System.Configuration.ConfigurationManager.AppSettings["WhiteLabel"]</title>
-    @Styles.Render("~/Content/css")    
+    @Styles.Render("~/Content/css") 
+    @Styles.Render("~/Content/basetheme")
     @Styles.Render("~/Content/dropdown")
     @Scripts.Render("~/Scripts/classie.js")
     @Scripts.Render("~/bundles/modernizr")
@@ -108,7 +109,7 @@
         </div>
 
         <div class="container body-content">
-            @RenderBody()            
+            @RenderBody()
 
             <hr />
             <footer>

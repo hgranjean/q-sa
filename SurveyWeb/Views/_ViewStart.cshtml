@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (System.Configuration.ConfigurationManager.AppSettings["ThemeLayout"] == "Arjuna")
+    { 
+        Layout = "~/Views/Shared/_ArjunaLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
