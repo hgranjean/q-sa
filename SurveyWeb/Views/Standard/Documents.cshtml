@@ -1,0 +1,39 @@
+﻿@model SurveyWeb.Models.StandardSearchViewModel
+
+@{
+    ViewBag.Title = "Standard Documents";
+}
+
+<h2>Standard Documents Search</h2>
+
+<form action="submit" method="post">
+    <div>
+        <h4>StandardSearchViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StandardId)
+            </dt>
+
+            <dd>
+                @Html.TextBoxFor(model => model.StandardId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StandardTypes)
+            </dt>
+
+            <dd>
+                @* @Html.DropDownListFor(model => model.StandardTypes)*@
+                @Html.DropDownListFor(model => model.StandardTypes)
+            </dd>
+
+        </dl>
+    </div>
+    <p>@Html.ActionLink("Search", "SearchStandards", new { @class = "btn btn-default" })</p>
+    <p>@Html.ActionLink("New", "Standard", new { @class = "btn btn-default" })</p>
+</form>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

@@ -63,8 +63,18 @@ namespace SurveyWeb.Services
         }
 
         private XmlDocument LoadChapterDoc(string chapterId)
+<<<<<<< HEAD
+        {
+            string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards");
+            if (chapterId.Length>2)
+            {
+                chapterId = chapterId.Remove(2, chapterId.Length - 2);  
+            }
+            string chapterFileName = Path.Combine(appPath, "EC_out.xml".Replace("EC",chapterId));
+=======
         {   
             var chapterFileName = Path.Combine(_store.GetPath(StoreType.JointCommissionStandards), "EC_out.xml".Replace("EC",chapterId));
+>>>>>>> 9acbcfef39f46cffa75995a46270120dc20dff20
 
             XmlDocument xmlDoc =  new XmlDocument();
             

@@ -31,6 +31,14 @@ namespace SurveyWeb.Controllers
             _standardManagementService = standardManagementService;
         }
 
+
+        public ActionResult Standard(int? id)
+        {
+            StandardViewModels model = new StandardViewModels();
+
+            return View(model);        
+        }
+
         /// <summary>
         /// Standard Content
         /// </summary>
@@ -58,6 +66,26 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+
+        public ActionResult Documents()
+        {
+            var model = new StandardSearchViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Documents(StandardSearchViewModel model) 
+        {
+            //Get Search Criteria from model
+
+            //Get Search Results and set in model
+
+            //Return model
+            
+            
+            return View(model);
+        }
         //private StandardDocumentViewModel LoadDocument(int? id)
         //{
         //    //TODO: Load Document Title Form Store

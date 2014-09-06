@@ -201,6 +201,7 @@ namespace SurveyWeb.Services
         }
                 
         internal string GetDefaultTrainingDocumentId(string standardId)
+        
         {
             if (_standardDefaultClassLookUp == null)
             {

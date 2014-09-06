@@ -12,10 +12,6 @@ namespace Atum.Domain.Common
 	[Table("Persons")]
     public partial class Person
 	{
-        private string p1;
-        private string p2;
-        private string p3;
-
         [Key]
         public string Id { get; set; }
         public string LastName { get; set; }
