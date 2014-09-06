@@ -36,8 +36,7 @@ namespace SurveyWeb.Controllers
         {
             StandardViewModels model = new StandardViewModels();
 
-
-        
+            return View(model);        
         }
 
         /// <summary>

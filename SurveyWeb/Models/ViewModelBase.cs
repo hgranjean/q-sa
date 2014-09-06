@@ -37,7 +37,7 @@ namespace SurveyWeb.Models
         }
 
         /*
-        /// <summary>
+        /// <summary>C:\Atum Technology Group\Projects\Mihalik\Solutions\TMGScreener
         /// Create <see cref="RuleSession"/> for use during this page request only, 
         ///	using persistent <see cref="RuleSessionState"/> from ASP.NET session state if any.
         /// If no ASP.NET session state yet stored, a new one is created here.
