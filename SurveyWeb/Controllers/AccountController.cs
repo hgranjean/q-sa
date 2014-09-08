@@ -583,20 +583,16 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user;
+                ApplicationUser user = null;
                 
                     /*var foundUserName = (from u in context.AspNetUsers
                               where u.Person.Email == model.Email
                               select u.UserName).FirstOrDefault();*/
-                var foundUserName = _accountService.GetUsers().FirstOrDefault(m => m.Email == model.Email).UserName;
-                if (foundUserName != null)
+                var foundUserId = _accountService.GetUsersWithProfiles().FirstOrDefault(m => m.Person != null && m.Person.Email == model.Email).Id;
+                if (foundUserId != null)
                 {
-                    user = _userManager.FindByName(foundUserName.ToString());
-                }
-                else
-                {
-                    user = null;
-                }
+                    user = _userManager.FindById(foundUserId.ToString());
+                }                
                 
                 if (user != null)
                 {

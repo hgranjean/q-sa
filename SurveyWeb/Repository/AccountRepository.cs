@@ -25,6 +25,8 @@ namespace SurveyWeb.Repository
         
         IEnumerable<AspNetUser> GetUsers();
 
+        IEnumerable<AspNetUser> GetUsersWithProfiles();
+
         void DeleteUser(string userId);
 
         IEnumerable<AspNetRole> GetRoles();
@@ -98,8 +100,13 @@ namespace SurveyWeb.Repository
         }
 
         public IEnumerable<AspNetUser> GetUsers()
-        {
+        {            
             return _context.AspNetUsers;
+        }
+
+        public IEnumerable<AspNetUser> GetUsersWithProfiles()
+        {
+            return _context.AspNetUsers.Include(m => m.Person);
         }
 
         public void DeleteUser(string userId)
