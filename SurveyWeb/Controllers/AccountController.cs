@@ -637,7 +637,7 @@ namespace SurveyWeb.Controllers
             * sending of the reset email link. Right now, if we are 100% successful
             * nothing happens on the page. :P
             */
-            return View(model);
+            return View("LostPasswordConfirmation");
         }
 
         // GET: /Account/ResetPassword
