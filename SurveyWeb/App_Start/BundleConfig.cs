@@ -10,6 +10,7 @@ namespace SurveyWeb
         {
             // Fix for bundles not rendered correctly in the release version (V= bug)
             bundles.IgnoreList.Clear();
+            BundleTable.EnableOptimizations = false;
 
             // AQS scripts and styles
 
