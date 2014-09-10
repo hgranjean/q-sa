@@ -18,14 +18,16 @@
             <div style="display: table-cell;">
                 <div style="display: table; width: 100%">
                     <div style="display: table-row;">
-                        <div style="display: table-cell; width: 50%; padding: 2px;">
-                            @Html.Action("PastDueSurveysPartial")</br>
-                            @* Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</br> *@
-                            @Html.ActionLink("Follow-ups", "FollowUps","Surveillance", new { @class = "btn btn-default" })</br>
-                        </div>
-                        <div style="display: table-cell; width: 50%">
-                            @Html.Action("SurveySchedulesPartial")</br>
-                            @Html.ActionLink("View Full Calendar", "Calendar", null, new { @class = "btn btn-default" })
+                        <div class="row" style="display: table-cell; padding: 2px;">
+                            <div class="col-md-4" style="width: 50%">
+                                @Html.Action("PastDueSurveysPartial")</br>
+                                @* Html.ActionLink("Pass Due Assessments", "PastDueSurveys")</br> *@
+                                @Html.ActionLink("Follow-ups", "FollowUps", "Surveillance", new { @class = "btn btn-default" })</br>
+                            </div>
+                            <div class="col-md-4" style="width: 50%">
+                                @Html.Action("SurveySchedulesPartial")</br>
+                                @Html.ActionLink("View Full Calendar", "Calendar", null, new { @class = "btn btn-default" })
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -33,8 +35,16 @@
         </div>
         <div style="display: table-row;">
             <div style="display: table-cell;">
-                @Html.Action("CompletedObservationsPartial")</br>
-                @Html.ActionLink("View All", "CompletedSurveys", null, new { @class = "btn btn-default" })</br>                
+                <div style="display: table; width: 100%">
+                    <div style="display: table-row;">
+                        <div class="row" style="display: table-cell; padding: 2px;">
+                            <div class="col-md-4" style="width: 100%">
+                                @Html.Action("CompletedObservationsPartial")</br>
+                                @Html.ActionLink("View All", "CompletedSurveys", null, new { @class = "btn btn-default" })</br>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -25,8 +25,11 @@
     @Scripts.Render("~/bundles/dropdown")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryobtr")
+    <!-- start:arjuna.js -->
     @Scripts.Render("~/bundles/arjuna")
 
+    
+    
     @if (!User.Identity.IsAuthenticated)
     {
         <style>
@@ -48,7 +51,7 @@
     <!-- start:navbar top -->
     @if (Request.IsAuthenticated) {
     <header class="header">
-        <a href="index.html" class="logo">
+        <a href="@Url.Action( "Dashboard", "Surveillance")" class="logo">
             <i class="fa fa-pied-piper-alt"></i>@System.Configuration.ConfigurationManager.AppSettings["WhiteLabel"]
         </a>
         <!-- Header Navbar: style can be found in header.less -->
@@ -559,8 +562,7 @@
     <!-- end:wrapper body -->
     
     <!-- start:javascript for all pages -->
-    <!-- start:arjuna.js -->    
-    @Scripts.Render("~/bundles/arjuna")
+    
     <!-- end:javascript for all pages-->    
 
 </body>
