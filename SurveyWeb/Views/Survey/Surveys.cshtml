@@ -6,34 +6,45 @@
 }
 
 <h2>Survey Templates</h2>
-
-@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
  
 @if (ViewBag.ShowAdminContent || ViewBag.ShowSurveyorContent)
 
 {
-    <div style="display: table; table-layout: fixed; width: 700px">
+    <div style="display: table; width: 100%">
         <div style="display: table-row">
             <div style="display: table-cell">
                 Name
             </div>
         </div>
-                @foreach (var item in Model.Surveys)
+        @foreach (var item in Model.Surveys)
         {
-                    <div style="display: table-row">
-                        <div style="display: table-cell">
-                            @Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDesign", new { id = item.ID })
-                        </div>
-                        <div style="display: table-cell; padding-bottom: 5px">
-                            @Html.ActionLink("Delete", "DeleteSurvey", null, new {id = item.ID, @class="btn btn-default"})
-                        </div>
+            <div style="display: table-row">
+                <div style="display: table-cell">
+                    @Html.DisplayFor(m => item.Title)
+                    @*Html.ActionLink(item.Title ?? "Survey" + item.ID, "SurveyDesign", "Survey", null, new { id = item.ID }) *@
+                </div>
+                <div style="display: table-cell; padding-bottom: 5px">
+                    <div class="btn-group col-md-7">
+                        <button type="button" class="btn btn-default" data-original-title="" title="" onclick="location.href='@Url.Action("SurveyDesign", "Survey", new { id = item.ID })'">Edit</button>
+                        <button type="button" class="btn btn-default active dropdown-toggle" data-toggle="dropdown" data-original-title="" title="">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Edit", "SurveyDesign", new { id = item.ID })</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Delete", "DeleteSurvey", new { id = item.ID })</li>
+                        </ul>
                     </div>
-        }
+                            
+                </div>
+            </div>
+            }
     </div>
 
     <div>&nbsp;</div>
     <div>
-        @Html.ActionLink("Create new template", "SurveyDesign", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create new template", "Create", null, new { @class = "btn btn-default" })
     </div>
 }
 
