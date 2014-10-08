@@ -61,5 +61,12 @@ namespace SurveyWeb.Models
 
             return new SelectList(items, "Key", "Value", selected);
         }
+
+        public static SelectList ToSelectList(this IEnumerable<string> enumeration)
+        {
+            return new SelectList(enumeration.Select(x => new SelectListItem {Text = x, Value = x})
+                .ToList(), "Text", "Value");
+        }
     }
+
 }
