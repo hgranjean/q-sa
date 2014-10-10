@@ -1,6 +1,6 @@
 ﻿@using Atum.Domain.SurveyManagement
 @using SurveyWeb.Models
-@model SurveyWeb.Models.SurveyViewModel
+@model SurveyViewModel
 @{
     ViewBag.Title = "Edit Template";
 }
@@ -78,7 +78,7 @@
                         var parentId = $(this).attr("data-ng-href");
 
                         $.ajax({
-                            type: 'GET',
+       t                     type: 'GET',
                             url: '@Url.Content("~/Survey/EditQuestion")',
                             data: {
                                 surveyId: "@Model.Survey.ID",
@@ -96,11 +96,6 @@
 
                     }
                     $('.questionEdit').click(questionEditClickHandler);
-
-                    function deleteOk()
-                    {
-                        
-                    }
 
                     function questionDeleteClickHandler() {
 

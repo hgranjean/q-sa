@@ -117,6 +117,22 @@ namespace Rules.WebEditor.Controllers
             
             return View("Index", viewModel);
         }
+
+        [Route("AddItem")]
+        [HttpGet]
+        public ActionResult AddItem(string type)
+        {
+            if (type == "Rules")
+            {
+                var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
+                (((RuleApplicationSpec) ruleapp1.FirstOrDefault()).Entities[0].RuleSets[0].Actions[0] as SimpleRuleSet)
+                    .Rules.Add(new SetValueAction());
+            }
+
+            var viewModel = GetJourney();
+
+            return View("Index", viewModel);
+        }
         
         [Route("~/Home/Save")]
         [HttpGet]

@@ -1,4 +1,4 @@
-﻿@model Atum.Domain.Surveillance.Survey
+﻿@model Atum.Domain.SurveyManagement.Survey
 
 @{
     ViewBag.Title = "DeleteSurvey";
@@ -6,7 +6,7 @@
 
 <h2>DeleteSurvey</h2>
 
-@using (Html.BeginForm("DeleteSurvey", "Surveillance"))
+@using (Html.BeginForm("DeleteSurvey", "Survey"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()

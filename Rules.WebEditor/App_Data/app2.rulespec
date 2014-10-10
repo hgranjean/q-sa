@@ -9,6 +9,7 @@
     </EntitySpec>
   </Entities>
   <RuleSets />
+  <EndPoints />
   <Vocabulary>
     <Templates>
       <TemplateSpec>
