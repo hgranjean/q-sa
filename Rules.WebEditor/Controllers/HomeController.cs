@@ -110,11 +110,32 @@ namespace Rules.WebEditor.Controllers
         [Route("AddSetValueAction")]
         public ActionResult AddSetValueAction()
         {
+            var newAction = new SetValueAction();
+
             var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
-            (((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Entities[0].RuleSets[0].Actions[0] as SimpleRuleSet).Rules.Add(new SetValueAction());
+            var rules = (((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Entities[0].RuleSets[0].Actions[0] as SimpleRuleSet).Rules;
+            rules.Add(newAction);
+
+            newAction.Name = newAction.GetType().Name + rules.Count;
 
             var viewModel = GetJourney();
             
+            return View("Index", viewModel);
+        }
+
+        [Route("AddSendMailAction")]
+        public ActionResult AddSendMailAction()
+        {
+            var newAction = new SendMailAction();
+
+            var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
+            var rules = (((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Entities[0].RuleSets[0].Actions[0] as SimpleRuleSet).Rules;
+            rules.Add(newAction);
+
+            newAction.Name = newAction.GetType().Name + rules.Count;
+
+            var viewModel = GetJourney();
+
             return View("Index", viewModel);
         }
 

@@ -24,7 +24,7 @@ namespace Rules.WebEditor.Models
     public class ViewModelConverter
     {
         // Returns view model
-        public static object Convert(object domainModel)
+        public static object Convert<T>(T domainModel)
         {
             if (domainModel is SimpleRuleSet)
             {
@@ -32,6 +32,9 @@ namespace Rules.WebEditor.Models
             } else if (domainModel is SetValueAction)
             {
                 return new SetValueActionViewModel(domainModel as SetValueAction);
+            } else if (domainModel is SendMailAction)
+            {
+                return new SendMailActionViewModel(domainModel as SendMailAction);
             }
             
             throw new NotSupportedException("ViewModel is unhandled for the domainModel");

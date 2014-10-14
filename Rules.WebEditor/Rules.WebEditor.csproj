@@ -162,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Actions\SendMailActionViewModel.cs" />
     <Compile Include="Models\Actions\SetValueActionViewModel.cs" />
     <Compile Include="Models\BladeEditorViewModel.cs" />
     <Compile Include="Models\BladeViewModel.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Shared\EditorTemplates\SetValueActionViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Expression.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SimpleRuleSetViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SendMailActionViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

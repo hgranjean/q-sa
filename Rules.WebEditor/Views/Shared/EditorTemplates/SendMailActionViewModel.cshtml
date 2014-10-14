@@ -1,0 +1,10 @@
+﻿@model Rules.WebEditor.Models.Actions.SendMailActionViewModel
+
+@Html.Hidden("ModelType", Model.GetType())
+
+<fieldset>
+    <legend>Send mail</legend>
+
+    <div class="editor-label hasmenu" style="float: left;" id="@Model.Name">Name</div>
+    <div class="editor-field" style="float: left;">@Html.ActionLink(Model.Name, "EditAction", "Home", new { id = Model.Name }, "Home")</div>
+</fieldset>
