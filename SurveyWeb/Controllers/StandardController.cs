@@ -71,6 +71,14 @@ namespace SurveyWeb.Controllers
         public ActionResult Documents()
         {
             var model = new StandardSearchViewModel();
+            
+            List<StandardType> modelStandardTypes = new List<StandardType>();
+            modelStandardTypes.Add(new StandardType(1, "External Guidelines"));
+            modelStandardTypes.Add(new StandardType(2, "Internal Policy"));
+
+            
+            model.StandardTypes = modelStandardTypes;
+            
 
             LoadReferenceData(model);
 
@@ -79,8 +87,8 @@ namespace SurveyWeb.Controllers
 
         private void LoadReferenceData(StandardSearchViewModel model)
         {
-            model.StandardTypes = from value in Enumerable.Range(0, 2)
-                                      select value.ToString();
+            //model.StandardTypes = from value in Enumerable.Range(0, 2)
+            //                          select value.ToString();
         }
 
 

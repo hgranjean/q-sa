@@ -1,14 +1,9 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Validation;
-using Atum.Database.Surveillance.Models;
-using Atum.Domain;
+﻿using Atum.Domain;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
-using Atum.Utility.XML;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using SurveyWeb.Models;
 using SurveyWeb.RuleApp;
 using SurveyWeb.Services;
@@ -18,13 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Atum.Utility;
-using SurveyWeb.Repository;
 using System.IO;
-using System.Diagnostics;
 using Atum.Utility.Diagnostics;
-using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
 using Atum.Domain.QualityManagement;
-using Atum.Domain.NLP.NaiveBayes;
+using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 
 namespace SurveyWeb.Controllers
 {

@@ -1,9 +1,6 @@
-﻿using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
-using Atum.Domain.NLP.NaiveBayes;
-using System;
+﻿using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Web;
 
 namespace SurveyWeb.Models
@@ -22,17 +19,31 @@ namespace SurveyWeb.Models
 
     public class StandardSearchViewModel
     {
-        [Display(Name = "Standard")]
+        [Display(Name = "Document")]
         public string StandardId { get; set; }
-        public IEnumerable<string> StandardTypes { get; set; }
+        public IEnumerable<StandardType> StandardTypes { get; set; }
+        [Display(Name = "Type")]
         public int StandardTypeId { get; set; }
-//        public string Content { get; set; }
         [Display(Name = "Element of Performance")]
 
         public List<StandardDocumentViewModel> Results { get; set; }
+        //        public string Content { get; set; }
     }
 
+    public class StandardType 
+    {
+        private int p1;
+        private string p2;
 
+        public StandardType(int p1, string p2)
+        {
+            // TODO: Complete member initialization
+            this.Id = p1;
+            this.Name = p2;
+        }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
     public class StandardDocumentViewModel
     {
         public int Id { get; set; }

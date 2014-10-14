@@ -1,12 +1,6 @@
-﻿using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
-using Atum.Domain.NLP.NaiveBayes;
+﻿using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using SurveyWeb.Models;
 using SurveyWeb.Services;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SurveyWeb.Controllers
