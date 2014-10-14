@@ -49,7 +49,6 @@
     <Compile Include="Domain\NLP\NaiveBayes\ClassificationProbalities.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\EPClassifier.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\SerializableKV.cs" />
-    <Compile Include="Domain\NLP\NaiveBayes\StandardElement.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\TrainingDocument.cs" />
     <Compile Include="Domain\NLP\NaiveBayes\TrainingSet.cs" />
     <Compile Include="Domain\NLP\Tokenizer.cs" />

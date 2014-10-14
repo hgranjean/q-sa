@@ -70,6 +70,14 @@ namespace SurveyWeb.Controllers
         public ActionResult Documents()
         {
             var model = new StandardSearchViewModel();
+            
+            List<StandardType> modelStandardTypes = new List<StandardType>();
+            modelStandardTypes.Add(new StandardType(1, "External Guidelines"));
+            modelStandardTypes.Add(new StandardType(2, "Internal Policy"));
+
+            
+            model.StandardTypes = modelStandardTypes;
+            
 
             return View(model);
         }
