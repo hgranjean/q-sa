@@ -71,19 +71,35 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Show New Survey Screen
+        /// </summary>
+        /// <param name="survey"></param>
+        /// <returns></returns>
+        public ActionResult Create()
+        {
+            var survey = new Survey();
+
+            var viewModel = new SurveyViewModel(survey);
+
+            _persistenceService.SaveSurvey(survey);
+
+            return View("SurveyDesign", viewModel);
+        }
         
         /// <summary>
         /// Show New Survey Screen
         /// </summary>
         /// <param name="survey"></param>
         /// <returns></returns>
+        [HttpPost]
         public ActionResult Create(Survey survey)
         {
             var viewModel = new SurveyViewModel(survey);
 
             _persistenceService.SaveSurvey(survey);
 
-            return View(viewModel);
+            return View("SurveyDesign", viewModel);
         }
                 
         public ActionResult CreateQuestionGroup(int surveyId)

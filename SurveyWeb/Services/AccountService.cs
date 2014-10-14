@@ -27,6 +27,11 @@ namespace SurveyWeb.Services
             return _repository.GetUsers();
         }
 
+        internal IEnumerable<AspNetUser> GetUsersWithProfiles()
+        {
+            return _repository.GetUsersWithProfiles();
+        }
+
         internal void DeleteUser(string userId)
         {
             _repository.DeleteUser(userId);
@@ -74,6 +79,6 @@ namespace SurveyWeb.Services
         internal IEnumerable<UserHospital> GetUserHospitals()
         {
             return _repository.GetUserHospitals();
-        }
+        }        
     }
 }

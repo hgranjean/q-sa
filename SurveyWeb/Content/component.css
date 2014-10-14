@@ -228,6 +228,20 @@ input.gn-search:focus {
 		-webkit-font-smoothing: antialiased;
 }
 
+.gn-icon-fa::before {
+		display: inline-block;
+		width: 60px;
+		text-align: center;
+		text-transform: none;
+		font-weight: normal;
+		font-style: normal;
+		font-variant: normal;
+		font-family: FontAwesome;
+		line-height: 1;
+		speak: none;
+		-webkit-font-smoothing: antialiased;
+}
+
 .gn-icon-help::before {
 		content: "\e000"
 }

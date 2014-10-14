@@ -583,19 +583,15 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user;
+                ApplicationUser user = null;
                 
                     /*var foundUserName = (from u in context.AspNetUsers
                               where u.Person.Email == model.Email
                               select u.UserName).FirstOrDefault();*/
-                var foundUserName = _accountService.GetUsers().FirstOrDefault(m => m.Email == model.Email).UserName;
-                if (foundUserName != null)
+                var foundUserId = _accountService.GetUsersWithProfiles().FirstOrDefault(m => m.Person != null && m.Person.Email == model.Email);
+                if (foundUserId != default(AspNetUser))
                 {
-                    user = _userManager.FindByName(foundUserName.ToString());
-                }
-                else
-                {
-                    user = null;
+                    user = _userManager.FindById(foundUserId.Id);
                 }
                 
                 if (user != null)
@@ -623,6 +619,11 @@ namespace SurveyWeb.Controllers
                     {
                         ModelState.AddModelError("", "Issue sending email: " + e.Message);
                     }
+
+                    /* Send the user to a "Success" page upon the successful
+                    * sending of the reset email link.
+                    */
+                    return View("LostPasswordConfirmation");
                 }         
                 else // Email not found
                 {
@@ -636,11 +637,7 @@ namespace SurveyWeb.Controllers
                     this.AddErrors(new IdentityResult("No user found by that email."));
                 }
             }
-         
-            /* You may want to send the user to a "Success" page upon the successful
-            * sending of the reset email link. Right now, if we are 100% successful
-            * nothing happens on the page. :P
-            */
+            
             return View(model);
         }
 

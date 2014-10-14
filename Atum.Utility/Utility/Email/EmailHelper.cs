@@ -65,7 +65,7 @@ namespace Atum.Utility
                 DateTime.Now,
                 DateTime.Now.AddHours(validityInHours),
                 true,
-                string.Join("|", userData)
+                userData != null ? string.Join("|", userData) : String.Empty
             );
 
             // encrypt the ticket

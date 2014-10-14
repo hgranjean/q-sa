@@ -1,5 +1,6 @@
 ﻿using Atum.Domain.Common;
 using Atum.Utility.XML;
+using Microsoft.Office.Interop.Word;
 using SurveyWeb.Models;
 using SurveyWeb.Repository;
 using SurveyWeb.Services;
@@ -32,12 +33,12 @@ namespace SurveyWeb.Controllers
         }
 
 
-        public ActionResult Standard(int? id)
-        {
-            StandardViewModels model = new StandardViewModels();
+        //public ActionResult Standard(int? id)
+        //{
+        //    StandardViewModels model = new StandardViewModels();
 
-            return View(model);        
-        }
+        //    return View(model);        
+        //}
 
         /// <summary>
         /// Standard Content
@@ -79,8 +80,17 @@ namespace SurveyWeb.Controllers
             model.StandardTypes = modelStandardTypes;
             
 
+            LoadReferenceData(model);
+
             return View(model);
         }
+
+        private void LoadReferenceData(StandardSearchViewModel model)
+        {
+            //model.StandardTypes = from value in Enumerable.Range(0, 2)
+            //                          select value.ToString();
+        }
+
 
         [HttpPost]
         public ActionResult Documents(StandardSearchViewModel model) 

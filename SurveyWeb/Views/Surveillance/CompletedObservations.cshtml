@@ -73,14 +73,14 @@
 
 <h2 class="section-header">My observations</h2>
 
-<div style="display: table; table-layout: fixed; width: 900px">
+<div style="display: table; table-layout: fixed; width: 100%">
     <div style="display: table-row">
         <div style="display: table-cell; width: 5%">##</div>
         <div style="display: table-cell; width: 50%">Observation</div>
-        <div style="display: table-cell; width: 15%">Status</div>
+        <div style="display: table-cell; width: 10%">Status</div>
         <div style="display: table-cell; width: 10%">Assigned To</div>
         <div style="display: table-cell; width: 10%">Photo</div>
-        <div style="display: table-cell; width: 10%">&nbsp;</div>
+        <div style="display: table-cell; width: 15%">&nbsp;</div>
     </div>
 
 
@@ -104,16 +104,19 @@
                 &nbsp;
             </div>
             <div style="display: table-cell; padding-bottom: 5px">
-                <ul class="actionmenu">
-                    <li>
-                        <a href="#" style="width: 100px;" class="btn btn-default">Action</a>
-                        <ul>                            
-                            <li><a class="responseDelete btn btn-default" style="width: 100px;" data-ng-href="0" href="#">Delete</a></li>
-                            <li>@Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = 0 }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
-                            <li>@Html.ActionLink("Assign To", "AssignTo", new { id = 0 }, new { @class = "btn btn-default", style = "width: 100px;" })</li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-original-title="" title=""><i class="fa"></i> Action</button>
+                    <button type="button" class="btn btn-default active dropdown-toggle" data-toggle="dropdown" data-original-title="" title="">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = 0 }, new { style = "width: 100px;" })</li>
+                        <li>@Html.ActionLink("Assign To", "AssignTo", new { id = 0 }, new { style = "width: 100px;" })</li>
+                        <li class="divider"></li>
+                        <li><a class="responseDelete" style="width: 100px;" data-ng-href="0" href="#">Delete</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     }
