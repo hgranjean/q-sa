@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using Rules.Domain;
 using Rules.Domain.Vocabulary;
 using Rules.WebEditor.Models;
+using Rules.WebEditor.Models.Actions;
 
 namespace Rules.WebEditor.Controllers
 {  
@@ -190,5 +191,12 @@ namespace Rules.WebEditor.Controllers
 
             return Json(str, JsonRequestBehavior.AllowGet); // need the AllowGet option to return data to a GET request
         }
+
+        public ActionResult EditAction(string id, string type)
+        {
+            return PartialView("_SendMailActionView", new SendMailActionViewModel(null));
+        }
     }
+
+    
 }

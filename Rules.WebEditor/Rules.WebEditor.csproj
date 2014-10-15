@@ -304,6 +304,7 @@
     <Content Include="Views\Shared\EditorTemplates\Expression.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SimpleRuleSetViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SendMailActionViewModel.cshtml" />
+    <Content Include="Views\Home\_SendMailActionView.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
