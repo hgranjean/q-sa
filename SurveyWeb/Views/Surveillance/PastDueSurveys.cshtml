@@ -9,19 +9,29 @@
 <h2 class="section-header">Tasks</h2>
 
 @if (ViewBag.ShowTeamMemberContent || ViewBag.ShowManagerContent)
-{
-
-    <div>
+{   
+    <div style="display: table; table-layout: fixed; width: 100%">
+        <div style="display: table-row">
+            <div style="display: table-cell; width: 40%">Task</div>
+            <div style="display: table-cell; width: 45%">Template</div>
+            <div style="display: table-cell; width: 15%">Due</div>
+        </div>
         @foreach (var item in Model.SurveysByDate.Keys)
         {
-            <h3>@Html.Label(DateTimeUtils.GetGroupName(item))</h3>
-            <div>
-                @foreach (var survey in Model.SurveysByDate[item])
-                {
-                    <div>@Html.ActionLink(@survey.Item1.Event.Title + " - " + survey.Item2.Title, "SurveyDelivery", new { id = survey.Item2.ID }) - @Html.ValueFor(m => @survey.Item1.Event.Start, "{0:dd/MM/yyyy}")</div>
-                }
+            <div style="display: table-row">
+                <div style="display: table-cell; width: 40%"><b>@Html.Label(DateTimeUtils.GetGroupName(item))</b></div>
+                <div style="display: table-cell; width: 45%">&nbsp;</div>
+                <div style="display: table-cell; width: 15%">&nbsp;</div>
             </div>
+            
+            foreach (var survey in Model.SurveysByDate[item])
+            {
+                <div style="display: table-row">
+                    <div style="display: table-cell; width: 40%">@Html.ActionLink(@survey.Item1.Event.Title, "SurveyDelivery", new {id = survey.Item2.ID})</div>
+                    <div style="display: table-cell; width: 45%">@survey.Item2.Title</div>
+                    <div style="display: table-cell; width: 15%">@Html.ValueFor(m => @survey.Item1.Event.Start, "{0:dd/MM/yyyy}")</div>
+                </div>
+            }
         }
-        
     </div>
 }
