@@ -196,6 +196,13 @@ namespace Rules.WebEditor.Controllers
         {
             return PartialView("_SendMailActionView", new SendMailActionViewModel(null));
         }
+
+        [Route("~/Home/SaveSendMailAction")]
+        [HttpPost]
+        public ActionResult SaveSendMailAction()
+        {
+            return View("Index");
+        }
     }
 
     
