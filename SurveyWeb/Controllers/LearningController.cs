@@ -55,9 +55,9 @@ namespace SurveyWeb.Controllers
 
             if (Request.IsAjaxRequest())
             {
-                return PartialView("_ObservationClass", model);
+                return PartialView("_ObservationClass", viewModel);
             }
-            return View(model);
+            return View(viewModel);
         }
 
         //public ActionResult NBTrainingDocument(string chapterId, object dummy)
