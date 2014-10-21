@@ -20,11 +20,11 @@
         </div>
         @foreach (var item in Model.SurveysByDate.Keys)
         {
-            <div style="display: table-row">
+            @*<div style="display: table-row">
                 <div style="display: table-cell; width: 50%"><b>@Html.Label(DateTimeUtils.GetGroupName(item))</b></div>
                 <div style="display: table-cell; width: 35%">&nbsp;</div>
                 <div style="display: table-cell; width: 15%">&nbsp;</div>
-            </div>
+            </div>*@
 
             foreach (var survey in Model.SurveysByDate[item])
             {
