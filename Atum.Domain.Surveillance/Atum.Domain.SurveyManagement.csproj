@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Domain\EventUser.cs" />
     <Compile Include="Domain\SurveyManagement\Event.cs" />
+    <Compile Include="Domain\SurveyManagement\EventType.cs" />
     <Compile Include="Domain\SurveyManagement\ResponseEntry.cs" />
     <Compile Include="Domain\SurveyManagement\SurveillanceSchedule.cs" />
     <Compile Include="Domain\SurveyManagement\Assessment.cs" />

@@ -16,7 +16,7 @@ namespace Atum.Domain.SurveyManagement
         public DateTime End { get; set; }
         public string SurveyId { get; set; }
         public SurveyEntry Survey { get; set; }
-        public int EventTypeId { get; set; }
+        public EventType EventTypeId { get; set; }
 
         // public string UserId { get; set; }
         // public AspNetUser User { get; set; }
