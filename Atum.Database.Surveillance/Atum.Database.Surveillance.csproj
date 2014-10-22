@@ -154,6 +154,12 @@
     <Compile Include="Migrations\201407282000021_DbMigration9.Designer.cs">
       <DependentUpon>201407282000021_DbMigration9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410210242190_DbMigration10.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Migrations\201410210242190_DbMigration10.Designer.cs">
+      <DependentUpon>201410210242190_DbMigration10.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AtumSurveillanceContext.cs" />
     <Compile Include="Models\Mapping\EventUserMap.cs" />
@@ -192,6 +198,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>aspnet-SurveyWeb.mdf</DependentUpon>
     </Content>
+    <Content Include="DbScripts\DbMigration10.sql" />
     <Content Include="DbScripts\DbMigration2.sql" />
     <Content Include="DbScripts\DbMigration3.sql" />
     <Content Include="DbScripts\DbMigration4.sql" />
@@ -245,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407282000021_DbMigration9.resx">
       <DependentUpon>201407282000021_DbMigration9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410210242190_DbMigration10.resx">
+      <DependentUpon>201410210242190_DbMigration10.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

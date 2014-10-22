@@ -28,6 +28,9 @@ namespace Atum.Database.Surveillance.Models.Mapping
                 .IsRequired();
             
             this.Property(t => t.End);
+
+            this.Property(t => t.EventTypeId)
+                .IsRequired();
             
             // Table & Column Mappings
             this.ToTable("Events");
@@ -36,6 +39,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.Property(t => t.Start).HasColumnName("Start");
             this.Property(t => t.End).HasColumnName("End");
             this.Property(t => t.SurveyId).HasColumnName("SurveyId").IsRequired().HasMaxLength(128);
+            this.Property(t => t.EventTypeId).HasColumnName("EventTypeId").IsRequired();
             // this.Property(t => t.UserId).HasColumnName("UserId").IsRequired().HasMaxLength(128);
             
             this.HasRequired(t => t.Survey)
