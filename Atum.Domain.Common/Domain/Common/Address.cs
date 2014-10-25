@@ -43,9 +43,9 @@ namespace Atum.Domain.Common
             return sb.ToString();
         }
 
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override void SetId(long id)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -36,9 +36,5 @@ namespace Atum.Domain.Security
         #endregion
 
 
-        protected override void SetId(long id)
-        {
-            throw new Exception("The method or operation is not implemented.");
-        }
     }
 }

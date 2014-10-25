@@ -16,9 +16,5 @@ namespace Atum.Domain.Common
         public string Name { get; set; }
         public string Description { get; set; }
 
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

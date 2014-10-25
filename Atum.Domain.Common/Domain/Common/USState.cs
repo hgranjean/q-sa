@@ -47,10 +47,10 @@ namespace Atum.Domain.Common
             }
         }
 
-        protected override void SetId(long id)
-        {
-            ID = id;
-        }
+        //protected override void SetId(long id)
+        //{
+        //    Id = id;
+        //}
         
         public override string ToString()
         {

@@ -1,12 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web;
+using Atum.Domain.SurveyManagement;
 
 namespace Atum.Domain.Test
 {
     [TestClass]
     public class QualityObservationTest
     {
+        
         [TestMethod]
         public void TestObservation()
         {
@@ -23,13 +25,28 @@ namespace Atum.Domain.Test
              * Every Observation/Survey Question Response will be associated with a Person/User.  
             */
 
-            //Atum.Domain.Surveillance.Response
+            //Such observations will be modeled as sets of Questions within a Survey or (Surveillance)
+            //Observation=>Question, Observation=>Expression, Observation=>Standard
+            string userObservation = "Dust on surface";
+            string violatedGuidelineDescriptorOrId = "EP-123";//or other descriptor
 
-            //An Observation implies that that data can be bound to and Expression derived from from a Quality Control Procedure or Standard that can be evaluated to true or false
+            //An Observation implies that that data can be bound to and Expression derived 
+            //from a Quality Control Procedure or Standard that can be evaluated to true or false (not complying to a Standard or Guideline)
             //Where the results will indicate compliance (or non-compliance)
 
-            //Such an observations will be modeled as sets of Questions within a Survey or (Surveillance)
-            //Observation=>Question, Observation=>Expression, Observation=>Standard
+            //Validate Guideline = We need a violated guideline (e.g. Element of Performance)
+            Question questionGuidelineViolated = new Question(violatedGuidelineDescriptorOrId, QuestionType.SelectOne,new QuestionGroup(""),violatedGuidelineDescriptorOrId);
+
+            //An observation is an Atum.Domain.Surveillance.Response
+            ResponseChoice responseChoiceUserObservation = new ResponseChoice(userObservation);
+            Response responseObservation = new Response(questionGuidelineViolated, responseChoiceUserObservation);
+
+            //Surveillance
+            //Is there a currently scheduled surveillance 
+            SurveillanceSchedule survSched = new SurveillanceSchedule();
+
+            Atum.Domain.QualityManagement.Surveillance surveillance = new QualityManagement.Surveillance(new Survey());
+            
             
 
             //An observation is performed by a person 
@@ -46,6 +63,6 @@ namespace Atum.Domain.Test
 
         }
 
-
+ 
     }
 }

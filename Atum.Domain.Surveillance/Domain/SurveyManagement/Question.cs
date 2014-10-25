@@ -9,20 +9,34 @@ namespace Atum.Domain.SurveyManagement
     [Serializable]    
     public class Question : DomainObject
     {
-        public Question(string questionText, QuestionType qType)
+         public Question()
+        {}
+
+        public Question(string questionText, QuestionType qType, QuestionGroup qGroup, string referenceElementId)
         {
             this.Text = questionText;
             this.QuestionType = qType;
+            this.ReferenceElementId = referenceElementId;
+            //TODO: Resolve null group
+            if (qGroup != null)
+            {
+                this.QuestionGroup = qGroup;
+                this.GroupNumber = qGroup.Number;
+
+            }
         }
 
-        public Question()
-        {
-            
-        }
-
+       
         public string Text { get; set; }
         public int Number { get; set; }
         public int Rank { get; set; }
+        public string ReferenceElementId { get; set; }
+        public QuestionGroup QuestionGroup { get; set; }
+        public int GroupNumber { get; set; }
+        public string Label { get; set; }
+        public QuestionType QuestionType { get; set; }
+        public ResponseChoices ResponseChoices { get; set; }
+        
         public TOCElement BasisReference { get; set; }
 
         [XmlIgnore]
@@ -38,13 +52,7 @@ namespace Atum.Domain.SurveyManagement
                     BasisReference = new TOCElement(value);
             }
         }
-        public QuestionType QuestionType { get; set; }
-        public ResponseChoices ResponseChoices { get; set; }
 
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
 
         public ResponseChoice AddChoice(string choiceText)
         {
@@ -131,6 +139,9 @@ namespace Atum.Domain.SurveyManagement
             throw new NotImplementedException();
         }
 
-        public string Label { get; set; }
+
+
+
+
     }
 }

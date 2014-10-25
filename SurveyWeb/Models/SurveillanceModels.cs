@@ -42,7 +42,7 @@ namespace SurveyWeb.Models
                 if (this.Facilities == null)
                     return default(Facility);
                 
-                return this.Facilities.FirstOrDefault(m => m.ID == FacilityId);
+                return this.Facilities.FirstOrDefault(m => m.Id == FacilityId);
             }
         }
 
@@ -68,8 +68,8 @@ namespace SurveyWeb.Models
         public TracerViewModel(Survey survey)
         {
             this._survey = survey;
-            this.SurveyId =(int)survey.ID;
-            this.QuestionGroups = new QuestionGroupsViewModel((int)survey.ID, survey.QuestionGroups);
+            this.SurveyId =(int)survey.Id;
+            this.QuestionGroups = new QuestionGroupsViewModel((int)survey.Id, survey.QuestionGroups);
             this.SurveyDate = DateTime.Now;
             this.SurveyTypeId = (int)survey.SurveyType;
             this.SurveyTitle = survey.Title;

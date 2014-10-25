@@ -10,9 +10,9 @@ namespace Atum.Domain.QualityManagement
     public class Observation : Response
     {
         public Person Person { get; private set; }
-
-        public Observation(Person person, string observationTarget)
-            : base(new Question(observationTarget, QuestionType.SelectOne),new ResponseChoice(""))
+       
+        public Observation(Person person, string observationTarget,string referenceElementKey)
+            : base(new Question(observationTarget, QuestionType.SelectOne, null, referenceElementKey), new ResponseChoice(""))
         {
             this.Person = person;
         }

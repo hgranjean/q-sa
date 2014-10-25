@@ -270,7 +270,7 @@ namespace SurveyWeb.Controllers
 
                     // TODO: remove these assignments
                     tracerModel.ResponseId = response;
-                    tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId).Title;
+                    tracerModel.SurveyTitle = surveys.FirstOrDefault(m => m.Id == tracerModel.SurveyId).Title;
                     models.Add(tracerModel);
                 }
                 catch (FileNotFoundException ex)
@@ -308,12 +308,12 @@ namespace SurveyWeb.Controllers
 
                     // TODO: remove these assignments
                     tracerModel.ResponseId = response;
-                    var survey = surveys.FirstOrDefault(m => m.ID == tracerModel.SurveyId);
+                    var survey = surveys.FirstOrDefault(m => m.Id == tracerModel.SurveyId);
                     tracerModel.SurveyTitle = survey.Title;
                     
                     foreach (var question in tracerModel.Responses.Where(m => m != null))
                     {
-                        models.Add(new ObservationViewModel(new Observation(tracerModel.Surveyor, question.Response.Question, question.Response.Answer)));
+                        models.Add(new ObservationViewModel(new Observation(tracerModel.Surveyor, question.Response.Question(), question.Response.Answer())));
                     }                    
                     
                 }
@@ -563,7 +563,7 @@ namespace SurveyWeb.Controllers
                     {
                         var responseId = (int)value.ConvertTo(typeof(int));
 
-                        var choice = question.ResponseChoices.FirstOrDefault(r => r.ID == responseId);
+                        var choice = question.ResponseChoices.FirstOrDefault(r => r.Id == responseId);
                         if (choice != default(ResponseChoice))
                         {
                             var response = new Response(question, choice);
@@ -615,7 +615,7 @@ namespace SurveyWeb.Controllers
             
             var responseEntry = _surveillanceService.AddResponse(userId);            
 
-            viewModel.ResponseId = responseEntry.Id;
+            viewModel.ResponseId = responseEntry.Id.ToString();
 
             _persistenceService.SaveTracer(viewModel);
 

@@ -25,7 +25,8 @@ namespace Atum.Domain.SurveyManagement
 
         public Question AddQuestion(string questionText, QuestionType qType)
         {
-            var retVal = new Question(questionText, qType);
+            //Question needs Text, Type, Group, Basis Element (e.g. Element of Peformance)
+            var retVal = new Question(questionText, qType,null,null);
             retVal = setTypeDefaults(retVal);
             EnsureQuestions();
             

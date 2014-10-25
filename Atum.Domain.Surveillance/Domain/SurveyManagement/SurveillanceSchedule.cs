@@ -7,10 +7,6 @@ namespace Atum.Domain.SurveyManagement
     [Serializable]
     public class SurveillanceSchedule : DomainObject
     {
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
 
         public Frequency Frequency { get; set; }
 

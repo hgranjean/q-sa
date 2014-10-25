@@ -67,7 +67,7 @@ namespace SurveyWeb.Services
         /// <returns></returns>
         public Survey GetSurvey(int id)
         {
-            return GetSurveys().FirstOrDefault(survey => survey.ID == id);
+            return GetSurveys().FirstOrDefault(survey => survey.Id == id);
         }
 
 
@@ -82,7 +82,7 @@ namespace SurveyWeb.Services
 
             var appPath = _store.GetPath(StoreType.Surveys);
 
-            var fileName = String.Concat("survey", survey.ID, ".xml");
+            var fileName = String.Concat("survey", survey.Id, ".xml");
 
             var settings = new XmlWriterSettings {Indent = true};
             
@@ -123,7 +123,7 @@ namespace SurveyWeb.Services
 
         private void SetSurveyId(Survey survey)
         {
-            if (survey.ID == DomainObject.DefaultIdentifier)
+            if (survey.Id == DomainObject.DefaultIdentifier)
             {
                 survey.AssignNextId(EnumerateSurveys().Count());
             }
@@ -165,14 +165,14 @@ namespace SurveyWeb.Services
 
         public void DeleteSurvey(string id)
         {   
-            var toDelete = surveys.FirstOrDefault(survey => survey.ID == Int32.Parse(id));
+            var toDelete = surveys.FirstOrDefault(survey => survey.Id == Int32.Parse(id));
 
             if (surveys.Contains(toDelete))
             {
                 surveys.Remove(toDelete);
             }
             
-            var fullPath = Path.Combine(_store.GetPath(StoreType.Surveys), "survey" + toDelete.ID + ".xml");
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Surveys), "survey" + toDelete.Id + ".xml");
             
             if (File.Exists(fullPath))
             {

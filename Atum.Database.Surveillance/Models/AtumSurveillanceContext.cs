@@ -30,9 +30,13 @@ namespace Atum.Database.Surveillance.Models
         public DbSet<Event> Events { get; set; }
         public DbSet<SurveyEntry> Surveys { get; set; }
         public DbSet<ResponseEntry> Responses { get; set; }
-        // public DbSet<SurveyEvent> SurveyEvents { get; set; }
+        public DbSet<Audit> Audits { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<QuestionGroup> QuestionGroups { get; set; }
+        public DbSet<ResponseChoice> ResponseChoices { get; set; }
         public DbSet<EventUser> EventUsers { get; set; }
         public DbSet<Person> Persons { get; set; }
+        // public DbSet<SurveyEvent> SurveyEvents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,6 +51,11 @@ namespace Atum.Database.Surveillance.Models
             modelBuilder.Configurations.Add(new SurveyMap());
             modelBuilder.Configurations.Add(new EventUserMap());
             modelBuilder.Configurations.Add(new ResponseMap());
+            modelBuilder.Configurations.Add(new AuditMap());
+            modelBuilder.Configurations.Add(new QuestionMap());
+            modelBuilder.Configurations.Add(new QuestionGroupMap());
+            modelBuilder.Configurations.Add(new ResponseChoiceMap());
+
         }
     }
 }

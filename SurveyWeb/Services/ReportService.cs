@@ -90,7 +90,7 @@ namespace SurveyWeb.Services
                         }
                         var completionPercent = ((decimal)responseCount / (decimal)qIndex) * 100m;
 
-                        elementsByAreas[areas.FindIndex(area => area.ID == survey.AreaId), questionGroup.Number] += completionPercent; // TODO aggregate
+                        elementsByAreas[areas.FindIndex(area => area.Id == survey.AreaId), questionGroup.Number] += completionPercent; // TODO aggregate
                     }
                 }
                 catch (Exception ex)

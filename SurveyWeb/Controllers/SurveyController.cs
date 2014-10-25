@@ -229,7 +229,7 @@ namespace SurveyWeb.Controllers
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
             
-            var survey = _persistenceService.GetSurveys().FirstOrDefault(m => m.ID == id);
+            var survey = _persistenceService.GetSurveys().FirstOrDefault(m => m.Id == id);
 
             var model = new SurveyViewModel(survey);
 
@@ -279,7 +279,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult DeleteSurvey(SurveyViewModel model)
         {            
-            _persistenceService.DeleteSurvey(model.Survey.ID.ToString());
+            _persistenceService.DeleteSurvey(model.Survey.Id.ToString());
 
             return RedirectToAction("Surveys");
         }

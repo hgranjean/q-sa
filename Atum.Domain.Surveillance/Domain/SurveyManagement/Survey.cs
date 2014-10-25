@@ -34,9 +34,9 @@ namespace Atum.Domain.SurveyManagement
             this.Title = title;
         }
 
-        protected override void SetId(long id)
+        protected void SetId(long id)
         {
-            ID = id;
+            Id = id;
         }
 
         public string Title { get; set; }
@@ -167,7 +167,7 @@ namespace Atum.Domain.SurveyManagement
                 return false;
             }
 
-            return other.ID == this.ID;
+            return other.Id == this.Id;
         }
 
         public void RenumberQuestions()

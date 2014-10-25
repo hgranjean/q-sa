@@ -11,14 +11,8 @@ namespace Atum.Domain.Common
     {
         public Department(string name, int Id)
         {
-            this.SetId(Id);
+            this.Id = Id;
             this.Name = name;
-        }
-
-
-        protected override void SetId(long id)
-        {
-            ID = id;
         }
 
         public string Name { get; set; }

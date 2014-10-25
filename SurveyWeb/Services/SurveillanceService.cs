@@ -103,5 +103,24 @@ namespace SurveyWeb.Services
         {
             _repository.DeleteHospital(hospitalId);
         }
+
+
+        
+        //Audits - Completed Surveys
+        internal void AddAudit(Audit audit)
+        {
+            _repository.AddAudit(audit);
+
+        }
+
+        internal IEnumerable<Audit> GetAudits()
+        {
+            return _repository.GetAudits();
+        }
+
+        internal void DeleteAudit(string auditId)
+        {
+            _repository.DeleteAudit(auditId);
+        }
     }   
 }

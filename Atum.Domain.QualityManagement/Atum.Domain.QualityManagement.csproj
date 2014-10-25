@@ -42,6 +42,8 @@
     <Compile Include="Domain\QualityManagement\Healthcare\Area.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Category.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\FollowUp.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\InternalGuideline\GuidelineElement.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\InternalGuideline\QualityGuideline.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\Chapter.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\ElementOfPerformance.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\Standard.cs" />
@@ -67,6 +69,7 @@
       <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

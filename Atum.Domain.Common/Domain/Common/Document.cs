@@ -22,9 +22,5 @@ namespace Atum.Domain.Common
 			StorageId = storageId;
 		}
 
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

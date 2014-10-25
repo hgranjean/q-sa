@@ -21,9 +21,9 @@ namespace Atum.Domain.Business
         public double Latitude { get { return _latitude; } set { _latitude = value; } }
         public double Longitude { get { return _longitude; } set { _longitude = value; } }
 
-        protected override void SetId(long Id)
-        {
-            ID = Id;
-        }
+        //protected override void SetId(long Id)
+        //{
+        //    Id = Id;
+        //}
     }
 }

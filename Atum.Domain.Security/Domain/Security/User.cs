@@ -31,9 +31,5 @@ namespace Atum.Domain.Security
         public Permission[] Permissions { get { return _permissions; } set { _permissions = value; } }
         public Group[] Groups { get { return _groups; } set { _groups = value; } }
 
-        protected override void SetId(long id)
-        {
-            throw new Exception("The method or operation is not implemented.");
-        }
     }
 }

@@ -19,7 +19,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.Property(t => t.Id)
                 .IsRequired()
                 .HasMaxLength(128);
-            
+
             // Table & Column Mappings
             this.ToTable("Responses");
             this.Property(t => t.Id).HasColumnName("Id");

@@ -160,11 +160,20 @@
     <Compile Include="Migrations\201410210242190_DbMigration10.Designer.cs">
       <DependentUpon>201410210242190_DbMigration10.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410251456156_DbMigration11.cs" />
+    <Compile Include="Migrations\201410251456156_DbMigration11.Designer.cs">
+      <DependentUpon>201410251456156_DbMigration11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AtumSurveillanceContext.cs" />
+    <Compile Include="Models\Mapping\AuditResponseMap.cs" />
+    <Compile Include="Models\Mapping\QuestionMap.cs" />
     <Compile Include="Models\Mapping\EventUserMap.cs" />
     <Compile Include="Models\Mapping\PersonMap.cs" />
+    <Compile Include="Models\Mapping\QuestionGroupMap.cs" />
+    <Compile Include="Models\Mapping\ResponseChoiceMap.cs" />
     <Compile Include="Models\Mapping\ResponseMap.cs" />
+    <Compile Include="Models\Mapping\AuditMap.cs" />
     <Compile Include="Models\Mapping\SurveyMap.cs" />
     <Compile Include="Models\Mapping\AspNetRoleMap.cs" />
     <Compile Include="Models\Mapping\AspNetUserClaimMap.cs" />
@@ -255,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410210242190_DbMigration10.resx">
       <DependentUpon>201410210242190_DbMigration10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410251456156_DbMigration11.resx">
+      <DependentUpon>201410251456156_DbMigration11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -36,7 +36,7 @@ namespace SurveyWeb.Models
                 this.Survey.AddQuestionGroup("One");
             }
 
-            this.QuestionGroupsViewModel = new QuestionGroupsViewModel((int)this.Survey.ID, this.Survey.QuestionGroups);
+            this.QuestionGroupsViewModel = new QuestionGroupsViewModel((int)this.Survey.Id, this.Survey.QuestionGroups);
         }
 
         public Survey GetUpdatedSurvey()

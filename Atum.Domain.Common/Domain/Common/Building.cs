@@ -16,14 +16,14 @@ namespace Atum.Domain.Common
 
         public Building(string name, int Id)
         {
-            this.SetId(Id);
+            this.Id = Id;
             this.Name = name;
         }
 
-        protected override void SetId(long id)
-        {
-            ID = id;
-        }
+        //protected override void SetId(long id)
+        //{
+        //    Id = id;
+        //}
 
         public string Name { get; set; }
 

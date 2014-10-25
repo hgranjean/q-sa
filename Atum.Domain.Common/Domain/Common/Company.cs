@@ -19,9 +19,9 @@ namespace Atum.Domain.Common
             
         }
 
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override void SetId(long id)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

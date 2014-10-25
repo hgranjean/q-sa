@@ -15,9 +15,5 @@ namespace Atum.Domain.Common
             Value = value;
         }
 
-        protected override void SetId(long id)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

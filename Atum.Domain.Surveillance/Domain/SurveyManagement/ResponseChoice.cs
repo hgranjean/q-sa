@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-
+﻿using Atum.Domain.Basis;
 using System;
-using Atum.Domain.Basis;
+using System.Collections.Generic;
 
 namespace Atum.Domain.SurveyManagement
 {
@@ -14,19 +13,20 @@ namespace Atum.Domain.SurveyManagement
 
         public ResponseChoice(string choiceText)
         {
-            // TODO: Complete member initialization
             this.Text = choiceText;
         }
         public string Text { get; set; }
 
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
+        public string Value { get; set; }
+
+        public string Number { get; set; }
+
+        public string Key { get; set; }
+
 
         public void SetIdInternal(long id)
         {
-            ID = id;
+            Id = id;
         }
     }
 }

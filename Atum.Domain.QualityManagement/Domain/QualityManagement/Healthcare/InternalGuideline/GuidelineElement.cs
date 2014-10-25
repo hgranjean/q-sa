@@ -1,14 +1,12 @@
-using Atum.Domain.Basis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atum.Domain.Common
+namespace Atum.Domain.Domain.QualityManagement.Healthcare.InternalGuideline
 {
-    [Serializable]
-    public class Floor : DomainObject
+    public class GuidelineElement
     {
     }
 }

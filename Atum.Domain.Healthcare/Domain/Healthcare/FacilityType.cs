@@ -13,10 +13,6 @@ namespace Atum.Domain.Healthcare
         {
         }
     
-        //public FacilityType(string guid)
-        //    : base(guid)
-        //{
-        //}
 
 		//Attributes go here.
 		public long Value { get; set; }
@@ -26,9 +22,5 @@ namespace Atum.Domain.Healthcare
 		
 		
 
-       protected override void SetId(long id)
-       {
-           throw new NotImplementedException();
-       }
     }
 }

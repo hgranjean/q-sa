@@ -58,6 +58,7 @@
     <Compile Include="QualityAnalysisTest.cs" />
     <Compile Include="QualityControlTest.cs" />
     <Compile Include="QualityObservationTest.cs" />
+    <Compile Include="StandardGuidelines\GuidelinesTest.cs" />
     <Compile Include="SurveillanceWorkflowTest.cs" />
     <Compile Include="SurveyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

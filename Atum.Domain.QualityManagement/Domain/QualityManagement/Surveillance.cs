@@ -1,10 +1,11 @@
-﻿using Atum.Domain.Common;
+﻿using Atum.Domain.Basis;
+using Atum.Domain.Common;
 using Atum.Domain.SurveyManagement;
 using System;
 
 namespace Atum.Domain.QualityManagement
 {
-    public class Surveillance
+    public class Surveillance : DomainObject
     {   
         public Surveillance()
         {
@@ -26,5 +27,6 @@ namespace Atum.Domain.QualityManagement
         public Survey Survey { get; set; }
 
         public DateTime CreatedDate { get; set; }
+
     }
 }

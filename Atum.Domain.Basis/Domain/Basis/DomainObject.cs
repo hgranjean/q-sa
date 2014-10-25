@@ -9,11 +9,11 @@ namespace Atum.Domain.Basis
 	{
 	    public const int DefaultIdentifier = -1;
 
-	    public long ID
+	    public long Id
 		{
 		    get;
 		    set;
         }
-        protected abstract void SetId(long id);
+        //protected abstract void SetId(long id);
 	}
 }

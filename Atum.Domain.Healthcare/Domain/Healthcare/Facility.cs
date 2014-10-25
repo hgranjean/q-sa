@@ -22,14 +22,10 @@ namespace Atum.Domain.Healthcare
 
         public Facility(string name, int Id)
         {
-           this.SetId(Id);
+           this.Id=Id;
             this.Name = name;
         }
 
-        protected override void SetId(long id)
-        {
-            ID = id;
-        }
 
     	//Attributes go here.
 		public string Name { get; set; }

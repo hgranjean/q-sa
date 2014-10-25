@@ -48,6 +48,12 @@ namespace SurveyWeb.Repository
         void DeleteHospital(string hospitalId);
         
         void DeleteResponse(string responseId);
+
+        void AddAudit(Audit audit);
+
+        IEnumerable<Audit> GetAudits();
+
+        void DeleteAudit(string auditId);
     }
 
     public class SurveillanceRepository : ISurveillanceRepository
@@ -201,5 +207,41 @@ namespace SurveyWeb.Repository
 
             _context.SaveChanges();            
         }
+
+        //Audit Persistence
+        public IEnumerable<Audit> GetAudits()
+        {
+            return _context.Audits;
+        }
+
+        public Audit AddAudit(Audit Audit)
+        {
+            _context.Audits.Add(Audit);
+            _context.SaveChanges();
+            return _context.Audits.FirstOrDefault(m => m.Id == Audit.Id);
+        }
+
+        public void UpdateAudit(Audit Audit)
+        {
+            _context.Audits.Attach(Audit);
+            _context.Entry(Audit).CurrentValues.SetValues(Audit);
+            _context.Entry(Audit).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void DeleteAudit(string   auditId)
+        {
+            var toDelete = _context.Audits.FirstOrDefault(m => m.Id == int.Parse(auditId));
+
+            _context.Audits.Remove(toDelete);
+
+            _context.SaveChanges();
+        }
+        
+        void ISurveillanceRepository.AddAudit(Audit audit)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

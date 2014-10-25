@@ -332,5 +332,16 @@
         </QuestionGroup>
       </value>
     </item>
+    <item>
+      <key>
+        <int>4</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>New Group 4</Title>
+          <Number>4</Number>
+        </QuestionGroup>
+      </value>
+    </item>
   </QuestionGroups>
 </Survey>

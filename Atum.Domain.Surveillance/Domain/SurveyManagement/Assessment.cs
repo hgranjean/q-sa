@@ -15,15 +15,10 @@ namespace Atum.Domain.SurveyManagement
 
         public Survey AdministeredSurvey { get; set; }
         public Survey.QuestionEnumerator Enumerator { get; set; }
-        // public SurveyResponse Responses { get; set; }
 
         public Assessment()
         {   
         }
 
-        protected override void SetId(long id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
