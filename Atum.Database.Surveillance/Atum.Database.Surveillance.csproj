@@ -208,6 +208,7 @@
       <DependentUpon>aspnet-SurveyWeb.mdf</DependentUpon>
     </Content>
     <Content Include="DbScripts\DbMigration10.sql" />
+    <Content Include="DbScripts\DbMigration11.sql" />
     <Content Include="DbScripts\DbMigration2.sql" />
     <Content Include="DbScripts\DbMigration3.sql" />
     <Content Include="DbScripts\DbMigration4.sql" />

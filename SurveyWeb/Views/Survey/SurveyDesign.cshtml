@@ -17,7 +17,7 @@
     <fieldset>
         <legend>Edit Template</legend>
 
-        @Html.HiddenFor(m => m.Survey.ID)
+        @Html.HiddenFor(m => m.Survey.Id)
         @Html.HiddenFor(m => m.Survey.Guid)
 
         <div style="display: table">
@@ -81,7 +81,7 @@
        t                     type: 'GET',
                             url: '@Url.Content("~/Survey/EditQuestion")',
                             data: {
-                                surveyId: "@Model.Survey.ID",
+                                surveyId: "@Model.Survey.Id",
                                 questionId: parentId,
                             },
                             success: function (data) {
@@ -120,7 +120,7 @@
                                     type: 'POST',
                                     url: '@Url.Content("~/Survey/DeleteQuestion")',
                                     data: {
-                                        surveyId: "@Model.Survey.ID",
+                                        surveyId: "@Model.Survey.Id",
                                         questionGroupId: parentGroupId,
                                         questionId: parentId
                                     },
@@ -148,7 +148,7 @@
                             url: '@Url.Content("~/Survey/AddQuestion")',
                             dataType: 'html',
                             data: {
-                                surveyId: "@Model.Survey.ID",
+                                surveyId: "@Model.Survey.Id",
                                 questionGroupId: parentGroupId,
                             },
                             success: function (questionData) {
@@ -173,7 +173,7 @@
                 });
         </script>
 
-            <h3 style="column-span: all;">Elements @Html.ActionLink("+", "CreateQuestionGroup", new { surveyId = Model.Survey.ID })</h3>
+            <h3 style="column-span: all;">Elements @Html.ActionLink("+", "CreateQuestionGroup", new { surveyId = Model.Survey.Id })</h3>
             <div style="display: table-row;">
                 <div style="display: table-cell; width: 100%">
                     @Html.EditorFor(m => m.QuestionGroupsViewModel)

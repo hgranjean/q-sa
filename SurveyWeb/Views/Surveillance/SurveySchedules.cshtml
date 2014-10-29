@@ -29,7 +29,7 @@
             foreach (var survey in Model.SurveysByDate[item])
             {
                 <div style="display: table-row">
-                    <div style="display: table-cell; width: 50%">@Html.ActionLink(@survey.Item1.Event.Title, "SurveyDelivery", new { id = survey.Item2.ID })</div>
+                    <div style="display: table-cell; width: 50%">@Html.ActionLink(@survey.Item1.Event.Title, "SurveyDelivery", new { id = survey.Item2.Id })</div>
                     <div style="display: table-cell; width: 35%">@survey.Item1.Event.EventTypeId</div>
                     <div style="display: table-cell; width: 15%">@Html.ValueFor(m => @survey.Item1.Event.Start, "{0:dd/MM/yyyy}")</div>
                 </div>
