@@ -41,78 +41,107 @@
     
     <fieldset>
         <legend>Surveillance</legend>
-        <div id="tracerHeader" style="display:table">
-            <div style="display: table-row;">
-                <div style="display: table-cell; width: 50%;" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FacilityId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Facilities, "Id", "Name"), "Please select...", new { @class = "form-control" })
+        <div id="tracerHeader" style="display:table; width: 100%">
+            <div style="display: table-row">
+                <div style="display: table-cell; width: 100%;">
+                    <!-- First column -->
+                    <div class="col-md-4" style="width: 50%">
+                        <div style="display: table; table-layout: fixed; width: 100%">
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; width: 100%;" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FacilityId)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Facilities, "Id", "Name"), "Please select...", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display:table-row">
+                                <div style="display:table-cell;width:100%" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FloorNumber)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.TextBoxFor(m => m.FloorNumber, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div style="display:table-row">
+                                <div style="display:table-cell;width:100%" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.BuildingId)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.DropDownListFor(m => m.BuildingId, new SelectList(Model.Buildings, "Id", "Name"), "Please select...", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div style="display:table-row">
+                                <div style="display:table-cell;width:100%" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.DropDownListFor(m => m.SurveyorId, new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div style="display:table-row">
+                                <div style="display:table-cell;width:100%" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyDate)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.TextBoxFor(m => m.SurveyDate, new { @id = "startdatepicker", @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%">&nbsp;&nbsp;</div>
-            </div>
-            
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FloorNumber)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.TextBoxFor(m => m.FloorNumber, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.AreaId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.AreaId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
-            
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.BuildingId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.BuildingId, new SelectList(Model.Buildings, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%">&nbsp;&nbsp;</div>
-            </div>
-            
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.SurveyorId, new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.DepartmentId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyDate)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.TextBoxFor(m => m.SurveyDate, new { @id = "startdatepicker", @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
+                    <!-- Second column -->
+                    <div class="col-md-4" style="width: 50%">
+                        <div style="display: table;  table-layout: fixed;width: 100%">
+                            <div style="display: table-row;">
+                                <div style="display:table-cell;width:100%" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.AreaId)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.DropDownListFor(m => m.AreaId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display:table-cell;width:100%" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.DepartmentId)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Please select...", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display:table-cell;width:100%" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display:table-cell;width:100%">&nbsp;&nbsp;</div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display:table-cell;width:100%">
+                                    &nbsp;&nbsp;
+                                </div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display:table-cell;width:100%">
+                                    &nbsp;
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div>&nbsp;</div>
         
         <div style="display: table;" class="gn-table">
             

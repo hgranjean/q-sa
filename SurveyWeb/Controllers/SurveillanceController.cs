@@ -1,4 +1,5 @@
-﻿using Atum.Domain;
+﻿using System.Diagnostics.Contracts;
+using Atum.Domain;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Security.Domain;
@@ -292,34 +293,35 @@ namespace SurveyWeb.Controllers
         private CompletedObservationsViewModel GetCompletedObservations()
         {
             var surveys = _persistenceService.GetSurveys();
+            Contract.Assert(surveys != null);
 
             // Filtering out responses by user
             var userId = User.Identity.GetUserId();
 
-            var responses = _surveillanceService.GetResponses(userId);
+            var responseIds = _surveillanceService.GetResponses(userId);
 
             var models = new List<ObservationViewModel>();
-            foreach (var response in responses)
+            foreach (var responseId in responseIds)
             {
                 try
                 {
-                    var tracerModel = _persistenceService.LoadTracer(response);
+                    var tracerModel = _persistenceService.LoadTracer(responseId);
                     LoadTracerReferenceData(tracerModel);
 
                     // TODO: remove these assignments
-                    tracerModel.ResponseId = response;
                     var survey = surveys.FirstOrDefault(m => m.Id == tracerModel.SurveyId);
+                    tracerModel.ResponseId = responseId;
                     tracerModel.SurveyTitle = survey.Title;
                     
                     foreach (var question in tracerModel.Responses.Where(m => m != null))
                     {
-                        models.Add(new ObservationViewModel(new Observation(tracerModel.Surveyor, question.Response.Question(), question.Response.Answer())));
-                    }                    
-                    
+                        var observation = new Observation(tracerModel.Surveyor, question.Response.Question(), question.Response.Answer());
+                        models.Add(new ObservationViewModel(observation));
+                    }
                 }
                 catch (FileNotFoundException ex)
                 {
-                    DebugUtil.WriteLine("Response file was not found: {0}. {1}", response, ex.ToString());
+                    DebugUtil.WriteLine("Response file was not found: {0}. {1}", responseId, ex.ToString());
                 }
             }
 
@@ -456,10 +458,7 @@ namespace SurveyWeb.Controllers
         }
 
         private IEnumerable<Person> LoadSurveyors()
-        {
-            // yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
-            // yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
-            
+        {   
             return _surveillanceService.GetPersons();
         }
 
@@ -922,6 +921,11 @@ namespace SurveyWeb.Controllers
             tracer.SurveyorId = new Guid(viewModel.AssignedTo);
             _persistenceService.SaveTracer(tracer);
             return RedirectToAction("Dashboard");
+        }
+
+        public ActionResult AddObservationPartial()
+        {
+            return PartialView("_AddObservation");
         }
     }
 }

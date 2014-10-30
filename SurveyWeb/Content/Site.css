@@ -132,7 +132,7 @@ input[type="checkbox"].input-validation-error {
     width: 200px;
 }
 
-.editor-field {
+.editor-field (min-width: 600px){
     margin-left: 200px;
 }
 
