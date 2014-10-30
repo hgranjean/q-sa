@@ -235,9 +235,18 @@ namespace SurveyWeb.Controllers
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
             var model = LoadTracerViewModel(id);
 
+            // Store model in the view bag to retrieve it in the partial controls
+            ViewBag.TracerHeaderModel = model;
+
             return View(model);
         }
 
+        public ActionResult TracerHeaderPartial()
+        {
+            var model = ViewBag.TracerHeaderModel;
+
+            return PartialView("_TracerHeaderPartial", model);
+        }
         public ActionResult CompletedSurveys()
         {
             var model = GetCompletedSurveys();
@@ -927,5 +936,7 @@ namespace SurveyWeb.Controllers
         {
             return PartialView("_AddObservation");
         }
+
+        
     }
 }
