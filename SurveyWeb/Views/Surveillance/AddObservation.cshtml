@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "AddObservation";
+}
+
+<h2>AddObservation</h2>
+
+@model SurveyWeb.Models.TracerViewModel
+@{
+    // ViewBag.Title = Model.SurveyTitle;
+}
+
+<hgroup class="title">
+    <h2>@*ViewBag.Title*@</h2>
+</hgroup>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+@Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
+
+<script>
+    $(function () {
+        $("#startdatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+        $("#enddatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+    });
+</script>
+
+@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.SurveyId)
+
+    <fieldset>
+        <legend>Surveillance</legend>
+        <div id="tracerHeader" style="display:table; width: 100%">
+            @Html.Partial("_TracerHeaderPartial", Model)
+        </div>
+
+        <div style="display: table;" class="gn-table">
+
+                @Html.Partial("_AddObservation")
+        </div>
+        <div>&nbsp;</div>
+        @if (ViewBag.IsReadOnly ?? false)
+        {
+            @Html.ActionLink("Close", "Dashboard", null, new { @class = "btn btn-default" })
+        }
+        else
+        {
+
+            <input type="submit" value="Done" class="btn btn-default" />
+            @Html.ActionLink("Reset", "SurveyDelivery", new { id = 0 })
+        }
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

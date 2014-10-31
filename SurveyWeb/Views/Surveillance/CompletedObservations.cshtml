@@ -75,7 +75,9 @@
 
 <div style="display: table; table-layout: fixed; width: 100%">
     
-    @Html.Action("AddObservationPartial")
+    <form method="GET" action="@Url.Action("AddObservation")">
+        @Html.Partial("_AddObservation")
+    </form>
 
     <div style="display: table-row">
         <div style="display: table-cell; width: 5%">##</div>

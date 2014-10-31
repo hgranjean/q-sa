@@ -11,26 +11,26 @@
 @Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
 
 <script>
-  $(function() {      
-      $("#startdatepicker").datetimepicker({
-          timeFormat: 'HH:mm z',
-          timezoneList: [
-			{ value: -300, label: 'Eastern' },
-			{ value: -360, label: 'Central' },
-			{ value: -420, label: 'Mountain' },
-			{ value: -480, label: 'Pacific' }
-          ]
-      });
-      $("#enddatepicker").datetimepicker({
-          timeFormat: 'HH:mm z',
-          timezoneList: [
-			{ value: -300, label: 'Eastern' },
-			{ value: -360, label: 'Central' },
-			{ value: -420, label: 'Mountain' },
-			{ value: -480, label: 'Pacific' }
-          ]
-      });
-  });
+    $(function () {
+        $("#startdatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+        $("#enddatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+    });
 </script>
 
 @using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -114,18 +114,7 @@
                     </div>
                } 
                 
-                <div style="display:table-row;width:100%">
-                    <div style="display: table-cell;" class="gn-table-row-withborders">@Html.TextBox("txtObservation" + group.Number, "", new { @class = "form-control" })</div>
-                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders">                        
-                        &nbsp;
-                        <input type="submit" value="Add" id="addObservation" class="btn btn-default"/>
-                    </div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                </div>
+               @Html.Partial("_AddObservation", new ViewDataDictionary(new { Number = group.Number}))
             }
         </div>
         <div>&nbsp;</div>
