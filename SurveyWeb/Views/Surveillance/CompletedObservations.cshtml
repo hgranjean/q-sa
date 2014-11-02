@@ -4,7 +4,6 @@
     ViewBag.Title = "Completed observations";
 }
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         $(".actionmenu").dropit();
@@ -40,8 +39,6 @@
                 return $(this).find('a').first().attr("data-ng-href");
             }).get().join(", ");
 
-
-
             $.confirm(
                 "Delete response", //title
                 "Delete the response " + parentId + "?", //message
@@ -73,12 +70,11 @@
 
 <h2 class="section-header">My observations</h2>
 
-<div style="display: table; table-layout: fixed; width: 100%">
-    
-    <form method="GET" action="@Url.Action("AddObservation")">
-        @Html.Partial("_AddObservation")
-    </form>
+<form method="GET" action="@Url.Action("AddObservation")">
+    @Html.Partial("_AddObservation")
+</form>
 
+<div style="display: table; table-layout: fixed; width: 100%">
     <div style="display: table-row">
         <div style="display: table-cell; width: 5%">##</div>
         <div style="display: table-cell; width: 50%">Observation</div>

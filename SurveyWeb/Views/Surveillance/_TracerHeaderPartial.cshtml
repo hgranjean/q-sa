@@ -75,10 +75,13 @@
                 </div>
                 <div style="display: table-row;">
                     <div style="display:table-cell;width:100%" class="table-cell">
-                        <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
-                        <div id="editorField" class="editor-field">
-                            @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                        </div>
+                        @if (!String.IsNullOrWhiteSpace((string) ViewBag.GroupNumber))
+                        {
+                            <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
+                            <div id="editorField" class="editor-field">
+                                @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new {@class = "form-control"})
+                            </div>
+                        }
                     </div>
                 </div>
                 <div style="display: table-row;">

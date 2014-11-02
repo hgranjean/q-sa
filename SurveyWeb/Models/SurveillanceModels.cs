@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
+using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using Atum.Domain.SurveyManagement;
 using System;
 using System.Collections.Generic;
@@ -157,7 +158,19 @@ namespace SurveyWeb.Models
         
         [Range(1,999, ErrorMessage = "Please choice a response.")]
         public ResponseViewModel[] Responses { get; set; }
+
+        public IEnumerable<ElementOfPerformance> ElementsOfPerformance
+        {
+            get
+            {
+                yield return new ElementOfPerformance { EPId = 1, Text = "One"};
+                yield return new ElementOfPerformance { EPId = 2, Text = "Two" };
+                yield return new ElementOfPerformance { EPId = 3, Text = "Three" };
+            }
+        }
     }
+
+
 
     public class ResponseViewModel
     {

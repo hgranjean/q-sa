@@ -1,13 +1,6 @@
-﻿
+﻿@model SurveyWeb.Models.TracerViewModel
 @{
-    ViewBag.Title = "AddObservation";
-}
-
-<h2>AddObservation</h2>
-
-@model SurveyWeb.Models.TracerViewModel
-@{
-    // ViewBag.Title = Model.SurveyTitle;
+    ViewBag.Title = "Add Observation";
 }
 
 <hgroup class="title">
@@ -40,33 +33,28 @@
     });
 </script>
 
-@using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AddObservation", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     @Html.HiddenFor(m => m.SurveyId)
 
     <fieldset>
-        <legend>Surveillance</legend>
-        <div id="tracerHeader" style="display:table; width: 100%">
+        <legend>Observation</legend>
+        <div id="tracerHeader" style="display:table; width: 95%">
             @Html.Partial("_TracerHeaderPartial", Model)
         </div>
-
-        <div style="display: table;" class="gn-table">
-
-                @Html.Partial("_AddObservation")
+        <div id="elementOfPerformance" style="display: table; width: 95%">
+            <div id="editorLabel" class="editor-label">Element of performance</div>
+            <div id="editorField" class="editor-field">
+                @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.ElementsOfPerformance, "EPId", "Text"), "Please select...", new { @class = "form-control" })
+            </div>
+        </div>
+        <div style="display: table; width: 95%" class="gn-table">
+            @Html.Partial("_AddObservation", Model)
         </div>
         <div>&nbsp;</div>
-        @if (ViewBag.IsReadOnly ?? false)
-        {
-            @Html.ActionLink("Close", "Dashboard", null, new { @class = "btn btn-default" })
-        }
-        else
-        {
-
-            <input type="submit" value="Done" class="btn btn-default" />
-            @Html.ActionLink("Reset", "SurveyDelivery", new { id = 0 })
-        }
+        @Html.ActionLink("Cancel", "Dashboard", null, new { @class = "btn btn-default" })
     </fieldset>
 }
 

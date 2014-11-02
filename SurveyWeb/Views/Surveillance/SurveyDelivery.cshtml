@@ -112,9 +112,19 @@
                                 </span>
                             </div>                        
                     </div>
-               } 
-                
-               @Html.Partial("_AddObservation", new ViewDataDictionary(new { Number = group.Number}))
+                }
+
+                <div style="display:table-row;width:100%">
+                    <div style="display: table-cell;" class="gn-table-row-withborders">
+                        @Html.Partial("_AddObservation", new ViewDataDictionary(new { group.Number }))
+                    </div>
+                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                </div>
             }
         </div>
         <div>&nbsp;</div>

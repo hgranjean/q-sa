@@ -235,6 +235,8 @@ namespace SurveyWeb.Controllers
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
             var model = LoadTracerViewModel(id);
 
+            model.SurveyDate = DateTime.Now;
+
             return View(model);
         }
 
@@ -612,9 +614,9 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();
             
-            var responseEntry = _surveillanceService.AddResponse(userId);            
+            var responseEntry = _surveillanceService.AddResponse(userId);
 
-            viewModel.ResponseId = responseEntry.Id.ToString();
+            viewModel.ResponseId = responseEntry.Id;
 
             _persistenceService.SaveTracer(viewModel);
 
@@ -924,9 +926,17 @@ namespace SurveyWeb.Controllers
         }
 
         
-        public ActionResult AddObservation()
+        public ActionResult AddObservation(string txtObservation)
         {
             var model = new TracerViewModel();
+
+            var userId = User.Identity.GetUserId();
+            
+            var personId = _accountService.GetUser(userId).PersonId;
+
+            model.SurveyorId = new Guid(personId);
+
+            model.SurveyDate = DateTime.Now;
 
             LoadTracerReferenceData(model);
 
@@ -936,7 +946,29 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult AddObservation(TracerViewModel viewModel, FormCollection values)
         {
-            return View("Dashboard");
+            var observationText = values["txtObservation"];
+
+            var questionGroups = new QuestionGroups();
+            var questionGroup = new QuestionGroup();
+            questionGroups.Add(0, questionGroup);
+            viewModel.QuestionGroups = new QuestionGroupsViewModel(-1, questionGroups);
+            viewModel.ResponseId = Guid.NewGuid().ToString();
+            
+            // TODO: Process observation
+
+            if (!String.IsNullOrWhiteSpace(observationText))
+            {   
+                // Add observation
+                var newQuestion = questionGroup.AddQuestion(observationText, QuestionType.SelectOne);
+                var classifyModel = _learningService.Classify(observationText);
+                newQuestion.TOCReference = classifyModel.StandardId;
+                viewModel.Responses = new ResponseViewModel[1];
+                viewModel.Responses[0].Response = new Response(newQuestion, new ResponseChoice(observationText));
+            }
+
+            _persistenceService.SaveTracer(viewModel);
+
+            return RedirectToAction("Dashboard");
         }
     }
 }
