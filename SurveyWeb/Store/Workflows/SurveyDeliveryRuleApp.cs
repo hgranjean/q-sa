@@ -50,7 +50,7 @@ namespace SurveyWeb.RuleApp
             
             var action2 = new SetValueAction();
             action2.Target = "Context.EvaluationResults[index].TextResult";
-            action2.Value = "Context.Questions[index].GetResponseByText(Context.Responses[index].Answer().Text).Text";            
+            action2.Value = "Context.Questions[index].GetResponseByText(Context.Responses[index].Answer.Text).Text";            
 
             var action2_2 = new SetValueAction();
             action2_2.Target = "Context.EvaluationResults[index].Result";
@@ -58,7 +58,7 @@ namespace SurveyWeb.RuleApp
 
             var action2_3 = new SetValueAction();
             action2_3.Target = "Context.EvaluationResults[index].IsFollowup";
-            action2_3.Value = @"Context.Responses[index].Answer().Text == ""Follow-Up Completed""";
+            action2_3.Value = @"Context.Responses[index].Answer.Text == ""Follow-Up Completed""";
 
             var action3 = new SimpleRuleSet();
             action3.Condition = "index < Context.Responses.Count"; // Perform some analysis here
