@@ -44,16 +44,34 @@
         <div id="tracerHeader" style="display:table; width: 95%">
             @Html.Partial("_TracerHeaderPartial", Model)
         </div>
-        <div id="elementOfPerformance" style="display: table; width: 95%">
-            <div id="editorLabel" class="editor-label">Element of performance</div>
-            <div id="editorField" class="editor-field">
-                @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.ElementsOfPerformance, "EPId", "Text"), "Please select...", new { @class = "form-control" })
+        <div style="display: table; width: 95%" class="gn-table">
+            <div style="display: table-row">
+                <div style="display: table-cell; width: 100%;">
+                    <!-- First column -->
+                    <div class="col-md-4" style="width: 50%">
+                        <div style="display: table; table-layout: fixed; width: 100%">
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; width: 100%;" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">&nbsp;</div>
+                                    <div id="editorField" class="editor-field">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; width: 100%;" class="table-cell">
+                                    <div id="editorLabel" class="editor-label"><b>Text:</b></div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.Partial("_AddObservation", Model)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div style="display: table; width: 95%" class="gn-table">
-            @Html.Partial("_AddObservation", Model)
-        </div>
         <div>&nbsp;</div>
+        
+        <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
         @Html.ActionLink("Cancel", "Dashboard", null, new { @class = "btn btn-default" })
     </fieldset>
 }

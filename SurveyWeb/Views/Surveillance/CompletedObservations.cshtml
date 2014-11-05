@@ -72,6 +72,7 @@
 
 <form method="GET" action="@Url.Action("AddObservation")">
     @Html.Partial("_AddObservation")
+    <span style="float: left; margin-left: 10px;"><input type="submit" value="Add" id="addObservation" class="btn btn-default" /></span>
 </form>
 
 <div style="display: table; table-layout: fixed; width: 100%">
@@ -89,14 +90,14 @@
     {
         <div style="display: table-row">
             <div style="display: table-cell">
-                @Html.ValueFor(m => completedObservation.Observation.Question().Number)
+                @Html.ValueFor(m => completedObservation.Observation.Question.Number)
             </div>
             <div style="display: table-cell">
-                @Html.ValueFor(m => completedObservation.Observation.Question().Text)
+                @Html.ValueFor(m => completedObservation.Observation.Question.Text)
                 @* Html.ActionLink(completedSurvey.SurveyTitle, "ViewCompletedSurvey", new { id = completedSurvey.ResponseId }) *@
             </div>
             <div style="display: table-cell">
-                @Html.ValueFor(m => completedObservation.Observation.Answer().Text)
+                @Html.ValueFor(m => completedObservation.Observation.Answer.Text)
             </div>
             <div style="display: table-cell">
                 @Html.ValueFor(m => completedObservation.Observation.Person.FullName)

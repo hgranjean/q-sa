@@ -163,9 +163,9 @@ namespace SurveyWeb.Models
         {
             get
             {
-                yield return new ElementOfPerformance { EPId = 1, Text = "One"};
-                yield return new ElementOfPerformance { EPId = 2, Text = "Two" };
-                yield return new ElementOfPerformance { EPId = 3, Text = "Three" };
+                yield return new ElementOfPerformance { EPId = 1, Text = "Environment"};
+                yield return new ElementOfPerformance { EPId = 2, Text = "Hazardous Materials and Waste Management" };
+                yield return new ElementOfPerformance { EPId = 3, Text = "Fire Prevention" };
             }
         }
     }

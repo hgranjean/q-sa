@@ -313,11 +313,11 @@ namespace SurveyWeb.Controllers
                     // TODO: remove these assignments
                     var survey = surveys.FirstOrDefault(m => m.Id == tracerModel.SurveyId);
                     tracerModel.ResponseId = responseId;
-                    tracerModel.SurveyTitle = survey.Title;
+                    tracerModel.SurveyTitle = survey != null ? survey.Title : String.Empty;
                     
                     foreach (var question in tracerModel.Responses.Where(m => m != null))
                     {
-                        var observation = new Observation(tracerModel.Surveyor, question.Response.Question(), question.Response.Answer());
+                        var observation = new Observation(tracerModel.Surveyor, question.Response.Question, question.Response.Answer);
                         models.Add(new ObservationViewModel(observation));
                     }
                 }
@@ -952,18 +952,23 @@ namespace SurveyWeb.Controllers
             var questionGroup = new QuestionGroup();
             questionGroups.Add(0, questionGroup);
             viewModel.QuestionGroups = new QuestionGroupsViewModel(-1, questionGroups);
-            viewModel.ResponseId = Guid.NewGuid().ToString();
             
-            // TODO: Process observation
-
             if (!String.IsNullOrWhiteSpace(observationText))
             {   
                 // Add observation
                 var newQuestion = questionGroup.AddQuestion(observationText, QuestionType.SelectOne);
                 var classifyModel = _learningService.Classify(observationText);
                 newQuestion.TOCReference = classifyModel.StandardId;
-                viewModel.Responses = new ResponseViewModel[1];
-                viewModel.Responses[0].Response = new Response(newQuestion, new ResponseChoice(observationText));
+                viewModel.Responses = new []
+                {
+                    new ResponseViewModel(new Response(newQuestion, new ResponseChoice(observationText)))
+                };
+
+                var userId = User.Identity.GetUserId();
+
+                var responseEntry = _surveillanceService.AddResponse(userId);
+
+                viewModel.ResponseId = responseEntry.Id;
             }
 
             _persistenceService.SaveTracer(viewModel);

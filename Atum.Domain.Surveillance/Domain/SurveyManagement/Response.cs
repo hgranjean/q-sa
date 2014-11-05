@@ -31,15 +31,17 @@ namespace Atum.Domain.SurveyManagement
                 
         // private Question Question { get; set; }
         //private ResponseChoice Answer { get; set; }
-
-        public Question Question()
+        
+        public Question Question
         {
-            return _question;
+            get { return _question; }
+            set { _question = value;  }
         }
 
-        public ResponseChoice Answer()
+        public ResponseChoice Answer
         {
-            return _answer;
+            get { return _answer; }
+            set { _answer = value; }
         }
     }
 }
