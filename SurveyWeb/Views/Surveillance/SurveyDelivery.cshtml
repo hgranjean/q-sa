@@ -42,7 +42,7 @@
     <fieldset>
         <legend>Surveillance</legend>
         <div id="tracerHeader" style="display:table; width: 100%">
-            @Html.Partial("_TracerHeaderPartial", Model)
+            @Html.Partial("_TracerHeaderPartial", Model, new ViewDataDictionary( new {GroupNumber =  1 }))
         </div>
         
         <div style="display: table;" class="gn-table">
@@ -116,7 +116,8 @@
 
                 <div style="display:table-row;width:100%">
                     <div style="display: table-cell;" class="gn-table-row-withborders">
-                        @Html.Partial("_AddObservation", new ViewDataDictionary(new { group.Number }))
+                        @Html.Partial("_AddObservation")
+                        <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
                     </div>
                     <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>

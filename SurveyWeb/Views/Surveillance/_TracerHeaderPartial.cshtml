@@ -75,7 +75,7 @@
                 </div>
                 <div style="display: table-row;">
                     <div style="display:table-cell;width:100%" class="table-cell">
-                        @if (!String.IsNullOrWhiteSpace((string) ViewBag.GroupNumber))
+                        @if (Model.SurveyId > 0)
                         {
                             <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
                             <div id="editorField" class="editor-field">
