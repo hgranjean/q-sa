@@ -115,9 +115,14 @@
                 }
 
                 <div style="display:table-row;width:100%">
-                    <div style="display: table-cell;" class="gn-table-row-withborders">
-                        @Html.Partial("_AddObservation")
-                        <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
+                    <div style="display: table-cell;" class="form-inline gn-table-row-withborders">
+                        <div class="form-group">
+                            <label class="sr-only" for="observationText">Text:</label>
+                            @Html.Partial("_AddObservation")
+                        </div>
+                        <div class="checkbox">
+                            <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
+                        </div>
                     </div>
                     <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
