@@ -70,14 +70,17 @@
 
 <h2 class="section-header">My observations</h2>
 
+
 <div class="panel">
     <div class="panel-body">
-            <form method="GET" action="@Url.Action("AddObservation")" class="form-inline" role="form">
-                <div class="form-group" style="width: 100%">
-                    @Html.Partial("_AddObservation")
-                    <button type="submit" class="btn btn-success" data-original-title="" title="">Add</button>
-                </div>
-            </form>
+        <form method="GET" action="@Url.Action("AddObservation")" class="form-inline" role="form">
+            <div class="form-group" style="width: 80%">
+                @Html.Partial("_AddObservation")                
+            </div>
+            <div class="form-group" style="width: 10%">
+                <button type="submit" class="btn btn-success" data-original-title="" title="">Add</button>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -91,12 +94,13 @@
         <div style="display: table-cell; width: 15%">&nbsp;</div>
     </div>
 
-
+    @{ var index = 1; }
     @foreach (var completedObservation in Model.Observations)
     {
         <div style="display: table-row">
             <div style="display: table-cell">
-                @Html.ValueFor(m => completedObservation.Observation.Question.Number)
+                @Html.ValueFor(m => index)
+                @{ index++;}
             </div>
             <div style="display: table-cell">
                 @Html.ValueFor(m => completedObservation.Observation.Question.Text)
