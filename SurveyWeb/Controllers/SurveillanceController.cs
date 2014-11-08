@@ -32,7 +32,7 @@ namespace SurveyWeb.Controllers
         private readonly IPersistenceServices _persistenceService;
         private readonly LearningServices _learningService;
         private readonly AccountService _accountService;
-        
+
         public SurveillanceController(SurveillanceService surveillanceService,
             TaskService taskService,
             SurveyService surveyService,
@@ -126,8 +126,8 @@ namespace SurveyWeb.Controllers
             retVal.Category = "Patient Safety";
             retVal.ItemInspected = "Clutter ((0735)";
             retVal.Area = new Area("2 North (027)",27);
-            retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
-            retVal.Score = "Non Compliant";
+            retVal.ResponsibleParty = new Person("Vicki","","Munson");
+            retVal.Score = ResponseChoice.NonCompliantString;
             retVal.EstimatedCompletionDate = DateTime.Today.AddDays(2.0D);
             retVal.ItemDetails = "Issue Details_" + followUpId;
             retVal.History = new List<Event>();
@@ -408,11 +408,11 @@ namespace SurveyWeb.Controllers
 
         private void SetQuestionChoices(Question question)
         {
-            question.AddChoice("Compliant").SetIdInternal(_questionChoiceNextId++);
-            question.AddChoice("Non Compliant").SetIdInternal(_questionChoiceNextId++);
-            question.AddChoice("N/A").SetIdInternal(_questionChoiceNextId++);
-            // question.AddChoice("Not Scored"); // AS - Not Valid choice 
-            question.AddChoice("Follow-Up Completed").SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice(ResponseChoice.CompliantString).SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice(ResponseChoice.NonCompliantString).SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice(ResponseChoice.NAString).SetIdInternal(_questionChoiceNextId++);
+            // question.AddChoice(NotScoredString); // AS - Not Valid choice
+            question.AddChoice(ResponseChoice.FollowUpCompletedString).SetIdInternal(_questionChoiceNextId++);
         }
 
         private void SetQuestion(QuestionGroup questionGroup, QuestionType questionType)
@@ -959,9 +959,10 @@ namespace SurveyWeb.Controllers
                 var newQuestion = questionGroup.AddQuestion(observationText, QuestionType.SelectOne);
                 var classifyModel = _learningService.Classify(observationText);
                 newQuestion.TOCReference = classifyModel.StandardId;
+                
                 viewModel.Responses = new []
                 {
-                    new ResponseViewModel(new Response(newQuestion, new ResponseChoice(observationText)))
+                    new ResponseViewModel(new Response(newQuestion, new ResponseChoice(ResponseChoice.NonCompliantString)))
                 };
 
                 var userId = User.Identity.GetUserId();
