@@ -72,17 +72,8 @@
 
 
 <div class="panel">
-    <div class="panel-body">
-        <form method="GET" action="@Url.Action("AddObservation")" class="form-inline" role="form">
-            <div class="form-group" style="width: 80%">
-                @*Html.Partial("_AddObservation")*@
-            </div>
-            <div class="form-group" style="width: 10%">
-                <button type="submit" class="btn btn-success" data-original-title="" title="">Add Observation</button>
-                <button type="submit" class="btn btn-success" data-original-title="" title="">Take Photo</button>
-            </div>
-        </form>
-    </div>
+        @Html.ActionLink("Add observation", "AddObservation", null, new { @class="btn btn-default" })
+        @Html.ActionLink("Take Photo", "TakePhoto", null, new { @class="btn btn-default" })
 </div>
 
 <div style="display: table; table-layout: fixed; width: 100%">

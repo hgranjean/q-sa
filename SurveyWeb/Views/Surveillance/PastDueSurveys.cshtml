@@ -26,10 +26,14 @@
             
             foreach (var survey in Model.SurveysByDate[item])
             {
+                var color = @survey.Item1.Event.Start >= DateTime.Now ? "blue" : "red";
+            
                 <div style="display: table-row">
                     <div style="display: table-cell; width: 60%">@Html.ActionLink(@survey.Item1.Event.Title, "SurveyDelivery", new {id = survey.Item2.Id})</div>
                     <div style="display: table-cell; width: 35%">@survey.Item1.Event.EventTypeId</div>
-                    <div style="display: table-cell; width: 15%">@Html.ValueFor(m => @survey.Item1.Event.Start, "{0:MM/dd/yyyy}")</div>
+                    <div style="display: table-cell; width: 15%; color:@color">
+                        @Html.ValueFor(m => @survey.Item1.Event.Start, "{0:MM/dd/yyyy}")
+                    </div>
                 </div>
             }
         }
