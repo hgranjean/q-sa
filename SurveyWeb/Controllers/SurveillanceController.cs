@@ -172,7 +172,7 @@ namespace SurveyWeb.Controllers
             } else {
                 events = _taskService.GetNextTasks(userId);            
             }         
-
+            
             var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Survey>>>() };
 
             foreach (var @event in events)
@@ -205,6 +205,13 @@ namespace SurveyWeb.Controllers
 
             var model = GetSurveySchedules(true);
 
+            var nextTasks = GetSurveySchedules(false);
+
+            foreach (var item in nextTasks.SurveysByDate.Keys)
+            {
+                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+            }
+            
             return View(model);
         }
 
@@ -215,6 +222,13 @@ namespace SurveyWeb.Controllers
             ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
 
             var model = GetSurveySchedules(true);
+
+            var nextTasks = GetSurveySchedules(false);
+
+            foreach (var item in nextTasks.SurveysByDate.Keys)
+            {
+                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+            }
 
             return PartialView("PastDueSurveys", model);
         }

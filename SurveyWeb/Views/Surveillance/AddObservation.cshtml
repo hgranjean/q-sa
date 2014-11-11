@@ -61,6 +61,7 @@
                                     <div id="editorLabel" class="editor-label"><b>Text:</b></div>
                                     <div id="editorField" class="editor-field">
                                         @Html.Partial("_AddObservation", Model)
+                                        @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = 0 }, new { @class="btn btn-default", style = "width: 100px;" })
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
-@using SurveyWeb.Controllers
-@using SurveyWeb.Models
+﻿@using SurveyWeb.Models
 @model SurveysViewModel
 @{
     ViewBag.Title = "Calendar";
@@ -12,6 +10,7 @@
 {
 
     
+    @*
     <div style="display: table; table-layout: fixed; width: 100%">
         <div style="display: table-row">
             <div style="display: table-cell; width: 50%">Task</div>
@@ -20,14 +19,14 @@
         </div>
         @foreach (var item in Model.SurveysByDate.Keys)
         {
-            @*<div style="display: table-row">
+            <div style="display: table-row">
                 <div style="display: table-cell; width: 50%"><b>@Html.Label(DateTimeUtils.GetGroupName(item))</b></div>
                 <div style="display: table-cell; width: 35%">&nbsp;</div>
                 <div style="display: table-cell; width: 15%">&nbsp;</div>
-            </div>*@
+            </div>
 
-            foreach (var survey in Model.SurveysByDate[item])
-            {
+    foreach (var survey in Model.SurveysByDate[item])
+    {
                 <div style="display: table-row">
                     <div style="display: table-cell; width: 50%">@Html.ActionLink(@survey.Item1.Event.Title, "SurveyDelivery", new { id = survey.Item2.Id })</div>
                     <div style="display: table-cell; width: 35%">@survey.Item1.Event.EventTypeId</div>
@@ -35,7 +34,7 @@
                 </div>
             }
         }
-    </div>
+    </div>*@
 }
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
@@ -63,8 +62,6 @@
             });
     });
 </script>
-
-<div>&nbsp;</div>
 
 <div>
     <div id="datepicker"></div>
