@@ -328,12 +328,17 @@ namespace SurveyWeb.Controllers
                     var survey = surveys.FirstOrDefault(m => m.Id == tracerModel.SurveyId);
                     tracerModel.ResponseId = responseId;
                     tracerModel.SurveyTitle = survey != null ? survey.Title : String.Empty;
-                    
+
                     foreach (var question in tracerModel.Responses.Where(m => m != null))
                     {
-                        var observation = new Observation(tracerModel.Surveyor, question.Response.Question, question.Response.Answer);
+                        var observation = new Observation(tracerModel.Surveyor, question.Response.Question,
+                            question.Response.Answer);
                         models.Add(new ObservationViewModel(observation));
                     }
+                }
+                catch (NullReferenceException ex)
+                {
+                    DebugUtil.WriteLine("Problem while parsing a response {0}. {1}", responseId, ex.ToString());
                 }
                 catch (FileNotFoundException ex)
                 {
