@@ -427,7 +427,7 @@ namespace SurveyWeb.Controllers
 
         private void SetQuestionChoices(Question question)
         {
-            question.AddChoice(ResponseChoice.CompliantString).SetIdInternal(_questionChoiceNextId++);
+            //question.AddChoice(ResponseChoice.CompliantString).SetIdInternal(_questionChoiceNextId++);
             question.AddChoice(ResponseChoice.NonCompliantString).SetIdInternal(_questionChoiceNextId++);
             question.AddChoice(ResponseChoice.NAString).SetIdInternal(_questionChoiceNextId++);
             // question.AddChoice(NotScoredString); // AS - Not Valid choice
