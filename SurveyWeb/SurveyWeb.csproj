@@ -2761,6 +2761,9 @@
     <Content Include="Views\Survey\EditQuestion.cshtml" />
     <Content Include="Views\Survey\EditorTemplates\QuestionViewModel.cshtml" />
     <Content Include="Views\Surveillance\CompletedObservations.cshtml" />
+    <Content Include="Views\Surveillance\_AddObservation.cshtml" />
+    <Content Include="Views\Surveillance\_TracerHeaderPartial.cshtml" />
+    <Content Include="Views\Surveillance\AddObservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

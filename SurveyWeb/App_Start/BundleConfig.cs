@@ -61,7 +61,7 @@ namespace SurveyWeb
             // Arjuna theme
 
             bundles.Add(new StyleBundle("~/Content/arjunatheme").Include(
-                      "~/Content/themes/arjuna/css/bootstrap.css", // bootstrap v3.2.0
+                      "~/Content/themes/arjuna/css/bootstrap.min.css", // bootstrap v3.2.0
                       "~/Content/themes/arjuna/css/font-awesome.min.css", // font awesome v4.1.0
                       "~/Content/themes/arjuna/css/bootstrap-reset.css", // bootstrap reset
                       "~/Content/themes/arjuna/css/arjuna.css", // arjuna

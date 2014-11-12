@@ -24,22 +24,24 @@ namespace Atum.Domain.SurveyManagement
         public int Id { get; set; }
         public int QuestionId { get; set; }
         public int ResponseChoiceId { get; set; }
-        public string AnswerKey { get; private set; }
+        public string AnswerKey { get; set; } // [aschmidt] Removed private set as it's a serializable class
         public string Text { get; set; }
         public List<string> FilesInfo { get; set; }
 
                 
         // private Question Question { get; set; }
         //private ResponseChoice Answer { get; set; }
-
-        public Question Question()
+        
+        public Question Question
         {
-            return _question;
+            get { return _question; }
+            set { _question = value;  }
         }
 
-        public ResponseChoice Answer()
+        public ResponseChoice Answer
         {
-            return _answer;
+            get { return _answer; }
+            set { _answer = value; }
         }
     }
 }

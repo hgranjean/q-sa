@@ -6,7 +6,13 @@ namespace Atum.Domain.SurveyManagement
 {
     [Serializable]
     public class ResponseChoice : DomainObject
-    {   
+    {
+        public static string CompliantString = "Compliant";
+        public static string NAString = "N/A";
+        public static string NotScoredString = "Not Scored";
+        public static string FollowUpCompletedString = "Follow-Up Completed";
+        public static string NonCompliantString = "Non Compliant";
+
         protected ResponseChoice()
         {
         }

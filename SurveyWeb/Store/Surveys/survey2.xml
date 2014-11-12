@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ID>2</ID>
+  <Id>2</Id>
   <Guid>c30c5ef6-aeeb-4012-97cb-15e75982dd2f</Guid>
   <Title>Survey Template 2</Title>
   <SurveyType>Surveillance</SurveyType>

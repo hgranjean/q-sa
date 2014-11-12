@@ -11,26 +11,26 @@
 @Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
 
 <script>
-  $(function() {      
-      $("#startdatepicker").datetimepicker({
-          timeFormat: 'HH:mm z',
-          timezoneList: [
-			{ value: -300, label: 'Eastern' },
-			{ value: -360, label: 'Central' },
-			{ value: -420, label: 'Mountain' },
-			{ value: -480, label: 'Pacific' }
-          ]
-      });
-      $("#enddatepicker").datetimepicker({
-          timeFormat: 'HH:mm z',
-          timezoneList: [
-			{ value: -300, label: 'Eastern' },
-			{ value: -360, label: 'Central' },
-			{ value: -420, label: 'Mountain' },
-			{ value: -480, label: 'Pacific' }
-          ]
-      });
-  });
+    $(function () {
+        $("#startdatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+        $("#enddatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+    });
 </script>
 
 @using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -41,78 +41,9 @@
     
     <fieldset>
         <legend>Surveillance</legend>
-        <div id="tracerHeader" style="display:table">
-            <div style="display: table-row;">
-                <div style="display: table-cell; width: 50%;" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FacilityId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Facilities, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%">&nbsp;&nbsp;</div>
-            </div>
-            
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.FloorNumber)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.TextBoxFor(m => m.FloorNumber, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.AreaId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.AreaId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
-            
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.BuildingId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.BuildingId, new SelectList(Model.Buildings, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%">&nbsp;&nbsp;</div>
-            </div>
-            
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyorId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.SurveyorId, new SelectList(Model.Surveyors, "Id", "FullName"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.DepartmentId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
-            <div style="display:table-row">
-                <div style="display:table-cell;width:50%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyDate)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.TextBoxFor(m => m.SurveyDate, new { @id = "startdatepicker", @class = "form-control" })
-                    </div>
-                </div>
-                <div style="display:table-cell;width:5%">&nbsp;&nbsp;</div>
-                <div style="display:table-cell;width:45%" class="table-cell">
-                    <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
-                    <div id="editorField" class="editor-field">
-                        @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
+        <div id="tracerHeader" style="display:table; width: 100%">
+            @Html.Partial("_TracerHeaderPartial", Model, new ViewDataDictionary( new {GroupNumber =  1 }))
         </div>
-        
-        <div>&nbsp;</div>
         
         <div style="display: table;" class="gn-table">
             
@@ -140,7 +71,7 @@
                                     
                                     foreach (var choice in question.ResponseChoices)
                                     {
-                                        var key = choice.ID;
+                                        var key = choice.Id;
                                         var j = qIndex++;
                                         var choiceIndex = question.ResponseChoices.IndexOf(choice);
 
@@ -181,14 +112,19 @@
                                 </span>
                             </div>                        
                     </div>
-               } 
-                
+                }
+
                 <div style="display:table-row;width:100%">
-                    <div style="display: table-cell;" class="gn-table-row-withborders">@Html.TextBox("txtObservation" + group.Number, "", new { @class = "form-control" })</div>
-                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders">                        
-                        &nbsp;
-                        <input type="submit" value="Add" id="addObservation" class="btn btn-default"/>
+                    <div style="display: table-cell;" class="form-inline gn-table-row-withborders">
+                        <div class="form-group">
+                            <label class="sr-only" for="observationText">Text:</label>
+                            @Html.Partial("_AddObservation")
+                        </div>
+                        <div class="checkbox">
+                            <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
+                        </div>
                     </div>
+                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
                     <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>

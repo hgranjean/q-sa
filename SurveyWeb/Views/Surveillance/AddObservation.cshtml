@@ -1,0 +1,82 @@
+﻿@model SurveyWeb.Models.TracerViewModel
+@{
+    ViewBag.Title = "Add Observation";
+}
+
+<hgroup class="title">
+    <h2>@*ViewBag.Title*@</h2>
+</hgroup>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+@Scripts.Render("~/Scripts/jquery-ui-timepicker.js")
+
+<script>
+    $(function () {
+        $("#startdatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+        $("#enddatepicker").datetimepicker({
+            timeFormat: 'HH:mm z',
+            timezoneList: [
+              { value: -300, label: 'Eastern' },
+              { value: -360, label: 'Central' },
+              { value: -420, label: 'Mountain' },
+              { value: -480, label: 'Pacific' }
+            ]
+        });
+    });
+</script>
+
+@using (Html.BeginForm("AddObservation", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(m => m.SurveyId)
+
+    <fieldset>
+        <legend>Observation</legend>
+        <div id="tracerHeader" style="display:table; width: 95%">
+            @Html.Partial("_TracerHeaderPartial", Model)
+        </div>
+        <div style="display: table; width: 95%" class="gn-table">
+            <div style="display: table-row">
+                <div style="display: table-cell; width: 100%;">
+                    <!-- First column -->
+                    <div class="col-md-4" style="width: 50%">
+                        <div style="display: table; table-layout: fixed; width: 100%">
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; width: 100%;" class="table-cell">
+                                    <div id="editorLabel" class="editor-label">&nbsp;</div>
+                                    <div id="editorField" class="editor-field">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; width: 100%;" class="table-cell">
+                                    <div id="editorLabel" class="editor-label"><b>Text:</b></div>
+                                    <div id="editorField" class="editor-field">
+                                        @Html.Partial("_AddObservation", Model)
+                                        @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = 0 }, new { @class="btn btn-default", style = "width: 100px;" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        
+        <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
+        @Html.ActionLink("Cancel", "Dashboard", null, new { @class = "btn btn-default" })
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

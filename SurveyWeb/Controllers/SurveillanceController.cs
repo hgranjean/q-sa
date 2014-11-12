@@ -1,4 +1,5 @@
-﻿using Atum.Domain;
+﻿using System.Diagnostics.Contracts;
+using Atum.Domain;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.Security.Domain;
@@ -126,7 +127,7 @@ namespace SurveyWeb.Controllers
             retVal.ItemInspected = "Clutter ((0735)";
             retVal.Area = new Area("2 North (027)",27);
             retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
-            retVal.Score = "Non Compliant";
+            retVal.Score = ResponseChoice.NonCompliantString;
             retVal.EstimatedCompletionDate = DateTime.Today.AddDays(2.0D);
             retVal.ItemDetails = "Issue Details_" + followUpId;
             retVal.History = new List<Event>();
@@ -204,6 +205,13 @@ namespace SurveyWeb.Controllers
 
             var model = GetSurveySchedules(true);
 
+            var nextTasks = GetSurveySchedules(false);
+
+            foreach (var item in nextTasks.SurveysByDate.Keys)
+            {
+                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+            }
+            
             return View(model);
         }
 
@@ -214,6 +222,13 @@ namespace SurveyWeb.Controllers
             ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
 
             var model = GetSurveySchedules(true);
+
+            var nextTasks = GetSurveySchedules(false);
+
+            foreach (var item in nextTasks.SurveysByDate.Keys)
+            {
+                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+            }
 
             return PartialView("PastDueSurveys", model);
         }
@@ -233,6 +248,8 @@ namespace SurveyWeb.Controllers
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
             var model = LoadTracerViewModel(id);
+
+            model.SurveyDate = DateTime.Now;
 
             return View(model);
         }
@@ -292,34 +309,40 @@ namespace SurveyWeb.Controllers
         private CompletedObservationsViewModel GetCompletedObservations()
         {
             var surveys = _persistenceService.GetSurveys();
+            Contract.Assert(surveys != null);
 
             // Filtering out responses by user
             var userId = User.Identity.GetUserId();
 
-            var responses = _surveillanceService.GetResponses(userId);
+            var responseIds = _surveillanceService.GetResponses(userId);
 
             var models = new List<ObservationViewModel>();
-            foreach (var response in responses)
+            foreach (var responseId in responseIds)
             {
                 try
                 {
-                    var tracerModel = _persistenceService.LoadTracer(response);
+                    var tracerModel = _persistenceService.LoadTracer(responseId);
                     LoadTracerReferenceData(tracerModel);
 
                     // TODO: remove these assignments
-                    tracerModel.ResponseId = response;
                     var survey = surveys.FirstOrDefault(m => m.Id == tracerModel.SurveyId);
-                    tracerModel.SurveyTitle = survey.Title;
+                    tracerModel.ResponseId = responseId;
+                    tracerModel.SurveyTitle = survey != null ? survey.Title : String.Empty;
                     
                     foreach (var question in tracerModel.Responses.Where(m => m != null))
                     {
-                        models.Add(new ObservationViewModel(new Observation(tracerModel.Surveyor, question.Response.Question(), question.Response.Answer())));
+                        var observation = new Observation(tracerModel.Surveyor, question.Response.Question,
+                            question.Response.Answer);
+                        models.Add(new ObservationViewModel(observation));
                     }                    
-                    
+                }
+                catch (NullReferenceException ex)
+                {
+                    DebugUtil.WriteLine("Problem while parsing a response {0}. {1}", responseId, ex.ToString());
                 }
                 catch (FileNotFoundException ex)
                 {
-                    DebugUtil.WriteLine("Response file was not found: {0}. {1}", response, ex.ToString());
+                    DebugUtil.WriteLine("Response file was not found: {0}. {1}", responseId, ex.ToString());
                 }
             }
 
@@ -404,11 +427,11 @@ namespace SurveyWeb.Controllers
 
         private void SetQuestionChoices(Question question)
         {
-            question.AddChoice("Compliant").SetIdInternal(_questionChoiceNextId++);
-            question.AddChoice("Non Compliant").SetIdInternal(_questionChoiceNextId++);
-            //question.AddChoice("N/A").SetIdInternal(_questionChoiceNextId++);
-            // question.AddChoice("Not Scored"); // AS - Not Valid choice 
-            //question.AddChoice("Follow-Up Completed").SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice(ResponseChoice.CompliantString).SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice(ResponseChoice.NonCompliantString).SetIdInternal(_questionChoiceNextId++);
+            question.AddChoice(ResponseChoice.NAString).SetIdInternal(_questionChoiceNextId++);
+            // question.AddChoice(NotScoredString); // AS - Not Valid choice
+            question.AddChoice(ResponseChoice.FollowUpCompletedString).SetIdInternal(_questionChoiceNextId++);
         }
 
         private void SetQuestion(QuestionGroup questionGroup, QuestionType questionType)
@@ -457,9 +480,6 @@ namespace SurveyWeb.Controllers
 
         private IEnumerable<Person> LoadSurveyors()
         {
-            // yield return new Person { FirstName = "Joe", MiddleName = "D", LastName = "Surveyor" };
-            // yield return new Person { FirstName = "Henry", MiddleName = "M", LastName = "TracerDude" };
-            
             return _surveillanceService.GetPersons();
         }
 
@@ -615,7 +635,7 @@ namespace SurveyWeb.Controllers
             
             var responseEntry = _surveillanceService.AddResponse(userId);            
 
-            viewModel.ResponseId = responseEntry.Id.ToString();
+            viewModel.ResponseId = responseEntry.Id;
 
             _persistenceService.SaveTracer(viewModel);
 
@@ -921,6 +941,58 @@ namespace SurveyWeb.Controllers
             var tracer = _persistenceService.LoadTracer(viewModel.ResponseId);
             tracer.SurveyorId = new Guid(viewModel.AssignedTo);
             _persistenceService.SaveTracer(tracer);
+            return RedirectToAction("Dashboard");
+        }
+
+        
+        public ActionResult AddObservation(string txtObservation)
+        {
+            var model = new TracerViewModel();
+
+            var userId = User.Identity.GetUserId();
+            
+            var personId = _accountService.GetUser(userId).PersonId;
+
+            model.SurveyorId = new Guid(personId);
+
+            model.SurveyDate = DateTime.Now;
+
+            LoadTracerReferenceData(model);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddObservation(TracerViewModel viewModel, FormCollection values)
+        {
+            var observationText = values["txtObservation"];
+
+            var questionGroups = new QuestionGroups();
+            var questionGroup = new QuestionGroup();
+            questionGroups.Add(0, questionGroup);
+            viewModel.QuestionGroups = new QuestionGroupsViewModel(-1, questionGroups);
+            
+            if (!String.IsNullOrWhiteSpace(observationText))
+            {   
+                // Add observation
+                var newQuestion = questionGroup.AddQuestion(observationText, QuestionType.SelectOne);
+                var classifyModel = _learningService.Classify(observationText);
+                newQuestion.TOCReference = classifyModel.StandardId;
+                
+                viewModel.Responses = new []
+                {
+                    new ResponseViewModel(new Response(newQuestion, new ResponseChoice(ResponseChoice.NonCompliantString)))
+                };
+
+                var userId = User.Identity.GetUserId();
+
+                var responseEntry = _surveillanceService.AddResponse(userId);
+
+                viewModel.ResponseId = responseEntry.Id;
+            }
+
+            _persistenceService.SaveTracer(viewModel);
+
             return RedirectToAction("Dashboard");
         }
     }
