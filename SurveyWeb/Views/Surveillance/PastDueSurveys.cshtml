@@ -13,6 +13,7 @@
     <div style="display: table; table-layout: fixed; width: 100%">
         <div style="display: table-row">
             <div style="display: table-cell; width: 60%">Task</div>
+            <div style="display: table-cell; width: 35%">User</div>
             <div style="display: table-cell; width: 35%">Type</div>
             <div style="display: table-cell; width: 15%">Due</div>
         </div>
@@ -23,13 +24,19 @@
                 <div style="display: table-cell; width: 35%">&nbsp;</div>
                 <div style="display: table-cell; width: 15%">&nbsp;</div>
             </div>*@
-            
+
             foreach (var survey in Model.SurveysByDate[item])
             {
-                var color = @survey.Item1.Event.Start >= DateTime.Now ? "blue" : "red";
-            
+            var color = @survey.Item1.Event.Start >= DateTime.Now ? "blue" : "red";
+
                 <div style="display: table-row">
-                    <div style="display: table-cell; width: 60%">@Html.ActionLink(@survey.Item1.Event.Title, "SurveyDelivery", new {id = survey.Item2.Id})</div>
+                <div style="display: table-cell; width: 60%">
+                    @if (ViewBag.ShowManagerContent) { 
+                        @Html.ActionLink(@survey.Item1.Event.Title, "EditTask", new {id = survey.Item1.EventId})
+                    } else {
+                        @Html.ActionLink(@survey.Item1.Event.Title, "SurveyDelivery", new {id = survey.Item2.Id})
+                    }</div>
+                    <div style="display: table-cell; width: 35%">@survey.Item1.User.Person.FullName</div>
                     <div style="display: table-cell; width: 35%">@survey.Item1.Event.EventTypeId</div>
                     <div style="display: table-cell; width: 15%; color:@color">
                         @Html.ValueFor(m => @survey.Item1.Event.Start, "{0:MM/dd/yyyy}")

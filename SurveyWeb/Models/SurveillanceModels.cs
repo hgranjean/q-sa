@@ -357,7 +357,8 @@ namespace SurveyWeb.Models
     }
 
     public class PhotoViewModel
-    {        
+    {
+        public string ResponseId { get; set; }
         public string SurveyId { get; set; }
         public string QuestionId { get; set; }
         public string FileName { get; set;}
@@ -395,6 +396,9 @@ namespace SurveyWeb.Models
     public class ObservationViewModel
     {
         public Observation Observation { get; set; }
+
+        public string ResponseId { get; set; }
+
         public ObservationViewModel() { }
 
         public ObservationViewModel(Observation observation)

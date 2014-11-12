@@ -166,13 +166,22 @@ namespace SurveyWeb.Controllers
             var userId = User.Identity.GetUserId();
             
             IEnumerable<EventUser> events = null;
-            if (isPastDue)
-            {                
-                events = _taskService.GetPastDueTasks(userId);
-            } else {
-                events = _taskService.GetNextTasks(userId);            
-            }         
-            
+            if (ViewBag.ShowManagerContent)
+            {
+                events = _taskService.GetFacilityTasksForUser(userId);
+            }
+            else
+            {
+                if (isPastDue)
+                {
+                    events = _taskService.GetPastDueTasks(userId);
+                }
+                else
+                {
+                    events = _taskService.GetNextTasks(userId);
+                }
+            }
+
             var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Survey>>>() };
 
             foreach (var @event in events)
@@ -223,11 +232,14 @@ namespace SurveyWeb.Controllers
 
             var model = GetSurveySchedules(true);
 
-            var nextTasks = GetSurveySchedules(false);
-
-            foreach (var item in nextTasks.SurveysByDate.Keys)
+            if (!ViewBag.ShowTeamMemberContent)
             {
-                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+                var nextTasks = GetSurveySchedules(false);
+
+                foreach (var item in nextTasks.SurveysByDate.Keys)
+                {
+                    model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+                }
             }
 
             return PartialView("PastDueSurveys", model);
@@ -333,7 +345,8 @@ namespace SurveyWeb.Controllers
                     {
                         var observation = new Observation(tracerModel.Surveyor, question.Response.Question,
                             question.Response.Answer);
-                        models.Add(new ObservationViewModel(observation));
+                        
+                        models.Add(new ObservationViewModel(observation) { ResponseId = responseId });
                     }
                 }
                 catch (NullReferenceException ex)
@@ -887,6 +900,12 @@ namespace SurveyWeb.Controllers
 
             return View(viewModel);
         }
+        public ActionResult TakePhoto(string responseId)
+        {
+            var viewModel = new PhotoViewModel { ResponseId = responseId };
+
+            return View(viewModel);
+        }
 
         [HttpPost]        
         public ActionResult TakePhoto(PhotoViewModel model)
@@ -894,9 +913,9 @@ namespace SurveyWeb.Controllers
             string fileName = Guid.NewGuid().ToString("d") + ".png";
             string fileNameWitPath = Path.Combine(Server.MapPath("~/Store/Photos"), fileName);
 
-            using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
+            using (var fs = new FileStream(fileNameWitPath, FileMode.Create))
             {
-                using (BinaryWriter bw = new BinaryWriter(fs))
+                using (var bw = new BinaryWriter(fs))
                 {
                     byte[] data = Convert.FromBase64String(model.ImageData);
                     bw.Write(data);
