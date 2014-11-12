@@ -172,16 +172,16 @@ namespace SurveyWeb.Controllers
             }
             else
             {
-                if (isPastDue)
-                {
-                    events = _taskService.GetPastDueTasks(userId);
+            if (isPastDue)
+            {                
+                events = _taskService.GetPastDueTasks(userId);
                 }
                 else
                 {
-                    events = _taskService.GetNextTasks(userId);
-                }
+                events = _taskService.GetNextTasks(userId);            
+            }         
             }
-
+            
             var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Survey>>>() };
 
             foreach (var @event in events)
@@ -234,12 +234,12 @@ namespace SurveyWeb.Controllers
 
             if (!ViewBag.ShowTeamMemberContent)
             {
-                var nextTasks = GetSurveySchedules(false);
+            var nextTasks = GetSurveySchedules(false);
 
-                foreach (var item in nextTasks.SurveysByDate.Keys)
-                {
-                    model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
-                }
+            foreach (var item in nextTasks.SurveysByDate.Keys)
+            {
+                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+            }
             }
 
             return PartialView("PastDueSurveys", model);
@@ -440,7 +440,7 @@ namespace SurveyWeb.Controllers
 
         private void SetQuestionChoices(Question question)
         {
-            question.AddChoice(ResponseChoice.CompliantString).SetIdInternal(_questionChoiceNextId++);
+            //question.AddChoice(ResponseChoice.CompliantString).SetIdInternal(_questionChoiceNextId++);
             question.AddChoice(ResponseChoice.NonCompliantString).SetIdInternal(_questionChoiceNextId++);
             question.AddChoice(ResponseChoice.NAString).SetIdInternal(_questionChoiceNextId++);
             // question.AddChoice(NotScoredString); // AS - Not Valid choice

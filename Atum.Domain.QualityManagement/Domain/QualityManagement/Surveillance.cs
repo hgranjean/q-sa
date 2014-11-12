@@ -5,6 +5,10 @@ using System;
 
 namespace Atum.Domain.QualityManagement
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class Surveillance : DomainObject
     {   
         public Surveillance()
@@ -17,15 +21,10 @@ namespace Atum.Domain.QualityManagement
         }
 
         public DateTime StartDate { get; set; }
-
         public DateTime EndDate { get; set; }
-
         public Frequency Frequency { get; set; }
-
         public string Title { get; set; }
-
         public Survey Survey { get; set; }
-
         public DateTime CreatedDate { get; set; }
 
     }

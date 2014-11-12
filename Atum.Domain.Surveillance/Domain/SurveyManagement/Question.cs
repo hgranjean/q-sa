@@ -9,8 +9,8 @@ namespace Atum.Domain.SurveyManagement
     [Serializable]    
     public class Question : DomainObject
     {
-         public Question()
-        {}
+        // public Question()
+        //{}
 
         public Question(string questionText, QuestionType qType, QuestionGroup qGroup, string referenceElementId)
         {

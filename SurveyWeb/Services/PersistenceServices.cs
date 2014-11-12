@@ -73,6 +73,10 @@ namespace SurveyWeb.Services
 
         public Survey LoadSurvey(string name)
         {
+         
+            //Get From DB
+            
+            
             return (Survey)XmlSerializationUtility.GetObjectFromFile(name, typeof(Survey));
         }
 
