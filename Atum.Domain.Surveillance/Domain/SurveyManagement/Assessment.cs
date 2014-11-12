@@ -7,8 +7,11 @@ using Atum.Domain.Basis;
 
 namespace Atum.Domain.SurveyManagement
 {
+    /// <summary>
+    /// Do Not Use until analysed
+    /// </summary>
     [Serializable]
-    public class Assessment : DomainObject
+    public class _Assessment : DomainObject
     {   
         public Survey ConductedSurvey { get; set; }
         public Responses Responses { get; set; }
@@ -16,7 +19,7 @@ namespace Atum.Domain.SurveyManagement
         public Survey AdministeredSurvey { get; set; }
         public Survey.QuestionEnumerator Enumerator { get; set; }
 
-        public Assessment()
+        public _Assessment()
         {   
         }
 

@@ -149,19 +149,19 @@ namespace MvcApplication1.Tests
             var e2val = new SurveyEvaluator();
 
             // Setup questionnaire
-            e2val.Questions = new Questions();
-            e2val.Questions.Add(new Question());
-            e2val.Questions.Add(new Question());
-            e2val.Questions.Add(new Question());
-            e2val.Questions[0].AddChoice("0");
-            e2val.Questions[1].AddChoice("1");
-            e2val.Questions[2].AddChoice("2");
+            //e2val.Questions = new Questions();
+            //e2val.Questions.Add(new Question());
+            //e2val.Questions.Add(new Question());
+            //e2val.Questions.Add(new Question());
+            //e2val.Questions[0].AddChoice("0");
+            //e2val.Questions[1].AddChoice("1");
+            //e2val.Questions[2].AddChoice("2");
 
-            // Setup responses from user
-            e2val.Responses = new Responses();
-            e2val.Responses.Add(new Response(e2val.Questions[0], new ResponseChoice("0")));
-            e2val.Responses.Add(new Response(e2val.Questions[1], new ResponseChoice("1")));
-            e2val.Responses.Add(new Response(e2val.Questions[2], new ResponseChoice("2")));
+            //// Setup responses from user
+            //e2val.Responses = new Responses();
+            //e2val.Responses.Add(new Response(e2val.Questions[0], new ResponseChoice("0")));
+            //e2val.Responses.Add(new Response(e2val.Questions[1], new ResponseChoice("1")));
+            //e2val.Responses.Add(new Response(e2val.Questions[2], new ResponseChoice("2")));
             
             return e2val;
         }

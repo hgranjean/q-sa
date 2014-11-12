@@ -406,9 +406,9 @@ namespace SurveyWeb.Controllers
         {
             question.AddChoice("Compliant").SetIdInternal(_questionChoiceNextId++);
             question.AddChoice("Non Compliant").SetIdInternal(_questionChoiceNextId++);
-            question.AddChoice("N/A").SetIdInternal(_questionChoiceNextId++);
+            //question.AddChoice("N/A").SetIdInternal(_questionChoiceNextId++);
             // question.AddChoice("Not Scored"); // AS - Not Valid choice 
-            question.AddChoice("Follow-Up Completed").SetIdInternal(_questionChoiceNextId++);
+            //question.AddChoice("Follow-Up Completed").SetIdInternal(_questionChoiceNextId++);
         }
 
         private void SetQuestion(QuestionGroup questionGroup, QuestionType questionType)

@@ -53,6 +53,7 @@
     <Compile Include="Domain\AspNetUser.cs" />
     <Compile Include="Domain\AspNetUserClaim.cs" />
     <Compile Include="Domain\AspNetUserLogin.cs" />
+    <Compile Include="Domain\Security\Subscriber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\Security\ApplicationSystem.cs" />
     <Compile Include="Domain\Security\Assertion.cs" />

@@ -9,6 +9,8 @@ namespace Atum.Domain.QualityManagement.Healthcare.JointCommission
     {
         public string StandardId { get; set; }
         public string Title { get; set; }
+        public List<Chapter> Chapters { get; set; }
         public List<ElementOfPerformance> Items { get; set; }
+        public int MyProperty { get; set; }
     }
 }

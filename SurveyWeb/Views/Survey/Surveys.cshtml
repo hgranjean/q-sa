@@ -25,15 +25,15 @@
                 </div>
                 <div style="display: table-cell; padding-bottom: 5px">
                     <div class="btn-group col-md-7">
-                        <button type="button" class="btn btn-default" data-original-title="" title="" onclick="location.href='@Url.Action("SurveyDesign", "Survey", new { id = item.ID })'">Edit</button>
+                        <button type="button" class="btn btn-default" data-original-title="" title="" onclick="location.href='@Url.Action("SurveyDesign", "Survey", new { id = item.Id })'">Edit</button>
                         <button type="button" class="btn btn-default active dropdown-toggle" data-toggle="dropdown" data-original-title="" title="">
                             <span class="caret"></span>
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Edit", "SurveyDesign", new { id = item.ID })</li>
+                            <li>@Html.ActionLink("Edit", "SurveyDesign", new { id = item.Id })</li>
                             <li class="divider"></li>
-                            <li>@Html.ActionLink("Delete", "DeleteSurvey", new { id = item.ID })</li>
+                            <li>@Html.ActionLink("Delete", "DeleteSurvey", new { id = item.Id })</li>
                         </ul>
                     </div>
                             

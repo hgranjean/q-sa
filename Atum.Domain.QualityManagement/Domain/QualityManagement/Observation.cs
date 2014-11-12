@@ -7,6 +7,14 @@ using System.Text;
 
 namespace Atum.Domain.QualityManagement
 {
+    /// <summary>
+    /// An Observation may is a response to a Question
+    /// The Question always relates to an Element of Performance and is an assertion 
+    /// that the Element is in compliance per the Guideline or Standard
+    /// Hence the Observation always relates to Question/Standard found to be 
+    /// out of complicance and contains evidence in the form 
+    /// of Text or Files - i.e. Documents or Photographs
+    /// </summary>
     public class Observation : Response
     {
         public Person Person { get; private set; }
@@ -21,5 +29,10 @@ namespace Atum.Domain.QualityManagement
         {
             this.Person = person;
         }
+
+        public FollowUp FollowUp { get; set; }
+        public List<string> EvidenceFileInfos { get; set; }
+
+        
     }
 }

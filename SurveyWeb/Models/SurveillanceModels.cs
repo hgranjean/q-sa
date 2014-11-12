@@ -238,7 +238,7 @@ namespace SurveyWeb.Models
 
         public QuestionViewModel()
         {
-            Question = new Question();
+            //Question = new Question();
         }
 
         public QuestionViewModel(Question question)
