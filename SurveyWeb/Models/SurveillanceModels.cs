@@ -251,7 +251,7 @@ namespace SurveyWeb.Models
 
         public QuestionViewModel()
         {
-            //Question = new Question();
+            Question = new Question(); // Needed for UI text reflection
         }
 
         public QuestionViewModel(Question question)

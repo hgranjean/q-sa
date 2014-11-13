@@ -20,7 +20,7 @@
                     questionGroupId: "@Model.QuestionGroupNumber",
                     questionId: "@Model.Number",
                 },
-                success: function (data) {
+                success: function (data) {alert("success");
                     liToCancel.html('<div id="divid' + @Model.Number + '" style="display: inline">' + data + '</div>');                    
                 },
                 error: function (xhr, status, error) {
@@ -35,6 +35,7 @@
     });
 
     function success(result) {
+        
         $('.questionEdit').show();                                    
         $('.questionDelete').show();
     }

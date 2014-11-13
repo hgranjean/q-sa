@@ -2716,7 +2716,6 @@
     <Content Include="Views\Hospital\UserHospitalIndex.cshtml" />
     <Content Include="Views\Survey\CreateQuestionGroup.cshtml" />
     <Content Include="Views\Survey\EditorTemplates\QuestionGroupViewModel.cshtml" />
-    <Content Include="Views\Survey\Save.cshtml" />
     <Content Include="Views\Survey\EditQuestionGroup.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Surveillance\SurveySchedules.cshtml" />
