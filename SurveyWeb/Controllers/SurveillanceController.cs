@@ -964,9 +964,11 @@ namespace SurveyWeb.Controllers
         }
 
         
-        public ActionResult AddObservation(string txtObservation)
+        public ActionResult AddObservation()
         {
             var model = new TracerViewModel();
+
+            model.ResponseId = Guid.NewGuid().ToString();
 
             var userId = User.Identity.GetUserId();
             

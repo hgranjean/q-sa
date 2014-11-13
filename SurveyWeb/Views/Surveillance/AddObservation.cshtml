@@ -58,10 +58,14 @@
                             </div>
                             <div style="display: table-row;">
                                 <div style="display: table-cell; width: 100%;" class="table-cell">
-                                    <div id="editorLabel" class="editor-label"><b>Text:</b></div>
+                                    <div id="editorLabel" class="editor-label"><b>Text</b></div>
                                     <div id="editorField" class="editor-field">
-                                        @Html.Partial("_AddObservation", Model)
-                                        @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = 0 }, new { @class="btn btn-default", style = "width: 100px;" })
+                                        <div class="input-group">
+                                            @Html.Partial("_AddObservation", Model)
+                                            <div class="input-group-btn">
+                                                @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = Model.ResponseId }, new { @class = "btn btn-primary", style = "width: 100px;" })
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
