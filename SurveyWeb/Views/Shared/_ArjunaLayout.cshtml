@@ -389,7 +389,12 @@
                 <!-- start:breadcrumb -->
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
-                        <!--<li><a href="#"></a></li>-->
+                        <li>
+                            @if (ViewContext.RouteData.Values["controller"] != "Home")
+                            {
+                                @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
+                            }
+                        </li>
                         <li class="active">@ViewBag.Title</li>
                     </ol>
                 }
