@@ -40,6 +40,38 @@
                 <Level>0</Level>
               </BasisReference>
             </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>3</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>4</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>5</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>6</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
           </Questions>
         </QuestionGroup>
       </value>
@@ -56,7 +88,7 @@
             <Question>
               <Id>0</Id>
               <Text>6543</Text>
-              <Number>3</Number>
+              <Number>7</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -69,7 +101,7 @@
             <Question>
               <Id>0</Id>
               <Text>rewqrewqy5</Text>
-              <Number>4</Number>
+              <Number>8</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -82,7 +114,7 @@
             <Question>
               <Id>0</Id>
               <Text>321321</Text>
-              <Number>5</Number>
+              <Number>9</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -95,7 +127,7 @@
             <Question>
               <Id>0</Id>
               <Text>Eqrewq</Text>
-              <Number>6</Number>
+              <Number>10</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -121,7 +153,7 @@
             <Question>
               <Id>0</Id>
               <Text />
-              <Number>7</Number>
+              <Number>11</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -130,7 +162,7 @@
             <Question>
               <Id>0</Id>
               <Text>Ewq</Text>
-              <Number>8</Number>
+              <Number>12</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -156,7 +188,7 @@
             <Question>
               <Id>0</Id>
               <Text>fdsa</Text>
-              <Number>9</Number>
+              <Number>13</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -182,7 +214,7 @@
             <Question>
               <Id>0</Id>
               <Text>31243</Text>
-              <Number>10</Number>
+              <Number>14</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -208,7 +240,7 @@
             <Question>
               <Id>0</Id>
               <Text>Some question</Text>
-              <Number>11</Number>
+              <Number>15</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -221,7 +253,7 @@
             <Question>
               <Id>0</Id>
               <Text>312321</Text>
-              <Number>12</Number>
+              <Number>16</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -234,7 +266,7 @@
             <Question>
               <Id>0</Id>
               <Text>32132</Text>
-              <Number>13</Number>
+              <Number>17</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -243,6 +275,30 @@
                 <Id>0</Id>
                 <Level>0</Level>
               </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>18</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>19</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>20</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
             </Question>
           </Questions>
         </QuestionGroup>
@@ -260,7 +316,7 @@
             <Question>
               <Id>0</Id>
               <Text />
-              <Number>14</Number>
+              <Number>21</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -269,7 +325,7 @@
             <Question>
               <Id>0</Id>
               <Text />
-              <Number>15</Number>
+              <Number>22</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -278,7 +334,7 @@
             <Question>
               <Id>0</Id>
               <Text />
-              <Number>16</Number>
+              <Number>23</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -287,7 +343,7 @@
             <Question>
               <Id>0</Id>
               <Text>321312</Text>
-              <Number>17</Number>
+              <Number>24</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -300,7 +356,7 @@
             <Question>
               <Id>0</Id>
               <Text>fdasfd</Text>
-              <Number>18</Number>
+              <Number>25</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
@@ -313,10 +369,11 @@
             <Question>
               <Id>0</Id>
               <Text>19 </Text>
-              <Number>19</Number>
+              <Number>26</Number>
               <Rank>0</Rank>
               <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
               <BasisReference>
                 <Id>0</Id>
                 <Level>0</Level>
