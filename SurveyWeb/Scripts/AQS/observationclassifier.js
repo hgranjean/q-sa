@@ -1,17 +1,30 @@
 ﻿$(document).ready(function() {
 
     var ajaxformSubmit = function () {
+
+        event.preventDefault()
+
         var form = $("#observationForm");
-        var textarea = $('textarea[data-aqs-ajax="true"]');
+        var textarea = $(this);
         var options = {
             url: form.attr("action"),
             type: form.attr("method"),
             data: { observationText: textarea.val() }
         };
+
+        $(document.body).off('change', '#ClassList', ajaxGetForChangedValue);
+
+        // alert("call");
             
         $.ajax(options).done(function (data) {
+
+            alert(data);
+
             var target = $(textarea.attr("data-aqs-target"));
+
             target.replaceWith(data);
+
+            $(document.body).on('change', '#ClassList', ajaxGetForChangedValue);
         });
         
         return false;
@@ -24,9 +37,8 @@
     var ajaxGetForChangedValue = function () {
         var selectedValue = $(this).val();
         //alert(selectedValue);
-
-        //TODO: Get/Set from dom element
-        var url = '/Learning/NBTrainingDocument/?trainingDocumetId=' + selectedValue;
+        
+        var url = $.nbTrainingDocumentPath + '/?trainingDocumetId=' + selectedValue;
             
         $.ajax({
             url: url,

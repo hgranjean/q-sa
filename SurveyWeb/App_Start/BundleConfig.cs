@@ -15,7 +15,7 @@ namespace SurveyWeb
             // AQS scripts and styles
 
             bundles.Add(new ScriptBundle("~/bundles/aqs").Include(
-                        "~/Scripts/AQS/aqs.js",
+                        "~/Scripts/AQS/observationclassifier.js",
                         "~/Content/themes/arjuna/js/jquery-1.11.1.min.js",
                         // "~/Scripts/jquery-1.11.0.js", 
                         "~/Content/themes/arjuna/plugins/jquery-ui-1.11.1/jquery-ui.js",

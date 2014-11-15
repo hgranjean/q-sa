@@ -53,11 +53,13 @@ namespace SurveyWeb.Controllers
 
             var viewModel = new StandardElementViewModel(model);
 
-            if (Request.IsAjaxRequest())
-            {
+            // viewModel.Observation += Request.IsAjaxRequest().ToString();
+
+            // if (Request.IsAjaxRequest())
+            // {
                 return PartialView("_ObservationClass", viewModel);
-            }
-            return View(viewModel);
+            // }
+            // return View(viewModel);
         }
 
         //public ActionResult NBTrainingDocument(string chapterId, object dummy)
