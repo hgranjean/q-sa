@@ -397,6 +397,8 @@ namespace SurveyWeb.Models
     {
         public Observation Observation { get; set; }
 
+        public StandardElementViewModel Standard { get; set; }
+
         public string ResponseId { get; set; }
 
         public ObservationViewModel() { }

@@ -2519,7 +2519,7 @@
     <Content Include="Store\Surveys\survey2.xml" />
     <Content Include="Store\Surveys\survey3.xml" />
     <Content Include="Store\Surveys\survey4.xml" />
-    <Content Include="Scripts\AQS\aqs.js" />
+    <Content Include="Scripts\AQS\observationclassifier.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\classie.js" />

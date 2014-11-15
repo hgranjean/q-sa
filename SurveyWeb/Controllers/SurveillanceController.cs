@@ -980,13 +980,15 @@ namespace SurveyWeb.Controllers
 
             LoadTracerReferenceData(model);
 
+            ViewBag.StandardElement = new StandardElementViewModel(new StandardElement { Observation = string.Empty});
+
             return View(model);
         }
 
         [HttpPost]
         public ActionResult AddObservation(TracerViewModel viewModel, FormCollection values)
         {
-            var observationText = values["txtObservation"];
+            var observationText = values["ObservationText"];
 
             var questionGroups = new QuestionGroups();
             var questionGroup = new QuestionGroup();
