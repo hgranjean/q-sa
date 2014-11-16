@@ -2159,6 +2159,7 @@
     <Content Include="Content\themes\united\bootstrap.css" />
     <Content Include="Content\themes\united\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Scripts\AQS\surveydesign.js" />
     <Content Include="Scripts\getUserMedia.js" />
     <Content Include="Scripts\jquery.jeditable.js" />
     <Content Include="Store\JointCommissionStandards\EC_out.xml" />
@@ -2518,7 +2519,7 @@
     <Content Include="Store\Surveys\survey2.xml" />
     <Content Include="Store\Surveys\survey3.xml" />
     <Content Include="Store\Surveys\survey4.xml" />
-    <Content Include="Scripts\AQS\aqs.js" />
+    <Content Include="Scripts\AQS\observationclassifier.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\classie.js" />
@@ -2716,7 +2717,6 @@
     <Content Include="Views\Hospital\UserHospitalIndex.cshtml" />
     <Content Include="Views\Survey\CreateQuestionGroup.cshtml" />
     <Content Include="Views\Survey\EditorTemplates\QuestionGroupViewModel.cshtml" />
-    <Content Include="Views\Survey\Save.cshtml" />
     <Content Include="Views\Survey\EditQuestionGroup.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Surveillance\SurveySchedules.cshtml" />

@@ -115,8 +115,8 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li>@Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = 0 }, new { style = "width: 100px;" })</li>
-                        <li>@Html.ActionLink("Assign To", "AssignTo", new { id = 0 }, new { style = "width: 100px;" })</li>
+                        <li>@Html.ActionLink("Take Photo", "TakePhoto", new { completedObservation.ResponseId }, new { style = "width: 100px;" })</li>
+                        <li>@Html.ActionLink("Assign To", "AssignTo", new { completedObservation.ResponseId }, new { style = "width: 100px;" })</li>
                         <li class="divider"></li>
                         <li><a class="responseDelete" style="width: 100px;" data-ng-href="0" href="#">Delete</a></li>
                     </ul>

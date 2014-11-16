@@ -1,4 +1,5 @@
-﻿@model SurveyWeb.Models.TracerViewModel
+﻿@using SurveyWeb.Models
+@model SurveyWeb.Models.TracerViewModel
 @{
     ViewBag.Title = "Add Observation";
 }
@@ -58,10 +59,33 @@
                             </div>
                             <div style="display: table-row;">
                                 <div style="display: table-cell; width: 100%;" class="table-cell">
-                                    <div id="editorLabel" class="editor-label"><b>Text:</b></div>
+                                    <div id="editorLabel" class="editor-label"><b>Text</b></div>
                                     <div id="editorField" class="editor-field">
-                                        @Html.Partial("_AddObservation", Model)
-                                        @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = 0 }, new { @class="btn btn-default", style = "width: 100px;" })
+                                        <div class="input-group">
+                                            @*Html.Partial("_AddObservation", Model)*@
+                                            
+                                            <div id="observationForm" action="~/Learning/ObservationClassifier" method="get">
+                                                <div style="display: table-row">
+                                                    <div class="editor-label">
+                                                        Observation
+                                                    </div>
+                                                </div>
+                                                <div id="observation-text" style="display: table-row">
+                                                    @Html.TextArea("observationText", string.Empty, new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#classDisplay", cols = 75, @rows = 5 })
+                                                </div>
+                                            </div>
+                                            @Html.Partial("../Learning/_ObservationClass", (StandardElementViewModel)ViewBag.StandardElement)
+                                            <script>
+                                                $(‘#standardText’).tooltip({
+                                                    track: true
+                                                });
+                                            </script>
+                                            <script src="~/Scripts/AQS/observationclassifier.js"></script>
+
+                                            <div class="input-group-btn">
+                                                @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = Model.ResponseId }, new { @class = "btn btn-primary", style = "width: 100px;" })
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

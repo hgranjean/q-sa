@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Web.Helpers;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain;
 using Atum.Domain.Common;
@@ -237,9 +238,21 @@ namespace SurveyWeb.Controllers
         }
 
         [HttpPost]
+        public JsonResult EditSurveyHeader(SurveyViewModel viewModel)
+        {
+            var survey = _persistenceService.GetSurvey((int)viewModel.Survey.Id);
+
+            survey.Title = viewModel.Survey.Title;
+            survey.SurveyType = viewModel.Survey.SurveyType;
+
+            return new JsonResult { Data = true };
+        }
+
+        [HttpPost]
+        [Obsolete("Form is AJAX-fied now")]
         public ActionResult Save(SurveyViewModel viewModel)
         {
-            if (viewModel.Survey.Guid == Guid.Empty)
+            /*if (viewModel.Survey.Guid == Guid.Empty)
             {
                 viewModel.Survey.Guid = Guid.NewGuid();
 
@@ -251,21 +264,23 @@ namespace SurveyWeb.Controllers
                 
                 surveyEntry = _surveyService.AddSurvey(surveyEntry);
             }
-            else
+            else*/
             {
                 var id = viewModel.Survey.Guid.ToString("d");
                 
                 var surveyEntry = _surveyService.GetSurvey(id);
 
                 surveyEntry.Title = viewModel.Survey.Title;
+
+                viewModel.Survey = _persistenceService.GetSurvey((int)viewModel.Survey.Id);
+
+                _persistenceService.SaveSurvey(viewModel.Survey);            
             }
-            var questionGroups = viewModel.QuestionGroupsViewModel.ConvertAll(m => m.QuestionGroup);
+            /*var questionGroups = viewModel.QuestionGroupsViewModel.ConvertAll(m => m.QuestionGroup);
             viewModel.Survey.QuestionGroups = new QuestionGroups();
-            questionGroups.ForEach(m => viewModel.Survey.QuestionGroups.AddOrUpdate(m.Number, m));
+            questionGroups.ForEach(m => viewModel.Survey.QuestionGroups.AddOrUpdate(m.Number, m));*/
 
-            _persistenceService.SaveSurvey(viewModel.Survey);            
-
-            return View(viewModel);
+            return View("SurveyDesign", viewModel);
         }
 
 

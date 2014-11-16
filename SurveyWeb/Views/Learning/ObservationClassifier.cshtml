@@ -9,15 +9,14 @@
 
 <h2>Observation Classifier</h2>
 
- <form method="get" >
-
+ <form id="observationForm" method="get">
     <div style="display: table-row">
         <div class="editor-label">
             @Html.LabelFor(model => model.Observation)
         </div>
     </div>
     <div id="observation-text" style="display: table-row">
-        @Html.TextAreaFor(model => model.Observation, new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#classDisplay", cols = 75, @rows = 5 })
+        @Html.TextAreaFor(model => model.Observation, new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target="#classDisplay", cols = 75, @rows = 5 })
     </div>
 </form>
 
@@ -29,4 +28,9 @@
     });
 
 </script>
-<script src="~/Scripts/AQS/aqs.js"></script>
+<script type="text/javascript">
+    $.nbTrainingDocumentPath = '@Url.Content("~/Learning/NBTrainingDocument")';
+</script>
+
+
+

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
+using Repository.Data;
 
 namespace SurveyWeb.Repository
 {
@@ -16,6 +17,8 @@ namespace SurveyWeb.Repository
         IEnumerable<EventUser> GetNextTasks(string userId);
 
         IEnumerable<EventUser> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate);
+
+        IEnumerable<EventUser> GetFacilityTasks(string userId);
 
         EventUser GetTask(string id);
 
@@ -48,6 +51,21 @@ namespace SurveyWeb.Repository
         public IEnumerable<EventUser> GetNextTasks(string userId)
         {
             return _context.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start >= DateTime.Now);            
+        }
+
+        public IEnumerable<EventUser> GetFacilityTasks(string userId)
+        {
+            // Gets list of hospitals for the userId and returns list of users for the given hospitals
+            var query =
+                from a in _context.UserHospitals.Where(m => m.UserId == userId)
+                join b in _context.UserHospitals on a.HospitalId equals b.HospitalId
+                select b;
+            
+            // Gets the events for the distinct user ids
+            return
+                from a in query.Select(m => m.UserId).Distinct().AsQueryable()
+                join b in _context.EventUsers.Include(m => m.Event.Survey).Include(m => m.User).Include(m => m.User.Person) on a equals b.UserId
+                select b;
         }
 
 

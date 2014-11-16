@@ -35,29 +35,31 @@ namespace SurveyWeb.Controllers
         /// </summary>
         /// <param name="observation"></param>
         /// <returns></returns>
-        public ActionResult ObservationClassifier(string observation)
+        public ActionResult ObservationClassifier(string observationText)
         {
             // Contract.Assert(!string.IsNullOrWhiteSpace(observation));
 
             //View will contain Classification and list of EP Choices
             StandardElement model = null;
             
-            if (!string.IsNullOrWhiteSpace(observation))
+            if (!string.IsNullOrWhiteSpace(observationText))
             {
-                model = _learningService.Classify(observation);
+                model = _learningService.Classify(observationText);
             }
             else
             {
-                model = new StandardElement { Observation = observation };
+                model = new StandardElement { Observation = observationText };
             }
 
             var viewModel = new StandardElementViewModel(model);
 
-            if (Request.IsAjaxRequest())
-            {
+            // viewModel.Observation += Request.IsAjaxRequest().ToString();
+
+            // if (Request.IsAjaxRequest())
+            // {
                 return PartialView("_ObservationClass", viewModel);
-            }
-            return View(viewModel);
+            // }
+            // return View(viewModel);
         }
 
         //public ActionResult NBTrainingDocument(string chapterId, object dummy)

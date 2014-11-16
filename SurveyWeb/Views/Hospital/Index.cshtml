@@ -1,35 +1,42 @@
-﻿
-@model IEnumerable<Atum.Domain.Business.Hospital>
+﻿@model IEnumerable<Atum.Domain.Business.Hospital>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Facilities</h2>
 
 <p>
-@Html.ActionLink("Create new", "Create", "Hospital")
+@Html.ActionLink("Create new", "Create", null, new {@class="btn btn-default"})
 </p>
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-
-    </tr>
-}
-</table>
+ <div style="display: table; table-layout: fixed; width: 100%">
+     <div style="display: table-row">
+         <div style="display: table-cell; width: 80%">
+         </div>
+         <div style="display: table-cell; width: 20%">
+         </div>
+      </div>
+    @foreach (var item in Model)
+    {
+        <div style="display: table-row">
+            <div style="display: table-cell">
+                @Html.ActionLink(item.Name, "Details")
+            </div>
+            <div style="display: table-cell; padding-bottom: 5px">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-original-title="" title=""><i class="fa"></i>Action</button>
+                    <button type="button" class="btn btn-default active dropdown-toggle" data-toggle="dropdown" data-original-title="" title="">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Edit", "Edit", new { item.Id }, new { style = "width: 100px;" })</li>
+                        <li>@Html.ActionLink("Details", "Details", new { item.Id }, new { style = "width: 100px;" })</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Delete", "Delete", new { item.Id }, new { style = "width: 100px;" })</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>

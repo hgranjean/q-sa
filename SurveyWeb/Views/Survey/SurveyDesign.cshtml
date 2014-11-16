@@ -9,6 +9,15 @@
     <h1>@ViewBag.Title</h1>
 </hgroup>
 
+<script type="text/javascript">
+    $.addQuestionPath = '@Url.Content("~/Survey/AddQuestion")';
+    $.editQuestionPath = '@Url.Content("~/Survey/EditQuestion")';
+    $.deleteQuestionPath = '@Url.Content("~/Survey/DeleteQuestion")';
+    $.surveyEditHeaderPath = '@Url.Content("~/Survey/EditSurveyHeader")';
+    $.surveyDesignPath = '@Url.Content("~/Survey/SurveyDesign")';
+</script>
+<script type="text/javascript" src="~/Scripts/AQS/surveydesign.js"></script>
+
 @*using (Html.BeginForm("Save", "Survey", FormMethod.Post, new {enctype="multipart/form-data"}))
 {*@
     @Html.AntiForgeryToken()
@@ -22,156 +31,33 @@
 
         <div style="display: table">
             
-            <div style="display: table-row" class="form-group">                
-                <div style="display: table-cell; width: 30%"  class="editor-label">
-                    @Html.LabelFor(m => m.Survey.Title, new { @class = "control-label" })
+            <form id="surveyHeader">
+                
+                @Html.HiddenFor(m => m.Survey.Id)
+
+                <div style="display: table-row" class="form-group">
+                    <div style="display: table-cell; width: 30%" class="editor-label">
+                        @Html.LabelFor(m => m.Survey.Title, new { @class = "control-label" })
+                    </div>
+                    <div style="display: table-cell; width: 70%" class="editor-field">
+                        @Html.TextBoxFor(m => m.Survey.Title, new { @class = "form-control" })
+                    </div>
                 </div>
-                <div style="display: table-cell; width: 70%" class="editor-field">
-                    @Html.TextBoxFor(m => m.Survey.Title, new { @class = "form-control" })
+                <div style="display: table-row; width: 30%" class="form-group">
+                    <div style="display: table-cell; margin-top: 5px;" class="editor-label">
+                        @Html.LabelFor(model => model.SurveyType, new { @class = "control-label" })
+                    </div>
+                    <div style="display: table-cell; width: 70%" class="editor-field">
+                        @Html.DropDownListFor(model => model.SurveyType,
+                            new SelectList(EnumUtils.GetEnumerableItems(typeof(SurveyType)),
+                                "Value", "Text"), new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div style="display: table-row; width: 30%" class="form-group">
-                <div style="display: table-cell; margin-top: 5px;" class="editor-label">
-                    @Html.LabelFor(model => model.SurveyType, new { @class = "control-label" })
-                </div>
-                <div style="display: table-cell; width: 70%" class="editor-field">
-                    @Html.DropDownListFor(model => model.SurveyType,
-                                          new SelectList(EnumUtils.GetEnumerableItems(typeof(SurveyType)),
-                                                         "Value", "Text"), new { @class = "form-control" })
-                </div>
-            </div>
+            </form>
+            
+            <a class="surveyEditHeader btn btn-default" href="#">Update Title/Type</a>
         </div>
         <div style="display: table; width: 100%">
-
-            <script>
-                $(document).ready(function () {
-
-                    $.extend({
-                        confirm: function (title, message, yesText, yesCallback) {
-                            $("<div></div>").dialog({
-                                buttons: [{
-                                    text: yesText,
-                                    click: function () {
-                                        yesCallback();
-                                        $(this).remove();
-                                    }
-                                },
-                                {
-                                    text: "Cancel",
-                                    click: function () {
-                                        $(this).remove();
-                                    }
-                                }
-                                ],
-                                close: function (event, ui) { $(this).remove(); },
-                                resizable: false,
-                                title: title,
-                                modal: true
-                            }).text(message).parent().addClass("alert");
-                        }
-                    });
-
-                    function questionEditClickHandler() {
-
-                        $(this).hide();
-
-                        var parentId = $(this).attr("data-ng-href");
-
-                        $.ajax({
-       t                     type: 'GET',
-                            url: '@Url.Content("~/Survey/EditQuestion")',
-                            data: {
-                                surveyId: "@Model.Survey.Id",
-                                questionId: parentId,
-                            },
-                            success: function (data) {
-                                $('#divid' + parentId).html(data);
-                                $('.questionEdit').hide();
-                                $('.questionDelete').hide();
-                            },
-                            error: function (xhr, status, error) {
-                                console.log(xhr.responseText);
-                            }
-                        });
-
-                    }
-                    $('.questionEdit').click(questionEditClickHandler);
-
-                    function questionDeleteClickHandler() {
-
-                        var parentId = $(this).parents('li').map(function () {
-                            return $(this).find('a').first().attr("data-ng-href");
-                        }).get().join(", ");
-
-                        $.confirm(
-                            "Delete question", //title
-                            "Delete the question " + parentId + "?", //message
-                            "Delete", //button text
-                            function deleteOk() { //"yes" callback
-                                var parentId = $(this).parents('li').map(function () {
-                                    return $(this).find('a').first().attr("data-ng-href");
-                                }).get().join(", ");
-
-                                var parentGroupId = $(this).closest('li').closest('ul').attr("data-ng-href");
-
-                                var liToDelete = $(this).closest('li');
-
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '@Url.Content("~/Survey/DeleteQuestion")',
-                                    data: {
-                                        surveyId: "@Model.Survey.Id",
-                                        questionGroupId: parentGroupId,
-                                        questionId: parentId
-                                    },
-                                    success: function (data) {
-                                        liToDelete.remove();
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.log(xhr.responseText);
-                                    }
-                                });
-
-                                location.reload(); 
-                            }
-                        );                      
-                    }
-
-                    $('.questionDelete').click(questionDeleteClickHandler);
-
-                    function questionAddClickHandler() {
-
-                        var parentGroupId = $(this).attr("data-ng-href");
-
-                        $.ajax({
-                            type: 'POST',
-                            url: '@Url.Content("~/Survey/AddQuestion")',
-                            dataType: 'html',
-                            data: {
-                                surveyId: "@Model.Survey.Id",
-                                questionGroupId: parentGroupId,
-                            },
-                            success: function (questionData) {
-
-                                var newQuestion = $("#questionGroup" + parentGroupId).append(
-                                    '<li class="questionItem">' +
-                                        questionData +
-                                    '</li>');
-
-                                var event = newQuestion.on("click", ".questionEdit", questionEditClickHandler);
-                                newQuestion.on("click", ".questionDelete", questionDeleteClickHandler);
-
-                                $("#questionGroup" + parentGroupId).children("li").last().find(".questionEdit").trigger("click");
-                            },
-                            error: function (xhr, status, error) {
-                                console.log(xhr.responseText);
-                            }
-                        });
-                    }
-
-                    $('.questionAdd').click(questionAddClickHandler);
-                });
-        </script>
 
             <h3 style="column-span: all;">Elements @Html.ActionLink("+", "CreateQuestionGroup", new { surveyId = Model.Survey.Id })</h3>
             <div style="display: table-row;">
@@ -185,9 +71,8 @@
                     &nbsp;
                 </div>
             </div>
-
         </div>
-        
+
         @Html.ActionLink("Done", "Surveys", "Survey", null, new { @class = "btn btn-default" })
     </fieldset>
 @*}*@

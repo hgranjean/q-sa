@@ -166,12 +166,21 @@ namespace SurveyWeb.Controllers
             var userId = User.Identity.GetUserId();
             
             IEnumerable<EventUser> events = null;
+            if (ViewBag.ShowManagerContent)
+            {
+                events = _taskService.GetFacilityTasksForUser(userId);
+            }
+            else
+            {
             if (isPastDue)
             {                
                 events = _taskService.GetPastDueTasks(userId);
-            } else {
+                }
+                else
+                {
                 events = _taskService.GetNextTasks(userId);            
             }         
+            }
 
             var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Survey>>>() };
 
@@ -219,19 +228,21 @@ namespace SurveyWeb.Controllers
         {
             ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
             ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
 
             var model = new SurveysViewModel();
             try
             {
                 model = GetSurveySchedules(true);
 
-                var nextTasks = GetSurveySchedules(false);
+            if (!ViewBag.ShowTeamMemberContent)
+            {
+            var nextTasks = GetSurveySchedules(false);
 
-                foreach (var item in nextTasks.SurveysByDate.Keys)
-                {
-                    model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
-                }
+            foreach (var item in nextTasks.SurveysByDate.Keys)
+            {
+                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+            }
             }
             catch (Exception)
             {
@@ -342,7 +353,8 @@ namespace SurveyWeb.Controllers
                     {
                         var observation = new Observation(tracerModel.Surveyor, question.Response.Question,
                             question.Response.Answer);
-                        models.Add(new ObservationViewModel(observation));
+                        
+                        models.Add(new ObservationViewModel(observation) { ResponseId = responseId });
                     }                    
                 }
                 catch (NullReferenceException ex)
@@ -896,6 +908,12 @@ namespace SurveyWeb.Controllers
 
             return View(viewModel);
         }
+        public ActionResult TakePhoto(string responseId)
+        {
+            var viewModel = new PhotoViewModel { ResponseId = responseId };
+
+            return View(viewModel);
+        }
 
         [HttpPost]        
         public ActionResult TakePhoto(PhotoViewModel model)
@@ -903,9 +921,9 @@ namespace SurveyWeb.Controllers
             string fileName = Guid.NewGuid().ToString("d") + ".png";
             string fileNameWitPath = Path.Combine(Server.MapPath("~/Store/Photos"), fileName);
 
-            using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
+            using (var fs = new FileStream(fileNameWitPath, FileMode.Create))
             {
-                using (BinaryWriter bw = new BinaryWriter(fs))
+                using (var bw = new BinaryWriter(fs))
                 {
                     byte[] data = Convert.FromBase64String(model.ImageData);
                     bw.Write(data);
@@ -954,9 +972,11 @@ namespace SurveyWeb.Controllers
         }
 
         
-        public ActionResult AddObservation(string txtObservation)
+        public ActionResult AddObservation()
         {
             var model = new TracerViewModel();
+
+            model.ResponseId = Guid.NewGuid().ToString();
 
             var userId = User.Identity.GetUserId();
             
@@ -968,13 +988,15 @@ namespace SurveyWeb.Controllers
 
             LoadTracerReferenceData(model);
 
+            ViewBag.StandardElement = new StandardElementViewModel(new StandardElement { Observation = string.Empty});
+
             return View(model);
         }
 
         [HttpPost]
         public ActionResult AddObservation(TracerViewModel viewModel, FormCollection values)
         {
-            var observationText = values["txtObservation"];
+            var observationText = values["ObservationText"];
 
             var questionGroups = new QuestionGroups();
             var questionGroup = new QuestionGroup();

@@ -15,17 +15,19 @@
     </div>
     <div>
         <div style="display: table-row">
-            <div id="epIdList">
-                @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content })
+            <div class="input-group">
+                <div id="epIdList" style="width: 400px">
+                    @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content })
 
-                @if (Model.EPIds != null)
-                {
-                    @Html.DropDownListFor(model => model.EPIds,
-                                        new SelectList(Model.EPIds), "", new { id = "EPIdList" })
-                }
+                    @if (Model.EPIds != null)
+                    {
+                        @Html.DropDownListFor(model => model.EPIds,
+                        new SelectList(Model.EPIds), "", new { id = "EPIdList" })
+                    }
 
+                </div>
+                <div class="input-group-btn">@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
             </div>
-            <div>@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
         </div>
     </div>
 </div>

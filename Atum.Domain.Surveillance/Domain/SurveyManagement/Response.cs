@@ -5,20 +5,17 @@ namespace Atum.Domain.SurveyManagement
 {
     [Serializable]
     public class Response
-    {
-        private Question _question;
-        private ResponseChoice _answer;
-
+    {   
         public Response()
         { }
 
         public Response(Question question, ResponseChoice answer)
         {
-            this.QuestionId = (int)question.Id;
-            this.AnswerKey = answer.Key;
-            this.ResponseChoiceId = (int)answer.Id;
-            this._answer = answer;
-            this._question = question;
+            QuestionId = (int)question.Id;
+            AnswerKey = answer.Key;
+            ResponseChoiceId = (int)answer.Id;
+            Answer = answer;
+            Question = question;
         }
 
         public int Id { get; set; }
@@ -32,16 +29,7 @@ namespace Atum.Domain.SurveyManagement
         // private Question Question { get; set; }
         //private ResponseChoice Answer { get; set; }
         
-        public Question Question
-        {
-            get { return _question; }
-            set { _question = value;  }
-        }
-
-        public ResponseChoice Answer
-        {
-            get { return _answer; }
-            set { _answer = value; }
-        }
+        public Question Question { get; set; }
+        public ResponseChoice Answer { get; set; }
     }
 }

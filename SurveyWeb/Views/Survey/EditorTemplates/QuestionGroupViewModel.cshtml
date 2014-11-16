@@ -30,13 +30,16 @@
 
             <script>
                 $(document).ready(function () {
-                    $('.editTitle').editable(function (value, settings) {                        
+                    $('.editTitle').editable(function (value, settings) {
+
+                        var parentGroupId = $(this).attr("data-ng-href");
+
                         $.ajax({
                             type: 'POST',
                             url: '@Url.Content("~/Survey/EditQuestionGroupText")',
                             data: {
                                 surveyId: '@Model.SurveyId',
-                                questionGroupId: '@Model.Number',                                
+                                questionGroupId: parentGroupId,
                                 value: value
                             },
                             async: false
@@ -51,7 +54,7 @@
                     <div style="display: table; width: 100%">
                         <div style="display: table-row">
                             <div style="display: table-cell; width: 70%; margin-top: 5px">
-                                <div class="editTitle" style="margin: 0; font-weight: bold">@Html.DisplayFor(m => Model.QuestionGroup.Title)</div>
+                                <div class="editTitle" style="margin: 0; font-weight: bold" data-ng-href="@Model.Number">@Html.DisplayFor(m => Model.QuestionGroup.Title)</div>
                             </div>
                             <div style="display: table-cell; width: 30%">
                                 &nbsp;
@@ -67,18 +70,19 @@
             
             <div style="display: table-row">
                 <div style="display: table-cell; width: 100%;">
-                    @if (Model.QuestionGroup.Questions != null)
-                    {
-                        <ul id="questionGroup@(Model.QuestionGroup.Number)" class="questionGroup" data-ng-href="@(Model.QuestionGroup.Number)">
-                            @for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
-                            {
-                                <li class="questionItem">
-                                    @{ var questionViewModel = new QuestionViewModel(Model.QuestionGroup.Questions[i]); }
-                                    @Html.EditorFor(m => questionViewModel)
-                                </li>
-                            }
-                        </ul>                        
-                    }
+                    
+                    <ul id="questionGroup@(Model.QuestionGroup.Number)" class="questionGroup" data-ng-href="@(Model.QuestionGroup.Number)">
+                        @if (Model.QuestionGroup.Questions != null)
+                        {
+                            for (int i = 0; i < Model.QuestionGroup.Questions.Count; i++)
+                             {
+                                 <li class="questionItem">
+                                     @{ var questionViewModel = new QuestionViewModel(Model.QuestionGroup.Questions[i]); }
+                                     @Html.EditorFor(m => questionViewModel)
+                                 </li>
+                             }
+                        }
+                    </ul>                        
                     <div style="margin-top: 5px;"><a class="questionAdd btn btn-default" data-ng-href="@(Model.QuestionGroup.Number)" href="#">Add question</a></div>
                 </div>      
             </div>

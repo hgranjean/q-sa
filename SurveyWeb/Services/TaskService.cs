@@ -1,4 +1,5 @@
 ﻿using Atum.Domain;
+using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
 using SurveyWeb.Repository;
 using System;
@@ -33,17 +34,22 @@ namespace SurveyWeb.Services
             return _repository.GetTasksForUser(userId, fromDate, toDate);
         }
 
+        internal IEnumerable<EventUser> GetFacilityTasksForUser(string userId)
+        {
+            return _repository.GetFacilityTasks(userId);
+        }
+
         internal EventUser GetTask(string id)
         {
             return _repository.GetTask(id);
         }
 
-        internal IEnumerable<Atum.Domain.Security.Domain.AspNetUser> GetUsersForTask(string taskId)
+        internal IEnumerable<AspNetUser> GetUsersForTask(string taskId)
         {
             return _repository.GetUsersForTask(taskId);
         }
 
-        internal void UpdateTask(Atum.Domain.SurveyManagement.Event evt)
+        internal void UpdateTask(Event evt)
         {
             _repository.UpdateTask(evt);
         }

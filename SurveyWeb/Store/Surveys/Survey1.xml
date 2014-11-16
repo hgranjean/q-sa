@@ -2,7 +2,7 @@
 <Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Id>1</Id>
   <Guid>65029ff5-e88d-442f-a7e8-a2c665170dbf</Guid>
-  <Title>Survey Template 1</Title>
+  <Title>First</Title>
   <SurveyType>Surveillance</SurveyType>
   <QuestionGroups>
     <item>
@@ -11,298 +11,70 @@
       </key>
       <value>
         <QuestionGroup>
-          <Title>Hyegine</Title>
+          <Title>1. Ceiling</Title>
           <Number>0</Number>
           <Questions>
             <Question>
-              <ID>0</ID>
-              <Text>rewqre</Text>
+              <Id>0</Id>
+              <Text>rewqrew</Text>
               <Number>1</Number>
               <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
               <BasisReference>
-                <ID>0</ID>
+                <Id>0</Id>
                 <Level>0</Level>
               </BasisReference>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>0</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>1</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>2</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>3</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
             </Question>
             <Question>
-              <ID>0</ID>
-              <Text>321</Text>
+              <Id>0</Id>
+              <Text>rfewqrerewq</Text>
               <Number>2</Number>
               <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
               <BasisReference>
-                <ID>0</ID>
+                <Id>0</Id>
                 <Level>0</Level>
               </BasisReference>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>4</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>5</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>6</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>7</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
             </Question>
             <Question>
-              <ID>0</ID>
-              <Text>Third</Text>
+              <Id>0</Id>
+              <Text />
               <Number>3</Number>
               <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
+              <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>8</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>9</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>10</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>11</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
+              <ResponseChoices />
             </Question>
             <Question>
-              <ID>0</ID>
-              <Text>Test 4</Text>
+              <Id>0</Id>
+              <Text />
               <Number>4</Number>
               <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
+              <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>12</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>13</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>14</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>15</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
+              <ResponseChoices />
             </Question>
             <Question>
-              <ID>0</ID>
-              <Text>Fifth question</Text>
+              <Id>0</Id>
+              <Text />
               <Number>5</Number>
               <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
+              <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>16</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>17</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>18</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>19</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
+              <ResponseChoices />
             </Question>
             <Question>
-              <ID>0</ID>
-              <Text>Sixth question</Text>
+              <Id>0</Id>
+              <Text />
               <Number>6</Number>
               <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
+              <GroupNumber>0</GroupNumber>
               <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>20</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>21</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>22</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>23</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text>Question 7</Text>
-              <Number>7</Number>
-              <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>24</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>25</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>26</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>27</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text>Question 8</Text>
-              <Number>8</Number>
-              <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>28</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>29</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>30</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>31</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text>Ninth</Text>
-              <Number>9</Number>
-              <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>32</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>33</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>34</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>35</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
-            </Question>
-            <Question>
-              <ID>0</ID>
-              <Text>Ewqtrewqre</Text>
-              <Number>10</Number>
-              <Rank>0</Rank>
-              <BasisReference>
-                <ID>0</ID>
-                <Level>0</Level>
-              </BasisReference>
-              <QuestionType>SelectOne</QuestionType>
-              <ResponseChoices>
-                <ResponseChoice>
-                  <ID>36</ID>
-                  <Text>Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>37</ID>
-                  <Text>Non Compliant</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>38</ID>
-                  <Text>N/A</Text>
-                </ResponseChoice>
-                <ResponseChoice>
-                  <ID>39</ID>
-                  <Text>Follow-Up Completed</Text>
-                </ResponseChoice>
-              </ResponseChoices>
+              <ResponseChoices />
             </Question>
           </Questions>
         </QuestionGroup>
@@ -314,9 +86,74 @@
       </key>
       <value>
         <QuestionGroup>
-          <Title>New Group 2</Title>
+          <Title>2. Floor</Title>
           <Number>2</Number>
-          <Questions />
+          <Questions>
+            <Question>
+              <Id>0</Id>
+              <Text>6543</Text>
+              <Number>7</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>rewqrewqy5</Text>
+              <Number>8</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>321321</Text>
+              <Number>9</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>Eqrewq</Text>
+              <Number>10</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>gfsegr</Text>
+              <Number>11</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+          </Questions>
         </QuestionGroup>
       </value>
     </item>
@@ -326,9 +163,32 @@
       </key>
       <value>
         <QuestionGroup>
-          <Title>New Group 3</Title>
+          <Title>Fire</Title>
           <Number>3</Number>
-          <Questions />
+          <Questions>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>12</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>Ewq</Text>
+              <Number>13</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+          </Questions>
         </QuestionGroup>
       </value>
     </item>
@@ -338,8 +198,207 @@
       </key>
       <value>
         <QuestionGroup>
-          <Title>New Group 4</Title>
+          <Title>Hiegine</Title>
           <Number>4</Number>
+          <Questions>
+            <Question>
+              <Id>0</Id>
+              <Text>fdsa</Text>
+              <Number>14</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>5</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>New Group 5</Title>
+          <Number>5</Number>
+          <Questions>
+            <Question>
+              <Id>0</Id>
+              <Text>31243</Text>
+              <Number>15</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>6</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>Sanitation</Title>
+          <Number>6</Number>
+          <Questions>
+            <Question>
+              <Id>0</Id>
+              <Text>Some question</Text>
+              <Number>16</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>312321</Text>
+              <Number>17</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>32132</Text>
+              <Number>18</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>19</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>20</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>21</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+            </Question>
+          </Questions>
+        </QuestionGroup>
+      </value>
+    </item>
+    <item>
+      <key>
+        <int>7</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>New Group 7</Title>
+          <Number>7</Number>
+          <Questions>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>22</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>23</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text />
+              <Number>24</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>321312</Text>
+              <Number>25</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>fdasfd</Text>
+              <Number>26</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+            <Question>
+              <Id>0</Id>
+              <Text>19 </Text>
+              <Number>27</Number>
+              <Rank>0</Rank>
+              <GroupNumber>0</GroupNumber>
+              <QuestionType>SelectOne</QuestionType>
+              <ResponseChoices />
+              <BasisReference>
+                <Id>0</Id>
+                <Level>0</Level>
+              </BasisReference>
+            </Question>
+          </Questions>
         </QuestionGroup>
       </value>
     </item>
