@@ -219,16 +219,25 @@ namespace SurveyWeb.Controllers
         {
             ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
             ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
 
-            var model = GetSurveySchedules(true);
-
-            var nextTasks = GetSurveySchedules(false);
-
-            foreach (var item in nextTasks.SurveysByDate.Keys)
+            var model = new SurveysViewModel();
+            try
             {
-                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+                model = GetSurveySchedules(true);
+
+                var nextTasks = GetSurveySchedules(false);
+
+                foreach (var item in nextTasks.SurveysByDate.Keys)
+                {
+                    model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+                }
             }
+            catch (Exception)
+            {
+                
+                //throw;
+            } 
 
             return PartialView("PastDueSurveys", model);
         }

@@ -62,6 +62,10 @@ namespace SurveyWeb.Controllers
                 //Load Document
                 model = _standardManagementService.LoadDocument(id);
             }
+            else
+            {
+                model.TableOfContents = new List<TOCElementViewModel>();
+            }
 
 
             return View(model);
