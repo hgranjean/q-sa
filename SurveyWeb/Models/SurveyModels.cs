@@ -70,6 +70,8 @@ namespace SurveyWeb.Models
 
     public class QuestionGroupViewModel : ViewModelBase
     {
+        public const int DefaultSurveyId = -1;
+
         public int SurveyId { get; set; }
         public int Number { get; set; }
         public QuestionGroup QuestionGroup { get; set; }

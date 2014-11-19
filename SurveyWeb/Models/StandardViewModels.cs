@@ -71,8 +71,13 @@ namespace SurveyWeb.Models
         public string StandardId { get; set; }
         public string Content { get; set; }
         [Display(Name = "Element of Performance")]
+        [Required]
         public IEnumerable<string> EPIds { get; set; }
         public string Observation { get; set; }
+
+        public StandardElementViewModel()
+        {
+        }
 
         public StandardElementViewModel(StandardElement model)
         {

@@ -59,22 +59,16 @@
                             </div>
                             <div style="display: table-row;">
                                 <div style="display: table-cell; width: 100%;" class="table-cell">
-                                    <div id="editorLabel" class="editor-label"><b>Text</b></div>
+                                    <div id="editorLabel" class="editor-label"><b>Observation</b></div>
                                     <div id="editorField" class="editor-field">
                                         <div class="input-group">
-                                            @*Html.Partial("_AddObservation", Model)*@
-                                            
                                             <div id="observationForm" action="~/Learning/ObservationClassifier" method="get">
-                                                <div style="display: table-row">
-                                                    <div class="editor-label">
-                                                        Observation
-                                                    </div>
-                                                </div>
                                                 <div id="observation-text" style="display: table-row">
-                                                    @Html.TextArea("observationText", string.Empty, new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#classDisplay", cols = 75, @rows = 5 })
+                                                    @Html.TextArea("observationText", string.Empty,
+                                                        new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#classDisplay", cols = 75, @rows = 5 })
                                                 </div>
                                             </div>
-                                            @Html.Partial("../Learning/_ObservationClass", (StandardElementViewModel)ViewBag.StandardElement)
+                                            @Html.Partial("~/Views/Learning/_ObservationClass.cshtml", (StandardElementViewModel)ViewBag.StandardElement)
                                             <script>
                                                 $(‘#standardText’).tooltip({
                                                     track: true
