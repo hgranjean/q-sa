@@ -37,8 +37,6 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult ObservationClassifier(string observationText)
         {
-            // Contract.Assert(!string.IsNullOrWhiteSpace(observation));
-
             //View will contain Classification and list of EP Choices
             StandardElement model = null;
             
@@ -52,14 +50,8 @@ namespace SurveyWeb.Controllers
             }
 
             var viewModel = new StandardElementViewModel(model);
-
-            // viewModel.Observation += Request.IsAjaxRequest().ToString();
-
-            // if (Request.IsAjaxRequest())
-            // {
-                return PartialView("_ObservationClass", viewModel);
-            // }
-            // return View(viewModel);
+            
+            return PartialView("_ObservationClass", viewModel);
         }
 
         //public ActionResult NBTrainingDocument(string chapterId, object dummy)

@@ -975,57 +975,69 @@ namespace SurveyWeb.Controllers
         
         public ActionResult AddObservation()
         {
-            var model = new TracerViewModel();
+            // Initialize a new tracerviewmodel container, add reference data etc.
+            var viewModel = new TracerViewModel();
 
-            model.ResponseId = Guid.NewGuid().ToString();
+            viewModel.ResponseId = Guid.NewGuid().ToString();
 
             var userId = User.Identity.GetUserId();
             
             var personId = _accountService.GetUser(userId).PersonId;
 
-            model.SurveyorId = new Guid(personId);
+            viewModel.SurveyorId = new Guid(personId);
 
-            model.SurveyDate = DateTime.Now;
+            viewModel.SurveyDate = DateTime.Now;
 
-            LoadTracerReferenceData(model);
+            LoadTracerReferenceData(viewModel);
 
             ViewBag.StandardElement = new StandardElementViewModel(new StandardElement { Observation = string.Empty});
 
-            return View(model);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult AddObservation(TracerViewModel viewModel, FormCollection values)
+        public ActionResult AddObservation(TracerViewModel viewModel, StandardElementViewModel standardElementViewModel, FormCollection values)
         {
-            var observationText = values["ObservationText"];
-
-            var questionGroups = new QuestionGroups();
-            var questionGroup = new QuestionGroup();
-            questionGroups.Add(0, questionGroup);
-            viewModel.QuestionGroups = new QuestionGroupsViewModel(-1, questionGroups);
-            
-            if (!String.IsNullOrWhiteSpace(observationText))
-            {   
-                // Add observation
-                var newQuestion = questionGroup.AddQuestion(observationText, QuestionType.SelectOne);
-                var classifyModel = _learningService.Classify(observationText);
-                newQuestion.TOCReference = classifyModel.StandardId;
-                
-                viewModel.Responses = new []
-                {
-                    new ResponseViewModel(new Response(newQuestion, new ResponseChoice(ResponseChoice.NonCompliantString)))
-                };
-
-                var userId = User.Identity.GetUserId();
-
-                var responseEntry = _surveillanceService.AddResponse(userId);
-
-                viewModel.ResponseId = responseEntry.Id;
+            // Validate partials TODO: Split EPIds and make validdation against standardElementViewModel
+            if (String.IsNullOrWhiteSpace(values["EPIds"]))
+            {
+                ModelState.AddModelError("EPIds", "EP is required");
             }
 
-            _persistenceService.SaveTracer(viewModel);
+            if (ModelState.IsValid)
+            {
+                var observationText = values["ObservationText"];
 
-            return RedirectToAction("Dashboard");
+                if (!String.IsNullOrWhiteSpace(observationText))
+                {
+                    // Add observation
+                    
+                    var newQuestion = viewModel
+                        .AddDefaultQuestionGroup()
+                        .AddQuestion(observationText, QuestionType.SelectOne);
+
+                    var classifyModel = _learningService.Classify(observationText);
+                    newQuestion.TOCReference = classifyModel.StandardId;
+
+                    viewModel.AddResponse(newQuestion);
+
+                    var userId = User.Identity.GetUserId();
+
+                    var responseEntry = _surveillanceService.AddResponse(userId);
+
+                    viewModel.ResponseId = responseEntry.Id;
+                }
+
+                _persistenceService.SaveTracer(viewModel);
+
+                return RedirectToAction("Dashboard");
+            }
+
+            ViewBag.StandardElement = standardElementViewModel;
+
+            LoadTracerReferenceData(viewModel);
+
+            return View(viewModel);
         }
     }
 }

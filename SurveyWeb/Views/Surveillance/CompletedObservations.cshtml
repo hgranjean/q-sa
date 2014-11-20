@@ -4,72 +4,14 @@
     ViewBag.Title = "Completed observations";
 }
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".actionmenu").dropit();
-
-        $.extend({
-            confirm: function (title, message, yesText, yesCallback) {
-                $("<div></div>").dialog({
-                    buttons: [{
-                        text: yesText,
-                        click: function () {
-                            yesCallback();
-                            $(this).remove();
-                        }
-                    },
-                    {
-                        text: "Cancel",
-                        click: function () {
-                            $(this).remove();
-                        }
-                    }
-                    ],
-                    close: function (event, ui) { $(this).remove(); },
-                    resizable: false,
-                    title: title,
-                    modal: true
-                }).text(message).parent().addClass("alert");
-            }
-        });
-
-        function questionDeleteClickHandler() {
-
-            var parentId = $(this).parents('li').map(function () {
-                return $(this).find('a').first().attr("data-ng-href");
-            }).get().join(", ");
-
-            $.confirm(
-                "Delete response", //title
-                "Delete the response " + parentId + "?", //message
-                "Delete", //button text
-                function deleteOk() { //"yes" callback
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '@Url.Content("~/Surveillance/Delete")',
-                        data: {
-                            responseId: parentId
-                        },
-                        success: function (data) {
-                            location.reload();
-                        },
-                        error: function (xhr, status, error) {
-                            console.log(xhr.responseText);
-                        }
-                    });
-                }
-            );
-        }
-
-        $('.responseDelete').click(questionDeleteClickHandler);
-    });
-
-
-</script>
+<script type="text/javascript" src="~/Scripts/AQS/completedobservations.js"></script>
 
 <h2 class="section-header">My observations</h2>
 
+
+<script type="text/javascript">
+    $.deleteObservationPath = '@Url.Content("~/Surveillance/Delete")';
+</script>
 
 <div class="panel">
         @Html.ActionLink("Add observation", "AddObservation", null, new { @class="btn btn-default" })
@@ -92,7 +34,6 @@
         <div style="display: table-row">
             <div style="display: table-cell">
                 @Html.ValueFor(m => index)
-                @{ index++;}
             </div>
             <div style="display: table-cell">
                 @Html.ValueFor(m => completedObservation.Observation.Question.Text)
@@ -118,10 +59,12 @@
                         <li>@Html.ActionLink("Take Photo", "TakePhoto", new { completedObservation.ResponseId }, new { style = "width: 100px;" })</li>
                         <li>@Html.ActionLink("Assign To", "AssignTo", new { completedObservation.ResponseId }, new { style = "width: 100px;" })</li>
                         <li class="divider"></li>
-                        <li><a class="responseDelete" style="width: 100px;" data-ng-href="0" href="#">Delete</a></li>
+                        <li><a class="responseDelete" style="width: 100px;" data-ng-href="@completedObservation.ResponseId" data-aqs-text="@index" href="#">Delete</a></li>
                     </ul>
                 </div>
             </div>
+            
+            @{ index++; }
         </div>
     }
 </div>

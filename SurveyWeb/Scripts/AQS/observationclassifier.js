@@ -13,13 +13,9 @@
         };
 
         $(document.body).off('change', '#ClassList', ajaxGetForChangedValue);
-
-        // alert("call");
-            
+        
         $.ajax(options).done(function (data) {
-
-            alert(data);
-
+            
             var target = $(textarea.attr("data-aqs-target"));
 
             target.replaceWith(data);
@@ -33,11 +29,10 @@
     $('textarea[data-aqs-ajax="true"]').focusout(ajaxformSubmit);
 
 
-    //Dropdown List on chang  e
+    //Dropdown List on change
     var ajaxGetForChangedValue = function () {
         var selectedValue = $(this).val();
-        //alert(selectedValue);
-        
+
         var url = $.nbTrainingDocumentPath + '/?trainingDocumetId=' + selectedValue;
             
         $.ajax({

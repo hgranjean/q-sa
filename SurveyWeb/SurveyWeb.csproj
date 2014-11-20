@@ -2160,6 +2160,7 @@
     <Content Include="Content\themes\united\bootstrap.css" />
     <Content Include="Content\themes\united\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Scripts\AQS\completedobservations.js" />
     <Content Include="Scripts\AQS\surveydesign.js" />
     <Content Include="Scripts\getUserMedia.js" />
     <Content Include="Scripts\jquery.jeditable.js" />

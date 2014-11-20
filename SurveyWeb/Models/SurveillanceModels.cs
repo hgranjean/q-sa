@@ -159,18 +159,38 @@ namespace SurveyWeb.Models
         [Range(1,999, ErrorMessage = "Please choice a response.")]
         public ResponseViewModel[] Responses { get; set; }
 
-        public IEnumerable<ElementOfPerformance> ElementsOfPerformance
+        internal QuestionGroup AddDefaultQuestionGroup()
         {
-            get
-            {
-                yield return new ElementOfPerformance { EPId = 1, Text = "Environment"};
-                yield return new ElementOfPerformance { EPId = 2, Text = "Hazardous Materials and Waste Management" };
-                yield return new ElementOfPerformance { EPId = 3, Text = "Fire Prevention" };
-            }
+            return AddQuestionGroup(QuestionGroupViewModel.DefaultSurveyId);
+        }
+
+        internal QuestionGroup AddQuestionGroup(int surveyId)
+        {
+            var questionGroups = new QuestionGroups();
+
+            var questionGroup = new QuestionGroup();
+
+            questionGroups.Add(0, questionGroup);
+
+            AddQuestionGroups(surveyId, questionGroups);
+
+            return questionGroup;
+        }
+
+        internal void AddQuestionGroups(int surveyId, QuestionGroups questionGroups)
+        {
+            QuestionGroups = new QuestionGroupsViewModel(surveyId, questionGroups);
+        }
+
+        internal void AddResponse(Question newQuestion)
+        {
+            Responses = new[]
+                    {
+                        new ResponseViewModel(new Response(newQuestion,
+                            new ResponseChoice(ResponseChoice.NonCompliantString)))
+                    };
         }
     }
-
-
 
     public class ResponseViewModel
     {
