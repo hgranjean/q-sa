@@ -48,10 +48,12 @@ namespace SurveyWeb.Models
     {
         public int Id { get; set; }
         public string Key { get; set; }
+        [Display(Name = "Title")]
         public string Title { get; set; }
         public string Text { get; set; }
         public IEnumerable<TOCElementViewModel> TableOfContents { get; set; }
-    
+        [Display(Name = "Chapter")]
+        public TOCElementViewModel ChapterItem { get; set; }
     }
 
     public class PerformanceElementViewModel

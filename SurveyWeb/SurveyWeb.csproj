@@ -299,6 +299,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Models\ImpersonationUtils.cs" />
     <Compile Include="Services\IPersistenceServices.cs">
       <SubType>Code</SubType>
@@ -2764,6 +2765,16 @@
     <Content Include="Views\Surveillance\_AddObservation.cshtml" />
     <Content Include="Views\Surveillance\_TracerHeaderPartial.cshtml" />
     <Content Include="Views\Surveillance\AddObservation.cshtml" />
+    <Content Include="Views\QualityManager\ManageSurveillances.cshtml" />
+    <Content Include="Views\QualityManager\TrackFollowUps.cshtml" />
+    <Content Include="Views\QualityManager\IdentifyTrends.cshtml" />
+    <Content Include="Views\QualityManager\ManagePIPrograms.cshtml" />
+    <Content Include="Views\QualityExecutive\ViewTrendReports.cshtml" />
+    <Content Include="Views\QualityExecutive\RequestPIPlans.cshtml" />
+    <Content Include="Views\QualityAuditor\PerformAssignRounds.cshtml" />
+    <Content Include="Views\QualityAuditor\ReportQualityIssues.cshtml" />
+    <Content Include="Views\QualityAreaOwners\RespondToFollowRequests.cshtml" />
+    <Content Include="Views\QTrackerAdmin\ManageSubscriptions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />
@@ -2771,6 +2782,7 @@
     <Folder Include="Store\Guidelines\" />
     <Folder Include="Store\Photos\" />
     <Folder Include="Store\Responses\" />
+    <Folder Include="Views\Subscription\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

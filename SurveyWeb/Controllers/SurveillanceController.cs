@@ -235,18 +235,19 @@ namespace SurveyWeb.Controllers
             {
                 model = GetSurveySchedules(true);
 
-            if (!ViewBag.ShowTeamMemberContent)
-            {
-            var nextTasks = GetSurveySchedules(false);
+                if (!ViewBag.ShowTeamMemberContent)
+                {
+                    var nextTasks = GetSurveySchedules(false);
 
-            foreach (var item in nextTasks.SurveysByDate.Keys)
-            {
-                model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
-            }
+                    foreach (var item in nextTasks.SurveysByDate.Keys)
+                    {
+                        model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+                    }
+                }
             }
             catch (Exception)
             {
-                
+
                 //throw;
             } 
 
