@@ -299,6 +299,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\QTrackerAdminController.cs" />
+    <Compile Include="Controllers\QualityManagerController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Models\ImpersonationUtils.cs" />
     <Compile Include="Services\IPersistenceServices.cs">
@@ -2776,6 +2778,17 @@
     <Content Include="Views\QualityAuditor\ReportQualityIssues.cshtml" />
     <Content Include="Views\QualityAreaOwners\RespondToFollowRequests.cshtml" />
     <Content Include="Views\QTrackerAdmin\ManageSubscriptions.cshtml" />
+    <Content Include="Views\QualityManager\Dashboard.cshtml" />
+    <Content Include="Views\QualityManager\TrendReports.cshtml" />
+    <Content Include="Views\QualityManager\PIPrograms.cshtml" />
+    <Content Include="Views\QualityManager\SurveillanceSchedule.cshtml" />
+    <Content Include="Views\QualityManager\FollowUps.cshtml" />
+    <Content Include="Views\QualityManager\SurveillanceCompletion.cshtml" />
+    <Content Include="Views\QualityManager\SurveillanceTemplates.cshtml" />
+    <Content Include="Views\QualityManager\ManageStandards.cshtml" />
+    <Content Include="Views\QTrackerAdmin\Dashboard.cshtml" />
+    <Content Include="Views\QualityManager\ManageResources.cshtml" />
+    <Content Include="Views\QualityManager\ManageAlerts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

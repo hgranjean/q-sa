@@ -35,7 +35,17 @@ namespace SurveyWeb.Controllers
         }
         
         public ActionResult Index()
-        {   
+        {
+            if (userManager.IsInRole(User.Identity.GetUserId(), "Administrator"))
+            {
+                return RedirectToAction("Dashboard", "QTrackerAdmin");
+
+            }
+            else if (userManager.IsInRole(User.Identity.GetUserId(), "Manager"))
+            {
+                return RedirectToAction("Dashboard", "QualityManager");
+                
+            }
             return RedirectToAction("Dashboard", "Surveillance");
         }
 

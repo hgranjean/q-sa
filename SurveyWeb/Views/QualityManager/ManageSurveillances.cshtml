@@ -1,8 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "ManageSurveillances";
+    ViewBag.Title = "Manage Surveillances";
 }
 
-<h2>ManageSurveillances</h2>
+<h2>Manage Surveillances</h2>
 
-Us
+<ul>
+    <li>@Html.ActionLink("Manage Templates", "SurveillanceTemplates")</li>
+    <li>@Html.ActionLink("Manage Surveillance Schedule", "SurveillanceSchedule")</li>
+    <li>@Html.ActionLink("Review Task Completion", "SurveillanceCompletion")</li>
+</ul>
