@@ -1,14 +1,13 @@
-﻿using System.Linq;
-using System.Xml.Serialization;
+﻿using Atum.Domain;
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
-using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using Atum.Domain.SurveyManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Atum.Domain;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace SurveyWeb.Models
 {
@@ -299,7 +298,7 @@ namespace SurveyWeb.Models
     public class TracerType { }
 
 
-
+    //TODO: Deprecate Redundant
     //Follow-Ups
     public class FollowUpViewModel
     {

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
 using SurveyWeb.Models;
 using SurveyWeb.Repository;
-using SurveyWeb.Services;
+using System.Configuration;
+using System.Web.Mvc;
 
 namespace SurveyWeb.Controllers
 {
