@@ -1,26 +1,10 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Validation;
-using System.Web.Helpers;
-using Atum.Database.Surveillance.Models;
-using Atum.Domain;
-using Atum.Domain.Common;
-using Atum.Domain.Healthcare;
-using Atum.Domain.Security.Domain;
-using Atum.Domain.SurveyManagement;
-using Atum.Utility.XML;
+﻿using Atum.Domain.SurveyManagement;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using SurveyWeb.Models;
-using SurveyWeb.RuleApp;
 using SurveyWeb.Services;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Atum.Utility;
-using System.Diagnostics.Contracts;
-using SurveyWeb.Repository;
 
 namespace SurveyWeb.Controllers
 {
@@ -30,13 +14,13 @@ namespace SurveyWeb.Controllers
     /// </summary>
     public class SurveyController : Controller
     {        
-        private readonly SurveyService _surveyService;        
+        private readonly SurveyManagementServices _surveyService;        
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IPersistenceServices _persistenceService;
         private readonly StandardsManagementServices _standardManagementService;
 
         public SurveyController(            
-            SurveyService surveyService,
+            SurveyManagementServices surveyService,
             IPersistenceServices persistenceService,
             UserManager<ApplicationUser> userManager,
             StandardsManagementServices standardManagementService)
@@ -268,7 +252,7 @@ namespace SurveyWeb.Controllers
             {
                 var id = viewModel.Survey.Guid.ToString("d");
                 
-                var surveyEntry = _surveyService.GetSurvey(id);
+                var surveyEntry = _surveyService.GetSurvey(int.Parse(id));
 
                 surveyEntry.Title = viewModel.Survey.Title;
 

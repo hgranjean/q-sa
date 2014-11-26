@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Atum.Domain.SurveyManagement;
+using SurveyWeb.Models.QualityManager;
+using SurveyWeb.Models.QualityManager.TemplatesManagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,10 +14,10 @@ namespace SurveyWeb.Controllers
         // GET: QualityManager
         public ActionResult Dashboard()
         {
-            return View();
+            ManagerUserModel model = new ManagerUserModel();
+            
+            return View(model);
         }
-
-
 
         //Manage Surveillance
         public ActionResult ManageSurveillances()
@@ -28,10 +31,23 @@ namespace SurveyWeb.Controllers
             return View();
         }
 
+
+        /// <summary>
+        /// View List of Surveys
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SurveillanceTemplates()
         {
-            return View();
+            var model = new SurveysViewModel { Surveys = new Surveys() };
+
+            //model.Surveys.AddRange(surveys);
+
+            //ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
+            //ViewBag.ShowSurveyorContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
+
+            return View(model);
         }
+
         /*Surveillance Templates Subtasks*/
         public ActionResult ManageStandards()
         {

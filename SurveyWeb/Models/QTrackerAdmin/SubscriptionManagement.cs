@@ -19,4 +19,8 @@ namespace SurveyWeb.Models.QTrackerAdmin.SubscriptionManagement
         //TODO: Include default mapping to Domain Models here
     }
 
+    public class SubscriberSystemModel
+    {
+        
+    }
 }

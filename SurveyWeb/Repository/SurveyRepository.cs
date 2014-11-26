@@ -9,9 +9,15 @@ namespace SurveyWeb.Repository
 {
     public interface ISurveyRepository
     {
-        SurveyEntry GetSurvey(string surveyId);
+        SurveyEntry GetSurveyEntry(string surveyId);
 
         SurveyEntry AddSurvey(SurveyEntry entry);
+
+        Survey SaveSurvey(Survey survey);
+
+        Survey GetSurvey(int surveyId);
+
+        IEnumerable<Survey> GetSurveys(string query);
     }
 
     public class SurveyRepository : ISurveyRepository
@@ -23,7 +29,7 @@ namespace SurveyWeb.Repository
             _context = new AtumSurveillanceContext();
         }
 
-        public SurveyEntry GetSurvey(string surveyId)
+        public SurveyEntry GetSurveyEntry(string surveyId)
         {
             return _context.Surveys.FirstOrDefault(m => m.Id == surveyId);
         }
@@ -36,6 +42,22 @@ namespace SurveyWeb.Repository
             _context.SaveChanges();
 
             return entry;
+        }
+
+
+        public Survey SaveSurvey(Survey survey)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Survey GetSurvey(int surveyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Survey> GetSurveys(string query)
+        {
+            throw new NotImplementedException();
         }
     }
 }

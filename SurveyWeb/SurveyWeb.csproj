@@ -306,10 +306,11 @@
     <Compile Include="Models\QTrackerAdmin\SubscriptionManagement.cs" />
     <Compile Include="Models\QualityAuditor\SurveillancePerformance.cs" />
     <Compile Include="Models\QualityManager\FollowUpManagement.cs" />
-    <Compile Include="Models\QualityManager\PerformanceManagement.cs" />
-    <Compile Include="Models\QualityManager\SurveillanceTracking.cs" />
-    <Compile Include="Models\QualityManager\TemplatesManagement.cs" />
-    <Compile Include="Models\QualityManager\SurveillanceScheduling.cs" />
+    <Compile Include="Models\QualityManager\ManagerUserModel.cs" />
+    <Compile Include="Models\QualityManager\PerformanceManagementModels.cs" />
+    <Compile Include="Models\QualityManager\SurveillanceTrackingModels.cs" />
+    <Compile Include="Models\QualityManager\TemplatesManagementModels.cs" />
+    <Compile Include="Models\QualityManager\SurveillanceSchedulingModels.cs" />
     <Compile Include="Models\QualityManager\Trending.cs" />
     <Compile Include="Services\IPersistenceServices.cs">
       <SubType>Code</SubType>
@@ -379,7 +380,7 @@
     <Compile Include="Services\SurveillanceService.cs" />
     <Compile Include="Services\SurveillanceViewMappers.cs" />
     <Compile Include="Services\PersistenceServices.cs" />
-    <Compile Include="Services\SurveyService.cs" />
+    <Compile Include="Services\SurveyManagementServices.cs" />
     <Compile Include="Services\TaskService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

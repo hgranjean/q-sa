@@ -63,7 +63,7 @@ namespace SurveyWeb.App_Start
             container.RegisterType<SurveillanceService>(new InjectionConstructor(typeof(ISurveillanceRepository)));
             
             container.RegisterType<ISurveyRepository, SurveyRepository>(new InjectionConstructor(connectionString));
-            container.RegisterType<SurveyService>(new InjectionConstructor(typeof(ISurveyRepository)));
+            container.RegisterType<SurveyManagementServices>(new InjectionConstructor(typeof(ISurveyRepository)));
             
             container.RegisterType<ISurveyStore, SurveyStore>(new InjectionConstructor(location));
             container.RegisterType<IPersistenceServices, PersistenceServices>(new InjectionConstructor(typeof(ISurveyStore)));

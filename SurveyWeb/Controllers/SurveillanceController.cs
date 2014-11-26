@@ -25,7 +25,7 @@ namespace SurveyWeb.Controllers
     public class SurveillanceController : Controller
     {        
         private readonly SurveillanceService _surveillanceService;
-        private readonly SurveyService _surveyService;
+        private readonly SurveyManagementServices _surveyService;
         private readonly TaskService _taskService;
         private readonly MailService _mailService;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -35,7 +35,7 @@ namespace SurveyWeb.Controllers
         
         public SurveillanceController(SurveillanceService surveillanceService,
             TaskService taskService,
-            SurveyService surveyService,
+            SurveyManagementServices surveyService,
             MailService mailService,
             LearningServices learningService,
             IPersistenceServices persistenceService,
@@ -731,7 +731,7 @@ namespace SurveyWeb.Controllers
 
             var model = new TaskViewModel(evt.Event)
             {
-                Survey = _surveyService.GetSurvey(evt.Event.SurveyId),
+                Survey = _surveyService.GetSurveyEntry(evt.Event.SurveyId),
                 SurveyId = evt.Event.SurveyId,
                 AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
                 AvailableUsers = _accountService.GetUsers(),

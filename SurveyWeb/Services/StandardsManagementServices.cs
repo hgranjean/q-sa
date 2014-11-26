@@ -3,10 +3,8 @@ using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using Atum.Utility.XML;
 using SurveyWeb.Models;
 using SurveyWeb.Repository;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Xml;
 
@@ -26,32 +24,18 @@ namespace SurveyWeb.Services
 
         internal StandardDocumentViewModel GetChapter(string chapterId)
         {
-
             StandardDocumentViewModel retVal = new StandardDocumentViewModel();
             
-            //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
-            //XmlDocument xmlDoc = new XmlDocument();
-
-            //xmlDoc.Load(chapterFileName);
-
-            //string chapterTitlePath = "chapter/chaptertitle";
             Chapter chapter = LoadChapter(chapterId);
-            //string chapterTitle = xmlDoc.SelectSingleNode(chapterTitlePath).InnerText;
-            //chapter.Title = chapterTitle;
-            //chapter.Elements = loadElements(xmlDoc);
 
             retVal = BuildStandardViewModel(chapter);
-            
 
             return retVal;
         }
 
         internal Chapter LoadChapter(string chapterId)
         {
-            //string chapterFileName = @"C:\Atum Technology Group\Rules Venture\Reference Docs\Joint Commision Standards\EC_out.xml";
-            XmlDocument xmlDoc = LoadChapterDoc(chapterId);// new XmlDocument();
-
-            //xmlDoc.Load(chapterFileName);
+            XmlDocument xmlDoc = LoadChapterDoc(chapterId);
 
             string chapterTitlePath = "chapter/chaptertitle";
             Chapter chapter = new Chapter();
@@ -64,7 +48,6 @@ namespace SurveyWeb.Services
 
         private XmlDocument LoadChapterDoc(string chapterId)
         {
-            //string appPath = Path.Combine(_store.GetPath(), "JointCommissionStandards");
             if (chapterId.Length>2)
             {
                 chapterId = chapterId.Remove(2, chapterId.Length - 2);  
@@ -124,10 +107,6 @@ namespace SurveyWeb.Services
                 epCat.Items = LoadEPItems(xmlDoc, epCat.StandardId);
 
                 retVal.Add(epCat);
-                //if (!categoryLookup.ContainsKey(epCat.StandardId))
-                //{
-                //    categoryLookup.Add(epCat.StandardId, epCat);
-                //}
             }
 
             return retVal;
@@ -160,7 +139,6 @@ namespace SurveyWeb.Services
         private static ElementOfPerformance LoadEPItem(XmlDocument xmlDoc, string standardId, string epId)
         {
             ElementOfPerformance  retVal = new ElementOfPerformance();
-            //element epid='EC.01.01.01' id='1'
             string itemPath = "chapter/elements/element[@epid='standardId' and @id='epId']".Replace("standardId", standardId).Replace("epId", epId);
             string epIdPath = "id";
 
@@ -248,7 +226,6 @@ namespace SurveyWeb.Services
         {
             XmlDocument xmlDoc = LoadChapterDoc(chapterId);// new XmlDocument();
             PerformanceElementViewModel retVal = new PerformanceElementViewModel();
-            //string itemsPath = "chapter/notes/note[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardId).Replace("epItemId", epItem.EPId.ToString());
 
             string performanceNodePath = "chapter/referencedelements/referencedelement[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardElementId).Replace("epItemId", performanceItemId);
 
@@ -272,7 +249,6 @@ namespace SurveyWeb.Services
 
         private static List<HtmlString> setReferencedElementLinks(ElementOfPerformance epItem, string standardId,XmlDocument xmlDoc)
         {
-            //<referencedelement itemid='4' epid='EC.01.01.01'><element>EC.04.01.01</element><epitem>EP 15</epitem></referencedelement>
             List<HtmlString> retVal = new List<HtmlString>();
             string refElementPath = "chapter/referencedelements/referencedelement[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardId).Replace("epItemId", epItem.EPId.ToString());
             string refElementIdPath = "element";

@@ -1,7 +1,17 @@
-﻿
+﻿@model SurveyWeb.Models.QTrackerAdmin.SubscriptionManagement.SubscriberSystemModel
+
 @{
-    ViewBag.Title = "SubscriberSystem";
+    ViewBag.Title = "Subscriber System";
 }
 
-<h2>SubscriberSystem</h2>
+<p>@Html.ActionLink("Add New", "SubscriberSystem", null, new { @class = "btn btn-default" })</p>
 
+<h2>Subscriber System  </h2>
+<div id="sectionOne">
+    <h3 class="section-header">Subcriber's </h3>
+    <ul>
+        <li>Facilities - Hospitals, Clinics etc..</li>
+        <li>Environments - Buildings, Floors etc..</li>
+        <li>Organizational - Departments, User, Roles etc...</li>
+    </ul>
+</div>
