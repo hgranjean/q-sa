@@ -25,24 +25,33 @@
         }
     });
 
-    function questionEditClickHandler() {
+    function requiresNoteClickHandler(event) {
 
-        $(this).hide();
+        // $(this).hide();
 
-        var surveyId = $('#Survey_Id').attr('value');
-        var parentId = $(this).attr("data-ng-href");
-            
+        // .gn-notes-icon
+
+        var surveyId = $('#SurveyId').attr('value');
+        var parentId = $(this).closest("label").attr("data-ng-href");
+        var questionGroupId = $(this).closest("label").attr("data-ng-groupid");
+        
         $.ajax({
             type: 'GET',
-            url: $.editQuestionPath,
+            url: $.editNotePath,
             data: {
                 surveyId: surveyId,
+                questionGroupId: questionGroupId, // TODO: Add questiongroupId
                 questionId: parentId,
             },
             success: function (data) {
-                $('#divid' + parentId).html(data);
-                $('.questionEdit').hide();
-                $('.questionDelete').hide();
+
+                // alert(data);
+
+                var editNote = $('#divid' + parentId).html(data);
+                //$('.questionEdit').hide();
+                //$('.questionDelete').hide();
+
+                editNote.on("click", ".editNote", editNoteClickHandler);
             },
             error: function (xhr, status, error) {
                 console.log(xhr.responseText);
@@ -50,51 +59,28 @@
         });
 
     }
-    $('.questionEdit').click(questionEditClickHandler);
+    $('.requiresNote').click(requiresNoteClickHandler);
 
-    function questionDeleteClickHandler() {
+    function editNoteClickHandler() {
+        alert("Edited: " + $('#editNote').outerHTML);
 
-        var surveyId = $('#Survey_Id').attr('value');
-        var parentId = $(this).parents('li').map(function () {
-            return $(this).find('a').first().attr("data-ng-href");
-        }).get().join(", ");
-        var parentGroupId = $(this).closest('li').closest('ul').attr("data-ng-href");
-
-        $.confirm(
-            "Delete question", //title
-            "Delete the question " + parentId + "?", //message
-            "Delete", //button text
-            function deleteOk() { //"yes" callback
-                
-                var liToDelete = $(this).closest('li');
-                
-                $.ajax({
-                    type: 'POST',
-                    url: $.deleteQuestionPath,
-                    data: {
-                        surveyId: surveyId,
-                        questionGroupId: parentGroupId,
-                        questionId: parentId
-                    },
-                    success: function (data) {
-                        liToDelete.remove();
-                        location.reload();
-                    },
-                    error: function (xhr, status, error) {
-                        console.log(xhr.responseText);
-                    }
-                });
+        $.ajax({
+            type: 'POST',
+            url: $.editNotePath,
+            data: $('#editNote').serialize(),
+            success: function (data) {
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
             }
-        );
+        });
     }
-
-    $('.questionDelete').click(questionDeleteClickHandler);
-
+    
     function questionAddClickHandler() {
-        
+
         var surveyId = $('#Survey_Id').attr('value');
         var parentGroupId = $(this).attr("data-ng-href");
-        
+
         $.ajax({
             type: 'POST',
             url: $.addQuestionPath,
@@ -122,21 +108,6 @@
         });
     }
 
-    $('.questionAdd').click(questionAddClickHandler);
+    $('.questionAddzzz').click(questionAddClickHandler);
 
-    function surveyEditHeaderClickHandler() {
-
-        $.ajax({
-            type: 'POST',
-            url: $.surveyEditHeaderPath,
-            data: $('#surveyHeader').serialize(),
-            success: function (data) {
-            },
-            error: function (xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-        });
-    }
-
-    $('.surveyEditHeader').click(surveyEditHeaderClickHandler);
 });

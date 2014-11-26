@@ -100,8 +100,8 @@ namespace SurveyWeb.Controllers
         public ActionResult FollowUps(string OwnerId)
         {
             FollowUpsViewModel model = new FollowUpsViewModel();
-            model.Add(loadFollowUp(1));
-            model.Add(loadFollowUp(2));
+            model.Add(LoadFollowUp(1));
+            model.Add(LoadFollowUp(2));
 
             return View(model);
         }
@@ -109,12 +109,12 @@ namespace SurveyWeb.Controllers
         public ActionResult FollowUp(int? followUpId)
         {
             
-            FollowUpViewModel model = loadFollowUp(followUpId ?? 1);
+            FollowUpViewModel model = LoadFollowUp(followUpId ?? 1);
 
             return View(model);
         }
 
-        private FollowUpViewModel loadFollowUp(int followUpId)
+        private FollowUpViewModel LoadFollowUp(int followUpId)
         {
             FollowUpViewModel retVal = new FollowUpViewModel();
             retVal.FollowUpId = followUpId;
@@ -235,15 +235,15 @@ namespace SurveyWeb.Controllers
             {
                 model = GetSurveySchedules(true);
 
-                if (!ViewBag.ShowTeamMemberContent)
-                {
+                // if (!ViewBag.ShowTeamMemberContent)
+                //{
                     var nextTasks = GetSurveySchedules(false);
 
                     foreach (var item in nextTasks.SurveysByDate.Keys)
                     {
                         model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
                     }
-                }
+                //}
             }
             catch (Exception)
             {
@@ -255,7 +255,11 @@ namespace SurveyWeb.Controllers
         }
 
 
-        public ActionResult EditNotes(string questionId)
+        public ActionResult EditNotes(int surveyId, int questionId)
+        {
+            return View();
+        }
+        public ActionResult LoadAttachment(int surveyId, int questionId)
         {
             return View();
         }
@@ -1038,6 +1042,27 @@ namespace SurveyWeb.Controllers
             LoadTracerReferenceData(viewModel);
 
             return View(viewModel);
+        }
+
+        public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId)
+        {
+            var survey = _persistenceService.GetSurvey(surveyId);
+
+            var questionGroup = survey.QuestionGroups[questionGroupId];
+
+            var question = questionGroup.Questions.First(m => m.Number == questionId);
+
+            var viewModel = new EditNoteViewModel(surveyId, question.Number);
+            viewModel.SurveyId = surveyId;
+            viewModel.QuestionId = question.Number;
+
+            return PartialView("_EditNotePartial", viewModel);
+        }
+
+        [HttpPost]
+        public JsonResult EditNote(EditNoteViewModel viewModel, FormCollection values)
+        {
+            return new JsonResult {Data = "success"};
         }
     }
 }

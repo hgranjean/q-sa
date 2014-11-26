@@ -2161,6 +2161,7 @@
     <Content Include="Content\themes\united\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Scripts\AQS\completedobservations.js" />
+    <Content Include="Scripts\AQS\surveydelivery.js" />
     <Content Include="Scripts\AQS\surveydesign.js" />
     <Content Include="Scripts\getUserMedia.js" />
     <Content Include="Scripts\jquery.jeditable.js" />
@@ -2776,6 +2777,7 @@
     <Content Include="Views\QualityAuditor\ReportQualityIssues.cshtml" />
     <Content Include="Views\QualityAreaOwners\RespondToFollowRequests.cshtml" />
     <Content Include="Views\QTrackerAdmin\ManageSubscriptions.cshtml" />
+    <Content Include="Views\Surveillance\_EditNotePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

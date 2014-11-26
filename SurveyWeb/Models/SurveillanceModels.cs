@@ -428,4 +428,21 @@ namespace SurveyWeb.Models
             this.Observation = observation;
         }
     }
+
+    public class EditNoteViewModel
+    {
+        public int SurveyId { get; set; }
+        public int QuestionId { get; set; }
+
+        [Display(Name = "Note")]
+        public string NoteText { get; set; }
+
+        public EditNoteViewModel()
+        { }
+        public EditNoteViewModel(int surveyId, int questionId)
+        {
+            this.SurveyId = surveyId;
+            this.QuestionId = questionId;
+        }
+    }
 }
