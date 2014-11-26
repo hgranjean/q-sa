@@ -299,8 +299,18 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\QTrackerAdminController.cs" />
+    <Compile Include="Controllers\QualityManagerController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Models\ImpersonationUtils.cs" />
+    <Compile Include="Models\QTrackerAdmin\SubscriptionManagement.cs" />
+    <Compile Include="Models\QualityAuditor\SurveillancePerformance.cs" />
+    <Compile Include="Models\QualityManager\FollowUpManagement.cs" />
+    <Compile Include="Models\QualityManager\PerformanceManagement.cs" />
+    <Compile Include="Models\QualityManager\SurveillanceTracking.cs" />
+    <Compile Include="Models\QualityManager\TemplatesManagement.cs" />
+    <Compile Include="Models\QualityManager\SurveillanceScheduling.cs" />
+    <Compile Include="Models\QualityManager\Trending.cs" />
     <Compile Include="Services\IPersistenceServices.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -2777,10 +2787,26 @@
     <Content Include="Views\QualityAuditor\ReportQualityIssues.cshtml" />
     <Content Include="Views\QualityAreaOwners\RespondToFollowRequests.cshtml" />
     <Content Include="Views\QTrackerAdmin\ManageSubscriptions.cshtml" />
+    <Content Include="Views\QualityManager\Dashboard.cshtml" />
+    <Content Include="Views\QualityManager\TrendReports.cshtml" />
+    <Content Include="Views\QualityManager\PIPrograms.cshtml" />
+    <Content Include="Views\QualityManager\SurveillanceSchedule.cshtml" />
+    <Content Include="Views\QualityManager\FollowUps.cshtml" />
+    <Content Include="Views\QualityManager\SurveillanceCompletion.cshtml" />
+    <Content Include="Views\QualityManager\SurveillanceTemplates.cshtml" />
+    <Content Include="Views\QualityManager\ManageStandards.cshtml" />
+    <Content Include="Views\QTrackerAdmin\Dashboard.cshtml" />
+    <Content Include="Views\QualityManager\ManageResources.cshtml" />
+    <Content Include="Views\QualityManager\ManageAlerts.cshtml" />
+    <Content Include="Views\QTrackerAdmin\Subscribers.cshtml" />
+    <Content Include="Views\QTrackerAdmin\SubscriberAccount.cshtml" />
+    <Content Include="Views\QTrackerAdmin\SubscriberSystem.cshtml" />
+    <Content Include="Views\QTrackerAdmin\SubscriberUsers.cshtml" />
     <Content Include="Views\Surveillance\_EditNotePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Models\QualityExecutive\" />
     <Folder Include="Store\Domain\" />
     <Folder Include="Store\Guidelines\" />
     <Folder Include="Store\Photos\" />
