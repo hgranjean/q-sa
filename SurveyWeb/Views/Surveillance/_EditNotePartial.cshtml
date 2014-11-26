@@ -5,11 +5,38 @@
     new { enctype = "multipart/form-data" }))
 {*@ 
 
+<script>
+    $(document).ready(function () {
+        $('.editNote222').click(function () {
+
+            var noteJson = {
+                SurveyId: $("#editNote").closest('#SurveyId').value,
+                QuestionId: $("#editNote").closest('#QuestionId').value,
+                NoteText: $("#editNote").closest('#NoteText').value
+            }
+
+            alert("Edited: " + $("#editNote").outerHTML);
+
+            $.ajax({
+                type: 'POST',
+                url: $.editNotePath,
+                data: $('#editNote').serialize(),
+                success: function (data) {
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });            
+
+        });
+    });
+
+</script>
 
 
 
 <form>
-    <div id="editNote" class="choiceGroup" >
+    <div id="editNote" class="choiceGroup" data-ng-href="@(Model.QuestionId)">
         @Html.HiddenFor(m => m.SurveyId)
         @Html.HiddenFor(m => m.QuestionId)
         @*Html.HiddenFor(m => m.QuestionGroupNumber)*@

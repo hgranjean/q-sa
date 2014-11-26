@@ -25,6 +25,40 @@
         }
     });
 
+    function editNoteClickHandler(event) {
+
+        
+
+        var parentId = $(this).parents('#editNote').map(function () {
+            return $(this).first().attr("data-ng-href");
+        }).get().join(", ");
+
+        var surveyId = $(this).parents('#editNote').map(function () {
+            return $(this).find('#SurveyId').first().val();
+        }).get().join(", ");
+
+        var noteText = $(this).parents('#editNote').map(function () {
+            return $(this).find('#NoteText').first().val();
+        }).get().join(", ");
+
+        var noteJson = {
+            SurveyId: surveyId,
+            QuestionId: parentId,
+            NoteText: noteText
+        }
+        
+        $.ajax({
+            type: 'POST',
+            url: $.editNotePath,
+            data: noteJson,
+            success: function (data) {
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+
     function requiresNoteClickHandler(event) {
 
         // $(this).hide();
@@ -40,7 +74,7 @@
             url: $.editNotePath,
             data: {
                 surveyId: surveyId,
-                questionGroupId: questionGroupId, // TODO: Add questiongroupId
+                questionGroupId: questionGroupId,
                 questionId: parentId,
             },
             success: function (data) {
@@ -51,7 +85,8 @@
                 //$('.questionEdit').hide();
                 //$('.questionDelete').hide();
 
-                editNote.on("click", ".editNote", editNoteClickHandler);
+                $('body').on('click', '.editNote', editNoteClickHandler);
+                //editNote.on("click", ".editNote", );
             },
             error: function (xhr, status, error) {
                 console.log(xhr.responseText);
@@ -61,20 +96,21 @@
     }
     $('.requiresNote').click(requiresNoteClickHandler);
 
-    function editNoteClickHandler() {
-        alert("Edited: " + $('#editNote').outerHTML);
-
-        $.ajax({
-            type: 'POST',
-            url: $.editNotePath,
-            data: $('#editNote').serialize(),
-            success: function (data) {
-            },
-            error: function (xhr, status, error) {
-                console.log(xhr.responseText);
+    $.fn.serializeObject = function serializeObject() {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
             }
         });
-    }
+        return o;
+    };
     
     function questionAddClickHandler() {
 
