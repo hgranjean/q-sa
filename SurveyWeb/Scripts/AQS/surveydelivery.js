@@ -27,14 +27,24 @@
 
     function editNoteClickHandler(event) {
 
-        
+        var noteId = $(this).parents('#editNote').map(function () {
+            return $(this).find('#NoteId').first().val();
+        }).get().join(", ");
 
         var parentId = $(this).parents('#editNote').map(function () {
             return $(this).first().attr("data-ng-href");
         }).get().join(", ");
 
+        var questionGroupNumber = $(this).parents('#editNote').map(function () {
+            return $(this).find('#QuestionGroupNumber').first().val();
+        }).get().join(", ");
+
         var surveyId = $(this).parents('#editNote').map(function () {
             return $(this).find('#SurveyId').first().val();
+        }).get().join(", ");
+
+        var responseId = $(this).parents('#editNote').map(function () {
+            return $(this).find('#ResponseId').first().val();
         }).get().join(", ");
 
         var noteText = $(this).parents('#editNote').map(function () {
@@ -42,10 +52,15 @@
         }).get().join(", ");
 
         var noteJson = {
+            NoteId: noteId,
             SurveyId: surveyId,
             QuestionId: parentId,
+            QuestionGroupNumber: questionGroupNumber,
+            ResponseId: responseId,
             NoteText: noteText
         }
+
+        alert(JSON.stringify(noteJson));
         
         $.ajax({
             type: 'POST',
@@ -65,9 +80,13 @@
 
         // .gn-notes-icon
 
+        // var noteId = $('#NoteId').attr('value');
         var surveyId = $('#SurveyId').attr('value');
         var parentId = $(this).closest("label").attr("data-ng-href");
         var questionGroupId = $(this).closest("label").attr("data-ng-groupid");
+        var responseId = $('#ResponseId').attr('value');
+
+        // alert(noteId);
         
         $.ajax({
             type: 'GET',
@@ -76,6 +95,7 @@
                 surveyId: surveyId,
                 questionGroupId: questionGroupId,
                 questionId: parentId,
+                responseId: responseId
             },
             success: function (data) {
 

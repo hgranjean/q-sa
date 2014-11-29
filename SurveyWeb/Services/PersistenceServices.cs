@@ -15,7 +15,7 @@ namespace SurveyWeb.Services
 {
     internal class PersistenceServices : IPersistenceServices
     {
-        private static List<Survey> surveys;
+        private static List<Survey> _surveyList;
         private static SurveyManager _surverManager;
         private readonly ISurveyStore _store;
 
@@ -31,17 +31,18 @@ namespace SurveyWeb.Services
         }
 
         public IEnumerable<Survey> GetSurveys()
-        {
-            if (surveys == null)
+        {   
+            if (_surveyList == null)
             {
-                surveys = new List<Survey>();
+                EnsureSurveys();
+
                 foreach (var surveyFileName in EnumerateSurveys())
                 {
-                    surveys.Add(LoadSurvey(surveyFileName));
+                    _surveyList.Add(LoadSurveyByName(surveyFileName));
                 }
             }
 
-            return surveys;
+            return _surveyList;
         }
 
         public IEnumerable<string> GetResponses()
@@ -71,11 +72,9 @@ namespace SurveyWeb.Services
         }
 
 
-        public Survey LoadSurvey(string name)
+        private Survey LoadSurveyByName(string name)
         {
-         
             //Get From DB
-            
             
             return (Survey)XmlSerializationUtility.GetObjectFromFile(name, typeof(Survey));
         }
@@ -84,18 +83,14 @@ namespace SurveyWeb.Services
         {
             survey.RenumberQuestions();
 
-            var appPath = _store.GetPath(StoreType.Surveys);
-
-            var fileName = String.Concat("survey", survey.Id, ".xml");
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Surveys), "survey" + survey.Id + ".xml");
 
             var settings = new XmlWriterSettings {Indent = true};
             
-            using (var writer = XmlWriter.Create(Path.Combine(appPath, fileName), settings))
+            using (var writer = XmlWriter.Create(fullPath, settings))
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, survey);
             }
-
-            EnsureSurveys();
 
             AddOrUpdateSurvey(survey);
         }
@@ -104,9 +99,7 @@ namespace SurveyWeb.Services
         {
             survey.UpdatedDate = DateTime.Now;
 
-            var appPath = _store.GetPath(StoreType.Responses);
-
-            var fullPath = Path.Combine(appPath, "response" + survey.ResponseId + ".xml");
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Responses), "response" + survey.ResponseId + ".xml");
 
             var settings = new XmlWriterSettings { Indent = true };
             
@@ -135,23 +128,24 @@ namespace SurveyWeb.Services
 
         private void EnsureSurveys()
         {
-            if (surveys == null)
+            if (_surveyList == null)
             {
-                surveys = new List<Survey>();
+                _surveyList = new List<Survey>();
             }
         }
 
         private void AddOrUpdateSurvey(Survey survey)
         {
-            if (!surveys.Contains(survey))
+            EnsureSurveys();
+            if (!_surveyList.Contains(survey))
             {
-                surveys.Add(survey);
+                _surveyList.Add(survey);
             }
             else
             {
-                var index = surveys.IndexOf(survey);
+                var index = _surveyList.IndexOf(survey);
 
-                surveys[index] = survey;
+                _surveyList[index] = survey;
             }
 
             SetSurveyId(survey);
@@ -167,13 +161,13 @@ namespace SurveyWeb.Services
             return Directory.GetFiles(_store.GetPath(StoreType.Responses), "response*.xml");
         }
 
-        public void DeleteSurvey(string id)
+        public void DeleteSurvey(long id)
         {   
-            var toDelete = surveys.FirstOrDefault(survey => survey.Id == Int32.Parse(id));
-
-            if (surveys.Contains(toDelete))
+            var toDelete = _surveyList.FirstOrDefault(survey => survey.Id == id);
+            
+            if (toDelete != default(Survey))
             {
-                surveys.Remove(toDelete);
+                _surveyList.Remove(toDelete);
             }
             
             var fullPath = Path.Combine(_store.GetPath(StoreType.Surveys), "survey" + toDelete.Id + ".xml");
@@ -192,6 +186,18 @@ namespace SurveyWeb.Services
             //{
                 File.Delete(fullPath);
             //}
+        }
+
+        public void SaveNote(EditNoteViewModel viewModel)
+        {
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Notes), "note" + viewModel.NoteId + ".xml");
+
+            var settings = new XmlWriterSettings { Indent = true };
+
+            using (var writer = XmlWriter.Create(fullPath, settings))
+            {
+                XmlSerializationUtility.ObjectToXmlWriter(writer, viewModel);
+            }
         }
     }
 }

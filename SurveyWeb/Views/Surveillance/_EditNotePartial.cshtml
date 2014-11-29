@@ -7,16 +7,15 @@
 
 <script>
     $(document).ready(function () {
-        $('.editNote222').click(function () {
+        $('.editNote').click(function () {
 
             var noteJson = {
                 SurveyId: $("#editNote").closest('#SurveyId').value,
+                QuestionGroupId: $("#editNote").closest('#QuestionGroupNumber').value,
                 QuestionId: $("#editNote").closest('#QuestionId').value,
                 NoteText: $("#editNote").closest('#NoteText').value
             }
-
-            alert("Edited: " + $("#editNote").outerHTML);
-
+            
             $.ajax({
                 type: 'POST',
                 url: $.editNotePath,
@@ -37,9 +36,11 @@
 
 <form>
     <div id="editNote" class="choiceGroup" data-ng-href="@(Model.QuestionId)">
+        @Html.HiddenFor(m => m.NoteId)
         @Html.HiddenFor(m => m.SurveyId)
         @Html.HiddenFor(m => m.QuestionId)
-        @*Html.HiddenFor(m => m.QuestionGroupNumber)*@
+        @Html.HiddenFor(m => m.QuestionGroupNumber)
+        @Html.HiddenFor(m => m.ResponseId)
         <div style="display: table-row">
             <div class="editor-label;" style="display: table-cell;width: 3%">
                 @Html.DisplayFor(m => m.NoteText, new { @class = "control-label" })

@@ -44,7 +44,8 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     @Html.HiddenFor(m => m.SurveyId)
-
+    @Html.HiddenFor(m => m.ResponseId)
+    
     <fieldset>
             <legend>Surveillance</legend>
             <div id="tracerHeader" style="display:table; width: 100%">

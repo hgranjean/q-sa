@@ -2808,6 +2808,7 @@
     <Folder Include="Models\QualityExecutive\" />
     <Folder Include="Store\Domain\" />
     <Folder Include="Store\Guidelines\" />
+    <Folder Include="Store\Notes\" />
     <Folder Include="Store\Photos\" />
     <Folder Include="Store\Responses\" />
     <Folder Include="Views\Subscription\" />

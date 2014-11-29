@@ -657,12 +657,17 @@ namespace SurveyWeb.Controllers
 
             analysisViewModel.Followups = result;
 
-            var userId = User.Identity.GetUserId();
+            // Create new response unless already created
+
+            if (String.IsNullOrEmpty(viewModel.ResponseId))
+            {
+                var userId = User.Identity.GetUserId();
+
+                var responseEntry = _surveillanceService.AddResponse(userId);
+
+                viewModel.ResponseId = responseEntry.Id;
+            }
             
-            var responseEntry = _surveillanceService.AddResponse(userId);            
-
-            viewModel.ResponseId = responseEntry.Id;
-
             _persistenceService.SaveTracer(viewModel);
 
             if (isObservation)
@@ -1044,17 +1049,16 @@ namespace SurveyWeb.Controllers
             return View(viewModel);
         }
 
-        public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId)
+        public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId, Guid? responseId)
         {
-            var survey = _persistenceService.GetSurvey(surveyId);
-
-            var questionGroup = survey.QuestionGroups[questionGroupId];
-
-            var question = questionGroup.Questions.First(m => m.Number == questionId);
-
-            var viewModel = new EditNoteViewModel(surveyId, question.Number);
-            viewModel.SurveyId = surveyId;
-            viewModel.QuestionId = question.Number;
+            var viewModel = new EditNoteViewModel
+            {   
+                NoteId = Guid.NewGuid().ToString(), // Note that MVC cannot roundtrip Guid types
+                SurveyId = surveyId,
+                QuestionGroupNumber = questionGroupId,
+                QuestionId = questionId,
+                ResponseId = responseId.GetValueOrDefault().ToString()
+            };
 
             return PartialView("_EditNotePartial", viewModel);
         }
@@ -1062,6 +1066,32 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public JsonResult EditNote(EditNoteViewModel viewModel, FormCollection values)
         {
+            if (ModelState.IsValid)
+            {
+                if (!String.IsNullOrWhiteSpace(viewModel.NoteText))
+                {
+                    // Save response
+                    
+                    if (!String.IsNullOrWhiteSpace(viewModel.ResponseId))
+                    {
+                        var userId = User.Identity.GetUserId();
+
+                        var responseEntry = _surveillanceService.AddResponse(userId);
+
+                        viewModel.ResponseId = responseEntry.Id;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Unable to save note without response file.");
+                        // TODO: Save note in the existing response file.   
+                    }
+
+                    _persistenceService.SaveNote(viewModel);
+                }
+
+                // return RedirectToAction("Dashboard");
+            }
+
             return new JsonResult {Data = "success"};
         }
     }
