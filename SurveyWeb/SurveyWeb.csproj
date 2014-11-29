@@ -312,6 +312,7 @@
     <Compile Include="Models\QualityManager\TemplatesManagementModels.cs" />
     <Compile Include="Models\QualityManager\SurveillanceSchedulingModels.cs" />
     <Compile Include="Models\QualityManager\Trending.cs" />
+    <Compile Include="Models\ViewMetaModels.cs" />
     <Compile Include="Services\IPersistenceServices.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -377,7 +378,7 @@
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\SessionBag.cs" />
     <Compile Include="Services\StandardsManagementServices.cs" />
-    <Compile Include="Services\SurveillanceService.cs" />
+    <Compile Include="Services\SurveillanceManagementServices.cs" />
     <Compile Include="Services\SurveillanceViewMappers.cs" />
     <Compile Include="Services\PersistenceServices.cs" />
     <Compile Include="Services\SurveyManagementServices.cs" />
@@ -2168,6 +2169,7 @@
     <Content Include="Content\ecoicons\Read Me.txt" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\themes\GridStyle.css" />
     <Content Include="Content\themes\united\bootstrap.css" />
     <Content Include="Content\themes\united\bootstrap.min.css" />
     <Content Include="favicon.ico" />

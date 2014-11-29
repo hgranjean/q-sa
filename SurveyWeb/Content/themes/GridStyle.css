@@ -1,0 +1,22 @@
+﻿
+.webgrid-table {
+     margin: 4px; 
+     border-collapse: separate; 
+     width: 80%;  
+     background-color:#eaf1cc;
+}
+
+
+.webgrid-header {
+    background-color:#e2efec;border-bottom:inset;border-color:#428777;
+}
+.webgrid-footer {
+
+}
+.webgrid-alternating-rows {
+    background-color: rgb(245,245,245);
+}
+.webgrid-row-style {
+    color:black;
+
+}

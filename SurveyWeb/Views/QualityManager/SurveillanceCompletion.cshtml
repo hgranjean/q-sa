@@ -1,9 +1,46 @@
-﻿
+﻿@model SurveyWeb.Models.QualityManager.SurveillanceTracking.SurveillanceTrackingViewModel
 @{
     ViewBag.Title = "Surveillance Completion";
 }
 
+<link href="~/Content/themes/GridStyle.css" rel="stylesheet" />
+
+
 <h2>Surveillance Completion Grid</h2>
 
-<div><span><h4>Display Surveillance(s) Progress,    Allow for Review  &amp; Setting Up Alerts etc...</h4></span><p></p></div>
-<ul><li>@Html.ActionLink("Set Up Alerts", "ManageAlerts")</li></ul>
+@*<div><span><h4>Display Surveillance(s) Progress,    Allow for Review  &amp; Setting Up Alerts etc...</h4></span><p></p></div>
+<ul><li>@Html.ActionLink("Set Up Alerts", "ManageAlerts")</li></ul>*@
+
+<div id="sectionMain">
+    <h4 class="section-header">Completion Grid</h4>
+    @{
+        var gridModel = Model.AreaSurveillanceCompletion;
+        var grid = new WebGrid(gridModel, rowsPerPage: 10);
+        List<WebGridColumn> cols = new List<WebGridColumn>();
+
+        cols.Add(new WebGridColumn() { ColumnName = "Area", Header = "Area" });
+
+        for (int i = 0; i < gridModel.First().Data.Count; i++)
+        {
+            int local = i;
+            cols.Add(grid.Column(gridModel.First().Data[i].Name, gridModel.First().Data[i].Label,
+                format: item => Html.Raw("<text>" + item.Data[local].Value + "</text>")
+            ));
+            
+            cols.Add(grid.Column("Id", format: (item) => Html.ActionLink((string)item.Data[local].ID.ToString(), "Edit", new { id = item.Data[local].ID})));
+        }
+        cols.Add(new WebGridColumn() { ColumnName = "PercentComplete", Header = "% Completion" });
+        
+     }
+        <div id="gridContent">
+            @grid.GetHtml(
+                 tableStyle: "webgrid-table",
+                 headerStyle: "webgrid-header",
+                 footerStyle: "webgrid-footer",
+                 alternatingRowStyle: "webgrid-alternating-rows",
+                 rowStyle: "row-style",
+                 fillEmptyRows: false, mode: WebGridPagerModes.All,columns:cols
+)
+        </div>
+
+</div>

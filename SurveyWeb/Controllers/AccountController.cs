@@ -24,13 +24,13 @@ namespace SurveyWeb.Controllers
     {
         // private AtumSurveillanceContext _dbContext = null;
         // private ApplicationUserManager _userManager;
-        private readonly SurveillanceService _surveillanceService;
+        private readonly SurveillanceManagementServices _surveillanceService;
         private readonly MailService _mailService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly AccountService _accountService;
         private const int InviteeMaxCount = 6;
 
-        public AccountController(MailService mailService, SurveillanceService surveillanceService,
+        public AccountController(MailService mailService, SurveillanceManagementServices surveillanceService,
             AccountService accountService,
             UserManager<ApplicationUser> userManager)
         {

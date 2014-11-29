@@ -9,9 +9,9 @@ namespace SurveyWeb.Services
     public class ReportService
     {
         private readonly IPersistenceServices _persistenceService;
-        private readonly SurveillanceService _surveillanceService;
+        private readonly SurveillanceManagementServices _surveillanceService;
 
-        public ReportService(IPersistenceServices persistenceService, SurveillanceService surveillanceService)
+        public ReportService(IPersistenceServices persistenceService, SurveillanceManagementServices surveillanceService)
         {
             _persistenceService = persistenceService;
             _surveillanceService = surveillanceService;
@@ -30,9 +30,9 @@ namespace SurveyWeb.Services
     internal abstract class ReportAlgorithm<T>
     {
         protected readonly IPersistenceServices _persistenceService;
-        protected readonly SurveillanceService _surveillanceService;
+        protected readonly SurveillanceManagementServices _surveillanceService;
 
-        protected ReportAlgorithm(IPersistenceServices persistenceService, SurveillanceService surveillanceService)
+        protected ReportAlgorithm(IPersistenceServices persistenceService, SurveillanceManagementServices surveillanceService)
         {
             _persistenceService = persistenceService;
             _surveillanceService = surveillanceService;
@@ -45,7 +45,7 @@ namespace SurveyWeb.Services
     {
         private readonly string _userId;
 
-        public ProgressReportAlgorithm(IPersistenceServices persistenceService, SurveillanceService surveillanceService, string userId) :
+        public ProgressReportAlgorithm(IPersistenceServices persistenceService, SurveillanceManagementServices surveillanceService, string userId) :
             base(persistenceService, surveillanceService)
         {
             _userId = userId;

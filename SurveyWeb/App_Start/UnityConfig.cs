@@ -60,7 +60,7 @@ namespace SurveyWeb.App_Start
             container.RegisterType<TaskService>(new InjectionConstructor(typeof(ITaskRepository)));
             
             container.RegisterType<ISurveillanceRepository, SurveillanceRepository>(new InjectionConstructor(connectionString));
-            container.RegisterType<SurveillanceService>(new InjectionConstructor(typeof(ISurveillanceRepository)));
+            container.RegisterType<SurveillanceManagementServices>(new InjectionConstructor(typeof(ISurveillanceRepository)));
             
             container.RegisterType<ISurveyRepository, SurveyRepository>(new InjectionConstructor(connectionString));
             container.RegisterType<SurveyManagementServices>(new InjectionConstructor(typeof(ISurveyRepository)));
@@ -75,7 +75,7 @@ namespace SurveyWeb.App_Start
             container.RegisterType<LearningServices>(new InjectionConstructor(typeof(ISurveyStore), typeof(StandardsManagementServices)));
             container.RegisterType<StandardsManagementServices>(new InjectionConstructor(typeof(ISurveyStore)));
 
-            container.RegisterType<ReportService>(new InjectionConstructor(typeof(PersistenceServices), typeof(SurveillanceService)));            
+            container.RegisterType<ReportService>(new InjectionConstructor(typeof(PersistenceServices), typeof(SurveillanceManagementServices)));            
         }
     }
 }

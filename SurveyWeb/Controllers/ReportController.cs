@@ -25,10 +25,10 @@ namespace SurveyWeb.Controllers
     public class ReportController : Controller
     {
         private readonly IPersistenceServices _persistenceService;
-        private readonly SurveillanceService _surveillanceService;
+        private readonly SurveillanceManagementServices _surveillanceService;
         private readonly ReportService _reportService;
 
-        public ReportController(IPersistenceServices persistenceService, SurveillanceService surveillanceService, ReportService reportService)           
+        public ReportController(IPersistenceServices persistenceService, SurveillanceManagementServices surveillanceService, ReportService reportService)           
         {
             _persistenceService = persistenceService;
             _surveillanceService = surveillanceService;

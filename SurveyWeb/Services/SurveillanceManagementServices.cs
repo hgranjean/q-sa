@@ -10,14 +10,16 @@ using Atum.Domain.Business;
 using SurveyWeb.Models;
 using Microsoft.AspNet.Identity;
 using Atum.Domain.Healthcare;
+using SurveyWeb.Models.QualityManager.SurveillanceManagement;
+using SurveyWeb.Models.QualityManager.SurveillanceTracking;
 
 namespace SurveyWeb.Services
 {
-    public class SurveillanceService
+    public class SurveillanceManagementServices
     {
         private readonly ISurveillanceRepository _repository;
 
-        public SurveillanceService(ISurveillanceRepository repository)
+        public SurveillanceManagementServices(ISurveillanceRepository repository)
         {
             _repository = repository;
         }
@@ -121,6 +123,36 @@ namespace SurveyWeb.Services
         internal void DeleteAudit(string auditId)
         {
             _repository.DeleteAudit(auditId);
+        }
+
+        internal IEnumerable<SurveillanceScheduleAnnualViewModel> GetAreaAnnualSchedule()
+        {
+            yield return new SurveillanceScheduleAnnualViewModel { Area = "A", January = "X", February = "", March = "", April = "", May = "", June = "", July = "X", August = "", September = "", October = "", November = "", December = "" };
+            yield return new SurveillanceScheduleAnnualViewModel { Area = "B", January = "X", February = "", March = "", April = "", May = "", June = "", July = "X", August = "", September = "", October = "", November = "", December = "" };
+            yield return new SurveillanceScheduleAnnualViewModel { Area = "C", January = "", February = "X", March = "", April = "", May = "", June = "", July = "", August = "X", September = "", October = "", November = "", December = "" };
+            yield return new SurveillanceScheduleAnnualViewModel { Area = "D", January = "", February = "", March = "X", April = "", May = "", June = "", July = "", August = "", September = "X", October = "", November = "", December = "" };
+            yield return new SurveillanceScheduleAnnualViewModel { Area = "E", January = "", February = "", March = "", April = "X", May = "", June = "", July = "", August = "", September = "", October = "X", November = "", December = "" };
+
+        }
+
+        internal IEnumerable<SurveillanceCompletionViewModel> GetAreaSurveillanceCompletion()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                List<FieldData> data = new List<FieldData>();
+                data.AddRange(getData(i));
+                yield return new SurveillanceCompletionViewModel { Area = "A" + i, PercentComplete = i + "%",  Data= data};
+            }
+
+        }
+
+        private IEnumerable<FieldData> getData(int Id)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                yield return new FieldData { Key = i.ToString(), ID = Id, Label="Element" + i,Value="X" + i};
+                
+            }
         }
     }   
 }

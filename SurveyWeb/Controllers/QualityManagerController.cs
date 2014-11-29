@@ -1,6 +1,9 @@
 ﻿using Atum.Domain.SurveyManagement;
 using SurveyWeb.Models.QualityManager;
+using SurveyWeb.Models.QualityManager.SurveillanceManagement;
+using SurveyWeb.Models.QualityManager.SurveillanceTracking;
 using SurveyWeb.Models.QualityManager.TemplatesManagement;
+using SurveyWeb.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +14,15 @@ namespace SurveyWeb.Controllers
 {
     public class QualityManagerController : Controller
     {
+
+        private readonly SurveillanceManagementServices _surveillanceService;
+
+        public QualityManagerController(SurveillanceManagementServices surveillanceService)           
+        {
+            _surveillanceService = surveillanceService;
+        }
+
+
         // GET: QualityManager
         public ActionResult Dashboard()
         {
@@ -32,6 +44,7 @@ namespace SurveyWeb.Controllers
         }
 
 
+        /*Surveillance Templates Subtasks*/
         /// <summary>
         /// View List of Surveys
         /// </summary>
@@ -56,18 +69,33 @@ namespace SurveyWeb.Controllers
 
         public ActionResult SurveillanceSchedule()
         {
-            return View();
+            var model = new SurveillanceManagementModel();
+            model.AreaAnnualSchedule = (new List<SurveillanceScheduleAnnualViewModel>());
+            model.AreaAnnualSchedule.AddRange(_surveillanceService.GetAreaAnnualSchedule());
+ 
+            
+            return View(model);
         }
+
         /*Surveillance Schedule Subtasks*/
         public ActionResult ManageResources()
         {
             return View();
         }
-        
+
+        /// <summary>
+        /// Surveillance Completion
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SurveillanceCompletion()
         {
-            return View();
+            var model = new SurveillanceTrackingViewModel();
+            model.AreaSurveillanceCompletion = (new List<SurveillanceCompletionViewModel>());
+            model.AreaSurveillanceCompletion.AddRange(_surveillanceService.GetAreaSurveillanceCompletion());
+
+            return View(model);
         }
+
         public ActionResult ManageAlerts()
         {
             return View();

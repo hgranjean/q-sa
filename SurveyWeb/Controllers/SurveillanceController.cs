@@ -24,7 +24,7 @@ namespace SurveyWeb.Controllers
     [Authorize]
     public class SurveillanceController : Controller
     {        
-        private readonly SurveillanceService _surveillanceService;
+        private readonly SurveillanceManagementServices _surveillanceService;
         private readonly SurveyManagementServices _surveyService;
         private readonly TaskService _taskService;
         private readonly MailService _mailService;
@@ -33,7 +33,7 @@ namespace SurveyWeb.Controllers
         private readonly LearningServices _learningService;
         private readonly AccountService _accountService;
         
-        public SurveillanceController(SurveillanceService surveillanceService,
+        public SurveillanceController(SurveillanceManagementServices surveillanceService,
             TaskService taskService,
             SurveyManagementServices surveyService,
             MailService mailService,

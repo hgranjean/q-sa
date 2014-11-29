@@ -1,41 +1,41 @@
-﻿
+﻿@model SurveyWeb.Models.QualityManager.SurveillanceManagement.SurveillanceManagementModel
 @{
     ViewBag.Title = "Surveillance Schedule";
 }
+<link href="~/Content/themes/GridStyle.css" rel="stylesheet" />
+
 
 <h2>Surveillance Schedule - Anual View</h2>
 <ul><li>@Html.ActionLink("Maintain Resources", "ManageResources")</li></ul>
 
 <div id="sectionMain">
     <h4 class="section-header">Annual Schedule</h4>
-    <span>Scheduling Grid goes here!!!</span>
-
-</div>
-
-@{
-    //WebGridSampleApplication.Models.Product product = new WebGridSampleApplication.Models.Product();
-}
-@{
-    var grid = new WebGrid(Model, canPage: true, rowsPerPage: 5, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
-    grid.Pager(WebGridPagerModes.NextPrevious);}
-<div id="gridContent">
-    @grid.GetHtml(tableStyle: "webGrid",
-                headerStyle: "header",
-                alternatingRowStyle: "alt",
-                selectedRowStyle: "select",
-                columns: grid.Columns(
-                grid.Column("Id", format: (item) => item.GetSelectLink(item.Id)),
-                grid.Column("Name", " Name"),
-                grid.Column("Description", "Description", style: "description"),
-                grid.Column("Quantity", "Quantity")
-         ))
-    @if (grid.HasSelection)
-    {
-        
-        var product = grid.Rows[grid.SelectedIndex].Value;
-        <b>Id</b> @product.Id<br />
-        <b>Name</b>  @product.Name<br />
-        <b>Description</b> @product.Description<br />
-        <b>Quantity</b> @product.Quantity<br />
+    @{
+        var grid = new WebGrid(Model.AreaAnnualSchedule, rowsPerPage: 10);
+        <div id="gridContent">
+            @grid.GetHtml(
+                 tableStyle: "webgrid-table",
+                 headerStyle: "webgrid-header",
+                 footerStyle: "webgrid-footer",
+                 alternatingRowStyle: "webgrid-alternating-rows",
+                 rowStyle: "row-style",
+        fillEmptyRows: false, mode: WebGridPagerModes.All,
+           columns: grid.Columns(
+            grid.Column("Area", header: "Area"),
+            grid.Column("January", header: "Jan"),
+            grid.Column("February", header: "Feb"),
+            grid.Column("March", header: "Mar"),
+            grid.Column("April", header: "Apr"),
+            grid.Column("May", header: "May"),
+            grid.Column("June", header: "Jun"),
+            grid.Column("July", header: "Jul"),
+            grid.Column("August", header: "Aug"),
+            grid.Column("September", header: "Sep"),
+            grid.Column("October", header: "Oct"),
+            grid.Column("November", header: "Nov"),
+            grid.Column("December", header: "Dec")
+        ))
+        </div>
     }
+
 </div>

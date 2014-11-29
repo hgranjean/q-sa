@@ -15,10 +15,10 @@ namespace MvcApplication1.Controllers
     {
         private AtumSurveillanceContext _dbContext = null;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SurveillanceService _surveillanceService;
+        private readonly SurveillanceManagementServices _surveillanceService;
         private readonly AccountService _accountService;
 
-        public HospitalController(UserManager<ApplicationUser> userManager, SurveillanceService surveillanceService, AccountService accountService)
+        public HospitalController(UserManager<ApplicationUser> userManager, SurveillanceManagementServices surveillanceService, AccountService accountService)
         {
             _dbContext = new AtumSurveillanceContext();
             _userManager = userManager;
