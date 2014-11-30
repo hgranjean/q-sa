@@ -154,5 +154,16 @@ namespace SurveyWeb.Services
                 
             }
         }
+
+        internal Surveys GetSurveysForManager(int managerId)
+        {
+
+            Surveys retVal = new Surveys();
+            Survey survey = new Survey("Survey1");
+            QuestionGroup qgroup = survey.AddQuestionGroup("QG1");
+            qgroup.AddQuestion("A question",QuestionType.SelectOne);
+            retVal.Add(survey);
+            return retVal;
+        }
     }   
 }

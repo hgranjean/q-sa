@@ -307,6 +307,7 @@
     <Compile Include="Models\QualityAuditor\SurveillancePerformance.cs" />
     <Compile Include="Models\QualityManager\FollowUpManagement.cs" />
     <Compile Include="Models\QualityManager\ManagerUserModel.cs" />
+    <Compile Include="Models\QualityManager\ManageStandardsViewModels.cs" />
     <Compile Include="Models\QualityManager\PerformanceManagementModels.cs" />
     <Compile Include="Models\QualityManager\SurveillanceTrackingModels.cs" />
     <Compile Include="Models\QualityManager\TemplatesManagementModels.cs" />
@@ -358,7 +359,7 @@
     <Compile Include="Models\RadioButtonListViewModel.cs" />
     <Compile Include="Models\ReportModels.cs" />
     <Compile Include="Models\ScheduleModels.cs" />
-    <Compile Include="Models\StandardViewModels.cs" />
+    <Compile Include="Models\StandardMaintenance\StandardViewModels.cs" />
     <Compile Include="Models\SurveillanceModels.cs" />
     <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
@@ -2804,6 +2805,8 @@
     <Content Include="Views\QTrackerAdmin\SubscriberAccount.cshtml" />
     <Content Include="Views\QTrackerAdmin\SubscriberSystem.cshtml" />
     <Content Include="Views\QTrackerAdmin\SubscriberUsers.cshtml" />
+    <Content Include="Views\QualityManager\ScheduleSurveillance.cshtml" />
+    <Content Include="Views\QualityManager\Standard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

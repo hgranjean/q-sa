@@ -6,6 +6,7 @@
      background-color:#eaf1cc;
 }
 
+.webgrid-table th, .webgrid-table td { border: 1px solid #ffffff; padding: 5px; }
 
 .webgrid-header {
     background-color:#e2efec;border-bottom:inset;border-color:#428777;

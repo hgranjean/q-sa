@@ -6,6 +6,15 @@
 }
 
 <h2>Quality Manager's Dashboard</h2>
+<div id="sectionTwo">
+    <h3 class="section-header">Admin</h3>
+    <ul>
+        <li>@Html.ActionLink("Maintain Guidelines (Manage Standards)", "ManageStandards")<span> - Review, Create, or Update Performance Guidelines</span></li>
+        <li>@Html.ActionLink("Maintain Templates & Checklists", "SurveillanceTemplates")<span> - Review, Create, or Update Surveillance Audit Templates or Checklists</span></li>
+        <li>@Html.ActionLink("Maintain Resources", "ManageResources")<span> - Manage Users and Roles </span></li>
+        <li>@Html.ActionLink("Maintain Workflow Rules (Receive Task Progress Alerts)", "ManageAlerts")<span> - Setup Rules to Receive Alerts and Reminders </span></li>
+    </ul>
+</div>
 <div id="sectionOne">
     <h3 class="section-header">Main</h3>
     <ul>
@@ -13,14 +22,5 @@
         <li>@Html.ActionLink("Track Follow-Ups", "TrackFollowUps")<span> - Review Follow-up and Setup Alerts and Reminders</span></li>
         <li>@Html.ActionLink("Identify Trends", "IdentifyTrends")<span> - Define and view Trend Reports and Alert Setups</span></li>
         <li>@Html.ActionLink("Manage Performance Improvement Programs", "ManagePIPrograms")<span> - Define and Monitor Performance Improvement Programs</span></li>
-    </ul>
-</div>
-<div id="sectionTwo">
-    <h3 class="section-header">Admin</h3>
-    <ul>
-        <li>@Html.ActionLink("Manage Standards", "ManageStandards")<span> - Review, Create, or Update Performance Guidelines</span></li>
-        <li>@Html.ActionLink("SurveillanceTemplates", "SurveillanceTemplates")<span> - Review, Create, or Update Surveillance Audit Templates or Checklists</span></li>
-        <li>@Html.ActionLink("Maintain Resources", "ManageResources")<span> - Manage Users and Roles </span></li>        
-        <li>@Html.ActionLink("Manage Alerts", "ManageAlerts")<span> - Setup Alerts and Reminders </span></li>
     </ul>
 </div>

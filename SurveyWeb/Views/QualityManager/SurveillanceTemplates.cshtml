@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SurveyWeb.Models.QualityManager.TemplatesManagement.SurveysViewModel
+@{
     ViewBag.Title = "Surveillance Templates";
 }
 
@@ -7,11 +8,34 @@
 <ul>
     <li>
         @*@Html.ActionLink("Manage Standards", "ManageStandards", model.CriteriaValues)*@
-        @Html.ActionLink("Manage Standards", "ManageStandards")
+        @Html.ActionLink("Maintain Guidelines (Manage Standards)", "ManageStandards")
     </li>
 </ul>
 <div id="sectionMain">
     <h4 class="section-header">Review, Create, or Update Surveillance Audit Templates or Checklists</h4>
+    @{
+        var gridModel = Model.Guidelines;
+        var grid = new WebGrid(gridModel, rowsPerPage: 10);
+        List<WebGridColumn> cols = new List<WebGridColumn>();
 
+        cols.Add(grid.Column("Id", format: (item) => Html.ActionLink((string)item.Id.ToString(), "Standard", new { id = item.Id })));
+        //cols.Add(new WebGridColumn() { ColumnName = "Key", Header = "Key" });
+        cols.Add(new WebGridColumn() { ColumnName = "Title", Header = "Title" });
+        //cols.Add(new WebGridColumn() { ColumnName = "Text", Header = "Text" });
+        cols.Add(new WebGridColumn() { ColumnName = "OwnerName", Header = "Owner" });
+        cols.Add(new WebGridColumn() { ColumnName = "Visibility", Header = "Visibility" });
+
+
+    }
+    <div id="gridContent">
+        @grid.GetHtml(
+                 tableStyle: "webgrid-table",
+                 headerStyle: "webgrid-header",
+                 footerStyle: "webgrid-footer",
+                 alternatingRowStyle: "webgrid-alternating-rows",
+                 rowStyle: "row-style",
+                 fillEmptyRows: false, mode: WebGridPagerModes.All, columns: cols
+)
+    </div>
 
 </div>

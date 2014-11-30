@@ -1,14 +1,39 @@
-﻿@*@model SurveyWeb.Models.QualityManager.*@
+﻿@model SurveyWeb.Models.QualityManager.ManageStandardsViewModel
 @{
     ViewBag.Title = "Manage Standards";
 }
 
+<link href="~/Content/themes/GridStyle.css" rel="stylesheet" />
+
 <h2>Manage Standards</h2>
 
-<p>@Html.ActionLink("Add New", "Document","Standard",null, new { @class = "btn btn-default" })</p>
+<p>@Html.ActionLink("+New Performance Guidelines vv", "Document","Standard",null, new { @class = "btn btn-default" })</p>
 
-<div id="sectionOne">
+<div id="sectionMain">
     <h3 class="section-header">Guidelines and Standards</h3>
-    
+    @{
+        var gridModel = Model.Guidelines;
+        var grid = new WebGrid(gridModel, rowsPerPage: 10);
+        List<WebGridColumn> cols = new List<WebGridColumn>();
+
+        cols.Add(grid.Column("Id", format: (item) => Html.ActionLink((string)item.Id.ToString(), "Standard", new { id = item.Id})));
+        //cols.Add(new WebGridColumn() { ColumnName = "Key", Header = "Key" });
+        cols.Add(new WebGridColumn() { ColumnName = "Title", Header = "Title" });
+        //cols.Add(new WebGridColumn() { ColumnName = "Text", Header = "Text" });
+        cols.Add(new WebGridColumn() { ColumnName = "OwnerName", Header = "Owner" });
+        cols.Add(new WebGridColumn() { ColumnName = "Visibility", Header = "Visibility" });
+        
+
+    }
+    <div id="gridContent">
+        @grid.GetHtml(
+                 tableStyle: "webgrid-table",
+                 headerStyle: "webgrid-header",
+                 footerStyle: "webgrid-footer",
+                 alternatingRowStyle: "webgrid-alternating-rows",
+                 rowStyle: "row-style",
+                 fillEmptyRows: false, mode: WebGridPagerModes.All, columns: cols
+)
+    </div>
 
 </div>

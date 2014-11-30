@@ -1,17 +1,15 @@
 ﻿using Atum.Domain.NLP;
-using Atum.Domain.NLP.Domain.NLP.NaiveBayes;
 using Atum.Domain.NLP.NaiveBayes;
 using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using Atum.Utility.XML;
-using Common.Utilities;
 using SurveyWeb.Mappers;
 using SurveyWeb.Models;
+using SurveyWeb.Models.StandardMaintenance;
 using SurveyWeb.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Web;
 
 namespace SurveyWeb.Services
 {
@@ -158,7 +156,7 @@ namespace SurveyWeb.Services
 
         }
 
-        private IEnumerable<string> LoadClassList(Models.StandardDocumentViewModel standardDocumentViewModel)
+        private IEnumerable<string> LoadClassList(StandardDocumentViewModel standardDocumentViewModel)
         {
             foreach (var item in standardDocumentViewModel.TableOfContents)
             {

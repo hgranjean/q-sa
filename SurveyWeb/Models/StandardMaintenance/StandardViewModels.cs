@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 
-namespace SurveyWeb.Models
+namespace SurveyWeb.Models.StandardMaintenance
 {
     public class StandardViewModels : ViewModelBase
     {
@@ -54,6 +54,9 @@ namespace SurveyWeb.Models
         public IEnumerable<TOCElementViewModel> TableOfContents { get; set; }
         [Display(Name = "Chapter")]
         public TOCElementViewModel ChapterItem { get; set; }
+        public Atum.Domain.Common.Person Owner { get; set; }
+        public string OwnerName{get { return Owner.FullName; }}
+        public string Visibility { get; set; }
     }
 
     public class PerformanceElementViewModel

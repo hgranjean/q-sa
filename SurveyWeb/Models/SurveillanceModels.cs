@@ -3,6 +3,7 @@ using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
 using Atum.Domain.SurveyManagement;
+using SurveyWeb.Models.StandardMaintenance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

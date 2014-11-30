@@ -6,10 +6,14 @@
 
 
 <h2>Surveillance Schedule - Anual View</h2>
-<ul><li>@Html.ActionLink("Maintain Resources", "ManageResources")</li></ul>
+<ul>
+    <li>@Html.ActionLink("Maintain Resources", "ManageResources")</li>
+    <li>@Html.ActionLink("Schedule a Surveillance", "ScheduleSurveillance", null, new { @class = "btn btn-default" })</li>   
+</ul>
 
 <div id="sectionMain">
     <h4 class="section-header">Annual Schedule</h4>
+    <p></p>
     @{
         var grid = new WebGrid(Model.AreaAnnualSchedule, rowsPerPage: 10);
         <div id="gridContent">

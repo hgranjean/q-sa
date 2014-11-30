@@ -1,5 +1,6 @@
 ﻿using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using SurveyWeb.Models;
+using SurveyWeb.Models.StandardMaintenance;
 using SurveyWeb.Services;
 using System.Web.Mvc;
 

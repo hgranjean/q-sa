@@ -1,12 +1,10 @@
-﻿@model SurveyWeb.Models.TaskViewModel
+﻿@model SurveyWeb.Models.QualityManager.SurveillanceManagement.SurveilanceViewModel
+
 @{
-    ViewBag.Title = "Create Task";
+    ViewBag.Title = "Schedule Surveillance";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title</h1>
-</hgroup>
-
+<h2>ScheduleSurveillance</h2>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
@@ -35,16 +33,16 @@
   });
 </script>
 
-@using (Html.BeginForm("CreateTask", "Surveillance", FormMethod.Post, new {enctype = "multipart/form-data"}))
+@using (Html.BeginForm("ScheduleSurveillance", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Task Info</legend>
+        <legend>Surveillance Info</legend>
 
         <div style="display: table">
-            
+
             <div style="display: table-row">
                 <div class="editor-label" >
                     @Html.LabelFor(m => m.Title)
@@ -87,18 +85,18 @@
             @Html.LabelFor(model => model.SelectedUsers)
         </div>
         <div class="editor-field">
-            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.Users, "Id", "Person.FullName"), new { @class = "form-control" })
+            @*@Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.Users, "Id", "Person.FullName"), new { @class = "form-control" })*@
         </div>
-        
-        <br/>
-        
-        <div><caption>To change selected items, choose necessary from the list below and click Save</caption>
-        
+
+        <br />
+
+        <caption>To change selected items, choose necessary from the list below and click Save</caption>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.AvailableUsers)
         </div>
         <div class="editor-field">
-            @Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.AvailableUsers, "Id", "Person.FullName"), new { @class = "form-control" })
+            @*@Html.ListBoxFor(model => model.SelectedUsers, new MultiSelectList(Model.AvailableUsers, "Id", "Person.FullName"), new { @class = "form-control" })*@
         </div>
     </fieldset>
 

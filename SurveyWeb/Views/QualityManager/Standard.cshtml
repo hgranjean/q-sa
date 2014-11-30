@@ -1,0 +1,60 @@
+﻿@model SurveyWeb.Models.StandardMaintenance.StandardDocumentViewModel
+
+
+@{
+    ViewBag.Title = "Performance Standard Document";
+}
+
+<h2>@Model.Title</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @*<div id="editorLabel"><span>Title</span></div>*@
+        @*<div>@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })</div>*@
+        <form class="form-inline" role="form">
+            <div class="input-group">
+                @if (Model.Visibility == "Private")
+                {
+                    @Html.ActionLink("+Add New", null, null, new { @id = "btn-add-new", onclick = "javascript:return ShowHideDivOnButtonClick();", @class = "btn btn-default" })
+                }
+                <div id="TOCEntry" style="display:none">
+                    @Html.LabelFor(m => m.ChapterItem, new { @class = "sr-only" })
+                    @Html.TextBoxFor(m => m.ChapterItem.Title, new { @placeholder = "Chapter Title" })
+                    @Html.ActionLink("Add", null, null, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Add with content", null, null, new { @class = "btn btn-default" })
+                    @Html.ActionLink("<<", null, null, new { onclick = "javascript:return ShowHideDivOnButtonClick();", @class = "btn btn-default" })
+                </div>
+            </div>
+        </form>
+        <hr />
+        @Html.ValidationSummary(true)
+        <h4>Chapters</h4>
+        <div class="form-group">
+            @foreach (var item in Model.TableOfContents)
+            {
+                <div class="col-md-offset-0 col-md-10">
+                    @Html.ActionLink(item.Title, "Chapter", new { chapterId = item.Key }, null)
+                </div>
+            }
+        </div>
+        @*<div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>*@
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script language="javascript">
+    function ShowHideDivOnButtonClick() {
+        $('#TOCEntry').toggle("slow");
+        var btnText = $('#btn-add-new').text;
+
+        return false;
+    }
+</script>

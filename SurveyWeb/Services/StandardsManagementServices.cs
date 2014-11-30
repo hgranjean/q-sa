@@ -1,7 +1,7 @@
 ﻿using Atum.Domain.Common;
 using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using Atum.Utility.XML;
-using SurveyWeb.Models;
+using SurveyWeb.Models.StandardMaintenance;
 using SurveyWeb.Repository;
 using System.Collections.Generic;
 using System.IO;
@@ -313,17 +313,23 @@ namespace SurveyWeb.Services
             yield return new TOCElementViewModel { Key = "EC", Title = "Environment of Care (EC)" };
             yield return new TOCElementViewModel { Key = "EM", Title = "Emergency Management (EM)" };
             yield return new TOCElementViewModel { Key = "HR", Title = "Human Resources (HR) " };
-            yield return new TOCElementViewModel { Key = "IC", Title = "Infection Prevention and Control (IC)" };
-            yield return new TOCElementViewModel { Key = "IM", Title = "Information Management (IM) " };
-            yield return new TOCElementViewModel { Key = "LD", Title = "Leadership (LD) " };
+            yield return new TOCElementViewModel { Key = "IC", Title = "Inmation Management (IM) " };
+            yield return new TOCElementViewModel { Key = "LD", Title = "Leadershifection Prevention and Control (IC)" };
+            yield return new TOCElementViewModel { Key = "IM", Title = "Inforp (LD) " };
             yield return new TOCElementViewModel { Key = "LS", Title = "Life Safety (LS)" };
-            yield return new TOCElementViewModel { Key = "MM", Title = "Medication Management (MM) " };
-            yield return new TOCElementViewModel { Key = "PC", Title = "Provision of Care, Treatment, and Services (PC) " };
+            yield return new TOCElementViewModel { Key = "MM", Title = "Medication Managment (MM) " };
+            yield return new TOCElementViewModel { Key = "PC", Title = "Provision of Care,e Treatment, and Services (PC) " };
             yield return new TOCElementViewModel { Key = "PC", Title = "Performance Improvement (PI)" };
             yield return new TOCElementViewModel { Key = "RC", Title = "Record of Care, Treatment, and Services (RC) " };
             yield return new TOCElementViewModel { Key = "RI", Title = "Rights and Responsibilities of the Individual (RI)" };
             yield return new TOCElementViewModel { Key = "WT", Title = "Waived Testing (WT)" };
         }
 
+
+        internal IEnumerable<StandardDocumentViewModel> GetStandardDocuments()
+        {
+            yield return new StandardDocumentViewModel { Id = 1, Title = "Joint Commission Standards", Key = "TJC", Text = "Text: Document Description goes here!", Owner = (new Person("Zorina","","Granjean")), Visibility = "Public" };
+            yield return new StandardDocumentViewModel { Id = 2, Title = "Hospital System Specific Guidelines", Key = "SysId:HSSG", Text = "Text: Document Description goes here!", Owner = (new Person("John", "D", "Quality-Manager")), Visibility = "Private" };
+        }
     }
 }

@@ -22,8 +22,8 @@ namespace SurveyWeb.Models
             int binPos = appPath.LastIndexOf(@"\bin");
 
             appPath = appPath.Substring(0, binPos) + @"\RuleApp\";
-            
-            return appPath + ConfigurationSettings.AppSettings.Get("RuleApp");
+
+            return appPath + ConfigurationManager.AppSettings.Get("RuleApp");
         }
 
         private string GetRuleAppStateFileName()
@@ -33,7 +33,7 @@ namespace SurveyWeb.Models
 
             appPath = appPath.Substring(0, binPos) + @"\RuleApp\";
 
-            return appPath + ConfigurationSettings.AppSettings.Get("RuleAppState");
+            return appPath + ConfigurationManager.AppSettings.Get("RuleAppState");
         }
 
         /*
