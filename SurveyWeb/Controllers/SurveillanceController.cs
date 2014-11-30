@@ -101,8 +101,8 @@ namespace SurveyWeb.Controllers
         public ActionResult FollowUps(string OwnerId)
         {
             FollowUpsViewModel model = new FollowUpsViewModel();
-            model.Add(loadFollowUp(1));
-            model.Add(loadFollowUp(2));
+            model.Add(LoadFollowUp(1));
+            model.Add(LoadFollowUp(2));
 
             return View(model);
         }
@@ -110,12 +110,12 @@ namespace SurveyWeb.Controllers
         public ActionResult FollowUp(int? followUpId)
         {
             
-            FollowUpViewModel model = loadFollowUp(followUpId ?? 1);
+            FollowUpViewModel model = LoadFollowUp(followUpId ?? 1);
 
             return View(model);
         }
 
-        private FollowUpViewModel loadFollowUp(int followUpId)
+        private FollowUpViewModel LoadFollowUp(int followUpId)
         {
             FollowUpViewModel retVal = new FollowUpViewModel();
             retVal.FollowUpId = followUpId;
@@ -236,15 +236,15 @@ namespace SurveyWeb.Controllers
             {
                 model = GetSurveySchedules(true);
 
-                if (!ViewBag.ShowTeamMemberContent)
-                {
+                // if (!ViewBag.ShowTeamMemberContent)
+                //{
                     var nextTasks = GetSurveySchedules(false);
 
                     foreach (var item in nextTasks.SurveysByDate.Keys)
                     {
                         model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
                     }
-                }
+                //}
             }
             catch (Exception)
             {
@@ -256,7 +256,11 @@ namespace SurveyWeb.Controllers
         }
 
 
-        public ActionResult EditNotes(string questionId)
+        public ActionResult EditNotes(int surveyId, int questionId)
+        {
+            return View();
+        }
+        public ActionResult LoadAttachment(int surveyId, int questionId)
         {
             return View();
         }
@@ -654,12 +658,17 @@ namespace SurveyWeb.Controllers
 
             analysisViewModel.Followups = result;
 
-            var userId = User.Identity.GetUserId();
+            // Create new response unless already created
+
+            if (String.IsNullOrEmpty(viewModel.ResponseId))
+            {
+                var userId = User.Identity.GetUserId();
+
+                var responseEntry = _surveillanceService.AddResponse(userId);
+
+                viewModel.ResponseId = responseEntry.Id;
+            }
             
-            var responseEntry = _surveillanceService.AddResponse(userId);            
-
-            viewModel.ResponseId = responseEntry.Id;
-
             _persistenceService.SaveTracer(viewModel);
 
             if (isObservation)
@@ -1039,6 +1048,52 @@ namespace SurveyWeb.Controllers
             LoadTracerReferenceData(viewModel);
 
             return View(viewModel);
+        }
+
+        public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId, Guid? responseId)
+        {
+            var viewModel = new EditNoteViewModel
+            {   
+                NoteId = Guid.NewGuid().ToString(), // Note that MVC cannot roundtrip Guid types
+                SurveyId = surveyId,
+                QuestionGroupNumber = questionGroupId,
+                QuestionId = questionId,
+                ResponseId = responseId.GetValueOrDefault().ToString()
+            };
+
+            return PartialView("_EditNotePartial", viewModel);
+        }
+
+        [HttpPost]
+        public JsonResult EditNote(EditNoteViewModel viewModel, FormCollection values)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!String.IsNullOrWhiteSpace(viewModel.NoteText))
+                {
+                    // Save response
+                    
+                    if (!String.IsNullOrWhiteSpace(viewModel.ResponseId))
+                    {
+                        var userId = User.Identity.GetUserId();
+
+                        var responseEntry = _surveillanceService.AddResponse(userId);
+
+                        viewModel.ResponseId = responseEntry.Id;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Unable to save note without response file.");
+                        // TODO: Save note in the existing response file.   
+                    }
+
+                    _persistenceService.SaveNote(viewModel);
+                }
+
+                // return RedirectToAction("Dashboard");
+            }
+
+            return new JsonResult {Data = "success"};
         }
     }
 }

@@ -156,7 +156,7 @@ namespace SurveyWeb.Models
 
         public string ResponseId { get; set; }
         
-        [Range(1,999, ErrorMessage = "Please choice a response.")]
+        [Range(1,999, ErrorMessage = "Please choose a response.")]
         public ResponseViewModel[] Responses { get; set; }
 
         internal QuestionGroup AddDefaultQuestionGroup()
@@ -426,6 +426,22 @@ namespace SurveyWeb.Models
         public ObservationViewModel(Observation observation)
         {
             this.Observation = observation;
+        }
+    }
+
+    public class EditNoteViewModel
+    {
+        public string NoteId { get; set; }
+        public int SurveyId { get; set; }
+        public int QuestionGroupNumber { get; set; }
+        public int QuestionId { get; set; }
+        public string ResponseId { get; set; }
+
+        [Display(Name = "Note")]
+        public string NoteText { get; set; }
+
+        public EditNoteViewModel()
+        {
         }
     }
 }

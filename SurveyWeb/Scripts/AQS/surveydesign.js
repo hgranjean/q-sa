@@ -58,20 +58,16 @@
         var parentId = $(this).parents('li').map(function () {
             return $(this).find('a').first().attr("data-ng-href");
         }).get().join(", ");
+        var parentGroupId = $(this).closest('li').closest('ul').attr("data-ng-href");
 
         $.confirm(
             "Delete question", //title
             "Delete the question " + parentId + "?", //message
             "Delete", //button text
             function deleteOk() { //"yes" callback
-                var parentId = $(this).parents('li').map(function () {
-                    return $(this).find('a').first().attr("data-ng-href");
-                }).get().join(", ");
-
-                var parentGroupId = $(this).closest('li').closest('ul').attr("data-ng-href");
-
+                
                 var liToDelete = $(this).closest('li');
-
+                
                 $.ajax({
                     type: 'POST',
                     url: $.deleteQuestionPath,
@@ -82,13 +78,12 @@
                     },
                     success: function (data) {
                         liToDelete.remove();
+                        location.reload();
                     },
                     error: function (xhr, status, error) {
                         console.log(xhr.responseText);
                     }
                 });
-
-                location.reload();
             }
         );
     }

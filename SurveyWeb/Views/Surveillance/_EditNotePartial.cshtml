@@ -1,0 +1,65 @@
+﻿@model SurveyWeb.Models.EditNoteViewModel
+
+@*using (Ajax.BeginForm("EditNote", "Surveillance",
+    new AjaxOptions { UpdateTargetId = "divid" + Model.QuestionId, InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess = "success" },
+    new { enctype = "multipart/form-data" }))
+{*@ 
+
+<script>
+    $(document).ready(function () {
+        $('.editNote').click(function () {
+
+            var noteJson = {
+                SurveyId: $("#editNote").closest('#SurveyId').value,
+                QuestionGroupId: $("#editNote").closest('#QuestionGroupNumber').value,
+                QuestionId: $("#editNote").closest('#QuestionId').value,
+                NoteText: $("#editNote").closest('#NoteText').value
+            }
+            
+            $.ajax({
+                type: 'POST',
+                url: $.editNotePath,
+                data: $('#editNote').serialize(),
+                success: function (data) {
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });            
+
+        });
+    });
+
+</script>
+
+
+
+<form>
+    <div id="editNote" class="choiceGroup" data-ng-href="@(Model.QuestionId)">
+        @Html.HiddenFor(m => m.NoteId)
+        @Html.HiddenFor(m => m.SurveyId)
+        @Html.HiddenFor(m => m.QuestionId)
+        @Html.HiddenFor(m => m.QuestionGroupNumber)
+        @Html.HiddenFor(m => m.ResponseId)
+        <div style="display: table-row">
+            <div class="editor-label;" style="display: table-cell;width: 3%">
+                @Html.DisplayFor(m => m.NoteText, new { @class = "control-label" })
+            </div>
+            <div id="questionText" class="editor-field" style="display: table-cell;width: 70%">
+                @Html.TextBoxFor(m => m.NoteText, new { style = "width: 100%", @class = "form-control" })
+            </div>
+        </div>
+
+        <div style="display: table-row;">
+            <div style="display: table-cell;">
+            </div>
+            <div style="display: table-cell;">
+                <input id="saveButton" class="btn btn-default editNote" value="Save" />
+                <a href="#" class="questionCancel">Cancel</a>
+
+            </div>
+        </div>
+    </div>
+</form>
+    @*}*@
+

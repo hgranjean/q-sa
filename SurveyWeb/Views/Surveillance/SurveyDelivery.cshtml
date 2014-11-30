@@ -15,126 +15,134 @@
         $("#startdatepicker").datetimepicker({
             timeFormat: 'HH:mm z',
             timezoneList: [
-              { value: -300, label: 'Eastern' },
-              { value: -360, label: 'Central' },
-              { value: -420, label: 'Mountain' },
-              { value: -480, label: 'Pacific' }
+                { value: -300, label: 'Eastern' },
+                { value: -360, label: 'Central' },
+                { value: -420, label: 'Mountain' },
+                { value: -480, label: 'Pacific' }
             ]
         });
         $("#enddatepicker").datetimepicker({
             timeFormat: 'HH:mm z',
             timezoneList: [
-              { value: -300, label: 'Eastern' },
-              { value: -360, label: 'Central' },
-              { value: -420, label: 'Mountain' },
-              { value: -480, label: 'Pacific' }
+                { value: -300, label: 'Eastern' },
+                { value: -360, label: 'Central' },
+                { value: -420, label: 'Mountain' },
+                { value: -480, label: 'Pacific' }
             ]
         });
     });
+    
 </script>
+
+<script type="text/javascript">
+    $.editNotePath = '@Url.Content("~/Surveillance/EditNote")';
+</script>
+<script type="text/javascript" src="~/Scripts/AQS/surveydelivery.js"></script>
 
 @using (Html.BeginForm("SaveSurvey", "Surveillance", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     @Html.HiddenFor(m => m.SurveyId)
+    @Html.HiddenFor(m => m.ResponseId)
     
     <fieldset>
-        <legend>Surveillance</legend>
-        <div id="tracerHeader" style="display:table; width: 100%">
-            @Html.Partial("_TracerHeaderPartial", Model, new ViewDataDictionary( new {GroupNumber =  1 }))
-        </div>
-        
-        <div style="display: table;" class="gn-table">
-            
-            @foreach (var group in Model.QuestionGroups)
-            {   
-                <div style="display:table-row" class="table-row-withborder">
-                    <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 35%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</div>
-                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color:green; background-color: #CFDBC5;">&nbsp;</div>
-                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: red; background-color: #CFDBC5;">&nbsp;</div>
-                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; background-color: #CFDBC5;">&nbsp;</div>
-                    <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: blue;  background-color: #CFDBC5;">&nbsp;</div>
-                    <div style="display: table-cell;font-weight:bold;width:15%; text-align: center;background-color: #CFDBC5;">Standard</div>
-                    <div style="display: table-cell;font-weight:bold;; background-color: #CFDBC5;">Notes / Photo / Document</div>
-                </div>
-                
+            <legend>Surveillance</legend>
+            <div id="tracerHeader" style="display:table; width: 100%">
+                @Html.Partial("_TracerHeaderPartial", Model, new ViewDataDictionary( new {GroupNumber =  1 }))
+            </div>
+
+            <div style="display: table;" class="gn-table">
+
+                @foreach (var group in Model.QuestionGroups)
+            {
+                <div style="display:table-row" class="table-row-withborder" data-ng-ref="@(group.Number)">
+                        <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 35%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</div>
+                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color:green; background-color: #CFDBC5;">&nbsp;</div>
+                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: red; background-color: #CFDBC5;">&nbsp;</div>
+                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; background-color: #CFDBC5;">&nbsp;</div>
+                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: blue;  background-color: #CFDBC5;">&nbsp;</div>
+                        <div style="display: table-cell;font-weight:bold;width:15%; text-align: center;background-color: #CFDBC5;">Standard</div>
+                        <div style="display: table-cell;font-weight:bold;; background-color: #CFDBC5;">Notes / Photo / Document</div>
+                    </div>
+
                 var questions = group.QuestionGroup.Questions;
                 for (int qIndex = 0, i = 0; i < questions.ToArray().Length; i++)
                 {
                     var question = questions[i];
-                    
-                    <div id="choiceGroup" style="display: table-row;" >                        
-                            <div id="questionText" style="display:table-cell; width: 35%; vertical-align: middle" class="gn-table-row-withborders">@question.Text</div>
-                            
-                                @{  var choiceClasses = new string[] {"green", "red", "black", "blue"};                                    
-                                    
-                                    foreach (var choice in question.ResponseChoices)
-                                    {
-                                        var key = choice.Id;
-                                        var j = qIndex++;
-                                        var choiceIndex = question.ResponseChoices.IndexOf(choice);
 
-                                        <div style="display: table-cell; width: 10%;text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">                                            
-                                            <div id="ck-button">
-                                                <label class="@choiceClasses[choiceIndex]">
+                    <div id="choiceGroup" style="display: table-row;" >
+                        <div id="questionText" style="display:table-cell; width: 35%; vertical-align: middle" class="gn-table-row-withborders">@question.Text</div>
 
-                                                    @Html.RadioButtonFor(m => m.Responses[question.Number - 1], key,
-                                                         new { id = "Response" + key, name = "Question" + question.Number })
-                                                    <span>@choice.Text</span>
+                        @{  var choiceClasses = new string[] {"red", "black", "blue"};
 
-                                                </label>
-                                            </div>
-                                        </div>
-                                    }
-                                }                            
-
-                            @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
+                            foreach (var choice in question.ResponseChoices)
                             {
-                                <div id="questionBasis" style="display: table-cell; width:15%" class="gn-table-row-withborders">
-                                    @Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})                                    
+                                var key = choice.Id;
+                                var j = qIndex++;
+                                var choiceIndex = question.ResponseChoices.IndexOf(choice);
+
+                                <div style="display: table-cell; width: 10%;text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
+                                    <div id="ck-button">
+                                        <label class="@choiceClasses[choiceIndex]" data-ng-href="@(question.Number)" data-ng-groupid="@(group.Number)">
+
+                                            @Html.RadioButtonFor(m => m.Responses[question.Number - 1], key,
+                                                new { id = "Response" + key, name = "Question" + question.Number, @class = (@choiceClasses[choiceIndex] == "red" ? "requiresNote" : string.Empty) })
+                                            <span>@choice.Text</span>
+
+                                        </label>
+                                    </div>
                                 </div>
                             }
-                            else
-                            {
-                                <div style="display: table-cell; width: 15%" class="gn-table-row-withborders">&nbsp;</div>
-                            }
+                        }
 
-                            <div style="display: table-cell; width: 10%; white-space: nowrap; vertical-align: middle" class="gn-table-row-withborders">
-                                @Html.ActionLink("Notes", "EditNotes", "Surveillance", null, new {@class = "gn-notes-icon", style = "display:inline"})
-                                @Html.ActionLink("Load", "Load", "Surveillance", null, new { @class = "gn-upload-icon", style = "display:inline" })
-                                @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
-                                @Html.ActionLink("Take Photo", "TakePhoto", "Surveillance", new {surveyId = @Model.SurveyId, questionId = question.Number}, new { @class = "gn-camera-icon", style = "display:inline" })
-                                <span style="white-space: nowrap">
-                                    <!--<span id="file" class="gn-camera-icon" style="display: inline"></span>-->                                    
-                                    <!--<input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline; width:10px"
-                                        onchange="alert("changed"); "document.getElementById('file').innerHTML = this.value; " /> -->
-                                </span>
-                            </div>                        
+                        @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
+                        {
+                            <div id="questionBasis" style="display: table-cell; width:15%" class="gn-table-row-withborders">
+                                @Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="display: table-cell; width: 15%" class="gn-table-row-withborders">&nbsp;</div>
+                        }
+
+                        <div style="display: table-cell; width: 10%; white-space: nowrap; vertical-align: middle" class="gn-table-row-withborders">
+                            @Html.ActionLink("Notes", "EditNotes", "Surveillance", new { surveyId = @Model.SurveyId, questionId = question.Number }, new { @class = "gn-notes-icon", style = "display:inline" })
+                            @Html.ActionLink("Load", "LoadAttachment", "Surveillance", new {surveyId = @Model.SurveyId, questionId = question.Number}, new { @class = "gn-upload-icon", style = "display:inline" })
+                            @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
+                            @Html.ActionLink("Take Photo", "TakePhoto", "Surveillance", new {surveyId = @Model.SurveyId, questionId = question.Number}, new { @class = "gn-camera-icon", style = "display:inline" })
+                            <span style="white-space: nowrap">
+                                <!--<span id="file" class="gn-camera-icon" style="display: inline"></span>-->
+                                <!--<input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline; width:10px"
+                                           onchange="alert("changed"); "document.getElementById('file').innerHTML = this.value; " /> -->
+                            </span>
+                        </div>
                     </div>
+                    <div id="divid@(question.Number)" data-ng-ref="@(group.Number)"></div>
                 }
 
                 <div style="display:table-row;width:100%">
-                    <div style="display: table-cell;" class="form-inline gn-table-row-withborders">
-                        <div class="form-group">
-                            <label class="sr-only" for="observationText">Text:</label>
-                            @Html.Partial("_AddObservation")
-                        </div>
-                        <div class="checkbox">
-                            <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
-                        </div>
-                    </div>
-                    <div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-                </div>
+<div style="display: table-cell;" class="form-inline gn-table-row-withborders">
+    <div class="form-group">
+        <label class="sr-only" for="observationText">Text:</label>
+            @Html.Partial("_AddObservation")
+    </div>
+    <div class="checkbox">
+        <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
+    </div>
+</div>
+<div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
+<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+</div>
             }
-        </div>
-        <div>&nbsp;</div>
-        @if (ViewBag.IsReadOnly ?? false)
+</div>
+<div>&nbsp;</div>
+            @if (ViewBag.IsReadOnly ?? false)
         {
             @Html.ActionLink("Close", "Dashboard", null, new { @class = "btn btn-default" })
         }
@@ -147,6 +155,6 @@
 </fieldset>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            }

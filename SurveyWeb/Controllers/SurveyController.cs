@@ -278,7 +278,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult DeleteSurvey(SurveyViewModel model)
         {            
-            _persistenceService.DeleteSurvey(model.Survey.Id.ToString());
+            _persistenceService.DeleteSurvey(model.Survey.Id);
 
             return RedirectToAction("Surveys");
         }

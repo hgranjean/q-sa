@@ -12,7 +12,8 @@ namespace SurveyWeb.Repository
         Emails,
         Responses,
         Surveys,
-        Standards
+        Standards,
+        Notes
     }
 
     public interface ISurveyStore

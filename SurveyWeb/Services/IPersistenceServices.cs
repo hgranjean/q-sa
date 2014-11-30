@@ -12,11 +12,12 @@ namespace SurveyWeb.Services
         SurveyManager GetSurveyManager(Survey survey);
         IEnumerable<Survey> GetSurveys();
         Surveys GetSurveys(string criteria);
-        Survey LoadSurvey(string name);
         TracerViewModel LoadTracer(string responseId);
         void SaveSurvey(Survey survey);
         void SaveTracer(TracerViewModel survey);
-        void DeleteSurvey(string surveyId);
+        void DeleteSurvey(long surveyId);
         void DeleteResponse(string responseId);
+
+        void SaveNote(EditNoteViewModel viewModel);
     }
 }
