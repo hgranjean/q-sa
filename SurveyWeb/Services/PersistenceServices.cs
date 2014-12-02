@@ -199,5 +199,10 @@ namespace SurveyWeb.Services
                 XmlSerializationUtility.ObjectToXmlWriter(writer, viewModel);
             }
         }
+
+        public EditNoteViewModel LoadNote(int surveyId, int questionGroupId, int questionId, Guid? responseId)
+        {
+            return null;
+        }
     }
 }

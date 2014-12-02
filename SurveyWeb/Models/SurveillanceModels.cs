@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace SurveyWeb.Models
@@ -429,8 +430,10 @@ namespace SurveyWeb.Models
         }
     }
 
+    [DataContract]
     public class EditNoteViewModel
     {
+        [DataMember]
         public string NoteId { get; set; }
         public int SurveyId { get; set; }
         public int QuestionGroupNumber { get; set; }

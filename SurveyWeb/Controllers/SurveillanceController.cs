@@ -273,11 +273,25 @@ namespace SurveyWeb.Controllers
         public ActionResult SurveyDelivery(int id)
         {
             //Using default SurveyType of Surveillance vs Evaluation, Assessment, Audit
-            var model = LoadTracerViewModel(id);
+            var viewModel = LoadTracerViewModel(id);
 
-            model.SurveyDate = DateTime.Now;
+            // Initialize response since we need to save notes etc.
 
-            return View(model);
+            var userId = User.Identity.GetUserId();
+
+            var responseEntry = _surveillanceService.AddResponse(userId);
+
+            viewModel.ResponseId = responseEntry.Id;
+
+            // Set survey date to the current
+
+            viewModel.SurveyDate = DateTime.Now;
+
+            // Initialize response array
+            
+            viewModel.Responses = new ResponseViewModel[100]; // TODO: Initialize response array dynamically
+
+            return View(viewModel);
         }
 
         public ActionResult CompletedSurveys()
@@ -529,7 +543,7 @@ namespace SurveyWeb.Controllers
         {
             TOCElement model = new TOCElement("");
             //TODO: Get Reference View Model from Standard Services
-            //model = GetViewModel(standardId);
+            //viewModel = GetViewModel(standardId);
 
 
             return View(model);            
@@ -768,7 +782,7 @@ namespace SurveyWeb.Controllers
                         Title = model.Title,
                         Start = model.Start,
                         End = model.End,
-                        //UserId = model.UserId, // Owner
+                        //UserId = viewModel.UserId, // Owner
                         SurveyId = model.SurveyId
                     };
 
@@ -831,7 +845,7 @@ namespace SurveyWeb.Controllers
                         Title = model.Title,
                         Start = model.Start,
                         End = model.End,
-                        // UserId = model.UserId, // Owner
+                        // UserId = viewModel.UserId, // Owner
                         SurveyId = model.SurveyId
                     };
 
@@ -950,7 +964,7 @@ namespace SurveyWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                // db.DrawingModels.Add(model);
+                // db.DrawingModels.Add(viewModel);
                 // db.SaveChanges();
 
                 // return RedirectToAction("Index");
@@ -1008,7 +1022,7 @@ namespace SurveyWeb.Controllers
         [HttpPost]
         public ActionResult AddObservation(TracerViewModel viewModel, StandardElementViewModel standardElementViewModel, FormCollection values)
         {
-            // Validate partials TODO: Split EPIds and make validdation against standardElementViewModel
+            // Validate partials TODO: Split EPIds and make validation against standardElementViewModel
             if (String.IsNullOrWhiteSpace(values["EPIds"]))
             {
                 ModelState.AddModelError("EPIds", "EP is required");
@@ -1030,12 +1044,6 @@ namespace SurveyWeb.Controllers
                     newQuestion.TOCReference = classifyModel.StandardId;
 
                     viewModel.AddResponse(newQuestion);
-
-                    var userId = User.Identity.GetUserId();
-
-                    var responseEntry = _surveillanceService.AddResponse(userId);
-
-                    viewModel.ResponseId = responseEntry.Id;
                 }
 
                 _persistenceService.SaveTracer(viewModel);
@@ -1052,20 +1060,26 @@ namespace SurveyWeb.Controllers
 
         public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId, Guid? responseId)
         {
-            var viewModel = new EditNoteViewModel
-            {   
-                NoteId = Guid.NewGuid().ToString(), // Note that MVC cannot roundtrip Guid types
-                SurveyId = surveyId,
-                QuestionGroupNumber = questionGroupId,
-                QuestionId = questionId,
-                ResponseId = responseId.GetValueOrDefault().ToString()
-            };
+            var existingNoteViewModel = _persistenceService.LoadNote(surveyId, questionGroupId, questionId, responseId);
 
-            return PartialView("_EditNotePartial", viewModel);
+            if (existingNoteViewModel == null)
+            {
+                var viewModel = new EditNoteViewModel
+                {
+                    NoteId = Guid.NewGuid().ToString(), // Note that MVC cannot roundtrip Guid types
+                    SurveyId = surveyId,
+                    QuestionGroupNumber = questionGroupId,
+                    QuestionId = questionId,
+                    ResponseId = responseId.GetValueOrDefault().ToString()
+                };
+                return PartialView("_EditNotePartial", viewModel);
+            }
+
+            return PartialView("_EditNotePartial", existingNoteViewModel);
         }
 
         [HttpPost]
-        public JsonResult EditNote(EditNoteViewModel viewModel, FormCollection values)
+        public JsonResult EditNote(EditNoteViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -1095,5 +1109,7 @@ namespace SurveyWeb.Controllers
 
             return new JsonResult {Data = "success"};
         }
+
+
     }
 }
