@@ -300,6 +300,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Controllers\QTrackerAdminController.cs" />
+    <Compile Include="Controllers\QualityAuditorController.cs" />
     <Compile Include="Controllers\QualityManagerController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Models\ImpersonationUtils.cs" />
@@ -358,7 +359,7 @@
     <Compile Include="Models\QuestionGroupsViewModelBinder.cs" />
     <Compile Include="Models\RadioButtonListViewModel.cs" />
     <Compile Include="Models\ReportModels.cs" />
-    <Compile Include="Models\ScheduleModels.cs" />
+    <Compile Include="Models\QualityManager\ScheduleModels.cs" />
     <Compile Include="Models\StandardMaintenance\StandardViewModels.cs" />
     <Compile Include="Models\SurveillanceModels.cs" />
     <Compile Include="Models\SurveyModels.cs" />
@@ -373,6 +374,7 @@
     <Compile Include="Services\ReportService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Services\SurveillancePerformanceServices.cs" />
     <Compile Include="Services\WorkflowService.cs" />
     <Compile Include="Store\Workflows\SurveyDeliveryRuleApp.cs" />
     <Compile Include="Services\LearningServices.cs" />
@@ -2807,6 +2809,10 @@
     <Content Include="Views\QTrackerAdmin\SubscriberUsers.cshtml" />
     <Content Include="Views\QualityManager\ScheduleSurveillance.cshtml" />
     <Content Include="Views\QualityManager\Standard.cshtml" />
+    <Content Include="Views\QualityAuditor\Dashboard.cshtml" />
+    <Content Include="Views\QualityAuditor\Surveillances.cshtml" />
+    <Content Include="Views\QualityAuditor\Observations.cshtml" />
+    <Content Include="Views\QualityAuditor\FollowUps.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

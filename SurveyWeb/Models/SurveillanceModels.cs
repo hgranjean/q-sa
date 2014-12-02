@@ -427,6 +427,11 @@ namespace SurveyWeb.Models
         {
             this.Observation = observation;
         }
+        public string Summary { get; set; }
+
+        public string FollowUpId { get; set; }
+
+        public string Id { get; set; }
     }
 
     public class EditNoteViewModel

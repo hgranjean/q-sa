@@ -24,7 +24,7 @@ namespace SurveyWeb.Services
             _store = store;
         }
         
-        public SurveyManager GetSurveyManager(Survey survey)
+        public SurveyManager GetSurveyManager(ManagedSurvey survey)
         {
             _surverManager = new SurveyManager(survey);
             return _surverManager;
@@ -198,6 +198,12 @@ namespace SurveyWeb.Services
             {
                 XmlSerializationUtility.ObjectToXmlWriter(writer, viewModel);
             }
+        }
+
+
+        public SurveyManager GetSurveyManager(Survey survey)
+        {
+            throw new NotImplementedException();
         }
     }
 }

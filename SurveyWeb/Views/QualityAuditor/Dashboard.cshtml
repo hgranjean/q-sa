@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Surveyor/Auditor Dashboard</h2>
+
+<div id="sectionOne">
+    <h3 class="section-header">Main</h3>
+    <ul>
+        <li>@Html.ActionLink("Review/Perform Assigned Surveillances", "Surveillances")<span> - List of Assigned Rounds/Surveillances</span></li>
+        <li>@Html.ActionLink("Review/Create/Update Observations", "Observations") <span> - List of Issues Reported outside of assigned Rounds/Surveillances</span></li>
+        <li>@Html.ActionLink("Review/Create/Update Follow-Ups", "FollowUps")<span> - List of Folow-Ups Requested on All Reported Issues</span></li>
+    </ul>
+</div>
