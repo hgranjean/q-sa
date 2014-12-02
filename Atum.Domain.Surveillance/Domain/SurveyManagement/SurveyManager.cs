@@ -7,10 +7,10 @@ namespace Atum.Domain.SurveyManagement
     [Serializable]
     public class SurveyManager
     {
-        private Survey survey;
+        private ManagedSurvey survey;
         //        private QuestionStrategies questionStrategies;
 
-        public SurveyManager(Survey survey)
+        public SurveyManager(ManagedSurvey survey)
         {
             this.survey = survey;
 

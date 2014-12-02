@@ -13,11 +13,11 @@ namespace Atum.Domain.SurveyManagement
     [Serializable]
     public class _Assessment : DomainObject
     {   
-        public Survey ConductedSurvey { get; set; }
+        public ManagedSurvey ConductedSurvey { get; set; }
         public Responses Responses { get; set; }
 
-        public Survey AdministeredSurvey { get; set; }
-        public Survey.QuestionEnumerator Enumerator { get; set; }
+        public ManagedSurvey AdministeredSurvey { get; set; }
+        public ManagedSurvey.QuestionEnumerator Enumerator { get; set; }
 
         public _Assessment()
         {   

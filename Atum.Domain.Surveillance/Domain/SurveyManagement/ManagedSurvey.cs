@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -12,24 +12,25 @@ namespace Atum.Domain.SurveyManagement
     /// 
     /// </summary>
     [Serializable]
-    public class Survey : DomainObject, IEquatable<Survey>
+    public class ManagedSurvey : DomainObject, IEquatable<Survey>
     {
         public Guid Guid { get; set; }
 
-        //private readonly SurveyStrategy surveyStrategy;
+        private readonly SurveyStrategy surveyStrategy;
 
-        //public Survey(SurveyStrategy surveyStrategy)
-        //{   
-        //    this.surveyStrategy = surveyStrategy;
-        //    QuestionStrategies = surveyStrategy.QuestionStrategies;
-        //}
+        public ManagedSurvey(SurveyStrategy surveyStrategy)
+        {
+            this.surveyStrategy = surveyStrategy;
+            QuestionStrategies = surveyStrategy.QuestionStrategies;
+        }
 
-        public Survey()
+        public ManagedSurvey()
         {
             SetId(DomainObject.DefaultIdentifier);
         }
 
-        public Survey(string title) : this()
+        public ManagedSurvey(string title)
+            : this()
         {
             this.Title = title;
         }
@@ -51,10 +52,10 @@ namespace Atum.Domain.SurveyManagement
         /// </summary>
         /// <param name="surveyManager"></param>
         /// <returns></returns>
-        //internal Question GetNextQuestion(SurveyManager surveyManager)
-        //{
-        //    return surveyStrategy.GetNextQuestion(surveyManager);
-        //}
+        internal Question GetNextQuestion(SurveyManager surveyManager)
+        {
+            return surveyStrategy.GetNextQuestion(surveyManager);
+        }
 
         /// <summary>
         /// 
@@ -92,7 +93,7 @@ namespace Atum.Domain.SurveyManagement
         public QuestionGroup AddQuestionGroup(string groupTitle)
         {
             var retVal = new QuestionGroup(groupTitle);
-            if (this.QuestionGroups==null)
+            if (this.QuestionGroups == null)
             {
                 this.QuestionGroups = new QuestionGroups();
             }
@@ -103,62 +104,62 @@ namespace Atum.Domain.SurveyManagement
 
         public QuestionGroups QuestionGroups { get; set; }
 
-        //public IEnumerator<Question> GetEnumerator()
-        //{   
-        //    return new QuestionEnumerator(null);
-        //}
-        
-        //public class QuestionEnumerator : IEnumerator<Question>
-        //{
-        //    private SurveyManager _manager;
+        public IEnumerator<Question> GetEnumerator()
+        {
+            return new QuestionEnumerator(null);
+        }
 
-        //    public void SetSurveyManager(SurveyManager surveyManager)
-        //    {
-        //        _manager = surveyManager;
-                
-        //        Current = _manager.CurrentQuestion;
-        //    }
+        public class QuestionEnumerator : IEnumerator<Question>
+        {
+            private SurveyManager _manager;
 
-            //public QuestionEnumerator(SurveyManager manager)
-            //{
-            //    _manager = manager;
+            public void SetSurveyManager(SurveyManager surveyManager)
+            {
+                _manager = surveyManager;
 
-            //    if (manager != null)
-            //    {
-            //        Current = manager.CurrentQuestion;
-            //    }
+                Current = _manager.CurrentQuestion;
+            }
 
-            //}
-            //public void Dispose()
-            //{
-            //    _manager = null;
-            //}
+            public QuestionEnumerator(SurveyManager manager)
+            {
+                _manager = manager;
 
-            //public bool MoveNextManager(Survey survey)
-            //{
-            //    Current = survey.GetNextQuestion(_manager);
+                if (manager != null)
+                {
+                    Current = manager.CurrentQuestion;
+                }
 
-            //    return (Current != null);
-            //}
+            }
+            public void Dispose()
+            {
+                _manager = null;
+            }
 
-            //public bool MoveNext()
-            //{
-            //    Current = _manager.NextQuestion;
-                
-            //    return (Current != null);
-            //}
+            public bool MoveNextManager(Survey survey)
+            {
+                //Current = survey.GetNextQuestion(_manager);
 
-            //public void Reset()
-            //{
-            //}
+                return (Current != null);
+            }
 
-        //    public Question Current { get; private set; }
+            public bool MoveNext()
+            {
+                Current = _manager.NextQuestion;
 
-        //    object IEnumerator.Current
-        //    {
-        //        get { return Current; }
-        //    }
-        //}
+                return (Current != null);
+            }
+
+            public void Reset()
+            {
+            }
+
+            public Question Current { get; private set; }
+
+            object IEnumerator.Current
+            {
+                get { return Current; }
+            }
+        }
 
         public bool Equals(Survey other)
         {

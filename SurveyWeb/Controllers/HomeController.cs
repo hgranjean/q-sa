@@ -40,6 +40,11 @@ namespace SurveyWeb.Controllers
                 return RedirectToAction("Dashboard", "QualityManager");
                 
             }
+            else if (userManager.IsInRole(User.Identity.GetUserId(),"Team Member"))
+            {
+                return RedirectToAction("Dashboard", "QualityAuditor");
+                
+            }
             return RedirectToAction("Dashboard", "Surveillance");
         }
 

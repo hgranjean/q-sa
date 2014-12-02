@@ -5,6 +5,7 @@ using System;
 using Atum.Domain;
 using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
+using Atum.Domain.Common;
 
 namespace SurveyWeb.Models
 {
@@ -24,6 +25,15 @@ namespace SurveyWeb.Models
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm z}")]
         public DateTime End { get; set; }
+
+        public string OwnerName 
+        {
+            get { return Owner.FullName; }
+        }
+
+        public Person Owner { get; set; }
+
+        public string CurrentState { get; set; }        
         
         public SurveyEntry Survey { get; set; }
         public IEnumerable<SurveyEntry> AvailableSurveys { get; set; }
@@ -40,6 +50,7 @@ namespace SurveyWeb.Models
         [Display(Name = "Survey")]
         public string SurveyId { get; set; }
         
+
         public TaskViewModel()
         {
         }
@@ -51,5 +62,9 @@ namespace SurveyWeb.Models
             Start = model.Start;
             End = model.End;
         }
+
+        public string Area { get; set; }
+
+        public string IssuesCount { get; set; }
     }
 }
