@@ -215,7 +215,8 @@ namespace SurveyWeb.Services
 
                 if (viewModel.SurveyId == surveyId &&
                     viewModel.QuestionGroupNumber == questionGroupId &&
-                    viewModel.QuestionId == questionId)
+                    viewModel.QuestionId == questionId &&
+                    viewModel.ResponseId  == responseId.ToString())
                 {
                     return viewModel;
                 }
