@@ -1058,7 +1058,7 @@ namespace SurveyWeb.Controllers
             return View(viewModel);
         }
 
-        public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId, Guid? responseId)
+        public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId, Guid responseId)
         {
             var existingNoteViewModel = _persistenceService.LoadNote(surveyId, questionGroupId, questionId, responseId);
 
@@ -1070,7 +1070,7 @@ namespace SurveyWeb.Controllers
                     SurveyId = surveyId,
                     QuestionGroupNumber = questionGroupId,
                     QuestionId = questionId,
-                    ResponseId = responseId.GetValueOrDefault().ToString()
+                    ResponseId = responseId.ToString()
                 };
                 return PartialView("_EditNotePartial", viewModel);
             }
@@ -1086,20 +1086,15 @@ namespace SurveyWeb.Controllers
                 if (!String.IsNullOrWhiteSpace(viewModel.NoteText))
                 {
                     // Save response
-                    
-                    if (!String.IsNullOrWhiteSpace(viewModel.ResponseId))
-                    {
-                        var userId = User.Identity.GetUserId();
 
-                        var responseEntry = _surveillanceService.AddResponse(userId);
-
-                        viewModel.ResponseId = responseEntry.Id;
-                    }
-                    else
+                    if (String.IsNullOrWhiteSpace(viewModel.ResponseId))
                     {
                         throw new InvalidOperationException("Unable to save note without response file.");
-                        // TODO: Save note in the existing response file.   
                     }
+                    
+                    viewModel.ResponseId = viewModel.ResponseId;
+                    
+                    // Save note in the existing response file.
 
                     _persistenceService.SaveNote(viewModel);
                 }

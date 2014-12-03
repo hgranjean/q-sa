@@ -205,12 +205,23 @@ namespace SurveyWeb.Services
         {
             throw new NotImplementedException();
         }
-
-        public EditNoteViewModel LoadNote(Guid noteId)
+        
+        public EditNoteViewModel LoadNote(int surveyId, int questionGroupId, int questionId, Guid responseId)
         {
-            var fullPath = Path.Combine(_store.GetPath(StoreType.Notes), "note" + viewModel.NoteId + ".xml");
+            foreach (var fileName in Directory.GetFiles(_store.GetPath(StoreType.Notes), "note*.xml"))
+            {
+                var viewModel =
+                    (EditNoteViewModel) XmlSerializationUtility.GetObjectFromFile(fileName, typeof (EditNoteViewModel));
 
-            return (EditNoteViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(EditNoteViewModel));
+                if (viewModel.SurveyId == surveyId &&
+                    viewModel.QuestionGroupNumber == questionGroupId &&
+                    viewModel.QuestionId == questionId)
+                {
+                    return viewModel;
+                }
+            }
+
+            return null;
         }
     }
 }

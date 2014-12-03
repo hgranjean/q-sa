@@ -19,6 +19,6 @@ namespace SurveyWeb.Services
         void DeleteResponse(string responseId);
 
         void SaveNote(EditNoteViewModel viewModel);
-        EditNoteViewModel LoadNote(int surveyId, int questionGroupId, int questionId, Guid? responseId);
+        EditNoteViewModel LoadNote(int surveyId, int questionGroupId, int questionId, Guid responseId);
     }
 }

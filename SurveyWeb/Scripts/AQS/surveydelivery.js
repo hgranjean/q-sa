@@ -75,11 +75,16 @@
         });
     }
 
+    function cancelNoteClickHandler(event) {
+
+        var questionId = $(this).parents('#editNote').map(function () {
+            return $(this).first().attr("data-ng-href");
+        }).get().join(", ");
+
+        $("#divid" + questionId).html("");
+    }
+
     function requiresNoteClickHandler(event) {
-
-        // $(this).hide();
-
-        // .gn-notes-icon
         
         var surveyId = $('#SurveyId').attr('value');
         var parentId = $(this).closest("label").attr("data-ng-href");
@@ -99,6 +104,7 @@
                 var editNote = $('#divid' + parentId).html(data);
                 
                 $('body').on('click', '.editNote', editNoteClickHandler);
+                $('body').on('click', '.cancelNote', cancelNoteClickHandler);
             },
             error: function (xhr, status, error) {
                 console.log(xhr.responseText);
@@ -107,21 +113,5 @@
 
     }
     $('.requiresNote').click(requiresNoteClickHandler);
-
-    $.fn.serializeObject = function serializeObject() {
-        var o = {};
-        var a = this.serializeArray();
-        $.each(a, function () {
-            if (o[this.name] !== undefined) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
-                }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-        return o;
-    };
 
 });
