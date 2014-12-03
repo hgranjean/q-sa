@@ -1,4 +1,5 @@
-﻿using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+﻿using System.Linq;
+using Atum.Domain.QualityManagement.Healthcare.JointCommission;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
@@ -77,7 +78,7 @@ namespace SurveyWeb.Models.StandardMaintenance
         public string Content { get; set; }
         [Display(Name = "Element of Performance")]
         [Required]
-        public IEnumerable<string> EPIds { get; set; }
+        public Dictionary<string, object> EPIds { get; set; }
         public string Observation { get; set; }
 
         public StandardElementViewModel()
@@ -88,7 +89,11 @@ namespace SurveyWeb.Models.StandardMaintenance
         {
             this.StandardId = model.StandardId;
             this.Content = model.Content;
-            this.EPIds = model.EPIds;
+
+            if (model.EPIds != null)
+            {
+                this.EPIds = model.EPIds.ToDictionary(_ => _.Key, _ => (object) _.Value);
+            }
             this.Observation = model.Observation;
         }
     }

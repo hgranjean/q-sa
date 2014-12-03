@@ -12,7 +12,7 @@ namespace Atum.Domain.QualityManagement.Healthcare.JointCommission
 
         public string Content { get; set; }
 
-        public IEnumerable<string> EPIds { get; set; }
+        public IEnumerable<KeyValuePair<string, string>> EPIds { get; set; }
 
         public string Observation { get; set; }
     }

@@ -61,16 +61,9 @@ namespace SurveyWeb.Services
             throw new NotImplementedException();
         }
     
-        private static IEnumerable<string> LoadEPIds(List<ElementOfPerformance> epIds)
-        {
-            List<string> eps = new List<string>();
-            IEnumerable<string> retVal = eps;
-            
-            // var standard = GetStandardChapter(observationClass).GetPerformanceCategory(observationClass);
-
-            // var epIds = standard.Items;
-
-            return epIds.ConvertAll(m => string.Format("EP {0}", m.EPId));
+        private static IEnumerable<KeyValuePair<string, string>> LoadEPIds(List<ElementOfPerformance> epIds)
+        {   
+            return epIds.ConvertAll(m => new KeyValuePair<string, string>(string.Format("EP {0}", m.EPId), m.Text));
         }
 
         //TODO Load multiple chapters

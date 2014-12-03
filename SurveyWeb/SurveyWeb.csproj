@@ -315,6 +315,7 @@
     <Compile Include="Models\QualityManager\SurveillanceSchedulingModels.cs" />
     <Compile Include="Models\QualityManager\Trending.cs" />
     <Compile Include="Models\ViewMetaModels.cs" />
+    <Compile Include="Services\HtmlExtensions.cs" />
     <Compile Include="Services\IPersistenceServices.cs">
       <SubType>Code</SubType>
     </Compile>

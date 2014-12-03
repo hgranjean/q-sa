@@ -1,4 +1,4 @@
-﻿
+﻿@using SurveyWeb.Services
 @model SurveyWeb.Models.StandardMaintenance.StandardElementViewModel
 
 
@@ -21,14 +21,31 @@
             <div class="input-group">
                 <div id="epIdList" style="width: 400px">
                     @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content })
-
+                    
                     @if (Model.EPIds != null)
                     {
-                        @Html.DropDownListFor(model => model.EPIds,
-                            new SelectList(Model.EPIds), String.Empty, new { id = "EPIdList" })
+                        @Html.ExtendedDropDownListFor(model => model.EPIds,
+                            Model.EPIds.ToList().ConvertAll(_ => new ExtendedSelectListItem(){ htmlAttributes = new {@title = _.Value}, Text = _.Key, Value = _.Key}), String.Empty, new { id = "EPIdList" } )
                     }
 
                 </div>
+                <div id="epDesc">
+                    <label id="epDescLabel"></label>
+                </div>
+                
+                <script language="javascript">
+                    $(document).ready(function () {
+                        $(document.body).on('change', '#EPIdList', radioClicks);
+                        
+                        function radioClicks() {
+                            var input = $('#EPIdList').children(":selected");
+                            
+                            $("#epDescLabel").html(input.attr("title"));
+                            return false;
+                        }
+                    });
+                </script>
+
                 <div class="input-group-btn">@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
             </div>
         </div>
