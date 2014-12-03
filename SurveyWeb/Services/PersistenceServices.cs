@@ -206,9 +206,11 @@ namespace SurveyWeb.Services
             throw new NotImplementedException();
         }
 
-        public EditNoteViewModel LoadNote(int surveyId, int questionGroupId, int questionId, Guid? responseId)
+        public EditNoteViewModel LoadNote(Guid noteId)
         {
-            return null;
+            var fullPath = Path.Combine(_store.GetPath(StoreType.Notes), "note" + viewModel.NoteId + ".xml");
+
+            return (EditNoteViewModel)XmlSerializationUtility.GetObjectFromFile(fullPath, typeof(EditNoteViewModel));
         }
     }
 }

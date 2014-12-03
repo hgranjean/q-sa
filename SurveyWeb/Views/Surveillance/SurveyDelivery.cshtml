@@ -58,7 +58,7 @@
             {
                 
                 <tr style="display:table-row" class="table-row-withborder" data-ng-ref="@(group.Number)">
-                        <td id="groupTitle" style="display: table-cell; font-weight: bold; width: 35%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</td>
+                        <td id="groupTitle" style="display: table-cell; font-weight: bold; width: 45%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</td>
                         <td style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: red; background-color: #CFDBC5;">&nbsp;</td>
                         <td style="display: table-cell; font-weight: bold; width: 10%; text-align: center; background-color: #CFDBC5;">&nbsp;</td>
                         <td style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: blue;  background-color: #CFDBC5;">&nbsp;</td>
@@ -72,7 +72,7 @@
                     var question = questions[i];
 
                     <tr id="choiceGroup" style="display: table-row;" >
-                        <td id="questionText" style="display:table-cell; width: 35%; vertical-align: middle" class="gn-table-row-withborders">@question.Text</td>
+                        <td id="questionText" style="display:table-cell; width: 45%; vertical-align: middle" class="gn-table-row-withborders">@question.Text</td>
 
                         @{  var choiceClasses = new string[] {"red", "black", "blue"};
 
@@ -107,7 +107,7 @@
                             <td style="display: table-cell; width: 15%" class="gn-table-row-withborders">&nbsp;</td>
                         }
 
-                        <td style="display: table-cell; width: 20%; white-space: nowrap; vertical-align: middle" class="gn-table-row-withborders">
+                        <td style="display: table-cell; width: 10%; white-space: nowrap; vertical-align: middle" class="gn-table-row-withborders">
                             @Html.ActionLink("Notes", "EditNotes", "Surveillance", new { surveyId = @Model.SurveyId, questionId = question.Number }, new { @class = "gn-notes-icon", style = "display:inline" })
                             @Html.ActionLink("Load", "LoadAttachment", "Surveillance", new {surveyId = @Model.SurveyId, questionId = question.Number}, new { @class = "gn-upload-icon", style = "display:inline" })
                             @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
