@@ -2,53 +2,53 @@
 @model SurveyWeb.Models.StandardMaintenance.StandardElementViewModel
 
 
-<div id="classDisplay">
-    <div id="labels" style="display: table-row">
+<div id="classDisplay" style="display: table; table-layout: fixed; width: 100%">
+    <div id="labels" style="display: table-row; width: 100%">
 
-        <div class="editor-label">
+        <div style="display: table-cell; width: 15%">
             @Html.LabelFor(model => model.StandardId)
         </div>
-        <div class="editor-label">
+        <div style="display: table-cell; width: 20%">
             @if (Model.EPIds != null)
             {
                 @Html.LabelFor(model => model.EPIds)
             }
         </div>
+        <div style="display: table-cell; width: 65%">&nbsp;</div>
+    </div>    
 
-    </div>
-    <div>
-        <div style="display: table-row">
-            <div class="input-group">
-                <div id="epIdList" style="width: 400px">
-                    @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content })
-                    
-                    @if (Model.EPIds != null)
-                    {
-                        @Html.ExtendedDropDownListFor(model => model.EPIds,
-                            Model.EPIds.ToList().ConvertAll(_ => new ExtendedSelectListItem(){ htmlAttributes = new {@title = _.Value}, Text = _.Key, Value = _.Key}), String.Empty, new { id = "EPIdList" } )
-                    }
-
-                </div>
-                <div id="epDesc">
-                    <label id="epDescLabel"></label>
-                </div>
-                
-                <script language="javascript">
-                    $(document).ready(function () {
-                        $(document.body).on('change', '#EPIdList', radioClicks);
-                        
-                        function radioClicks() {
-                            var input = $('#EPIdList').children(":selected");
-                            
-                            $("#epDescLabel").html(input.attr("title"));
-                            return false;
-                        }
-                    });
-                </script>
-
-                <div class="input-group-btn">@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
-            </div>
+    <div style="display: table-row; width: 100%; height: 70px">
+        <div id="epIdList" style="display: table-cell;vertical-align: top">
+            @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content, @class = "form-control", @style = "max-width: 150px;" })
         </div>
+        <div style="display: table-cell; vertical-align: top">
+            <script language="javascript">
+                $(document).ready(function () {
+                    $(document.body).on('change', '#EPIdList', epSelectedClick);
+
+                    function epSelectedClick() {
+                        var input = $('#EPIdList').children(":selected");
+
+                        $("#epDescLabel").html(input.attr("title"));
+                    }
+                });
+            </script>
+            @if (Model.EPIds != null)
+            {
+                @Html.ExtendedDropDownListFor(model => model.EPIds,
+                    Model.EPIds.ToList().ConvertAll(_ => new ExtendedSelectListItem { htmlAttributes = new { @title = _.Value }, Text = _.Key, Value = _.Key }), String.Empty,
+                    new { id = "EPIdList", @style = "max-width: 100px", @class = "form-control" })
+            }
+        </div>
+        <div id="epDesc" style="display: table-cell;vertical-align: top">
+            <label id="epDescLabel"></label>
+        </div>
+        
+    </div>
+    <div style="display: table-row; width: 100%;">
+        <div style="display: table-cell;">@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
+        <div style="display: table-cell;"></div>
+        <div style="display: table-cell;"></div>
     </div>
 </div>
 
