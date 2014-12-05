@@ -52,8 +52,8 @@ namespace SurveyWeb.Repository
                 var user = _context.AspNetUsers.Include("Hospitals").FirstOrDefault(m => m.Id == userId);
                 var hospital = _context.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
 
-                var uh = new UserHospital() {Hospital = hospital, User = user, HospitalId = hospitalId, UserId = userId};
-                _context.UserHospitals.Attach(uh);
+                var uh = new UserHospital {Hospital = hospital, User = user, HospitalId = hospitalId, UserId = userId};
+                
                 _context.UserHospitals.Add(uh);
             }
 
