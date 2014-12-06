@@ -47,7 +47,7 @@
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Chapter.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Document.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\PerformanceItem.cs" />
-    <Compile Include="Domain\QualityManagement\Healthcare\Performance\StandardardDocument.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\StandardDocument.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Element.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Standard.cs" />
     <Compile Include="Domain\QualityManagement\Observation.cs" />
