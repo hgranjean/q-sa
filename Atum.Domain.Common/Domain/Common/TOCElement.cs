@@ -18,7 +18,7 @@ namespace Atum.Domain.Common
 
         public string Title { get; set; }
         public int Level { get; set; }
-        public string[] Content { get; set; }
+        public string Content { get; set; }
         public string ShortContent { get; set; }
 
     }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Atum.Domain.QualityManagement.Healthcare.Performance
 {
-    public class Element
+    public abstract class xElement
     {
-        public Element(string key, string title)
+        public xElement(string key, string title)
         {
             // TODO: Complete member initialization
             this.Title = title;
@@ -16,8 +16,7 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
 
         public string Title { get; set; }
         public string Key { get; set; }
-        
         public string Content { get; set; }
-        public IEnumerable<string> EPIds { get; set; }
+        public IEnumerable<xElement> Elements { get; set; }
     }
 }

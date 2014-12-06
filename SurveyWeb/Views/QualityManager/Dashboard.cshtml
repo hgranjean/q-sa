@@ -5,22 +5,34 @@
     ViewBag.Title = "Dashboard";
 }
 
-<h2>Quality Manager's Dashboard</h2>
-<div id="sectionTwo">
-    <h3 class="section-header">Admin</h3>
-    <ul>
-        <li>@Html.ActionLink("Maintain Guidelines (Manage Standards)", "ManageStandards")<span> - Review, Create, or Update Performance Guidelines</span></li>
-        <li>@Html.ActionLink("Maintain Templates & Checklists", "SurveillanceTemplates")<span> - Review, Create, or Update Surveillance Audit Templates or Checklists</span></li>
-        <li>@Html.ActionLink("Maintain Resources", "ManageResources")<span> - Manage Users and Roles </span></li>
-        <li>@Html.ActionLink("Maintain Workflow Rules (Receive Task Progress Alerts)", "ManageAlerts")<span> - Setup Rules to Receive Alerts and Reminders </span></li>
-    </ul>
-</div>
-<div id="sectionOne">
-    <h3 class="section-header">Main</h3>
-    <ul>
-        <li>@Html.ActionLink("Manage Surveillances", "ManageSurveillances") <span> - Standard Guidelines, Surveillance Scheduling and Tracking</span></li>
-        <li>@Html.ActionLink("Track Follow-Ups", "TrackFollowUps")<span> - Review Follow-up and Setup Alerts and Reminders</span></li>
-        <li>@Html.ActionLink("Identify Trends", "IdentifyTrends")<span> - Define and view Trend Reports and Alert Setups</span></li>
-        <li>@Html.ActionLink("Manage Performance Improvement Programs", "ManagePIPrograms")<span> - Define and Monitor Performance Improvement Programs</span></li>
-    </ul>
+<h2>Manager's Dashboard</h2>
+<div class="row">
+    <div class="col-md-4">
+        <h3 class="section-header">Quick Links</h3>
+        <ul>
+            <li>@Html.ActionLink("Pending Surveillances", "ManageSurveillances")</li>
+            <li>@Html.ActionLink("Overdue Surveillances", "ManageSurveillances")</li>
+            <li>@Html.ActionLink("Overdue  Follow-Ups", "TrackFollowUps")</li>
+            <li>@Html.ActionLink("Current Trends", "IdentifyTrends")</li>
+            <li>@Html.ActionLink("Performance Improvement Updates", "ManagePIPrograms")</li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h3 class="section-header">Main</h3>
+        <ul>
+            <li>@Html.ActionLink("Manage Surveillances", "ManageSurveillances") <span> - Standard Guidelines, Surveillance Scheduling and Tracking</span></li>
+            <li>@Html.ActionLink("Track Follow-Ups", "TrackFollowUps")<span> - Review Follow-up and Setup Alerts and Reminders</span></li>
+            <li>@Html.ActionLink("Identify Trends", "IdentifyTrends")<span> - Define and view Trend Reports and Alert Setups</span></li>
+            <li>@Html.ActionLink("Manage Performance Improvement Programs", "ManagePIPrograms")<span> - Define and Monitor Performance Improvement Programs</span></li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h3 class="section-header">Admin</h3>
+        <ul>
+            <li>@Html.ActionLink("Maintain Guidelines (Manage Standards)", "ManageStandards")<span> - Review, Create, or Update Performance Guidelines</span></li>
+            <li>@Html.ActionLink("Maintain Templates & Checklists", "SurveillanceTemplates")<span> - Review, Create, or Update Surveillance Audit Templates or Checklists</span></li>
+            <li>@Html.ActionLink("Maintain Resources", "ManageResources")<span> - Manage Users and Roles </span></li>
+            <li>@Html.ActionLink("Maintain Workflow Rules (Receive Task Progress Alerts)", "ManageAlerts")<span> - Setup Rules to Receive Alerts and Reminders </span></li>
+        </ul>
+    </div>
 </div>

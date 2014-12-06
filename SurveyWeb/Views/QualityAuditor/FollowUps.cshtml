@@ -1,1 +1,37 @@
 ﻿
+@model SurveyWeb.Models.QualityAuditor.SurveillancePerformance.FollowUpsViewModel
+@{
+    ViewBag.Title = "FollowUps";
+}
+
+<link href="~/Content/themes/GridStyle.css" rel="stylesheet" />
+
+
+<h2>Assigned Surveillances</h2>
+
+
+<div id="sectionOne">
+    <h3 class="section-header">List of Assigned Rounds/Surveillances</h3>
+    @{
+        var gridModel = Model.FollowUps;
+        var grid = new WebGrid(gridModel, rowsPerPage: 10);
+        List<WebGridColumn> cols = new List<WebGridColumn>();
+
+        cols.Add(grid.Column("Id", format: (item) => Html.ActionLink((string)item.Id.ToString(), "FollowUp", new { id = item.Id })));
+        cols.Add(new WebGridColumn() { ColumnName = "Summary", Header = "Summary" });
+        cols.Add(new WebGridColumn() { ColumnName = "FollowUpId", Header = "FollowUp" });
+
+
+
+    }
+    <div id="gridContent">
+        @grid.GetHtml(
+                 tableStyle: "webgrid-table",
+                 headerStyle: "webgrid-header",
+                 footerStyle: "webgrid-footer",
+                 alternatingRowStyle: "webgrid-alternating-rows",
+                 rowStyle: "row-style",
+                 fillEmptyRows: false, mode: WebGridPagerModes.All, columns: cols
+            )
+    </div>
+</div>

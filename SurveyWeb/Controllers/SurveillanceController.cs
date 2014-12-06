@@ -2,7 +2,7 @@
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
-using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+using Atum.Domain.QualityManagement.Healthcare.Performance;
 using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
 using Atum.Utility;
@@ -82,14 +82,14 @@ namespace SurveyWeb.Controllers
         /// <returns></returns>
         public ActionResult ClassifyObservation(string observation)
         {
-            StandardElement model = null;
+            Standard model = null;
             if (!string.IsNullOrWhiteSpace(observation))
             {            
                 model = _learningService.Classify(observation);
             }
             else
             {
-                model = new StandardElement { Observation = observation };
+                model = new Standard { Observation = observation };
             }
 
             var viewModel = new StandardElementViewModel(model);
@@ -1000,7 +1000,7 @@ namespace SurveyWeb.Controllers
 
             LoadTracerReferenceData(viewModel);
 
-            ViewBag.StandardElement = new StandardElementViewModel(new StandardElement { Observation = string.Empty});
+            ViewBag.StandardElement = new StandardElementViewModel(new Standard { Observation = string.Empty});
 
             return View(viewModel);
         }

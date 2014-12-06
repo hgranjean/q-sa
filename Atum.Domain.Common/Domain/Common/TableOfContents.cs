@@ -5,7 +5,8 @@ namespace Atum.Domain.Common
     using System.Collections.Generic;
 
 
-    [Serializable]public class TableOfContents
+    [Serializable]
+    public class TableOfContents
     {
         Dictionary<string, TOCElement> elementsByTitle;// = new Dictionary<string, TOCElement>();    
 
@@ -28,11 +29,10 @@ namespace Atum.Domain.Common
         }
 
 
-        
-        public TOCElement AddElement(string elementTitle)
+
+        public TOCElement AddElement(TOCElement tocElement)
         {
-            TOCElement tocElement = new TOCElement(elementTitle);
-            if (TOCElements==null)
+            if (TOCElements == null)
             {
                 TOCElements = new TOCElements();
             }
@@ -41,9 +41,16 @@ namespace Atum.Domain.Common
             {
                 TOCElements.Add(tocElement);
                 this.FindersAdd(tocElement);
-                
+
             }
             return tocElement;
+        }
+
+        public TOCElement AddElement(string elementTitle)
+        {
+            TOCElement tocElement = new TOCElement(elementTitle);
+            return AddElement(tocElement);
+
         }
 
         private void FindersAdd(TOCElement tocElement)
@@ -60,6 +67,7 @@ namespace Atum.Domain.Common
             };
 
         }
+
     } 
   
 }

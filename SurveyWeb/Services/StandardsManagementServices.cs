@@ -1,5 +1,5 @@
 ﻿using Atum.Domain.Common;
-using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+using Atum.Domain.QualityManagement.Healthcare.Performance;
 using Atum.Utility.XML;
 using SurveyWeb.Models.StandardMaintenance;
 using SurveyWeb.Repository;
@@ -38,10 +38,11 @@ namespace SurveyWeb.Services
             XmlDocument xmlDoc = LoadChapterDoc(chapterId);
 
             string chapterTitlePath = "chapter/chaptertitle";
-            Chapter chapter = new Chapter();
+            //Chapter chapter = new Chapter();
             string chapterTitle = xmlDoc.SelectSingleNode(chapterTitlePath).InnerText;
+            Chapter chapter = new Chapter(chapterId, chapterTitle);
             chapter.Title = chapterTitle;
-            chapter.Elements = LoadElements(xmlDoc);
+            chapter.Standards = LoadElements(xmlDoc);
             
             return chapter;
         }
@@ -66,7 +67,7 @@ namespace SurveyWeb.Services
             StandardDocumentViewModel retVal = new StandardDocumentViewModel();
 
             retVal.Title = chapter.Title;
-            retVal.TableOfContents = BuildTOC(chapter.Elements);
+            //retVal.TableOfContents = BuildTOC(chapter.Elements);
 
             return retVal;
         }
@@ -99,12 +100,14 @@ namespace SurveyWeb.Services
 
             foreach (XmlNode node in nodes)
             {
-                Standard epCat = new Standard();
                 XmlAttribute att = node.Attributes[catIdPath];
+                string itemKey = att.InnerText;
+
+                Standard epCat = new Standard(itemKey,node.InnerText);
 
                 epCat.Title = node.InnerText;
-                epCat.StandardId = att.InnerText;
-                epCat.Items = LoadEPItems(xmlDoc, epCat.StandardId);
+                epCat.StandardId = itemKey;
+                epCat.PerformanceItems = LoadEPItems(xmlDoc, epCat.StandardId);
 
                 retVal.Add(epCat);
             }
@@ -112,9 +115,9 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static List<ElementOfPerformance> LoadEPItems(XmlDocument xmlDoc, string standardId)
+        private static List<PerformanceItem> LoadEPItems(XmlDocument xmlDoc, string standardId)
         {
-            List<ElementOfPerformance> retVal = new List<ElementOfPerformance>();
+            List<PerformanceItem> retVal = new List<PerformanceItem>();
 
             string itemsPath = "chapter/elements/element[@epid='standardId']".Replace("standardId", standardId);
 
@@ -124,11 +127,13 @@ namespace SurveyWeb.Services
 
             foreach (XmlNode node in nodes)
             {
-                ElementOfPerformance epItem = new ElementOfPerformance();
+                //PerformanceItem epItem = new PerformanceItem();
                 XmlAttribute att = node.Attributes[epIdPath];
 
+                PerformanceItem epItem = new PerformanceItem(att.InnerText,"");
                 epItem.Text = node.InnerText;
                 epItem.EPId = int.Parse(att.InnerText);
+             
                 epItem.Notes = LoadNotes(xmlDoc, epItem, standardId);
                 retVal.Add(epItem);
             }
@@ -136,9 +141,8 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static ElementOfPerformance LoadEPItem(XmlDocument xmlDoc, string standardId, string epId)
+        private static PerformanceItem LoadEPItem(XmlDocument xmlDoc, string standardId, string epId)
         {
-            ElementOfPerformance  retVal = new ElementOfPerformance();
             string itemPath = "chapter/elements/element[@epid='standardId' and @id='epId']".Replace("standardId", standardId).Replace("epId", epId);
             string epIdPath = "id";
 
@@ -146,13 +150,14 @@ namespace SurveyWeb.Services
             XmlNode node = xmlDoc.SelectSingleNode(itemPath);
                 
             XmlAttribute att = node.Attributes[epIdPath];
+            PerformanceItem retVal = new PerformanceItem(att.InnerText,"");
             retVal.Text = node.InnerText;
             retVal.EPId = int.Parse(att.InnerText);
             retVal.Notes = LoadNotes(xmlDoc, retVal, standardId);
 
             return retVal;
         }
-        private static List<string> LoadNotes(XmlDocument xmlDoc, ElementOfPerformance epItem, string standardId)
+        private static List<string> LoadNotes(XmlDocument xmlDoc, PerformanceItem epItem, string standardId)
         {
             List<string> retVal = new List<string>();
 
@@ -185,10 +190,10 @@ namespace SurveyWeb.Services
 
         }
 
-        private static List<TOCElementViewModel> LoadTOCElements(Standard ep)
+        private static List<TOCElementViewModel> LoadTOCElements(Standard standard)
         {
             List<TOCElementViewModel> retVal = new List<TOCElementViewModel>();
-            List<ElementOfPerformance> list = ep.Items;
+            List<PerformanceItem> list = standard.PerformanceItems;
 
             foreach (var item in list)
             {
@@ -196,7 +201,7 @@ namespace SurveyWeb.Services
 
                 toc.Key = item.EPId.ToString();
                 toc.Content = item.Text;
-                toc.ParentKey = ep.StandardId;
+                toc.ParentKey = standard.StandardId;
                 retVal.Add(toc);
             }
 
@@ -238,7 +243,7 @@ namespace SurveyWeb.Services
                 
             }
 
-            ElementOfPerformance epItem = new ElementOfPerformance();
+            PerformanceItem epItem = new PerformanceItem("","");
             epItem.EPId = int.Parse(performanceItemId);
 
             retVal.Notes = LoadNotes(xmlDoc, epItem, standardElementId);
@@ -247,7 +252,7 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static List<HtmlString> setReferencedElementLinks(ElementOfPerformance epItem, string standardId,XmlDocument xmlDoc)
+        private static List<HtmlString> setReferencedElementLinks(PerformanceItem epItem, string standardId, XmlDocument xmlDoc)
         {
             List<HtmlString> retVal = new List<HtmlString>();
             string refElementPath = "chapter/referencedelements/referencedelement[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardId).Replace("epItemId", epItem.EPId.ToString());
