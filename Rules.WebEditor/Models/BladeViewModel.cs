@@ -18,9 +18,17 @@ namespace Rules.WebEditor.Models
     public class BladeViewModel
     {
         public string Name { get; set; }
+
+        /// <summary>
+        /// Used to define specific model type to the bound to
+        /// </summary>
+        public string ModelType { get; set; }
         public BladeCategoryType CategoryType { get; set; }
         public List<RuleObjectBase> Items { get; set; }
         public List<RouteValueDictionary> ActionLinks { get; set; }
+
+        public BladeViewModel()
+        { }
 
         public BladeViewModel(string name, BladeCategoryType categoryType, List<RuleObjectBase> items)
         {

@@ -8,12 +8,17 @@ namespace Rules.WebEditor.Models.Actions
 {
     public class SetValueActionViewModel
     {
-        private SetValueAction Model { get; set; }
+        public SetValueAction Model { get; set; }
 
         public string Name
         {
             get { return Model.Name; }
             set { Model.Name = value; }
+        }
+
+        public SetValueActionViewModel()
+        {
+            this.Model = new SetValueAction();
         }
 
         public SetValueActionViewModel(SetValueAction model)

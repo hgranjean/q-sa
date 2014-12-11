@@ -4,6 +4,7 @@
 
 <script type="text/javascript">
     $(function () {
+
         $('#dialog').dialog({
             autoOpen: false,
             width: 400,
@@ -18,9 +19,21 @@
             buttons: {
                 "OK": {
                     text: "OK", style: "width: 100px", click: function () {
-                    $("#editForm").submit();
-                    /*$(this).dialog("close");*/
+                        
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("SaveSendMailAction")',
+                            data: JSON.stringify($('#editForm').serialize()),
+                            success: function (data) {
+                            },
+                            error: function (xhr, status, error) {
+                                console.log(xhr.responseText);
+                            }
+                        });
+
                         return true;
+
+                        $(this).dialog("close");
                     }},
                 "Cancel": { text:"Cancel", style: "width: 100px", click: function () {
                     $(this).dialog("close");
@@ -28,8 +41,25 @@
             }
         });
 
-        $('#my-button').click(function () {
+        $('#cancelButton').click(function () {
             $('#dialog').dialog('open');
+            return false;
+        });
+
+        $('#editForm').submit(function () {
+
+            alert(JSON.stringify($(this).serialize()));
+
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (res) {
+                    if (res.success) {
+                        $(dialogBox).dialog('close');
+                    }
+                }
+            });
             return false;
         });
     });
@@ -39,7 +69,7 @@
     <legend>Send mail</legend>
 
     <div class="editor-label hasmenu" style="float: left;" id="@Model.Name">Name</div>
-    <div class="editor-field" style="float: left;"><a href="#" id="my-button">@Model.Name</a>@* Html.ActionLink(Model.Name, "EditAction", "Home", new { id = Model.Name }, new { @class = "modal" })*@ </div>
+    <div class="editor-field" style="float: left;"><a href="#" id="cancelButton">@Model.Name</a>@* Html.ActionLink(Model.Name, "EditAction", "Home", new { id = Model.Name }, new { @class = "modal" })*@ </div>
 </fieldset>
 
 <div id ="update-message"></div>
@@ -52,7 +82,7 @@
     //OnBegin = "ajaxValidate",
     OnSuccess = "updateSuccess"
 
-}, new {@id = "editForm"}))
+}, new { @id = "editForm" }))
 {
     <div id="dialog" title="@Model.Name">
         <fieldset>
@@ -65,7 +95,7 @@
             <div class="editor-label hasmenu" style="float: left;">Subject</div>
             <div class="editor-field" style="float: left;">@Html.TextBoxFor(m => m.Subject.ExpressionValue)</div>
             <div class="editor-label hasmenu" style="float: left;">Body</div>
-            <div class="editor-field" style="float: left;">@Html.TextAreaFor(m => m.Body.ExpressionValue, new {@style = "width: 300px;"})</div>
+            <div class="editor-field" style="float: left;">@Html.TextAreaFor(m => m.Body.ExpressionValue, new { @style = "width: 300px;" })</div>
             <div style="clear: both"></div>
         </fieldset>
     </div>

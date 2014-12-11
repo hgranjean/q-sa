@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
 
 namespace Rules.WebEditor
@@ -38,6 +39,8 @@ namespace Rules.WebEditor
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            ModelBinders.Binders.DefaultBinder = new Rules.WebEditor.Controllers.RuleApplicationController.CustomModelBinder();
         }
     }
 }

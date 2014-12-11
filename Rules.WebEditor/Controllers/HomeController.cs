@@ -199,9 +199,11 @@ namespace Rules.WebEditor.Controllers
 
         [Route("~/Home/SaveSendMailAction")]
         [HttpPost]
-        public ActionResult SaveSendMailAction()
+        public ActionResult SaveSendMailAction(SendMailActionViewModel viewModel, FormCollection collection)
         {
-            return View("Index");
+            var journeyViewModel = GetJourney();
+
+            return View("Index", journeyViewModel);
         }
     }
 

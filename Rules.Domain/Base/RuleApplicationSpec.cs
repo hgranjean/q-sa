@@ -7,7 +7,8 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace Rules.Domain
-{
+{   
+    [XmlInclude(typeof(SimpleRuleSet))]
     public class RuleApplicationSpec : RuleObjectBase
     {
 	    public AuthoringSettings Settings { get; set; }

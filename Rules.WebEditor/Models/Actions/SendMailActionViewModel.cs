@@ -8,12 +8,17 @@ namespace Rules.WebEditor.Models.Actions
 {
     public class SendMailActionViewModel
     {
-        private SendMailAction Model { get; set; }
+        public SendMailAction Model { get; set; }
 
         public string Name
         {
             get { return Model.Name; }
             set { Model.Name = value; }
+        }
+
+        public SendMailActionViewModel()
+        {
+            this.Model = new SendMailAction();
         }
 
         public SendMailActionViewModel(SendMailAction model)

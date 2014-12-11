@@ -9,12 +9,14 @@ namespace Rules.WebEditor.Models
     {
         public object Blade { get; set; }
         public object BladeViewModel { get; set; }
+        public string BladeViewModelType { get; set; }
         public String Body { get; set; }
 
         public BladeEditorViewModel(object bladeViewModel)
         {
             this.Blade = bladeViewModel;
             this.BladeViewModel = GetViewModel(bladeViewModel as BladeViewModel);
+            this.BladeViewModelType = typeof (BladeViewModel).GetType().Name;
 
             //this.Body = this.Blade.Name;
 

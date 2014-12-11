@@ -19,6 +19,9 @@
                   <Value>1234</Value>
                 </Rule>
                 <Rule xsi:type="SetValueAction" />
+                <Rule xsi:type="SendMailAction">
+                  <Name>SendMailAction3</Name>
+                </Rule>
               </Rules>
             </Rule>
           </Actions>
@@ -30,17 +33,6 @@
   <RuleSets />
   <EndPoints />
   <Vocabulary>
-    <Templates>
-      <TemplateSpec>
-        <DisplayText>Test1</DisplayText>
-        <FunctionName>Test1</FunctionName>
-        <Prototype>My super rule is valid</Prototype>
-        <Expression>Context.Field1 == "1234"</Expression>
-        <Placeholders />
-        <Type>Format</Type>
-        <Category>Aggregate</Category>
-        <DataType>Decimal</DataType>
-      </TemplateSpec>
-    </Templates>
+    <Templates />
   </Vocabulary>
 </RuleApplicationSpec>
