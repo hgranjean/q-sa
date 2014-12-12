@@ -91,6 +91,8 @@ namespace Rules.WebEditor.Controllers
         internal class CustomModelBinder : DefaultModelBinder
         {
             private Type _modelType;
+            private IList _customProperties;
+            private IValueProvider _valueProvider;
 
             protected override object CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
             {
@@ -103,6 +105,7 @@ namespace Rules.WebEditor.Controllers
                     var model = Activator.CreateInstance(this.GetType().Assembly.FullName, modelToCreate);
 
                     _modelType = model.Unwrap().GetType();
+                    _valueProvider = bindingContext.ValueProvider;
                 }
                 catch (Exception)
                 { 
@@ -125,22 +128,103 @@ namespace Rules.WebEditor.Controllers
 
                 if (propInfo != null && propInfo.PropertyType.UnderlyingSystemType.Name == typeof(List<>).Name)
                 {
-                    var list = (IList)typeof(List<>)
-                            .MakeGenericType(typeof(object))
-                            .GetConstructor(Type.EmptyTypes)
-                            .Invoke(null);
-
-                    for (var i = 0; i < ((IList) value).Count; i++)
-                    {
-                        var item = Activator.CreateInstance(this.GetType().Assembly.FullName, controllerContext.RequestContext.HttpContext.Request.Params["BladeViewModel.Rules[" + i + "].ModelType"]);
-
-                        list.Add(item.Unwrap());
-                    }
-
-                    value = list;
+                    //if (_customProperties != null)
+                    //{
+                    //    value = _customProperties;
+                    //}
+                    //else
+                    //{
+                    //    GetCustomModel(controllerContext, value);
+                        
+                    //    value = _customProperties;
+                    //}
                 }
                 
                 base.SetProperty(controllerContext, bindingContext, propertyDescriptor, value);
+
+                /*
+                if (_customProperties != null && _customProperties.Count > 0)
+                {
+                    for (var i = 0; i < _customProperties.Count; i++)
+                    {
+                        // BindProperty(controllerContext, bindingContext, );
+                        // ModelBindingContext newBindingContext = CreateComplexElementalModelBindingContext(controllerContext, bindingContext, _customProperties[i]);
+                        // var model = base.CreateModel(controllerContext, bindingContext, _customProperties[i].GetType());
+                        // base.BindModel(controllerContext, newBindingContext);
+                    }
+                }*/
+            }
+
+            protected virtual void GetCustomModel(ControllerContext controllerContext, object value)
+            {
+                var list = (IList) typeof (List<>)
+                    .MakeGenericType(typeof (object))
+                    .GetConstructor(Type.EmptyTypes)
+                    .Invoke(null);
+
+                for (var i = 0; i < ((IList) value).Count; i++)
+                {
+                    var item = Activator.CreateInstance(this.GetType().Assembly.FullName,
+                        controllerContext.RequestContext.HttpContext.Request.Params["BladeViewModel.Rules[" + i + "].ModelType"]);
+
+                    //for (var j = 0; i < item.Unwrap().GetType().GetProperties().Count(); j++)
+                    //{
+                    //    var propInfo = item.Unwrap().GetType().GetProperties()[j];
+                    //    _customProperties.Add(item.Unwrap().GetType(), );
+                    //    base.BindProperty(controllerContext, bindingContext, propInfo.);
+                    //}
+
+                    list.Add(item.Unwrap());
+                }
+
+                _customProperties = list;
+            }
+
+            protected virtual object GetCustomModel(ControllerContext controllerContext,
+                ModelBindingContext bindingContext, int index)
+            {
+                var item = Activator.CreateInstance(this.GetType().Assembly.FullName,
+                        controllerContext.RequestContext.HttpContext.Request.Params["BladeViewModel.Rules[" + index + "].ModelType"]);
+
+                return item.Unwrap();
+            }
+
+            public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+            {
+                if (bindingContext.ModelType.Name == typeof (List<>).Name)
+                {
+                    // GetCustomModel(controllerContext, bindingContext.Model);
+                }
+
+                if (bindingContext != null && bindingContext.ModelName != null && bindingContext.ModelName.StartsWith("BladeViewModel.Rules[") && bindingContext.ModelName.EndsWith("]"))
+                {
+                    var parts = bindingContext.ModelName.Split(new[] { '[', ']' });
+                    var index = Convert.ToInt32(parts[1]);
+
+                    var model = GetCustomModel(controllerContext, bindingContext, index);
+                    bindingContext.ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType(() => model, model.GetType());
+                }
+
+                return base.BindModel(controllerContext, bindingContext);
+            }
+
+            internal ModelBindingContext CreateComplexElementalModelBindingContext(ControllerContext controllerContext, ModelBindingContext bindingContext, object model)
+            {
+                BindAttribute bindAttr = (BindAttribute)GetTypeDescriptor(controllerContext, bindingContext).GetAttributes()[typeof(BindAttribute)];
+                Predicate<string> newPropertyFilter = (bindAttr != null)
+                                                          ? propertyName => bindAttr.IsPropertyAllowed(propertyName) && bindingContext.PropertyFilter(propertyName)
+                                                          : bindingContext.PropertyFilter;
+
+                ModelBindingContext newBindingContext = new ModelBindingContext()
+                {
+                    ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType(() => model, bindingContext.ModelType),
+                    ModelName = bindingContext.ModelName,
+                    ModelState = bindingContext.ModelState,
+                    PropertyFilter = newPropertyFilter,
+                    ValueProvider = bindingContext.ValueProvider
+                };
+
+                return newBindingContext;
             }
         }
 
@@ -155,15 +239,15 @@ namespace Rules.WebEditor.Controllers
             object viewModel = Activator.CreateInstance(this.GetType().Assembly.FullName, modelTypeName);
 
             string @namespace = ((ObjectHandle) viewModel).Unwrap().GetType().Namespace;
+
+            var prefix = "BladeViewModel"; /*modelTypeName*/
             FormCollection binderCollection = new FormCollection();
             foreach (var item in collection.Keys)
             {   
-                binderCollection.Add(item.ToString()
-                    .Replace("BladeViewModel" + Type.Delimiter, String.Empty/*modelTypeName*/)
-                    .Replace(@namespace + Type.Delimiter, String.Empty), ((string[])collection.GetValue(item.ToString()).RawValue)[0]);
+                binderCollection.Add(item.ToString(), ((string[])collection.GetValue(item.ToString()).RawValue)[0]);
             }
 
-            if (!TryUpdateModel(model, binderCollection.ToValueProvider()))
+            if (!TryUpdateModel(model, prefix, binderCollection.ToValueProvider()))
             {
                 throw new InvalidDataException("Unable to update the model.");
             }
