@@ -190,12 +190,7 @@ namespace Rules.WebEditor.Controllers
             }
 
             public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-            {
-                if (bindingContext.ModelType.Name == typeof (List<>).Name)
-                {
-                    // GetCustomModel(controllerContext, bindingContext.Model);
-                }
-
+            {   
                 if (bindingContext != null && bindingContext.ModelName != null && bindingContext.ModelName.StartsWith("BladeViewModel.Rules[") && bindingContext.ModelName.EndsWith("]"))
                 {
                     var parts = bindingContext.ModelName.Split(new[] { '[', ']' });
