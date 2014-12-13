@@ -1,6 +1,7 @@
 ﻿@model Rules.WebEditor.Models.Actions.SendMailActionViewModel
 
 @Html.Hidden("ModelType", Model.GetType())
+@Html.Hidden("Name", Model.Name)
 
 <script type="text/javascript">
     $(function () {

@@ -153,6 +153,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CustomModelBinder.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RuleApplicationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,7 @@
     <Compile Include="Models\ExpressionEditorViewModel.cs" />
     <Compile Include="Models\JourneyViewModel.cs" />
     <Compile Include="Models\SimpleRuleSetViewModel.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="PersistenceServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

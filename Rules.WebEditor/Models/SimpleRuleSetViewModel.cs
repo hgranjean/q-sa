@@ -8,29 +8,27 @@ using System.Diagnostics.Contracts;
 
 namespace Rules.WebEditor.Models
 {
-    public class SimpleRuleSetViewModel
+    public class SimpleRuleSetViewModel : ViewModel<SimpleRuleSet>
     {
-        private readonly SimpleRuleSet _model;
-
         public SimpleRuleSetViewModel()
         {
-            _model = new SimpleRuleSet();
+            Model = new SimpleRuleSet();
         }
 
         public SimpleRuleSetViewModel(SimpleRuleSet model)
         {
-            _model = model;
+            Model = model;
         }
 
         public Expression Condition
         {
-            get { return new Expression(_model.Condition); }
-            set { _model.Condition = value.ExpressionValue; }
+            get { return new Expression(Model.Condition); }
+            set { Model.Condition = value.ExpressionValue; }
         }
 
         public List<object> Rules {
-            get { return _model.Rules.ConvertAll(m => ViewModelConverter.Convert(m)); }
-            set { _model.Rules = value.ConvertAll(m => ViewModelConverter.ConvertFrom(m)); }
+            get { return Model.Rules.ConvertAll(m => ViewModelConverter.Convert(m)); }
+            set { Model.Rules = value.ConvertAll(m => ViewModelConverter.ConvertFrom(m)); }
         }
     }
 
@@ -64,6 +62,9 @@ namespace Rules.WebEditor.Models
             else if (model is SendMailActionViewModel)
             {
                 return ((SendMailActionViewModel)model).Model;
+            } else if (model is SimpleRuleSetViewModel)
+            {
+                return ((SimpleRuleSetViewModel)model).Model;
             }
 
             throw new InvalidCastException("Unable to convert object into rule." + model.GetType());

@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
+using Rules.WebEditor.Controllers;
 
 namespace Rules.WebEditor
 {
@@ -40,7 +41,7 @@ namespace Rules.WebEditor
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            ModelBinders.Binders.DefaultBinder = new Rules.WebEditor.Controllers.RuleApplicationController.CustomModelBinder();
+            ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
         }
     }
 }

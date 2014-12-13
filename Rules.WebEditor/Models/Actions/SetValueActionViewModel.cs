@@ -6,16 +6,8 @@ using Rules.Domain;
 
 namespace Rules.WebEditor.Models.Actions
 {
-    public class SetValueActionViewModel
+    public class SetValueActionViewModel : ViewModel<SetValueAction>
     {
-        public SetValueAction Model { get; set; }
-
-        public string Name
-        {
-            get { return Model.Name; }
-            set { Model.Name = value; }
-        }
-
         public SetValueActionViewModel()
         {
             this.Model = new SetValueAction();
