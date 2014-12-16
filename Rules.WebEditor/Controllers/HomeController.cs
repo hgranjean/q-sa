@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using Rules.Domain;
 using Rules.Domain.Vocabulary;
 using Rules.WebEditor.Models;
 using Rules.WebEditor.Models.Actions;
+using System.Collections.Specialized;
+using Newtonsoft.Json.Linq;
 
 namespace Rules.WebEditor.Controllers
 {  
@@ -201,6 +206,30 @@ namespace Rules.WebEditor.Controllers
         [HttpPost]
         public ActionResult SaveSendMailAction(SendMailActionViewModel viewModel, FormCollection collection)
         {
+
+            string prefix = typeof (BladeViewModel).Name;
+            string index = "Rules[" + 1.ToString() + "]";
+
+            var json = collection.GetValues(0)[0];
+            
+            FormCollection jsonColl = new FormCollection();
+
+            var jsonObj = JArray.Parse(json);
+            foreach (var obj in jsonObj.Children<JObject>())
+            {
+                var name = obj.Children<JProperty>().FirstOrDefault(m => m.Name == "name").Value.ToString();
+                var val = obj.Children<JProperty>().FirstOrDefault(m => m.Name == "value").Value.ToString();
+
+                name = name.Replace(prefix + Type.Delimiter + index + Type.Delimiter, string.Empty);
+
+                jsonColl.Add(name, val);
+            }
+
+            if (!TryUpdateModel(viewModel, jsonColl))
+            {
+                ;
+            }
+
             var journeyViewModel = GetJourney();
 
             return View("Index", journeyViewModel);

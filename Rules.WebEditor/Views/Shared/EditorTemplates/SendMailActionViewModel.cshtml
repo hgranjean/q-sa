@@ -20,11 +20,13 @@
             buttons: {
                 "OK": {
                     text: "OK", style: "width: 100px", click: function () {
+
+                        var idToSerializeList = "#@Html.IdFor(m => m.From.ExpressionValue), #@Html.IdFor(m => m.To.ExpressionValue), #@Html.IdFor(m => m.Subject.ExpressionValue), #@Html.IdFor(m => m.Body.ExpressionValue)";
                         
                         $.ajax({
                             type: 'POST',
                             url: '@Url.Action("SaveSendMailAction")',
-                            data: JSON.stringify($('#editForm').serialize()),
+                            data: JSON.stringify($(idToSerializeList).serializeArray()),
                             success: function (data) {
                             },
                             error: function (xhr, status, error) {
@@ -35,10 +37,13 @@
                         return true;
 
                         $(this).dialog("close");
-                    }},
-                "Cancel": { text:"Cancel", style: "width: 100px", click: function () {
-                    $(this).dialog("close");
-                }}
+                    }
+                },
+                "Cancel": {
+                    text: "Cancel", style: "width: 100px", click: function () {
+                        $(this).dialog("close");
+                    }
+                }
             }
         });
 
@@ -48,8 +53,6 @@
         });
 
         $('#editForm').submit(function () {
-
-            alert(JSON.stringify($(this).serialize()));
 
             $.ajax({
                 url: this.action,

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace Rules.WebEditor.Controllers
 {
@@ -18,11 +19,14 @@ namespace Rules.WebEditor.Controllers
                 // Retrieve custom model type to replace default model
                 string modelToCreate = controllerContext.HttpContext.Request.Params["BladeViewModel.ModelType"];
 
-                // Assuming viewmodels are in the same assembly as the caller, reference the type by name
-                var model = Activator.CreateInstance(this.GetType().Assembly.FullName, modelToCreate);
+                if (modelToCreate != null)
+                {
+                    // Assuming viewmodels are in the same assembly as the caller, reference the type by name
+                    var model = Activator.CreateInstance(this.GetType().Assembly.FullName, modelToCreate);
 
-                _modelType = model.Unwrap().GetType();
-                _valueProvider = bindingContext.ValueProvider;
+                    _modelType = model.Unwrap().GetType();
+                    _valueProvider = bindingContext.ValueProvider;
+                }
             }
             catch (Exception)
             { 
