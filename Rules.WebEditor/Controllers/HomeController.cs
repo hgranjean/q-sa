@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI.WebControls.WebParts;
 using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using Rules.Domain;
@@ -172,8 +173,8 @@ namespace Rules.WebEditor.Controllers
             return View("Index", viewModel);
         }
 
-        [Route("RuleApplication/GetMyData", Order = 1)]
-        public JsonResult GetMyData()
+        [Route("RuleApplication/GetTemplateIntelliSenseList", Order = 1)]
+        public JsonResult GetTemplateIntelliSenseList()
         {
             var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
             var templates = ((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Vocabulary.Templates;
@@ -199,20 +200,57 @@ namespace Rules.WebEditor.Controllers
 
         public ActionResult EditAction(string id, string type)
         {
-            return PartialView("_SendMailActionView", new SendMailActionViewModel(null));
+            var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
+            var rules = (((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Entities[0].RuleSets[0].Actions[0] as SimpleRuleSet).Rules;
+            var model = rules.Find(m => String.Compare(m.Name, id, StringComparison.OrdinalIgnoreCase) == 0);
+            
+            // TODO: If no model was found, create a new one to make editor happy
+
+            var viewModel = (SendMailActionViewModel) ViewModelConverter.Convert(model);
+            
+            return PartialView("SendMailActionViewModel", viewModel);
         }
 
         [Route("~/Home/SaveSendMailAction")]
         [HttpPost]
         public ActionResult SaveSendMailAction(SendMailActionViewModel viewModel, FormCollection collection)
         {
-
             string prefix = typeof (BladeViewModel).Name;
             string index = "Rules[" + 1.ToString() + "]";
 
-            var json = collection.GetValues(0)[0];
+            var json = GetJsonValue(collection);
             
-            FormCollection jsonColl = new FormCollection();
+            var fullPrefix = prefix + Type.Delimiter + index + Type.Delimiter;
+
+            var jsonColl = ParseJsonToNameValueCollection(json, fullPrefix);
+
+            if (!TryUpdateModel(viewModel, jsonColl))
+            {
+                throw new InvalidOperationException("Unable to update the model.");
+            }
+
+            // Update model
+
+            var ruleapp1 = PersistenceServices.GetRuleApplications().ToList<RuleObjectBase>();
+            var rules = (((RuleApplicationSpec)ruleapp1.FirstOrDefault()).Entities[0].RuleSets[0].Actions[0] as SimpleRuleSet).Rules;
+            rules[1] = viewModel.Model;
+
+            // Get journey and render the resulting view
+
+            // var journeyViewModel = GetJourney();
+
+            // return View("Index", journeyViewModel);
+            return PartialView("_SendMailActionView", viewModel);
+        }
+
+        private static string GetJsonValue(FormCollection collection)
+        {
+            return collection.GetValues(0)[0];
+        }
+
+        private static FormCollection ParseJsonToNameValueCollection(string json, string fullPrefix)
+        {
+            var jsonColl = new FormCollection();
 
             var jsonObj = JArray.Parse(json);
             foreach (var obj in jsonObj.Children<JObject>())
@@ -220,19 +258,12 @@ namespace Rules.WebEditor.Controllers
                 var name = obj.Children<JProperty>().FirstOrDefault(m => m.Name == "name").Value.ToString();
                 var val = obj.Children<JProperty>().FirstOrDefault(m => m.Name == "value").Value.ToString();
 
-                name = name.Replace(prefix + Type.Delimiter + index + Type.Delimiter, string.Empty);
+                name = name.Replace(fullPrefix, string.Empty);
 
                 jsonColl.Add(name, val);
             }
 
-            if (!TryUpdateModel(viewModel, jsonColl))
-            {
-                ;
-            }
-
-            var journeyViewModel = GetJourney();
-
-            return View("Index", journeyViewModel);
+            return jsonColl;
         }
     }
 

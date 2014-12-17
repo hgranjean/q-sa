@@ -19,8 +19,8 @@
                   <Value>1234</Value>
                 </Rule>
                 <Rule xsi:type="SendMailAction">
-                  <Name>SendMailAction4</Name>
-                </Rule>
+		  <Name>SendMailAction4</Name>
+		</Rule>
               </Rules>
             </Rule>
           </Actions>
