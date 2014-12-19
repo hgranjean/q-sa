@@ -5,12 +5,29 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using System.Linq.Dynamic;
 
 namespace Rules.Engine.Tests
 {
     [TestFixture]
     public class LambdaTests
     {
+        [Test]
+        public void TestCollAction()
+        {
+            
+                var list = new List<Rules.Engine.Tests.CollectionAggregateTests.Entity1>();
+                list.Add(new Rules.Engine.Tests.CollectionAggregateTests.Entity1 { Field1 = "3" });
+                list.Add(new Rules.Engine.Tests.CollectionAggregateTests.Entity1 { Field1 = "1" });
+                list.Add(new Rules.Engine.Tests.CollectionAggregateTests.Entity1 { Field1 = "2" });
+
+                // Min(list, t t=> t.Field1) =>
+                var min1 = Queryable.Min(Queryable.AsQueryable(list), t => t.Field1);
+
+                //var min2 = System.Linq.Dynamic.DynamicQueryable.Min(list, t => t.Field1);
+            
+        }
+
         [Test]
         public void TestLambdaConditional()
         {
