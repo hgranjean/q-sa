@@ -47,7 +47,7 @@ namespace Rules.Engine
 
                     AddLocals(context, externals);
 
-                    externals.Add("Queryable", QueryableFuncLibParam);
+                    AddBuildInFunctions(externals);
 
                     Expression unwindExpression;
                     
@@ -84,6 +84,8 @@ namespace Rules.Engine
                 return Expression.Constant(eval);
             }
         }
+
+        
 
         private static bool TryBuildAsTemplateFunction(CompileContext context, bool requiresSpecificType, object eval, out Expression unwindExpression)
         {
@@ -146,6 +148,11 @@ namespace Rules.Engine
             {
                 externals.Add(local.Key, local.Value);
             }
+        }
+
+        private static void AddBuildInFunctions(Dictionary<string, object> externals)
+        {
+            externals.Add(typeof(Queryable).Name, QueryableFuncLibParam);
         }
 
         private static void AddTemplates(CompileContext context, string functionName, IDictionary<string, object> externals)
