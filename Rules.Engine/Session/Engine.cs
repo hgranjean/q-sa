@@ -21,6 +21,7 @@ namespace Rules.Engine
 
         public readonly static ParameterExpression WorkingMemoryParam = Expression.Parameter(typeof(WorkingMemory), MemoryLiteral);
         public readonly static ParameterExpression StateContainerParam = Expression.Parameter(typeof(StateContainer), ContextLiteral);
+        public readonly static ParameterExpression QueryableFuncLibParam = Expression.Parameter(typeof(Queryable), "Queryable");
         
         internal RuleApplicationInfo RuleApplicationInfo { get; private set; }
 
@@ -45,6 +46,8 @@ namespace Rules.Engine
                     AddContext(context, externals);
 
                     AddLocals(context, externals);
+
+                    externals.Add("Queryable", QueryableFuncLibParam);
 
                     Expression unwindExpression;
                     

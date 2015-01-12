@@ -1,37 +1,40 @@
-﻿
+﻿@using SurveyWeb.Services
 @model SurveyWeb.Models.StandardMaintenance.StandardElementViewModel
 
-
-<div id="classDisplay">
-    <div id="labels" style="display: table-row">
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.StandardId)
-        </div>
-        <div class="editor-label">
-            @if (Model.EPIds != null)
-            {
-                @Html.LabelFor(model => model.EPIds)
-            }
-        </div>
-
+<div id="classDisplay" class="row" style="min-height: 100px">
+    <div id="epIdList" class="col-md-4 col-width-20" style="vertical-align: top">
+        @Html.LabelFor(model => model.StandardId)
+        @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content, @class = "form-control", @style = "max-width: 150px;" })
     </div>
-    <div>
-        <div style="display: table-row">
-            <div class="input-group">
-                <div id="epIdList" style="width: 400px">
-                    @Html.TextBoxFor(model => model.StandardId, new { id = "standardText", title = Model.Content })
+    <div class="col-md-4 col-width-20" style="vertical-align: top">
+        @if (Model.EPIds != null)
+        {
+            @Html.LabelFor(model => model.EPIds)
+        }
+        <script language="javascript">
+            $(document).ready(function () {
+                $(document.body).on('change', '#EPIdList', epSelectedClick);
 
-                    @if (Model.EPIds != null)
-                    {
-                        @Html.DropDownListFor(model => model.EPIds,
-                            new SelectList(Model.EPIds), String.Empty, new { id = "EPIdList" })
-                    }
+                function epSelectedClick() {
+                    var input = $('#EPIdList').children(":selected");
 
-                </div>
-                <div class="input-group-btn">@Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })</div>
-            </div>
-        </div>
+                    $("#epDescLabel").html(input.attr("title"));
+                }
+            });
+        </script>
+        @if (Model.EPIds != null)
+        {
+            @Html.ExtendedDropDownListFor(model => model.EPIds,
+                Model.EPIds.ToList().ConvertAll(_ => new ExtendedSelectListItem { htmlAttributes = new { @title = _.Value }, Text = _.Key, Value = _.Key }), String.Empty,
+                new { id = "EPIdList", @style = "max-width: 100px", @class = "form-control" })
+        }
     </div>
+    <div id="epDesc" class="col-md-4 col-width-60" style="vertical-align: top">
+        <div>&nbsp;</div>
+        <label id="epDescLabel"></label>
+    </div>
+    
 </div>
+
+
 

@@ -3,7 +3,7 @@
 <div style="display: table-row">
     <div style="display: table-cell; width: 100%;">
         <!-- First column -->
-        <div class="col-md-4" style="width: 50%">
+        <div class="col-md-4 col-width-50">
             <div style="display: table; table-layout: fixed; width: 100%">
                 <div style="display: table-row;">
                     <div style="display: table-cell; width: 100%;" class="table-cell">
@@ -55,7 +55,7 @@
             </div>
         </div>
         <!-- Second column -->
-        <div class="col-md-4" style="width: 50%">
+        <div class="col-md-4 col-width-50">
             <div style="display: table;  table-layout: fixed;width: 100%">
                 <div style="display: table-row;">
                     <div style="display:table-cell;width:100%" class="table-cell">
@@ -79,7 +79,7 @@
                         {
                             <div id="editorLabel" class="editor-label">@Html.LabelFor(m => m.SurveyTypeId)</div>
                             <div id="editorField" class="editor-field">
-                                @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new {@class = "form-control"})
+                                @Html.DropDownListFor(m => m.FacilityId, new SelectList(Model.Areas, "Id", "Name"), "Please select...", new { @class = "form-control" })
                             </div>
                         }
                     </div>

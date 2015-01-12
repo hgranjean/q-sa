@@ -1,6 +1,7 @@
 ﻿@model Rules.WebEditor.Models.Actions.SetValueActionViewModel
 
 @Html.Hidden("ModelType", Model.GetType())
+@Html.Hidden("Name", Model.Name)
 
 <fieldset>
     <legend>Target</legend>    

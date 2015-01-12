@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -1328,6 +1329,12 @@ namespace System.Linq.Dynamic
                         Type elementType = enumerableType.GetGenericArguments()[0];
                         return ParseAggregate(instance, elementType, id, errorPos);
                     }
+                    enumerableType = type == typeof(Queryable) ? typeof(Queryable) : null;
+                    if (enumerableType != null)
+                    {
+                        // Type elementType = first
+                        return ParseAggregate(instance, typeof (object), id, errorPos);
+                    }
                 }
                 Expression[] args = ParseArgumentList();
                 MethodBase mb;
@@ -1431,10 +1438,31 @@ namespace System.Linq.Dynamic
             ParameterExpression innerIt = it == null ? Expression.Parameter(elementType, "") : Expression.Parameter(elementType, it.ToString());
             it = innerIt;
             Expression[] args = ParseArgumentList();
-            it = outerIt;
+
+            // Inner it resolution including static method with this
             MethodBase signature;
-            if (FindMethod(typeof(IEnumerableSignatures), methodName, false, args, out signature) != 1)
-                throw ParseError(errorPos, Res.NoApplicableAggregate, methodName);
+            bool staticMethod = false;
+            { 
+                if (FindMethod(typeof (IEnumerableSignatures), methodName, false, args, out signature) != 1)
+                {
+                    Expression[] argsSkipThis = args.ToList().Skip(1).ToArray();
+
+                    if (FindMethod(typeof (IEnumerableSignatures), methodName, false, argsSkipThis, out signature) == 1)
+                    {
+                        staticMethod = true;
+                    }
+                    else
+                    {
+                        throw ParseError(errorPos, Res.NoApplicableAggregate, methodName);
+                    }
+
+                    innerIt = it;
+                    elementType = it.Type;
+                }
+            }
+
+            it = outerIt;
+
             Type[] typeArgs;
 
             switch (signature.Name)
@@ -1442,13 +1470,23 @@ namespace System.Linq.Dynamic
                 case "First":
                 case "Min":
                 case "Max":
-                    typeArgs = new Type[] { elementType, args[0].Type };
+                    if (staticMethod)
+                        typeArgs = new Type[] { args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type, args[1].Type.GetGenericArguments().Last()};
+                    else
+                        typeArgs = new Type[] { elementType, args[0].Type };
                     break;
                 case "OrderBy":
-                    typeArgs = new Type[] { elementType, args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type };
+                    if (staticMethod)
+                        typeArgs = new Type[] { args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type, elementType };
+                    else
+                        typeArgs = new Type[] { elementType, args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type };
                     break;
                 case "OrderByDescending":
-                    typeArgs = new Type[] { elementType, args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type };
+                    if (staticMethod)
+                        typeArgs = new Type[] { args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type, elementType };
+                    else
+                        typeArgs = new Type[] { elementType, args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type };
+
                     break;
                 default:
                     typeArgs = new Type[] { elementType };
@@ -1479,8 +1517,16 @@ namespace System.Linq.Dynamic
     
                         args = new Expression[] { instance, args[0] };
                     }
+                    else if (staticMethod)
+                    {
+                        // Example of signature to handle: 2 type args/2 args, i.e. public static TResult Max<TSource, TResult>(this IQueryable<TSource> source, Expression<Func<TSource, TResult>> selector);
+                        // [0]	{System.Linq.IQueryable`1[TSource] source}	System.Reflection.ParameterInfo {System.Reflection.RuntimeParameterInfo}
+                        //[1]	{System.Linq.Expressions.Expression`1[System.Func`2[TSource,TResult]] selector}	System.Reflection.ParameterInfo {System.Reflection.RuntimeParameterInfo}
+                        // args = new Expression[] { args[0], args[1] }; - Args already in proper order
+                    } 
                     else
                     {
+                        
                         args = new Expression[] { instance, Expression.Lambda(args[0], innerIt) };
                     }
                 }
@@ -1505,6 +1551,14 @@ namespace System.Linq.Dynamic
             while (true)
             {
                 argList.Add(ParseExpression());
+                if (argList.Count == 1)
+                {
+                    if (argList[0].Type.IsGenericType && argList[0].Type.GetGenericTypeDefinition() == typeof(IQueryable<>))
+                    {
+                        var argType = argList[0].Type.GetGenericArguments()[0];
+                        it = Expression.Parameter(argType, "it");
+                    }
+                }
                 if (token.id != TokenId.Comma) break;
                 NextToken();
             }

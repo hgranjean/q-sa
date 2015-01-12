@@ -10,6 +10,7 @@ namespace Rules.WebEditor.Models
         public List<BladeViewModel> Blades { get; set; }
         public BladeEditorViewModel BladeEditor { get; set; }
 
+        public JourneyViewModel() { }
         public JourneyViewModel(List<BladeViewModel> blades, BladeEditorViewModel editor)
         {
             this.Blades = blades;

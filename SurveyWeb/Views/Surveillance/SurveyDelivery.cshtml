@@ -52,27 +52,27 @@
                 @Html.Partial("_TracerHeaderPartial", Model, new ViewDataDictionary( new {GroupNumber =  1 }))
             </div>
 
-            <div style="display: table;" class="gn-table">
+            <table class="gn-table">
 
                 @foreach (var group in Model.QuestionGroups)
             {
-                <div style="display:table-row" class="table-row-withborder" data-ng-ref="@(group.Number)">
-                        <div id="groupTitle" style="display: table-cell; font-weight: bold; width: 35%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</div>
-                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color:green; background-color: #CFDBC5;">&nbsp;</div>
-                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: red; background-color: #CFDBC5;">&nbsp;</div>
-                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; background-color: #CFDBC5;">&nbsp;</div>
-                        <div style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: blue;  background-color: #CFDBC5;">&nbsp;</div>
-                        <div style="display: table-cell;font-weight:bold;width:15%; text-align: center;background-color: #CFDBC5;">Standard</div>
-                        <div style="display: table-cell;font-weight:bold;; background-color: #CFDBC5;">Notes / Photo / Document</div>
-                    </div>
+                
+                <tr style="display:table-row" class="table-row-withborder" data-ng-ref="@(group.Number)">
+                        <td id="groupTitle" style="display: table-cell; font-weight: bold; width: 45%; background-color: #CFDBC5; ">@Html.DisplayFor(m => group.QuestionGroup.Title)</td>
+                        <td style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: red; background-color: #CFDBC5;">&nbsp;</td>
+                        <td style="display: table-cell; font-weight: bold; width: 10%; text-align: center; background-color: #CFDBC5;">&nbsp;</td>
+                        <td style="display: table-cell; font-weight: bold; width: 10%; text-align: center; color: blue;  background-color: #CFDBC5;">&nbsp;</td>
+                        <td style="display: table-cell;font-weight:bold;width:15%; text-align: center;background-color: #CFDBC5;">Standard</td>
+                        <td style="display: table-cell;font-weight:bold; width: 20%; background-color: #CFDBC5;">Notes / Photo / Document</td>
+                    </tr>
 
                 var questions = group.QuestionGroup.Questions;
                 for (int qIndex = 0, i = 0; i < questions.ToArray().Length; i++)
                 {
                     var question = questions[i];
 
-                    <div id="choiceGroup" style="display: table-row;" >
-                        <div id="questionText" style="display:table-cell; width: 35%; vertical-align: middle" class="gn-table-row-withborders">@question.Text</div>
+                    <tr id="choiceGroup" style="display: table-row;" >
+                        <td id="questionText" style="display:table-cell; width: 45%; vertical-align: middle" class="gn-table-row-withborders">@question.Text</td>
 
                         @{  var choiceClasses = new string[] {"red", "black", "blue"};
 
@@ -82,7 +82,7 @@
                                 var j = qIndex++;
                                 var choiceIndex = question.ResponseChoices.IndexOf(choice);
 
-                                <div style="display: table-cell; width: 10%;text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
+                                <td style="display: table-cell; width: 10%;text-align: center;vertical-align:middle; height:20px;" class="gn-table-row-withborders">
                                     <div id="ck-button">
                                         <label class="@choiceClasses[choiceIndex]" data-ng-href="@(question.Number)" data-ng-groupid="@(group.Number)">
 
@@ -92,22 +92,22 @@
 
                                         </label>
                                     </div>
-                                </div>
+                                </td>
                             }
                         }
 
                         @if (question.TOCReference != null) // TODO: Replace with BaseReference.Title
                         {
-                            <div id="questionBasis" style="display: table-cell; width:15%" class="gn-table-row-withborders">
+                            <td id="questionBasis" style="display: table-cell; width:15%" class="gn-table-row-withborders">
                                 @Html.ActionLink(question.TOCReference, "ViewReference", new {standardId=question.TOCReference})
-                            </div>
+                            </td>
                         }
                         else
                         {
-                            <div style="display: table-cell; width: 15%" class="gn-table-row-withborders">&nbsp;</div>
+                            <td style="display: table-cell; width: 15%" class="gn-table-row-withborders">&nbsp;</td>
                         }
 
-                        <div style="display: table-cell; width: 10%; white-space: nowrap; vertical-align: middle" class="gn-table-row-withborders">
+                        <td style="display: table-cell; width: 10%; white-space: nowrap; vertical-align: middle" class="gn-table-row-withborders">
                             @Html.ActionLink("Notes", "EditNotes", "Surveillance", new { surveyId = @Model.SurveyId, questionId = question.Number }, new { @class = "gn-notes-icon", style = "display:inline" })
                             @Html.ActionLink("Load", "LoadAttachment", "Surveillance", new {surveyId = @Model.SurveyId, questionId = question.Number}, new { @class = "gn-upload-icon", style = "display:inline" })
                             @* Html.TextBoxFor(m => m.Notes, new {style = "width: 60%; float: left;"}) *@
@@ -117,30 +117,36 @@
                                 <!--<input type="file" name="file" accept="image/*;capture=camera" style="opacity: 0; z-index: 1; display: inline; width:10px"
                                            onchange="alert("changed"); "document.getElementById('file').innerHTML = this.value; " /> -->
                             </span>
-                        </div>
-                    </div>
-                    <div id="divid@(question.Number)" data-ng-ref="@(group.Number)"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="width: 100%">
+                            <div id="divid@(question.Number)" data-ng-ref="@(group.Number)"></div>
+                        </td>
+                    </tr>
                 }
 
-                <div style="display:table-row;width:100%">
-<div style="display: table-cell;" class="form-inline gn-table-row-withborders">
-    <div class="form-group">
-        <label class="sr-only" for="observationText">Text:</label>
-            @Html.Partial("_AddObservation")
-    </div>
-    <div class="checkbox">
-        <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
-    </div>
-</div>
-<div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
-<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-<div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
-</div>
+                <tr style="display:table-row;">
+                    <td colspan="6" style="width: 100%">
+                        <div style="display: table-cell;" class="form-inline gn-table-row-withborders">
+                            <div class="form-group">
+                                <label class="sr-only" for="observationText">Text:</label>
+                                @Html.Partial("_AddObservation")
+                            </div>
+                            <div class="checkbox">
+                                <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                    <!--<div style="display: table-cell; vertical-align: middle;" class="gn-table-row-withborders"></div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>
+                    <div style="display: table-cell;" class="gn-table-row-withborders">&nbsp;</div>-->
+                </tr>
             }
-</div>
+</table>
 <div>&nbsp;</div>
             @if (ViewBag.IsReadOnly ?? false)
         {

@@ -1221,7 +1221,7 @@ namespace Atum.Utility.XML
         [Obfuscation]
         internal static object GetObjectFromFile(string filename, Type objectType, bool throwIfInvalidItems)
         {
-            // Changed FileShare settings - Read for reading, None for writing (Case 7819) - 2007/08/27 (DJ) 
+            // Changed FileShare settings - Read for reading, None for writing 
             using (Stream fs = FileSystem.File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 var xtr = XmlReader.Create(fs);

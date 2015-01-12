@@ -1,4 +1,5 @@
 ﻿@using SurveyWeb.Models
+@using SurveyWeb.Models.StandardMaintenance
 @model SurveyWeb.Models.TracerViewModel
 @{
     ViewBag.Title = "Add Observation";
@@ -42,56 +43,71 @@
 
     <fieldset>
         <legend>Observation</legend>
-        <div id="tracerHeader" style="display:table; width: 95%">
+        <div id="tracerHeader" style="display:table; width: 100%">
             @Html.Partial("_TracerHeaderPartial", Model)
         </div>
-        <div style="display: table; width: 95%" class="gn-table">
+        <div style="display: table; width: 100%" class="gn-table">
             <div style="display: table-row">
                 <div style="display: table-cell; width: 100%;">
-                    <!-- First column -->
-                    <div class="col-md-4" style="width: 50%">
-                        <div style="display: table; table-layout: fixed; width: 100%">
-                            <div style="display: table-row;">
-                                <div style="display: table-cell; width: 100%;" class="table-cell">
-                                    <div id="editorLabel" class="editor-label">&nbsp;</div>
-                                    <div id="editorField" class="editor-field">&nbsp;</div>
+                    <div style="display: table; table-layout: fixed; width: 100%">
+                        
+                        <div style="display: table-row;">
+                            <div style="display: table-cell; width: 100%">
+                                <div>
+                                    @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = Model.ResponseId }, new { @class = "form-control btn btn-primary", style = "width: 100px;" })
                                 </div>
                             </div>
-                            <div style="display: table-row;">
-                                <div style="display: table-cell; width: 100%;" class="table-cell">
-                                    <div id="editorLabel" class="editor-label"><b>Observation</b></div>
-                                    <div id="editorField" class="editor-field">
-                                        <div class="input-group">
-                                            <div id="observationForm" action="~/Learning/ObservationClassifier" method="get">
-                                                <div id="observation-text" style="display: table-row">
-                                                    @Html.TextArea("observationText", string.Empty,
-                                                        new { id = "observationText", name = "observation", data_aqs_ajax = "true", data_aqs_target = "#classDisplay", cols = 75, @rows = 5 })
-                                                </div>
-                                            </div>
-                                            @Html.Partial("~/Views/Learning/_ObservationClass.cshtml", (StandardElementViewModel)ViewBag.StandardElement)
-                                            <script>
-                                                $(‘#standardText’).tooltip({
-                                                    track: true
-                                                });
-                                            </script>
-                                            <script src="~/Scripts/AQS/observationclassifier.js"></script>
+                        </div>
 
-                                            <div class="input-group-btn">
-                                                @Html.ActionLink("Take Photo", "TakePhoto", new { surveyId = Model.ResponseId }, new { @class = "btn btn-primary", style = "width: 100px;" })
-                                            </div>
-                                        </div>
+                        <div style="display: table-row;">
+                            <div style="display: table-cell; width: 100%;" class="table-cell">
+                                <div id="editorLabel" class="editor-label"><b>Observation</b></div>
+                                <div id="editorField" class="editor-field">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div style="display: table-row;">
+                            <div style="display: table-cell; width: 100%;" class="table-cell">
+                                <div id="editorField">
+                                    <div id="observationForm" action="~/Learning/ObservationClassifier" method="get">
+                                        @Html.TextArea("observationText", string.Empty,
+                                            new { id = "observationText", name = "observation", data_aqs_ajax = "true",
+                                                data_aqs_target = "#classDisplay",
+                                                @class = "form-control mce-tinymce mce-container mce-panel",
+                                                @style = "margin: 4px; max-width: 100%; height: 64px; border-width: 1px;",
+                                                @placeholder = "Add an observation" })
                                     </div>
+
+                                    @Html.Partial("~/Views/Learning/_ObservationClass.cshtml", (StandardElementViewModel)ViewBag.StandardElement)
+                                    <script>
+                                        $('#standardText').tooltip({
+                                            track: true
+                                        });
+                                    </script>
+                                    <script src="~/Scripts/AQS/observationclassifier.js"></script>
                                 </div>
+                            </div>
+                        </div>
+                        <div style="display: table-row;">
+                            <div style="display: table-cell; width: 100%">
+                                @Html.ActionLink("Manage standards", "Document", "Standard", new { id = 1 }, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                        <div style="display: table-row;">
+                            <div style="display: table-cell; width: 100%">
+                                &nbsp;
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div style="display: table-row">
+                <div style="display: table-cell; width: 100%;">
+                    <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
+                    @Html.ActionLink("Cancel", "Dashboard", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
         </div>
-        <div>&nbsp;</div>
-        
-        <input type="submit" value="Add" id="addObservation" class="btn btn-default" />
-        @Html.ActionLink("Cancel", "Dashboard", null, new { @class = "btn btn-default" })
     </fieldset>
 }
 

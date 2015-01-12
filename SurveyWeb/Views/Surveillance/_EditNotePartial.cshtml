@@ -1,65 +1,30 @@
 ﻿@model SurveyWeb.Models.EditNoteViewModel
 
-@*using (Ajax.BeginForm("EditNote", "Surveillance",
-    new AjaxOptions { UpdateTargetId = "divid" + Model.QuestionId, InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess = "success" },
-    new { enctype = "multipart/form-data" }))
-{*@ 
-
-<script>
-    $(document).ready(function () {
-        $('.editNote').click(function () {
-
-            var noteJson = {
-                SurveyId: $("#editNote").closest('#SurveyId').value,
-                QuestionGroupId: $("#editNote").closest('#QuestionGroupNumber').value,
-                QuestionId: $("#editNote").closest('#QuestionId').value,
-                NoteText: $("#editNote").closest('#NoteText').value
-            }
-            
-            $.ajax({
-                type: 'POST',
-                url: $.editNotePath,
-                data: $('#editNote').serialize(),
-                success: function (data) {
-                },
-                error: function (xhr, status, error) {
-                    console.log(xhr.responseText);
-                }
-            });            
-
-        });
-    });
-
-</script>
-
-
-
-<form>
-    <div id="editNote" class="choiceGroup" data-ng-href="@(Model.QuestionId)">
-        @Html.HiddenFor(m => m.NoteId)
-        @Html.HiddenFor(m => m.SurveyId)
-        @Html.HiddenFor(m => m.QuestionId)
-        @Html.HiddenFor(m => m.QuestionGroupNumber)
-        @Html.HiddenFor(m => m.ResponseId)
-        <div style="display: table-row">
-            <div class="editor-label;" style="display: table-cell;width: 3%">
-                @Html.DisplayFor(m => m.NoteText, new { @class = "control-label" })
-            </div>
-            <div id="questionText" class="editor-field" style="display: table-cell;width: 70%">
-                @Html.TextBoxFor(m => m.NoteText, new { style = "width: 100%", @class = "form-control" })
-            </div>
-        </div>
-
-        <div style="display: table-row;">
-            <div style="display: table-cell;">
-            </div>
-            <div style="display: table-cell;">
-                <input id="saveButton" class="btn btn-default editNote" value="Save" />
-                <a href="#" class="questionCancel">Cancel</a>
-
-            </div>
+<div id="editNote" class="choiceGroup" style="display: table; width: 100%" data-ng-href="@(Model.QuestionId)">
+    @Html.HiddenFor(m => m.NoteId)
+    @Html.HiddenFor(m => m.SurveyId)
+    @Html.HiddenFor(m => m.QuestionId)
+    @Html.HiddenFor(m => m.QuestionGroupNumber)
+    @Html.HiddenFor(m => m.ResponseId)
+    <div style="display: table-row; width:100%">
+        <div class="editor-label;" style="display: table-cell; width: 100%">
+            @Html.LabelFor(m => m.NoteText, new { style = "max-width: 100%", @class = "control-label" })
         </div>
     </div>
-</form>
-    @*}*@
+    <div style="display: table-row; width:100%">
+        <div id="questionText" class="editor-field" style="display: table-cell; width: 100%">
+                
+            @Html.TextAreaFor(m => m.NoteText, new { style = "margin: 4px; max-width: 99%; height: 64px; border-width: 1px;", @class = "form-control mce-tinymce mce-container mce-panel", @hidefocus = "1", @tabindex = "-1", @role = "application", @placeholder ="Add a comment" })
+        </div>
+    </div>
+
+        
+
+    <div style="display: table-row;margin: 4px;">
+        <div style="display: table-cell; align: right; width: 100%; margin: 4px">
+            <input id="saveButton" class="btn btn-info editNote" style="width: 100px; margin: 4px" value="Save" />
+            <a href="#" class="cancelNote btn">Cancel</a>
+        </div>
+    </div>
+</div>
 

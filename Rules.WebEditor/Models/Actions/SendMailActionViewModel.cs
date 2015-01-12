@@ -6,14 +6,11 @@ using Rules.Domain;
 
 namespace Rules.WebEditor.Models.Actions
 {
-    public class SendMailActionViewModel
+    public class SendMailActionViewModel : ViewModel<SendMailAction>
     {
-        private SendMailAction Model { get; set; }
-
-        public string Name
+        public SendMailActionViewModel()
         {
-            get { return Model.Name; }
-            set { Model.Name = value; }
+            this.Model = new SendMailAction();
         }
 
         public SendMailActionViewModel(SendMailAction model)

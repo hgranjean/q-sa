@@ -310,9 +310,11 @@ $.extend($.validator, {
 			function delegate(event) {
 				var validator = $.data(this[0].form, "validator"),
 					eventType = "on" + event.type.replace(/^validate/, "");
-				if (validator.settings[eventType]) {
-					validator.settings[eventType].call(validator, this[0], event);
-				}
+			    if (validator != null) { // fix for multiform null-ref
+			        if (validator.settings[eventType]) {
+			            validator.settings[eventType].call(validator, this[0], event);
+			        }
+			    }
 			}
 			$(this.currentForm)
 				.validateDelegate(":text, [type='password'], [type='file'], select, textarea, " +

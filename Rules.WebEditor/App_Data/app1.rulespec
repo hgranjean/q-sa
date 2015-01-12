@@ -18,7 +18,9 @@
                   <Target>Field1</Target>
                   <Value>1234</Value>
                 </Rule>
-                <Rule xsi:type="SetValueAction" />
+                <Rule xsi:type="SendMailAction">
+		  <Name>SendMailAction4</Name>
+		</Rule>
               </Rules>
             </Rule>
           </Actions>

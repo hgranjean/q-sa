@@ -67,6 +67,42 @@ namespace Rules.Engine.Tests
         }
         
         [Test]
+        public void TestMinAsStatic()
+        {
+            // Semantically equivalent to:
+            
+            var list = new List<Entity1>();
+            list.Add(new Entity1 { Field1 = "1"});
+            list.Add(new Entity1 { Field1 = "2"});
+            list.Add(new Entity1 { Field1 = "3"});
+
+            var min = list.Min(t => t.Field1);
+
+            var ra = new RuleApplicationSpec();
+            var e2 = new EntitySpec("Entity2", typeof(Entity2));
+            ra.Entities.Add(e2);
+
+            var action1 = new SetValueAction();
+            action1.Target = "Context.TextField";
+            action1.Value = "Queryable.Min(Context.EntityField, it => it.Field1)"; // " Context.EntityField.Min(t => t.Field1)";
+            
+            var rs1 = new RuleSpec();
+            rs1.Actions.Add(action1);
+            e2.RuleSets.Add(rs1);
+
+            using (var rs = new RuleSession(ra))
+            {
+                var e2val = new Entity2();
+                e2val.EntityField = list.AsQueryable();
+                var e2Instance = rs.CreateEntity(e2.Name, e2val);
+
+                var result = rs.ExecuteRules();
+                Assert.IsNotNull(result);
+                Assert.AreEqual("1", e2val.TextField);
+            }
+        }
+        
+        [Test]
         public void TestOrderBy()
         {
             // Semantically equivalent to:

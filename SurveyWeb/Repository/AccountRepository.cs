@@ -49,10 +49,12 @@ namespace SurveyWeb.Repository
             // Add user to hospital, if its not present there already
             if (_context.UserHospitals.Count(m => m.HospitalId == hospitalId && m.UserId == userId) == 0)
             {
-                var user = _context.AspNetUsers.FirstOrDefault(m => m.Id == userId);
+                var user = _context.AspNetUsers.Include("Hospitals").FirstOrDefault(m => m.Id == userId);
                 var hospital = _context.Hospitals.FirstOrDefault(m => m.Id == hospitalId);
 
-                user.Hospitals.Add(hospital);                
+                var uh = new UserHospital {Hospital = hospital, User = user, HospitalId = hospitalId, UserId = userId};
+                
+                _context.UserHospitals.Add(uh);
             }
 
             _context.SaveChanges();
@@ -72,6 +74,7 @@ namespace SurveyWeb.Repository
             if (user.AspNetRoles.Count(m => m.Id == managerRole.Id) == 0)
             {
                 user.AspNetRoles.Add(managerRole);
+                _context.Entry(user).State = EntityState.Modified;
             }
 
             _context.SaveChanges();

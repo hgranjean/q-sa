@@ -205,5 +205,24 @@ namespace SurveyWeb.Services
         {
             throw new NotImplementedException();
         }
+        
+        public EditNoteViewModel LoadNote(int surveyId, int questionGroupId, int questionId, Guid responseId)
+        {
+            foreach (var fileName in Directory.GetFiles(_store.GetPath(StoreType.Notes), "note*.xml"))
+            {
+                var viewModel =
+                    (EditNoteViewModel) XmlSerializationUtility.GetObjectFromFile(fileName, typeof (EditNoteViewModel));
+
+                if (viewModel.SurveyId == surveyId &&
+                    viewModel.QuestionGroupNumber == questionGroupId &&
+                    viewModel.QuestionId == questionId &&
+                    viewModel.ResponseId  == responseId.ToString())
+                {
+                    return viewModel;
+                }
+            }
+
+            return null;
+        }
     }
 }

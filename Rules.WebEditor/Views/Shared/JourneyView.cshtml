@@ -17,8 +17,9 @@
 
 @if (Model.BladeEditor != null)
 {
-    using (Html.BeginForm("BladeEdit", "RuleApplication", FormMethod.Post))
+    using (Html.BeginForm("BladeEdit", "RuleApplication", FormMethod.Post, new {id = "bladeForm"}))
     {
+
         <div>&nbsp;</div>
         <div style="display: table; width: 100%">
             <div style="display: table-row">Editor</div>
@@ -26,8 +27,9 @@
             <div style="display: table-cell; width: 100%">@Html.Partial("BladeEditorView", Model.BladeEditor)</div>
         </div>
 
+
         <div>&nbsp;</div>
-        <input type="submit" value="Save"/>
+        <input type="submit" value="Save" onclick=" $(forms[0]).submit() " />
         @Html.ActionLink("Cancel", "Index")
     }
 }
