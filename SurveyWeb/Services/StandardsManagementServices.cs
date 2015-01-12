@@ -80,9 +80,9 @@ namespace SurveyWeb.Services
             {
                 TOCElementViewModel toc = new TOCElementViewModel();
 
-                toc.Key = item.StandardId;
+                toc.Key = item.Key;
                 toc.Title = item.Title;
-                toc.Content = item.StandardId;
+                toc.Content = item.Key;
                 retVal.Add(toc);
             }
 
@@ -90,11 +90,11 @@ namespace SurveyWeb.Services
 
         }
 
-        private static List<Standard> LoadElements(XmlDocument xmlDoc)
+        private static DocumentElements LoadElements(XmlDocument xmlDoc)
         {
             string elementsTitlePath = "chapter/titles[title]/*";
             string catIdPath = "epid";
-            List<Standard> retVal = new List<Standard>();
+            DocumentElements retVal = new DocumentElements();
 
             XmlNodeList nodes = xmlDoc.SelectNodes(elementsTitlePath);
 
@@ -106,8 +106,8 @@ namespace SurveyWeb.Services
                 Standard epCat = new Standard(itemKey,node.InnerText);
 
                 epCat.Title = node.InnerText;
-                epCat.StandardId = itemKey;
-                epCat.PerformanceItems = LoadEPItems(xmlDoc, epCat.StandardId);
+                epCat.Key= itemKey;
+                epCat.PerformanceItems = LoadEPItems(xmlDoc, epCat.Key);
 
                 retVal.Add(epCat);
             }
@@ -115,9 +115,9 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static List<PerformanceItem> LoadEPItems(XmlDocument xmlDoc, string standardId)
+        private static DocumentElements LoadEPItems(XmlDocument xmlDoc, string standardId)
         {
-            List<PerformanceItem> retVal = new List<PerformanceItem>();
+            DocumentElements retVal = new DocumentElements();
 
             string itemsPath = "chapter/elements/element[@epid='standardId']".Replace("standardId", standardId);
 
@@ -157,9 +157,9 @@ namespace SurveyWeb.Services
 
             return retVal;
         }
-        private static List<string> LoadNotes(XmlDocument xmlDoc, PerformanceItem epItem, string standardId)
+        private static ItemNotes LoadNotes(XmlDocument xmlDoc, PerformanceItem epItem, string standardId)
         {
-            List<string> retVal = new List<string>();
+            ItemNotes retVal = new ItemNotes();
 
             string itemsPath = "chapter/notes/note[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardId).Replace("epItemId", epItem.EPId.ToString());
 
@@ -169,7 +169,7 @@ namespace SurveyWeb.Services
             {
                 string note = node.InnerText;
 
-                retVal.Add(note);
+                retVal.Add(new ItemNote(note));
             }
 
             return retVal;
@@ -193,15 +193,15 @@ namespace SurveyWeb.Services
         private static List<TOCElementViewModel> LoadTOCElements(Standard standard)
         {
             List<TOCElementViewModel> retVal = new List<TOCElementViewModel>();
-            List<PerformanceItem> list = standard.PerformanceItems;
+            DocumentElements list = standard.PerformanceItems;
 
-            foreach (var item in list)
+            foreach (PerformanceItem item in list)
             {
                 TOCElementViewModel toc = new TOCElementViewModel();
 
                 toc.Key = item.EPId.ToString();
                 toc.Content = item.Text;
-                toc.ParentKey = standard.StandardId;
+                toc.ParentKey = standard.Key;
                 retVal.Add(toc);
             }
 
@@ -246,7 +246,7 @@ namespace SurveyWeb.Services
             PerformanceItem epItem = new PerformanceItem("","");
             epItem.EPId = int.Parse(performanceItemId);
 
-            retVal.Notes = LoadNotes(xmlDoc, epItem, standardElementId);
+            retVal.Notes = LoadNotes(xmlDoc, epItem, standardElementId).GetNotes();
             retVal.ReferencedElementLinks = setReferencedElementLinks(epItem, standardElementId, xmlDoc);
 
             return retVal;
@@ -272,11 +272,11 @@ namespace SurveyWeb.Services
 
             return retVal;
         }
-        public IEnumerable<KeyValuePair<string, TOCElement>> GetTOCs()
+        public IEnumerable<KeyValuePair<string, DocumentElement>> GetTOCs()
         {
-            yield return new KeyValuePair<string, TOCElement>(string.Empty, TOCElement.None);
-            yield return new KeyValuePair<string, TOCElement>("LS.02.01.20 EP27", GetViewModel("LS.02.01.20 EP27"));
-            yield return new KeyValuePair<string, TOCElement>("LS.04.03.02", GetViewModel("LS.04.03.02"));            
+            //yield return new KeyValuePair<string, TOCElement>(string.Empty, TOCElement.None);
+            yield return new KeyValuePair<string, DocumentElement>("LS.02.01.20 EP27", GetViewModel("LS.02.01.20 EP27"));
+            yield return new KeyValuePair<string, DocumentElement>("LS.04.03.02", GetViewModel("LS.04.03.02"));            
         }
 
         /// <summary>
@@ -284,9 +284,9 @@ namespace SurveyWeb.Services
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        private TOCElement GetViewModel(string Id)
+        private DocumentElement GetViewModel(string Id)
         {
-            var model = new TOCElement(Id);
+            DocumentElement model = new Chapter(Id, Id);
 
             if (Id == "LS.02.01.20 EP27")
             {
@@ -297,7 +297,7 @@ namespace SurveyWeb.Services
             {
                 var appPath = _store.GetPath(StoreType.Standards);
                 
-                model = (TOCElement)XmlSerializationUtility.GetObjectFromFile(Path.Combine(appPath, Id + ".xml"), typeof(TOCElement));
+                model = (DocumentElement)XmlSerializationUtility.GetObjectFromFile(Path.Combine(appPath, Id + ".xml"), typeof(DocumentElement));
             }
 
             return model;

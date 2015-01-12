@@ -2,6 +2,7 @@
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
+using Atum.Domain.QualityManagement.Auditing;
 using Atum.Domain.QualityManagement.Healthcare.Performance;
 using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
@@ -89,7 +90,7 @@ namespace SurveyWeb.Controllers
             }
             else
             {
-                model = new Standard { Observation = observation };
+                //model = new Standard { Observation = observation };
             }
 
             var viewModel = new StandardElementViewModel(model);
@@ -166,7 +167,8 @@ namespace SurveyWeb.Controllers
 
             var userId = User.Identity.GetUserId();
             
-            IEnumerable<EventUser> events = null;
+            //Use to be <EventUser>
+            IEnumerable<object> events = null;
             if (ViewBag.ShowManagerContent)
             {
                 events = _taskService.GetFacilityTasksForUser(userId);
@@ -183,19 +185,19 @@ namespace SurveyWeb.Controllers
             }         
             }
 
-            var model = new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Survey>>>() };
+            var model = new SurveysViewModel ();// new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Template>>>() };
 
             foreach (var @event in events)
             {
-                var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
+                //var eventSurveys = model.GetOrAddSurveysByDate(@event.Event.Start.ToGroupIndex());
 
-                var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
+                //var survey = surveys.FirstOrDefault(s => s.Guid.ToString() == @event.Event.SurveyId);
 
-                if (survey != default(Survey))
-                {
-                    var tuple = new Tuple<EventUser, Survey>(@event, survey);                    
-                    eventSurveys.Add(tuple);
-                }
+                //if (survey != default(Template))
+                //{
+                //    var tuple = new Tuple<EventUser, Template>(@event, survey);                    
+                //    eventSurveys.Add(tuple);
+                //}
             }
             return model;
         }
@@ -410,7 +412,7 @@ namespace SurveyWeb.Controllers
 
         private TracerViewModel LoadTracerViewModel(int? surveyId)
         {
-            Survey survey = null; // = LoadSurvey("Survey Template 1");
+            Survey survey = null; // = LoadSurvey("Template Template 1");
             if (surveyId.HasValue)
             {                
                 survey = _persistenceService.GetSurvey(surveyId.Value);
@@ -493,12 +495,12 @@ namespace SurveyWeb.Controllers
             };
         }
 
-        private TableOfContents LoadTableOfContents()
-        {
-            var toc = new TableOfContents();
-            toc.AddElement("Element Title");
-            return toc;
-        }
+        //private TableOfContents LoadTableOfContents()
+        //{
+        //    var toc = new TableOfContents();
+        //    toc.AddElement("Element Title", "Element Title");
+        //    return toc;
+        //}
 
         private IEnumerable<Department> LoadDepartments()
         {
@@ -527,7 +529,7 @@ namespace SurveyWeb.Controllers
 
         public ActionResult ViewReference(string standardId) 
         {
-            TOCElement model = new TOCElement("");
+            DocumentElement model = new Chapter("","");
             //TODO: Get Reference View Model from Standard Services
             //model = GetViewModel(standardId);
 
@@ -629,7 +631,7 @@ namespace SurveyWeb.Controllers
                     // Add observation
                     var newQuestion = questionGroup.Value.AddQuestion(observationText, QuestionType.SelectOne);
                     var classifyModel = _learningService.Classify(observationText);
-                    newQuestion.TOCReference = classifyModel.StandardId;
+                    //newQuestion.TOCReference = classifyModel.StandardId;
                     isObservation = true;
                 }
             }
@@ -716,11 +718,11 @@ namespace SurveyWeb.Controllers
             var rows = _taskService.GetTasksForUser(userId, fromDate, toDate).ToList().Select(e =>
                 new
                 {
-                    id = e.EventId,
-                    title = e.Event.Title,
+                    //id = e.EventId,
+                    //title = e.Event.Title,
                     // url = "http://google.com/",
-                    start = e.Event.Start.ToString("s"),
-                    end = e.Event.End.ToString("s"),
+                    //start = e.Event.Start.ToString("s"),
+                    //end = e.Event.End.ToString("s"),
                     allDay = false
                 });
 
@@ -739,13 +741,13 @@ namespace SurveyWeb.Controllers
                      
             var availableSurveys = _persistenceService.GetSurveys();
 
-            var model = new TaskViewModel(evt.Event)
+            var model = new TaskViewModel(evt)
             {
-                Survey = _surveyService.GetSurveyEntry(evt.Event.SurveyId),
-                SurveyId = evt.Event.SurveyId,
-                AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
-                AvailableUsers = _accountService.GetUsers(),
-                Users = _taskService.GetUsersForTask(evt.EventId)
+                //Template = _surveyService.GetSurveyEntry(evt.Event.SurveyId),
+                ////SurveyId = evt.Event.SurveyId,
+                //AvailableSurveys = availableSurveys.Select(m => new SurveyEntry {Id = m.Guid.ToString(), Title = m.Title}),
+                //AvailableUsers = _accountService.GetUsers(),
+                //Users = _taskService.GetUsersForTask(evt.Id)
             };
             
             return View(model);
@@ -769,7 +771,7 @@ namespace SurveyWeb.Controllers
                         Start = model.Start,
                         End = model.End,
                         //UserId = model.UserId, // Owner
-                        SurveyId = model.SurveyId
+                        //SurveyId = model.SurveyId
                     };
 
                 _taskService.UpdateTask(evt);                
@@ -832,7 +834,7 @@ namespace SurveyWeb.Controllers
                         Start = model.Start,
                         End = model.End,
                         // UserId = model.UserId, // Owner
-                        SurveyId = model.SurveyId
+                        //SurveyId = model.SurveyId
                     };
 
                 var @event = _taskService.CreateTask(evt);
@@ -1000,7 +1002,7 @@ namespace SurveyWeb.Controllers
 
             LoadTracerReferenceData(viewModel);
 
-            ViewBag.StandardElement = new StandardElementViewModel(new Standard { Observation = string.Empty});
+//            ViewBag.StandardElement = new StandardElementViewModel(new Standard { Observation = string.Empty});
 
             return View(viewModel);
         }
@@ -1027,7 +1029,7 @@ namespace SurveyWeb.Controllers
                         .AddQuestion(observationText, QuestionType.SelectOne);
 
                     var classifyModel = _learningService.Classify(observationText);
-                    newQuestion.TOCReference = classifyModel.StandardId;
+                    //newQuestion.TOCReference = classifyModel.StandardId;
 
                     viewModel.AddResponse(newQuestion);
 

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using SurveyWeb.Models;
 using Microsoft.AspNet.Identity;
 using Atum.Domain.Healthcare;
+using Atum.Domain.QualityManagement.Auditing;
 
 namespace SurveyWeb.Repository
 {

@@ -66,7 +66,7 @@ namespace SurveyWeb.Models.QualityManager.SurveillanceManagement
         [Display(Name = "Selected Users")]
         public IEnumerable<string> SelectedUsers { get; set; }
 
-        [Display(Name = "Survey")]
+        [Display(Name = "Template")]
         public string SurveyId { get; set; }
 
         public SurveilanceViewModel()

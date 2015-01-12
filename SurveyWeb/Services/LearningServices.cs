@@ -1,4 +1,5 @@
-﻿using Atum.Domain.NLP;
+﻿using Atum.Domain.Common;
+using Atum.Domain.NLP;
 using Atum.Domain.NLP.NaiveBayes;
 using Atum.Domain.QualityManagement.Healthcare.Performance;
 using Atum.Utility.XML;
@@ -49,7 +50,7 @@ namespace SurveyWeb.Services
                 .GetPerformanceCategory(observationClass);
 
             var model = new Standard();
-            model.StandardId = observationClass;
+            model.Key = observationClass;
             //model.Content = standard.Title;
             //model.EPIds = LoadEPIds(standard.Elements);
             
@@ -141,8 +142,8 @@ namespace SurveyWeb.Services
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine(standard.Title);
-            List<PerformanceItem> pItems = standard.PerformanceItems;
-            foreach (var item in pItems)
+            DocumentElements pItems = standard.PerformanceItems;
+            foreach (PerformanceItem item in pItems)
             {
                 sb.AppendLine(item.Text);
                 foreach (var noteItem in item.Notes)

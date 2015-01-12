@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Atum.Domain.QualityManagement;
-using Atum.Domain.QualityManagement;
+﻿using Atum.Domain.QualityManagement;
+using Atum.Domain.QualityManagement.Auditing;
 using Atum.Domain.SurveyManagement;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Atum.Domain.Test
 {
@@ -29,14 +29,14 @@ namespace Atum.Domain.Test
             Surveillance surveillance = new Surveillance();
 
             //A Surveillance is a scheduled event to perform a required Audit.
-            surveillance.StartDate = DateTime.Today;
-            surveillance.EndDate = DateTime.Today;
+            surveillance.Start = DateTime.Today;
+            surveillance.End = DateTime.Today;
             surveillance.Frequency = Atum.Domain.Common.Frequency.Monthly;
             surveillance.CreatedDate = DateTime.Today;
             surveillance.Title = "";
 
-            //Load or Create a Survey
-            surveillance.Survey = new Survey();
+            //Load or Create a Template
+            surveillance.Template = new Survey();
 
 
 

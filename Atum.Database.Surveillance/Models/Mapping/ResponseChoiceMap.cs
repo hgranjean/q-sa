@@ -13,7 +13,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.HasKey(t => t.Id);
 
             //// Properties
-            //this.Property(t => t.Id)
+            //this.CreatedBy(t => t.Id)
             //    .IsRequired()
             //    .HasMaxLength(128);
 

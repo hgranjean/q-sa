@@ -21,12 +21,12 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.Property(t => t.Text).HasColumnName("Text");
             this.Property(t => t.Number).HasColumnName("Number");
             this.Property(t => t.Label).HasColumnName("Label");
-            //this.Property(t => t.SurveyTitle).HasColumnName("SurveyTitle");
+            //this.CreatedBy(t => t.SurveyTitle).HasColumnName("SurveyTitle");
             this.Property(t => t.GroupNumber).HasColumnName("GroupNumber");
 
             //Relationship
             this.HasRequired(t => t.QuestionGroup).WithMany(q => q.Questions).HasForeignKey(t => t.GroupNumber);
-            //this.HasRequired(t => t.Survey).HasForeignKey(t => t.SurveyTitle);
+            //this.HasRequired(t => t.Template).HasForeignKey(t => t.SurveyTitle);
 
         }
     }

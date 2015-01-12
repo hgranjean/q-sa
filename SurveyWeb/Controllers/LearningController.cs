@@ -46,7 +46,7 @@ namespace SurveyWeb.Controllers
             }
             else
             {
-                model = new Standard { Observation = observationText };
+                //model = new Standard { Observation = observationText };
             }
 
             var viewModel = new StandardElementViewModel(model);

@@ -18,29 +18,29 @@ namespace Atum.Domain.Test
         [Test]
         public void TestMethod1()
         {
-            // Step 1- Initialize Survey
+            // Step 1- Initialize Template
 
-            //Default Survey Type if empty contructor
+            //Default Template Type if empty contructor
             //Reconsider empty constructor
             var survey = new Survey();
 
             survey.AssignNextId(0);
             
-            survey.Title = "Survey Template 1";
+            survey.Title = "Template Template 1";
 
-            ////Set Survey Type - Overwrite Survey Type
+            ////Set Template Type - Overwrite Template Type
             survey.SurveyType = SurveyType.Audit;
 
             // Step 2 - Initialize TOC
 
-            //Survey Basis Document (assert that we can see the TOCElements
+            //Template Basis Document (assert that we can see the TOCElements
             var surveyBasis = new SurveyBasis();
-            surveyBasis.TableOfContents = loadTableOContents();
+            //surveyBasis.TableOfContents = loadTableOContents();
 
-            //Create/Add Survey Questions in default QuestionGroup
+            //Create/Add Template Questions in default QuestionGroup
             var qGroup = survey.AddQuestionGroup();
 
-            //Create/Add Survey Questions in new QuestionGroup
+            //Create/Add Template Questions in new QuestionGroup
             string questionText = "My Question Text";
             var qType = QuestionType.OpenText;
             var question = qGroup.AddQuestion(questionText, qType);
@@ -49,7 +49,7 @@ namespace Atum.Domain.Test
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
             //TOC Element will be displated as hyperlink
-            question.BasisReference = surveyBasis.TableOfContents.GetElementByTitle("Element Title");
+            //question.BasisReference = surveyBasis.TableOfContents.GetElementByTitle("Element Title");
             
             //Excercising the question types
             //Add a question of each type and assert specification.
@@ -57,7 +57,7 @@ namespace Atum.Domain.Test
 
             // Step 3 - Add questions
 
-            //Validating a Survey - What is a valid survey: SurveySpecification
+            //Validating a Template - What is a valid survey: SurveySpecification
             //Yes No
             qType = QuestionType.YesNo;
             questionText = "My YesNo Question Text";
@@ -66,7 +66,7 @@ namespace Atum.Domain.Test
             var choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
-            //Validating a Survey - What is a valid survey: SurveySpecification
+            //Validating a Template - What is a valid survey: SurveySpecification
             //True or False
             qType = QuestionType.TrueFalse;
             questionText = "My TrueFalse Question Text";
@@ -144,15 +144,15 @@ namespace Atum.Domain.Test
             choice = question.AddChoice(choiceText);
             Assert.IsTrue(questionSpecification.IsStatisfiedBy(question));
 
-            //Step 4 - Responding to a Survey
+            //Step 4 - Responding to a Template
         }
 
-        private TableOfContents loadTableOContents()
-        {
-            var retVal = new TableOfContents();
-            string elementTitle = "Element Title";
-            var element = retVal.AddElement(elementTitle);
-            return retVal;
-        }
+        //private TableOfContents loadTableOContents()
+        //{
+        //    var retVal = new TableOfContents();
+        //    string elementTitle = "Element Title";
+        //    var element = retVal.AddElement(elementTitle, elementTitle);
+        //    return retVal;
+        //}
     }
 }

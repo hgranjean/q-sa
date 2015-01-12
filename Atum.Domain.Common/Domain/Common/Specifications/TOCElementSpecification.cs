@@ -14,9 +14,9 @@ namespace Atum.Domain.Common
 
             try
             {
-                TOCElement element = (TOCElement)domainObject;
+                //DocumentElement element = (DocumentElement)domainObject;
 
-                retVal = element.Title != null ? element.Title != string.Empty : element.Title != null; 
+                //retVal = element.Title != null ? element.Title != string.Empty : element.Title != null; 
             }
             catch (Exception)
             {

@@ -12,7 +12,6 @@ namespace Atum.Domain.Healthcare
         public FacilityType()
         {
         }
-    
 
 		//Attributes go here.
 		public long Value { get; set; }

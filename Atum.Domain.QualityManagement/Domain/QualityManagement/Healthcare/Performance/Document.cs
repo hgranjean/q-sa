@@ -20,11 +20,11 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
         public TableOfContents TOC { get; set; }
 
 
-        public TOCElement AddElement(TOCElement element) 
+        public DocumentElement AddElement(DocumentElement element) 
         {
             //TODO: Maintain Table of Contents Here
             //Elements.Add(element);
-            TOC.AddElement(element.Title);
+            TOC.AddElement(element);
             return element;
         } 
         

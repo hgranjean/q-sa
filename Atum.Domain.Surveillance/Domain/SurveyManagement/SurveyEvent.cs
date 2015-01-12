@@ -3,9 +3,9 @@ using Atum.Domain.Security.Domain;
 
 namespace Atum.Domain.SurveyManagement
 {
-    public partial class SurveyEvent
+    public partial class xSurveyEvent
     {
-        public SurveyEvent()
+        public xSurveyEvent()
         {
         }
         

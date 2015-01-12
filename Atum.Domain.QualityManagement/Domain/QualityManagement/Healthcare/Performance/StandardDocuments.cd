@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Atum.Domain.QualityManagement.Healthcare.Performance.StandardDocument">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <AssociationLine Name="Chapters" Type="Atum.Domain.Common.DocumentElement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.375" Y="4.75" />
+        <Point X="7.375" Y="3.386" />
+        <Point X="8.75" Y="3.386" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\QualityManagement\Healthcare\Performance\StandardDocument.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Chapters" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Atum.Domain.QualityManagement.Healthcare.Performance.Standard">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <InheritanceLine Type="Atum.Domain.Common.DocumentElement" FixedToPoint="true">
+      <Path>
+        <Point X="9.625" Y="3.709" />
+        <Point X="9.625" Y="4.375" />
+        <Point X="9.312" Y="4.375" />
+        <Point X="9.312" Y="4.75" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="PerformanceItems" Type="Atum.Domain.Common.DocumentElement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="4.75" />
+        <Point X="8.75" Y="4.5" />
+        <Point X="9.188" Y="4.5" />
+        <Point X="9.188" Y="3.709" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAIAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\QualityManagement\Healthcare\Performance\Standard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PerformanceItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Atum.Domain.QualityManagement.Healthcare.Performance.Chapter">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAQAAAAAAAAAAIAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Domain\QualityManagement\Healthcare\Performance\Chapter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Standards" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Atum.Domain.QualityManagement.Healthcare.Performance.PerformanceItem">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <InheritanceLine Type="Atum.Domain.Common.DocumentElement" FixedFromPoint="true">
+      <Path>
+        <Point X="10.125" Y="3.709" />
+        <Point X="10.125" Y="4.375" />
+        <Point X="11" Y="4.375" />
+        <Point X="11" Y="4.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AkAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Domain\QualityManagement\Healthcare\Performance\PerformanceItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Notes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Atum.Domain.Common.TOCElementSpecification" Collapsed="true">
+    <Position X="11" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Atum.Domain.Common.TableOfContents">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Atum.Domain.Common.DocumentElement">
+    <Position X="8.75" Y="1" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Atum.Domain.QualityManagement.Healthcare.Performance.ItemNote">
+    <Position X="12.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Domain\QualityManagement\Healthcare\Performance\ItemNote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atum.Domain.Common.DocumentElements">
+    <Position X="3.75" Y="1.75" Width="2" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="TableOfContents" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="Atum.Domain.QualityManagement.Healthcare.Performance.Visibility" Collapsed="true">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Domain\QualityManagement\Healthcare\Performance\StandardDocument.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

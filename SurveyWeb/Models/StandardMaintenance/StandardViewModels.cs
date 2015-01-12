@@ -86,10 +86,15 @@ namespace SurveyWeb.Models.StandardMaintenance
 
         public StandardElementViewModel(Standard model)
         {
-            this.StandardId = model.StandardId;
+            this.StandardId = model.Key;
             //this.Content = model.Content;
             this.EPIds = getStrings(model.PerformanceItems);
-            this.Observation = model.Observation;
+            //this.Observation = model.Observation;
+        }
+
+        private IEnumerable<string> getStrings(Atum.Domain.Common.DocumentElements documentElements)
+        {
+            throw new System.NotImplementedException();
         }
 
         private IEnumerable<string> getStrings(IEnumerable<PerformanceItem> enumerable)

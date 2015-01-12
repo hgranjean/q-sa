@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Atum.Domain.QualityManagement
+namespace Atum.Domain.QualityManagement.Auditing
 {
     /// <summary>
     /// An Observation may is a response to a Question
@@ -29,7 +29,7 @@ namespace Atum.Domain.QualityManagement
         {
             this.Person = person;
         }
-
+        public Guid FollowUpId { get; set; }
         public FollowUp FollowUp { get; set; }
         public List<string> EvidenceFileInfos { get; set; }
 

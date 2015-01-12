@@ -6,20 +6,17 @@ using System.Text;
 
 namespace Atum.Domain.QualityManagement.Healthcare.Performance
 {
-    public class PerformanceItem : TOCElement
+    public class PerformanceItem : DocumentElement
     {
-        private string itemKey;
-        private string itemTitle;
 
-        public PerformanceItem(string itemKey, string itemTitle)//:base(itemKey,itemTitle)
+        public PerformanceItem(string itemKey, string itemTitle):base(itemKey,itemTitle)
         {
-            // TODO: Complete member initialization
-            this.itemKey = itemKey;
-            this.itemTitle = itemTitle;
         }
 
+        public Guid PerformanceItemId { get; set; }
+
         public List<string> RelatedItemKeys { get; set; }
-        public List<string> Notes { get; set; }
+        public ItemNotes Notes { get; set; }
         
         public string Text { get; set; }
         public int EPId { get; set; }

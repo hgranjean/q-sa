@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Atum.Domain.Basis;
-using Atum.Domain.Security.Domain;
+using Atum.Domain.Common;
+//using Atum.Domain.Security.Domain;
 
 namespace Atum.Domain.SurveyManagement
 {
@@ -14,9 +15,12 @@ namespace Atum.Domain.SurveyManagement
         public string Title { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
-        public string SurveyId { get; set; }
-        public SurveyEntry Survey { get; set; }
-        public EventType EventTypeId { get; set; }
+        public string OwnerId { get; set; }
+        public Person Owner { get; set; }
+
+        //public string SurveyId { get; set; }
+        //public SurveyEntry Survey { get; set; }
+        //public EventType EventTypeId { get; set; }
 
         // public string UserId { get; set; }
         // public AspNetUser User { get; set; }

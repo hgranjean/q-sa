@@ -125,9 +125,9 @@
     <Compile Include="Domain\Common\Floor.cs" />
     <Compile Include="Domain\Common\Industry.cs" />
     <Compile Include="Domain\Common\TableOfContents.cs" />
-    <Compile Include="Domain\Common\TOCElement.cs" />
+    <Compile Include="Domain\Common\DocumentElement.cs" />
     <Compile Include="Domain\Common\Exceptions\TOCElementNotFoundException.cs" />
-    <Compile Include="Domain\Common\TOCElements.cs" />
+    <Compile Include="Domain\Common\DocumentElements.cs" />
     <Compile Include="Domain\Common\Specifications\TOCElementSpecification.cs" />
     <Compile Include="Domain\Common\USState.cs" />
     <Compile Include="Domain\Common\Address.cs">
@@ -169,6 +169,13 @@
     <Compile Include="Domain\Common\Pharmacy.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Domain\Scheduling\Activity.cs" />
+    <Compile Include="Domain\Scheduling\Event.cs" />
+    <Compile Include="Domain\Scheduling\Party.cs" />
+    <Compile Include="Domain\Scheduling\Resource.cs" />
+    <Compile Include="Domain\Scheduling\Schedule.cs" />
+    <Compile Include="Domain\Scheduling\Scheduler.cs" />
+    <Compile Include="Domain\Scheduling\TimeSlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Business\Service\" />

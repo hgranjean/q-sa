@@ -1,7 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Atum.Domain.QualityManagement.Healthcare.Performance;
+﻿using Atum.Database.Surveillance.Models;
 using Atum.Domain.Common;
+using Atum.Domain.QualityManagement.Healthcare.Performance;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Xml;
 
 namespace Atum.Domain.Test.StandardGuidelines
 {
@@ -49,26 +51,159 @@ namespace Atum.Domain.Test.StandardGuidelines
             StandardDocument standardDocument = new StandardDocument();
             string documentTitle = "Document Title";
             standardDocument.Title = documentTitle;
-            standardDocument.Chapters = new System.Collections.Generic.List<Chapter>();
+            //standardDocument.Chapters = new DocumentElements();
 
-            string chapterTitle = "Chapter Title";
-            string chapterKey = "Chapter Key";
-            Chapter chapter = standardDocument.AddChapter(chapterKey, chapterTitle);
+
+            //Add Chapters
+            AddChapters(standardDocument);
+            using (var ctx = new AtumSurveillanceContext())
+            {
+                //ctx.StandardDocuments.Add(standardDocument);
+                ctx.SaveChanges();
+            }
+
             
-            string standardTitle = "Standard Title";
-            string standardKey = "Standard Key";
+            //string standardTitle = "Standard Title";
+            //string standardKey = "Standard Key";
 
-            Standard standard = chapter.AddStandard(standardKey, standardTitle);
+            //Standard standard = chapter.AddStandard(standardKey, standardTitle);
 
 
             //standard.TableOfContents = TOC;
-            string itemKey = "Item Key";
-            string itemTitle = "Item Title";
-            PerformanceItem performanceItem = standard.AddPerformanceItem(itemKey,itemTitle);
-            
+            //string itemKey = "Item Key";
+            //string itemTitle = "Item Title";
+            //PerformanceItem performanceItem = standard.AddPerformanceItem(itemKey,itemTitle);
             
         }
 
-        
+        private void AddChapters(StandardDocument standardDocument)
+        {
+            //string[] chapterKeys = { "EC", "LS" };
+            string[] chapterKeys = { "EC"};
+            foreach (var item in chapterKeys)
+            {
+                Chapter chapter = LoadChapter(item.ToString(), standardDocument);
+            }
+        }
+
+        internal Chapter LoadChapter(string chapterId, StandardDocument standardDocument)
+        {
+            XmlDocument xmlDoc = LoadChapterDoc(chapterId);
+            string chapterTitlePath = "chapter/chaptertitle";
+            string chapterKey = (chapterId.Length > 0 ? chapterId : "EC");
+            string chapterTitle = xmlDoc.SelectSingleNode(chapterTitlePath).InnerText;
+            Chapter chapter = standardDocument.AddChapter(chapterKey, chapterTitle);
+            chapter.Title = chapterTitle;
+            //chapter.Standards = 
+                LoadElements(xmlDoc, chapter);
+
+            return chapter;
+        }
+
+        private XmlDocument LoadChapterDoc(string chapterId)
+        {
+            var chapterFileName  = @"C:\Atum Technology Group\Projects\AtumRules\Dev1.01\rulesdev\SurveyWeb\Store\JointCommissionStandards\";
+
+            if (chapterId.Length > 2)
+            {
+                chapterId = chapterId.Remove(2, chapterId.Length - 2);
+            }
+            
+            chapterFileName = Path.Combine(chapterFileName, "EC_out.xml".Replace("EC", chapterId));
+
+            XmlDocument xmlDoc = new XmlDocument();
+
+            xmlDoc.Load(chapterFileName);
+
+            return xmlDoc;
+        }
+        private static DocumentElements LoadElements(XmlDocument xmlDoc, Chapter chapter)
+        {
+            string elementsTitlePath = "chapter/titles[title]/*";
+            string catIdPath = "epid";
+            DocumentElements retVal = new DocumentElements();
+
+            XmlNodeList nodes = xmlDoc.SelectNodes(elementsTitlePath);
+
+            foreach (XmlNode node in nodes)
+            {
+                XmlAttribute att = node.Attributes[catIdPath];
+                string itemKey = att.InnerText;
+
+                Standard epCat = chapter.AddStandard(itemKey, node.InnerText);
+
+                epCat.Title = node.InnerText;
+                epCat.Key = itemKey;
+                epCat.PerformanceItems = LoadEPItems(xmlDoc, epCat);
+
+                //retVal.Add(epCat);
+            }
+
+            //return retVal;
+            return chapter.Standards;
+        }
+
+        private static DocumentElements LoadEPItems(XmlDocument xmlDoc, Standard standard)
+        {
+            DocumentElements retVal = new DocumentElements();
+
+            string itemsPath = "chapter/elements/element[@epid='standardId']".Replace("standardId", standard.Key);
+
+            string epIdPath = "id";
+
+            XmlNodeList nodes = xmlDoc.SelectNodes(itemsPath);
+
+            foreach (XmlNode node in nodes)
+            {
+                //PerformanceItem epItem = new PerformanceItem();
+                XmlAttribute att = node.Attributes[epIdPath];
+
+                PerformanceItem epItem = standard.AddPerformanceItem(att.InnerText, "");
+                epItem.Text = node.InnerText;
+                epItem.EPId = int.Parse(att.InnerText);
+
+                epItem.Notes = (ItemNotes)LoadNotes(xmlDoc, epItem, standard.Key);
+                retVal.Add(epItem);
+            }
+
+            return retVal;
+        }
+
+        private static PerformanceItem LoadEPItem(XmlDocument xmlDoc, string standardId, string epId)
+        {
+            string itemPath = "chapter/elements/element[@epid='standardId' and @id='epId']".Replace("standardId", standardId).Replace("epId", epId);
+            string epIdPath = "id";
+
+
+            XmlNode node = xmlDoc.SelectSingleNode(itemPath);
+
+            XmlAttribute att = node.Attributes[epIdPath];
+            PerformanceItem retVal = new PerformanceItem(att.InnerText, "");
+            retVal.Text = node.InnerText;
+            retVal.EPId = int.Parse(att.InnerText);
+            retVal.Notes = (ItemNotes)LoadNotes(xmlDoc, retVal, standardId);
+
+            return retVal;
+        }
+
+        private static ItemNotes LoadNotes(XmlDocument xmlDoc, PerformanceItem epItem, string standardId)
+        {
+            ItemNotes retVal = new ItemNotes();
+
+            string itemsPath = "chapter/notes/note[@epid='standardId' and @itemid='epItemId']".Replace("standardId", standardId).Replace("epItemId", epItem.EPId.ToString());
+
+            XmlNodeList nodes = xmlDoc.SelectNodes(itemsPath);
+
+            foreach (XmlNode node in nodes)
+            {
+                string note = node.InnerText;
+
+                retVal.Add(new ItemNote(note));
+            }
+
+            return retVal;
+        }
+
+
     }
 }

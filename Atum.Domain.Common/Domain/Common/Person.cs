@@ -10,9 +10,8 @@ namespace Atum.Domain.Common
 	/// Summary description for Person.
 	/// </summary>
 	[Table("Persons")]
-    public partial class Person
+    public partial class Person //: //DomainObject
 	{
-        [Key]
         public string Id { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }

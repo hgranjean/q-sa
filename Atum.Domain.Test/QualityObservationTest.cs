@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web;
+﻿using Atum.Domain.QualityManagement;
+using Atum.Domain.QualityManagement.Auditing;
 using Atum.Domain.SurveyManagement;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Atum.Domain.Test
 {
@@ -20,12 +20,12 @@ namespace Atum.Domain.Test
             */
 
             /*
-             * Every Observation will be part of a Survey or Surveillance and modeled as a Question within that Survey or (Surveillance)
-             * Every Observation/Survey Question Response will be associated with a Standard “Expression”.  
-             * Every Observation/Survey Question Response will be associated with a Person/User.  
+             * Every Observation will be part of a Template or Surveillance and modeled as a Question within that Template or (Surveillance)
+             * Every Observation/Template Question Response will be associated with a Standard “Expression”.  
+             * Every Observation/Template Question Response will be associated with a Person/User.  
             */
 
-            //Such observations will be modeled as sets of Questions within a Survey or (Surveillance)
+            //Such observations will be modeled as sets of Questions within a Template or (Surveillance)
             //Observation=>Question, Observation=>Expression, Observation=>Standard
             string userObservation = "Dust on surface";
             string violatedGuidelineDescriptorOrId = "EP-123";//or other descriptor
@@ -45,16 +45,16 @@ namespace Atum.Domain.Test
             //Is there a currently scheduled surveillance 
             SurveillanceSchedule survSched = new SurveillanceSchedule();
 
-            Atum.Domain.QualityManagement.Surveillance surveillance = new QualityManagement.Surveillance(new Survey());
+            Surveillance surveillance = new Surveillance(new Survey());
             
             
 
             //An observation is performed by a person 
 
             //The system prior to an Obsevation
-            //Survey or Surveillance
+            //Template or Surveillance
             
-            //Survey Questions
+            //Template Questions
 
 
 

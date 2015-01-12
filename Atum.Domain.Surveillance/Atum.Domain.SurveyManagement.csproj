@@ -41,12 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\EventUser.cs" />
-    <Compile Include="Domain\SurveyManagement\Audit.cs" />
-    <Compile Include="Domain\SurveyManagement\Event.cs" />
     <Compile Include="Domain\SurveyManagement\EventType.cs" />
     <Compile Include="Domain\SurveyManagement\ManagedSurvey.cs" />
     <Compile Include="Domain\SurveyManagement\ResponseEntry.cs" />
-    <Compile Include="Domain\SurveyManagement\SurveillanceSchedule.cs" />
     <Compile Include="Domain\SurveyManagement\Assessment.cs" />
     <Compile Include="Domain\SurveyManagement\QuestionGroups.cs" />
     <Compile Include="Domain\SurveyManagement\ResponseChoices.cs" />
@@ -64,6 +61,8 @@
     <Compile Include="Domain\SurveyManagement\SurveyAnalyzer.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyBasis.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyEntry.cs" />
+    <None Include="Domain\Diagram\Audits.cd" />
+    <None Include="Domain\Diagram\Surveys.cd" />
     <None Include="Domain\SurveyManagement\SurveyEvent.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyManager.cs" />
     <Compile Include="Domain\SurveyManagement\SurveyResponse.cs" />
