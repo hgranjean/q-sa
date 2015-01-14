@@ -117,7 +117,7 @@ namespace Rules.Engine.Tests
 
             var action1 = new SetValueAction();
             action1.Target = "Context.TextField";
-            action1.Value = "Queryable.Max(Context.EntityField, it => it.Field1)"; // " Context.EntityField.Min(t => t.Field1)";
+            action1.Value = "Queryable.Max(Context.EntityField, it => it.Field1)";
             
             var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
@@ -151,7 +151,7 @@ namespace Rules.Engine.Tests
 
             var action1 = new SetValueAction();
             action1.Target = "Context.ResultField";
-            action1.Value = "Queryable.Sum(Context.EntityField, it => it.Field2)"; // " Context.EntityField.Min(t => t.Field1)";
+            action1.Value = "Queryable.Sum(Context.EntityField, it => it.Field2)";
             
             var rs1 = new RuleSpec();
             rs1.Actions.Add(action1);
@@ -180,6 +180,8 @@ namespace Rules.Engine.Tests
             list.Add(new Entity1 { Field1 = "2" });
 
             Func<Entity1, string> func = t => t.Field1;
+
+            // Arrange/Act/Assert
 
             var first = list.AsQueryable().OrderBy(func).First();
 

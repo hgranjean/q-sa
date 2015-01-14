@@ -47,7 +47,7 @@ namespace Rules.Engine
 
                     AddLocals(context, externals);
 
-                    AddBuildInFunctions(externals);
+                    AddStaticFunctions(externals);
 
                     Expression unwindExpression;
                     
@@ -150,9 +150,18 @@ namespace Rules.Engine
             }
         }
 
-        private static void AddBuildInFunctions(Dictionary<string, object> externals)
+        private static readonly Dictionary<Type, ParameterExpression> StaticTypes = new
+            Dictionary<Type, ParameterExpression>()
+            {
+                {typeof (Queryable), QueryableFuncLibParam}
+            };
+
+        private static void AddStaticFunctions(Dictionary<string, object> externals)
         {
-            externals.Add(typeof(Queryable).Name, QueryableFuncLibParam);
+            foreach (var type in StaticTypes)
+            {
+                externals.Add(type.Key.Name, type.Value);    
+            }
         }
 
         private static void AddTemplates(CompileContext context, string functionName, IDictionary<string, object> externals)

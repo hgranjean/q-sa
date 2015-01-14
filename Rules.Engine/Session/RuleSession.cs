@@ -18,6 +18,7 @@ namespace Rules.Engine
         private bool _compiled = false;
         private readonly WorkingMemory _workingMemory;
         private readonly RuleApplicationInfo _ruleApplicationInfo;
+        private const string ExecutionResult = "ExecutionResult";
         
         public RuleSession(RuleApplicationSpec ruleApplicationSpec)
         {
@@ -64,8 +65,17 @@ namespace Rules.Engine
             var execResult = new ExecutionResult();
 
             _ruleApplicationInfo.Execute(_engine, _workingMemory, execResult);
-
+            
+            _workingMemory.Set(ExecutionResult, execResult);
+            
             return execResult;
+        }
+        public ExecutionResult LastExecutionResult
+        {
+            get
+            {
+                return (ExecutionResult)_workingMemory.Get(ExecutionResult);
+            }
         }
 
         private void Compile()

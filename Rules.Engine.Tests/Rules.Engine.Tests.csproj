@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CollectionActionsTests.cs" />
     <Compile Include="CollectionAggregateTests.cs" />
+    <Compile Include="WorkflowTests.cs" />
     <Compile Include="LambdaTests.cs" />
     <Compile Include="LoopTests.cs" />
     <Compile Include="RuleSessionTests.cs" />
