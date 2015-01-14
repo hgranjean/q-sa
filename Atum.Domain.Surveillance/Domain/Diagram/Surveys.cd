@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Atum.Domain.SurveyManagement.Survey">
+    <Position X="2" Y="3" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAIIEAAgAAAAAAAEAAABQEEAAEAAIACAAA=</HashCode>
+      <FileName>Domain\SurveyManagement\Survey.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FirstQuestion" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="QuestionGroups" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Atum.Domain.SurveyManagement.Question">
+    <Position X="8" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAIAAAAAAECAgAAACABIAAABAgAgCAEAAgA=</HashCode>
+      <FileName>Domain\SurveyManagement\Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atum.Domain.SurveyManagement.QuestionGroup">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAEAAAEAiAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\SurveyManagement\QuestionGroup.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Questions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

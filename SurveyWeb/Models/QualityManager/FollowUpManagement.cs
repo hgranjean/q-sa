@@ -25,8 +25,8 @@ namespace SurveyWeb.Models.QualityManager.FollowUpManagement
         [Display(Name = "Last Sent")]
         public DateTime LastSent { get; set; }
 
-        //Survey: March 2012
-        [Display(Name = "Survey")]
+        //Template: March 2012
+        [Display(Name = "Template")]
         public string SurveillanceId { get; set; }
 
         //Inspected: 03/20/2012  

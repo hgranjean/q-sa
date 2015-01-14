@@ -18,28 +18,28 @@ namespace SurveyWeb.Services
             this._repository = repository;
         }
 
-        public IEnumerable<EventUser> GetPastDueTasks(string userId)
+        public IEnumerable<Event> GetPastDueTasks(string userId)
         {
             return _repository.GetPastDueTasks(userId);
         }
 
 
-        public IEnumerable<EventUser> GetNextTasks(string userId)
+        public IEnumerable<Event> GetNextTasks(string userId)
         {
             return _repository.GetNextTasks(userId);
         }
 
-        internal IEnumerable<EventUser> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate)
+        internal IEnumerable<Event> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate)
         {
             return _repository.GetTasksForUser(userId, fromDate, toDate);
         }
 
-        internal IEnumerable<EventUser> GetFacilityTasksForUser(string userId)
+        internal IEnumerable<Event> GetFacilityTasksForUser(string userId)
         {
             return _repository.GetFacilityTasks(userId);
         }
 
-        internal EventUser GetTask(string id)
+        internal Event GetTask(string id)
         {
             return _repository.GetTask(id);
         }

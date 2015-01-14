@@ -1,8 +1,9 @@
 ﻿using Atum.Domain.Basis;
 using Atum.Domain.Common;
+using Atum.Domain.SurveyManagement;
 using System;
 
-namespace Atum.Domain.SurveyManagement
+namespace Atum.Domain.QualityManagement
 {
     [Serializable]
     public class SurveillanceSchedule : DomainObject

@@ -39,7 +39,7 @@ namespace SurveyWeb.Controllers
         /// Standard Content
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<KeyValuePair<string, TOCElement>> GetTOCs()
+        public IEnumerable<KeyValuePair<string, DocumentElement>> GetTOCs()
         {
             return _standardManagementService.GetTOCs();
         }

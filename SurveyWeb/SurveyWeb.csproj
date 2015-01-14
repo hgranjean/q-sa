@@ -305,6 +305,7 @@
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Models\ImpersonationUtils.cs" />
     <Compile Include="Models\QTrackerAdmin\SubscriptionManagement.cs" />
+    <Compile Include="Models\QualityAuditor\AuditViewModel.cs" />
     <Compile Include="Models\QualityAuditor\SurveillancePerformance.cs" />
     <Compile Include="Models\QualityManager\FollowUpManagement.cs" />
     <Compile Include="Models\QualityManager\ManagerUserModel.cs" />
@@ -315,7 +316,10 @@
     <Compile Include="Models\QualityManager\SurveillanceSchedulingModels.cs" />
     <Compile Include="Models\QualityManager\Trending.cs" />
     <Compile Include="Models\ViewMetaModels.cs" />
-    <Compile Include="Services\HtmlExtensions.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\StandardRepository.cs" />
+    <Compile Include="Repository\SurveyRepository1.cs" />
     <Compile Include="Services\IPersistenceServices.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -2178,7 +2182,6 @@
     <Content Include="Content\themes\united\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Scripts\AQS\completedobservations.js" />
-    <Content Include="Scripts\AQS\surveydelivery.js" />
     <Content Include="Scripts\AQS\surveydesign.js" />
     <Content Include="Scripts\getUserMedia.js" />
     <Content Include="Scripts\jquery.jeditable.js" />
@@ -2815,7 +2818,7 @@
     <Content Include="Views\QualityAuditor\Surveillances.cshtml" />
     <Content Include="Views\QualityAuditor\Observations.cshtml" />
     <Content Include="Views\QualityAuditor\FollowUps.cshtml" />
-    <Content Include="Views\Surveillance\_EditNotePartial.cshtml" />
+    <Content Include="Views\QualityManager\SurveillanceTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

@@ -1,4 +1,4 @@
-﻿using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+﻿using Atum.Domain.QualityManagement.Healthcare.Performance;
 using SurveyWeb.Models;
 using SurveyWeb.Models.StandardMaintenance;
 using SurveyWeb.Services;
@@ -17,7 +17,6 @@ namespace SurveyWeb.Controllers
             _learningService = learningService;
             _standardManagementService = standardsManagementService;
         }
-
 
         public ActionResult StandardTraining(int? id)
         {
@@ -39,7 +38,7 @@ namespace SurveyWeb.Controllers
         public ActionResult ObservationClassifier(string observationText)
         {
             //View will contain Classification and list of EP Choices
-            StandardElement model = null;
+            Standard model = null;
             
             if (!string.IsNullOrWhiteSpace(observationText))
             {
@@ -47,7 +46,7 @@ namespace SurveyWeb.Controllers
             }
             else
             {
-                model = new StandardElement { Observation = observationText };
+                //model = new Standard { Observation = observationText };
             }
 
             var viewModel = new StandardElementViewModel(model);

@@ -3,10 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Atum.Domain.Business;
 using Atum.Domain.Common;
+using System;
 
 namespace Atum.Domain.Security.Domain
 {
-    [Table("AspNetUsers")]
+ //   [Table("AspNetUsers")]
     public partial class AspNetUser
     {
         public AspNetUser()
@@ -18,7 +19,6 @@ namespace Atum.Domain.Security.Domain
             // this.Person = new Person();
         }
 
-        [Key]
         public string Id { get; set; }
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
@@ -28,6 +28,7 @@ namespace Atum.Domain.Security.Domain
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<Hospital> Hospitals { get; set; }
+
         public string PersonId { get; set; }
         public virtual Person Person { get; set; }
 

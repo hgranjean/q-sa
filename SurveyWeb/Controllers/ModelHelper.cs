@@ -24,7 +24,7 @@ namespace SurveyWeb.Controllers
 
                 foreach (var ve in eve.ValidationErrors)
                 {
-                    Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                    Debug.WriteLine("- CreatedBy: \"{0}\", Error: \"{1}\"",
                                     ve.PropertyName, ve.ErrorMessage);
 
                     accountController.ModelState.AddModelError("", ve.ErrorMessage);

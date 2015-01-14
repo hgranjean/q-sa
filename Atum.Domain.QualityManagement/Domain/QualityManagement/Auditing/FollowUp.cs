@@ -8,22 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atum.Domain.QualityManagement
+namespace Atum.Domain.QualityManagement.Auditing
 {
     /// <summary>
     /// 
     /// </summary>
-    public class FollowUp : DomainObject
+    public class FollowUp //: Event//DomainObject
     {
         public FollowUp()
         {
         }
+       
         public FollowUp(Observation observation, Person assignedTo)
         {
             this.Observation = observation;
             this.ResponsibleParty = assignedTo;
         }
 
+
+        public Guid Id { get; set; }
         public string Status { get; set; }
         public DateTime InitialDueDate { get; set; }
         public Question Question { get; set; }
@@ -33,6 +36,7 @@ namespace Atum.Domain.QualityManagement
         //Times Sent: 3        
         public int TimeSent { get; set; }
         public DateTime LastSent { get; set; }
+        //internal Audit Audit { get; set; }
         public string AuditId { get; set; }
         //public DateTime InspectionDate { get; set; }        
 
@@ -59,9 +63,6 @@ namespace Atum.Domain.QualityManagement
         //History
         public List<Event> History { get; set; }
    
-
-
-
 
     }
 }

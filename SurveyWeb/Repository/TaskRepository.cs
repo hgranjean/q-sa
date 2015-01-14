@@ -1,26 +1,24 @@
 ﻿using Atum.Database.Surveillance.Models;
-using Atum.Domain;
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
 using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
-using Repository.Data;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace SurveyWeb.Repository
 {
     public interface ITaskRepository
     {
-        IEnumerable<EventUser> GetPastDueTasks(string userId);
+        IEnumerable<Event> GetPastDueTasks(string userId);
 
-        IEnumerable<EventUser> GetNextTasks(string userId);
+        IEnumerable<Event> GetNextTasks(string userId);
 
-        IEnumerable<EventUser> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate);
+        IEnumerable<Event> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate);
 
-        IEnumerable<EventUser> GetFacilityTasks(string userId);
+        IEnumerable<Event> GetFacilityTasks(string userId);
 
-        EventUser GetTask(string id);
+        Event GetTask(string id);
 
         IEnumerable<Atum.Domain.Security.Domain.AspNetUser> GetUsersForTask(string taskId);
 
@@ -42,18 +40,21 @@ namespace SurveyWeb.Repository
             
             this._context = new AtumSurveillanceContext();
         }
-        public IEnumerable<EventUser> GetPastDueTasks(string userId)
+
+        public IEnumerable<Event> GetPastDueTasks(string userId)
         {
-            return _context.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start < DateTime.Now);
+            throw new NotImplementedException();
+            //return _context.EventUsers.Include(m => m.Event.Template).Where(m => m.UserId == userId && m.Event.Start < DateTime.Now);
         }
 
 
-        public IEnumerable<EventUser> GetNextTasks(string userId)
+        public IEnumerable<Event> GetNextTasks(string userId)
         {
-            return _context.EventUsers.Include(m => m.Event.Survey).Where(m => m.UserId == userId && m.Event.Start >= DateTime.Now);            
+            throw new NotImplementedException();
+            //return _context.EventUsers.Include(m => m.Event.Template).Where(m => m.UserId == userId && m.Event.Start >= DateTime.Now);            
         }
 
-        public IEnumerable<EventUser> GetFacilityTasks(string userId)
+        public IEnumerable<Event> GetFacilityTasks(string userId)
         {
             // Gets list of hospitals for the userId and returns list of users for the given hospitals
             var query =
@@ -62,28 +63,30 @@ namespace SurveyWeb.Repository
                 select b;
             
             // Gets the events for the distinct user ids
-            return
-                from a in query.Select(m => m.UserId).Distinct().AsQueryable()
-                join b in _context.EventUsers.Include(m => m.Event.Survey).Include(m => m.User).Include(m => m.User.Person) on a equals b.UserId
-                select b;
+            //return
+            //    from a in query.Select(m => m.UserId).Distinct().AsQueryable()
+            //    join b in _context.EventUsers.Include(m => m.Event.Template).Include(m => m.User).Include(m => m.User.Person) on a equals b.UserId
+            //    select b;
+            throw new NotImplementedException();
+
         }
 
 
-        public IEnumerable<EventUser> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate)
+        public IEnumerable<Event> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate)
         {
-            return _context.EventUsers.AsEnumerable();
+            return _context.Events.AsEnumerable();
         }
 
-        public EventUser GetTask(string id)
+        public Event GetTask(string id)
         {
-            return _context.EventUsers.FirstOrDefault(m => m.EventId == id);
+            return _context.Events.FirstOrDefault(m => m.Id== id);
         }
 
         public IEnumerable<AspNetUser> GetUsersForTask(string taskId)
         {
-            return from a in _context.EventUsers
-                   join b in _context.AspNetUsers on a.UserId equals b.Id
-                   where a.EventId == taskId
+            return from a in _context.Events
+                   join b in _context.AspNetUsers on a.Id equals b.Id
+                   where a.Id == taskId
                    select b;
         }
 
@@ -97,6 +100,7 @@ namespace SurveyWeb.Repository
         }
 
 
+        //TODO: Find References and Fix
         public void UpdateUsersForTask(string taskId, IEnumerable<string> currentUsers, IEnumerable<string> selectedUsers)
         {
             // Remove unselected items
@@ -106,12 +110,12 @@ namespace SurveyWeb.Repository
             {
                 if (selectedUsers.Count(userId => userId == item.Id) == 0)
                 {
-                    var toDelete = _context.EventUsers.FirstOrDefault(eventUser => eventUser.EventId == taskId && eventUser.UserId == item.Id);
+                    //var toDelete = _context.EventUsers.FirstOrDefault(eventUser => eventUser.EventId == taskId && eventUser.UserId == item.Id);
 
-                    if (toDelete != default(EventUser))
-                    {
-                        _context.EventUsers.Remove(toDelete);
-                    }
+                    //if (toDelete != default(EventUser))
+                    //{
+                    //    _context.EventUsers.Remove(toDelete);
+                    //}
                 }
             }
                         
@@ -120,7 +124,7 @@ namespace SurveyWeb.Repository
             {
                 if (currentUsers.Count(user => user == userId) == 0)
                 {
-                    _context.EventUsers.Add(new EventUser { EventId = taskId, UserId = userId });
+                    //_context.EventUsers.Add(new EventUser { EventId = taskId, UserId = userId });
                 }
             }
 

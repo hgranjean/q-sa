@@ -8,21 +8,16 @@ using System.Threading.Tasks;
 namespace Atum.Domain.Common
 {
     [Serializable]
-    public class Area : DomainObject   
+    public class Area //: DomainObject   
     {
 
         public Area(string name, int Id)
         {
-            this.Id = Id;
+            //this.Id = Id;
             this.Name = name;
         }
 
-
-
-        //protected override void SetId(long id)
-        //{
-        //    Id = id;
-        //}
+        public int Id { get; set; }
 
         public string Name { get; set; }
     }

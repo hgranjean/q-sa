@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 using Atum.Domain.Healthcare;
 using SurveyWeb.Models.QualityManager.SurveillanceManagement;
 using SurveyWeb.Models.QualityManager.SurveillanceTracking;
+using Atum.Domain.QualityManagement.Auditing;
 
 namespace SurveyWeb.Services
 {

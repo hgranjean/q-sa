@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Atum.Domain.SurveyManagement.Audit">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAECAAAAABAAAgAAAAAAAAAAAAAAgAAAAAAQAAgAAA=</HashCode>
+      <FileName>Domain\SurveyManagement\Audit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atum.Domain.SurveyManagement.Event">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAACAAAEAAAAAAAAAAAAAAAAAAAACAQAgAAAA=</HashCode>
+      <FileName>Domain\SurveyManagement\Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atum.Domain.SurveyManagement.SurveillanceSchedule">
+    <Position X="3.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAEAAAAAAAAAAAIAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Domain\SurveyManagement\SurveillanceSchedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atum.Domain.SurveyManagement.Task">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\SurveyManagement\Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Atum.Domain.SurveyManagement.EventType" Collapsed="true">
+    <Position X="10.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\SurveyManagement\EventType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

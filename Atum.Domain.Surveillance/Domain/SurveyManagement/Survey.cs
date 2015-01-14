@@ -193,5 +193,7 @@ namespace Atum.Domain.SurveyManagement
                 this.QuestionGroups = new QuestionGroups();
             }
         }
+
+        public Questions Questions { get; set; }
     }
 }

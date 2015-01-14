@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+﻿using Atum.Domain.QualityManagement.Healthcare.Performance;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
@@ -78,23 +77,29 @@ namespace SurveyWeb.Models.StandardMaintenance
         public string Content { get; set; }
         [Display(Name = "Element of Performance")]
         [Required]
-        public Dictionary<string, object> EPIds { get; set; }
+        public IEnumerable<string> EPIds { get; set; }
         public string Observation { get; set; }
 
         public StandardElementViewModel()
         {
         }
 
-        public StandardElementViewModel(StandardElement model)
+        public StandardElementViewModel(Standard model)
         {
-            this.StandardId = model.StandardId;
-            this.Content = model.Content;
+            this.StandardId = model.Key;
+            //this.Content = model.Content;
+            this.EPIds = getStrings(model.PerformanceItems);
+            //this.Observation = model.Observation;
+        }
 
-            if (model.EPIds != null)
-            {
-                this.EPIds = model.EPIds.ToDictionary(_ => _.Key, _ => (object) _.Value);
-            }
-            this.Observation = model.Observation;
+        private IEnumerable<string> getStrings(Atum.Domain.Common.DocumentElements documentElements)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private IEnumerable<string> getStrings(IEnumerable<PerformanceItem> enumerable)
+        {
+            throw new System.NotImplementedException();
         }
     }
     public class TOCElementViewModel

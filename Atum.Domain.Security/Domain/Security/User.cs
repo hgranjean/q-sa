@@ -8,7 +8,7 @@ namespace Atum.Domain.Security
 	/// Summary description for User.
 	/// </summary>
     [Serializable]
-    public class User : DomainObject
+    public class User //: DomainObject
 	{
         //private long _loginID;
         //private long _tableID;

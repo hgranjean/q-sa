@@ -2,6 +2,7 @@
 using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
 using Atum.Domain.QualityManagement;
+using Atum.Domain.QualityManagement.Auditing;
 using Atum.Domain.SurveyManagement;
 using SurveyWeb.Models.StandardMaintenance;
 using System;
@@ -16,11 +17,11 @@ namespace SurveyWeb.Models
     public class SurveysViewModel
     {
         public Surveys Surveys { get; set; }
-        public Dictionary<int, List<Tuple<EventUser,Survey>>> SurveysByDate { get; internal set; }
+        public Dictionary<int, List<Tuple<Event,Survey>>> SurveysByDate { get; internal set; }
 
-        internal List<Tuple<EventUser,Survey>> GetOrAddSurveysByDate(int groupIndex)
+        internal List<Tuple<Event, Survey>> GetOrAddSurveysByDate(int groupIndex)
         {
-            var eventSurveys = new List<Tuple<EventUser,Survey>>();
+            var eventSurveys = new List<Tuple<Event,Survey>>();
             if (!SurveysByDate.ContainsKey(groupIndex))
             {
                 SurveysByDate.Add(groupIndex, eventSurveys);
@@ -146,7 +147,7 @@ namespace SurveyWeb.Models
         public IEnumerable<Department> Departments { get; set; }
 
         [Required]
-        [Display(Name = "Survey Type")]
+        [Display(Name = "Template Type")]
         public int SurveyTypeId { get; set; }
 
         [XmlIgnore]
@@ -215,7 +216,7 @@ namespace SurveyWeb.Models
         }
     }
 
-    //TODO: Move this to Survey Models?
+    //TODO: Move this to Template Models?
     /// <summary>
     /// 
     /// </summary>
@@ -288,11 +289,11 @@ namespace SurveyWeb.Models
                 
         public QuestionType QuestionType { get { return this.Question.QuestionType; } set { this.Question.QuestionType = value; } }
 
-        public string TOCReference { get { return this.Question.TOCReference; } set { this.Question.TOCReference = value; } }
+        //public string TOCReference { get { return this.Question.TOCReference; } set { this.Question.TOCReference = value; } }
 
         public List<ResponseChoice> Choices { get; set; }
 
-        public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs { get; set; }
+        public IEnumerable<KeyValuePair<string, DocumentElement>> AvailableTOCs { get; set; }
 
         public int SurveyId { get; set; }
     }
@@ -316,8 +317,8 @@ namespace SurveyWeb.Models
         [Display(Name = "Last Sent")]
         public DateTime LastSent { get; set; }
 
-        //Survey: March 2012
-        [Display(Name = "Survey")]
+        //Template: March 2012
+        [Display(Name = "Template")]
         public string SurveillanceId { get; set; }
 
         //Inspected: 03/20/2012  

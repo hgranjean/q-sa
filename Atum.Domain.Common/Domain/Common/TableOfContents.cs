@@ -5,15 +5,18 @@ namespace Atum.Domain.Common
     using System.Collections.Generic;
 
 
-    [Serializable]public class TableOfContents
+    [Serializable]
+    public class TableOfContents
     {
-        Dictionary<string, TOCElement> elementsByTitle;// = new Dictionary<string, TOCElement>();    
 
-        public TOCElements TOCElements { get; set; }
+        Dictionary<string, DocumentElement> elementsByTitle;// = new Dictionary<string, TOCElement>();    
+        Dictionary<string, DocumentElement> elementsByKey;// = new Dictionary<string, TOCElement>();    
 
-        public TOCElement GetElementByTitle(string title)
+        public List<DocumentElement> TOCElements { get; set; }
+
+        public DocumentElement GetElementByTitle(string title)
         {
-            TOCElement retVal = null;
+            DocumentElement retVal = null;
             try
             {
                 retVal = elementsByTitle[title];
@@ -27,31 +30,53 @@ namespace Atum.Domain.Common
             return retVal;
         }
 
-
-        
-        public TOCElement AddElement(string elementTitle)
+        public DocumentElement GetElementByKey(string key)
         {
-            TOCElement tocElement = new TOCElement(elementTitle);
-            if (TOCElements==null)
+            DocumentElement retVal = null;
+            try
             {
-                TOCElements = new TOCElements();
+                retVal = elementsByKey[key];
             }
-            ISpecification TOCElementSpecification = new TOCElementSpecification();
-            if (TOCElementSpecification.IsStatisfiedBy(tocElement))
+            catch (Exception)
             {
+
+                //throw;
+                throw new Atum.Domain.Common.TOCElementNotFoundException();
+            }
+            return retVal;
+        
+        }
+
+        public DocumentElement AddElement(DocumentElement tocElement)
+        {
+            if (TOCElements == null)
+            {
+                TOCElements = new DocumentElements();
+            }
+            //ISpecification TOCElementSpecification = new TOCElementSpecification();
+            //if (TOCElementSpecification.IsStatisfiedBy(tocElement))
+            //{
                 TOCElements.Add(tocElement);
                 this.FindersAdd(tocElement);
-                
-            }
+
+            //}
             return tocElement;
         }
 
-        private void FindersAdd(TOCElement tocElement)
+        //public DocumentElement AddElement(string elementKey, string elementTitle)
+        //{
+        //    DocumentElement tocElement = new DocumentElement(elementKey, elementTitle);
+        //    return AddElement(tocElement);
+
+        //}
+
+        private void FindersAdd(DocumentElement tocElement)
         {
             //ElementByTitle
             if (elementsByTitle==null)
             {
-                elementsByTitle = new Dictionary<string, TOCElement>();
+                elementsByTitle = new Dictionary<string, DocumentElement>();
+                elementsByKey = new Dictionary<string, DocumentElement>();
             }
             
             if (!elementsByTitle.ContainsKey(tocElement.Title))
@@ -59,7 +84,12 @@ namespace Atum.Domain.Common
                 elementsByTitle.Add(tocElement.Title,tocElement);
             };
 
+            if (!elementsByKey.ContainsKey(tocElement.Title))
+            {
+                elementsByKey.Add(tocElement.Key, tocElement);
+            };
         }
+
     } 
   
 }

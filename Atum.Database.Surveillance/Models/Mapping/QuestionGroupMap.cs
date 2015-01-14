@@ -24,7 +24,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
 
             //// Relationships
             //  this.HasRequired(q => q.SurveyTitle);
-            //this.HasRequired(q => q.Survey).HasForeignKey(t => t.SurveyTitle);
+            //this.HasRequired(q => q.Template).HasForeignKey(t => t.SurveyTitle);
 
 
         }

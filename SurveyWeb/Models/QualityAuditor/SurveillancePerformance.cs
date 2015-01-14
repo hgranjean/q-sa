@@ -20,4 +20,11 @@ namespace SurveyWeb.Models.QualityAuditor.SurveillancePerformance
         
     }
 
+    public class FollowUpsViewModel
+    {
+        public IEnumerable<FollowUpViewModel> FollowUps { get; set; }
+        
+    }
+
+
 }

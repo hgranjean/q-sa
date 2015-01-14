@@ -16,7 +16,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(128);
 
-            /*this.Property(t => t.Discriminator)
+            /*this.CreatedBy(t => t.Discriminator)
                 .IsRequired()
                 .HasMaxLength(128);*/
             
@@ -28,7 +28,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.Property(t => t.UserName).HasColumnName("UserName");
             this.Property(t => t.PasswordHash).HasColumnName("PasswordHash");
             this.Property(t => t.SecurityStamp).HasColumnName("SecurityStamp");
-            /*this.Property(t => t.Discriminator).HasColumnName("Discriminator");*/
+            /*this.CreatedBy(t => t.Discriminator).HasColumnName("Discriminator");*/
             this.Property(t => t.PersonId).HasColumnName("PersonId");
 
             this.Property(t => t.IsConfirmed).HasColumnName("IsConfirmed");

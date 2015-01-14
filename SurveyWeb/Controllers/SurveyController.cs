@@ -9,8 +9,8 @@ using System.Web.Mvc;
 namespace SurveyWeb.Controllers
 {
     /// <summary>
-    /// Survey Management
-    /// Survey Template Definitions etc...
+    /// Template Management
+    /// Template Template Definitions etc...
     /// </summary>
     public class SurveyController : Controller
     {        
@@ -32,7 +32,7 @@ namespace SurveyWeb.Controllers
         }
 
         //
-        // GET: /Survey/
+        // GET: /Template/
         public ActionResult Index()
         {
             return View();
@@ -57,7 +57,7 @@ namespace SurveyWeb.Controllers
         }
 
         /// <summary>
-        /// Show New Survey Screen
+        /// Show New Template Screen
         /// </summary>
         /// <param name="survey"></param>
         /// <returns></returns>
@@ -73,7 +73,7 @@ namespace SurveyWeb.Controllers
         }
         
         /// <summary>
-        /// Show New Survey Screen
+        /// Show New Template Screen
         /// </summary>
         /// <param name="survey"></param>
         /// <returns></returns>
@@ -184,7 +184,7 @@ namespace SurveyWeb.Controllers
             return View(viewModel);
         }
         /// <summary>
-        /// Delete a Question Group from a Survey 
+        /// Delete a Question Group from a Template 
         /// </summary>
         /// <param name="viewModel"></param>
         /// <returns></returns>
@@ -236,14 +236,14 @@ namespace SurveyWeb.Controllers
         [Obsolete("Form is AJAX-fied now")]
         public ActionResult Save(SurveyViewModel viewModel)
         {
-            /*if (viewModel.Survey.Guid == Guid.Empty)
+            /*if (viewModel.Template.Guid == Guid.Empty)
             {
-                viewModel.Survey.Guid = Guid.NewGuid();
+                viewModel.Template.Guid = Guid.NewGuid();
 
                 var surveyEntry = new SurveyEntry
                 {
-                    Id = viewModel.Survey.Guid.ToString("d"),
-                    Title = viewModel.Survey.Title
+                    Id = viewModel.Template.Guid.ToString("d"),
+                    Title = viewModel.Template.Title
                 };
                 
                 surveyEntry = _surveyService.AddSurvey(surveyEntry);
@@ -261,8 +261,8 @@ namespace SurveyWeb.Controllers
                 _persistenceService.SaveSurvey(viewModel.Survey);            
             }
             /*var questionGroups = viewModel.QuestionGroupsViewModel.ConvertAll(m => m.QuestionGroup);
-            viewModel.Survey.QuestionGroups = new QuestionGroups();
-            questionGroups.ForEach(m => viewModel.Survey.QuestionGroups.AddOrUpdate(m.Number, m));*/
+            viewModel.Template.QuestionGroups = new QuestionGroups();
+            questionGroups.ForEach(m => viewModel.Template.QuestionGroups.AddOrUpdate(m.Number, m));*/
 
             return View("SurveyDesign", viewModel);
         }
@@ -285,7 +285,7 @@ namespace SurveyWeb.Controllers
 
         [HttpPost]
         /// <summary>
-        /// Add a Question to a Survey
+        /// Add a Question to a Template
         /// </summary>
         /// <param name="surveyId"></param>
         /// <param name="questionGroupId"></param>
@@ -353,7 +353,7 @@ namespace SurveyWeb.Controllers
             var survey = _persistenceService.GetSurvey(viewModel.SurveyId);
 
             survey.QuestionGroups[viewModel.QuestionGroupNumber].Questions.First(m => m.Number == viewModel.Number).Text = viewModel.Text;
-            survey.QuestionGroups[viewModel.QuestionGroupNumber].Questions.First(m => m.Number == viewModel.Number).TOCReference = viewModel.TOCReference;
+            //survey.QuestionGroups[viewModel.QuestionGroupNumber].Questions.First(m => m.Number == viewModel.Number).TOCReference = viewModel.TOCReference;
             survey.QuestionGroups[viewModel.QuestionGroupNumber].Questions.First(m => m.Number == viewModel.Number).QuestionType = viewModel.QuestionType;
 
             _persistenceService.SaveSurvey(survey);
@@ -366,7 +366,7 @@ namespace SurveyWeb.Controllers
 
         [HttpPost]
         /// <summary>
-        /// Add a Question to a Survey
+        /// Add a Question to a Template
         /// </summary>
         /// <param name="surveyId"></param>
         /// <param name="questionGroupId"></param>

@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Atum.Domain.QualityManagement.Auditing;
 
 namespace Atum.Database.Surveillance.Models.Mapping
 {
@@ -27,7 +28,7 @@ namespace Atum.Database.Surveillance.Models.Mapping
             // Table & Column Mappings
             this.ToTable("Audits");
             this.Property(t => t.Id).HasColumnName("Id");
-            //this.Property(t => t.SubcriberId).HasColumnName("Subscriber_Id");
+            //this.CreatedBy(t => t.SubcriberId).HasColumnName("Subscriber_Id");
             this.Property(t => t.Score).HasColumnName("Score");
             this.Property(t => t.DateCompleted).HasColumnName("DateCompleted");
             this.Property(t => t.DateStarted).HasColumnName("DateStarted");

@@ -40,24 +40,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\QualityManagement\Healthcare\Area.cs" />
+    <Compile Include="Domain\QualityManagement\Auditing\Audit.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Category.cs" />
-    <Compile Include="Domain\QualityManagement\FollowUp.cs" />
+    <Compile Include="Domain\QualityManagement\Auditing\FollowUp.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\InternalGuideline\GuidelineElement.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\InternalGuideline\QualityGuideline.cs" />
-    <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\Chapter.cs" />
-    <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\ElementOfPerformance.cs" />
-    <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\Standard.cs" />
-    <Compile Include="Domain\QualityManagement\Healthcare\JointCommission\StandardElement.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\Chapter.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Document.cs" />
-    <Compile Include="Domain\QualityManagement\Healthcare\Performance\Item.cs" />
-    <Compile Include="Domain\QualityManagement\Healthcare\Performance\Guideline.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\ItemNote.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\ItemNotes.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\PerformanceItem.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\StandardDocument.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Element.cs" />
-    <Compile Include="Domain\QualityManagement\Observation.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\Standard.cs" />
+    <Compile Include="Domain\QualityManagement\Auditing\Observation.cs" />
     <Compile Include="Domain\QualityManagement\QualityManager.cs" />
+    <Compile Include="Domain\QualityManagement\SurveillanceSchedule.cs" />
     <Compile Include="Domain\QualityManagement\SurveillanceTask.cs" />
     <Compile Include="Domain\QualityManagement\Surveyor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\QualityManagement\Surveillance.cs" />
+    <Compile Include="Domain\QualityManagement\Auditing\Surveillance.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
@@ -73,7 +75,10 @@
       <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Domain\QualityManagement\Healthcare\Performance\StandardDocuments.cd" />
+    <None Include="Domain\Diagram\Surveillances.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

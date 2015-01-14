@@ -17,7 +17,7 @@ namespace Atum.Domain.SurveyManagement
         {
             this.Text = questionText;
             this.QuestionType = qType;
-            this.ReferenceElementId = referenceElementId;
+            this.PerformanceItemId = referenceElementId;
             //TODO: Resolve null group
             if (qGroup != null)
             {
@@ -27,32 +27,27 @@ namespace Atum.Domain.SurveyManagement
             }
         }
 
-       
-        public string Text { get; set; }
-        public int Number { get; set; }
+
         public int Rank { get; set; }
-        public string ReferenceElementId { get; set; }
-        public QuestionGroup QuestionGroup { get; set; }
-        public int GroupNumber { get; set; }
+
+        public string Text { get; set; }
+        
+        public int Number { get; set; }
+        
         public string Label { get; set; }
+        
+        public int GroupNumber { get; set; }
+        
         public QuestionType QuestionType { get; set; }
+    
         public ResponseChoices ResponseChoices { get; set; }
         
-        public TOCElement BasisReference { get; set; }
+        public DocumentElement PerformanceItem { get; set; }
+        public string PerformanceItemId { get; set; }
 
-        [XmlIgnore]
-        public string TOCReference {
-            get
-            {
-                if (BasisReference == null)
-                    return null;
-                return BasisReference.Title;
-            } set
-            {
-                if (BasisReference == null)
-                    BasisReference = new TOCElement(value);
-            }
-        }
+        public QuestionGroup QuestionGroup { get; set; }
+
+
 
 
         public ResponseChoice AddChoice(string choiceText)

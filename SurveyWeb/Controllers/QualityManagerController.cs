@@ -64,6 +64,13 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
+        public ActionResult SurveillanceTemplate()
+        {
+            return View();
+        
+        }
+
+
         /*Maintain Performance Guidelines and Standards*/
         /// <summary>
         /// View list of Performance Guidelines and Standards

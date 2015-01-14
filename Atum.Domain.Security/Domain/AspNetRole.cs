@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Atum.Domain.Security.Domain
 {
-    [Table("AspNetRoles")]
+    //[Table("AspNetRoles")]
     public partial class AspNetRole
     {
         public AspNetRole()
@@ -12,7 +12,7 @@ namespace Atum.Domain.Security.Domain
             this.AspNetUsers = new List<AspNetUser>();
         }
 
-        [Key]
+        //[Key]
         public string Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }

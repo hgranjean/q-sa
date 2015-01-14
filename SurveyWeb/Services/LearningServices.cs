@@ -1,6 +1,7 @@
-﻿using Atum.Domain.NLP;
+﻿using Atum.Domain.Common;
+using Atum.Domain.NLP;
 using Atum.Domain.NLP.NaiveBayes;
-using Atum.Domain.QualityManagement.Healthcare.JointCommission;
+using Atum.Domain.QualityManagement.Healthcare.Performance;
 using Atum.Utility.XML;
 using SurveyWeb.Mappers;
 using SurveyWeb.Models;
@@ -41,17 +42,17 @@ namespace SurveyWeb.Services
             return retVal;  
         }        
 
-        internal StandardElement Classify(string observation)
+        internal Standard Classify(string observation)
         {        
             string observationClass = GetClassifier().Classify(observation);
 
             var standard = GetStandardChapter(observationClass)
                 .GetPerformanceCategory(observationClass);
 
-            var model = new StandardElement();
-            model.StandardId = observationClass;
-            model.Content = standard.Title;
-            model.EPIds = LoadEPIds(standard.Items);
+            var model = new Standard();
+            model.Key = observationClass;
+            //model.Content = standard.Title;
+            //model.EPIds = LoadEPIds(standard.Elements);
             
             return model;
         }
@@ -61,9 +62,16 @@ namespace SurveyWeb.Services
             throw new NotImplementedException();
         }
     
-        private static IEnumerable<KeyValuePair<string, string>> LoadEPIds(List<ElementOfPerformance> epIds)
-        {   
-            return epIds.ConvertAll(m => new KeyValuePair<string, string>(string.Format("EP {0}", m.EPId), m.Text));
+        private static IEnumerable<string> LoadEPIds(List<PerformanceItem> epIds)
+        {
+            List<string> eps = new List<string>();
+            IEnumerable<string> retVal = eps;
+            
+            // var standard = GetStandardChapter(observationClass).GetPerformanceCategory(observationClass);
+
+            // var epIds = standard.Items;
+
+            return epIds.ConvertAll(m => string.Format("EP {0}", m.EPId));
         }
 
         //TODO Load multiple chapters
@@ -134,8 +142,8 @@ namespace SurveyWeb.Services
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine(standard.Title);
-
-            foreach (var item in standard.Items)
+            DocumentElements pItems = standard.PerformanceItems;
+            foreach (PerformanceItem item in pItems)
             {
                 sb.AppendLine(item.Text);
                 foreach (var noteItem in item.Notes)

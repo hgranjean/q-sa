@@ -12,7 +12,7 @@ namespace SurveyWeb.Models
         public string Name { get; set; }
         public Survey Survey { get; set; }
 
-        [Display(Name = "Survey Type")]
+        [Display(Name = "Template Type")]
         public SurveyType SurveyType
         {
             get { return Survey.SurveyType; }
@@ -79,17 +79,17 @@ namespace SurveyWeb.Models
         public QuestionGroupViewModel()
         {
             this.QuestionGroup = new QuestionGroup();
-            this.AvailableTOCs = new List<KeyValuePair<string, TOCElement>>();
+            this.AvailableTOCs = new List<KeyValuePair<string, DocumentElement>>();
         }
 
         public QuestionGroupViewModel(QuestionGroup questionGroup)
         {
             this.QuestionGroup = questionGroup;
             this.Number = questionGroup.Number;
-            this.AvailableTOCs = new List<KeyValuePair<string, TOCElement>>();
+            this.AvailableTOCs = new List<KeyValuePair<string, DocumentElement>>();
         }
 
-        public IEnumerable<KeyValuePair<string, TOCElement>> AvailableTOCs
+        public IEnumerable<KeyValuePair<string, DocumentElement>> AvailableTOCs
         {
             get; set;
         }
