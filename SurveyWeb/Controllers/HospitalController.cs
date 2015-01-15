@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using Atum.Database.Surveillance.Models;
 using Atum.Domain.Business;
+using Atum.Domain.Security.Domain;
 using Atum.Utility;
 using Microsoft.AspNet.Identity;
 using SurveyWeb.Models;
@@ -101,10 +102,11 @@ namespace MvcApplication1.Controllers
             var listOnlyThisUserHospitals = ListOnlyThisUserHospitals();
             
             var model = GetUserHospitals(listOnlyThisUserHospitals);
-                        
-            ViewBag.Users = from a in _accountService.GetUsers().ToList()
-                            join b in model.ToList() on a.Id equals b.UserId
-                            select a;
+
+            model = from a in _accountService.GetUsers().ToList()
+                join b in model.ToList() on a.Id equals b.UserId
+                let userName = a.UserName
+                select new UserHospitalViewModel() {UserId = a.Id, UserName = userName};
 
             ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
             ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");

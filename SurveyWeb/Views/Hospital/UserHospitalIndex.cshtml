@@ -1,5 +1,6 @@
 ﻿@using Atum.Database.Surveillance.Models
 @using Atum.Domain.Security.Domain
+@using SurveyWeb.Models
 @model IEnumerable<SurveyWeb.Models.UserHospitalViewModel>
 
 @{
@@ -12,24 +13,36 @@
 
 <fieldset>
     <legend>Users</legend>
-    <div style="display: table">
+    <div style="display: table; width: 100%"">
         <div style="display: table-row">
-            <div style="display: table-cell; width: 100px">Username</div>
-            <div style="display: table-cell; width: 100px"></div>
-            <div style="display: table-cell; width: 100px"></div>
+            <div style="display: table-cell;">Username</div>
+            <div style="display: table-cell;"></div>
         </div>
 
-        @foreach (AspNetUser item in ViewBag.Users)
+        @foreach (UserHospitalViewModel item in Model)
         {
             <div style="display: table-row">
-                <div style="display: table-cell">@Html.Label(item.UserName)</div>
-                <div style="display: table-cell">@Html.ActionLink("Edit", "EditUserHospital", new { userId=item.Id })</div>
-                <div style="display: table-cell">@Html.ActionLink("Delete", "DeleteUser", "Account", new { userId=item.Id }, null)</div>
-                <div style="display: table-cell">                
-                    @if (ViewBag.ShowAdminContent)
-                    {
-                        @Html.ActionLink("Emulate", "EmulateUser", "Account", new { userId = item.Id }, null)
-                    }
+                <div style="display: table-cell">@item.UserName</div>
+                <div style="display: table-cell">
+                    
+                    <div class="btn-group col-md-7">
+                        <button type="button" class="btn btn-default" data-original-title="" title="" onclick="location.href='@Url.Action("Edit", "EditUserHospital", new { userId=item.UserId })'">Edit</button>
+                        <button type="button" class="btn btn-default active dropdown-toggle" data-toggle="dropdown" data-original-title="" title="">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Edit", "EditUserHospital", new { userId = item.UserId })</li>
+                            @if (ViewBag.ShowAdminContent)
+                            {
+                                <li>
+                                    @Html.ActionLink("Emulate", "EmulateUser", "Account", new { userId = item.UserId }, null)
+                                </li>
+                            }
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Delete", "DeleteUser", "Account", new { userId = item.UserId }, null)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         }
