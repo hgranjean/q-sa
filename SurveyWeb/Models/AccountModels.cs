@@ -106,11 +106,11 @@ namespace SurveyWeb.Models
 
         [Required]
         [Display(Name = "Last Name")]
-        public string LastName { get { return this.Person.LastName; } set { this.Person.LastName = value; } }
+        public string LastName { get { return this.Person.LastName ?? String.Empty; } set { this.Person.LastName = value; } }
         
         [Required]
         [Display(Name = "First Name")]
-        public string FirstName { get { return this.Person.FirstName; } set { this.Person.FirstName = value; } }
+        public string FirstName { get { return this.Person.FirstName ?? String.Empty; } set { this.Person.FirstName = value; } }
 
         [Display(Name = "Middle Name")]
         public string MiddleName { get { return this.Person.MiddleName; } set { this.Person.MiddleName = value; } }
@@ -129,11 +129,11 @@ namespace SurveyWeb.Models
         
         [Required]
         [Display(Name = "Job Title")]
-        public string JobTitle { get { return this.Person.JobTitle; } set { this.Person.JobTitle = value; } }
+        public string JobTitle { get { return this.Person.JobTitle ?? String.Empty; } set { this.Person.JobTitle = value; } }
         
         [Required]
         [Display(Name = "Industry")]
-        public string Industry { get { return this.Person.Hospital.Industry; } set { this.Person.Hospital.Industry = value; } }
+        public string Industry { get { return this.Person.Hospital != null ? this.Person.Hospital.Industry : String.Empty; } set { this.Person.Hospital.Industry = value; } }
         
         public Address Address { get { return this.Person.Address; } set { this.Person.Address = value; } }
         
@@ -144,7 +144,7 @@ namespace SurveyWeb.Models
         
         [Required]
         [DataType(DataType.Text)]
-        public string CompanyName { get { return this.Person.Hospital.Name; } set { this.Person.Hospital.Name = value; } }
+        public string CompanyName { get { return this.Person.Hospital != null ? this.Person.Hospital.Name ?? String.Empty : String.Empty; } set { this.Person.Hospital.Name = value; } }
         
         public Hospital Company { get { return this.Person.Hospital; } set { this.Person.Hospital = value; } }
 

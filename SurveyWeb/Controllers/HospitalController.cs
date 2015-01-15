@@ -1,5 +1,8 @@
-﻿using Atum.Database.Surveillance.Models;
+﻿using System.Configuration;
+using System.Xml.Linq;
+using Atum.Database.Surveillance.Models;
 using Atum.Domain.Business;
+using Atum.Utility;
 using Microsoft.AspNet.Identity;
 using SurveyWeb.Models;
 using SurveyWeb.Services;
@@ -13,10 +16,12 @@ namespace MvcApplication1.Controllers
     [Authorize]
     public class HospitalController : Controller
     {
+        private const int InviteeMaxCount = 6;
         private AtumSurveillanceContext _dbContext = null;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SurveillanceManagementServices _surveillanceService;
         private readonly AccountService _accountService;
+        private readonly MailService _mailService;
 
         public HospitalController(UserManager<ApplicationUser> userManager, SurveillanceManagementServices surveillanceService, AccountService accountService)
         {
@@ -140,10 +145,12 @@ namespace MvcApplication1.Controllers
             }
 
             var userHospitalMap = new Dictionary<string, List<Hospital>>();
-            var hospitals = from a in _accountService.GetUserHospitals().ToList()
-                            join b in availableHospitals on a.HospitalId equals b.Id
-                            select a;            
-
+            var hospitals = from c in _accountService.GetUsers()
+                join a in _accountService.GetUserHospitals() on c.Id equals a.UserId into uh
+                from userHospital in uh.DefaultIfEmpty()
+                join b in availableHospitals on (userHospital != null ? userHospital.HospitalId : string.Empty) equals b.Id into hospital
+                select new {UserId = c.Id, Hospital = hospital};
+            
             foreach (var userHospital in hospitals.ToList())
             {
                 if (!userHospitalMap.ContainsKey(userHospital.UserId))
@@ -151,7 +158,7 @@ namespace MvcApplication1.Controllers
                     userHospitalMap.Add(userHospital.UserId, new List<Hospital>());
                 }
 
-                userHospitalMap[userHospital.UserId].Add(userHospital.Hospital);
+                userHospitalMap[userHospital.UserId].AddRange(userHospital.Hospital);
             }
             
             foreach (var userId in userHospitalMap.Keys)
@@ -292,6 +299,76 @@ namespace MvcApplication1.Controllers
             _dbContext.SaveChanges();
 
             return RedirectToAction("UserHospitalIndex", "Hospital");
-        }       
+        }
+
+        // GET: /Hospital/CreateUsers
+        public ActionResult CreateUsers()
+        {
+            var invitees = new List<InvitePersonViewModel>();
+            var userName = User.Identity.GetUserName();
+            var person = _accountService.GetUsers().FirstOrDefault(m => m.UserName == userName).Person;
+            if (person != null)
+            {
+                for (int i = 0; i < InviteeMaxCount; i++)
+                {
+                    invitees.Add(new InvitePersonViewModel { Domain = EmailHelper.GetDomainNameFromEmail(person.Email) });
+                }
+            }
+
+            return View(invitees);
+        }
+
+        // POST: /Hospital/CreateUsers
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateUsers(IEnumerable<InvitePersonViewModel> invitees)
+        {
+            // Create an email with reset instructions
+            string domainName = EmailHelper.GetDomainNameFromHost(Request.Url.Host);
+            string baseUrl = String.Concat(domainName, ":", Request.Url.Port);
+            var subject = "Welcome to " + ConfigurationManager.AppSettings["WhiteLabel"];
+            var from = "donotreply@" + domainName;
+
+            var template = GetEmailTemplate(EmailTemplate.Invitation);
+            string body = template.ToString();
+
+            string userName = User.Identity.GetUserId();
+            var person = _accountService.GetUsers().FirstOrDefault(m => m.Id == userName).Person;
+
+            var appPath = Request.ApplicationPath;
+
+            var token = EmailHelper.GenerateToken(userName, 14 * 24, new string[] { "HospitalId=" + person.HospitalId });
+            body = body.Replace("{{REGISTRATION_TOKEN}}", token);
+            body = body.Replace("{{APP_PATH}}", appPath);
+
+            try
+            {
+                foreach (var item in invitees)
+                {
+                    // Verify that email was filled in, otherwise skip
+                    if (string.IsNullOrWhiteSpace(item.Email))
+                    {
+                        continue;
+                    }
+
+                    // Send the email
+                    string to = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
+                    _mailService.SendEmail(from, to, subject, body, true, baseUrl);
+                }
+
+                ViewBag.Message = "Invited People Successfully.";
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Issue sending email: " + e.Message);
+            }
+
+            return View(invitees);
+        }
+
+        public XDocument GetEmailTemplate(EmailTemplate template)
+        {
+            return _mailService.GetEmailTemplate(template);
+        }
     }
 }

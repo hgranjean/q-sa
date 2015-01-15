@@ -3,9 +3,9 @@
     ViewBag.Title = "People";
 }
 
-<h2>Invite People</h2>
+<h2>Create users</h2>
 
-@using (Html.BeginForm("InvitePeople", "Account", FormMethod.Post, new {enctype="multipart/form-data"}))
+@using (Html.BeginForm("CreateUsers", "Account", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()

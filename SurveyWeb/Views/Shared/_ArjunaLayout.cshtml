@@ -269,8 +269,6 @@
 
                                     @Html.Action("GreetingPartial", "Surveillance")
 
-                                    <!--<p>Hello, John Doe</p>
-                                    <small style="color: #eee;">Welcome Back</small>-->
                                 </div>
                             </div>
                             <div class="tab-pane" id="notif">
@@ -321,10 +319,6 @@
                         {
                             <li class="active">
                                 @Html.ActionLink("Dashboard", "Dashboard", "Surveillance", null, new { @class = "gn-icon gn-icon-earth" })
-
-                                <!--<a href="index.html">
-                                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                                </a>-->
                             </li>
 
                             @*if ((new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())).IsInRole(User.Identity.GetUserId(), "Manager")))

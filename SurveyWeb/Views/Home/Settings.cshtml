@@ -23,9 +23,10 @@
         <div class="col-md-4">
             <h2>Manage users</h2>
             <p>
-                Manage user records, their assignments to facilities.
+                Manage users, their assignments to facilities.
             </p>
-            <p>@Html.ActionLink("List users", "UserHospitalIndex", "Hospital", null, new {@class = "btn btn-default"})</p>            
+            <p>@Html.ActionLink("List users", "UserHospitalIndex", "Hospital", null, new {@class = "btn btn-default"})</p>
+            <p>@Html.ActionLink("Create users", "CreateUsers", "Hospital", null, new { @class = "btn btn-default" })</p>
         </div>
         
         <div class="col-md-4">
