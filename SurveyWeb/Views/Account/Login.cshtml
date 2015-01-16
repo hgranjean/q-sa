@@ -1,18 +1,27 @@
 ﻿@using SurveyWeb.Models;
 @model LoginViewModel
 
-@{  
-    ViewBag.Title = "Log in";
+@{
+    ViewBag.Title = "AQS qTracker";
+    ViewBag.Application = "Log In";
 }
 
-<h2>@ViewBag.Title</h2>
+<style>
+    body { background: inherit;}
+    .content-stretch { margin-right: 12px; }
+    .left-side { margin-right: 30%}
+    .right-side { margin-right: 30%}
+    .container { min-width: inherit;width: inherit;}
+</style>
 
+<h2>@ViewBag.Application</h2>
+
+<div class="body-login">
 <div class="hero_bg">
-    <div class="row">
-        <div class="col-md-8">
+    
             <section id="loginForm">
                 @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
+            {
                     @Html.AntiForgeryToken()
                     <h4>Provide your account information to sign in.</h4>
                     <hr />
@@ -51,16 +60,14 @@
                     <p>
                         @Html.ActionLink("Forgot password?", "LostPassword", "Account")
                     </p>
-                }
+            }
             </section>
-        </div>
         <div class="col-md-4">
             <!--<section id="socialLoginForm">
                 @* Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl }) *@
             </section>-->
         </div>
-    </div>
-</div>
+</div></div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
