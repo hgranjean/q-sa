@@ -83,11 +83,20 @@ namespace SurveyWeb.Models
         public string UserId { get; set; }
         public string UserName { get; set; }
 
+        [Display(Name = "Account disabled")]
+        public bool LockoutEnabled { get; set; }
+
+        [Display(Name="Assigned hospitals")]
         public IEnumerable<Hospital> Hospitals { get; set; }
+        
+        [Display(Name="Available hospitals")]
         public IEnumerable<Hospital> AvailableHospitals { get; set; }
+        
         public IEnumerable<string> SelectedHospitals { get; set; }
 
+        [Display(Name = "Assigned roles")]
         public IEnumerable<AspNetRole> Roles { get; set; }
+        [Display(Name = "Available roles")]
         public IEnumerable<AspNetRole> AvailableRoles { get; set; }
         public IEnumerable<string> SelectedRoles { get; set; } 
     }

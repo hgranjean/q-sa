@@ -18,6 +18,7 @@ namespace MvcApplication1.Controllers
     public class HospitalController : Controller
     {
         private const int InviteeMaxCount = 6;
+        private static readonly List<Hospital> EmptyHospitalList = new List<Hospital>();
         private AtumSurveillanceContext _dbContext = null;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SurveillanceManagementServices _surveillanceService;
@@ -191,10 +192,13 @@ namespace MvcApplication1.Controllers
 
             var listOnlyThisUserHospitals = ListOnlyThisUserHospitals();
 
-            var model = GetUserHospitals(listOnlyThisUserHospitals).Where(item => item.UserId == userId);
+            var model = GetUserHospitals(listOnlyThisUserHospitals).FirstOrDefault(item => item.UserId == userId);
 
             var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == userId);
             ViewBag.UserName = aspNetUser.UserName;
+
+            if (model != default(UserHospitalViewModel))
+                model.LockoutEnabled = aspNetUser.LockoutEnabled;
 
             // If not system admin, remove admin role from available roles
             var adminRole = availableRoles.FirstOrDefault(m => m.Name == "Administrator");
@@ -204,22 +208,22 @@ namespace MvcApplication1.Controllers
             }
 
             // If user has no user to hospital association records, create a viewmodel with empty lists
-            if (!model.Any())
+            if (model != default(UserHospitalViewModel))
             {
                 return View("UserHospitalEdit",
                                    new UserHospitalViewModel
                                        {
                                            UserId = userId,
-
+                                           LockoutEnabled = aspNetUser.LockoutEnabled,
                                            AvailableHospitals = availableHospitals,
-                                           Hospitals = new List<Hospital>(),
+                                           Hospitals = EmptyHospitalList,
                                            AvailableRoles = availableRoles,
                                            Roles = aspNetUser.AspNetRoles
                                        });
             }
             
             // Otherwise return the viewmodel
-            return View("UserHospitalEdit", model.First());
+            return View("UserHospitalEdit", model);
         }
 
         [HttpPost]
@@ -230,6 +234,14 @@ namespace MvcApplication1.Controllers
             var model = GetUserHospitals(listOnlyUserHospitals).Where(item => item.UserId == viewModel.UserId);
 
             var userHospitalViewModel = model.FirstOrDefault();
+
+            var aspNetUser =_accountService.GetUser(viewModel.UserId);
+
+            if (aspNetUser.LockoutEnabled != viewModel.LockoutEnabled)
+            {
+                aspNetUser.LockoutEnabled = viewModel.LockoutEnabled;
+                _accountService.UpdateUser(aspNetUser);
+            }
 
             if (viewModel.SelectedHospitals != null)
             {
@@ -280,8 +292,6 @@ namespace MvcApplication1.Controllers
                 {
                     if (userHospitalViewModel == null || userHospitalViewModel.Roles.Count(role => role.Id == roleId) == 0)
                     {
-                        var aspNetUser = _dbContext.AspNetUsers.First(user => user.Id == viewModel.UserId);
-
                         aspNetUser.AspNetRoles.Add(_dbContext.AspNetRoles.First(aspNetRole => aspNetRole.Id == roleId));
                     }
                 }

@@ -39,5 +39,7 @@ namespace Atum.Domain.Security.Domain
         public bool EmailConfirmed { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        public bool LockoutEnabled { get; set; }
     }
 }

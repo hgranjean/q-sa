@@ -56,6 +56,13 @@
             @Html.ListBoxFor(model => model.SelectedHospitals, new MultiSelectList(Model.AvailableHospitals, "Id", "Name"))
         </div>
         
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LockoutEnabled)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.LockoutEnabled)
+        </div>
+        
         @Html.HiddenFor(model => model.UserId)
         
     </fieldset>

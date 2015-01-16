@@ -61,8 +61,15 @@ namespace SurveyWeb.Controllers
                 var user = await _userManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if (user.LockoutEnabled)
+                    {
+                        ModelState.AddModelError("", "Account is disabled. Please contact Administrator.");
+                    }
+                    else
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);    
+                    }
                 }
                 else
                 {
