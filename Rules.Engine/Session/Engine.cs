@@ -47,7 +47,7 @@ namespace Rules.Engine
 
                     AddLocals(context, externals);
 
-                    externals.Add("Queryable", QueryableFuncLibParam);
+                    AddStaticFunctions(externals);
 
                     Expression unwindExpression;
                     
@@ -84,6 +84,8 @@ namespace Rules.Engine
                 return Expression.Constant(eval);
             }
         }
+
+        
 
         private static bool TryBuildAsTemplateFunction(CompileContext context, bool requiresSpecificType, object eval, out Expression unwindExpression)
         {
@@ -145,6 +147,20 @@ namespace Rules.Engine
             foreach (var local in context.Locals)
             {
                 externals.Add(local.Key, local.Value);
+            }
+        }
+
+        private static readonly Dictionary<Type, ParameterExpression> StaticTypes = new
+            Dictionary<Type, ParameterExpression>()
+            {
+                {typeof (Queryable), QueryableFuncLibParam}
+            };
+
+        private static void AddStaticFunctions(Dictionary<string, object> externals)
+        {
+            foreach (var type in StaticTypes)
+            {
+                externals.Add(type.Key.Name, type.Value);    
             }
         }
 

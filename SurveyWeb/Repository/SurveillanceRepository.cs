@@ -1,4 +1,5 @@
-﻿using Atum.Database.Surveillance.Models;
+﻿using System.Diagnostics.Contracts;
+using Atum.Database.Surveillance.Models;
 using Atum.Domain.Common;
 using Atum.Domain.SurveyManagement;
 using Atum.Domain.Security.Domain;
@@ -108,11 +109,17 @@ namespace SurveyWeb.Repository
 
         public void AddPerson(Person person)
         {
+            // Contract.Assert(person != null);
+            // Contract.Assert(person.Hospital != null);
+
             _context.Persons.Add(person);
             // _context.Entry(person.Hospital).CurrentValues.SetValues(person.Hospital);
-            if (_context.Entry(person.Hospital).State != EntityState.Added)
+            if (person.Hospital != null)
             {
-                _context.Entry(person.Hospital).State = EntityState.Modified;
+                if (_context.Entry(person.Hospital).State != EntityState.Added)
+                {
+                    _context.Entry(person.Hospital).State = EntityState.Modified;
+                }
             }
             _context.SaveChanges();
         }

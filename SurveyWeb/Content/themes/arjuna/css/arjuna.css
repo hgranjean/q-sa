@@ -1,4 +1,4 @@
-/*
+rr/*
 	======================================
 	Name		: arjuna;
 	Author		: Candra Dwi Waskito;
@@ -31,7 +31,7 @@ body{
 	font-weight: 400;
 	background: #E5E9EC;
 	overflow-x: hidden!important;
-	min-height: 100%;
+	/*min-height: 100%;*/
 }
 
 a{

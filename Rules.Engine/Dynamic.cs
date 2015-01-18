@@ -1488,6 +1488,12 @@ namespace System.Linq.Dynamic
                         typeArgs = new Type[] { elementType, args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type };
 
                     break;
+                case "Sum":
+                    if (staticMethod)
+                        typeArgs = new Type[] { args[0].Type.IsGenericType ? args[0].Type.GetGenericArguments().Last() : args[0].Type};
+                    else
+                        typeArgs = new Type[] { elementType, args[0].Type };
+                    break;
                 default:
                     typeArgs = new Type[] { elementType };
                     break;
@@ -1516,18 +1522,6 @@ namespace System.Linq.Dynamic
                         args = new Expression[] { instance, Expression.Call(genericType.GetMethods()[0], methodName, genericType.GenericTypeArguments, args[0]) };*/
     
                         args = new Expression[] { instance, args[0] };
-                    }
-                    else if (staticMethod)
-                    {
-                        // Example of signature to handle: 2 type args/2 args, i.e. public static TResult Max<TSource, TResult>(this IQueryable<TSource> source, Expression<Func<TSource, TResult>> selector);
-                        // [0]	{System.Linq.IQueryable`1[TSource] source}	System.Reflection.ParameterInfo {System.Reflection.RuntimeParameterInfo}
-                        //[1]	{System.Linq.Expressions.Expression`1[System.Func`2[TSource,TResult]] selector}	System.Reflection.ParameterInfo {System.Reflection.RuntimeParameterInfo}
-                        // args = new Expression[] { args[0], args[1] }; - Args already in proper order
-                    } 
-                    else
-                    {
-                        
-                        args = new Expression[] { instance, Expression.Lambda(args[0], innerIt) };
                     }
                 }
             }

@@ -2755,7 +2755,7 @@
     <Content Include="Views\Account\LostPassword.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\LostPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\InvitePeople.cshtml" />
+    <Content Include="Views\Hospital\CreateUsers.cshtml" />
     <Content Include="Views\Surveillance\PastDueSurveys.cshtml" />
     <Content Include="Scripts\rgraph\excanvas\HTACCESS-SAMPLE" />
     <Content Include="Scripts\rgraph\scripts\jsmin" />

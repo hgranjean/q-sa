@@ -4,6 +4,7 @@ using Atum.Domain.Security.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 
@@ -133,9 +134,21 @@ namespace SurveyWeb.Repository
 
         public void UpdateUser(AspNetUser user)
         {
+            Contract.Requires(user != null);
+            //Contract.Assert(user.Person != null);
+            //Contract.Assert(user.Person.Hospital != null);
+            
             _context.AspNetUsers.Attach(user);
-            _context.Persons.Attach(user.Person);
-            _context.Hospitals.Attach(user.Person.Hospital);
+            if (user.Person != null)
+            {
+                _context.Persons.Attach(user.Person);
+
+                if (user.Person.Hospital != null)
+                {
+                    _context.Hospitals.Attach(user.Person.Hospital);
+                }
+            }
+            
             _context.Entry(user).CurrentValues.SetValues(user);            
             _context.Entry(user).State = EntityState.Modified;
             _context.SaveChanges();

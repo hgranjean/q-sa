@@ -38,6 +38,8 @@ namespace Atum.Database.Surveillance.Models.Mapping
             this.Property(t => t.EmailConfirmed).HasColumnName("EmailConfirmed");
 
             this.Property(t => t.PhoneNumber).HasColumnName("PhoneNumber");
+
+            this.Property(t => t.LockoutEnabled).HasColumnName("LockoutEnabled");
             
             // Relationships
             this.HasOptional(t => t.Person)

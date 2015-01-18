@@ -1,4 +1,5 @@
 ﻿using Atum.Domain.Business;
+using Atum.Domain.Common;
 using Atum.Domain.Security.Domain;
 using Atum.Utility;
 using Microsoft.AspNet.Identity;
@@ -28,7 +29,6 @@ namespace SurveyWeb.Controllers
         private readonly MailService _mailService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly AccountService _accountService;
-        private const int InviteeMaxCount = 6;
 
         public AccountController(MailService mailService, SurveillanceManagementServices surveillanceService,
             AccountService accountService,
@@ -46,7 +46,7 @@ namespace SurveyWeb.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return View(new LoginViewModel());
         }
 
         //
@@ -61,8 +61,15 @@ namespace SurveyWeb.Controllers
                 var user = await _userManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if (user.LockoutEnabled)
+                    {
+                        ModelState.AddModelError("", "Account is disabled. Please contact Administrator.");
+                    }
+                    else
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);    
+                    }
                 }
                 else
                 {
@@ -94,11 +101,11 @@ namespace SurveyWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, };
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var applicationUser = new ApplicationUser() { UserName = model.UserName };
+                var result = await _userManager.CreateAsync(applicationUser, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInAsync(user, isPersistent: false);
+                    await SignInAsync(applicationUser, isPersistent: false);
                     //return RedirectToAction("Index", "Home");
                     var hospitalId = string.Empty;
                     if (!String.IsNullOrWhiteSpace(model.RegistrationToken))
@@ -106,6 +113,14 @@ namespace SurveyWeb.Controllers
                         var userData = EmailHelper.GetUserdataFromToken(model.RegistrationToken);
                         hospitalId = userData.FirstOrDefault(m => m.Key == "HospitalId").Value;
                     }
+                    
+                    // Update user with person reference
+                    var user = _accountService.GetUsers().FirstOrDefault(m => m.UserName == model.UserName);
+
+                    // This creates necessary person record so that on login greetings control can render and person record can be updated
+                    user.Person = new Person(string.Empty, null, string.Empty) { Id = Guid.NewGuid().ToString("D"), DateOfBirth = DateTime.Now};
+                    _surveillanceService.AddPerson(user.Person);
+                    _accountService.UpdateUser(user);
 
                     return RedirectToAction("ManageProfile", new {userName = model.UserName, email = model.Email, hospitalId = hospitalId});
                 }
@@ -126,21 +141,9 @@ namespace SurveyWeb.Controllers
             var user = _accountService.GetUsers().FirstOrDefault(m => m.UserName == userName);
 
             var model = new PersonViewModel { UserId = user.Id };
-
-            /*if (EmailHelper.IsValidEmail(email))
-            {
-                var domainName = EmailHelper.GetDomainName(email);
-
-                var hospital = _dbContext.Hospitals.FirstOrDefault(m => m.DomainName == domainName);
-
-                if (hospital != default(Hospital))
-                {
-                    model.Person.Hospital = hospital;
-                }
-
-                model.Email = email;
-            }*/
-
+            
+            // If there is a hospital id present, find hospital and associate this account with the hospital,
+            // otherwise perform email-based matching
             if (!string.IsNullOrWhiteSpace(hospitalId))
             {
                 var hospital = _surveillanceService.GetHospital(hospitalId);
@@ -151,6 +154,23 @@ namespace SurveyWeb.Controllers
                 }
 
                 model.Email = email;
+            }
+            else
+            {
+                // No hospital id is present, perform email-based matching
+                if (EmailHelper.IsValidEmail(email))
+                {
+                    var domainName = EmailHelper.GetDomainNameFromEmail(email);
+
+                    var hospital = _surveillanceService.GetHospitals().FirstOrDefault(m => String.Compare(m.DomainName, domainName, StringComparison.InvariantCultureIgnoreCase) == 0);
+
+                    if (hospital != default(Hospital))
+                    {
+                        model.Person.Hospital = hospital;
+                    }
+
+                    model.Email = email;
+                }
             }
             
             return View("Person", model);
@@ -665,75 +685,9 @@ namespace SurveyWeb.Controllers
             return View(model);
         }
 
-        // GET: /Account/InvitePeople
-        public ActionResult InvitePeople()
-        {
-            var invitees = new List<InvitePersonViewModel>();
-            var userName = User.Identity.GetUserName();
-            var person = _accountService.GetUsers().FirstOrDefault(m => m.UserName == userName).Person;
-            if (person != null)
-            {
-                for (int i = 0; i < InviteeMaxCount; i++)
-                {
-                    invitees.Add(new InvitePersonViewModel { Domain = EmailHelper.GetDomainNameFromEmail(person.Email) });
-                }
-            }
-            
-            return View(invitees);
-        }
         
-        // POST: /Account/InvitePeople
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult InvitePeople(IEnumerable<InvitePersonViewModel> invitees)
-        {
-            // Create an email with reset instructions
-            string domainName = EmailHelper.GetDomainNameFromHost(Request.Url.Host);
-            string baseUrl = String.Concat(domainName, ":", Request.Url.Port);
-            var subject = "Welcome to " + ConfigurationManager.AppSettings["WhiteLabel"];
-            var from = "donotreply@" + domainName;
-            
-            var template = GetEmailTemplate(EmailTemplate.Invitation);
-            string body = template.ToString();
 
-            string userName = User.Identity.GetUserId();
-            var person = _accountService.GetUsers().FirstOrDefault(m => m.Id == userName).Person;
-
-            var appPath = Request.ApplicationPath;
-
-            var token = EmailHelper.GenerateToken(userName, 14*24, new string[] {"HospitalId=" + person.HospitalId});
-            body = body.Replace("{{REGISTRATION_TOKEN}}", token);
-            body = body.Replace("{{APP_PATH}}", appPath);
-
-            try
-            {                
-                foreach (var item in invitees)
-                {
-                    // Verify that email was filled in, otherwise skip
-                    if (string.IsNullOrWhiteSpace(item.Email))
-                    {
-                        continue;
-                    }
-
-                    // Send the email
-                    string to = item.Email.Contains("@") ? item.Email : String.Join("@", item.Email, item.Domain);
-                    _mailService.SendEmail(from, to, subject, body, true, baseUrl);
-                }
-
-                ViewBag.Message = "Invited People Successfully.";
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError("", "Issue sending email: " + e.Message);
-            }
-
-            return View(invitees);
-        }
-
-        public XDocument GetEmailTemplate(EmailTemplate template)
-        {
-            return _mailService.GetEmailTemplate(template);
-        }
+        
 
         public async Task<ActionResult> EmulateUser(string userId)
         {
