@@ -316,10 +316,10 @@
     <Compile Include="Models\QualityManager\SurveillanceSchedulingModels.cs" />
     <Compile Include="Models\QualityManager\Trending.cs" />
     <Compile Include="Models\ViewMetaModels.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Repository\StandardRepository.cs" />
-    <Compile Include="Repository\SurveyRepository1.cs" />
+    <Compile Include="Repository\SurveillanceRepository.cs" />
+    <Compile Include="Repository\SurveyStore.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Services\IPersistenceServices.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -370,11 +370,6 @@
     <Compile Include="Models\SurveyModels.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AccountRepository.cs" />
-    <Compile Include="Repository\SurveillanceRepository.cs" />
-    <Compile Include="Repository\SurveyRepository.cs" />
-    <Compile Include="Repository\SurveyStore.cs" />
-    <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\ReportService.cs">
       <SubType>Code</SubType>
@@ -2864,6 +2859,10 @@
     <ProjectReference Include="..\Atum.Domain.Surveillance\Atum.Domain.SurveyManagement.csproj">
       <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
       <Name>Atum.Domain.SurveyManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atum.Repository.Surveillance\Atum.Repository.Surveillance.csproj">
+      <Project>{2a21eb8d-deb5-4037-8a87-9b210130314f}</Project>
+      <Name>Atum.Repository.Surveillance</Name>
     </ProjectReference>
     <ProjectReference Include="..\Atum.Utility\Atum.Common.csproj">
       <Project>{88482ad9-edb0-45c3-8306-d88b8ff3528d}</Project>

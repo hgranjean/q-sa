@@ -11,6 +11,7 @@ using SurveyWeb.Repository;
 using Microsoft.AspNet.Identity;
 using SurveyWeb.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Atum.Repository.Surveillance;
 
 namespace SurveyWeb.Tests.Controllers
 {

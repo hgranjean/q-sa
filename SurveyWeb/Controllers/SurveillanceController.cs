@@ -1,7 +1,5 @@
-﻿using Atum.Domain;
-using Atum.Domain.Common;
+﻿using Atum.Domain.Common;
 using Atum.Domain.Healthcare;
-using Atum.Domain.QualityManagement;
 using Atum.Domain.QualityManagement.Auditing;
 using Atum.Domain.QualityManagement.Healthcare.Performance;
 using Atum.Domain.Security.Domain;

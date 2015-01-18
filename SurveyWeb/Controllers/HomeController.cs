@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Atum.Repository.Surveillance;
+using Microsoft.AspNet.Identity;
 using SurveyWeb.Models;
-using SurveyWeb.Repository;
 using System.Configuration;
 using System.Web.Mvc;
 

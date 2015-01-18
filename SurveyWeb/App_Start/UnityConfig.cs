@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using System.Configuration;
 using System.Data.Entity;
 using SurveyWeb.Services;
+using Atum.Repository.Surveillance;
 
 namespace SurveyWeb.App_Start
 {

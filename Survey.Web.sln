@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{85E104F9-0457-40C7-9DC9-6FA11B7B0E36}"
 	ProjectSection(SolutionItems) = preProject
@@ -55,6 +55,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpEntropy", "SharpEntropy\SharpEntropy.csproj", "{BF0BF8B0-1894-4EDF-BF51-F370B063797E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP", "OpenNLP\OpenNLP.csproj", "{B70185DF-81FD-4417-914F-7C90E65E7D9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Repository.Surveillance", "Atum.Repository.Surveillance\Atum.Repository.Surveillance.csproj", "{2A21EB8D-DEB5-4037-8A87-9B210130314F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atum.Repository.Test", "Atum.Repository.Test\Atum.Repository.Test.csproj", "{32F6899A-6957-4777-96A5-D611DE825CAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -429,6 +433,42 @@ Global
 		{B70185DF-81FD-4417-914F-7C90E65E7D9F}.V4 Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B70185DF-81FD-4417-914F-7C90E65E7D9F}.V4 Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B70185DF-81FD-4417-914F-7C90E65E7D9F}.V4 Release|Any CPU.Build.0 = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.FxCop|Any CPU.ActiveCfg = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.FxCop|Any CPU.Build.0 = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight 4 Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight 4 Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight 4 Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight 4 Release|Any CPU.Build.0 = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.Silverlight Release|Any CPU.Build.0 = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.V4 Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.V4 Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.V4 Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A21EB8D-DEB5-4037-8A87-9B210130314F}.V4 Release|Any CPU.Build.0 = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.FxCop|Any CPU.ActiveCfg = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.FxCop|Any CPU.Build.0 = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight 4 Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight 4 Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight 4 Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight 4 Release|Any CPU.Build.0 = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.Silverlight Release|Any CPU.Build.0 = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.V4 Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.V4 Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.V4 Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F6899A-6957-4777-96A5-D611DE825CAF}.V4 Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

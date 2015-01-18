@@ -172,6 +172,10 @@
       <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
       <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Atum.Repository.Surveillance\Atum.Repository.Surveillance.csproj">
+      <Project>{2a21eb8d-deb5-4037-8a87-9b210130314f}</Project>
+      <Name>Atum.Repository.Surveillance</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rules.Domain\Rules.Domain.csproj">
       <Project>{2626bc16-efcd-4d9f-a5c1-18b49a30187c}</Project>
       <Name>Rules.Domain</Name>
@@ -184,6 +188,9 @@
       <Project>{5fa45fda-4439-4631-b43f-944309f6901f}</Project>
       <Name>SurveyWeb</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

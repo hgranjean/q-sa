@@ -1,18 +1,14 @@
-﻿using SurveyWeb.Repository;
+﻿using Atum.Domain.Business;
 using Atum.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Atum.Domain.Security.Domain;
-using Atum.Domain.SurveyManagement;
-using Atum.Domain.Business;
-using SurveyWeb.Models;
-using Microsoft.AspNet.Identity;
 using Atum.Domain.Healthcare;
+using Atum.Domain.QualityManagement.Auditing;
+using Atum.Domain.SurveyManagement;
+using Microsoft.AspNet.Identity;
+using SurveyWeb.Models;
 using SurveyWeb.Models.QualityManager.SurveillanceManagement;
 using SurveyWeb.Models.QualityManager.SurveillanceTracking;
-using Atum.Domain.QualityManagement.Auditing;
+using SurveyWeb.Repository;
+using System.Collections.Generic;
 
 namespace SurveyWeb.Services
 {

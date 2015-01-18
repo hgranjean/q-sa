@@ -12,7 +12,7 @@ namespace Atum.Database.Surveillance.Migrations
             DropForeignKey("dbo.EventUsers", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Questions", "BasisReference_ID", "dbo.TOCElements");
             DropForeignKey("dbo.FollowUps", "Audit_Id", "dbo.Audits");
-            DropForeignKey("dbo.Responses1", "Audit_Id", "dbo.Audits");
+            //DropForeignKey("dbo.Responses1", "Audit_Id", "dbo.Audits");
             DropIndex("dbo.Persons", new[] { "Address_ID" });
             DropIndex("dbo.Persons", new[] { "Department_ID" });
             DropIndex("dbo.Responses1", new[] { "Audit_ID" });
@@ -47,7 +47,7 @@ namespace Atum.Database.Surveillance.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Areas", t => t.Area_Id)
                 .ForeignKey("dbo.Persons", t => t.InspectedBy_Id)
-                .ForeignKey("dbo.Responses1", t => t.Observation_Id)
+                //.ForeignKey("dbo.Responses1", t => t.Observation_Id)
                 .ForeignKey("dbo.Questions", t => t.Question_Id)
                 .ForeignKey("dbo.Persons", t => t.ResponsibleParty_Id)
                 .ForeignKey("dbo.Audits", t => t.Audit_Id)
@@ -144,11 +144,11 @@ namespace Atum.Database.Surveillance.Migrations
             AddColumn("dbo.Audits", "SurveyId", c => c.Int(nullable: false));
             AddColumn("dbo.Audits", "Surveillance_Id", c => c.String(maxLength: 128));
             AddColumn("dbo.Audits", "Surveyor_Id", c => c.String(maxLength: 128));
-            AddColumn("dbo.Responses1", "FollowUpId", c => c.Guid());
-            AddColumn("dbo.Responses1", "Discriminator", c => c.String(nullable: false, maxLength: 128));
-            AddColumn("dbo.Responses1", "Person_Id", c => c.String(maxLength: 128));
-            AddColumn("dbo.Responses1", "Answer_Id", c => c.Long());
-            AddColumn("dbo.Responses1", "Question_Id", c => c.Long());
+            //AddColumn("dbo.Responses1", "FollowUpId", c => c.Guid());
+            //AddColumn("dbo.Responses1", "Discriminator", c => c.String(nullable: false, maxLength: 128));
+            //AddColumn("dbo.Responses1", "Person_Id", c => c.String(maxLength: 128));
+            //AddColumn("dbo.Responses1", "Answer_Id", c => c.Long());
+            //AddColumn("dbo.Responses1", "Question_Id", c => c.Long());
             AddColumn("dbo.Events", "OwnerId", c => c.String(maxLength: 128));
             AddColumn("dbo.Events", "Frequency", c => c.Int());
             AddColumn("dbo.Events", "CreatedDate", c => c.DateTime());
@@ -161,7 +161,7 @@ namespace Atum.Database.Surveillance.Migrations
             AddColumn("dbo.Questions", "PerformanceItemId", c => c.String());
             AddColumn("dbo.Questions", "Survey_Id", c => c.Long());
             AlterColumn("dbo.Audits", "Id", c => c.Int(nullable: false, identity: true));
-            AlterColumn("dbo.Responses1", "Audit_Id", c => c.Int());
+            //AlterColumn("dbo.Responses1", "Audit_Id", c => c.Int());
             AddPrimaryKey("dbo.Audits", "Id");
             CreateIndex("dbo.Persons", "Address_Id");
             CreateIndex("dbo.Persons", "Department_Id");
@@ -175,10 +175,10 @@ namespace Atum.Database.Surveillance.Migrations
             CreateIndex("dbo.Events", "FollowUp_Id");
             CreateIndex("dbo.Questions", "Survey_Id");
             CreateIndex("dbo.ResponseChoices", "Question_Id");
-            CreateIndex("dbo.Responses1", "Person_Id");
-            CreateIndex("dbo.Responses1", "Answer_Id");
-            CreateIndex("dbo.Responses1", "Question_Id");
-            CreateIndex("dbo.Responses1", "Audit_Id");
+            //CreateIndex("dbo.Responses1", "Person_Id");
+            //CreateIndex("dbo.Responses1", "Answer_Id");
+            //CreateIndex("dbo.Responses1", "Question_Id");
+            //CreateIndex("dbo.Responses1", "Audit_Id");
             AddForeignKey("dbo.Events", "OwnerId", "dbo.Persons", "Id");
             AddForeignKey("dbo.Events", "Area_Id", "dbo.Areas", "Id");
             AddForeignKey("dbo.Events", "AssignedTo_Id", "dbo.Persons", "Id");
@@ -186,12 +186,12 @@ namespace Atum.Database.Surveillance.Migrations
             AddForeignKey("dbo.Questions", "Survey_Id", "dbo.Surveys1", "Id");
             AddForeignKey("dbo.Events", "Template_Id", "dbo.Surveys1", "Id");
             AddForeignKey("dbo.Events", "FollowUp_Id", "dbo.FollowUps", "Id");
-            AddForeignKey("dbo.Responses1", "Person_Id", "dbo.Persons", "Id");
-            AddForeignKey("dbo.Responses1", "Answer_Id", "dbo.ResponseChoices", "Id");
-            AddForeignKey("dbo.Responses1", "Question_Id", "dbo.Questions", "Id");
+            //AddForeignKey("dbo.Responses1", "Person_Id", "dbo.Persons", "Id");
+            //AddForeignKey("dbo.Responses1", "Answer_Id", "dbo.ResponseChoices", "Id");
+            //AddForeignKey("dbo.Responses1", "Question_Id", "dbo.Questions", "Id");
             AddForeignKey("dbo.Audits", "Surveillance_Id", "dbo.Events", "Id");
             AddForeignKey("dbo.Audits", "Surveyor_Id", "dbo.Persons", "Id");
-            AddForeignKey("dbo.Responses1", "Audit_Id", "dbo.Audits", "Id");
+            //AddForeignKey("dbo.Responses1", "Audit_Id", "dbo.Audits", "Id");
             DropColumn("dbo.Audits", "SurveyTitle");
             DropColumn("dbo.Events", "SurveyId");
             DropColumn("dbo.Events", "EventTypeId");
@@ -199,7 +199,7 @@ namespace Atum.Database.Surveillance.Migrations
             DropColumn("dbo.Questions", "TOCReference");
             DropColumn("dbo.Questions", "BasisReference_ID");
             DropTable("dbo.EventUsers");
-            DropTable("dbo.TOCElements");
+            //DropTable("dbo.TOCElements");
         }
         
         public override void Down()
@@ -230,17 +230,17 @@ namespace Atum.Database.Surveillance.Migrations
             AddColumn("dbo.Events", "EventTypeId", c => c.Int(nullable: false));
             AddColumn("dbo.Events", "SurveyId", c => c.String(nullable: false, maxLength: 128));
             AddColumn("dbo.Audits", "SurveyTitle", c => c.String());
-            DropForeignKey("dbo.Responses1", "Audit_Id", "dbo.Audits");
+            //DropForeignKey("dbo.Responses1", "Audit_Id", "dbo.Audits");
             DropForeignKey("dbo.ItemNotes", "PerformanceItem_PerformanceItemId", "dbo.PerformanceItems");
             DropForeignKey("dbo.Audits", "Surveyor_Id", "dbo.Persons");
             DropForeignKey("dbo.Audits", "Surveillance_Id", "dbo.Events");
-            DropForeignKey("dbo.Responses1", "Question_Id", "dbo.Questions");
-            DropForeignKey("dbo.Responses1", "Answer_Id", "dbo.ResponseChoices");
+            //DropForeignKey("dbo.Responses1", "Question_Id", "dbo.Questions");
+            //DropForeignKey("dbo.Responses1", "Answer_Id", "dbo.ResponseChoices");
             DropForeignKey("dbo.FollowUps", "Audit_Id", "dbo.Audits");
             DropForeignKey("dbo.FollowUps", "ResponsibleParty_Id", "dbo.Persons");
             DropForeignKey("dbo.FollowUps", "Question_Id", "dbo.Questions");
-            DropForeignKey("dbo.FollowUps", "Observation_Id", "dbo.Responses1");
-            DropForeignKey("dbo.Responses1", "Person_Id", "dbo.Persons");
+            //DropForeignKey("dbo.FollowUps", "Observation_Id", "dbo.Responses1");
+            //DropForeignKey("dbo.Responses1", "Person_Id", "dbo.Persons");
             DropForeignKey("dbo.FollowUps", "InspectedBy_Id", "dbo.Persons");
             DropForeignKey("dbo.Events", "FollowUp_Id", "dbo.FollowUps");
             DropForeignKey("dbo.Events", "Template_Id", "dbo.Surveys1");

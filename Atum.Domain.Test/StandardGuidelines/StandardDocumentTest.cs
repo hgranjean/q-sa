@@ -48,17 +48,34 @@ namespace Atum.Domain.Test.StandardGuidelines
         [TestMethod]
         public void TestStandardDocument()
         {
-            StandardDocument standardDocument = new StandardDocument();
+            StandardDocument standardDocument = null;
+            
+            
+            standardDocument = new StandardDocument();
+
+            //using (var ctx = )
+            //{
+
+            //}
+            
+            
+            
+            
             string documentTitle = "Document Title";
             standardDocument.Title = documentTitle;
-            //standardDocument.Chapters = new DocumentElements();
-
+            
 
             //Add Chapters
             AddChapters(standardDocument);
+
+            Assert.IsTrue(standardDocument.Chapters.Count > 0);
+            Assert.IsTrue(standardDocument.Title.Length > 0);
+            //Assert.IsTrue(standardDocument.SubscriberId.Length>0);
+            Assert.IsTrue(standardDocument.OwnerId > -1);
+            
             using (var ctx = new AtumSurveillanceContext())
             {
-                //ctx.StandardDocuments.Add(standardDocument);
+                ctx.StandardDocuments.Add(standardDocument);
                 ctx.SaveChanges();
             }
 

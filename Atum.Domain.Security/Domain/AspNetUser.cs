@@ -1,9 +1,6 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Atum.Domain.Business;
 using Atum.Domain.Common;
-using System;
+using System.Collections.Generic;
 
 namespace Atum.Domain.Security.Domain
 {

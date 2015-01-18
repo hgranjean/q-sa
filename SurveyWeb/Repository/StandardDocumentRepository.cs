@@ -7,38 +7,38 @@ using System.Web;
 
 namespace SurveyWeb.Repository
 {
-    public class StandardRepository : RepositoryBase<Standard>, IRepository<Standard>
+    public class StandardDocumentRepository : RepositoryBase<StandardDocument>, IRepository<StandardDocument>
     {
 
-        public StandardRepository(DbContext context):base(context)
+        public StandardDocumentRepository(DbContext context):base(context)
         {
         }
-        public Standard Add(Standard subject)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Standard Update(Standard subject)
+        public StandardDocument Add(StandardDocument subject)
         {
             throw new NotImplementedException();
         }
 
-        public Standard FindById(int Id)
+        public StandardDocument Update(StandardDocument subject)
         {
             throw new NotImplementedException();
         }
 
-        public Standard FindByGuid(Guid guid)
+        public StandardDocument FindById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Standard> FindMatching(System.Linq.Expressions.Expression<Func<Standard, bool>> criteria)
+        public StandardDocument FindByGuid(Guid guid)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Standard subject)
+        public IEnumerable<StandardDocument> FindMatching(System.Linq.Expressions.Expression<Func<StandardDocument, bool>> criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(StandardDocument subject)
         {
             throw new NotImplementedException();
         }

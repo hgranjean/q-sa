@@ -1,10 +1,7 @@
 ﻿using Atum.Database.Surveillance.Models;
 using Atum.Domain.Security.Domain;
-using SurveyWeb.Repository;
-using System;
+using Atum.Repository.Surveillance;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SurveyWeb.Services
 {
