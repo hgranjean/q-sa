@@ -21,10 +21,10 @@ namespace SurveyWeb.Services
         }
 
 
-        public IEnumerable<Event> GetNextTasks(string userId)
-        {
-            return _repository.GetNextTasks(userId);
-        }
+        //public IEnumerable<Event> GetNextTasks(string userId)
+        //{
+        //    return _repository.GetNextTasks(userId);
+        //}
 
         internal IEnumerable<Event> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate)
         {

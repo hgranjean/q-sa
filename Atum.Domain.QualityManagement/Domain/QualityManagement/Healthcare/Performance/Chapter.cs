@@ -12,8 +12,12 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
 
         public Chapter(string key, string title):base(key,  title)
         {
-            this.Standards = new DocumentElements();
+            this.Standards = new Standards();
+
         }
+
+        public long StandardDocumentId { get; set; }
+        public StandardDocument StandardDocument { get; set; }
 
         public Standard GetPerformanceCategory(string standardElementId)
         {
@@ -21,7 +25,7 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
         }
 
         public Guid ChapterId { get; set; }
-        public DocumentElements Standards { get; set; }
+        public virtual Standards Standards { get; set; }
 
         public Standard AddStandard(string standardKey, string standardTitle)
         {
@@ -29,6 +33,7 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
             Standards.Add(standard);
             return standard;
         }
+
 
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\ObservationRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\StandardDocumentRepository.cs" />
     <Compile Include="Repository\SurveyRepository.cs" />

@@ -332,6 +332,7 @@ body > .header .logo .icon {
 
 .sidebar {
   margin-bottom: 5px;
+  /*-webkit-transform: translate(-100%,0);*/
 }
 .sidebar .sidebar-form input:focus {
   -webkit-box-shadow: none;

@@ -23,7 +23,7 @@ namespace SurveyWeb.Controllers
 {
     [Authorize]
     public class SurveillanceController : Controller
-    {        
+    {
         private readonly SurveillanceManagementServices _surveillanceService;
         private readonly SurveyManagementServices _surveyService;
         private readonly TaskService _taskService;
@@ -32,7 +32,7 @@ namespace SurveyWeb.Controllers
         private readonly IPersistenceServices _persistenceService;
         private readonly LearningServices _learningService;
         private readonly AccountService _accountService;
-        
+
         public SurveillanceController(SurveillanceManagementServices surveillanceService,
             TaskService taskService,
             SurveyManagementServices surveyService,
@@ -42,7 +42,7 @@ namespace SurveyWeb.Controllers
             AccountService accountService,
             UserManager<ApplicationUser> userManager)
         {
-            
+
             _surveillanceService = surveillanceService;
             _surveyService = surveyService;
             _taskService = taskService;
@@ -83,7 +83,7 @@ namespace SurveyWeb.Controllers
         {
             Standard model = null;
             if (!string.IsNullOrWhiteSpace(observation))
-            {            
+            {
                 model = _learningService.Classify(observation);
             }
             else
@@ -108,7 +108,7 @@ namespace SurveyWeb.Controllers
 
         public ActionResult FollowUp(int? followUpId)
         {
-            
+
             FollowUpViewModel model = LoadFollowUp(followUpId ?? 1);
 
             return View(model);
@@ -125,14 +125,14 @@ namespace SurveyWeb.Controllers
             retVal.InspectedBy = "Michelle Kadoun";
             retVal.Category = "Patient Safety";
             retVal.ItemInspected = "Clutter ((0735)";
-            retVal.Area = new Area("2 North (027)",27);
-            retVal.ResponsibleParty = new Person("Vicki","","Munson"); 
+            retVal.Area = new Area("2 North (027)", 27);
+            retVal.ResponsibleParty = new Person("Vicki", "", "Munson");
             retVal.Score = ResponseChoice.NonCompliantString;
             retVal.EstimatedCompletionDate = DateTime.Today.AddDays(2.0D);
             retVal.ItemDetails = "Issue Details_" + followUpId;
             retVal.History = new List<Event>();
 
-            return retVal;  
+            return retVal;
         }
 
 
@@ -148,7 +148,7 @@ namespace SurveyWeb.Controllers
         {
             ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
             ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
 
             var model = GetSurveySchedules(false);
 
@@ -159,12 +159,12 @@ namespace SurveyWeb.Controllers
         {
             ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
             ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
 
-            var surveys = _persistenceService.GetSurveys();            
+            var surveys = _persistenceService.GetSurveys();
 
             var userId = User.Identity.GetUserId();
-            
+
             //Use to be <EventUser>
             IEnumerable<object> events = null;
             if (ViewBag.ShowManagerContent)
@@ -173,17 +173,17 @@ namespace SurveyWeb.Controllers
             }
             else
             {
-            if (isPastDue)
-            {                
-                events = _taskService.GetPastDueTasks(userId);
+                if (isPastDue)
+                {
+                    events = _taskService.GetPastDueTasks(userId);
                 }
                 else
                 {
-                events = _taskService.GetNextTasks(userId);            
-            }         
+                    //events = _taskService.GetNextTasks(userId);
+                }
             }
 
-            var model = new SurveysViewModel ();// new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Template>>>() };
+            var model = new SurveysViewModel();// new SurveysViewModel { SurveysByDate = new Dictionary<int, List<Tuple<EventUser, Template>>>() };
 
             foreach (var @event in events)
             {
@@ -199,7 +199,7 @@ namespace SurveyWeb.Controllers
             }
             return model;
         }
-        
+
         public ActionResult SurveySchedulesPartial()
         {
             var model = GetSurveySchedules(false);
@@ -211,7 +211,7 @@ namespace SurveyWeb.Controllers
         {
             ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
             ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
 
             var model = GetSurveySchedules(true);
 
@@ -221,7 +221,7 @@ namespace SurveyWeb.Controllers
             {
                 model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
             }
-            
+
             return View(model);
         }
 
@@ -229,7 +229,7 @@ namespace SurveyWeb.Controllers
         {
             ViewBag.ShowAdminContent = _userManager.IsInRole(User.Identity.GetUserId(), "Administrator");
             ViewBag.ShowManagerContent = _userManager.IsInRole(User.Identity.GetUserId(), "Manager");
-            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");            
+            ViewBag.ShowTeamMemberContent = _userManager.IsInRole(User.Identity.GetUserId(), "Team Member");
 
             var model = new SurveysViewModel();
             try
@@ -238,19 +238,19 @@ namespace SurveyWeb.Controllers
 
                 // if (!ViewBag.ShowTeamMemberContent)
                 //{
-                    var nextTasks = GetSurveySchedules(false);
+                var nextTasks = GetSurveySchedules(false);
 
-                    foreach (var item in nextTasks.SurveysByDate.Keys)
-                    {
-                        model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
-                    }
+                foreach (var item in nextTasks.SurveysByDate.Keys)
+                {
+                    model.GetOrAddSurveysByDate(item).AddRange(nextTasks.SurveysByDate[item]);
+                }
                 //}
             }
             catch (Exception)
             {
 
                 //throw;
-            } 
+            }
 
             return PartialView("PastDueSurveys", model);
         }
@@ -264,7 +264,7 @@ namespace SurveyWeb.Controllers
         {
             return View();
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -322,7 +322,7 @@ namespace SurveyWeb.Controllers
                 }
             }
 
-            return new CompletedSurveyViewModel(models);            
+            return new CompletedSurveyViewModel(models);
         }
 
         public ActionResult CompletedObservationsPartial()
@@ -354,14 +354,14 @@ namespace SurveyWeb.Controllers
                     var survey = surveys.FirstOrDefault(m => m.Id == tracerModel.SurveyId);
                     tracerModel.ResponseId = responseId;
                     tracerModel.SurveyTitle = survey != null ? survey.Title : String.Empty;
-                    
+
                     foreach (var question in tracerModel.Responses.Where(m => m != null))
                     {
-                        var observation = new Observation(tracerModel.Surveyor, question.Response.Question,
-                            question.Response.Answer);
-                        
-                        models.Add(new ObservationViewModel(observation) { ResponseId = responseId });
-                    }                    
+                        //var observation = new Observation(tracerModel.Surveyor, question.Response.Question,
+                        //    question.Response.Answer);
+
+                        //models.Add(new ObservationViewModel(observation) { ResponseId = responseId });
+                    }
                 }
                 catch (NullReferenceException ex)
                 {
@@ -377,13 +377,13 @@ namespace SurveyWeb.Controllers
         }
 
         public ActionResult ViewCompletedSurvey(string id)
-        {            
+        {
             var availableResponses = _persistenceService.GetResponses();
 
             foreach (var response in availableResponses)
             {
                 if (response.Contains(id))
-                {   
+                {
                     var model = _persistenceService.LoadTracer(id);
 
                     LoadTracerReferenceData(model);
@@ -412,7 +412,7 @@ namespace SurveyWeb.Controllers
         {
             Survey survey = null; // = LoadSurvey("Template Template 1");
             if (surveyId.HasValue)
-            {                
+            {
                 survey = _persistenceService.GetSurvey(surveyId.Value);
 
                 foreach (var questionGroup in survey.QuestionGroups)
@@ -432,16 +432,16 @@ namespace SurveyWeb.Controllers
                     }
                 }
             }
-            
+
             var retVal = new TracerViewModel(survey);
-            
+
             LoadTracerReferenceData(retVal);
 
             return retVal;
         }
 
         internal void LoadTracerReferenceData(TracerViewModel retVal)
-        {            
+        {
             retVal.Buildings = LoadBuildings();
             retVal.Facilities = LoadFacilities();
             retVal.Areas = LoadAreas(retVal.FacilityId.ToString());
@@ -502,7 +502,7 @@ namespace SurveyWeb.Controllers
 
         private IEnumerable<Department> LoadDepartments()
         {
-            return _surveillanceService.GetDepartments();            
+            return _surveillanceService.GetDepartments();
         }
 
         private IEnumerable<Person> LoadSurveyors()
@@ -512,12 +512,12 @@ namespace SurveyWeb.Controllers
 
         private IEnumerable<Area> LoadAreas(string hospitalId)
         {
-            return _surveillanceService.GetAreas(hospitalId);            
+            return _surveillanceService.GetAreas(hospitalId);
         }
 
         private IEnumerable<Facility> LoadFacilities()
         {
-            return _surveillanceService.GetFacilities();            
+            return _surveillanceService.GetFacilities();
         }
 
         private IEnumerable<Building> LoadBuildings()
@@ -525,14 +525,14 @@ namespace SurveyWeb.Controllers
             return _surveillanceService.GetBuildings();
         }
 
-        public ActionResult ViewReference(string standardId) 
+        public ActionResult ViewReference(string standardId)
         {
-            DocumentElement model = new Chapter("","");
+            DocumentElement model = new Chapter("", "");
             //TODO: Get Reference View Model from Standard Services
             //model = GetViewModel(standardId);
 
 
-            return View(model);            
+            return View(model);
         }
 
         /// <summary>
@@ -546,9 +546,28 @@ namespace SurveyWeb.Controllers
                 try
                 {
                     var userId = User.Identity.GetUserId();
+
+
+                    if (_userManager.IsInRole(User.Identity.GetUserId(), "Administrator"))
+                    {
+                        return RedirectToAction("Dashboard", "QTrackerAdmin");
+
+                    }
+                    else if (_userManager.IsInRole(User.Identity.GetUserId(), "Manager"))
+                    {
+                        return RedirectToAction("Dashboard", "QualityManager");
+
+                    }
+                    else if (_userManager.IsInRole(User.Identity.GetUserId(), "Team Member"))
+                    {
+                        return RedirectToAction("Dashboard", "QualityAuditor");
+
+                    }
+
                     ViewBag.ShowAdminContent = _userManager.IsInRole(userId, "Administrator");
                     ViewBag.ShowManagerContent = _userManager.IsInRole(userId, "Manager");
                     ViewBag.ShowTeamMemberContent = _userManager.IsInRole(userId, "Team Member");
+
                 }
                 catch (Exception ex)
                 {
@@ -559,7 +578,7 @@ namespace SurveyWeb.Controllers
                     RedirectToAction("Index", "Home");
                 }
             }
-            
+
             return View();
         }
 
@@ -599,7 +618,7 @@ namespace SurveyWeb.Controllers
             var responsesViewModels = new ResponseViewModel[100];
 
             var survey = _persistenceService.GetSurvey(viewModel.SurveyId);
-            
+
             foreach (var questionGroup in survey.QuestionGroups)
             {
                 foreach (var question in questionGroup.Value.Questions)
@@ -668,7 +687,7 @@ namespace SurveyWeb.Controllers
 
                 viewModel.ResponseId = responseEntry.Id;
             }
-            
+
             _persistenceService.SaveTracer(viewModel);
 
             if (isObservation)
@@ -691,13 +710,13 @@ namespace SurveyWeb.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult RedirectToCalendar(string date)
-        {            
+        {
             return Json(Url.Action("Calendar"));
         }
-        
+
         public ActionResult Report()
         {
             return View();
@@ -711,8 +730,8 @@ namespace SurveyWeb.Controllers
             // var rep = Resolver.Resolve<IEventRepository>();
             // var events = rep.ListEventsForUser(userName, fromDate, toDate);
 
-            var userId = User.Identity.GetUserId();                      
-                        
+            var userId = User.Identity.GetUserId();
+
             var rows = _taskService.GetTasksForUser(userId, fromDate, toDate).ToList().Select(e =>
                 new
                 {
@@ -727,16 +746,16 @@ namespace SurveyWeb.Controllers
             // var rows = eventList.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
-        
+
         /// <summary>
         /// Edit the task.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public ActionResult EditTask(Guid id)
-        {   
+        {
             var evt = _taskService.GetTask(id.ToString());
-                     
+
             var availableSurveys = _persistenceService.GetSurveys();
 
             var model = new TaskViewModel(evt)
@@ -747,7 +766,7 @@ namespace SurveyWeb.Controllers
                 //AvailableUsers = _accountService.GetUsers(),
                 //Users = _taskService.GetUsersForTask(evt.Id)
             };
-            
+
             return View(model);
         }
 
@@ -761,7 +780,7 @@ namespace SurveyWeb.Controllers
         public ActionResult EditTask(TaskViewModel model)
         {
             if (ModelState.IsValid)
-            {   
+            {
                 var evt = new Event
                     {
                         Id = model.Id,
@@ -772,7 +791,7 @@ namespace SurveyWeb.Controllers
                         //SurveyId = model.SurveyId
                     };
 
-                _taskService.UpdateTask(evt);                
+                _taskService.UpdateTask(evt);
 
                 if (model.SelectedUsers != null)
                 {
@@ -790,8 +809,8 @@ namespace SurveyWeb.Controllers
                         }
                     }
                 }
-                
-                return RedirectToAction("Calendar");            
+
+                return RedirectToAction("Calendar");
             }
 
             return View(model);
@@ -802,12 +821,12 @@ namespace SurveyWeb.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult CreateTask()
-        {   
+        {
             var availableSurveys = _persistenceService.GetSurveys();
 
             var model = new TaskViewModel
                 {
-                    AvailableSurveys = availableSurveys.Select(m => new SurveyEntry{Id = m.Guid.ToString(), Title = m.Title}),
+                    AvailableSurveys = availableSurveys.Select(m => new SurveyEntry { Id = m.Guid.ToString(), Title = m.Title }),
                     AvailableUsers = _accountService.GetUsers(),
                     Users = new List<AspNetUser>()
                 };
@@ -842,7 +861,7 @@ namespace SurveyWeb.Controllers
                 foreach (var user in _taskService.GetUsersForTask(evt.Id))
                 {
                     // var user = _dbContext.AspNetUsers.FirstOrDefault(m => m.Id == selectedUser);
-                    
+
                     // _dbContext.EventUsers.Add(new EventUser { Event = @event, User = user});
 
                     SendAssignedTaskEmail(user);
@@ -859,7 +878,7 @@ namespace SurveyWeb.Controllers
                     this.AddErrors(e);
                 }*/
             }
-            
+
             return View(model);
         }
 
@@ -875,15 +894,15 @@ namespace SurveyWeb.Controllers
             var baseUrl = EmailHelper.GetDomainNameFromHost(Request.Url.Host);
             // var mailService = ServiceManager.GetService<MailService>();
             var template = _mailService.GetEmailTemplate(EmailTemplate.EventAssigned);
-            
+
             _mailService.SendEmail("donotreply@" + baseUrl, email,
                                   "A task was assigned to you at " + baseUrl, template.ToString(), true, baseUrl);
-            
+
         }
         public ActionResult GreetingPartial()
         {
             var userId = User.Identity.GetUserId();
-                        
+
             var user = _accountService.GetUser(userId);
 
             var model = new PersonViewModel(user.Person) { UserId = user.Id };
@@ -906,7 +925,7 @@ namespace SurveyWeb.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            _surveillanceService.DeleteResponse(responseId);            
+            _surveillanceService.DeleteResponse(responseId);
 
             _persistenceService.DeleteResponse(responseId);
 
@@ -914,7 +933,7 @@ namespace SurveyWeb.Controllers
         }
 
         public ActionResult TakePhoto(string surveyId, string questionId)
-        {            
+        {
             var viewModel = new PhotoViewModel { SurveyId = surveyId, QuestionId = questionId };
 
             return View(viewModel);
@@ -926,9 +945,9 @@ namespace SurveyWeb.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]        
+        [HttpPost]
         public ActionResult TakePhoto(PhotoViewModel model)
-        {        
+        {
             string fileName = Guid.NewGuid().ToString("d") + ".png";
             string fileNameWitPath = Path.Combine(Server.MapPath("~/Store/Photos"), fileName);
 
@@ -945,7 +964,7 @@ namespace SurveyWeb.Controllers
 
             model.FileName = fileName;
             model.IsPublished = true;
-            model.UserName = User.Identity.Name;            
+            model.UserName = User.Identity.Name;
             model.CreatedDateTime = DateTime.Now;
 
             if (ModelState.IsValid)
@@ -982,7 +1001,7 @@ namespace SurveyWeb.Controllers
             return RedirectToAction("Dashboard");
         }
 
-        
+
         public ActionResult AddObservation()
         {
             // Initialize a new tracerviewmodel container, add reference data etc.
@@ -991,7 +1010,7 @@ namespace SurveyWeb.Controllers
             viewModel.ResponseId = Guid.NewGuid().ToString();
 
             var userId = User.Identity.GetUserId();
-            
+
             var personId = _accountService.GetUser(userId).PersonId;
 
             viewModel.SurveyorId = new Guid(personId);
@@ -1000,7 +1019,7 @@ namespace SurveyWeb.Controllers
 
             LoadTracerReferenceData(viewModel);
 
-//            ViewBag.StandardElement = new StandardElementViewModel(new Standard { Observation = string.Empty});
+            //            ViewBag.StandardElement = new StandardElementViewModel(new Standard { Observation = string.Empty});
 
             return View(viewModel);
         }
@@ -1021,7 +1040,7 @@ namespace SurveyWeb.Controllers
                 if (!String.IsNullOrWhiteSpace(observationText))
                 {
                     // Add observation
-                    
+
                     var newQuestion = viewModel
                         .AddDefaultQuestionGroup()
                         .AddQuestion(observationText, QuestionType.SelectOne);
@@ -1053,7 +1072,7 @@ namespace SurveyWeb.Controllers
         public PartialViewResult EditNote(int surveyId, int questionGroupId, int questionId, Guid? responseId)
         {
             var viewModel = new EditNoteViewModel
-            {   
+            {
                 NoteId = Guid.NewGuid().ToString(), // Note that MVC cannot roundtrip Guid types
                 SurveyId = surveyId,
                 QuestionGroupNumber = questionGroupId,
@@ -1072,7 +1091,7 @@ namespace SurveyWeb.Controllers
                 if (!String.IsNullOrWhiteSpace(viewModel.NoteText))
                 {
                     // Save response
-                    
+
                     if (!String.IsNullOrWhiteSpace(viewModel.ResponseId))
                     {
                         var userId = User.Identity.GetUserId();
@@ -1093,7 +1112,7 @@ namespace SurveyWeb.Controllers
                 // return RedirectToAction("Dashboard");
             }
 
-            return new JsonResult {Data = "success"};
+            return new JsonResult { Data = "success" };
         }
     }
 }

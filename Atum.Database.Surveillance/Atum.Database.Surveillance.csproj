@@ -168,6 +168,22 @@
     <Compile Include="Migrations\201501120301358_DbMigration12.Designer.cs">
       <DependentUpon>201501120301358_DbMigration12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501200206011_DbMigration13.cs" />
+    <Compile Include="Migrations\201501200206011_DbMigration13.Designer.cs">
+      <DependentUpon>201501200206011_DbMigration13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501210153495_DbMigration14.cs" />
+    <Compile Include="Migrations\201501210153495_DbMigration14.Designer.cs">
+      <DependentUpon>201501210153495_DbMigration14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501210243262_DbMigration15.cs" />
+    <Compile Include="Migrations\201501210243262_DbMigration15.Designer.cs">
+      <DependentUpon>201501210243262_DbMigration15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501210331523_DbMigration16.cs" />
+    <Compile Include="Migrations\201501210331523_DbMigration16.Designer.cs">
+      <DependentUpon>201501210331523_DbMigration16.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AtumSurveillanceContext.cs" />
     <Compile Include="Models\Mapping\AuditResponseMap.cs" />
@@ -276,6 +292,18 @@
     <EmbeddedResource Include="Migrations\201501120301358_DbMigration12.resx">
       <DependentUpon>201501120301358_DbMigration12.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501200206011_DbMigration13.resx">
+      <DependentUpon>201501200206011_DbMigration13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501210153495_DbMigration14.resx">
+      <DependentUpon>201501210153495_DbMigration14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501210243262_DbMigration15.resx">
+      <DependentUpon>201501210243262_DbMigration15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501210331523_DbMigration16.resx">
+      <DependentUpon>201501210331523_DbMigration16.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Atum.Domain.Basis\Atum.Domain.Basis.csproj">
@@ -298,6 +326,9 @@
       <Project>{8926936f-ee5c-4307-bcb5-570364d8669d}</Project>
       <Name>Atum.Domain.SurveyManagement</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Mapping\StandardDocument\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

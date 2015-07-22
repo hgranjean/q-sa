@@ -12,7 +12,7 @@ namespace Atum.Repository.Surveillance
     {
         IEnumerable<Event> GetPastDueTasks(string userId);
 
-        IEnumerable<Event> GetNextTasks(string userId);
+        //IEnumerable<Event> GetNextTasks(string userId);
 
         IEnumerable<Event> GetTasksForUser(string userId, DateTime fromDate, DateTime toDate);
 

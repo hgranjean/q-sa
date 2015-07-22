@@ -50,21 +50,11 @@ namespace Atum.Domain.Test.StandardGuidelines
         {
             StandardDocument standardDocument = null;
             
-            
             standardDocument = new StandardDocument();
 
-            //using (var ctx = )
-            //{
-
-            //}
-            
-            
-            
-            
             string documentTitle = "Document Title";
             standardDocument.Title = documentTitle;
             
-
             //Add Chapters
             AddChapters(standardDocument);
 
@@ -79,18 +69,6 @@ namespace Atum.Domain.Test.StandardGuidelines
                 ctx.SaveChanges();
             }
 
-            
-            //string standardTitle = "Standard Title";
-            //string standardKey = "Standard Key";
-
-            //Standard standard = chapter.AddStandard(standardKey, standardTitle);
-
-
-            //standard.TableOfContents = TOC;
-            //string itemKey = "Item Key";
-            //string itemTitle = "Item Title";
-            //PerformanceItem performanceItem = standard.AddPerformanceItem(itemKey,itemTitle);
-            
         }
 
         private void AddChapters(StandardDocument standardDocument)
@@ -134,7 +112,7 @@ namespace Atum.Domain.Test.StandardGuidelines
 
             return xmlDoc;
         }
-        private static DocumentElements LoadElements(XmlDocument xmlDoc, Chapter chapter)
+        private static Standards LoadElements(XmlDocument xmlDoc, Chapter chapter)
         {
             string elementsTitlePath = "chapter/titles[title]/*";
             string catIdPath = "epid";
@@ -160,9 +138,9 @@ namespace Atum.Domain.Test.StandardGuidelines
             return chapter.Standards;
         }
 
-        private static DocumentElements LoadEPItems(XmlDocument xmlDoc, Standard standard)
+        private static PerformanceItems LoadEPItems(XmlDocument xmlDoc, Standard standard)
         {
-            DocumentElements retVal = new DocumentElements();
+            PerformanceItems retVal = new PerformanceItems();
 
             string itemsPath = "chapter/elements/element[@epid='standardId']".Replace("standardId", standard.Key);
 

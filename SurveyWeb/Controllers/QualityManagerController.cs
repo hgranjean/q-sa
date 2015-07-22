@@ -25,6 +25,11 @@ namespace SurveyWeb.Controllers
             _standardManagementServices = standardManagementServices;
         }
 
+        //public ActionResult Index()
+        //{
+        //    return RedirectToAction("Dashboard", "QTrackerAdmin");
+        
+        //}
 
         // GET: QualityManager
         public ActionResult Dashboard()

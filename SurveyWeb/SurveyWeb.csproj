@@ -299,6 +299,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\ObservationController.cs" />
     <Compile Include="Controllers\QTrackerAdminController.cs" />
     <Compile Include="Controllers\QualityAuditorController.cs" />
     <Compile Include="Controllers\QualityManagerController.cs" />
@@ -2814,6 +2815,9 @@
     <Content Include="Views\QualityAuditor\Observations.cshtml" />
     <Content Include="Views\QualityAuditor\FollowUps.cshtml" />
     <Content Include="Views\QualityManager\SurveillanceTemplate.cshtml" />
+    <Content Include="Views\Surveillance\Observation.cshtml" />
+    <Content Include="Views\Surveillance\Round.cshtml" />
+    <Content Include="Views\Observation\Observation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\arjuna\plugins\jquery-file-upload\server\php\files\thumbnail\" />

@@ -90,11 +90,11 @@ namespace SurveyWeb.Services
 
         }
 
-        private static DocumentElements LoadElements(XmlDocument xmlDoc)
+        private static Standards LoadElements(XmlDocument xmlDoc)
         {
             string elementsTitlePath = "chapter/titles[title]/*";
             string catIdPath = "epid";
-            DocumentElements retVal = new DocumentElements();
+            Standards retVal = new Standards();
 
             XmlNodeList nodes = xmlDoc.SelectNodes(elementsTitlePath);
 
@@ -115,9 +115,9 @@ namespace SurveyWeb.Services
             return retVal;
         }
 
-        private static DocumentElements LoadEPItems(XmlDocument xmlDoc, string standardId)
+        private static PerformanceItems LoadEPItems(XmlDocument xmlDoc, string standardId)
         {
-            DocumentElements retVal = new DocumentElements();
+            PerformanceItems retVal = new PerformanceItems();
 
             string itemsPath = "chapter/elements/element[@epid='standardId']".Replace("standardId", standardId);
 
@@ -193,7 +193,7 @@ namespace SurveyWeb.Services
         private static List<TOCElementViewModel> LoadTOCElements(Standard standard)
         {
             List<TOCElementViewModel> retVal = new List<TOCElementViewModel>();
-            DocumentElements list = standard.PerformanceItems;
+            PerformanceItems list = standard.PerformanceItems;
 
             foreach (PerformanceItem item in list)
             {

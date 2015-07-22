@@ -15,10 +15,13 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
 
         public Guid PerformanceItemId { get; set; }
 
-        public List<string> RelatedItemKeys { get; set; }
-        public ItemNotes Notes { get; set; }
+        public Guid StandardId { get; set; }
+        public Standard Standard { get; set; }
+        public virtual List<string> RelatedItemKeys { get; set; }
+        public virtual ItemNotes Notes { get; set; }
         
         public string Text { get; set; }
         public int EPId { get; set; }
+
     }
 }

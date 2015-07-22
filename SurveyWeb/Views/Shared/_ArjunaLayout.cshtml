@@ -63,10 +63,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+
                 <div class="collapse navbar-collapse" id="atas">
                     <div class="navbar-left">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown messages-menu">
+
+                            @*<li class="dropdown messages-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-envelope"></i>
                                     <span class="label label-success">4</span>
@@ -214,7 +216,8 @@
                                         <a href="#">View all tasks</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>*@
+                            
                             <li class="form-search">
                                 <input type="text" class="form-control" placeholder="Search..">
                             </li>
@@ -239,6 +242,7 @@
                         </ul>
                     </div>
                 </div>
+
             </nav>
         </header>
     }
@@ -323,21 +327,18 @@
 
                             @*if ((new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())).IsInRole(User.Identity.GetUserId(), "Manager")))
                                 {*@
-                            <li>@Html.ActionLink("Templates", "Surveys", "Survey", null, new { @class = "gn-icon gn-icon-article" })</li>
                             @*}*@
 
+                            @*<li>@Html.ActionLink("Templates", "Surveys", "Survey", null, new { @class = "gn-icon gn-icon-article" })</li>
                             <li>@Html.ActionLink("Audits", "SurveySchedules", "Surveillance", null, new { @class = "gn-icon gn-icon-archive" })</li>
-
-                            <li>
-                                @Html.ActionLink("Reports", "Index", "Report", null, new { @class = "gn-icon gn-icon-download" })
-                            </li>
-                            <li>@Html.ActionLink("Documents", "Documents", "Standard", new { id = 1 }, new { @class = "gn-icon-fa fa-book" })</li>
+                            <li>@Html.ActionLink("Reports", "Index", "Report", null, new { @class = "gn-icon gn-icon-download" })</li>
+                            <li>@Html.ActionLink("Documents", "Documents", "Standard", new { id = 1 }, new { @class = "gn-icon-fa fa-book" })</li>*@
                             <li>@Html.ActionLink("Settings", "Settings", "Home", null, new { @class = "gn-icon gn-icon-cog" })</li>
                             <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "gn-icon gn-icon-help" })</li>
                         }
                     </ul>
                     <!-- start:project stats -->
-                    <div class="project-sidebar">
+                    @*<div class="project-sidebar">
                         <div class="main-project-sidebar">
                             <p><strong>Projects</strong></p>
                             <div class="progress">
@@ -365,7 +366,8 @@
                             </div>
                             <p>90% Complete</p>
                         </div>
-                    </div>
+                    </div>*@
+
                 </section>
             </aside>
         <!-- end:left sidebar -->

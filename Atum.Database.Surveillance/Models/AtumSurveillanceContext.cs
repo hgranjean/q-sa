@@ -8,6 +8,7 @@ using Atum.Domain.Security.Domain;
 using Atum.Domain.SurveyManagement;
 using Atum.Domain.QualityManagement.Auditing;
 using Atum.Domain.QualityManagement.Healthcare.Performance;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Atum.Database.Surveillance.Models
 {
@@ -66,14 +67,21 @@ namespace Atum.Database.Surveillance.Models
             modelBuilder.Configurations.Add(new QuestionGroupMap());
             modelBuilder.Configurations.Add(new ResponseChoiceMap());
 
+
+            //, defaultValueSql: "newsequentialid()"
             //Standard Documents and Guidelines
             modelBuilder.Ignore<TableOfContents>();
             modelBuilder.Ignore<DocumentElement>();
-            modelBuilder.Entity<StandardDocument>().ToTable("StandardDocuments").HasKey(t => t.Id);
-            modelBuilder.Entity<Chapter>().ToTable("Chapters").HasKey(t => t.ChapterId);
-            modelBuilder.Entity<Standard>().ToTable("Standards").HasKey(t=> t.StandardId);
-            modelBuilder.Entity<PerformanceItem>().ToTable("PerformanceItems").HasKey(t=> t.PerformanceItemId);
-            modelBuilder.Entity<ItemNote>().ToTable("ItemNotes").HasKey(t => t.ItemNodeId);//.Ignore(t=> t.Id);
+            modelBuilder.Entity<StandardDocument>().ToTable("StandardDocuments").HasKey(t => t.Id).Property(t => t.Id)
+                .IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<Chapter>().ToTable("Chapters").HasKey(t => t.ChapterId).Property(t => t.ChapterId)
+                .IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity); 
+            modelBuilder.Entity<Standard>().ToTable("Standards").HasKey(t=> t.StandardId).Property(t => t.StandardId)
+                .IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<PerformanceItem>().ToTable("PerformanceItems").HasKey(t => t.PerformanceItemId).Property(t => t.PerformanceItemId)
+                .IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<ItemNote>().ToTable("ItemNotes").HasKey(t => t.ItemNodeId).Property(t => t.ItemNodeId)
+                .IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity); //.Ignore(t=> t.Id);
 
             modelBuilder.Entity<FollowUp>().ToTable("FollowUps").HasKey(t => t.Id).HasRequired(p => p.Observation);
 

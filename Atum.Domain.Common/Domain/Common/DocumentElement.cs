@@ -21,7 +21,7 @@ namespace Atum.Domain.Common
         {
             sb.AppendLine(text);
         }
-
+        public DocumentElement ParentElement { get; set; }
         public string Title { get; set; }
         public string Key { get; set; }
         public int Level { get; set; }

@@ -142,7 +142,7 @@ namespace SurveyWeb.Services
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine(standard.Title);
-            DocumentElements pItems = standard.PerformanceItems;
+            PerformanceItems pItems = standard.PerformanceItems;
             foreach (PerformanceItem item in pItems)
             {
                 sb.AppendLine(item.Text);

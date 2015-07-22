@@ -17,6 +17,8 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
         }
 
         public Guid ItemNodeId { get; set; }
+        public Guid PerformanceItemId { get; set; }
+        public PerformanceItem PerformanceItem { get; set; }
         public string Text { get; set; }
     }
 }

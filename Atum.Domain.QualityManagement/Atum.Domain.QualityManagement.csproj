@@ -45,7 +45,9 @@
     <Compile Include="Domain\QualityManagement\Auditing\FollowUp.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\InternalGuideline\GuidelineElement.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\InternalGuideline\QualityGuideline.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\PerformanceItems.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Chapter.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\Chapters.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Document.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\ItemNote.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\ItemNotes.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Element.cs" />
     <Compile Include="Domain\QualityManagement\Healthcare\Performance\Standard.cs" />
     <Compile Include="Domain\QualityManagement\Auditing\Observation.cs" />
+    <Compile Include="Domain\QualityManagement\Healthcare\Performance\Standards.cs" />
     <Compile Include="Domain\QualityManagement\QualityManager.cs" />
     <Compile Include="Domain\QualityManagement\SurveillanceSchedule.cs" />
     <Compile Include="Domain\QualityManagement\SurveillanceTask.cs" />
@@ -76,7 +79,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Domain\QualityManagement\Healthcare\Performance\StandardDocuments.cd" />
+    <None Include="Domain\Diagram\StandardDocuments.cd" />
     <None Include="Domain\Diagram\Surveillances.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

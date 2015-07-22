@@ -18,13 +18,13 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
 
         public Standard(string key, string title):base(key,title)
         {
-            this.PerformanceItems = new DocumentElements();
+            this.PerformanceItems = new PerformanceItems();
         }
+
         public Guid StandardId { get; set; }
-
-        public DocumentElements PerformanceItems { get; set; }
-
-        //public string Observation { get; set; }
+        public Guid ChapterId { get; set; }
+        public Chapter Chapter { get; set; }
+        public virtual PerformanceItems PerformanceItems { get; set; }
 
         public PerformanceItem AddPerformanceItem(string itemKey, string itemTitle)
         {
@@ -32,5 +32,6 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
             PerformanceItems.Add(performanceItem);
             return performanceItem;
         }
+
     }
 }

@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="StandardDocumentRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ObservationRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Atum.Database.Surveillance\Atum.Database.Surveillance.csproj">

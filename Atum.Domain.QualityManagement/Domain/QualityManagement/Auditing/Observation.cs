@@ -15,24 +15,36 @@ namespace Atum.Domain.QualityManagement.Auditing
     /// out of complicance and contains evidence in the form 
     /// of Text or Files - i.e. Documents or Photographs
     /// </summary>
-    public class Observation : Response
+    public class Observation //: Response
     {
-        public Person Person { get; private set; }
        
         public Observation(Person person, string observationTarget,string referenceElementKey)
-            : base(new Question(observationTarget, QuestionType.SelectOne, null, referenceElementKey), new ResponseChoice(""))
+            //: base(new Question(observationTarget, QuestionType.SelectOne, null, referenceElementKey), new ResponseChoice(""))
         {
-            this.Person = person;
+            this.Observer = person;
+            this.ReferenceElementKey = referenceElementKey;
         }
 
-        public Observation(Person person, Question question, ResponseChoice answer) : base(question, answer)
-        {
-            this.Person = person;
-        }
-        public Guid FollowUpId { get; set; }
-        public FollowUp FollowUp { get; set; }
+        //public Observation(Person person, Question question, ResponseChoice answer) 
+        //    //: base(question, answer)
+        //{
+        //    this.Observer = person;
+        //}
+
+        public string Remarks { get; set; }
+        public string ReferenceElementKey { get; set; }
+        public Person Observer { get; set; }
+        public DateTime DateObserved { get; set; }
+        public string Location { get; set; }
+        public string Building { get; set; }
+        public string Floor { get; set; }
+        public string Room { get; set; }
+        public string Area { get; set; }
+
+
+        //public Guid FollowUpId { get; set; }
+        //public FollowUp FollowUp { get; set; }
         public List<string> EvidenceFileInfos { get; set; }
 
-        
     }
 }

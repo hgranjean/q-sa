@@ -23,8 +23,10 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
         }
 
         public string Title { get; set; }
-        public DocumentElements Chapters { get; set; }
+        public virtual Chapters Chapters { get; set; }
         public int OwnerId { get; set; }
+
+
         //public string SubscriberId { get; set; }
         //public Visibility Visibility { get; set; }
 
@@ -32,7 +34,7 @@ namespace Atum.Domain.QualityManagement.Healthcare.Performance
         {
             if (Chapters==null)
             {
-                Chapters = new DocumentElements();
+                Chapters = new Chapters();
             }
             Chapter chapter = new Chapter(chapterKey, chapterTitle);
             Chapters.Add(chapter);
