@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Survey xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>-1</Id>
+  <Guid>00000000-0000-0000-0000-000000000000</Guid>
+  <SurveyType>Evaluation</SurveyType>
+  <QuestionGroups>
+    <item>
+      <key>
+        <int>1</int>
+      </key>
+      <value>
+        <QuestionGroup>
+          <Title>One</Title>
+          <Number>1</Number>
+        </QuestionGroup>
+      </value>
+    </item>
+  </QuestionGroups>
+</Survey>

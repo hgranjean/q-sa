@@ -403,3 +403,4 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 /packages
+/.vs/Survey.Web/v16/Server/sqlite3

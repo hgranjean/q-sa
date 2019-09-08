@@ -42,7 +42,12 @@ namespace Atum.Domain.Common
             
             return sb.ToString();
         }
-
+        public string ToDelimitedstring(string delimiter)
+        {
+            string[] atts = {Id.ToString(),Street1,Street2, City, State, Zip };
+            
+            return string.Join(delimiter, atts);
+        }
         //protected override void SetId(long id)
         //{
         //    throw new NotImplementedException();

@@ -12,7 +12,7 @@ namespace Atum.Domain.Test.NLP
     public class ClassifierTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TrainingDocumentTest()
         {
  //           var classifier = new EPClassifier();
             // classifier.trainFromXML();

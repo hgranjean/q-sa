@@ -31,6 +31,7 @@ namespace Atum.Domain.QualityManagement.Auditing
         //    this.Observer = person;
         //}
 
+        public Guid Id { get; set; }
         public string Remarks { get; set; }
         public string ReferenceElementKey { get; set; }
         public Person Observer { get; set; }

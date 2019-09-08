@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Atum.Database.Surveillance.Models;
 using Atum.Domain.QualityManagement.Auditing;
 using Atum.Repository.Surveillance;
-using Atum.Database.Surveillance.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Entity;
 
 namespace Atum.Repository.Test

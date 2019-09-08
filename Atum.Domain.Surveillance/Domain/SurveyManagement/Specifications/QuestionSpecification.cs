@@ -16,7 +16,6 @@ namespace Atum.Domain.SurveyManagement.Specifications
                 retVal = (question.Text.Length > 0);
                 retVal &= validForType(question);
 
-
             }
             catch (System.Exception)
             {
@@ -75,8 +74,6 @@ namespace Atum.Domain.SurveyManagement.Specifications
 
             return retVal;
         }
-
-
 
     }
 }

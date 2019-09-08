@@ -32,6 +32,8 @@ namespace Atum.Repository.Surveillance
 
         void UpdateUser(AspNetUser user);
     }
+
+
     public class AccountRepository : IAccountRepository
     {
         private readonly AtumSurveillanceContext _context;
