@@ -1,9 +1,18 @@
 ﻿using System.Globalization;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Quality Smart Assistant API",
+        Version = "v1",
+        Description = "Quality Management API for assessments, assignments, responses, and completion reporting."
+    });
+});
 
 var app = builder.Build();
 
@@ -54,7 +63,7 @@ app.MapPost("/surveys/{surveyId}/publish", (string surveyId, PublishSurveyReques
 {
     if (string.IsNullOrWhiteSpace(request.PublishNotes))
     {
-        return Results.BadRequest(new ErrorResponse(new ErrorBody("validation_error", "publishNotes is required.", ["publishNotes"] )));
+        return Results.BadRequest(new ErrorResponse(new ErrorBody("validation_error", "publishNotes is required.", ["publishNotes"])));
     }
 
     var response = new PublishSurveyResponse(

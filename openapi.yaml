@@ -1,9 +1,9 @@
 ﻿openapi: 3.0.3
 info:
-  title: Survey MVP API
+  title: Quality Smart Assistant API
   version: 1.0.0
   description: |
-    Initial MVP contract for modernized Survey application.
+    Initial MVP contract for the Quality Smart Assistant focused on Quality Management workflows.
 servers:
   - url: https://api.example.com
     description: Production
@@ -555,3 +555,4 @@ components:
               type: array
               items:
                 type: string
+
