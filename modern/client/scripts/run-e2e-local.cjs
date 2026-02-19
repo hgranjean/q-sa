@@ -7,9 +7,9 @@ const { spawn } = require('child_process');
 const path = require('path');
 const http = require('http');
 
-const ROOT = path.resolve(__dirname, '../..');
+const ROOT = path.resolve(__dirname, '../..'); // modern/
 const API_DIR = path.join(ROOT, 'QualitySmartAssistant.Api');
-const CLIENT_DIR = ROOT;
+const CLIENT_DIR = path.join(ROOT, 'client');
 
 const API_URL = 'http://localhost:5070';
 const UI_URL = 'http://localhost:5173';
@@ -29,7 +29,7 @@ function waitFor(url, pathname = '/') {
       const req = http.request(target, { method: 'GET' }, (res) => {
         res.resume();
         if (res.statusCode === 200) return resolve();
-        poll();
+        setTimeout(poll, POLL_MS);
       });
       req.on('error', () => setTimeout(poll, POLL_MS));
       req.end();

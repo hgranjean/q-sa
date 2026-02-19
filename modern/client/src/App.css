@@ -1,0 +1,283 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: #1a1d23;
+  color: #e6e8ec;
+}
+
+.nav-links a {
+  color: #a0d8ef;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.user-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.role-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  background: #2d323c;
+  border-radius: 4px;
+}
+
+.top-bar button {
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  background: #3d4452;
+  color: #e6e8ec;
+  border: none;
+  border-radius: 4px;
+}
+
+.top-bar button:hover {
+  background: #4d5564;
+}
+
+.main {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+}
+
+.login-page {
+  max-width: 360px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+}
+
+.login-page h1 {
+  margin-top: 0;
+}
+
+.login-page label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.login-page select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.login-page .error {
+  color: #c00;
+  margin-bottom: 0.5rem;
+}
+
+.login-page button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.role-home h1 {
+  margin-top: 0;
+}
+
+.ping-ok {
+  color: #0a0;
+}
+
+.ping-err {
+  color: #c00;
+}
+
+.surveys-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.surveys-table th,
+.surveys-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.surveys-table th {
+  background: #2d323c;
+  color: #e6e8ec;
+}
+
+.row-clickable {
+  cursor: pointer;
+}
+
+.row-clickable:hover {
+  background: #f0f0f0;
+}
+
+.survey-detail .back-link {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #a0d8ef;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.survey-detail .back-link:hover {
+  text-decoration: underline;
+}
+
+.detail-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.detail-fields dt {
+  font-weight: 600;
+  color: #555;
+}
+
+.placeholder-section {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.placeholder-section .placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+.checklist-section {
+  margin-top: 1.5rem;
+}
+
+.checklist-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.save-status {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.submit-success {
+  color: #0a0;
+  margin-bottom: 0.5rem;
+}
+
+.checklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist-row {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.checklist-row.missing-required {
+  border-color: #c00;
+  background: #fff5f5;
+}
+
+.checklist-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.item-text {
+  font-weight: 500;
+}
+
+.required-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+.value-options {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.value-option {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.notes-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.notes-input {
+  max-width: 400px;
+  padding: 0.35rem 0.5rem;
+}
+
+.submit-actions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.submit-btn {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background: #1a1d23;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #666;
+}
