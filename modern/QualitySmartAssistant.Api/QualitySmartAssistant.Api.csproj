@@ -12,5 +12,9 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Src\Qsa.Application\Qsa.Application.csproj" />
+    <ProjectReference Include="..\Src\Qsa.Infrastructure\Qsa.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>

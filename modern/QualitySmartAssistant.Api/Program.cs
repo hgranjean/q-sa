@@ -1,7 +1,23 @@
-﻿using System.Globalization;
+using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
+using Qsa.Application.Auth;
+using Qsa.Application.Surveys;
+using Qsa.Application.Surveys.Commands;
+using Qsa.Application.Surveys.Queries;
+using Qsa.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173", "http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -14,6 +30,15 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddQsaInfrastructure(builder.Configuration);
+builder.Services.AddScoped<AuthenticateDevUserCommandHandler>();
+builder.Services.AddScoped<GetCurrentUserQueryHandler>();
+builder.Services.AddScoped<ListAssignedSurveysQueryHandler>();
+builder.Services.AddScoped<GetSurveyQueryHandler>();
+builder.Services.AddScoped<GetSurveyChecklistQueryHandler>();
+builder.Services.AddScoped<UpsertChecklistResponseCommandHandler>();
+builder.Services.AddScoped<SubmitSurveyCommandHandler>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -22,22 +47,152 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
-app.MapGet("/auth/me", () =>
+// --- Auth slice: dev login, current user, health ---
+app.MapPost("/auth/dev-login", async (DevLoginRequest request, AuthenticateDevUserCommandHandler handler, CancellationToken ct) =>
 {
-    var response = new AuthMeResponse(
-        "usr_01JQ8T0B1T1R9D3YQ5K2P9V8M4",
-        "manager@hospital.org",
-        "Jordan Smith",
-        ["Manager"],
-        ["hos_01JQ8SYR8W8N7Q4R3P2C1B0A9Z"],
-        ["reports.read", "responses.read"],
-        DateTimeOffset.UtcNow.AddMinutes(-20));
+    var result = await handler.HandleAsync(new AuthenticateDevUserCommand(request.Email, request.Role), ct);
+    if (result == null)
+        return Results.NotFound(new ErrorResponse(new ErrorBody("auth_error", "Unknown user or dev auth disabled.", null)));
+    return Results.Ok(new DevLoginResponse(result.Token, result.User));
+})
+.WithName("DevLogin")
+.WithOpenApi();
 
-    return Results.Ok(response);
+app.MapGet("/me", [Authorize] async (GetCurrentUserQueryHandler handler, CancellationToken ct) =>
+{
+    var user = await handler.HandleAsync(new GetCurrentUserQuery(), ct);
+    if (user == null)
+        return Results.Unauthorized();
+    return Results.Ok(user);
 })
 .WithName("GetCurrentUser")
+.WithOpenApi();
+
+app.MapGet("/auth/me", [Authorize] async (GetCurrentUserQueryHandler handler, CancellationToken ct) =>
+{
+    var user = await handler.HandleAsync(new GetCurrentUserQuery(), ct);
+    if (user == null)
+        return Results.Unauthorized();
+    return Results.Ok(new AuthMeResponse(user.Id, user.Email, user.DisplayName, [user.Role], [], [], DateTimeOffset.UtcNow));
+})
+.WithName("GetAuthMe")
+.WithOpenApi();
+
+app.MapGet("/health", () => Results.Ok(new { status = "ready" }))
+.WithName("Health")
+.WithOpenApi();
+
+app.MapGet("/auth/health", (IConfiguration config) =>
+{
+    var useDevAuth = config.GetValue<bool>("Auth:UseDevAuth");
+    return Results.Ok(new AuthHealthResponse(useDevAuth, useDevAuth ? "Stub" : "None"));
+})
+.WithName("AuthHealth")
+.WithOpenApi();
+
+app.MapGet("/vp/ping", [Authorize(Policy = "VPOnly")] () => Results.Ok(new { role = "VP", message = "pong" }))
+.WithName("VpPing").WithOpenApi();
+app.MapGet("/manager/ping", [Authorize(Policy = "ManagerOnly")] () => Results.Ok(new { role = "Manager", message = "pong" }))
+.WithName("ManagerPing").WithOpenApi();
+app.MapGet("/surveyor/ping", [Authorize(Policy = "SurveyorOnly")] () => Results.Ok(new { role = "Surveyor", message = "pong" }))
+.WithName("SurveyorPing").WithOpenApi();
+
+// --- Surveys slice: assigned list + detail (Surveyor only) ---
+app.MapGet("/surveys/assigned", [Authorize(Policy = "SurveyorOnly")] async (ListAssignedSurveysQueryHandler handler, CancellationToken ct) =>
+{
+    try
+    {
+        var list = await handler.HandleAsync(new ListAssignedSurveysQuery(), ct);
+        return Results.Ok(list);
+    }
+    catch (UnauthorizedAccessException)
+    {
+        return Results.Forbid();
+    }
+})
+.WithName("ListAssignedSurveys")
+.WithOpenApi();
+
+app.MapGet("/surveys/{id:guid}", [Authorize(Policy = "SurveyorOnly")] async (Guid id, GetSurveyQueryHandler handler, CancellationToken ct) =>
+{
+    try
+    {
+        var survey = await handler.HandleAsync(new GetSurveyQuery(id), ct);
+        if (survey == null)
+            return Results.NotFound();
+        return Results.Ok(survey);
+    }
+    catch (UnauthorizedAccessException)
+    {
+        return Results.Forbid();
+    }
+})
+.WithName("GetSurvey")
+.WithOpenApi();
+
+// --- Surveys slice 3: checklist + responses + submit (Surveyor only) ---
+app.MapGet("/surveys/{id:guid}/checklist", [Authorize(Policy = "SurveyorOnly")] async (Guid id, GetSurveyChecklistQueryHandler handler, CancellationToken ct) =>
+{
+    try
+    {
+        var result = await handler.HandleAsync(new GetSurveyChecklistQuery(id), ct);
+        if (result == null)
+            return Results.NotFound();
+        return Results.Ok(result);
+    }
+    catch (UnauthorizedAccessException)
+    {
+        return Results.Forbid();
+    }
+})
+.WithName("GetSurveyChecklist")
+.WithOpenApi();
+
+app.MapPut("/surveys/{id:guid}/responses/{itemId:guid}", [Authorize(Policy = "SurveyorOnly")] async (Guid id, Guid itemId, UpsertChecklistResponseRequest body, UpsertChecklistResponseCommandHandler handler, CancellationToken ct) =>
+{
+    try
+    {
+        var result = await handler.HandleAsync(new UpsertChecklistResponseCommand(id, itemId, body.Value, body.Notes), ct);
+        return Results.Ok(result);
+    }
+    catch (UnauthorizedAccessException)
+    {
+        return Results.Forbid();
+    }
+    catch (ArgumentException ex)
+    {
+        return Results.BadRequest(new ErrorResponse(new ErrorBody("validation_error", ex.Message, null)));
+    }
+    catch (InvalidOperationException ex)
+    {
+        return Results.BadRequest(new ErrorResponse(new ErrorBody("invalid_operation", ex.Message, null)));
+    }
+})
+.WithName("UpsertChecklistResponse")
+.WithOpenApi();
+
+app.MapPost("/surveys/{id:guid}/submit", [Authorize(Policy = "SurveyorOnly")] async (Guid id, SubmitSurveyCommandHandler handler, CancellationToken ct) =>
+{
+    try
+    {
+        var result = await handler.HandleAsync(new SubmitSurveyCommand(id), ct);
+        return Results.Ok(result);
+    }
+    catch (UnauthorizedAccessException)
+    {
+        return Results.Forbid();
+    }
+    catch (ChecklistValidationException ex)
+    {
+        return Results.BadRequest(new ValidationErrorDto("missing_required", ex.Message, ex.MissingRequiredItemIds.Select(g => g.ToString()).ToArray()));
+    }
+})
+.WithName("SubmitSurvey")
 .WithOpenApi();
 
 app.MapPost("/surveys", (CreateSurveyRequest request) =>
@@ -239,3 +394,13 @@ public sealed record CompletionItem(
 public sealed record ErrorResponse(ErrorBody Error);
 
 public sealed record ErrorBody(string Code, string Message, string[]? Details);
+
+// Auth slice (API DTOs; Application.UserDto used for user in response)
+public sealed record DevLoginRequest(string Email, string? Role);
+
+public sealed record DevLoginResponse(string Token, Qsa.Application.Auth.UserDto User);
+
+public sealed record AuthHealthResponse(bool UseDevAuth, string AuthMode);
+
+// Surveys slice 3 (checklist)
+public sealed record UpsertChecklistResponseRequest(string Value, string? Notes);
