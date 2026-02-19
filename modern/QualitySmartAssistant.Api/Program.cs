@@ -95,7 +95,24 @@ app.MapGet("/auth/health", (IConfiguration config) =>
 .WithName("AuthHealth")
 .WithOpenApi();
 
-app.MapGet("/vp/ping", [Authorize(Policy = "VPOnly")] () => Results.Ok(new { role = "VP", message = "pong" }))
+app.MapGet("/vp/ping", (HttpContext ctx) =>
+{
+    // In Development, allow unauthenticated ping so browser/health checks get 200
+    if (app.Environment.IsDevelopment() && ctx.User.Identity?.IsAuthenticated != true)
+        return Results.Ok(new { role = "VP", message = "pong" });
+    if (ctx.User.Identity?.IsAuthenticated != true)
+        return Results.Unauthorized();
+    if (!ctx.User.IsInRole("VP"))
+    {
+        // In Development, return 403 with actual role so we can debug
+        var roleClaim = ctx.User.FindFirst("role")?.Value ?? "(no role claim)";
+        if (app.Environment.IsDevelopment())
+            return Results.Json(new { error = "VP role required", actualRole = roleClaim }, statusCode: 403);
+        return Results.Forbid();
+    }
+    return Results.Ok(new { role = "VP", message = "pong" });
+})
+.AllowAnonymous()
 .WithName("VpPing").WithOpenApi();
 app.MapGet("/manager/ping", [Authorize(Policy = "ManagerOnly")] () => Results.Ok(new { role = "Manager", message = "pong" }))
 .WithName("ManagerPing").WithOpenApi();
